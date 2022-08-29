@@ -10,6 +10,10 @@ The course uses [Jupyter-Book](https://jupyterbook.org/en/stable/intro.html) as 
 
 Programming tutorials and assignments will be done in Python using [Jupyter Notebooks](https://jupyter.org/).
 
+## Calendar
+
+This course will be delivered at AIMS Senegal in January 2023 and AIMS South Africa in February 2023.
+
 
 ## Gratitude
 

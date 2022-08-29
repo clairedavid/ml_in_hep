@@ -1,0 +1,130 @@
+format: jb-book
+root: intro
+parts:
+  - caption: About the course
+    numbered: false
+    chapters:
+    - file: about/learningoutcomes
+    - file: about/jupyter
+
+  - caption: Week 1
+    chapters:
+    - file: week1/trailer
+      sections: 
+      - file: week1/trailer_hep
+      - file: week1/trailer_mldef
+      - file: week1/trailer_pb
+
+    - file: week1/warmup_1D
+      sections: 
+      - file: week1/warmup_1D_linRegGD
+      - file: week1/warmup_1D_FSN
+      - file: week1/warmup_1D_learningR
+      - file: week1/warmup_1D_practice
+      
+    - file: week1/class_algs
+      sections: 
+      - file: week1/class_algs_logReg
+      - file: week1/class_algs_sigmoid
+      - file: week1/class_algs_costF
+      - file: week1/class_algs_reg
+      - file: week1/class_algs_biasV
+
+    - file: week1/BDTs
+      sections: 
+      - file: week1/BDTs_def
+      - file: week1/BDTs_terms
+      - file: week1/BDTs_boosting
+      - file: week1/BDTs_XGBoost
+
+    - file: week1/NN1
+      sections: 
+      - file: week1/NN1_motivations
+      - file: week1/NN1_modelRep
+      - file: week1/NN1_activationF
+      - file: week1/NN1_feedforward
+
+
+  - caption: Week 2
+    chapters:
+    - file: week2/NN2
+      sections: 
+      - file: week2/NN2_costF
+      - file: week2/NN2_backprop
+      - file: week2/NN2_gradCheck
+      - file: week2/NN2_trainNN
+
+    - file: week2/DL
+      sections: 
+      - file: week2/DL_stochGD
+      - file: week2/DL_adaptLR
+      - file: week2/DL_paramHyper
+      - file: week2/DL_scikitPyT
+
+    - file: week2/CNN
+      sections: 
+      - file: week2/CNN_architecture
+      - file: week2/CNN_hyperparameters
+      - file: week2/CNN_regMethods
+      - file: week2/CNN_neutrinoReco
+    
+    - file: week2/GNN
+      sections: 
+      - file: week2/GNN_defGraph
+      - file: week2/GNN_applications
+      - file: week2/GNN_messagePassing
+      - file: week2/GNN_GConvoN
+
+    - file: week2/review
+      sections: 
+      - file: week2/review_summary
+      - file: week2/review_FAQ_projects
+      - file: week2/review_methodology
+
+
+  - caption: Week 3
+    chapters:
+    - file: week3/unsupervised_learning
+      sections: 
+      - file: week3/unsupervised_learning_motiv
+      - file: week3/unsupervised_learning_relevance
+      - file: week3/unsupervised_learning_k-Means
+      - file: week3/unsupervised_learning_dimRed
+
+    - file: week3/PCA_AD
+      sections: 
+      - file: week3/PCA_AD_PCA
+      - file: week3/PCA_AD_autoEncoder
+      - file: week3/PCA_AD_VAE_for_AD
+
+    - file: week3/ML_BigData
+      sections: 
+      - file: week3/ML_BigData_7Vs
+      - file: week3/ML_BigData_preproc
+      - file: week3/ML_BigData_chooseAlgo
+
+    - file: week3/ethics_exam
+      sections: 
+      - file: week3/ethics_exam_1
+      - file: week3/ethics_exam_2
+
+    - file: week3/projects_outlook
+      sections: 
+      - file: week3/projects_outlook_pres
+      - file: week3/projects_outlook_today
+
+
+  - caption: Tutorials
+    numbered: true
+    chapters:
+    - file: tutorials/t01_python
+    - file: tutorials/t02_dataprep_linReg
+    - file: tutorials/t03_signalDisc_LHC
+    - file: tutorials/t04_BDT_workflow
+    - file: tutorials/t05_nn
+    - file: tutorials/t06_scikitPyTorch
+    - file: tutorials/t07_CNN_protoDUNE
+    - file: tutorials/t08_GNN_CMS
+    - file: tutorials/t09_k-Means
+    - file: tutorials/t10_anomaly_det
+

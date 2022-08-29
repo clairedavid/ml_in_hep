@@ -1,3 +1,0 @@
-# Activation Functions
-
-

@@ -1,2 +1,0 @@
-# Architecture of a CNN
-

@@ -1,1 +1,0 @@
-# 8. Convolutional Neural Networks

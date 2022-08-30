@@ -21,4 +21,6 @@ Thanks to the Jupyter universe for providing a great educational platform and ma
 
 Thanks to Matthew Feickert to point out the convenient Jupyter-Book tool.
 
+Thanks to Sam Meehan for insisting ;)
+
 Thanks to Harrison Prosper for sharing curated tutorials that save me numerous hours.

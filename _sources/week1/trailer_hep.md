@@ -1,4 +1,4 @@
 # From detectors to publications
 
-How do we gain knowledge on the Universe in experimental particle physics?
+How do we gain knowledge about the Universe in experimental particle physics?
 

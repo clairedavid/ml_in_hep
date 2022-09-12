@@ -145,28 +145,24 @@ The technical details of this plot are way beyond the scope of this course. Yet 
  . Overlaid distributions of the data (black dots) with the simulated data (colored filled histograms). The predicted signal process is the Higgs boson in blue, while background processes (red, purple and yellow). The variable $m_{4l}$ is analogous to a mass. There are two resonances (we call them mass peaks) and you can see that the data points overlay well with the predicted Higgs peak. Credits: ATLAS Collaboration/CERN. 
 ```
 
-
-### 5. The test statistics
-
-
+### 5.Statistics takes over
+We are still not done! After many other checks and additional studies, we obtain numbers we can robustly trust. Those are usually the observed number of events in the data and the 
+predicted number of events in simulations (from the known background processes and the signal). The latter comes with unavoidable experimental uncertainties. To provide a scientific answer if a new particle or subatomic interaction is occuring in nature or not, we use statistical inference, a protocol to derive conclusions from the data. In particle physics, we often use a sub-protocol called statistical hypothesis testing. It is specified by a '[test statistic](https://en.wikipedia.org/wiki/Test_statistic)', which is a summary, i.e. a single number of the gazillion of measurements from the experiment! There are several types of test statistic; a common (and powerful) test used in particle physics is the so-called log-likelihood ratio.
+````{margin}
+Statistics for particle physics is a vast topic. If you are curious, you can go through these pedagogical introductions: [Practical Statistics for the LHC](https://arxiv.org/abs/1503.07622) and [Practical Statistics for Particle Physics](https://arxiv.org/abs/1905.12362).
+````
+To claim a discovery in physics, we proceed with care. There are two outcomes while searching for a new particle or interaction: either it exists in nature or it does not. In the former case, we denote it as signal-hypothesis, usually labelled $H_1$. The latter case corresponds to the null hypothesis, $H_0$, where the signal we look for does not exist (the data are compatible with the background-only). If we were to show that $H_1$ is true, how to be sure that this signal corresponds to the theory predicting it? To play safer and reach a scientific conclusion, we proceed the other way around: we show that, given the data, the null hypothesis is not tenable. Rejecting the null hypothesis is done using quantifiers that give us how unlikely the null hypothesis is true. In this sense, physical sciences not only do not provide a yes or no answer. It uses statistical tools to output a number that estimate how unfeasible out-dated the current theory is. 
 
 ### 6. The conclusion
-
-
-
-And this ends up in the updated version of physics textbook, testimony of the accretion of knowledge.
-
+When experimentalists compile their findings into a publication summarizing the signal under study, the experimental setup, thee observed data and the statistical output, theorists take over by incorporating the results into their models. Before a discovery is claim (and at times before candidate theories are abandonned), it takes numerous complementary analyses, across several experiments, to disprove the current model and replacing it with a new one. Nevertheless, the steps listed above gives a comprehensive overview of how scientific advance is made. This culminates in the updated version of physics textbooks as a testimony of the accretion of knowledge.
 
 ## The maths and computing in particle physics
-Although the field belongs to physics, a lot of mathematic and computing lie in the exploration of the subatomic world. During this tour I will briefly mention the concepts and show the connections between what you may have learned before in pure mathematics and their use in the reality we live in.
+Although the field belongs to physics, a lot of mathematic and computing lie in the exploration of the subatomic world. During this tour I will briefly mention the concepts and show the connections between what you may have learned - or will learn - in pure mathematics and their use in the reality we live in.
 
-### Symmetries, groups and 
-_The Standard Model is a quantum field theory that is based on a gauge symmetry._  
-Let's unwrap this sentence.
+### Fields, symmetries and groups 
+The theory of particle physics can be described by group theory. Groups are connected to symmetry, which is a very familiar concept while seeing forms such as squares or circles. In particle physics, symmetries are more abstract. It is easier to picture them as invariance. The invariance in time implies that for instance boiling water on Monday or Wednesday will yield the same result. The invariance in rotation signifies that the Universe does not have a preferred orientation. The presence of a planet under your feet makes it difficult to imagine but the Earth create a gravitational field the same way as if it were on another set of coordinates. A phenomenon like two particle colliding is invariant in translation and rotations - i.e. the physics will be the same if the entire system is rotated or shifted further away. An important theorem ruling mathematical physics states that for each invariance or symmetry, there is an associated conserved entity. It was discovered by the great German mathematician [Emmy Noether](https://en.wikipedia.org/wiki/Emmy_Noether) (1882 - 1935) and the [theorem](https://en.wikipedia.org/wiki/Noether's_theorem) bares her name. The time-translation invariance implies conservation of mass-energy. The fact that physical systems behave the same regardless of how they are positioned in space (translation invariance) leads to the conservation of linear momentum.
 
-
-
-
+There are discrete symmetry 
 
 _Lagrangian - principle of least action - symmetries as 'invariance' Noether theorem - gauge theory - abelian groups_
 _The universe we live in is a particular of gauge symmetry_ I find it mind-blowing that not-only reality 
@@ -188,6 +184,8 @@ https://www.symmetrymagazine.org/article/the-coevolution-of-particle-physics-and
 
 ### On the theory side
 where experimental data clashes with the current model. 
+same time amazing and lacking ... we don't know ... 
+
 
 
 

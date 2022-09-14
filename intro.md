@@ -5,7 +5,7 @@ This course introduces the key concepts of machine learning, from the underlying
 
 Practical examples are taken in the context of experimental particle physics, highlighting the techniques currently used in that field.
 
-The lectures are followed by hands-on tutorials to solididy the understanding and help students gain valuable programming skills.
+The lectures are followed by hands-on tutorials to solidify the understanding and help students gain valuable programming skills.
 
 
 ```{warning} The course website is currently under construction.

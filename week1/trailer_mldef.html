@@ -26,6 +26,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -807,12 +808,46 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#foreword">
+   Foreword
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#formal-definitions">
+   Formal definitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-statistics-and-black-box">
+   Machine Learning, statistics and black box
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -824,6 +859,29 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#foreword">
+   Foreword
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#formal-definitions">
+   Formal definitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#machine-learning-statistics-and-black-box">
+   Machine Learning, statistics and black box
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -833,7 +891,45 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="what-is-machine-learning">
 <h1>What is Machine Learning?<a class="headerlink" href="#what-is-machine-learning" title="Permalink to this headline">#</a></h1>
-<p><a class="reference external" href="https://towardsdatascience.com/the-actual-difference-between-statistics-and-machine-learning-64b49f07ea3">https://towardsdatascience.com/the-actual-difference-between-statistics-and-machine-learning-64b49f07ea3</a></p>
+<section id="foreword">
+<h2>Foreword<a class="headerlink" href="#foreword" title="Permalink to this headline">#</a></h2>
+<p>Before heading to the very formal definition, let’s mention important points.</p>
+<p>First, <strong>Machine Learning is a technique</strong>. It is a method that is designed to solve certain types of problems. Not all problems (more in the next section).
+Machine learning is a sub-field of artificial intelligence (AI), an academic discipline founded in 1956. In the recent years the field has been booming, with more and more applications and dedicated research florishing in many areas, both in academia and in industry. Machine learning has become a buzz word and for some enthusiastic programmers, a cool toy to play with. There is even <a class="reference external" href="https://ml4a.net/">art</a> created using machine learning algorithms. But we should keep in mind that it is, before all, a technique. And like all techniques and tools, it poses ethical questions on when and how to use it (we will come back to ethical questions at the end of this course).</p>
+<p>Second: in its classical sense, <strong>a computer program is dumb</strong>. It is a set of instructions written by a human. The program does nothing more than executing these instructions. The advantage we have compared to human brains doing the same is robustness and speed. If the human codes wrong instructions, the program is not smart enough to know the wrongness of rightness of things according to our standards. A machine learning algorithm is different, yet care should be done before considering it smart. The intelligence is rather in the (human) brains who invented the algorithms in the first place. Even with the best machine learning program at hand, if the input data is corrupted or not adequate, one cannot expect proper outcome or worse, misinterpret the answer. Therefore it is essential to understand what is behind the ‘black box’ of a machine learning application (hint: a lot of math), what are the goals and anticipate the possible output. It is a crucial step before developing more complex algorithms. This is what we will cover in the course.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Exercise</p>
+<p>On your own, write your definition of intelligence. What would be the properties of an intelligent system?<br />
+Then share it to your neighbours to compare their definition and list of properties with yours.</p>
+</div>
+</section>
+<section id="formal-definitions">
+<h2>Formal definitions<a class="headerlink" href="#formal-definitions" title="Permalink to this headline">#</a></h2>
+<p>A first - and old - definition comes from Arthur Samuel, an American pioneer in the field of computer gaming.</p>
+<p><strong>Machine Learning: field of study that gives computers the ability to learn without being explicitly programmed.</strong></p>
+<p>This is somewhat redundant, as the definition uses the verb to ‘learn’ in it. What is learning? And how to quantify it?</p>
+<p>Let’s see what Tom Mitchell has to say. He was an American computer scientist and defined machine learning in the following statement in 1998:</p>
+<div class="proof definition admonition" id="mldef">
+<p class="admonition-title"><span class="caption-number">Definition 1 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A computer program is said to learn from experience E with respect to some task T and some performance measure P,<br />
+<strong>if</strong><br />
+its performance on T, as measured by P, improves with experience E</p>
+</section>
+</div><p>Let’s illustrate this with Arthur Samuel’s original investigation. Back in the days, he wrote a checker - also called draught - playing program.
+Let’s start with the task: it is here playing a checker game.
+The experience E is the repeated action of the program to play against itself for thousands of different games. Through this exposure, the program will eventually see patterns of good or bad tactics from the pieces’ positions. The performance P would be the probability of winning the <em>next game</em> of checker.
+We see here that not only we can see the learning at play (P should increase) but we can quantify it, so we can <em>compare</em> the performance of different checker game programs. An important point is that the assessment (win or lose) is done on <em>new</em> data. What counts in the experience is novelty, a fresh collection of different game configurations. Feeding the program with the same data duplicated for instance would not help the program to learn.</p>
+<p>Another example at a post station. In some (modern) ones, the envelopes are automatically scanned to sort them by zip code. Here it is a classification problem. The task is the assignment from a picture to a chain of digits and letters. For us humans, we have trained our brain by learning the numbers and the alphabet while young. We perform this recognition without much difficulty, depending on the quality of the handwritting of course. The task here is to assign the correct symbols from a given picture. The experience is to expose the program to envelopes (the input images) and the answer (the correct zip code). The performance is again a probability of the program guessing correctly a new envelope with an unknown zip code. If this probability increases when we expose the program to more scanned envelopes, then we can say the program has learned to read zip codes.</p>
+</section>
+<section id="machine-learning-statistics-and-black-box">
+<h2>Machine Learning, statistics and black box<a class="headerlink" href="#machine-learning-statistics-and-black-box" title="Permalink to this headline">#</a></h2>
+<p>Machine learning uses a lot of statistical concepts at its core.</p>
+<p>Statistics is the mathematical study of data: collection, processing, analysis, interpretation and presentation.</p>
+<p>How machine learning differs from statistics and statistical modelling? A first aspect is the purpose: machine learning is focused on the result as a technique to make repeatable predictions. It is oriented towards performance, with most of the time a two-step process of <em>training</em> first and then <em>testing</em> the algorithm to know its performance. And this is often happening at the price of interpretability. In statistical modelling, interpretability matters. There is no train nor test steps, rather a meticulous study of all the relationships within the dataset. Stasticians will speak in terms of significance, correlations of variables and confidence intervals, they perform a sort of autopsy of the data.</p>
+<p>In machine learning it is common, sadly, to refer to a program as a so-called black box. “We don’t know internally what the machine learning program does, provided it delivers.”
+This is a dangerous statement. In this course, we will work the maths from the simplest case. This way, when you will build more elaborated algorithms, you will know the inside of each element. Equally important, we will spend time on properly defining the task and performance metrics. Remember, a computer program is dumb. A computer program capable of learning can only learn what it has been programmed to learn. The intelligence, ultimately, is the one of the human programmer.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

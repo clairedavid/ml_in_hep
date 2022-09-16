@@ -26,6 +26,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -807,12 +808,46 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-and-output">
+   Input and output
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#approaches">
+   Approaches
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples">
+   Examples
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -824,6 +859,29 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-and-output">
+   Input and output
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#approaches">
+   Approaches
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples">
+   Examples
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -833,7 +891,48 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="which-problems-does-ml-solve">
 <h1>Which problems does ML solve?<a class="headerlink" href="#which-problems-does-ml-solve" title="Permalink to this headline">#</a></h1>
-<p>Simulations with GANs</p>
+<p>Machine learning is used in numerous areas and has invaded our day-to-day life. Whether a search engine on internet ranks website URLs from input keywords, or a camera detects faces or smiles from an image, or online stores lists recommended products to consumers, machine learning is here behind the scene. It takes data in, got trained at the task (the experience E) with ideally lots of data. After evaluations and tests, it can be ready to take new (unknown) data and output a set of predictions. We will review these steps more in detail during the course for each specific algorithm.</p>
+<section id="input-and-output">
+<h2>Input and output<a class="headerlink" href="#input-and-output" title="Permalink to this headline">#</a></h2>
+<p>As seen from the three examples above, the input data varies: it could be words (string of characters), images (a collection of pixels) or a list of strings and/or numbers (products bought in the past, positions and directions of the produced particles in a detector, etc).</p>
+<p>The output too are of different forms. It could be a binary or categorical variable: is this tumor benign or malignant, is this a cat or a dog (it’s a classic example you will see more than enough on the web).
+It could be numerical value or set of values, for instance the amount of medical kits to send for a given humanitarian disaster.</p>
+<div class="proof definition admonition" id="mlpb">
+<p class="admonition-title"><span class="caption-number">Definition 2 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A classification problem refers to situations where the output is restricted to a limited set of values, in other words classes.</p>
+<p>A regression problem refers to situations where the output may have any numerical value within a range.</p>
+</section>
+</div><p>More subtle output are those were there is no target variable but rather a new information learned from the data. Clusters for example. So-called clustering algorithms sort the dataset into groups showing homogeneity. This is widely used by social media companies to build profiles of users (with or without good intentions). In biology and medicine, it can help partitioning patients to adapt treatments for each group. Another type of output is the selection of several data points, or items, deemed too rare with respect to the standard from the entire dataset. They are outliers, or anomalous. The algorithm behind it is called anomaly detection. It is used to detect fraudulous transactions or in the case of particle physics, it could be handy to spot very rare processes.</p>
+</section>
+<section id="approaches">
+<h2>Approaches<a class="headerlink" href="#approaches" title="Permalink to this headline">#</a></h2>
+<p>There are several approaches in machine learning, the principal ones being:</p>
+<ul class="simple">
+<li><p><strong>Supervised learning</strong>: the training data contains labels, i.e. the real target variable or output. In other words the ‘right answer’ (for instance each picture is labelled ‘dog’ or ‘cat’ in the case of a classification problem, or the price, age, mass in the case of a regression problem).</p></li>
+<li><p><strong>Unsupervised learning</strong>: the training data has no labels. It has only the input. The algorithm’s performs a grouping or clustering or spots anomalies.</p></li>
+<li><p><strong>Reinforcement learning</strong>: the algorithm an agent learns a behavior given an observation in an environment. The action produces a return value in this environment that can be transcribed as a reward the algorithm seeks to maximize.</p></li>
+</ul>
+<p>The latter definition can be confusing. Here is an example: self driving cars. The agent is the self-driving car. By actions we have accelerating/braking and turning left or right. The reward comes from good decision (the car is trained either with a human correcting the actions or in a simulator). Reinforcement learning can also be seen as a form of self-supervised learning.</p>
+<figure class="align-default" id="typesml">
+<a class="reference internal image-reference" href="../_images/lec01_types_ml.png"><img alt="../_images/lec01_types_ml.png" src="../_images/lec01_types_ml.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">.  The main approaches and types of machine learning.<br />
+Credits: Peng J, Jury EC, Dönnes P and Ciurtin C (2021)</span><a class="headerlink" href="#typesml" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h2>
+<p>This is left as an exercise for you!</p>
+<p>In groups, list several machine learning examples you know of. For each of them:</p>
+<ul class="simple">
+<li><p>What are the task, the experience and possible metrics for performance?</p></li>
+<li><p>What are the data input, the output target(s) if any?</p></li>
+<li><p>What are the potential benefits and dangers of such algorithm?</p></li>
+<li><p>How ethical is it?</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

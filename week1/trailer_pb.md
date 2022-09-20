@@ -41,3 +41,7 @@ In groups, list several machine learning examples you know of. For each of them:
 * What are the data input, the output target(s) if any?
 * What are the potential benefits and dangers of such algorithm?
 * How ethical is it?
+
+
+
+

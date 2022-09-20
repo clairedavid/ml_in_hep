@@ -4,12 +4,12 @@
 title: Machine Learning in Particle Physics
 author: Claire David
 logo: logo.png
-exclude_patterns: ["README.md"]
+exclude_patterns: ["README.md","week*/*_plots.ipynb"]
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  execute_notebooks: auto
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -39,5 +39,14 @@ html:
     </div>
 
 sphinx:
+  config:
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   extra_extensions:
     - sphinx_proof
+
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default!
+    - dollarmath
+    - amsmath

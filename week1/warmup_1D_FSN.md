@@ -2,6 +2,8 @@
 
 Prepping the data.
 
+Bit of an interlude.
+
 
 Scaling + renormalization.
 

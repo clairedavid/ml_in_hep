@@ -4,7 +4,7 @@
 title: Machine Learning in Particle Physics
 author: Claire David
 logo: logo.png
-exclude_patterns: ["README.md","week*/*_plots.ipynb"]
+exclude_patterns: ["README.md"]
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html

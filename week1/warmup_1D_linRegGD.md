@@ -4,10 +4,9 @@
 We will study the following situation where we want to predict a real-valued output $y$ based on a collection of input values $x$ that would be spread in the following way:
 
 ```{glue:figure} plot_linReg_50pts
-:figwidth: 100%
+:figwidth: 80%
 :name: "plot_linReg_50pts"
 ```
-
 Now I see what you are thinking: it's very straightforward (pun intended), it is just about fitting a straight line to the data. Yes. But this over-simplified setup is the starting point of our machine learning journey as it contains the basic mathematical machinery. Things will complicate soon, don't worry.  
 
 So, what is linear regression to start with?  
@@ -20,7 +19,7 @@ Linear regression is a model assuming a linear relationship between input variab
 
 * The output variable is considered a _dependent_ variable.
 
-Linear regression is used to __predict one real-valued ouput variable__ (dependent variable) based on the values of the input variables (independent variables).
+Linear regression is used to __predict a real-valued ouput variable__ (dependent variable) based on the values of the input variables (independent variables).
 ````
 
 ````{prf:definition}
@@ -36,15 +35,15 @@ Let's now introduce terms more specific to the machine learning jargon and defin
 * The input variables are called __features__ and are denoted with $x$.
 * The ouput variable is the __target__ and is denoted with $y$.
 
-* In supervised learning the dataset is called a __training set__
-* The number of training examples is denoted with $m$
-* The $i^{th}$ example is $(x^{(i)} , y^{(i)})$  
+* In supervised learning the dataset is called a __training set__.
+* The number of training examples is denoted with $m$.
+* The $i^{th}$ example is $(x^{(i)} , y^{(i)})$.
 ```
 
 So the pair $(x^{(0)} , y^{(0)})$ is the first training example from the data set, and $(x^{(m)} , y^{(m)})$ is the last.
 
 ```{warning}
-Here we start counting from one. When you will write code, the convention is to start at index zero. So you last sample will be of index $m - 1$. Keep this in mind.
+Here we start counting from one. When you will write code, the convention is to start at index zero. So your last sample will be of index `m - 1`. Keep this in mind.
 ```
 
 When we refer to the entire list of all features and targets, we often use the upper letter, $X$ and $Y$ respectively. Those are __vectors__. 
@@ -113,11 +112,11 @@ To avoid cancellation between positive and negative error values, we take the sq
 The accuracy of the mapping function is measured by using a cost function. 
 ````{prf:definition}
 :label: costFunction
-The __cost function in linear regression returns a global error given a mapping function $\mathbold{h_\theta}$ for all data examples of the training set__. 
+The __cost function__ in linear regression returns a global error between the predicted values from a mapping function $h_\theta$ (predictions) and all the target values (observations) of the training data set.
 
 It is also called __loss function__.
 
-The commonly used cost function for linear regression, also called _squared error function_, or _Mean squared error_ is defined as:
+The commonly used cost function for linear regression, also called _squared error function_, or _mean squared error (MSE)_ is defined as:
 ```{math}
 :label: costFunctionLinReg
  J\left(\theta_0, \theta_1\right) =\frac{1}{2 m} \sum_{i=1}^m\left(h_\theta\left(x_i\right)-y_i\right)^2
@@ -133,6 +132,53 @@ The initial goal to "fit the data well" can now be formulated in a mathematical 
 ```
 
 Let's simplify for now the problem by assuming the following data set:
+
+```{glue:figure} plot_linReg_1234
+:name: "plot_linReg_1234"
+```
+This is an ideal case for pedagogical purposes. What are the values of $\theta_0$ and $\theta_1$ here? 
+```{admonition} Check your answers
+:class: tip, dropdown
+Recall the mapping function for linear regression: $h_\theta(x) = \theta_0 + \theta_1 x$. As we have a correspondance $y = 2x$ for all points, so $h_\theta(x) = 2x$, so $\theta_0 = 0$ and $\theta_1 = 2$.
+```
+But you will appreciate the simplification, as we will calculate the cost by hand for different values of $\theta_1$. More complicated things await you in the tutorial, promised.
+
+```{admonition} In-class exercise
+:class: seealso
+* Start with a value of $\theta_1$ = 1 and calculate the cost function $J(\theta_1)$.
+* Proceed the same for other values of $\theta_1$ of 0.5, 1.5, 2, 2.5, 3.
+* How would the graph of the cost function $J(\theta_1)$ as a function of $\theta_1$ look like?
+* Are there maxima/minima? If yes how many?
+```
+
+````{admonition} Solutions  |   Don't look too soon! Give it a try first.
+:class: tip, dropdown  
+The values of the cost function for each $\theta_1$ are reported on the plot below:
+```{glue:figure} plot_linReg_costvstheta1
+:name: "plot_linReg_costvstheta1"
+```
+We see that in this configuration, as we 'swipe' over the data points with 'candidate' straight lines, there will be a value for which we minimize our cost function. That is the value we look for.
+````
+
+Back to our original, more realistic exercise:
+
+```{glue:figure} plot_linReg_50pts
+:figwidth: 80%
+:name: "plot_linReg_50pts"
+```
+
+How do we proceed to the minimization with two parameters? 
+
+## Visualizing the cost
+Let's have some visual display of our cost function as a function of our parameters $\theta$. We will make fancy 3D plots!
+
+
+
+## Gradient Descent
+
+Gradient descent is an iterative optimization algorithm to find the minimum of a function.
+
+
 
 
 

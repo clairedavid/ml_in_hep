@@ -123,7 +123,7 @@ The commonly used cost function for linear regression, also called _squared erro
 ```
 ````
 You can recognize the form of an average. The factor $\frac{1}{2}$ is to make it convenient when taking the derivative of this expression.
-One can see from Equation {eq}`costFunctionLinReg` that each $h_\theta(x_^{(i)})$ is the prediction with our mapping function, whereas $y_i$ is the observed value in the data. 
+In Equation {eq}`costFunctionLinReg`, each $h_\theta (x^{(i)})$ is the prediction with our mapping function, whereas $y_i$ is the observed value in the data. 
 
 The initial goal to "fit the data well" can now be formulated in a mathematical way: __find the parameters $\theta_0$ and $\theta_1$ that minimize the cost function__.
 ```{math}
@@ -200,7 +200,7 @@ The number of epochs is a hyperparameter controlling the number of iterations of
 
 The steps of the gradient descent algorithm for a linear regression with two parameters (i.e. in 1D) are written below.
 ````{margin}  
-This definition will be generalized in the next section to more parameters.
+This definition will be generalized in the next section with more parameters, from $\theta_0$ to $\theta_n$.
 ````
 ````{prf:algorithm} Gradient Descent Algorithm
 :label: GD_algo
@@ -284,12 +284,12 @@ Note that at the step 2.1., there is an implicit loop over all training data sam
 __Why a minus sign?__  
 This illustration helps see why the minus sign in Equation {eq}`eqGDlinCost` is necessary. 
 
-```{figure} ../images/lec02_costSignDirection.png
+```{figure} ../images/lec02_1_costSignDirection.png
 ---
   name: costSignDirection
   width: 90%
 ---
- . The sign of the cost function's derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized. Image: Claire David.
+ . The sign of the cost function's derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized. <sub>Image from the author</sub>.
  ```
 
 If our parameter is randomly picked on the left side of the U-shaped parabola, the partial derivatives will be negative. As the learning rate is always positive, the incremental update $-\alpha \frac{d}{d \theta} J(\theta)$ will thus be positive. We will add an increment to our parameter. At the next iteration, we will have a new parameter $\theta$ closer to the one we look for. The reverse goes with the other side of the curve: with a positive derivative, we will decrease our parameter and slide to the left. All the time we go 'downhill' towards the minimum.
@@ -299,11 +299,31 @@ When computing the gradient descent for linear regression, we get new parameters
 
 ```{figure} ../images/lec02_1_linReg_animated.gif
 ---
-  name: costSignDirection
+  name: linReg_animated
   width: 80%
 ---
-. Animation of the gradient descent. At each generation a new set of parameters are computed. In this picture $m$ corresponds to $\theta_1$ and the constant $c$ to $\theta_0$. Sometimes they are also referred to the _slope_ and _offset_ respectively. Source GIF: [Medium](https://towardsdatascience.com/linear-regression-using-python-b136c91bf0a2).
+. Animation of the gradient descent. At each generation a new set of parameters are computed. In this picture $m$ corresponds to $\theta_1$ and the constant $c$ to $\theta_0$. Sometimes they are also referred to the _slope_ and _intercept_ respectively. Source GIF: [Medium](https://towardsdatascience.com/linear-regression-using-python-b136c91bf0a2).
+```
 
-How to picture this in the $\theta$ parameter space? 
+In our example, the best linear fit will be:
+
+```{glue:figure} plot_linReg_50pts_line
+:name: "plot_linReg_50pts_line"
+```
+How to picture this in the $\theta$ parameter space? For this, contour and 3D plot are handy. Below, the new parameters' (red points) are 'falling' towards the minimum of the cost function:
+
+```{glue:figure} plot_linReg_3D
+:name: "plot_linReg_3D"
+
+. Contour plot (left) and 3D rendering (right) of the cost function with respect to the values of the $\theta$ parameter. The red dots are the intermediary values of the parameters at a given iteration of the gradient descent. You can see that it converges toward the minimum of the cost function.
+```
+
+We will discuss the presence of the zig-zag behaviour of the first iterations in section {ref}`warmup:lr`.
+
+This was linear regression with one input feature. Let's move on with a more generalized version of linear regression involving multiple features.
+
+
+
+
 
 

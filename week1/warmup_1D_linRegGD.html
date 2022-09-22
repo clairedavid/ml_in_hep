@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Linear Regression using Gradient Descent &#8212; Machine Learning in Particle Physics</title>
+    <title>Gradient Descent in 1D &#8212; Machine Learning in Particle Physics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Feature Scaling" href="warmup_1D_FSN.html" />
-    <link rel="prev" title="2. Math warm up: ML in 1D" href="warmup_1D.html" />
+    <link rel="next" title="Multivariate linear regression" href="warmup_1D_FSN.html" />
+    <link rel="prev" title="2. Warm up: Linear Regression" href="warmup_1D.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -168,7 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="warmup_1D.html">
-   2. Math warm up: ML in 1D
+   2. Warm up: Linear Regression
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -178,12 +178,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Linear Regression using Gradient Descent
+     Gradient Descent in 1D
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="warmup_1D_FSN.html">
-     Feature Scaling
+     Multivariate linear regression
     </a>
    </li>
    <li class="toctree-l2">
@@ -842,6 +842,21 @@ title="Print to PDF"
    Cost Function in Linear Regression
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-the-cost">
+   Visualizing the cost
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradient-descent">
+   Gradient Descent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graphical-visualization-of-the-gradient-descent">
+   Graphical Visualization of the Gradient Descent
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -851,7 +866,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Linear Regression using Gradient Descent</h1>
+                <h1>Gradient Descent in 1D</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -871,6 +886,21 @@ title="Print to PDF"
    Cost Function in Linear Regression
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-the-cost">
+   Visualizing the cost
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradient-descent">
+   Gradient Descent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graphical-visualization-of-the-gradient-descent">
+   Graphical Visualization of the Gradient Descent
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -881,11 +911,16 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="linear-regression-using-gradient-descent">
-<h1>Linear Regression using Gradient Descent<a class="headerlink" href="#linear-regression-using-gradient-descent" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="gradient-descent-in-1d">
+<h1>Gradient Descent in 1D<a class="headerlink" href="#gradient-descent-in-1d" title="Permalink to this headline">#</a></h1>
 <section id="model-representation">
 <h2>Model representation<a class="headerlink" href="#model-representation" title="Permalink to this headline">#</a></h2>
 <p>We will study the following situation where we want to predict a real-valued output <span class="math notranslate nohighlight">\(y\)</span> based on a collection of input values <span class="math notranslate nohighlight">\(x\)</span> that would be spread in the following way:</p>
+<figure class="align-default" id="plot-linreg-50pts" style="width: 80%">
+<div class="cell_output docutils container">
+<img alt="../_images/warmup_1D_linRegGD_plots_12_0.png" src="../_images/warmup_1D_linRegGD_plots_12_0.png" />
+</div>
+</figure>
 <p>Now I see what you are thinking: it’s very straightforward (pun intended), it is just about fitting a straight line to the data. Yes. But this over-simplified setup is the starting point of our machine learning journey as it contains the basic mathematical machinery. Things will complicate soon, don’t worry.</p>
 <p>So, what is linear regression to start with?</p>
 <div class="proof definition admonition" id="linRegDef">
@@ -896,7 +931,7 @@ title="Print to PDF"
 <li><p>Input variables are called <em>independent variables</em>, or <em>explanatory variables</em>.</p></li>
 <li><p>The output variable is considered a <em>dependent</em> variable.</p></li>
 </ul>
-<p>Linear regression is used to <strong>predict one real-valued ouput variable</strong> (dependent variable) based on the values of the input variables (independent variables).</p>
+<p>Linear regression is used to <strong>predict a real-valued ouput variable</strong> (dependent variable) based on the values of the input variables (independent variables).</p>
 </section>
 </div><div class="proof definition admonition" id="simpleRegDef">
 <p class="admonition-title"><span class="caption-number">Definition 4 </span></p>
@@ -912,15 +947,15 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>The input variables are called <strong>features</strong> and are denoted with <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
 <li><p>The ouput variable is the <strong>target</strong> and is denoted with <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
-<li><p>In supervised learning the dataset is called a <strong>training set</strong></p></li>
-<li><p>The number of training examples is denoted with <span class="math notranslate nohighlight">\(m\)</span></p></li>
-<li><p>The <span class="math notranslate nohighlight">\(i^{th}\)</span> example is <span class="math notranslate nohighlight">\((x^{(i)} , y^{(i)})\)</span></p></li>
+<li><p>In supervised learning the dataset is called a <strong>training set</strong>.</p></li>
+<li><p>The number of training examples is denoted with <span class="math notranslate nohighlight">\(m\)</span>.</p></li>
+<li><p>The <span class="math notranslate nohighlight">\(i^{th}\)</span> example is <span class="math notranslate nohighlight">\((x^{(i)} , y^{(i)})\)</span>.</p></li>
 </ul>
 </div>
-<p>So the pair <span class="math notranslate nohighlight">\((x^{(0)} , y^{(0)})\)</span> is the first training example from the data set, and <span class="math notranslate nohighlight">\((x^{(m)} , y^{(m)})\)</span> is the last.</p>
+<p>So the pair <span class="math notranslate nohighlight">\((x^{(1)} , y^{(1)})\)</span> is the first training example from the data set, and <span class="math notranslate nohighlight">\((x^{(m)} , y^{(m)})\)</span> is the last.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Here we start counting from one. When you will write code, the convention is to start at index zero. So you last sample will be of index <span class="math notranslate nohighlight">\(m - 1\)</span>. Keep this in mind.</p>
+<p>Here we start counting from one. When you will write code, the convention is to start at index zero. So your last sample will be of index <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">-</span> <span class="pre">1</span></code>. Keep this in mind.</p>
 </div>
 <p>When we refer to the entire list of all features and targets, we often use the upper letter, <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> respectively. Those are <strong>vectors</strong>.</p>
 <p>We defined the input and ouput. In the middle is our model. We feed it first with all the input features and their associated known targets.
@@ -981,18 +1016,203 @@ Image: Don Cowan.</span><a class="headerlink" href="#squareerrvisual" title="Per
 <div class="proof definition admonition" id="costFunction">
 <p class="admonition-title"><span class="caption-number">Definition 7 </span></p>
 <section class="definition-content" id="proof-content">
-<p>The <strong>cost function in linear regression returns a global error given a mapping function <span class="math notranslate nohighlight">\(\mathbold{h_\theta}\)</span> for all data examples of the training set</strong>.</p>
+<p>The <strong>cost function</strong> in linear regression returns a global error between the predicted values from a mapping function <span class="math notranslate nohighlight">\(h_\theta\)</span> (predictions) and all the target values (observations) of the training data set.</p>
 <p>It is also called <strong>loss function</strong>.</p>
-<p>The commonly used cost function for linear regression, also called <em>squared error function</em>, or <em>Mean squared error</em> is defined as:</p>
+<p>The commonly used cost function for linear regression, also called <em>squared error function</em>, or <em>mean squared error (MSE)</em> is defined as:</p>
 <div class="math notranslate nohighlight" id="equation-costfunctionlinreg">
-<span class="eqno">(3)<a class="headerlink" href="#equation-costfunctionlinreg" title="Permalink to this equation">#</a></span>\[ J\left(\theta_0, \theta_1\right) =\frac{1}{2 m} \sum_{i=1}^m\left(h_\theta\left(x_i\right)-y_i\right)^2\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-costfunctionlinreg" title="Permalink to this equation">#</a></span>\[ J\left(\theta_0, \theta_1\right) =\frac{1}{2 m} \sum_{i=1}^m\left(h_\theta\left(x^{(i)}\right)-y^{(i)}\right)^2\]</div>
 </section>
 </div><p>You can recognize the form of an average. The factor <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> is to make it convenient when taking the derivative of this expression.
-One can see from Equation <a class="reference internal" href="#equation-costfunctionlinreg">(3)</a> that each <span class="math notranslate nohighlight">\(h_\theta(x_i)\)</span> is the prediction with our mapping function, whereas <span class="math notranslate nohighlight">\(y_i\)</span> is the observed value in the data.</p>
+In Equation <a class="reference internal" href="#equation-costfunctionlinreg">(3)</a>, each <span class="math notranslate nohighlight">\(h_\theta (x^{(i)})\)</span> is the prediction with our mapping function, whereas <span class="math notranslate nohighlight">\(y_i\)</span> is the observed value in the data.</p>
 <p>The initial goal to “fit the data well” can now be formulated in a mathematical way: <strong>find the parameters <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> that minimize the cost function</strong>.</p>
 <div class="math notranslate nohighlight" id="equation-mincostfunction">
 <span class="eqno">(4)<a class="headerlink" href="#equation-mincostfunction" title="Permalink to this equation">#</a></span>\[\min_{\theta_0, \theta_1} J\left(\theta_0, \theta_1\right)\]</div>
 <p>Let’s simplify for now the problem by assuming the following data set:</p>
+<figure class="align-default" id="plot-linreg-1234">
+<div class="cell_output docutils container">
+<img alt="../_images/warmup_1D_linRegGD_plots_6_0.png" src="../_images/warmup_1D_linRegGD_plots_6_0.png" />
+</div>
+</figure>
+<p>This is an ideal case for pedagogical purposes. What are the values of <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> here?</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Check your answers</p>
+<p>Recall the mapping function for linear regression: <span class="math notranslate nohighlight">\(h_\theta(x) = \theta_0 + \theta_1 x\)</span>. As we have a correspondance <span class="math notranslate nohighlight">\(y = 2x\)</span> for all points, so <span class="math notranslate nohighlight">\(h_\theta(x) = 2x\)</span>, so <span class="math notranslate nohighlight">\(\theta_0 = 0\)</span> and <span class="math notranslate nohighlight">\(\theta_1 = 2\)</span>.</p>
+</div>
+<p>You will appreciate the simplification, as we will calculate the cost by hand for different values of <span class="math notranslate nohighlight">\(\theta_1\)</span>. More complicated things await you in the tutorial, promised.</p>
+<div class="seealso admonition">
+<p class="admonition-title">In-class exercise</p>
+<ul class="simple">
+<li><p>Start with a value of <span class="math notranslate nohighlight">\(\theta_1\)</span> = 1 and calculate the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span>.</p></li>
+<li><p>Proceed the same for other values of <span class="math notranslate nohighlight">\(\theta_1\)</span> of 0.5, 1.5, 2, 2.5, 3.</p></li>
+<li><p>How would the graph of the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span> as a function of <span class="math notranslate nohighlight">\(\theta_1\)</span> look like?</p></li>
+<li><p>Are there maxima/minima? If yes how many?</p></li>
+</ul>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Solutions  |   Don’t look too soon! Give it a try first.</p>
+<p>The values of the cost function for each <span class="math notranslate nohighlight">\(\theta_1\)</span> are reported on the plot below:</p>
+<figure class="align-default" id="plot-linreg-costvstheta1">
+<div class="cell_output docutils container">
+<img alt="../_images/warmup_1D_linRegGD_plots_10_0.png" src="../_images/warmup_1D_linRegGD_plots_10_0.png" />
+</div>
+</figure>
+<p>We see that in this configuration, as we ‘swipe’ over the data points with ‘candidate’ straight lines, there will be a value for which we minimize our cost function. That is the value we look for.</p>
+</div>
+<p>This was with only one parameter. How do we proceed to minimize with two parameters?</p>
+</section>
+<section id="visualizing-the-cost">
+<h2>Visualizing the cost<a class="headerlink" href="#visualizing-the-cost" title="Permalink to this headline">#</a></h2>
+<p>Let’s see a visual representation of our cost function as a function of our <span class="math notranslate nohighlight">\(\theta\)</span> parameters. We saw in the simple example above that the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span> with only one parameter is a U-shaped parabola. The same goes if we fix <span class="math notranslate nohighlight">\(\theta_1\)</span> and vary <span class="math notranslate nohighlight">\(\theta_0\)</span>. Combining the two, it will look like a ‘bowl’. The figure below is not made from the data above, just for illustration:</p>
+<figure class="align-default" id="plot-linreg-bowl">
+<div class="cell_output docutils container">
+<img alt="../_images/warmup_1D_linRegGD_plots_3_0.png" src="../_images/warmup_1D_linRegGD_plots_3_0.png" />
+</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">. The cost function (vertical axis) as a function of the parameters <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span>.</span><a class="headerlink" href="#plot-linreg-bowl" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>What does this represent? It shows the result of the cost function calculated for a range of <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> parameters. For each coordinate (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span>), there has been a loop over all the training data set to get the global error. The vertical value shows thus how ‘costly’ it is to pick up a given (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span>). The higher, the worse is the fit. The center of the bowl, where <span class="math notranslate nohighlight">\(J(\theta_0 , \theta_1)\)</span> is minimum, corresponds to the best choice of the <span class="math notranslate nohighlight">\(\theta\)</span> parameters. In other worse: the best fit to the data.</p>
+<p>How do we proceed to find the <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> parameters minimizing the cost function?</p>
+</section>
+<section id="gradient-descent">
+<h2>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">#</a></h2>
+<p>This concept is key in machine learning. We will see the procedure with our example. But first of all, what is gradient descent?</p>
+<div class="proof definition admonition" id="GDesc">
+<p class="admonition-title"><span class="caption-number">Definition 8 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Gradient descent is an iterative optimization algorithm to find the minimum of a function.</p>
+</section>
+</div><p><a class="reference internal" href="#plot-linreg-bowl"><span class="std std-ref">The 3D plot above</span></a> is misleading, as we will see that once we add input features we cannot have any visual of how the data landscape looks like (we are stuck with 3D vision, rarely 4D and that’s it). In a way, we are blind. Think of yourself walking from a point of the bowl-shaped surface but in the dark. How to reach the ‘valley’ where the cost function is minimum?</p>
+<p>The idea behind gradient descent is to walk step by step following the <strong>slope</strong> of the cost function locally. In mathematical words: the partial derivative of the cost function will give us the best direction to go towards the minimum.</p>
+<div class="admonition-terminology admonition">
+<p class="admonition-title">Terminology</p>
+<p><strong>Hyperparameter</strong><br />
+A model argument set before starting the machine learning algorithm.<br />
+Hyperparameters control the learning process.</p>
+<p><strong>Learning rate</strong> <span class="math notranslate nohighlight">\(\alpha\)</span><br />
+Hyperparameter in an optimization algorithm that determines the step size at each iteration while moving toward a minimum of a loss function.<br />
+The learning rate is always a strictly positive number.</p>
+<p><strong>Epoch</strong><br />
+In machine learning, an epoch is the unit of iteration where calculations are peformed over a portion of training samples or the entire training data set.<br />
+The number of epochs is a hyperparameter controlling the number of iterations of the algorithm.</p>
+</div>
+<p>The steps of the gradient descent algorithm for a linear regression with two parameters (i.e. in 1D) are written below.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>This definition will be generalized in the next section with more parameters, from <span class="math notranslate nohighlight">\(\theta_0\)</span> to <span class="math notranslate nohighlight">\(\theta_n\)</span>.</p>
+</aside>
+<div class="proof algorithm admonition" id="GD_algo">
+<p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Gradient Descent Algorithm)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong></p>
+<ul class="simple">
+<li><p>Training data set with input features <span class="math notranslate nohighlight">\(X\)</span> associated with their targets <span class="math notranslate nohighlight">\(Y\)</span>.</p></li>
+<li><p>Learning rate <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
+<li><p>Number of epochs <span class="math notranslate nohighlight">\(N\)</span></p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+X  = \begin{pmatrix}
+x^{(1)} \\
+x^{(2)} \\
+... \\
+ \\
+x^{(m)}
+\end{pmatrix}  \hspace{10ex}  Y = \begin{pmatrix}
+y^{(1)} \\
+y^{(2)} \\
+... \\
+ \\
+y^{(m)} \end{pmatrix}
+\end{equation*}\]</div>
+<p><strong>Outputs</strong><br />
+The optimized values of the parameters: <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span>, minimizing <span class="math notranslate nohighlight">\(J(\theta_0 , \theta_1)\)</span>.</p>
+<ol class="simple">
+<li><p><strong>Initialization</strong>: Set values for <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span></p></li>
+<li><p><strong>Iterate N times or while the exit condition is not met</strong>:</p>
+<ol class="simple">
+<li><p><strong>Derivatives of the cost function</strong>:<br />
+Compute the partial derivatives of <span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta_0} J(\theta_0 , \theta_1)\)</span> and <span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta_1} J(\theta_0 , \theta_1)\)</span></p></li>
+<li><p><strong>Update the parameters</strong>:<br />
+Calculate the new parameters according to:</p></li>
+</ol>
+</li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-eqgdlincost">
+<span class="eqno">(5)<a class="headerlink" href="#equation-eqgdlincost" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+\theta'_0 &amp;= \theta_0-\alpha \frac{\partial}{\partial \theta_0} J\left(\theta_0, \theta_1\right) \\
+ \\
+\theta'_1 &amp;= \theta_1-\alpha \frac{\partial}{\partial \theta_1} J\left(\theta_0, \theta_1\right) 
+\end{align*}\end{split}\]</div>
+<ol class="simple">
+<li><p><strong>Update</strong>:<br />
+Reassign the new <span class="math notranslate nohighlight">\(\theta'\)</span> to prepare for next iteration</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-equpdatetheta">
+<span class="eqno">(6)<a class="headerlink" href="#equation-equpdatetheta" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+\theta_0 &amp;= \theta'_0 \\
+ \\
+\theta_1 &amp;= \theta'_1 \\
+\end{align*}\end{split}\]</div>
+<p><strong>Exit conditions</strong></p>
+<ul class="simple">
+<li><p>After the maximum number of iterations (epochs) <span class="math notranslate nohighlight">\(N\)</span> is reached</p></li>
+<li><p>If both derivatives of the cost function <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \theta_0} J\left(\theta_0, \theta_1\right) = \frac{\partial}{\partial \theta_1} J\left(\theta_0, \theta_1\right)  = 0\)</span></p></li>
+</ul>
+</section>
+</div><p>In linear regression, the partial derivatives can be simplified.</p>
+<div class="seealso admonition">
+<p class="admonition-title">In-class exercise</p>
+<p>Knowing the form of the hypothesis function <span class="math notranslate nohighlight">\(h_\theta(x)\)</span> for linear regression and the definition of the cost function, rewrite the Equation <a class="reference internal" href="#equation-eqgdlincost">(5)</a> with the explicit partial derivatives.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\theta'_0 &amp;= \theta_0-\alpha \frac{1}{m} \sum_{i = 1}^m \left(h_\theta\left(x^{(i)}\right)-y^{(i)}\right) \\ 
+\\
+\theta'_1 &amp;= \theta_1-\alpha \frac{1}{m} \sum_{i = 1}^m \left(h_\theta\left(x^{(i)}\right)-y^{(i)}\right) x^{(i)} 
+\end{align*}\]</div>
+<p>Details on demand during office hours.</p>
+</div>
+<p><strong>Important</strong><br />
+Note that at the step 2.1., there is an implicit loop over all training data samples, as it is required by the cost function.</p>
+<p><strong>Why a minus sign?</strong><br />
+This illustration helps see why the minus sign in Equation <a class="reference internal" href="#equation-eqgdlincost">(5)</a> is necessary.</p>
+<figure class="align-default" id="costsigndirection">
+<a class="reference internal image-reference" href="../_images/lec02_1_costSignDirection.png"><img alt="../_images/lec02_1_costSignDirection.png" src="../_images/lec02_1_costSignDirection.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">. The sign of the cost function’s derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized. <sub>Image from the author</sub>.</span><a class="headerlink" href="#costsigndirection" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If our parameter is randomly picked on the left side of the U-shaped parabola, the partial derivatives will be negative. As the learning rate is always positive, the incremental update <span class="math notranslate nohighlight">\(-\alpha \frac{d}{d \theta} J(\theta)\)</span> will thus be positive. We will add an increment to our parameter. At the next iteration, we will have a new parameter <span class="math notranslate nohighlight">\(\theta\)</span> closer to the one we look for. The reverse goes with the other side of the curve: with a positive derivative, we will decrease our parameter and slide to the left. All the time we go ‘downhill’ towards the minimum.</p>
+</section>
+<section id="graphical-visualization-of-the-gradient-descent">
+<h2>Graphical Visualization of the Gradient Descent<a class="headerlink" href="#graphical-visualization-of-the-gradient-descent" title="Permalink to this headline">#</a></h2>
+<p>When computing the gradient descent for linear regression, we get new parameters so we can draw a candidate straight line to fit the data. With proper tuning (more on this later), we reach the ideal fit, minimizing the cost function.</p>
+<figure class="align-default" id="linreg-animated">
+<a class="reference internal image-reference" href="../_images/lec02_1_linReg_animated.gif"><img alt="../_images/lec02_1_linReg_animated.gif" src="../_images/lec02_1_linReg_animated.gif" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">. Animation of the gradient descent. At each generation a new set of parameters are computed. In this picture <span class="math notranslate nohighlight">\(m\)</span> corresponds to <span class="math notranslate nohighlight">\(\theta_1\)</span> and the constant <span class="math notranslate nohighlight">\(c\)</span> to <span class="math notranslate nohighlight">\(\theta_0\)</span>. Sometimes they are also referred to the <em>slope</em> and <em>intercept</em> respectively. Source GIF: <a class="reference external" href="https://towardsdatascience.com/linear-regression-using-python-b136c91bf0a2">Medium</a>.</span><a class="headerlink" href="#linreg-animated" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In our example, the best linear fit will be:</p>
+<figure class="align-default" id="plot-linreg-50pts-line">
+<div class="cell_output docutils container">
+<img alt="../_images/warmup_1D_linRegGD_plots_18_0.png" src="../_images/warmup_1D_linRegGD_plots_18_0.png" />
+</div>
+</figure>
+<p>How to picture this in the <span class="math notranslate nohighlight">\(\theta\)</span> parameter space? For this, contour and 3D plot are handy. Below, the new parameters’ (red points) are ‘falling’ towards the minimum of the cost function:</p>
+<figure class="align-default" id="plot-linreg-3d">
+<div class="cell_output docutils container">
+<img alt="../_images/warmup_1D_linRegGD_plots_20_0.png" src="../_images/warmup_1D_linRegGD_plots_20_0.png" />
+</div>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">. Contour plot (left) and 3D rendering (right) of the cost function with respect to the values of the <span class="math notranslate nohighlight">\(\theta\)</span> parameter. The red dots are the intermediary values of the parameters at a given iteration of the gradient descent. You can see that it converges toward the minimum of the cost function.</span><a class="headerlink" href="#plot-linreg-3d" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We will discuss the presence of the zig-zag behaviour of the first iterations in section <a class="reference internal" href="warmup_1D_learningR.html#warmup-lr"><span class="std std-ref">Learning Rate</span></a>.</p>
+<p>This was linear regression with one input feature. Let’s move on with a more generalized version of linear regression involving multiple features.</p>
 </section>
 </section>
 
@@ -1027,13 +1247,13 @@ One can see from Equation <a class="reference internal" href="#equation-costfunc
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">2. Math warm up: ML in 1D</p>
+            <p class="prev-next-title">2. Warm up: Linear Regression</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="warmup_1D_FSN.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Feature Scaling</p>
+        <p class="prev-next-title">Multivariate linear regression</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

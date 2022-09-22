@@ -1,4 +1,4 @@
-# 2. Math warm up: ML in 1D
+# 2. Warm up: Linear Regression
 
 
 

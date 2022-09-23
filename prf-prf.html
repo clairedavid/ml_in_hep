@@ -184,7 +184,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="week1/warmup_1D_FSN.html">
+    <a class="reference internal" href="week1/warmup_1D_linRegGDmulti.html">
      Multivariate linear regression
     </a>
    </li>
@@ -794,11 +794,15 @@ title="Open an issue"
    <h1>Proof Index</h1>
 
    <div class="modindex-jumpbox">
-   <a href="#cap-GD_algo"><strong>GD_algo</strong></a> | 
+   <a href="#cap-GD_algo_1D"><strong>GD_algo_1D</strong></a> | 
+   <a href="#cap-GD_algo_multi"><strong>GD_algo_multi</strong></a> | 
    <a href="#cap-GDesc"><strong>GDesc</strong></a> | 
    <a href="#cap-costFunction"><strong>costFunction</strong></a> | 
+   <a href="#cap-defFeatureScaling"><strong>defFeatureScaling</strong></a> | 
+   <a href="#cap-defMeanNormalization"><strong>defMeanNormalization</strong></a> | 
+   <a href="#cap-defStandardization"><strong>defStandardization</strong></a> | 
    <a href="#cap-hypothesisFunction"><strong>hypothesisFunction</strong></a> | 
-   <a href="#cap-linRegDef"><strong>linRegDef</strong></a> | 
+   <a href="#cap-hypothesisFunctionMulti"><strong>hypothesisFunctionMulti</strong></a> | 
    <a href="#cap-mldef"><strong>mldef</strong></a> | 
    <a href="#cap-mlpb"><strong>mlpb</strong></a> | 
    <a href="#cap-modelParameters"><strong>modelParameters</strong></a> | 
@@ -807,12 +811,20 @@ title="Open an issue"
 
    <table class="indextable modindextable">
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-GD_algo"><td></td><td>
-       <strong>GD_algo</strong></td><td></td></tr>
+     <tr class="cap" id="cap-GD_algo_1D"><td></td><td>
+       <strong>GD_algo_1D</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="week1/warmup_1D_linRegGD.html#GD_algo"><code class="xref">GD_algo</code></a> <em>(week1/warmup_1D_linRegGD)</em></td><td>
+       <a href="week1/warmup_1D_linRegGD.html#GD_algo_1D"><code class="xref">GD_algo_1D</code></a> <em>(week1/warmup_1D_linRegGD)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-GD_algo_multi"><td></td><td>
+       <strong>GD_algo_multi</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/warmup_1D_linRegGDmulti.html#GD_algo_multi"><code class="xref">GD_algo_multi</code></a> <em>(week1/warmup_1D_linRegGDmulti)</em></td><td>
        <em>algorithm</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-GDesc"><td></td><td>
@@ -831,6 +843,30 @@ title="Open an issue"
        <a href="week1/warmup_1D_linRegGD.html#costFunction"><code class="xref">costFunction</code></a> <em>(week1/warmup_1D_linRegGD)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defFeatureScaling"><td></td><td>
+       <strong>defFeatureScaling</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/warmup_1D_linRegGDmulti.html#defFeatureScaling"><code class="xref">defFeatureScaling</code></a> <em>(week1/warmup_1D_linRegGDmulti)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defMeanNormalization"><td></td><td>
+       <strong>defMeanNormalization</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/warmup_1D_linRegGDmulti.html#defMeanNormalization"><code class="xref">defMeanNormalization</code></a> <em>(week1/warmup_1D_linRegGDmulti)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defStandardization"><td></td><td>
+       <strong>defStandardization</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/warmup_1D_linRegGDmulti.html#defStandardization"><code class="xref">defStandardization</code></a> <em>(week1/warmup_1D_linRegGDmulti)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-hypothesisFunction"><td></td><td>
        <strong>hypothesisFunction</strong></td><td></td></tr>
      <tr>
@@ -839,12 +875,12 @@ title="Open an issue"
        <a href="week1/warmup_1D_linRegGD.html#hypothesisFunction"><code class="xref">hypothesisFunction</code></a> <em>(week1/warmup_1D_linRegGD)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-linRegDef"><td></td><td>
-       <strong>linRegDef</strong></td><td></td></tr>
+     <tr class="cap" id="cap-hypothesisFunctionMulti"><td></td><td>
+       <strong>hypothesisFunctionMulti</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="week1/warmup_1D_linRegGD.html#linRegDef"><code class="xref">linRegDef</code></a> <em>(week1/warmup_1D_linRegGD)</em></td><td>
+       <a href="week1/warmup_1D_linRegGDmulti.html#hypothesisFunctionMulti"><code class="xref">hypothesisFunctionMulti</code></a> <em>(week1/warmup_1D_linRegGDmulti)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-mldef"><td></td><td>

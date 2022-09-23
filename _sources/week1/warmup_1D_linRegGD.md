@@ -46,7 +46,7 @@ So the pair $(x^{(1)} , y^{(1)})$ is the first training example from the data se
 Here we start counting from one. When you will write code, the convention is to start at index zero. So your last sample will be of index `m - 1`. Keep this in mind.
 ```
 
-When we refer to the entire list of all features and targets, we often use the upper letter, $X$ and $Y$ respectively. Those are __vectors__. 
+When we refer to the entire list of all features and targets, we will use, $x$ and $y$ respectively. Those are __vectors__. 
 
 We defined the input and ouput. In the middle is our model. We feed it first with all the input features and their associated known targets. 
 This first step of supervised learning is called the __training__ and we will see the mathematics behind it now. What we need first is a function that best maps input to output.
@@ -69,9 +69,9 @@ The subscript $\theta$ means that the function depends on the values taken by $\
 
 ````{prf:definition}
 :label: modelParameters
-The mapping function's internal variables are called the model parameters. They are denoted by the __vector__ $\Theta$:
+The mapping function's internal variables are called the model parameters. They are denoted by the __vector__ $\theta$:
 \begin{equation*}
-\Theta  = \begin{pmatrix} 
+\theta  = \begin{pmatrix} 
 \theta_0 \\
 \theta_1 \\
  \\
@@ -82,7 +82,7 @@ The mapping function's internal variables are called the model parameters. They 
 \end{equation*}
 ````
 
-This is written in a general form of a polynomial of $n^\text{th}$ order. In our case with the linear regression, we only need two parameters:
+In our case with the linear regression with one input feature, we only need two parameters:
 ```{math}
 :label: theta_0_1
 \Theta = \begin{pmatrix} 
@@ -94,11 +94,11 @@ This is written in a general form of a polynomial of $n^\text{th}$ order. In our
 We want to find the values of $\theta_0$ and $\theta_1$ that fit the data well.
 We could pick one training example $(x^{(k)} , y^{(k)})$ and derive the coefficients from there. But will this be the 'best' straight line to draw?
 The mathematical phrasing for such a task is to think in terms of errors. How do we calculate the errors? That's a first question to ask. 
-From a given vector of $\Theta$, how small are the errors?
+From a given vector of $\theta$, how small are the errors?
 This picture below helps to visualize. From a given parameterization, that is to say a given tuple ($\theta_0$ , $\theta_1$ ), the mapping function will ouput continuous values of a predicted $y$ for a continuous range of $x$. That is the dashed line. The errors are the (vertical) intervals between the $y$ from the prediction and each data points. 
 ```{figure} ../images/lec02_1_square_err_graph.png
 ---
-width: 60%
+width: 75%
 name: squareErrVisual
 ---
 . Visualization of errors (dotted vertical lines) between observed and predicted values.  
@@ -119,7 +119,7 @@ It is also called __loss function__.
 The commonly used cost function for linear regression, also called _squared error function_, or _mean squared error (MSE)_ is defined as:
 ```{math}
 :label: costFunctionLinReg
- J\left(\theta_0, \theta_1\right) =\frac{1}{2 m} \sum_{i=1}^m\left(h_\theta\left(x^{(i)}\right)-y^{(i)}\right)^2
+ J\left(\theta_0, \theta_1\right) =\frac{1}{2 m} \sum_{i=1}^m\left(h_\theta(x^{(i)})-y^{(i)}\right)^2
 ```
 ````
 You can recognize the form of an average. The factor $\frac{1}{2}$ is to make it convenient when taking the derivative of this expression.
@@ -157,13 +157,13 @@ The values of the cost function for each $\theta_1$ are reported on the plot bel
 ```{glue:figure} plot_linReg_costvstheta1
 :name: "plot_linReg_costvstheta1"
 ```
-We see that in this configuration, as we 'swipe' over the data points with 'candidate' straight lines, there will be a value for which we minimize our cost function. That is the value we look for.
+We see that in this configuration, as we 'swipe' over the data points with 'candidate' straight lines, there will be a value for which we minimize our cost function. That is the value we look for (but you will learn to make such fancy plot during the tutorials).
 ````
 
 This was with only one parameter. How do we proceed to minimize with two parameters? 
 
 ## Visualizing the cost
-Let's see a visual representation of our cost function as a function of our $\theta$ parameters. We saw in the simple example above that the cost function $J(\theta_1)$ with only one parameter is a U-shaped parabola. The same goes if we fix $\theta_1$ and vary $\theta_0$. Combining the two, it will look like a 'bowl'. The figure below is not made from the data above, just for illustration:
+Let's see a visual representation of our cost function as a function of our $\theta$ parameters. We saw in the simple example above that the cost function $J(\theta_1)$ with only one parameter is a U-shaped parabola. The same goes if we fix $\theta_1$ and vary $\theta_0$. Combining the two, it will look like a bowl. The figure below is not made from the data above, just for illustration:
 ```{glue:figure} plot_linReg_bowl
 :name: "plot_linReg_bowl"
 . The cost function (vertical axis) as a function of the parameters $\theta_0$ and $\theta_1$.
@@ -202,28 +202,27 @@ The steps of the gradient descent algorithm for a linear regression with two par
 ````{margin}  
 This definition will be generalized in the next section with more parameters, from $\theta_0$ to $\theta_n$.
 ````
-````{prf:algorithm} Gradient Descent Algorithm
-:label: GD_algo
+````{prf:algorithm} Gradient Descent for Univariate Linear Regression
+:label: GD_algo_1D
 
 __Inputs__  
-* Training data set with input features $X$ associated with their targets $Y$. 
-* Learning rate $\alpha$
-* Number of epochs $N$
-
+* Training data set with input features $x$ associated with their targets $y$:
 \begin{equation*}
-X  = \begin{pmatrix}
+x  = \begin{pmatrix}
 x^{(1)} \\
 x^{(2)} \\
-... \\
+\vdots \\
  \\
 x^{(m)}
-\end{pmatrix}  \hspace{10ex}  Y = \begin{pmatrix}
+\end{pmatrix}  \hspace{10ex}  y = \begin{pmatrix}
 y^{(1)} \\
 y^{(2)} \\
-... \\
+\vdots \\
  \\
 y^{(m)} \end{pmatrix}
 \end{equation*}
+* Learning rate $\alpha$
+* Number of epochs $N$
 
 __Outputs__  
 The optimized values of the parameters: $\theta_0$ and $\theta_1$, minimizing $J(\theta_0 , \theta_1)$.
@@ -234,19 +233,20 @@ The optimized values of the parameters: $\theta_0$ and $\theta_1$, minimizing $J
 
 1. __Iterate N times or while the exit condition is not met__:
    1. __Derivatives of the cost function__:  
-   Compute the partial derivatives of $\frac{\partial }{\partial \theta_0} J(\theta_0 , \theta_1)$ and $\frac{\partial }{\partial \theta_1} J(\theta_0 , \theta_1)$ 
+    Compute the partial derivatives of $\frac{\partial }{\partial \theta_0} J(\theta_0 , \theta_1)$ and $\frac{\partial }{\partial \theta_1} J(\theta_0 , \theta_1)$ 
    1. __Update the parameters__:  
-   Calculate the new parameters according to:
-```{math}
-:label: eqGDlinCost
-\begin{align*}
-\theta'_0 &= \theta_0-\alpha \frac{\partial}{\partial \theta_0} J\left(\theta_0, \theta_1\right) \\
- \\
-\theta'_1 &= \theta_1-\alpha \frac{\partial}{\partial \theta_1} J\left(\theta_0, \theta_1\right) 
-\end{align*}
-```
-   1. __Update__:  
-   Reassign the new $\theta'$ to prepare for next iteration
+    Calculate the new parameters according to:  
+
+    ```{math}
+    :label: eqGDlinCost
+    \begin{align*}
+    &\\
+    \theta'_0 &= \theta_0-\alpha \frac{\partial}{\partial \theta_0} J\left(\theta_0, \theta_1\right) \\
+    \\
+    \theta'_1 &= \theta_1-\alpha \frac{\partial}{\partial \theta_1} J\left(\theta_0, \theta_1\right) 
+    \end{align*}
+    ```
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reassign the new $\theta$ parameters to prepare for next iteration
 ```{math}
 :label: eqUpdateTheta
 \begin{align*}
@@ -271,9 +271,9 @@ Knowing the form of the hypothesis function $h_\theta(x)$ for linear regression 
 ````{admonition} Answer
 :class: tip, dropdown 
 \begin{align*}
-\theta'_0 &= \theta_0-\alpha \frac{1}{m} \sum_{i = 1}^m \left(h_\theta\left(x^{(i)}\right)-y^{(i)}\right) \\ 
+\theta'_0 &= \theta_0-\alpha \frac{1}{m} \sum_{i = 1}^m \left(h_\theta(x^{(i)})-y^{(i)}\right) \\ 
 \\
-\theta'_1 &= \theta_1-\alpha \frac{1}{m} \sum_{i = 1}^m \left(h_\theta\left(x^{(i)}\right)-y^{(i)}\right) x^{(i)} 
+\theta'_1 &= \theta_1-\alpha \frac{1}{m} \sum_{i = 1}^m \left(h_\theta(x^{(i)})-y^{(i)}\right) x^{(i)} 
 \end{align*}
 Details on demand during office hours.
 ````
@@ -281,7 +281,7 @@ Details on demand during office hours.
 __Important__  
 Note that at the step 2.1., there is an implicit loop over all training data samples, as it is required by the cost function.
 
-__Why a minus sign?__  
+__Why a minus sign before alpha?__  
 This illustration helps see why the minus sign in Equation {eq}`eqGDlinCost` is necessary. 
 
 ```{figure} ../images/lec02_1_costSignDirection.png
@@ -289,7 +289,7 @@ This illustration helps see why the minus sign in Equation {eq}`eqGDlinCost` is 
   name: costSignDirection
   width: 90%
 ---
- . The sign of the cost function's derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized. <sub>Image from the author</sub>.
+ . The sign of the cost function's derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized. <sub>Image from the author</sub>
  ```
 
 If our parameter is randomly picked on the left side of the U-shaped parabola, the partial derivatives will be negative. As the learning rate is always positive, the incremental update $-\alpha \frac{d}{d \theta} J(\theta)$ will thus be positive. We will add an increment to our parameter. At the next iteration, we will have a new parameter $\theta$ closer to the one we look for. The reverse goes with the other side of the curve: with a positive derivative, we will decrease our parameter and slide to the left. All the time we go 'downhill' towards the minimum.
@@ -302,7 +302,7 @@ When computing the gradient descent for linear regression, we get new parameters
   name: linReg_animated
   width: 80%
 ---
-. Animation of the gradient descent. At each generation a new set of parameters are computed. In this picture $m$ corresponds to $\theta_1$ and the constant $c$ to $\theta_0$. Sometimes they are also referred to the _slope_ and _intercept_ respectively. Source GIF: [Medium](https://towardsdatascience.com/linear-regression-using-python-b136c91bf0a2).
+. Animation of the gradient descent. At each generation a new set of parameters are computed. In this picture $m$ corresponds to $\theta_1$ and the constant $c$ to $\theta_0$. Sometimes they are also referred to the _slope_ and _intercept_ respectively. <sub>Source GIF: [Medium](https://towardsdatascience.com/linear-regression-using-python-b136c91bf0a2)</sub>
 ```
 
 In our example, the best linear fit will be:
@@ -318,7 +318,7 @@ How to picture this in the $\theta$ parameter space? For this, contour and 3D pl
 . Contour plot (left) and 3D rendering (right) of the cost function with respect to the values of the $\theta$ parameter. The red dots are the intermediary values of the parameters at a given iteration of the gradient descent. You can see that it converges toward the minimum of the cost function.
 ```
 
-We will discuss the presence of the zig-zag behaviour of the first iterations in section {ref}`warmup:lr`.
+We will discuss the presence of the zig-zag behaviour in the first iterations in section {ref}`warmup:lr`.
 
 This was linear regression with one input feature. Let's move on with a more generalized version of linear regression involving multiple features.
 

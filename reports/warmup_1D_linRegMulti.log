@@ -1,0 +1,45 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 1112, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/local/lib/python3.9/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/usr/local/lib/python3.9/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/local/Cellar/python@3.9/3.9.10/Frameworks/Python.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 553, in async_execute
+    await self.async_execute_cell(
+  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 857, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+x1 = np.random.normal(50, 5, 6)
+x2 = np.random.uniform(-3.14, 3.14, 6)
+x3 = np.random.normal(2000, 100, )
+x4 = np.random.normal(0, 0.1, 5)
+
+df = pd.DataFrame(list(zip(x1, x2, x3, x4)) ,columns = ["x_1", "x_2", "x_3", "x_4"])
+
+print(df)
+
+glue("df_example", df)
+
+
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+Input [0;32mIn [2][0m, in [0;36m<cell line: 6>[0;34m()[0m
+[1;32m      3[0m x3 [38;5;241m=[39m np[38;5;241m.[39mrandom[38;5;241m.[39mnormal([38;5;241m2000[39m, [38;5;241m100[39m, )
+[1;32m      4[0m x4 [38;5;241m=[39m np[38;5;241m.[39mrandom[38;5;241m.[39mnormal([38;5;241m0[39m, [38;5;241m0.1[39m, [38;5;241m5[39m)
+[0;32m----> 6[0m df [38;5;241m=[39m pd[38;5;241m.[39mDataFrame([38;5;28mlist[39m([38;5;28;43mzip[39;49m[43m([49m[43mx1[49m[43m,[49m[43m [49m[43mx2[49m[43m,[49m[43m [49m[43mx3[49m[43m,[49m[43m [49m[43mx4[49m[43m)[49m) ,columns [38;5;241m=[39m [[38;5;124m"[39m[38;5;124mx_1[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mx_2[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mx_3[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mx_4[39m[38;5;124m"[39m])
+[1;32m      8[0m [38;5;28mprint[39m(df)
+[1;32m     10[0m glue([38;5;124m"[39m[38;5;124mdf_example[39m[38;5;124m"[39m, df)
+
+[0;31mTypeError[0m: 'float' object is not iterable
+TypeError: 'float' object is not iterable
+

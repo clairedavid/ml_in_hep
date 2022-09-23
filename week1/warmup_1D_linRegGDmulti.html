@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Learning Rate &#8212; Machine Learning in Particle Physics</title>
+    <title>Multivariate linear regression &#8212; Machine Learning in Particle Physics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,10 +51,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Gradient Descent in practice" href="warmup_1D_practice.html" />
-    <link rel="prev" title="Multivariate linear regression" href="warmup_1D_linRegGDmulti.html" />
+    <link rel="next" title="Learning Rate" href="warmup_1D_learningR.html" />
+    <link rel="prev" title="Gradient Descent in 1D" href="warmup_1D_linRegGD.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -179,13 +181,13 @@ const thebe_selector_output = ".output, .cell_output"
      Gradient Descent in 1D
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="warmup_1D_linRegGDmulti.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Multivariate linear regression
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="warmup_1D_learningR.html">
      Learning Rate
     </a>
    </li>
@@ -743,7 +745,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fweek1/warmup_1D_learningR.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fweek1/warmup_1D_linRegGDmulti.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -771,7 +773,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/week1/warmup_1D_learningR.md"
+        <a href="../_sources/week1/warmup_1D_linRegGDmulti.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -808,23 +810,104 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradient-descent-in-multilinear-regression">
+   Gradient Descent in Multilinear Regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-scaling-normalization">
+   Feature Scaling &amp; Normalization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-feature-scaling">
+     What is feature scaling?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mean-normalization">
+     Mean normalization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standardization">
+     Standardization
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Learning Rate</h1>
+                <h1>Multivariate linear regression</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradient-descent-in-multilinear-regression">
+   Gradient Descent in Multilinear Regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-scaling-normalization">
+   Feature Scaling &amp; Normalization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-feature-scaling">
+     What is feature scaling?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mean-normalization">
+     Mean normalization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standardization">
+     Standardization
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -832,11 +915,282 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="learning-rate">
-<span id="warmup-lr"></span><h1>Learning Rate<a class="headerlink" href="#learning-rate" title="Permalink to this headline">#</a></h1>
-<p>Constant learning</p>
-<p>Risk of divergence</p>
-<p>Caution: is Number of Features a hyperparameter?</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="multivariate-linear-regression">
+<h1>Multivariate linear regression<a class="headerlink" href="#multivariate-linear-regression" title="Permalink to this headline">#</a></h1>
+<p>In machine learning, data samples contain multiple features.</p>
+<p>We will generalize our previous definitions or linear regression to additional features. How to see this?
+Previously our data where two column vectors of input features <span class="math notranslate nohighlight">\(X\)</span> and their associated targets <span class="math notranslate nohighlight">\(y\)</span>.
+The input features can be visualized in the form of a table:</p>
+<figure class="align-default" id="tbl-df-example" style="width: 300px">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x1</th>
+      <th>x2</th>
+      <th>x3</th>
+      <th>x4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>44.792457</td>
+      <td>2.312691</td>
+      <td>2114.308339</td>
+      <td>-0.064833</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>48.778915</td>
+      <td>2.869173</td>
+      <td>1860.424359</td>
+      <td>0.070818</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>45.722732</td>
+      <td>2.633813</td>
+      <td>2072.420297</td>
+      <td>-0.051302</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>44.384768</td>
+      <td>-0.579516</td>
+      <td>1881.063304</td>
+      <td>0.041644</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>40.806063</td>
+      <td>-1.061815</td>
+      <td>1928.628409</td>
+      <td>-0.078094</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>55.126856</td>
+      <td>3.116486</td>
+      <td>2003.872384</td>
+      <td>0.002875</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</figure>
+<p>The data set can be represented as a 2D array with training examples listed as rows. Here each training example has four input features <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, <span class="math notranslate nohighlight">\(x_3\)</span> and <span class="math notranslate nohighlight">\(x_4\)</span>. Each column lists a given feature.</p>
+<p>In particle physics, input features can be the properties of the particles in a collision event. For instance <span class="math notranslate nohighlight">\(x_1\)</span> could be the electron momentum, <span class="math notranslate nohighlight">\(x_2\)</span> the electron’s azimutal angle of its direction in the detector’s coordinate system, <span class="math notranslate nohighlight">\(x_3\)</span> could be another particle’s momentum, <span class="math notranslate nohighlight">\(x_4\)</span> could be a special angle between two particles.</p>
+<p>Again let’s have consistent notations:</p>
+<div class="admonition-terminology-and-notation admonition">
+<p class="admonition-title">Terminology and Notation </p>
+<ul class="simple">
+<li><p>The number of training examples is denoted with <span class="math notranslate nohighlight">\(m\)</span></p></li>
+<li><p>The number of features is denoted with <span class="math notranslate nohighlight">\(n\)</span><br />
+<br></p></li>
+<li><p>The row index or rank of a training example is in superscript, from 1 to <span class="math notranslate nohighlight">\(m\)</span></p></li>
+<li><p>The feature or column of a training example is in subscript, from 1 to <span class="math notranslate nohighlight">\(n\)</span></p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\Rightarrow\)</span> the value of input feature <span class="math notranslate nohighlight">\(j\)</span> of training example in row <span class="math notranslate nohighlight">\(i\)</span> is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+x_j^{(i)}
+\end{equation*}\]</div>
+<p>The training examples form a (<span class="math notranslate nohighlight">\(m \times n\)</span>) matrix <span class="math notranslate nohighlight">\(X\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+X = \begin{pmatrix}
+x_1^{(1)} &amp; x_2^{(1)} &amp; \cdots  &amp; x_j^{(1)} &amp; \cdots &amp; x_n^{(1)} \\[2ex]
+x_1^{(2)} &amp; x_2^{(2)} &amp; \cdots &amp; x_j^{(2)} &amp; \cdots &amp; x_n^{(2)} \\
+\vdots  &amp; \vdots &amp; \ddots  &amp; \vdots &amp;  &amp; \vdots \\
+x_1^{(i)} &amp; x_2^{(i)} &amp; \cdots &amp; x_j^{(i)} &amp; \cdots &amp; x_n^{(i)} \\
+\vdots &amp; \vdots &amp;  &amp; \vdots &amp; \ddots  &amp; \vdots \\
+x_1^{(m)} &amp; x_2^{(m)} &amp; \cdots &amp; x_j^{(m)} &amp; \cdots &amp; x_n^{(m)} \\
+\end{pmatrix} 
+\end{equation*}\]</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <span class="math notranslate nohighlight">\(i^\text{th}\)</span> training sample <span class="math notranslate nohighlight">\(x^{(i)}\)</span> is not a scalar but a row vector of <span class="math notranslate nohighlight">\(n\)</span> elements.</p>
+</div>
+<p>Our hypothesis function is generalized to the following for a given training example. In the following the supercript <span class="math notranslate nohighlight">\(^{(i)}\)</span> is omitted for clarity.</p>
+<div class="proof definition admonition" id="hypothesisFunctionMulti">
+<p class="admonition-title"><span class="caption-number">Definition 9 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The hypothesis or mapping function for linear regression with <span class="math notranslate nohighlight">\(n\)</span> features is:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \cdots + \theta_j x_j + \cdots + \theta_n x_n
+\end{equation*}\]</div>
+</section>
+</div><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>There are <span class="math notranslate nohighlight">\(n+1\)</span> parameters to optimize as we need to add the offset parameter <span class="math notranslate nohighlight">\(\theta_0\)</span>.</p>
+</div>
+<p>If we set <span class="math notranslate nohighlight">\(x_0^{(i)} = 1\)</span>, we can write the mapping function as a sum. For one training example <span class="math notranslate nohighlight">\(x^{(i)}\)</span>, i.e. a row in the data set:</p>
+<div class="math notranslate nohighlight" id="equation-h-theta-lin-sum">
+<span class="eqno">(7)<a class="headerlink" href="#equation-h-theta-lin-sum" title="Permalink to this equation">#</a></span>\[  h_\theta(x^{(i)}) = \sum_{j=1}^n \theta_j x^{(i)}_j = \theta^{\; T} x^{(i)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x^{(i)}\)</span> an <strong>row</strong> vector of <span class="math notranslate nohighlight">\(n+1\)</span> elements, <span class="math notranslate nohighlight">\(x^{(i)} = (x_0, x_1, x_2, \cdots, x_n)\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span> is a column vector of <span class="math notranslate nohighlight">\(n+1\)</span> elements too:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\theta  = \begin{pmatrix} 
+\theta_0 \\
+\theta_1 \\
+ \\
+\vdots \\ 
+ \\
+\theta_n \\
+\end{pmatrix}
+\end{equation*}\]</div>
+<section id="gradient-descent-in-multilinear-regression">
+<h2>Gradient Descent in Multilinear Regression<a class="headerlink" href="#gradient-descent-in-multilinear-regression" title="Permalink to this headline">#</a></h2>
+<p>We will revisit our algorithm to generalize it to <span class="math notranslate nohighlight">\(\theta_n\)</span> parameters:</p>
+<div class="proof algorithm admonition" id="GD_algo_multi">
+<p class="admonition-title"><span class="caption-number">Algorithm 2 </span> (Gradient Descent for Multivariate Linear Regression)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong></p>
+<ul class="simple">
+<li><p>Training data set <span class="math notranslate nohighlight">\(X\)</span> of <span class="math notranslate nohighlight">\(m\)</span> samples with each <span class="math notranslate nohighlight">\(n\)</span> input features, associated with their targets <span class="math notranslate nohighlight">\(y\)</span>:</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+X = \begin{pmatrix}
+x_1^{(1)} &amp; x_2^{(1)} &amp; \cdots  &amp; x_j^{(1)} &amp; \cdots &amp; x_n^{(1)} \\[2ex]
+x_1^{(2)} &amp; x_2^{(2)} &amp; \cdots &amp; x_j^{(2)} &amp; \cdots &amp; x_n^{(2)} \\
+\vdots  &amp; \vdots &amp; \ddots  &amp; \vdots &amp;  &amp; \vdots \\
+x_1^{(i)} &amp; x_2^{(i)} &amp; \cdots &amp; x_j^{(i)} &amp; \cdots &amp; x_n^{(i)} \\
+\vdots &amp; \vdots &amp;  &amp; \vdots &amp; \ddots  &amp; \vdots \\
+x_1^{(m)} &amp; x_2^{(m)} &amp; \cdots &amp; x_j^{(m)} &amp; \cdots &amp; x_n^{(m)} \\
+\end{pmatrix}  \hspace{10ex}  y = \begin{pmatrix}
+y^{(1)} \\[2ex]
+y^{(2)} \\[2ex]
+\vdots  \\
+y^{(i)}\\
+\vdots \\[2ex]
+y^{(m)}\end{pmatrix}
+\end{equation*}\]</div>
+<ul class="simple">
+<li><p>Learning rate <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
+<li><p>Number of epochs <span class="math notranslate nohighlight">\(N\)</span></p></li>
+</ul>
+<p><strong>Outputs</strong><br />
+The optimized values of <span class="math notranslate nohighlight">\(\theta\)</span> parameters, <span class="math notranslate nohighlight">\(\theta_0\)</span>, <span class="math notranslate nohighlight">\(\theta_1\)</span>, … , <span class="math notranslate nohighlight">\(\theta_n\)</span> minimizing <span class="math notranslate nohighlight">\(J(\theta)\)</span>.</p>
+<ol class="simple">
+<li><p><strong>Initialization</strong>: Set values for all <span class="math notranslate nohighlight">\(\theta\)</span> parameters</p></li>
+<li><p><strong>Iterate N times or while the exit condition is not met</strong>:</p>
+<ol class="simple">
+<li><p><strong>Derivatives of the cost function</strong>:<br />
+Compute the partial derivatives <span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta_j} J(\theta)\)</span> for each <span class="math notranslate nohighlight">\(\theta_j\)</span></p></li>
+<li><p><strong>Update the parameters</strong>:<br />
+Calculate the new parameters according to:</p></li>
+</ol>
+</li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-eqgdlincostmulti">
+<span class="eqno">(8)<a class="headerlink" href="#equation-eqgdlincostmulti" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{equation*} \\
+\theta'_j = \theta_j-\alpha \frac{\partial}{\partial \theta_j} J\left(\theta\right) \;   \;   \;  \;   \;   \; \forall j \in [0..n]\\
+\end{equation*}\end{split}\]</div>
+<p>         Reassign the new <span class="math notranslate nohighlight">\(\theta\)</span> parameters to prepare for next iteration</p>
+<div class="math notranslate nohighlight" id="equation-equpdatethetamulti">
+<span class="eqno">(9)<a class="headerlink" href="#equation-equpdatethetamulti" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{equation*}
+\theta_j = \theta'_j \;   \;   \;  \;   \;   \; \forall j \in [0..n]\\
+\end{equation*}\end{split}\]</div>
+<p><strong>Exit conditions</strong></p>
+<ul class="simple">
+<li><p>After the maximum number of iterations (epochs) <span class="math notranslate nohighlight">\(N\)</span> is reached</p></li>
+<li><p>If all derivatives are zero:</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\frac{\partial}{\partial \theta_j} J\left(\theta\right) = 0 \;   \;   \;  \;   \;   \;    \forall j \in [0..n]
+\end{equation*}\]</div>
+</section>
+</div></section>
+<section id="feature-scaling-normalization">
+<h2>Feature Scaling &amp; Normalization<a class="headerlink" href="#feature-scaling-normalization" title="Permalink to this headline">#</a></h2>
+<p>In the example of the previous section, the 3D plot of the cost function with respect to the <span class="math notranslate nohighlight">\(\theta\)</span> parameters was not really bowl-shaped but stretched.
+This happens when the features are of different ranges.</p>
+<p>If
+one parameter will be incremented or decremented with larger or smaller steps than the other.</p>
+<div class="seealso admonition">
+<p class="admonition-title">In-class exercise</p>
+<p>If let’s say <span class="math notranslate nohighlight">\(x_1\)</span> has values between <span class="math notranslate nohighlight">\(10 000\)</span> and <span class="math notranslate nohighlight">\(100000\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> between 1 and 10.</p>
+<ol class="simple">
+<li><p>Which parameter, <span class="math notranslate nohighlight">\(\theta_1\)</span> or <span class="math notranslate nohighlight">\(\theta_2\)</span> will be updated with a very large or very small step? (independently of the sign). Hint: ask yourself in which direction the contour is going to be stretched.</p></li>
+<li><p>What are the consequences on the gradient descent algorithm?</p></li>
+</ol>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Check your answers</p>
+<p><strong>Answer 1.</strong> If <span class="math notranslate nohighlight">\(x_1\)</span> has very large values, the coefficients <span class="math notranslate nohighlight">\(\theta_0\)</span> will have to be very small and tuned in a fine way to not let the cost function explode in very high values. The <span class="math notranslate nohighlight">\(\theta_2\)</span> parameters will not have to be tuned that finely to prevent the cost function from getting big. Thus the contour plot will be stretched along the parameter associated with the features spanning a small range.</p>
+<p>The <span class="math notranslate nohighlight">\(\theta\)</span> parameters will descend (or converge) slowly on large ranges and quickly on small ranges, as the figure below shows:</p>
+<figure class="align-default" id="withandoutscaling">
+<a class="reference internal image-reference" href="../_images/lec02_2_withandoutScaling.png"><img alt="../_images/lec02_2_withandoutScaling.png" src="../_images/lec02_2_withandoutScaling.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">. The contour without feature scaling is skewed and takes up an oval shape. If normalized, the path towards the minimum is shorter.<br />
+<sub>Source: <a class="reference external" href="https://www.enjoyalgorithms.com/blog/need-of-feature-scaling-in-machine-learning">enjoyalgorithms.com</a> </sub></span><a class="headerlink" href="#withandoutscaling" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Answer 2.</strong> The difference in range can lead to an ‘overshooting’ of one parameter value to the other side of the slope, thus creating a zig-zag path towards the minimum. It will slow down the learning process, because more steps are needed before converging to the minimum of the cost function. Another consequence is the risk of divergence: as the learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is the same while updating all parameters, a big jump in one direction can even lead to instability (more on that in the next section).</p>
+</div>
+<section id="what-is-feature-scaling">
+<h3>What is feature scaling?<a class="headerlink" href="#what-is-feature-scaling" title="Permalink to this headline">#</a></h3>
+<div class="proof definition admonition" id="defFeatureScaling">
+<p class="admonition-title"><span class="caption-number">Definition 10 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Feature scaling</strong> is a data preparation process consisting of harmonizing the values of the input variables taken as features for a machine learning algorithm.</p>
+</section>
+</div><p>Feature scaling can be implemented in different ways. We will see the two classics: mean normalization and standardization.</p>
+</section>
+<section id="mean-normalization">
+<h3>Mean normalization<a class="headerlink" href="#mean-normalization" title="Permalink to this headline">#</a></h3>
+<div class="proof definition admonition" id="defMeanNormalization">
+<p class="admonition-title"><span class="caption-number">Definition 11 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Mean normalization</strong> consists of calculating the mean <span class="math notranslate nohighlight">\(\mu_j\)</span> of all training examples <span class="math notranslate nohighlight">\(x_j^{(1)}, x_j^{(2)}, \cdots,  x_j^{(m)}\)</span> of a given feature <span class="math notranslate nohighlight">\(j\)</span> and substract it to each example <span class="math notranslate nohighlight">\(x_j^{(i)}\)</span> of that feature:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\left(x^{(i)}_j\right)' = x^{(i)}_j - \mu_j  \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
+\end{equation*}\]</div>
+<p>It is usual to divide by the range of the features:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\left(x^{(i)}_j\right)' = \frac{x^{(i)}_j - \mu_j}{x_j^\max - x_j^\min} \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
+\end{equation*}\]</div>
+</section>
+</div><p>Consequence: the mean of the new normalized sample collection for that feature - think of it as an extra column in the matrix <span class="math notranslate nohighlight">\(X\)</span> - will be zero. The data distribute the same as before, the values are just representing the <em>distance to the mean</em>.</p>
+</section>
+<section id="standardization">
+<h3>Standardization<a class="headerlink" href="#standardization" title="Permalink to this headline">#</a></h3>
+<div class="proof definition admonition" id="defStandardization">
+<p class="admonition-title"><span class="caption-number">Definition 12 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The mean normalization procedure using as denominator the standard deviation <span class="math notranslate nohighlight">\(\sigma_j\)</span> all the samples for this feature is called <strong>Standardization</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+x^{(i)}_j = \frac{x^{(i)}_j - \mu_j}{\sigma_j} \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
+\end{equation*}\]</div>
+</section>
+</div><p>Consequence: the mean and standard deviation of the new normalized collection of feature <span class="math notranslate nohighlight">\(j\)</span> will be zero and one respectively.</p>
+<p><strong>When is feature scaling relevant? When is it not?</strong><br />
+It all depends how the data look like. This is why it is important before starting the machinery of (fancy) learning techniques to inspect the data, plot several distributions if possible and dedicate time for the preparedness steps: data cleaning, scaling etc. This is essential for the success of the fitting algorithm.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -866,17 +1220,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="warmup_1D_linRegGDmulti.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="warmup_1D_linRegGD.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Multivariate linear regression</p>
+            <p class="prev-next-title">Gradient Descent in 1D</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="warmup_1D_practice.html" title="next page">
+    <a class='right-next' id="next-link" href="warmup_1D_learningR.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Gradient Descent in practice</p>
+        <p class="prev-next-title">Learning Rate</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

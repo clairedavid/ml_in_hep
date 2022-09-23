@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Multivariate linear regression" href="warmup_1D_FSN.html" />
+    <link rel="next" title="Multivariate linear regression" href="warmup_1D_linRegGDmulti.html" />
     <link rel="prev" title="2. Warm up: Linear Regression" href="warmup_1D.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -182,7 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="warmup_1D_FSN.html">
+    <a class="reference internal" href="warmup_1D_linRegGDmulti.html">
      Multivariate linear regression
     </a>
    </li>
@@ -957,7 +957,7 @@ title="Print to PDF"
 <p class="admonition-title">Warning</p>
 <p>Here we start counting from one. When you will write code, the convention is to start at index zero. So your last sample will be of index <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">-</span> <span class="pre">1</span></code>. Keep this in mind.</p>
 </div>
-<p>When we refer to the entire list of all features and targets, we often use the upper letter, <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> respectively. Those are <strong>vectors</strong>.</p>
+<p>When we refer to the entire list of all features and targets, we will use, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> respectively. Those are <strong>vectors</strong>.</p>
 <p>We defined the input and ouput. In the middle is our model. We feed it first with all the input features and their associated known targets.
 This first step of supervised learning is called the <strong>training</strong> and we will see the mathematics behind it now. What we need first is a function that best maps input to output.</p>
 <div class="proof definition admonition" id="hypothesisFunction">
@@ -976,10 +976,10 @@ y = h(x)
 <div class="proof definition admonition" id="modelParameters">
 <p class="admonition-title"><span class="caption-number">Definition 6 </span></p>
 <section class="definition-content" id="proof-content">
-<p>The mapping function’s internal variables are called the model parameters. They are denoted by the <strong>vector</strong> <span class="math notranslate nohighlight">\(\Theta\)</span>:</p>
+<p>The mapping function’s internal variables are called the model parameters. They are denoted by the <strong>vector</strong> <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-\Theta  = \begin{pmatrix} 
+\theta  = \begin{pmatrix} 
 \theta_0 \\
 \theta_1 \\
  \\
@@ -989,7 +989,7 @@ y = h(x)
 \end{pmatrix}
 \end{equation*}\]</div>
 </section>
-</div><p>This is written in a general form of a polynomial of <span class="math notranslate nohighlight">\(n^\text{th}\)</span> order. In our case with the linear regression, we only need two parameters:</p>
+</div><p>In our case with the linear regression with one input feature, we only need two parameters:</p>
 <div class="math notranslate nohighlight" id="equation-theta-0-1">
 <span class="eqno">(2)<a class="headerlink" href="#equation-theta-0-1" title="Permalink to this equation">#</a></span>\[\begin{split}\Theta = \begin{pmatrix} 
 \theta_0 \\
@@ -998,10 +998,10 @@ y = h(x)
 <p>We want to find the values of <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> that fit the data well.
 We could pick one training example <span class="math notranslate nohighlight">\((x^{(k)} , y^{(k)})\)</span> and derive the coefficients from there. But will this be the ‘best’ straight line to draw?
 The mathematical phrasing for such a task is to think in terms of errors. How do we calculate the errors? That’s a first question to ask.
-From a given vector of <span class="math notranslate nohighlight">\(\Theta\)</span>, how small are the errors?
+From a given vector of <span class="math notranslate nohighlight">\(\theta\)</span>, how small are the errors?
 This picture below helps to visualize. From a given parameterization, that is to say a given tuple (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span> ), the mapping function will ouput continuous values of a predicted <span class="math notranslate nohighlight">\(y\)</span> for a continuous range of <span class="math notranslate nohighlight">\(x\)</span>. That is the dashed line. The errors are the (vertical) intervals between the <span class="math notranslate nohighlight">\(y\)</span> from the prediction and each data points.</p>
 <figure class="align-default" id="squareerrvisual">
-<a class="reference internal image-reference" href="../_images/lec02_1_square_err_graph.png"><img alt="../_images/lec02_1_square_err_graph.png" src="../_images/lec02_1_square_err_graph.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../_images/lec02_1_square_err_graph.png"><img alt="../_images/lec02_1_square_err_graph.png" src="../_images/lec02_1_square_err_graph.png" style="width: 75%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 9 </span><span class="caption-text">. Visualization of errors (dotted vertical lines) between observed and predicted values.<br />
 Image: Don Cowan.</span><a class="headerlink" href="#squareerrvisual" title="Permalink to this image">#</a></p>
@@ -1020,7 +1020,7 @@ Image: Don Cowan.</span><a class="headerlink" href="#squareerrvisual" title="Per
 <p>It is also called <strong>loss function</strong>.</p>
 <p>The commonly used cost function for linear regression, also called <em>squared error function</em>, or <em>mean squared error (MSE)</em> is defined as:</p>
 <div class="math notranslate nohighlight" id="equation-costfunctionlinreg">
-<span class="eqno">(3)<a class="headerlink" href="#equation-costfunctionlinreg" title="Permalink to this equation">#</a></span>\[ J\left(\theta_0, \theta_1\right) =\frac{1}{2 m} \sum_{i=1}^m\left(h_\theta\left(x^{(i)}\right)-y^{(i)}\right)^2\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-costfunctionlinreg" title="Permalink to this equation">#</a></span>\[ J\left(\theta_0, \theta_1\right) =\frac{1}{2 m} \sum_{i=1}^m\left(h_\theta(x^{(i)})-y^{(i)}\right)^2\]</div>
 </section>
 </div><p>You can recognize the form of an average. The factor <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> is to make it convenient when taking the derivative of this expression.
 In Equation <a class="reference internal" href="#equation-costfunctionlinreg">(3)</a>, each <span class="math notranslate nohighlight">\(h_\theta (x^{(i)})\)</span> is the prediction with our mapping function, whereas <span class="math notranslate nohighlight">\(y_i\)</span> is the observed value in the data.</p>
@@ -1056,13 +1056,13 @@ In Equation <a class="reference internal" href="#equation-costfunctionlinreg">(3
 <img alt="../_images/warmup_1D_linRegGD_plots_10_0.png" src="../_images/warmup_1D_linRegGD_plots_10_0.png" />
 </div>
 </figure>
-<p>We see that in this configuration, as we ‘swipe’ over the data points with ‘candidate’ straight lines, there will be a value for which we minimize our cost function. That is the value we look for.</p>
+<p>We see that in this configuration, as we ‘swipe’ over the data points with ‘candidate’ straight lines, there will be a value for which we minimize our cost function. That is the value we look for (but you will learn to make such fancy plot during the tutorials).</p>
 </div>
 <p>This was with only one parameter. How do we proceed to minimize with two parameters?</p>
 </section>
 <section id="visualizing-the-cost">
 <h2>Visualizing the cost<a class="headerlink" href="#visualizing-the-cost" title="Permalink to this headline">#</a></h2>
-<p>Let’s see a visual representation of our cost function as a function of our <span class="math notranslate nohighlight">\(\theta\)</span> parameters. We saw in the simple example above that the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span> with only one parameter is a U-shaped parabola. The same goes if we fix <span class="math notranslate nohighlight">\(\theta_1\)</span> and vary <span class="math notranslate nohighlight">\(\theta_0\)</span>. Combining the two, it will look like a ‘bowl’. The figure below is not made from the data above, just for illustration:</p>
+<p>Let’s see a visual representation of our cost function as a function of our <span class="math notranslate nohighlight">\(\theta\)</span> parameters. We saw in the simple example above that the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span> with only one parameter is a U-shaped parabola. The same goes if we fix <span class="math notranslate nohighlight">\(\theta_1\)</span> and vary <span class="math notranslate nohighlight">\(\theta_0\)</span>. Combining the two, it will look like a bowl. The figure below is not made from the data above, just for illustration:</p>
 <figure class="align-default" id="plot-linreg-bowl">
 <div class="cell_output docutils container">
 <img alt="../_images/warmup_1D_linRegGD_plots_3_0.png" src="../_images/warmup_1D_linRegGD_plots_3_0.png" />
@@ -1101,33 +1101,35 @@ The number of epochs is a hyperparameter controlling the number of iterations of
 <p class="sidebar-title"></p>
 <p>This definition will be generalized in the next section with more parameters, from <span class="math notranslate nohighlight">\(\theta_0\)</span> to <span class="math notranslate nohighlight">\(\theta_n\)</span>.</p>
 </aside>
-<div class="proof algorithm admonition" id="GD_algo">
-<p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Gradient Descent Algorithm)</p>
+<div class="proof algorithm admonition" id="GD_algo_1D">
+<p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Gradient Descent for Univariate Linear Regression)</p>
 <section class="algorithm-content" id="proof-content">
 <p><strong>Inputs</strong></p>
 <ul class="simple">
-<li><p>Training data set with input features <span class="math notranslate nohighlight">\(X\)</span> associated with their targets <span class="math notranslate nohighlight">\(Y\)</span>.</p></li>
-<li><p>Learning rate <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
-<li><p>Number of epochs <span class="math notranslate nohighlight">\(N\)</span></p></li>
+<li><p>Training data set with input features <span class="math notranslate nohighlight">\(x\)</span> associated with their targets <span class="math notranslate nohighlight">\(y\)</span>:</p></li>
 </ul>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-X  = \begin{pmatrix}
+x  = \begin{pmatrix}
 x^{(1)} \\
 x^{(2)} \\
-... \\
+\vdots \\
  \\
 x^{(m)}
-\end{pmatrix}  \hspace{10ex}  Y = \begin{pmatrix}
+\end{pmatrix}  \hspace{10ex}  y = \begin{pmatrix}
 y^{(1)} \\
 y^{(2)} \\
-... \\
+\vdots \\
  \\
 y^{(m)} \end{pmatrix}
 \end{equation*}\]</div>
+<ul class="simple">
+<li><p>Learning rate <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
+<li><p>Number of epochs <span class="math notranslate nohighlight">\(N\)</span></p></li>
+</ul>
 <p><strong>Outputs</strong><br />
 The optimized values of the parameters: <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span>, minimizing <span class="math notranslate nohighlight">\(J(\theta_0 , \theta_1)\)</span>.</p>
-<ol class="simple">
+<ol>
 <li><p><strong>Initialization</strong>: Set values for <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span></p></li>
 <li><p><strong>Iterate N times or while the exit condition is not met</strong>:</p>
 <ol class="simple">
@@ -1136,17 +1138,15 @@ Compute the partial derivatives of <span class="math notranslate nohighlight">\(
 <li><p><strong>Update the parameters</strong>:<br />
 Calculate the new parameters according to:</p></li>
 </ol>
-</li>
-</ol>
 <div class="math notranslate nohighlight" id="equation-eqgdlincost">
 <span class="eqno">(5)<a class="headerlink" href="#equation-eqgdlincost" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+&amp;\\
 \theta'_0 &amp;= \theta_0-\alpha \frac{\partial}{\partial \theta_0} J\left(\theta_0, \theta_1\right) \\
- \\
+\\
 \theta'_1 &amp;= \theta_1-\alpha \frac{\partial}{\partial \theta_1} J\left(\theta_0, \theta_1\right) 
 \end{align*}\end{split}\]</div>
-<ol class="simple">
-<li><p><strong>Update</strong>:<br />
-Reassign the new <span class="math notranslate nohighlight">\(\theta'\)</span> to prepare for next iteration</p></li>
+<p>         Reassign the new <span class="math notranslate nohighlight">\(\theta\)</span> parameters to prepare for next iteration</p>
+</li>
 </ol>
 <div class="math notranslate nohighlight" id="equation-equpdatetheta">
 <span class="eqno">(6)<a class="headerlink" href="#equation-equpdatetheta" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
@@ -1169,20 +1169,20 @@ Reassign the new <span class="math notranslate nohighlight">\(\theta'\)</span> t
 <p class="admonition-title">Answer</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-\theta'_0 &amp;= \theta_0-\alpha \frac{1}{m} \sum_{i = 1}^m \left(h_\theta\left(x^{(i)}\right)-y^{(i)}\right) \\ 
+\theta'_0 &amp;= \theta_0-\alpha \frac{1}{m} \sum_{i = 1}^m \left(h_\theta(x^{(i)})-y^{(i)}\right) \\ 
 \\
-\theta'_1 &amp;= \theta_1-\alpha \frac{1}{m} \sum_{i = 1}^m \left(h_\theta\left(x^{(i)}\right)-y^{(i)}\right) x^{(i)} 
+\theta'_1 &amp;= \theta_1-\alpha \frac{1}{m} \sum_{i = 1}^m \left(h_\theta(x^{(i)})-y^{(i)}\right) x^{(i)} 
 \end{align*}\]</div>
 <p>Details on demand during office hours.</p>
 </div>
 <p><strong>Important</strong><br />
 Note that at the step 2.1., there is an implicit loop over all training data samples, as it is required by the cost function.</p>
-<p><strong>Why a minus sign?</strong><br />
+<p><strong>Why a minus sign before alpha?</strong><br />
 This illustration helps see why the minus sign in Equation <a class="reference internal" href="#equation-eqgdlincost">(5)</a> is necessary.</p>
 <figure class="align-default" id="costsigndirection">
 <a class="reference internal image-reference" href="../_images/lec02_1_costSignDirection.png"><img alt="../_images/lec02_1_costSignDirection.png" src="../_images/lec02_1_costSignDirection.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">. The sign of the cost function’s derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized. <sub>Image from the author</sub>.</span><a class="headerlink" href="#costsigndirection" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">. The sign of the cost function’s derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized. <sub>Image from the author</sub></span><a class="headerlink" href="#costsigndirection" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>If our parameter is randomly picked on the left side of the U-shaped parabola, the partial derivatives will be negative. As the learning rate is always positive, the incremental update <span class="math notranslate nohighlight">\(-\alpha \frac{d}{d \theta} J(\theta)\)</span> will thus be positive. We will add an increment to our parameter. At the next iteration, we will have a new parameter <span class="math notranslate nohighlight">\(\theta\)</span> closer to the one we look for. The reverse goes with the other side of the curve: with a positive derivative, we will decrease our parameter and slide to the left. All the time we go ‘downhill’ towards the minimum.</p>
@@ -1193,7 +1193,7 @@ This illustration helps see why the minus sign in Equation <a class="reference i
 <figure class="align-default" id="linreg-animated">
 <a class="reference internal image-reference" href="../_images/lec02_1_linReg_animated.gif"><img alt="../_images/lec02_1_linReg_animated.gif" src="../_images/lec02_1_linReg_animated.gif" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">. Animation of the gradient descent. At each generation a new set of parameters are computed. In this picture <span class="math notranslate nohighlight">\(m\)</span> corresponds to <span class="math notranslate nohighlight">\(\theta_1\)</span> and the constant <span class="math notranslate nohighlight">\(c\)</span> to <span class="math notranslate nohighlight">\(\theta_0\)</span>. Sometimes they are also referred to the <em>slope</em> and <em>intercept</em> respectively. Source GIF: <a class="reference external" href="https://towardsdatascience.com/linear-regression-using-python-b136c91bf0a2">Medium</a>.</span><a class="headerlink" href="#linreg-animated" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">. Animation of the gradient descent. At each generation a new set of parameters are computed. In this picture <span class="math notranslate nohighlight">\(m\)</span> corresponds to <span class="math notranslate nohighlight">\(\theta_1\)</span> and the constant <span class="math notranslate nohighlight">\(c\)</span> to <span class="math notranslate nohighlight">\(\theta_0\)</span>. Sometimes they are also referred to the <em>slope</em> and <em>intercept</em> respectively. <sub>Source GIF: <a class="reference external" href="https://towardsdatascience.com/linear-regression-using-python-b136c91bf0a2">Medium</a></sub></span><a class="headerlink" href="#linreg-animated" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In our example, the best linear fit will be:</p>
@@ -1211,7 +1211,7 @@ This illustration helps see why the minus sign in Equation <a class="reference i
 <p><span class="caption-number">Fig. 13 </span><span class="caption-text">. Contour plot (left) and 3D rendering (right) of the cost function with respect to the values of the <span class="math notranslate nohighlight">\(\theta\)</span> parameter. The red dots are the intermediary values of the parameters at a given iteration of the gradient descent. You can see that it converges toward the minimum of the cost function.</span><a class="headerlink" href="#plot-linreg-3d" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>We will discuss the presence of the zig-zag behaviour of the first iterations in section <a class="reference internal" href="warmup_1D_learningR.html#warmup-lr"><span class="std std-ref">Learning Rate</span></a>.</p>
+<p>We will discuss the presence of the zig-zag behaviour in the first iterations in section <a class="reference internal" href="warmup_1D_learningR.html#warmup-lr"><span class="std std-ref">Learning Rate</span></a>.</p>
 <p>This was linear regression with one input feature. Let’s move on with a more generalized version of linear regression involving multiple features.</p>
 </section>
 </section>
@@ -1250,7 +1250,7 @@ This illustration helps see why the minus sign in Equation <a class="reference i
             <p class="prev-next-title">2. Warm up: Linear Regression</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="warmup_1D_FSN.html" title="next page">
+    <a class='right-next' id="next-link" href="warmup_1D_linRegGDmulti.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Multivariate linear regression</p>

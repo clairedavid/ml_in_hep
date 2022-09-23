@@ -18,7 +18,7 @@ parts:
     - file: week1/warmup_1D
       sections: 
       - file: week1/warmup_1D_linRegGD
-      - file: week1/warmup_1D_FSN
+      - file: week1/warmup_1D_linRegGDmulti
       - file: week1/warmup_1D_learningR
       - file: week1/warmup_1D_practice
       

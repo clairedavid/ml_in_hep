@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="3. Classification algorithms" href="class_algs.html" />
@@ -808,12 +810,46 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adjusting-the-learning-rate">
+   Adjusting the learning rate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-graph-to-visualize-the-cost-s-evolution">
+   A graph to visualize the cost’s evolution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#knowing-when-to-stop">
+   Knowing when to stop
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -825,6 +861,29 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adjusting-the-learning-rate">
+   Adjusting the learning rate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-graph-to-visualize-the-cost-s-evolution">
+   A graph to visualize the cost’s evolution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#knowing-when-to-stop">
+   Knowing when to stop
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -834,7 +893,77 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="gradient-descent-in-practice">
 <h1>Gradient Descent in practice<a class="headerlink" href="#gradient-descent-in-practice" title="Permalink to this headline">#</a></h1>
-<p>Finish with xkcd! Sustainability</p>
+<p>How to choose a correct learning rate?</p>
+<p>Short answer: inspect your gradient descent cost function.</p>
+<p>Long answer:</p>
+<section id="adjusting-the-learning-rate">
+<h2>Adjusting the learning rate<a class="headerlink" href="#adjusting-the-learning-rate" title="Permalink to this headline">#</a></h2>
+<p>It is always a good programming practice to add in your code printouts, i.e. <code class="docutils literal notranslate"><span class="pre">print()</span></code> statements to inspect the current values of your variables.
+In gradient descent, it is advised to print the values of the parameters and the cost function after some iterations. Here is an example of printouts of simple linear regression showing the values of updates parameters <span class="math notranslate nohighlight">\(\theta\)</span> every 10 epochs until <span class="math notranslate nohighlight">\(N\)</span> = 100, then every 100 epochs:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>Starting gradient descent
+
+Iteration <span class="m">10</span>		<span class="nv">theta_0</span> <span class="o">=</span> <span class="m">23</span>.360	<span class="nv">Diff</span> <span class="o">=</span> -0.2486		<span class="nv">theta_1</span> <span class="o">=</span> <span class="m">1</span>.158		<span class="nv">Diff</span> <span class="o">=</span> -0.5069		<span class="nv">Cost</span> <span class="o">=</span> <span class="m">34</span>.1274
+Iteration <span class="m">20</span>		<span class="nv">theta_0</span> <span class="o">=</span> <span class="m">21</span>.784	<span class="nv">Diff</span> <span class="o">=</span> -0.1703		<span class="nv">theta_1</span> <span class="o">=</span> <span class="m">1</span>.590		<span class="nv">Diff</span> <span class="o">=</span> -0.0918		<span class="nv">Cost</span> <span class="o">=</span> <span class="m">27</span>.7958
+Iteration <span class="m">30</span>		<span class="nv">theta_0</span> <span class="o">=</span> <span class="m">20</span>.339	<span class="nv">Diff</span> <span class="o">=</span> -0.1423		<span class="nv">theta_1</span> <span class="o">=</span> <span class="m">1</span>.847		<span class="nv">Diff</span> <span class="o">=</span> -0.0041		<span class="nv">Cost</span> <span class="o">=</span> <span class="m">23</span>.4581
+Iteration <span class="m">40</span>		<span class="nv">theta_0</span> <span class="o">=</span> <span class="m">19</span>.028	<span class="nv">Diff</span> <span class="o">=</span> -0.1262		<span class="nv">theta_1</span> <span class="o">=</span> <span class="m">2</span>.052		<span class="nv">Diff</span> <span class="o">=</span> <span class="m">0</span>.0133		<span class="nv">Cost</span> <span class="o">=</span> <span class="m">19</span>.9476
+Iteration <span class="m">50</span>		<span class="nv">theta_0</span> <span class="o">=</span> <span class="m">17</span>.841	<span class="nv">Diff</span> <span class="o">=</span> -0.1136		<span class="nv">theta_1</span> <span class="o">=</span> <span class="m">2</span>.230		<span class="nv">Diff</span> <span class="o">=</span> <span class="m">0</span>.0157		<span class="nv">Cost</span> <span class="o">=</span> <span class="m">17</span>.0769
+Iteration <span class="m">60</span>		<span class="nv">theta_0</span> <span class="o">=</span> <span class="m">16</span>.767	<span class="nv">Diff</span> <span class="o">=</span> -0.1027		<span class="nv">theta_1</span> <span class="o">=</span> <span class="m">2</span>.390		<span class="nv">Diff</span> <span class="o">=</span> <span class="m">0</span>.0150		<span class="nv">Cost</span> <span class="o">=</span> <span class="m">14</span>.7278
+Iteration <span class="m">70</span>		<span class="nv">theta_0</span> <span class="o">=</span> <span class="m">15</span>.795	<span class="nv">Diff</span> <span class="o">=</span> -0.0929		<span class="nv">theta_1</span> <span class="o">=</span> <span class="m">2</span>.535		<span class="nv">Diff</span> <span class="o">=</span> <span class="m">0</span>.0138		<span class="nv">Cost</span> <span class="o">=</span> <span class="m">12</span>.8055
+Iteration <span class="m">80</span>		<span class="nv">theta_0</span> <span class="o">=</span> <span class="m">14</span>.916	<span class="nv">Diff</span> <span class="o">=</span> -0.0840		<span class="nv">theta_1</span> <span class="o">=</span> <span class="m">2</span>.666		<span class="nv">Diff</span> <span class="o">=</span> <span class="m">0</span>.0125		<span class="nv">Cost</span> <span class="o">=</span> <span class="m">11</span>.2325
+Iteration <span class="m">90</span>		<span class="nv">theta_0</span> <span class="o">=</span> <span class="m">14</span>.121	<span class="nv">Diff</span> <span class="o">=</span> -0.0760		<span class="nv">theta_1</span> <span class="o">=</span> <span class="m">2</span>.784		<span class="nv">Diff</span> <span class="o">=</span> <span class="m">0</span>.0113		<span class="nv">Cost</span> <span class="o">=</span> <span class="m">9</span>.9453
+Iteration <span class="m">200</span>		<span class="nv">theta_0</span> <span class="o">=</span>  <span class="m">9</span>.083	<span class="nv">Diff</span> <span class="o">=</span> -0.0252		<span class="nv">theta_1</span> <span class="o">=</span> <span class="m">3</span>.534		<span class="nv">Diff</span> <span class="o">=</span> <span class="m">0</span>.0038		<span class="nv">Cost</span> <span class="o">=</span> <span class="m">4</span>.7867
+Iteration <span class="m">300</span>		<span class="nv">theta_0</span> <span class="o">=</span>  <span class="m">7</span>.499	<span class="nv">Diff</span> <span class="o">=</span> -0.0093		<span class="nv">theta_1</span> <span class="o">=</span> <span class="m">3</span>.770		<span class="nv">Diff</span> <span class="o">=</span> <span class="m">0</span>.0014		<span class="nv">Cost</span> <span class="o">=</span> <span class="m">4</span>.2340
+Iteration <span class="m">400</span>		<span class="nv">theta_0</span> <span class="o">=</span>  <span class="m">6</span>.917	<span class="nv">Diff</span> <span class="o">=</span> -0.0034		<span class="nv">theta_1</span> <span class="o">=</span> <span class="m">3</span>.856		<span class="nv">Diff</span> <span class="o">=</span> <span class="m">0</span>.0005		<span class="nv">Cost</span> <span class="o">=</span> <span class="m">4</span>.1596
+Iteration <span class="m">500</span>		<span class="nv">theta_0</span> <span class="o">=</span>  <span class="m">6</span>.704	<span class="nv">Diff</span> <span class="o">=</span> -0.0012		<span class="nv">theta_1</span> <span class="o">=</span> <span class="m">3</span>.888		<span class="nv">Diff</span> <span class="o">=</span> <span class="m">0</span>.0002		<span class="nv">Cost</span> <span class="o">=</span> <span class="m">4</span>.1496
+Iteration <span class="m">600</span>		<span class="nv">theta_0</span> <span class="o">=</span>  <span class="m">6</span>.626	<span class="nv">Diff</span> <span class="o">=</span> -0.0005		<span class="nv">theta_1</span> <span class="o">=</span> <span class="m">3</span>.900		<span class="nv">Diff</span> <span class="o">=</span> <span class="m">0</span>.0001		<span class="nv">Cost</span> <span class="o">=</span> <span class="m">4</span>.1483
+Iteration <span class="m">700</span>		<span class="nv">theta_0</span> <span class="o">=</span>  <span class="m">6</span>.597	<span class="nv">Diff</span> <span class="o">=</span> -0.0002		<span class="nv">theta_1</span> <span class="o">=</span> <span class="m">3</span>.904		<span class="nv">Diff</span> <span class="o">=</span> <span class="m">0</span>.0000		<span class="nv">Cost</span> <span class="o">=</span> <span class="m">4</span>.1481
+Iteration <span class="m">800</span>		<span class="nv">theta_0</span> <span class="o">=</span>  <span class="m">6</span>.587	<span class="nv">Diff</span> <span class="o">=</span> -0.0001		<span class="nv">theta_1</span> <span class="o">=</span> <span class="m">3</span>.905		<span class="nv">Diff</span> <span class="o">=</span> <span class="m">0</span>.0000		<span class="nv">Cost</span> <span class="o">=</span> <span class="m">4</span>.1481
+Iteration <span class="m">900</span>		<span class="nv">theta_0</span> <span class="o">=</span>  <span class="m">6</span>.583	<span class="nv">Diff</span> <span class="o">=</span> -0.0000		<span class="nv">theta_1</span> <span class="o">=</span> <span class="m">3</span>.906		<span class="nv">Diff</span> <span class="o">=</span> <span class="m">0</span>.0000		<span class="nv">Cost</span> <span class="o">=</span> <span class="m">4</span>.1480
+Iteration <span class="m">1000</span>		<span class="nv">theta_0</span> <span class="o">=</span>  <span class="m">6</span>.581	<span class="nv">Diff</span> <span class="o">=</span> -0.0000		<span class="nv">theta_1</span> <span class="o">=</span> <span class="m">3</span>.906		<span class="nv">Diff</span> <span class="o">=</span> <span class="m">0</span>.0000		<span class="nv">Cost</span> <span class="o">=</span> <span class="m">4</span>.1480
+
+End of gradient descent after <span class="m">1000</span> iterations
+</pre></div>
+</div>
+<p>Picking a learning rate is a guess and check business.</p>
+<p>Typical learning rates are between <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(10^{-7}\)</span>. The common practice is to start with e.g. <span class="math notranslate nohighlight">\(\alpha = 0.01\)</span>, a reasonable number of epochs, e.g. <span class="math notranslate nohighlight">\(N = 100\)</span> or <span class="math notranslate nohighlight">\(1000\)</span> (depending on the size of the data set), and see how the gradient descent behaves.</p>
+<p><strong>The cost function should decrease after every iteration.</strong> If the printouts show that the cost function and parameter are taking very, very large values: <span class="math notranslate nohighlight">\(\alpha\)</span> is too big, the gradient descent is diverging! One should reduce the learning rate by e.g. a factor 10 and see how the gradient behaves.</p>
+<p>If the cost decreases after each iteration, this is a good sign that the gradient will converge. However it can converge very slowly if <span class="math notranslate nohighlight">\(\alpha\)</span> is too small, and as a consequence necessitate a large number of epoch before reaching the optimized parameter values. While tuning the hyperparameters, it is generally good to cap the number of epochs low and inspect the difference <span class="math notranslate nohighlight">\(\Delta \theta = \theta^\text{new} - \theta^\text{prev}\)</span> to see if the relative increment or decrement with respect to the <span class="math notranslate nohighlight">\(\theta\)</span> value is small. There is a bit of tweaking before finding a correct learning rate.</p>
+</section>
+<section id="a-graph-to-visualize-the-cost-s-evolution">
+<h2>A graph to visualize the cost’s evolution<a class="headerlink" href="#a-graph-to-visualize-the-cost-s-evolution" title="Permalink to this headline">#</a></h2>
+<p>To inspect the gradient descent algorithm, it is convenient to store the intermediary values of the cost function and plot them with the iteration number on the <span class="math notranslate nohighlight">\(x\)</span> axis. The resulting curve should be strictly decreasing. Below is an example with different learning rates being plotted:</p>
+<figure class="align-default" id="lec02-4-cost-vs-learning-rates">
+<a class="reference internal image-reference" href="../_images/lec02_4_Cost_vs_learning_rates.png"><img alt="../_images/lec02_4_Cost_vs_learning_rates.png" src="../_images/lec02_4_Cost_vs_learning_rates.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">. The learning rates plays a crucial role on the gradient’s convergence.<br />
+<sub>Credits: <a class="reference external" href="https://jonathan-hui.medium.com/debug-a-deep-learning-network-part-5-1123c20f960d">Jonathan Hui Medium</a></sub></span><a class="headerlink" href="#lec02-4-cost-vs-learning-rates" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="seealso admonition">
+<p class="admonition-title">In-class exercise</p>
+<p>For each learning rate situation above, illustrate with a plot (qualitative drawing) the corresponding evolution of <span class="math notranslate nohighlight">\(\theta\)</span> parameters.</p>
+</div>
+</section>
+<section id="knowing-when-to-stop">
+<h2>Knowing when to stop<a class="headerlink" href="#knowing-when-to-stop" title="Permalink to this headline">#</a></h2>
+<p>In mathematics, zero is exactly zero. In computing, variables can store very small numbers considered zero but with trailing non-zero digits. A good cutoff to declare the gradient descent algorithm successful is to exit when e.g. the cost function’s relative decrease is lower than a given threshold, for instance <span class="math notranslate nohighlight">\(10^{-6}\)</span>.</p>
+<div class="success admonition">
+<p class="admonition-title">Summary</p>
+<p><strong>Linear Regression</strong> is the procedure that estimate a real-valued dependent variable (target) from independent variables (input features) assuming a linear relationship between <span class="math notranslate nohighlight">\(n\)</span> input features and <span class="math notranslate nohighlight">\(n+1\)</span> coefficients (parameters, or weight). The extra one is the offset parameter.</p>
+<p><strong>The cost function</strong>, or loss function, computes the sum of errors between the predicted line and the data. It usually uses the least squared method (errors squared).</p>
+<p><strong>The Gradient Descent</strong> is an optimization algorithm consisting of an iterative procedure to update the parameters in the direction of ‘descending gradient’, i.e. dictated by the slope of the cost function’s partial derivatives for each parameter, until convergence to values for the parameters minimizing the cost function.</p>
+<p><strong>Hyperparameters</strong> are quantitative entities controlling the learning algorithm.</p>
+<p><strong>The learning rate</strong> for gradient descent is an important hyperparameter that should be tuned to avoid divergence or over-shooting (learning rate too large) or slow convergence (learning rate too small) necessitating a high number of iterations (epochs).</p>
+</div>
+<p>The linear regression was our starting model. Later in this course, we will see more complex machine learning algorithms able to model non-linear behaviour. Linearity is an assumption that should be made with care.</p>
+<figure class="align-default" id="lec02-4-xkcd-sustainable">
+<a class="reference internal image-reference" href="../_images/lec02_4_xkcd_sustainable.png"><img alt="../_images/lec02_4_xkcd_sustainable.png" src="../_images/lec02_4_xkcd_sustainable.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">. A questionable linear extrapolation, from the greatwebcomic <a class="reference external" href="https://xkcd.com/1007/">xkcd</a>.
+the great Randall Munroe, author of</span><a class="headerlink" href="#lec02-4-xkcd-sustainable" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

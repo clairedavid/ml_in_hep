@@ -180,7 +180,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="warmup_1D_FSN.html">
+    <a class="reference internal" href="warmup_1D_linRegGDmulti.html">
      Multivariate linear regression
     </a>
    </li>
@@ -1141,7 +1141,8 @@ With theta = 3.5	cost = 8.44
 <p>Here are some data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -1168,7 +1169,7 @@ With theta = 3.5	cost = 8.44
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>best-fit line: 3.857*x + 6.848
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>best-fit line: 3.906*x + 6.581
 </pre></div>
 </div>
 </div>
@@ -1224,7 +1225,9 @@ With theta = 3.5	cost = 8.44
 
     <span class="c1"># Printing every 10 iterations</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">n</span><span class="o">&lt;</span><span class="mi">100</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">n</span><span class="o">&gt;</span><span class="mi">100</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Iteration </span><span class="si">%d</span><span class="se">\t\t</span><span class="s2">theta_0 = </span><span class="si">%.3f</span><span class="se">\t\t</span><span class="s2">Diff = </span><span class="si">%.4f</span><span class="se">\t\t</span><span class="s2">theta_1 = </span><span class="si">%.3f</span><span class="se">\t\t</span><span class="s2">Diff = </span><span class="si">%.4f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">theta_0_new</span><span class="p">,</span> <span class="n">theta_0_new</span><span class="o">-</span><span class="n">theta_0</span><span class="p">,</span> <span class="n">theta_1_new</span><span class="p">,</span> <span class="n">theta_1_new</span><span class="o">-</span><span class="n">theta_1</span> <span class="p">))</span>
+        <span class="n">cost</span> <span class="o">=</span> <span class="n">costFunctionLinRegression</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta_0_new</span><span class="p">,</span> <span class="n">theta_1_new</span><span class="p">)</span>
+        <span class="n">spacer</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="n">theta_0_new</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="k">else</span> <span class="s2">&quot; &quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Iteration </span><span class="si">%d</span><span class="se">\t\t</span><span class="s2">theta_0 = </span><span class="si">%s%.3f</span><span class="se">\t</span><span class="s2">Diff = </span><span class="si">%.4f</span><span class="se">\t\t</span><span class="s2">theta_1 = </span><span class="si">%.3f</span><span class="se">\t\t</span><span class="s2">Diff = </span><span class="si">%.4f</span><span class="se">\t\t</span><span class="s2">Cost = </span><span class="si">%.4f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">spacer</span><span class="p">,</span> <span class="n">theta_0_new</span><span class="p">,</span> <span class="n">theta_0_new</span><span class="o">-</span><span class="n">theta_0</span><span class="p">,</span> <span class="n">theta_1_new</span><span class="p">,</span> <span class="n">theta_1_new</span><span class="o">-</span><span class="n">theta_1</span> <span class="p">,</span> <span class="n">cost</span><span class="p">))</span>
 
     <span class="c1"># 2.3. Update the parameters for next iteration</span>
     <span class="n">theta_0</span> <span class="o">=</span> <span class="n">theta_0_new</span>
@@ -1251,32 +1254,32 @@ With theta = 3.5	cost = 8.44
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting gradient descent
 
-Iteration 10		theta_0 = 23.122		Diff = -0.1927		theta_1 = 1.237		Diff = 0.0261
-Iteration 20		theta_0 = 21.321		Diff = -0.1707		theta_1 = 1.529		Diff = 0.0275
-Iteration 30		theta_0 = 19.720		Diff = -0.1518		theta_1 = 1.786		Diff = 0.0244
-Iteration 40		theta_0 = 18.296		Diff = -0.1350		theta_1 = 2.015		Diff = 0.0217
-Iteration 50		theta_0 = 17.029		Diff = -0.1201		theta_1 = 2.219		Diff = 0.0193
-Iteration 60		theta_0 = 15.903		Diff = -0.1068		theta_1 = 2.400		Diff = 0.0172
-Iteration 70		theta_0 = 14.901		Diff = -0.0950		theta_1 = 2.561		Diff = 0.0153
-Iteration 80		theta_0 = 14.010		Diff = -0.0845		theta_1 = 2.705		Diff = 0.0136
-Iteration 90		theta_0 = 13.217		Diff = -0.0751		theta_1 = 2.832		Diff = 0.0121
-Iteration 200		theta_0 = 8.601		Diff = -0.0207		theta_1 = 3.575		Diff = 0.0033
-Iteration 300		theta_0 = 7.391		Diff = -0.0064		theta_1 = 3.770		Diff = 0.0010
-Iteration 400		theta_0 = 7.016		Diff = -0.0020		theta_1 = 3.830		Diff = 0.0003
-Iteration 500		theta_0 = 6.900		Diff = -0.0006		theta_1 = 3.849		Diff = 0.0001
-Iteration 600		theta_0 = 6.864		Diff = -0.0002		theta_1 = 3.854		Diff = 0.0000
-Iteration 700		theta_0 = 6.853		Diff = -0.0001		theta_1 = 3.856		Diff = 0.0000
-Iteration 800		theta_0 = 6.849		Diff = -0.0000		theta_1 = 3.857		Diff = 0.0000
-Iteration 900		theta_0 = 6.848		Diff = -0.0000		theta_1 = 3.857		Diff = 0.0000
-Iteration 1000		theta_0 = 6.848		Diff = -0.0000		theta_1 = 3.857		Diff = 0.0000
+Iteration 10		theta_0 = 23.360	Diff = -0.2486		theta_1 = 1.158		Diff = -0.5069		Cost = 34.1274
+Iteration 20		theta_0 = 21.784	Diff = -0.1703		theta_1 = 1.590		Diff = -0.0918		Cost = 27.7958
+Iteration 30		theta_0 = 20.339	Diff = -0.1423		theta_1 = 1.847		Diff = -0.0041		Cost = 23.4581
+Iteration 40		theta_0 = 19.028	Diff = -0.1262		theta_1 = 2.052		Diff = 0.0133		Cost = 19.9476
+Iteration 50		theta_0 = 17.841	Diff = -0.1136		theta_1 = 2.230		Diff = 0.0157		Cost = 17.0769
+Iteration 60		theta_0 = 16.767	Diff = -0.1027		theta_1 = 2.390		Diff = 0.0150		Cost = 14.7278
+Iteration 70		theta_0 = 15.795	Diff = -0.0929		theta_1 = 2.535		Diff = 0.0138		Cost = 12.8055
+Iteration 80		theta_0 = 14.916	Diff = -0.0840		theta_1 = 2.666		Diff = 0.0125		Cost = 11.2325
+Iteration 90		theta_0 = 14.121	Diff = -0.0760		theta_1 = 2.784		Diff = 0.0113		Cost = 9.9453
+Iteration 200		theta_0 =  9.083	Diff = -0.0252		theta_1 = 3.534		Diff = 0.0038		Cost = 4.7867
+Iteration 300		theta_0 =  7.499	Diff = -0.0093		theta_1 = 3.770		Diff = 0.0014		Cost = 4.2340
+Iteration 400		theta_0 =  6.917	Diff = -0.0034		theta_1 = 3.856		Diff = 0.0005		Cost = 4.1596
+Iteration 500		theta_0 =  6.704	Diff = -0.0012		theta_1 = 3.888		Diff = 0.0002		Cost = 4.1496
+Iteration 600		theta_0 =  6.626	Diff = -0.0005		theta_1 = 3.900		Diff = 0.0001		Cost = 4.1483
+Iteration 700		theta_0 =  6.597	Diff = -0.0002		theta_1 = 3.904		Diff = 0.0000		Cost = 4.1481
+Iteration 800		theta_0 =  6.587	Diff = -0.0001		theta_1 = 3.905		Diff = 0.0000		Cost = 4.1481
+Iteration 900		theta_0 =  6.583	Diff = -0.0000		theta_1 = 3.906		Diff = 0.0000		Cost = 4.1480
+Iteration 1000		theta_0 =  6.581	Diff = -0.0000		theta_1 = 3.906		Diff = 0.0000		Cost = 4.1480
 
 End of gradient descent after 1000 iterations
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.8478068643073895
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.58134322580281
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.8568924084725045
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.906136376801785
 </pre></div>
 </div>
 </div>

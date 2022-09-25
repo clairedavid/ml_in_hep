@@ -842,6 +842,11 @@ title="Print to PDF"
    Learning Rate and Divergence
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -871,6 +876,11 @@ title="Print to PDF"
    Learning Rate and Divergence
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -890,7 +900,7 @@ The learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> i
 <p>The learning rate is not directly setting the step size. It is a coefficient. With a fixed <span class="math notranslate nohighlight">\(\alpha\)</span>, the gradient descent can converge as the steps will become smaller and smaller due to the fact that the derivatives <span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta_j} J(\theta)\)</span> will get smaller (in absolute value) as much as we approach the minimum:</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>Recall that the step size is given by <span class="math notranslate nohighlight">\(-\alpha \frac{d}{d \theta} J(\theta)\)</span>, in other words <span class="math notranslate nohighlight">\(-\alpha \times\)</span> <em>slope</em>. Here the magnitude of the slope is decreasing at each iteration. Eventually, <span class="math notranslate nohighlight">\(\frac{d}{d \theta} J(\theta) \rightarrow 0\)</span> so <span class="math notranslate nohighlight">\(\theta' = \theta - \alpha \times 0\)</span>.</p>
+<p>Recall that the step size is given by <span class="math notranslate nohighlight">\(-\alpha \frac{d}{d \theta} J(\theta) = -\alpha \times\)</span> <em>slope</em>. Here the magnitude of the slope is decreasing at each iteration. Eventually, <span class="math notranslate nohighlight">\(\frac{d}{d \theta} J(\theta) \rightarrow 0\)</span> so <span class="math notranslate nohighlight">\(\theta' = \theta - \alpha \times 0 \rightarrow \theta \)</span>.</p>
 </aside>
 <figure class="align-default" id="lec02-3-smaller-steps">
 <a class="reference internal image-reference" href="../_images/lec02_3_smaller_steps.png"><img alt="../_images/lec02_3_smaller_steps.png" src="../_images/lec02_3_smaller_steps.png" style="width: 80%;" /></a>
@@ -914,8 +924,9 @@ Two cases:</p>
 <p><span class="caption-number">Fig. 16 </span><span class="caption-text">. The learning rate determines the step at which the parameters will be updated (left). Small enough: the gradient descent will converge (middle). If too large, the overshoot can lead to a diverging gradient, no more “descending” towards the minimum (right). <sub>Image from <a class="reference external" href="https://www.kjronline.org/ViewImage.php?Type=F&amp;aid=658625&amp;id=F7&amp;afn=68_KJR_21_1_33&amp;fn=kjr-21-33-g007_0068KJR">kjronline.org</a></sub></span><a class="headerlink" href="#lec02-3-learningrate-small-big" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<div class="admonition-summary admonition">
-<p class="admonition-title">Summary</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>The learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is a hyperparameter intervening in the calculation of the step size at which the parameters will be incremented or decremented.</p></li>
 <li><p>The step size varies even with a constant <span class="math notranslate nohighlight">\(\alpha\)</span> as it is multiplied by the slope, i.e. the derivatives of the cost function.</p></li>
@@ -927,7 +938,6 @@ Two cases:</p>
 </ul>
 </li>
 </ul>
-</div>
 <div class="seealso admonition">
 <p class="admonition-title">Question</p>
 <p>How to choose the best value for the learning rate?</p>

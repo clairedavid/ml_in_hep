@@ -7,7 +7,7 @@ The learning rate $\alpha$ is a hyperparameter intervening in the calculation of
 The learning rate is not directly setting the step size. It is a coefficient. With a fixed $\alpha$, the gradient descent can converge as the steps will become smaller and smaller due to the fact that the derivatives $\frac{\partial }{\partial \theta_j} J(\theta)$ will get smaller (in absolute value) as much as we approach the minimum:
 
 ````{margin}
-Recall that the step size is given by $-\alpha \frac{d}{d \theta} J(\theta)$, in other words $-\alpha \times$ _slope_. Here the magnitude of the slope is decreasing at each iteration. Eventually, $\frac{d}{d \theta} J(\theta) \rightarrow 0$ so $\theta' = \theta - \alpha \times 0$. 
+Recall that the step size is given by $-\alpha \frac{d}{d \theta} J(\theta) = -\alpha \times$ _slope_. Here the magnitude of the slope is decreasing at each iteration. Eventually, $\frac{d}{d \theta} J(\theta) \rightarrow 0$ so $\theta' = \theta - \alpha \times 0 \rightarrow \theta $. 
 ````
 ```{figure} ../images/lec02_3_smaller_steps.png
 ---
@@ -33,14 +33,14 @@ The divergence is illustrated on the right in the figure below:
  ```
 
 
-```{admonition} Summary
+## Summary
 * The learning rate $\alpha$ is a hyperparameter intervening in the calculation of the step size at which the parameters will be incremented or decremented.
 * The step size varies even with a constant $\alpha$ as it is multiplied by the slope, i.e. the derivatives of the cost function.
 * A small learning rate is safe as it likely leads to convergence, yet too small values will necessitates a high number of epochs.
 * A large learning rate can overshoot the minimum of the cost function and lead to either 
   * an oscillating trajectory of the parameters: it converges yet with more iterations are needed
   * a diverging path: the gradient descent fails to converge toward the minimum value of the cost function
-```
+
 
 ```{admonition} Question
 :class: seealso

@@ -915,12 +915,14 @@ title="Print to PDF"
 <p>We can visualize the data as a scatter plot like this:</p>
 <a class="reference internal image-reference" href="../_images/lec03_1_scatter1D.png"><img alt="scatter1D" class="align-center" src="../_images/lec03_1_scatter1D.png" style="width: 80%;" /></a>
 <p><br />
-If we use the linear regression method, our hypothesis function <span class="math notranslate nohighlight">\(h(x)\)</span> will look like roughly like the red line:</p>
+<br />
+If we use the linear regression method, our hypothesis function <span class="math notranslate nohighlight">\(h(x)\)</span> will be a line (the two examples drawn below are qualitative only):</p>
 <a class="reference internal image-reference" href="../_images/lec03_1_scatter1D_linhf.png"><img alt="scatter1DlinReg" class="align-center" src="../_images/lec03_1_scatter1D_linhf.png" style="width: 80%;" /></a>
 <p><br />
+<br />
 How can we predict a probability? We could use the 0.5 mark as our threshold. Given an electron energy input <span class="math notranslate nohighlight">\(x\)</span>, if <span class="math notranslate nohighlight">\(h(x)&gt;0.5\)</span> then we predict the event is a signal event, if <span class="math notranslate nohighlight">\(h(x) &lt; 0.5\)</span> then the event is classified as background.</p>
-<p>We can already see a problem: our hypothesis outputs values departing from the data labels: zero and ones. Moreore, what does it mean to have hypothesis values either below or above one, i.e. outside of the label range? This is a first hint that applying linear regression is not well adapted.</p>
-<p>Worse: imagine we have an event with a very high energy for the electron. Intuitively, this should be classified as signal from what we see above. However, a linear regression will shift the hypothesis function (orange dashed line) towards the right, in order to minimize the error from this far-right data point. Consequence? We will mis-classify several data points, previously correctly labelled as signal, into the background category!</p>
+<p>We can already see a problem: our hypothesis outputs values departing from the data labels: zero and ones. Worse, the hypothesis has values either below or above one, i.e. outside of the label range! What does the errors (going to be very large at the extremes) mean? Would the cost function really represent the global error? This is a first hint that applying linear regression is not well adapted here.</p>
+<p>Worse: imagine we have an event with a very high energy for the electron (see the data point on the very far right of the plot above). Intuitively, this should be classified as signal from what we see above. However, a linear regression will shift the hypothesis function (orange dashed line) towards the right, in order to minimize the error from this far-right data point. Consequence? We will mis-classify several data points, correctly labelled as signal before, into the background category!</p>
 <p>From this introduction, it is clear that linear regression is not adapted for our classification problem. This is when the sigmoid function enters the game!</p>
 </section>
 </section>

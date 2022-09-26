@@ -42,17 +42,19 @@ We can visualize the data as a scatter plot like this:
 :align: center
 ```  
   \
-If we use the linear regression method, our hypothesis function $h(x)$ will look like roughly like the red line:  
+  \
+If we use the linear regression method, our hypothesis function $h(x)$ will be a line (the two examples drawn below are qualitative only):  
 ```{image} ../images/lec03_1_scatter1D_linhf.png
 :alt: scatter1DlinReg
 :width: 80%
 :align: center
 ```  
   \
+  \
 How can we predict a probability? We could use the 0.5 mark as our threshold. Given an electron energy input $x$, if $h(x)>0.5$ then we predict the event is a signal event, if $h(x) < 0.5$ then the event is classified as background.
 
-We can already see a problem: our hypothesis outputs values departing from the data labels: zero and ones. Moreore, what does it mean to have hypothesis values either below or above one, i.e. outside of the label range? This is a first hint that applying linear regression is not well adapted.
+We can already see a problem: our hypothesis outputs values departing from the data labels: zero and ones. Worse, the hypothesis has values either below or above one, i.e. outside of the label range! What does the errors (going to be very large at the extremes) mean? Would the cost function really represent the global error? This is a first hint that applying linear regression is not well adapted here.
 
-Worse: imagine we have an event with a very high energy for the electron. Intuitively, this should be classified as signal from what we see above. However, a linear regression will shift the hypothesis function (orange dashed line) towards the right, in order to minimize the error from this far-right data point. Consequence? We will mis-classify several data points, previously correctly labelled as signal, into the background category!
+Worse: imagine we have an event with a very high energy for the electron (see the data point on the very far right of the plot above). Intuitively, this should be classified as signal from what we see above. However, a linear regression will shift the hypothesis function (orange dashed line) towards the right, in order to minimize the error from this far-right data point. Consequence? We will mis-classify several data points, correctly labelled as signal before, into the background category!
 
 From this introduction, it is clear that linear regression is not adapted for our classification problem. This is when the sigmoid function enters the game!

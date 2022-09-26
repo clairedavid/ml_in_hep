@@ -1,1 +1,1 @@
-# Cost Function for classification
+# Cost Function for Classification

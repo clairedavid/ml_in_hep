@@ -48,7 +48,7 @@ x_1^{(m)} & x_2^{(m)} & \cdots & x_j^{(m)} & \cdots & x_n^{(m)} \\
 The $i^\text{th}$ training sample $x^{(i)}$ is not a scalar but a row vector of $n$ elements.  
 ```
 
-Our hypothesis function is generalized to the following for a given training example. In the following the supercript $^{(i)}$ is omitted for clarity.
+Our hypothesis function is generalized to the following for a given training example (the supercript $^{(i)}$ is omitted for clarity):
 ````{prf:definition}
 :label: hypothesisFunctionMulti
 The hypothesis or mapping function for linear regression with $n$ features is:
@@ -101,6 +101,7 @@ y^{(i)}\\
 y^{(m)}\end{pmatrix}
 \end{equation*}
 
+__Hyperparameters__  
 * Learning rate $\alpha$
 * Number of epochs $N$
 
@@ -114,13 +115,13 @@ The optimized values of $\theta$ parameters, $\theta_0$, $\theta_1$, ... , $\the
     Compute the partial derivatives $\frac{\partial }{\partial \theta_j} J(\theta)$ for each $\theta_j$  
    1. __Update the parameters__:  
     Calculate the new parameters according to:  
-```{math}
-:label: eqGDlinCostMulti
-\begin{equation*} \\
-\theta'_j = \theta_j-\alpha \frac{\partial}{\partial \theta_j} J\left(\theta\right) \;   \;   \;  \;   \;   \; \forall j \in [0..n]\\
-\end{equation*}
-```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reassign the new $\theta$ parameters to prepare for next iteration
+    ```{math}
+    :label: eqGDlinCostMulti
+    \begin{equation*} \\
+    \theta'_j = \theta_j-\alpha \frac{\partial}{\partial \theta_j} J\left(\theta\right) \;   \;   \;  \;   \;   \; \forall j \in [0..n]\\
+    \end{equation*}
+    ```
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reassign the new $\theta$ parameters to prepare for next iteration
 ```{math}
 :label: eqUpdateThetaMulti
 \begin{equation*}
@@ -138,11 +139,7 @@ __Exit conditions__
 
 ## Feature Scaling & Normalization
 In the example of the previous section, the 3D plot of the cost function with respect to the $\theta$ parameters was not really bowl-shaped but stretched.
-This happens when the features are of different ranges. 
-
-
-If 
- one parameter will be incremented or decremented with larger or smaller steps than the other.
+This happens when the features are of different ranges. One parameter will have an increment size larger than the other.
 
 ```{admonition} In-class exercise
 :class: seealso

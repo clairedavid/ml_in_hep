@@ -221,6 +221,7 @@ y^{(2)} \\
  \\
 y^{(m)} \end{pmatrix}
 \end{equation*}
+__Hyperparameters__  
 * Learning rate $\alpha$
 * Number of epochs $N$
 

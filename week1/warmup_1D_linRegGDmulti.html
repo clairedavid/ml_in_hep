@@ -1028,7 +1028,7 @@ x_1^{(m)} &amp; x_2^{(m)} &amp; \cdots &amp; x_j^{(m)} &amp; \cdots &amp; x_n^{(
 <p class="admonition-title">Warning</p>
 <p>The <span class="math notranslate nohighlight">\(i^\text{th}\)</span> training sample <span class="math notranslate nohighlight">\(x^{(i)}\)</span> is not a scalar but a row vector of <span class="math notranslate nohighlight">\(n\)</span> elements.</p>
 </div>
-<p>Our hypothesis function is generalized to the following for a given training example. In the following the supercript <span class="math notranslate nohighlight">\(^{(i)}\)</span> is omitted for clarity.</p>
+<p>Our hypothesis function is generalized to the following for a given training example (the supercript <span class="math notranslate nohighlight">\(^{(i)}\)</span> is omitted for clarity):</p>
 <div class="proof definition admonition" id="hypothesisFunctionMulti">
 <p class="admonition-title"><span class="caption-number">Definition 9 </span></p>
 <section class="definition-content" id="proof-content">
@@ -1084,13 +1084,14 @@ y^{(i)}\\
 \vdots \\[2ex]
 y^{(m)}\end{pmatrix}
 \end{equation*}\]</div>
+<p><strong>Hyperparameters</strong></p>
 <ul class="simple">
 <li><p>Learning rate <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
 <li><p>Number of epochs <span class="math notranslate nohighlight">\(N\)</span></p></li>
 </ul>
 <p><strong>Outputs</strong><br />
 The optimized values of <span class="math notranslate nohighlight">\(\theta\)</span> parameters, <span class="math notranslate nohighlight">\(\theta_0\)</span>, <span class="math notranslate nohighlight">\(\theta_1\)</span>, … , <span class="math notranslate nohighlight">\(\theta_n\)</span> minimizing <span class="math notranslate nohighlight">\(J(\theta)\)</span>.</p>
-<ol class="simple">
+<ol>
 <li><p><strong>Initialization</strong>: Set values for all <span class="math notranslate nohighlight">\(\theta\)</span> parameters</p></li>
 <li><p><strong>Iterate N times or while the exit condition is not met</strong>:</p>
 <ol class="simple">
@@ -1099,13 +1100,13 @@ Compute the partial derivatives <span class="math notranslate nohighlight">\(\fr
 <li><p><strong>Update the parameters</strong>:<br />
 Calculate the new parameters according to:</p></li>
 </ol>
-</li>
-</ol>
 <div class="math notranslate nohighlight" id="equation-eqgdlincostmulti">
 <span class="eqno">(8)<a class="headerlink" href="#equation-eqgdlincostmulti" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{equation*} \\
 \theta'_j = \theta_j-\alpha \frac{\partial}{\partial \theta_j} J\left(\theta\right) \;   \;   \;  \;   \;   \; \forall j \in [0..n]\\
 \end{equation*}\end{split}\]</div>
 <p>         Reassign the new <span class="math notranslate nohighlight">\(\theta\)</span> parameters to prepare for next iteration</p>
+</li>
+</ol>
 <div class="math notranslate nohighlight" id="equation-equpdatethetamulti">
 <span class="eqno">(9)<a class="headerlink" href="#equation-equpdatethetamulti" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{equation*}
 \theta_j = \theta'_j \;   \;   \;  \;   \;   \; \forall j \in [0..n]\\
@@ -1124,9 +1125,7 @@ Calculate the new parameters according to:</p></li>
 <section id="feature-scaling-normalization">
 <h2>Feature Scaling &amp; Normalization<a class="headerlink" href="#feature-scaling-normalization" title="Permalink to this headline">#</a></h2>
 <p>In the example of the previous section, the 3D plot of the cost function with respect to the <span class="math notranslate nohighlight">\(\theta\)</span> parameters was not really bowl-shaped but stretched.
-This happens when the features are of different ranges.</p>
-<p>If
-one parameter will be incremented or decremented with larger or smaller steps than the other.</p>
+This happens when the features are of different ranges. One parameter will have an increment size larger than the other.</p>
 <div class="seealso admonition">
 <p class="admonition-title">In-class exercise</p>
 <p>If let’s say <span class="math notranslate nohighlight">\(x_1\)</span> has values between <span class="math notranslate nohighlight">\(10 000\)</span> and <span class="math notranslate nohighlight">\(100000\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> between 1 and 10.</p>

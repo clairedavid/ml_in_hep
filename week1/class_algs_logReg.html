@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Logistic Regression &#8212; Machine Learning in Particle Physics</title>
+    <title>Logistic Regression: introduction &#8212; Machine Learning in Particle Physics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="What is the Sigmoid Function?" href="class_algs_sigmoid.html" />
@@ -208,7 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Logistic Regression
+     Logistic Regression: introduction
     </a>
    </li>
    <li class="toctree-l2">
@@ -808,23 +810,70 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definitions">
+   Definitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivations">
+   Motivations
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Logistic Regression</h1>
+                <h1>Logistic Regression: introduction</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definitions">
+   Definitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivations">
+   Motivations
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -832,8 +881,48 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="logistic-regression">
-<h1>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="logistic-regression-introduction">
+<h1>Logistic Regression: introduction<a class="headerlink" href="#logistic-regression-introduction" title="Permalink to this headline">#</a></h1>
+<p>Before getting into the details here are some general definitions.</p>
+<section id="definitions">
+<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="logRegDef">
+<p class="admonition-title"><span class="caption-number">Definition 13 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Logistic regression</strong> is a statistical model used in machine learning to make a prediction from one or more independent variables about a <strong>categorical variable</strong>.</p>
+</section>
+</div><p>In other words, it is about making predictions about a discrete variable versus a continuous one.</p>
+<div class="proof definition admonition" id="catVar">
+<p class="admonition-title"><span class="caption-number">Definition 14 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A <strong>categorical variable</strong> is variable that can take a limited number of possible values: true or false, yes or no, 1 or 0.</p>
+</section>
+</div><div class="proof definition admonition" id="binaryDef">
+<p class="admonition-title"><span class="caption-number">Definition 15 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Binary classification</strong> refers to a classification task that has two categorical variables.</p>
+<p><strong>Multi-class classification</strong> refers to a classification task that has more than two categorical variables.</p>
+</section>
+</div></section>
+<section id="motivations">
+<h2>Motivations<a class="headerlink" href="#motivations" title="Permalink to this headline">#</a></h2>
+<p>Let’s start with a simple case with only one input variable.</p>
+<p>Particle detectors are usually equiped with a trigger system. It is a program assessing raw data. Its mission is to quickly decide if a given interaction event is worth saving into disk for further analysis or not. Using previous data analyzed offline (i.e. with more complex software), it is possible to gather more informations on the events and objects in it (objects are reconstructed particles with all associated properties). For instance the energy of the electron can be a good hint to help predict if the event where the electron is produced will be selected for further physics study. The workflow is a bit more complex; we will simplify and label such “selected event” as “signal event” and those that are later discarded during the data analysis “background event”. The signal events are associated with 1 and background events with 0. This is a binary classification problem.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The association of a given class to a discrete value is a <strong>arbitrary</strong> and done as a <strong>convention</strong>. In some cases 1 can stand for what we want to look for in the data (i.e. signal electron in our example above). But in other fields, medical diagnosis for instance, 1 can code for a malign tumor and 0 a benign tumor. It is very important to define the bijection of your classes and the associated values and stick to your convention while building your machine learning program.</p>
+</div>
+<p>We can visualize the data as a scatter plot like this:</p>
+<a class="reference internal image-reference" href="../_images/lec03_1_scatter1D.png"><img alt="scatter1D" class="align-center" src="../_images/lec03_1_scatter1D.png" style="width: 80%;" /></a>
+<p><br />
+If we use the linear regression method, our hypothesis function <span class="math notranslate nohighlight">\(h(x)\)</span> will look like roughly like the red line:</p>
+<a class="reference internal image-reference" href="../_images/lec03_1_scatter1D_linhf.png"><img alt="scatter1DlinReg" class="align-center" src="../_images/lec03_1_scatter1D_linhf.png" style="width: 80%;" /></a>
+<p><br />
+How can we predict a probability? We could use the 0.5 mark as our threshold. Given an electron energy input <span class="math notranslate nohighlight">\(x\)</span>, if <span class="math notranslate nohighlight">\(h(x)&gt;0.5\)</span> then we predict the event is a signal event, if <span class="math notranslate nohighlight">\(h(x) &lt; 0.5\)</span> then the event is classified as background.</p>
+<p>We can already see a problem: our hypothesis outputs values departing from the data labels: zero and ones. Moreore, what does it mean to have hypothesis values either below or above one, i.e. outside of the label range? This is a first hint that applying linear regression is not well adapted.</p>
+<p>Worse: imagine we have an event with a very high energy for the electron. Intuitively, this should be classified as signal from what we see above. However, a linear regression will shift the hypothesis function (orange dashed line) towards the right, in order to minimize the error from this far-right data point. Consequence? We will mis-classify several data points, previously correctly labelled as signal, into the background category!</p>
+<p>From this introduction, it is clear that linear regression is not adapted for our classification problem. This is when the sigmoid function enters the game!</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

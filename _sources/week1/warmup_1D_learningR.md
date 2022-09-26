@@ -14,7 +14,8 @@ Recall that the step size is given by $-\alpha \frac{d}{d \theta} J(\theta) = -\
   name: lec02_3_smaller_steps
   width: 80%
 ---
-. Here the step size is reduced at the next iteration of the gradient descent, even if $\alpha$ remains constant. <sub>Image from the author</sub>
+. The step size is reduced at the next iteration of the gradient descent,  
+even if $\alpha$ remains constant. <sub>Image from the author</sub>
  ```
 
 ## Learning Rate and Divergence
@@ -37,9 +38,9 @@ The divergence is illustrated on the right in the figure below:
 * The learning rate $\alpha$ is a hyperparameter intervening in the calculation of the step size at which the parameters will be incremented or decremented.
 * The step size varies even with a constant $\alpha$ as it is multiplied by the slope, i.e. the derivatives of the cost function.
 * A small learning rate is safe as it likely leads to convergence, yet too small values will necessitates a high number of epochs.
-* A large learning rate can overshoot the minimum of the cost function and lead to either 
-  * an oscillating trajectory of the parameters: it converges yet with more iterations are needed
-  * a diverging path: the gradient descent fails to converge toward the minimum value of the cost function
+* A large learning rate can make the next update of parameters overshoot the minimum of the cost function and lead to either 
+  * an oscillating trajectory: the algorithm converges yet more iterations are needed
+  * a diverging path: the gradient descent fails to converge
 
 
 ```{admonition} Question

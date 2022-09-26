@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Logistic Regression" href="class_algs_logReg.html" />
+    <link rel="next" title="Logistic Regression: introduction" href="class_algs_logReg.html" />
     <link rel="prev" title="Gradient Descent in practice" href="warmup_1D_practice.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -208,7 +208,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="class_algs_logReg.html">
-     Logistic Regression
+     Logistic Regression: introduction
     </a>
    </li>
    <li class="toctree-l2">
@@ -834,6 +834,16 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="classification-algorithms">
 <h1>3. Classification algorithms<a class="headerlink" href="#classification-algorithms" title="Permalink to this headline">#</a></h1>
+<p>Let’s enter the vast world of classification algorithms in machine learning.</p>
+<p>In classification, the outcomes - the targets - are no more real-valued but <strong>class labels</strong> that can be associated with discrete numericals. While it could appear as a sub-case of the linear regression, we will see that we need to redefine our mathematical tools.</p>
+<p>In this lecture we will cover a method for classifying data called <strong>logistic regression</strong>. You will discover key machine learning concepts:</p>
+<ul class="simple">
+<li><p>the <strong>sigmoid function</strong></p></li>
+<li><p>a revised <strong>cost function for logistic regression</strong></p></li>
+<li><p><strong>regularization</strong></p></li>
+<li><p>model properties called <strong>bias and variance</strong> to diagnose the model and help optimize it</p></li>
+</ul>
+<p>Particle physics florishes of classification implementations. We will put the logistic regression in  practice during the tutorials to classify collision data.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -875,7 +885,7 @@ title="Print to PDF"
     <a class='right-next' id="next-link" href="class_algs_logReg.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Logistic Regression</p>
+        <p class="prev-next-title">Logistic Regression: introduction</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -905,7 +905,8 @@ The learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> i
 <figure class="align-default" id="lec02-3-smaller-steps">
 <a class="reference internal image-reference" href="../_images/lec02_3_smaller_steps.png"><img alt="../_images/lec02_3_smaller_steps.png" src="../_images/lec02_3_smaller_steps.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">. Here the step size is reduced at the next iteration of the gradient descent, even if <span class="math notranslate nohighlight">\(\alpha\)</span> remains constant. <sub>Image from the author</sub></span><a class="headerlink" href="#lec02-3-smaller-steps" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">. The step size is reduced at the next iteration of the gradient descent,<br />
+even if <span class="math notranslate nohighlight">\(\alpha\)</span> remains constant. <sub>Image from the author</sub></span><a class="headerlink" href="#lec02-3-smaller-steps" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -931,10 +932,10 @@ Two cases:</p>
 <li><p>The learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is a hyperparameter intervening in the calculation of the step size at which the parameters will be incremented or decremented.</p></li>
 <li><p>The step size varies even with a constant <span class="math notranslate nohighlight">\(\alpha\)</span> as it is multiplied by the slope, i.e. the derivatives of the cost function.</p></li>
 <li><p>A small learning rate is safe as it likely leads to convergence, yet too small values will necessitates a high number of epochs.</p></li>
-<li><p>A large learning rate can overshoot the minimum of the cost function and lead to either</p>
+<li><p>A large learning rate can make the next update of parameters overshoot the minimum of the cost function and lead to either</p>
 <ul>
-<li><p>an oscillating trajectory of the parameters: it converges yet with more iterations are needed</p></li>
-<li><p>a diverging path: the gradient descent fails to converge toward the minimum value of the cost function</p></li>
+<li><p>an oscillating trajectory: the algorithm converges yet more iterations are needed</p></li>
+<li><p>a diverging path: the gradient descent fails to converge</p></li>
 </ul>
 </li>
 </ul>

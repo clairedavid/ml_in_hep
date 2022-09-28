@@ -311,7 +311,7 @@ In our example, the best linear fit will be:
 ```{glue:figure} plot_linReg_50pts_line
 :name: "plot_linReg_50pts_line"
 ```
-How to picture this in the $\theta$ parameter space? For this, contour and 3D plot are handy. Below, the new parameters' (red points) are 'falling' towards the minimum of the cost function:
+How to picture this in the $\theta$ parameter space? For this, contour and 3D plot are handy. Below, the new parameters'trajectory (red points) are "descending" towards the minimum of the cost function:
 
 ```{glue:figure} plot_linReg_3D
 :name: "plot_linReg_3D"

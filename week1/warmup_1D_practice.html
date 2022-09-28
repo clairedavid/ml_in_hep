@@ -210,7 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="class_algs_logReg.html">
-     Logistic Regression
+     Logistic Regression: introduction
     </a>
    </li>
    <li class="toctree-l2">
@@ -220,7 +220,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="class_algs_costF.html">
-     Cost Function for classification
+     Cost Function for Classification
     </a>
    </li>
    <li class="toctree-l2">
@@ -924,7 +924,7 @@ Iteration <span class="m">1000</span>		<span class="nv">theta_0</span> <span cla
 End of gradient descent after <span class="m">1000</span> iterations
 </pre></div>
 </div>
-<p>Picking a learning rate is a guess and check business.</p>
+<p>Picking a learning rate is a guess’n’check business.</p>
 <p>Typical learning rates are between <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(10^{-7}\)</span>. The common practice is to start with e.g. <span class="math notranslate nohighlight">\(\alpha = 0.01\)</span>, a reasonable number of epochs, e.g. <span class="math notranslate nohighlight">\(N = 100\)</span> or <span class="math notranslate nohighlight">\(1000\)</span> (depending on the size of the data set), and see how the gradient descent behaves.</p>
 <p><strong>The cost function should decrease after every iteration.</strong> If the printouts show that the cost function and parameter are taking very, very large values: <span class="math notranslate nohighlight">\(\alpha\)</span> is too big, the gradient descent is diverging! One should reduce the learning rate by e.g. a factor 10 and see how the gradient behaves.</p>
 <p>If the cost decreases after each iteration, this is a good sign that the gradient will converge. However it can converge very slowly if <span class="math notranslate nohighlight">\(\alpha\)</span> is too small, and as a consequence necessitate a large number of epoch before reaching the optimized parameter values. While tuning the hyperparameters, it is generally good to cap the number of epochs low and inspect the difference <span class="math notranslate nohighlight">\(\Delta \theta = \theta^\text{new} - \theta^\text{prev}\)</span> to see if the relative increment or decrement with respect to the <span class="math notranslate nohighlight">\(\theta\)</span> value is small. There is a bit of tweaking before finding a correct learning rate.</p>

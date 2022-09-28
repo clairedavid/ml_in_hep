@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Cost Function for classification" href="class_algs_costF.html" />
+    <link rel="next" title="Cost Function for Classification" href="class_algs_costF.html" />
     <link rel="prev" title="Logistic Regression: introduction" href="class_algs_logReg.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -220,7 +220,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="class_algs_costF.html">
-     Cost Function for classification
+     Cost Function for Classification
     </a>
    </li>
    <li class="toctree-l2">
@@ -842,6 +842,16 @@ title="Print to PDF"
    A better mapping
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sigmoid-function-for-logistic-regression">
+   Sigmoid function for logistic regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-making">
+   Decision making
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -871,6 +881,16 @@ title="Print to PDF"
    A better mapping
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sigmoid-function-for-logistic-regression">
+   Sigmoid function for logistic regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-making">
+   Decision making
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -888,9 +908,9 @@ title="Print to PDF"
 <p>A sigmoid function refers in mathematics to a category of functions having a characteristic “S-shape” curve. Among numerous examples, the one commonly used in machine learning is the logistic function.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>To avoid confusion with the fact we already use <span class="math notranslate nohighlight">\(x\)</span> for the input features, the input variable in the definition oppostive is written with another letter, <span class="math notranslate nohighlight">\(z\)</span>.</p>
+<p>To avoid confusion with the fact we already use <span class="math notranslate nohighlight">\(x\)</span> for the input features, the input variable in the definition opposite is written with another letter, <span class="math notranslate nohighlight">\(z\)</span>.</p>
 </aside>
-<div class="proof definition admonition" id="definition-0">
+<div class="proof definition admonition" id="logFuncDef">
 <p class="admonition-title"><span class="caption-number">Definition 16 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>logistic function</strong> is defined for <span class="math notranslate nohighlight">\(z \in \mathbb{R}\)</span> as</p>
@@ -907,33 +927,79 @@ f(z) = \frac{1}{1 + e^{-z}}
 </figure>
 </section>
 <section id="a-better-mapping">
-<h2>A better mapping<a class="headerlink" href="#a-better-mapping" title="Permalink to this headline">#</a></h2>
+<span id="class-sigmoid-better"></span><h2>A better mapping<a class="headerlink" href="#a-better-mapping" title="Permalink to this headline">#</a></h2>
 <p>In our example with the energy of the electron, we could see from the data (easily because it is only in one dimension) that the bigger the energy of the electron, the more likely it is for the event to be classified as signal. If we overlay the S-curve on the data points, we start seeing interesting things.</p>
-<a class="reference internal image-reference" href="../_images/lec03_2_scatter1D_sigmoid.png"><img alt="scatter1D_sigmoid" class="align-center" src="../_images/lec03_2_scatter1D_sigmoid.png" style="width: 80%;" /></a>
-<p><br />
-<br />
-First of all, the curve is not overshooting below or above our discrete outcomes’ range. Second: for data points either far left or far right, instead of creating a large error with a straight line as previously, the S-curve actually takes the values of our target-variables (asymptotically). Consequence: the error will very small, even negligible. We will not have an unwanted shift and mis-classification like before.</p>
+<figure class="align-center" id="scattersigmoid">
+<a class="reference internal image-reference" href="../_images/lec03_2_scatter1D_sigmoid.png"><img alt="../_images/lec03_2_scatter1D_sigmoid.png" src="../_images/lec03_2_scatter1D_sigmoid.png" style="width: 768.0px; height: 432.0px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">. Data 1D distribution and sigmoid overlaid</span><a class="headerlink" href="#scattersigmoid" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>First of all, the curve is not overshooting below or above our discrete outcomes’ range. Second: for data points either far left or far right, instead of creating a large error with a straight line as previously, the S-curve actually takes the values of our target-variables (asymptotically). Consequence: the error between the prediction and observed values will be very small, even negligible. We will not have an unwanted shift and mis-classification like before.</p>
+</section>
+<section id="sigmoid-function-for-logistic-regression">
+<h2>Sigmoid function for logistic regression<a class="headerlink" href="#sigmoid-function-for-logistic-regression" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="definition-1">
 <p class="admonition-title"><span class="caption-number">Definition 17 </span></p>
 <section class="definition-content" id="proof-content">
-<p>For logistic regression using the linear equation</p>
+<p>A <strong>mapping function</strong> <span class="math notranslate nohighlight">\(h_\theta(x)\)</span> used for logistic regression is of the form:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-z = \sum_{j=1}^n \theta_j x^{(i)}_j = \theta^{\; T} x^{(i)} \\
+h_\theta (x^{(i)}) =  f(\theta^{T} x^{(i)}) = \frac{1}{1 + e^{- \theta^{T} x^{(i)}}}
 \end{equation*}\]</div>
-<p>between input features <span class="math notranslate nohighlight">\(x^{(i)}\)</span> and the parameters <span class="math notranslate nohighlight">\(\theta\)</span> to optimize,</p>
-<p>we define the <strong>mapping function</strong> <span class="math notranslate nohighlight">\(h_\theta(x)\)</span> as the logistic function of the linear equation:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-h_\theta (x^{(i)}) = f(z) = f(\theta^{\; T} x^{(i)}) = \frac{1}{1 + e^{- \theta^{\; T} x^{(i)}}}
-\end{equation*}\]</div>
+<p>where vector <span class="math notranslate nohighlight">\(x^{(i)}\)</span> are the input features and <span class="math notranslate nohighlight">\(\theta\)</span> the parameters to optimize.</p>
 </section>
 </div><p>The mapping function satisfies</p>
-<div class="math notranslate nohighlight" id="equation-week1-class-algs-sigmoid-0">
-<span class="eqno">(10)<a class="headerlink" href="#equation-week1-class-algs-sigmoid-0" title="Permalink to this equation">#</a></span>\[0 &lt; h_\theta (x^{(i)}) &lt; 1\]</div>
-<p>Those limits are reached asymptotically reaching 0 and 1 when <span class="math notranslate nohighlight">\(z \rightarrow -\infty\)</span> and <span class="math notranslate nohighlight">\(z \rightarrow +\infty\)</span> respectively.</p>
+<div class="math notranslate nohighlight" id="equation-hthetabounded">
+<span class="eqno">(11)<a class="headerlink" href="#equation-hthetabounded" title="Permalink to this equation">#</a></span>\[0 &lt; h_\theta (x^{(i)}) &lt; 1\]</div>
+<p>Those limits are reached asymptotically reaching 0 and 1 when <span class="math notranslate nohighlight">\(\theta^{T} x^{(i)} \rightarrow -\infty\)</span> and <span class="math notranslate nohighlight">\(\theta^{T} x^{(i)} \rightarrow +\infty\)</span> respectively.</p>
 <p>Intuitively, we see in our example that events with very low electron energy are most likely to be background whereas events with high electron energy are more likely to be signal. In the middle, there is a 50/50 chance to mis-classify an event.</p>
 <p><strong>The output of the sigmoid can be interpreted as a probability</strong>.</p>
+</section>
+<section id="decision-making">
+<h2>Decision making<a class="headerlink" href="#decision-making" title="Permalink to this headline">#</a></h2>
+<p>Imagine we have optimized our vector <span class="math notranslate nohighlight">\(\theta\)</span> parameters. How do we make a prediction?
+Previously with linear regression, we could predict the target <span class="math notranslate nohighlight">\(y^\text{pred}\)</span> from a new data variable <span class="math notranslate nohighlight">\(x^\text{new}\)</span> (a row of all features) by directly using the hypothesis function:</p>
+<div class="math notranslate nohighlight" id="equation-ypredthetaxnew">
+<span class="eqno">(12)<a class="headerlink" href="#equation-ypredthetaxnew" title="Permalink to this equation">#</a></span>\[y^\text{pred} = h_\theta(x^\text{new}) = \theta^{\: T} x^\text{new}\]</div>
+<p>With discrete outcomes, we need a new concept to map the input to a discrete class: the decision boundary.</p>
+<div class="proof definition admonition" id="decBoundDef">
+<p class="admonition-title"><span class="caption-number">Definition 18 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A <strong>decision boundary</strong> is a defined threshold (line, or plane, or more dimensional set of values) created by classifiers to discriminate between the different classes.</p>
+</section>
+</div><p>In the section <a class="reference internal" href="#class-sigmoid-better"><span class="std std-ref">A better mapping</span></a> above, we can split the data sample using <span class="math notranslate nohighlight">\(y = 1/2\)</span> horizontal mark:</p>
+<ul class="simple">
+<li><p>if the logistic function outputs a value <span class="math notranslate nohighlight">\(y &lt; 0.5\)</span>, the event is classified as background</p></li>
+<li><p>if the logistic function outputs a value <span class="math notranslate nohighlight">\(y \geq 0.5\)</span>, the event is classified as background</p></li>
+</ul>
+<p>This way and looking at the distribution on Figure <a class="reference internal" href="#scattersigmoid"><span class="std std-ref">. Data 1D distribution and sigmoid overlaid</span></a>, the majority of data points will be correctly classified with the <span class="math notranslate nohighlight">\(1/2\)</span> horizontal threshold.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Careful with how the logistic function is used. We are not computing it directly with <span class="math notranslate nohighlight">\(x^{(i)}\)</span> as argument but we calculate <span class="math notranslate nohighlight">\(f(\theta^{\: T}x^{(i)})\)</span>.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Question</p>
+<p>How does this boundary translates for sigmoid’s input <span class="math notranslate nohighlight">\(z = \theta^{\: T} x^\text{new}\)</span>?</p>
+<p>Look at the first figure on top of this section. For which input values <span class="math notranslate nohighlight">\(z\)</span> is the sigmoid lower than 0.5? For which values is the sigmoid above?</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>The logistic function <span class="math notranslate nohighlight">\(f\)</span> verifies:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(z) &lt; 0.5\)</span> for <span class="math notranslate nohighlight">\(z &lt; 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f(z) \geq 0.5\)</span> for <span class="math notranslate nohighlight">\(z \geq 0\)</span></p></li>
+</ul>
+<p>Thus, to predict if a new data point <span class="math notranslate nohighlight">\(x^\text{new}\)</span> (row vector of input features) is background of signal, the decision boundary is simply the sign of <span class="math notranslate nohighlight">\(\theta^{\: T} x^\text{new}\)</span></p>
+<ul class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(\theta^{\: T} x^\text{new} &lt; 0 \Rightarrow\)</span> the event is classified as background</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(\theta^{\: T} x^\text{new} \geq 0 \Rightarrow\)</span> the event is classified as signal</p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here the input does not have to be linear. Any function of the <span class="math notranslate nohighlight">\(\theta\)</span> parameters and <span class="math notranslate nohighlight">\(x^{(i)}\)</span> will work.</p>
+</div>
 <p>With this new tool at hand, let’s now see how it is incorporated in a custom-made cost function for logistic regression.</p>
 </section>
 </section>
@@ -975,7 +1041,7 @@ h_\theta (x^{(i)}) = f(z) = f(\theta^{\; T} x^{(i)}) = \frac{1}{1 + e^{- \theta^
     <a class='right-next' id="next-link" href="class_algs_costF.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Cost Function for classification</p>
+        <p class="prev-next-title">Cost Function for Classification</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

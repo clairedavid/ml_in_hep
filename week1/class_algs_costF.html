@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Cost Function for classification &#8212; Machine Learning in Particle Physics</title>
+    <title>Cost Function for Classification &#8212; Machine Learning in Particle Physics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Regularization" href="class_algs_reg.html" />
@@ -208,7 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="class_algs_logReg.html">
-     Logistic Regression
+     Logistic Regression: introduction
     </a>
    </li>
    <li class="toctree-l2">
@@ -218,7 +220,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Cost Function for classification
+     Cost Function for Classification
     </a>
    </li>
    <li class="toctree-l2">
@@ -808,23 +810,114 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wavy-least-squares">
+   Wavy least squares
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-a-new-cost-function">
+   Building a new cost function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradient-descent">
+   Gradient descent
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#derivatives-in-the-linear-case">
+     Derivatives in the linear case
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alternative-techniques-advanced">
+     Alternative techniques (advanced)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiclass">
+   Multiclass
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Cost Function for classification</h1>
+                <h1>Cost Function for Classification</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wavy-least-squares">
+   Wavy least squares
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-a-new-cost-function">
+   Building a new cost function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradient-descent">
+   Gradient descent
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#derivatives-in-the-linear-case">
+     Derivatives in the linear case
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alternative-techniques-advanced">
+     Alternative techniques (advanced)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiclass">
+   Multiclass
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -833,7 +926,85 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="cost-function-for-classification">
-<h1>Cost Function for classification<a class="headerlink" href="#cost-function-for-classification" title="Permalink to this headline">#</a></h1>
+<h1>Cost Function for Classification<a class="headerlink" href="#cost-function-for-classification" title="Permalink to this headline">#</a></h1>
+<section id="wavy-least-squares">
+<h2>Wavy least squares<a class="headerlink" href="#wavy-least-squares" title="Permalink to this headline">#</a></h2>
+<p>If we plug our sigmoid hypothesis function <span class="math notranslate nohighlight">\(h_\theta(x)\)</span> into the cost function defined for linear regression (Equation <a class="reference internal" href="warmup_1D_linRegGD.html#equation-costfunctionlinreg">(3)</a> from Lecture 2), we will have a complex non-linear function that could be non-convex. The cost function could take this form:</p>
+<figure class="align-default" id="poly3minima-example" style="width: 80%">
+<div class="cell_output docutils container">
+<img alt="../_images/class_algs_plots_10_0.png" src="../_images/class_algs_plots_10_0.png" />
+</div>
+</figure>
+<p>Imagine running gradient descent starting from a randomly initialized <span class="math notranslate nohighlight">\(\theta_0\)</span> parameter around zero (or worse, lower than -2). It will fall into a local minima. Our cost function will not be at the global minimum! It is crucial to work with a cost function accepting one unique minimum.</p>
+</section>
+<section id="building-a-new-cost-function">
+<h2>Building a new cost function<a class="headerlink" href="#building-a-new-cost-function" title="Permalink to this headline">#</a></h2>
+<p>As we saw in the previous section, the sigmoid fits the 1D data distribution very well. Our cost function will use the hypothesis <span class="math notranslate nohighlight">\(h_\theta(x)\)</span> function as input. Recall that the hypothesis <span class="math notranslate nohighlight">\(h_\theta(x)\)</span> is bounded between 0 and 1. What we need is a cost function producing high values if we mis-classify events and values close to zero if we correctly label the data. Let’s examine what we want for the two cases:</p>
+<p><strong>Case of a signal event:</strong><br />
+A data point labelled signal verifies by our convention <span class="math notranslate nohighlight">\(y=1\)</span>. If our hypothesis <span class="math notranslate nohighlight">\(h_\theta(x)\)</span> is also 1, then we have a good prediction. The cost value should be zero. If however our signal sample has a wrong prediction <span class="math notranslate nohighlight">\(h_\theta(x) = 0\)</span>, then the cost function should take large values to penalize this bad prediction. We need thus a strictly decreasing function, starting with high values and cancelling at the coordinate (1, 0).</p>
+<p><strong>Case of a background event:</strong><br />
+The sigmoid can be interpreted as a probability for a sample being signal or not (but note it is not a probability distribution function). As we have only two outcomes, the probability for a data point to be non signal will be in the form of <span class="math notranslate nohighlight">\(1 - h_\theta(x)\)</span>. We want to find a function with this time a zero cost if the prediction <span class="math notranslate nohighlight">\(h_\theta(x) = 0\)</span> and a high cost for an erroneous prediction <span class="math notranslate nohighlight">\(h_\theta(x) = 1\)</span>.</p>
+<p>Now let’s have a look at these two functions:</p>
+<figure class="align-default" id="log-h-x" style="width: 100%">
+<div class="cell_output docutils container">
+<img alt="../_images/class_algs_plots_12_1.png" src="../_images/class_algs_plots_12_1.png" />
+</div>
+</figure>
+<p>For each case, the cost function has only one minimum and harshly penalizes wrong prediction by blowing up at infinity.<br />
+How to combine these two into one cost function for logistic regression?<br />
+Like this:</p>
+<div class="proof definition admonition" id="costFLogRegDef">
+<p class="admonition-title"><span class="caption-number">Definition 19 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>cost function for logistic regression</strong> is a defined as:</p>
+<div class="math notranslate nohighlight" id="equation-costfunctionlogreg">
+<span class="eqno">(13)<a class="headerlink" href="#equation-costfunctionlogreg" title="Permalink to this equation">#</a></span>\[J(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; {\color{RoyalBlue}y^{(i)} \log( h_\theta(x^{(i)} )) }\;\;+\;\; {\color{OliveGreen}(1- y^{(i)}) \log( 1 - h_\theta(x^{(i)} ))} \;\;\right]\]</div>
+<p>This function is also called <strong>cross-entropy loss function</strong> and is the standard cost function for binary classifiers.</p>
+</section>
+</div><p>Note the negative sign factorized at the beginning of the equation. Multiplying by <span class="math notranslate nohighlight">\({\color{RoyalBlue}y^{(i)}}\)</span> and <span class="math notranslate nohighlight">\({\color{OliveGreen}(1 - y^{(i)})}\)</span> the first and second term of the sum respectively acts as a “switch” between the cases <span class="math notranslate nohighlight">\({\color{RoyalBlue}y=1}\)</span> and <span class="math notranslate nohighlight">\({\color{OliveGreen}y=0}\)</span>. If <span class="math notranslate nohighlight">\(y=0\)</span>, the first term cancels out and the cost takes the value of the second. If <span class="math notranslate nohighlight">\(y=0\)</span>, the second term vanishes. The two cases are combined into one mathematical expression.</p>
+</section>
+<section id="gradient-descent">
+<h2>Gradient descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">#</a></h2>
+<p>The gradient descent for classification follows the same procedure as described in Algorithm <a class="reference internal" href="warmup_1D_linRegGDmulti.html#GD_algo_multi">Algorithm 2</a> in Section <a class="reference internal" href="warmup_1D_linRegGDmulti.html#warmup-linregmulti-graddesc"><span class="std std-ref">Gradient Descent in Multilinear Regression</span></a> with the definition of the cost function from Equation <a class="reference internal" href="#equation-costfunctionlogreg">(13)</a> above.</p>
+<section id="derivatives-in-the-linear-case">
+<h3>Derivatives in the linear case<a class="headerlink" href="#derivatives-in-the-linear-case" title="Permalink to this headline">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Recall <span class="math notranslate nohighlight">\(h_\theta (x^{(i)}) =  f(\theta^{T} x^{(i)})\)</span></p>
+</aside>
+<p>Consider the linear assumption <span class="math notranslate nohighlight">\(\theta^{\; T} x^{(i)} = \theta_0 + \theta_1 x_1 +  \cdots  + \theta_n x_n\)</span> as input to the sigmoid function <span class="math notranslate nohighlight">\(f\)</span>.
+The cost function derivatives will take the form:</p>
+<div class="math notranslate nohighlight" id="equation-costfderivlin">
+<span class="eqno">(14)<a class="headerlink" href="#equation-costfderivlin" title="Permalink to this equation">#</a></span>\[\frac{\partial}{\partial \theta_j} J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) x_j^{(i)}\]</div>
+<p>This takes the same form as the derivatives the linear regression (Equation <a class="reference internal" href="warmup_1D_linRegGDmulti.html#equation-partialdevlinreg">(10)</a> in Section <a class="reference internal" href="warmup_1D_linRegGDmulti.html#warmup-linregmulti-graddesc"><span class="std std-ref">Gradient Descent in Multilinear Regression</span></a>).</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>To convince yourself, derive Equation <a class="reference internal" href="#equation-costfderivlin">(14)</a> starting from the general definition in Equation <a class="reference internal" href="#equation-costfunctionlogreg">(13)</a>.</p>
+<p>Hints and help available on demand after class.</p>
+</div>
+</section>
+<section id="alternative-techniques-advanced">
+<h3>Alternative techniques (advanced)<a class="headerlink" href="#alternative-techniques-advanced" title="Permalink to this headline">#</a></h3>
+<p>Numerous methods have been developed to find optimized <span class="math notranslate nohighlight">\(\theta\)</span> parameters in faster ways than the gradient descent. These are beyond the scope of this course and usually available as libraries within python (or other languages). Below is a list of the most popular ones:</p>
+<div class="seealso admonition">
+<p class="admonition-title">Reading</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm">BFGS algorithm</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Limited-memory_BFGS">L-BFGS</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Conjugate_gradient_method">Conjugate gradient method</a></p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="multiclass">
+<h2>Multiclass<a class="headerlink" href="#multiclass" title="Permalink to this headline">#</a></h2>
+<p>We treated the binary classification problem. How to adapt to a situation with more than two classes?</p>
+<p>We cut the problem in a collection of binary classifiers for each class. For instance with five classes labelled A, B, C, D and E, the exercise is a binary classification problem for each:</p>
+<ul class="simple">
+<li></li>
+</ul>
+<p>Resume this:
+https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

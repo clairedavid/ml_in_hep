@@ -210,7 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="class_algs_logReg.html">
-     Logistic Regression
+     Logistic Regression: introduction
     </a>
    </li>
    <li class="toctree-l2">
@@ -220,7 +220,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="class_algs_costF.html">
-     Cost Function for classification
+     Cost Function for Classification
     </a>
    </li>
    <li class="toctree-l2">
@@ -919,8 +919,8 @@ title="Print to PDF"
 <h1>Multivariate linear regression<a class="headerlink" href="#multivariate-linear-regression" title="Permalink to this headline">#</a></h1>
 <p>In machine learning, data samples contain multiple features.</p>
 <p>We will generalize our previous definitions or linear regression to additional features. How to see this?
-Previously our data where two column vectors of input features <span class="math notranslate nohighlight">\(X\)</span> and their associated targets <span class="math notranslate nohighlight">\(y\)</span>.
-The input features can be visualized in the form of a table:</p>
+Previously our data where one column vector <span class="math notranslate nohighlight">\(x\)</span> and its associated column vector of targets <span class="math notranslate nohighlight">\(y\)</span>.
+Additional input features can be visualized in the form of a table:</p>
 <figure class="align-default" id="tbl-df-example" style="width: 300px">
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
@@ -1032,7 +1032,7 @@ x_1^{(m)} &amp; x_2^{(m)} &amp; \cdots &amp; x_j^{(m)} &amp; \cdots &amp; x_n^{(
 <div class="proof definition admonition" id="hypothesisFunctionMulti">
 <p class="admonition-title"><span class="caption-number">Definition 9 </span></p>
 <section class="definition-content" id="proof-content">
-<p>The hypothesis or mapping function for linear regression with <span class="math notranslate nohighlight">\(n\)</span> features is:</p>
+<p>The <strong>hypothesis</strong> or <strong>mapping function</strong> for linear regression with <span class="math notranslate nohighlight">\(n\)</span> features is:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
 h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \cdots + \theta_j x_j + \cdots + \theta_n x_n
@@ -1058,7 +1058,7 @@ h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \cdots + \theta_j x_j + \
 \end{pmatrix}
 \end{equation*}\]</div>
 <section id="gradient-descent-in-multilinear-regression">
-<h2>Gradient Descent in Multilinear Regression<a class="headerlink" href="#gradient-descent-in-multilinear-regression" title="Permalink to this headline">#</a></h2>
+<span id="warmup-linregmulti-graddesc"></span><h2>Gradient Descent in Multilinear Regression<a class="headerlink" href="#gradient-descent-in-multilinear-regression" title="Permalink to this headline">#</a></h2>
 <p>We will revisit our algorithm to generalize it to <span class="math notranslate nohighlight">\(\theta_n\)</span> parameters:</p>
 <div class="proof algorithm admonition" id="GD_algo_multi">
 <p class="admonition-title"><span class="caption-number">Algorithm 2 </span> (Gradient Descent for Multivariate Linear Regression)</p>
@@ -1121,7 +1121,10 @@ Calculate the new parameters according to:</p></li>
 \frac{\partial}{\partial \theta_j} J\left(\theta\right) = 0 \;   \;   \;  \;   \;   \;    \forall j \in [0..n]
 \end{equation*}\]</div>
 </section>
-</div></section>
+</div><p>The partial derivatives of <span class="math notranslate nohighlight">\(J(\theta)\)</span> for each parameter <span class="math notranslate nohighlight">\(\theta_j\)</span> will be of the form:</p>
+<div class="math notranslate nohighlight" id="equation-partialdevlinreg">
+<span class="eqno">(10)<a class="headerlink" href="#equation-partialdevlinreg" title="Permalink to this equation">#</a></span>\[\frac{\partial}{\partial \theta_j} J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) x_j^{(i)}\]</div>
+</section>
 <section id="feature-scaling-normalization">
 <h2>Feature Scaling &amp; Normalization<a class="headerlink" href="#feature-scaling-normalization" title="Permalink to this headline">#</a></h2>
 <p>In the example of the previous section, the 3D plot of the cost function with respect to the <span class="math notranslate nohighlight">\(\theta\)</span> parameters was not really bowl-shaped but stretched.

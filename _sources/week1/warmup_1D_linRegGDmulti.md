@@ -3,8 +3,8 @@
 In machine learning, data samples contain multiple features. 
 
 We will generalize our previous definitions or linear regression to additional features. How to see this? 
-Previously our data where two column vectors of input features $X$ and their associated targets $y$.
-The input features can be visualized in the form of a table:
+Previously our data where one column vector $x$ and its associated column vector of targets $y$.
+Additional input features can be visualized in the form of a table:
 
 ```{glue:figure} df_example
 :figwidth: 300px
@@ -51,7 +51,7 @@ The $i^\text{th}$ training sample $x^{(i)}$ is not a scalar but a row vector of 
 Our hypothesis function is generalized to the following for a given training example (the supercript $^{(i)}$ is omitted for clarity):
 ````{prf:definition}
 :label: hypothesisFunctionMulti
-The hypothesis or mapping function for linear regression with $n$ features is:
+The __hypothesis__ or __mapping function__ for linear regression with $n$ features is:
 \begin{equation*}
 h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \cdots + \theta_j x_j + \cdots + \theta_n x_n
 \end{equation*}
@@ -76,6 +76,7 @@ where $x^{(i)}$ an __row__ vector of $n+1$ elements, $x^{(i)} = (x_0, x_1, x_2, 
 \end{pmatrix}
 \end{equation*}
 
+(warmup:linregmulti:graddesc)=
 ## Gradient Descent in Multilinear Regression
 We will revisit our algorithm to generalize it to $\theta_n$ parameters:
 
@@ -136,6 +137,12 @@ __Exit conditions__
 \frac{\partial}{\partial \theta_j} J\left(\theta\right) = 0 \;   \;   \;  \;   \;   \;    \forall j \in [0..n]
 \end{equation*}
 ````
+
+The partial derivatives of $J(\theta)$ for each parameter $\theta_j$ will be of the form:
+```{math}
+:label: partialDevLinReg
+\frac{\partial}{\partial \theta_j} J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) x_j^{(i)}
+```
 
 ## Feature Scaling & Normalization
 In the example of the previous section, the 3D plot of the cost function with respect to the $\theta$ parameters was not really bowl-shaped but stretched.

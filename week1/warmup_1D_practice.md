@@ -35,7 +35,7 @@ Iteration 1000		theta_0 =  6.581	Diff = -0.0000		theta_1 = 3.906		Diff = 0.0000	
 End of gradient descent after 1000 iterations
 ```
 
-Picking a learning rate is a guess and check business. 
+Picking a learning rate is a guess'n'check business. 
 
 Typical learning rates are between $1$ and $10^{-7}$. The common practice is to start with e.g. $\alpha = 0.01$, a reasonable number of epochs, e.g. $N = 100$ or $1000$ (depending on the size of the data set), and see how the gradient descent behaves.
 

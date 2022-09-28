@@ -853,15 +853,15 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#alternative-techniques-advanced">
-     Alternative techniques (advanced)
+    <a class="reference internal nav-link" href="#alternative-techniques">
+     Alternative techniques
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multiclass">
-   Multiclass
+  <a class="reference internal nav-link" href="#more-than-two-categories-multiclassification">
+   More than two categories: multiclassification
   </a>
  </li>
 </ul>
@@ -904,15 +904,15 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#alternative-techniques-advanced">
-     Alternative techniques (advanced)
+    <a class="reference internal nav-link" href="#alternative-techniques">
+     Alternative techniques
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multiclass">
-   Multiclass
+  <a class="reference internal nav-link" href="#more-than-two-categories-multiclassification">
+   More than two categories: multiclassification
   </a>
  </li>
 </ul>
@@ -961,7 +961,7 @@ Like this:</p>
 <span class="eqno">(13)<a class="headerlink" href="#equation-costfunctionlogreg" title="Permalink to this equation">#</a></span>\[J(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; {\color{RoyalBlue}y^{(i)} \log( h_\theta(x^{(i)} )) }\;\;+\;\; {\color{OliveGreen}(1- y^{(i)}) \log( 1 - h_\theta(x^{(i)} ))} \;\;\right]\]</div>
 <p>This function is also called <strong>cross-entropy loss function</strong> and is the standard cost function for binary classifiers.</p>
 </section>
-</div><p>Note the negative sign factorized at the beginning of the equation. Multiplying by <span class="math notranslate nohighlight">\({\color{RoyalBlue}y^{(i)}}\)</span> and <span class="math notranslate nohighlight">\({\color{OliveGreen}(1 - y^{(i)})}\)</span> the first and second term of the sum respectively acts as a “switch” between the cases <span class="math notranslate nohighlight">\({\color{RoyalBlue}y=1}\)</span> and <span class="math notranslate nohighlight">\({\color{OliveGreen}y=0}\)</span>. If <span class="math notranslate nohighlight">\(y=0\)</span>, the first term cancels out and the cost takes the value of the second. If <span class="math notranslate nohighlight">\(y=0\)</span>, the second term vanishes. The two cases are combined into one mathematical expression.</p>
+</div><p>Note the negative sign factorized at the beginning of the equation. Multiplying by <span class="math notranslate nohighlight">\({\color{RoyalBlue}y^{(i)}}\)</span> and <span class="math notranslate nohighlight">\({\color{OliveGreen}(1 - y^{(i)})}\)</span> the first and second term of the sum respectively acts as a “switch” between the cases <span class="math notranslate nohighlight">\({\color{RoyalBlue}y=1}\)</span> and <span class="math notranslate nohighlight">\({\color{OliveGreen}y=0}\)</span>. If <span class="math notranslate nohighlight">\({\color{RoyalBlue}y=1}\)</span>, the first term cancels out and the cost takes the value of the second. If <span class="math notranslate nohighlight">\({\color{OliveGreen}y=0}\)</span>, the second term vanishes. The two cases are combined into one mathematical expression.</p>
 </section>
 <section id="gradient-descent">
 <h2>Gradient descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">#</a></h2>
@@ -970,7 +970,7 @@ Like this:</p>
 <h3>Derivatives in the linear case<a class="headerlink" href="#derivatives-in-the-linear-case" title="Permalink to this headline">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>Recall <span class="math notranslate nohighlight">\(h_\theta (x^{(i)}) =  f(\theta^{T} x^{(i)})\)</span></p>
+<p>Recall that <span class="math notranslate nohighlight">\(h_\theta (x^{(i)}) =  f(\theta^{T} x^{(i)}) = \frac{1}{1 + e^{- \theta^{T} x^{(i)}}}\)</span></p>
 </aside>
 <p>Consider the linear assumption <span class="math notranslate nohighlight">\(\theta^{\; T} x^{(i)} = \theta_0 + \theta_1 x_1 +  \cdots  + \theta_n x_n\)</span> as input to the sigmoid function <span class="math notranslate nohighlight">\(f\)</span>.
 The cost function derivatives will take the form:</p>
@@ -983,27 +983,99 @@ The cost function derivatives will take the form:</p>
 <p>Hints and help available on demand after class.</p>
 </div>
 </section>
-<section id="alternative-techniques-advanced">
-<h3>Alternative techniques (advanced)<a class="headerlink" href="#alternative-techniques-advanced" title="Permalink to this headline">#</a></h3>
-<p>Numerous methods have been developed to find optimized <span class="math notranslate nohighlight">\(\theta\)</span> parameters in faster ways than the gradient descent. These are beyond the scope of this course and usually available as libraries within python (or other languages). Below is a list of the most popular ones:</p>
-<div class="seealso admonition">
-<p class="admonition-title">Reading</p>
+<section id="alternative-techniques">
+<h3>Alternative techniques<a class="headerlink" href="#alternative-techniques" title="Permalink to this headline">#</a></h3>
+<p>Beside logistic regression, other algorithms are designed for binary classification.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Perceptron">Perceptron</a>, which is a single layer neural network with, in its original form, a step function instead of a sigmoid function. We will cover neural networks in Lectures 5 and 6.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Support-vector_machine">Support Vector Machines (SVMs)</a> are robust and widely used in classification problems. We will not cover them here but below are some links for further reading.</p>
+<div class="admonition-learn-more admonition">
+<p class="admonition-title">Learn more</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm">BFGS algorithm</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Limited-memory_BFGS">L-BFGS</a></p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Conjugate_gradient_method">Conjugate gradient method</a></p></li>
+<li><p><a class="reference external" href="https://web.mit.edu/6.034/wwwbob/svm.pdf">R. Berwick, An Idiot’s guide to Support vector machines (SVMs)</a></p></li>
+<li><p><a class="reference external" href="https://www.kdnuggets.com/2016/07/support-vector-machines-simple-explanation.html">Support Vector Machines: A Simple Explanation, KDNuggets</a></p></li>
+</ul>
+</div>
+<p>Numerous methods have been developed to find optimized <span class="math notranslate nohighlight">\(\theta\)</span> parameters in faster ways than the gradient descent. These optimizers are beyond the scope of this course and usually available as libraries within python (or other languages). Below is a list of the most popular ones:</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn more</p>
+<ul class="simple">
+<li><p>The BFGS algorithm: <a class="reference external" href="https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm">Wikipedia article</a></p></li>
+<li><p>The Limited-memory BFGS, L-BFGS: <a class="reference external" href="https://en.wikipedia.org/wiki/Limited-memory_BFGS">Wikipedia article</a></p></li>
+<li><p>Conjugate gradient method: <a class="reference external" href="https://en.wikipedia.org/wiki/Conjugate_gradient_method">Wikipedia article</a></p></li>
+<li><p><a class="reference external" href="https://www.cs.cmu.edu/~quake-papers/painless-conjugate-gradient.pdf">An Introduction to the Conjugate Gradient Method Without the Agonizing Pain, Jonathan Richard Shewchuk (1994)</a></p></li>
 </ul>
 </div>
 </section>
 </section>
-<section id="multiclass">
-<h2>Multiclass<a class="headerlink" href="#multiclass" title="Permalink to this headline">#</a></h2>
+<section id="more-than-two-categories-multiclassification">
+<h2>More than two categories: multiclassification<a class="headerlink" href="#more-than-two-categories-multiclassification" title="Permalink to this headline">#</a></h2>
 <p>We treated the binary classification problem. How to adapt to a situation with more than two classes?</p>
-<p>We cut the problem in a collection of binary classifiers for each class. For instance with five classes labelled A, B, C, D and E, the exercise is a binary classification problem for each:</p>
+<p>A multi-class classification problem can be split into multiple binary classification datasets and be trained as a binary classification model each.
+Such approach is a heuristic method, that is to say not optimal nor direct. But it eventually does the job.
+There are two main approaches of such methods for multiclassification.</p>
+<div class="proof definition admonition" id="multiclass1to1def">
+<p class="admonition-title"><span class="caption-number">Definition 20 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>One-to-One approach</strong> consists of applying a binary classification for each pair of classes, ignoring the other classes.</p>
+<p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of models to train, <span class="math notranslate nohighlight">\(N^\text{model}\)</span> is given by</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b864fc35-3672-4541-9dc1-d8c8aeba1011">
+<span class="eqno">(15)<a class="headerlink" href="#equation-b864fc35-3672-4541-9dc1-d8c8aeba1011" title="Permalink to this equation">#</a></span>\[\begin{equation}
+N^\text{model} = \frac{N^\text{class}(N^\text{class}-1)}{2}
+\end{equation}\]</div>
+<p>Each model predicts one class label. The final decision is the class label receiving the most votes, i.e. being predicted most of the time.</p>
+</section>
+</div><p><strong>Pro</strong><br />
+The sample size is more balanced between the two chosen classes than if datasets were split with one class against all others.</p>
+<p><strong>Con</strong><br />
+The pairing makes the number of models to train large and thus computer intensive.</p>
+<div class="proof definition admonition" id="multiclass1toalldef">
+<p class="admonition-title"><span class="caption-number">Definition 21 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>One-to-All or One-to-Rest approach</strong> consists of training each class against the collection of all other classes.</p>
+<p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of pairs to train is</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f26cb33d-ba75-4648-b9ea-054bf2a3b848">
+<span class="eqno">(16)<a class="headerlink" href="#equation-f26cb33d-ba75-4648-b9ea-054bf2a3b848" title="Permalink to this equation">#</a></span>\[\begin{equation}
+ N^\text{model} = N^\text{class}
+\end{equation}\]</div>
+<p>The final prediction is given by the highest value of the hypothesis function <span class="math notranslate nohighlight">\(h^{k}_theta(x)\)</span>, <span class="math notranslate nohighlight">\(k \in [1, N^\text{model}]\)</span> among the <span class="math notranslate nohighlight">\(N^\text{model}\)</span> binary classifiers.</p>
+</section>
+</div><p><strong>Pro</strong><br />
+Less binary classifiers to train.</p>
+<p><strong>Con</strong><br />
+The number of data points from the class to look for will be very small if the ‘background’ class is the merging of all other data points from the other classes.</p>
+<p>Illustrations. Let’s consider three classes, labelled with their colours and distributed in two dimensions (two input features) like this:</p>
+<figure class="align-default" id="lec03-3-multiclass-1">
+<a class="reference internal image-reference" href="../_images/lec03_3_multiclass-1.webp"><img alt="../_images/lec03_3_multiclass-1.webp" src="../_images/lec03_3_multiclass-1.webp" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">. 2D distribution of three different classes.<br />
+<sub>Image: <a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/">analyticsvidhya.com</a></sub></span><a class="headerlink" href="#lec03-3-multiclass-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The One-to-One method would create those hyperplanes (with two input features, D = 2 we will have a 1D line as separation):</p>
+<figure class="align-default" id="lec03-3-multiclass-2">
+<a class="reference internal image-reference" href="../_images/lec03_3_multiclass-2.webp"><img alt="../_images/lec03_3_multiclass-2.webp" src="../_images/lec03_3_multiclass-2.webp" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">. One-to-One approach splits paired dataset, ignoring the points of the other classes.<br />
+<sub>Image: <a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/">analyticsvidhya.com</a></sub></span><a class="headerlink" href="#lec03-3-multiclass-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="lec03-3-multiclass-3">
+<a class="reference internal image-reference" href="../_images/lec03_3_multiclass-3.webp"><img alt="../_images/lec03_3_multiclass-3.webp" src="../_images/lec03_3_multiclass-3.webp" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">. One-to-All approach focuses on one class to discriminate from all other points<br />
+(i.e. all other classes are merged into a single ‘background’ class).<br />
+<sub>Image: <a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/">analyticsvidhya.com</a></sub></span><a class="headerlink" href="#lec03-3-multiclass-3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Some further reading if you are curious:</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn more</p>
 <ul class="simple">
-<li></li>
+<li><p><a class="reference external" href="https://machinelearningmastery.com/one-vs-rest-and-one-vs-one-for-multi-class-classification/">One-vs-Rest and One-vs-One for Multi-Class Classification, machinelearningmastery.com</a></p></li>
+<li><p><a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/">Multiclass Classification Using SVM, analyticsvidhya.com</a></p></li>
 </ul>
-<p>Resume this:
-https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/</p>
+</div>
+<p>Before heading to the diagnosis of our</p>
 </section>
 </section>
 

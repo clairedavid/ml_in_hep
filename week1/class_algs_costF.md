@@ -176,4 +176,3 @@ Some further reading if you are curious:
 * [Multiclass Classification Using SVM, analyticsvidhya.com](https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/)
 ```
 
-Before heading to the diagnosis of our 

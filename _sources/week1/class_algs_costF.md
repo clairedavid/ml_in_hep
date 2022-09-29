@@ -58,12 +58,11 @@ The cost function derivatives will take the form:
 :label: costfderivlin
 \frac{\partial}{\partial \theta_j} J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) x_j^{(i)}
 ```
-This takes the same form as the derivatives the linear regression (Equation {eq}`partialDevLinReg` in Section {ref}`warmup:linregmulti:graddesc`).
+This takes the same form as the derivatives for linear regression (Equation {eq}`partialDevLinReg` in Section {ref}`warmup:linregmulti:graddesc`).
 
 ```{admonition} Exercise
 :class: seealso
-To convince yourself, derive Equation {eq}`costfderivlin` starting from the general definition in Equation {eq}`costFunctionLogReg`.
-
+To convince yourself, you can derive Equation {eq}`costfderivlin` starting from Equation {eq}`costFunctionLogReg`.   
 Hints and help available on demand after class.
 ```
 
@@ -177,4 +176,3 @@ Some further reading if you are curious:
 * [Multiclass Classification Using SVM, analyticsvidhya.com](https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/)
 ```
 
-Before heading to the diagnosis of our 

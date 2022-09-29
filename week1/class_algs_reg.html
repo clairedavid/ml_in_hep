@@ -51,10 +51,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Bias, Variance: how to cope" href="class_algs_biasV.html" />
-    <link rel="prev" title="Cost Function for classification" href="class_algs_costF.html" />
+    <link rel="prev" title="Cost Function for Classification" href="class_algs_costF.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -208,7 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="class_algs_logReg.html">
-     Logistic Regression
+     Logistic Regression: introduction
     </a>
    </li>
    <li class="toctree-l2">
@@ -218,7 +220,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="class_algs_costF.html">
-     Cost Function for classification
+     Cost Function for Classification
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -808,12 +810,53 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overfitting">
+   Overfitting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Regularization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ridge-regression">
+     Ridge Regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lasso-regularization">
+     Lasso Regularization
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -825,6 +868,36 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overfitting">
+   Overfitting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Regularization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ridge-regression">
+     Ridge Regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lasso-regularization">
+     Lasso Regularization
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -834,6 +907,102 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="regularization">
 <h1>Regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">#</a></h1>
+<p>A converging gradient descent is not the end of the story. The learning algorithm can fit the data too specifically to the training samples and would fail once given additional data, compromising the accuracy of predictions: this is overfitting. To prevent this, a regularizing term is added in the cost function to constrain the parameters.</p>
+<section id="overfitting">
+<h2>Overfitting<a class="headerlink" href="#overfitting" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="overfittingdef">
+<p class="admonition-title"><span class="caption-number">Definition 22 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Overfitting</strong> is a situation that occurs when a fitting procedure or machine learning algorithm matches too precisely a particular collection of a dataset.</p>
+</section>
+</div><p>Overfitting is synonym of overtuned, overtweaked. In other words: the model learns the detail and noise in the training dataset to the extent that it negatively impacts the performance of the model on a new dataset. This means that the noise or random fluctuations in the training dataset is picked up and learned as concepts by the model.
+In machine learning, we look for trends and compromises: a good algorithm may not be perfectly classifying a given data set; it needs to accommodate and ignore rare outliers so that future predictions, on average, will be accurate (we will see how to diagnose learners in the next section).</p>
+<p>The problem with overfitting is the future consequences once the machine learning algorithm receives additional data: it may lack flexibility.</p>
+<div class="proof definition admonition" id="flexibilitydef">
+<p class="admonition-title"><span class="caption-number">Definition 23 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>flexibility</strong> of a model determines its ability to generalize to different characteristic of the data.</p>
+</section>
+</div><p>In some definitions (it seems there is no standard definition of flexibility), the literature quotes “to increase the degrees of freedom available to the model to fit to the training data.” What are degrees of freedom in this context? Think of data points distributed along a parabola. A linear model will be underfitting the data as it is too simple to catch the parabolic trend with only two degrees of freedom (remember there are two parameters to optimize). A quadratic equation, however, will manage well with three degrees of freedom. A model with more degrees of freedom has margin to adapt well to different situations. This is the idea behind flexibility.</p>
+<p>The antonym of overfitting is underfitting.</p>
+<div class="proof definition admonition" id="underfittingdef">
+<p class="admonition-title"><span class="caption-number">Definition 24 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Underfitting</strong> is a situation that occurs when a fitting procedure or machine learning algorithm is not capturing the general trend of the dataset.</p>
+</section>
+</div><p>Another way to put it: an underfit algorithm lacks complexity.</p>
+<figure class="align-default" id="lec03-4-underoverfit-png">
+<a class="reference internal image-reference" href="../_images/lec03_4_underoverfit.png"><img alt="../_images/lec03_4_underoverfit.png" src="../_images/lec03_4_underoverfit.png" style="width: 1200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">. Example of several regression models.<br />
+The linear one on the left (Degree 1) is underfitting the data. The model on the right (Degree 15) is overfitting the data as its high polynomial produces a curve over-specific to the given data set. The middle model (Degree 4) is a good compromise.<br />
+<sub>Source: <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html">scikit-learn.org (with associated python code)</a></sub></span><a class="headerlink" href="#lec03-4-underoverfit-png" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>How to avoid overfitting?</p>
+</section>
+<section id="id1">
+<h2>Regularization<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="regularizationdef">
+<p class="admonition-title"><span class="caption-number">Definition 25 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Regularization</strong> in machine learning is a processus consisting of adding constraints on a model’s parameters.</p>
+</section>
+</div><p>The two main types of regularization techniques are the Ridge Regularization (also known as <a class="reference external" href="https://en.wikipedia.org/wiki/Tikhonov_regularization">Tikhonov regularization</a>, albeit the latter is more general) and the Lasso Regularization.</p>
+<section id="ridge-regression">
+<h3>Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">#</a></h3>
+<p>The Ridge regression is a linear regression with an additional regularization term added to the cost function:</p>
+<div class="math notranslate nohighlight" id="equation-ridgeeq">
+<span class="eqno">(17)<a class="headerlink" href="#equation-ridgeeq" title="Permalink to this equation">#</a></span>\[ J(\theta) = \frac{1}{2m} \left[ \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right)^2 + {\color{Maroon}\lambda \sum_{j=1}^n \theta_j^2} \right]\]</div>
+<p>The hyperparameter <span class="math notranslate nohighlight">\(\lambda\)</span> controls the degree of regularization. If <span class="math notranslate nohighlight">\(\lambda = 0\)</span>, the regularization term vanishes and we have a non-regularized linear regression. You can see the penalty imposed by the term <span class="math notranslate nohighlight">\(\lambda\)</span> will force the parameters <span class="math notranslate nohighlight">\(\theta\)</span> to be as small as possible; this helps avoiding overfitting. If <span class="math notranslate nohighlight">\(\lambda\)</span> gets very large, the parameters can be so shrinked that the model becomes over-simplified to a straight line and thus underfit the data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The factor <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> is used in some derivations of the regularization. This makes it easier to calculate the gradient, however it is only a constant value that can be compensated by the choice of the parameter <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The offset parameter <span class="math notranslate nohighlight">\(\theta\)</span> is not entering in the regularization sum.</p>
+</div>
+<p>In the litterature, the parameters are denoted with <span class="math notranslate nohighlight">\(b\)</span> for the offset (bias) and a vector of weight <span class="math notranslate nohighlight">\(\vec{w}\)</span> for the other parameters <span class="math notranslate nohighlight">\(\theta_1, \theta_2, \cdots \theta_n\)</span>. Thus the regularization term is written:</p>
+<div class="math notranslate nohighlight" id="equation-regl2weq">
+<span class="eqno">(18)<a class="headerlink" href="#equation-regl2weq" title="Permalink to this equation">#</a></span>\[\lambda \left(\left\| \vec{w} \right\|_2\right)^2\]</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The <span class="math notranslate nohighlight">\(\ell_2\)</span> norm is the Euclidian norm <span class="math notranslate nohighlight">\(\left\| x \right\|_2 = \sqrt{x_0^2 + x_1^2 + \cdots + x_n^2}\)</span>.</p>
+</aside>
+<p>with <span class="math notranslate nohighlight">\(\left\| \vec{w} \right\|_2\)</span> the <span class="math notranslate nohighlight">\(\ell_2\)</span> norm of the weight vector.</p>
+<p>For logistic regression, the regularized cost function becomes:</p>
+<div class="math notranslate nohighlight" id="equation-ridgelogeq">
+<span class="eqno">(19)<a class="headerlink" href="#equation-ridgelogeq" title="Permalink to this equation">#</a></span>\[ J(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; y^{(i)} \log( h_\theta(x^{(i)} )) \;+\; (1- y^{(i)}) \log( 1 - h_\theta(x^{(i)} )) \;\;\right] + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2}\]</div>
+</section>
+<section id="lasso-regularization">
+<h3>Lasso Regularization<a class="headerlink" href="#lasso-regularization" title="Permalink to this headline">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The <span class="math notranslate nohighlight">\(\ell_1\)</span> norm is the sum of the magnitudes of the vectors. It is also called Manhattan or <a class="reference external" href="https://en.wikipedia.org/wiki/Taxicab_geometry">Taxicab norm</a>.</p>
+</aside>
+<p>Lasso stands for least absolute shrinkage and selection operator. Behind the long acronym is a regularization of the linear regression using the <span class="math notranslate nohighlight">\(\ell_1\)</span> norm. We denote Cost(<span class="math notranslate nohighlight">\(\theta\)</span>) the cost function, i.e. either the Mean Squared Error for linear regression or the cross-entropy loss function <a class="reference internal" href="class_algs_costF.html#equation-costfunctionlogreg">(13)</a> for logistic regression. The lasso regression cost function is</p>
+<div class="math notranslate nohighlight" id="equation-lassocostf">
+<span class="eqno">(20)<a class="headerlink" href="#equation-lassocostf" title="Permalink to this equation">#</a></span>\[J(\theta) = \text{Cost}{\theta}  + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j}\]</div>
+<p>The regularizing term uses the <span class="math notranslate nohighlight">\(\ell_1\)</span> norm of the weight vector: <span class="math notranslate nohighlight">\(\left\| \vec{w} \right\|_1\)</span>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>As regularization influences the parameters, it is important to first perform feature scaling before applying the regularization.</p>
+</div>
+<p><strong>Which regularization method to use?</strong></p>
+<p>Each one has its pros and cons. As <span class="math notranslate nohighlight">\(\ell_1\)</span> (lasso) is a sum of absolute values, it is not differentiable and thus more computationally expensive. Yet <span class="math notranslate nohighlight">\(\ell_1\)</span> better deals with outliers (extreme values in the data) by not squaring their values. It is said to be more robust, i.e. more resilient to outliers in a dataset.</p>
+<p>The <span class="math notranslate nohighlight">\(\ell_1\)</span> regularization, by shriking some parameters to zero (making them vanish and no more influencial), has <em>feature selection</em> built in by design. If this can be advantageous in some cases, it can mishandle highly correlated features by arbitrarily selecting one over the others.</p>
+<p>Additional reading are provided below to deepen your understanding in the different regularization methods. Take home message: both methods combat overfitting.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn more</p>
+<ul class="simple">
+<li><p>A comparison of the pros and cons of Ridge (<span class="math notranslate nohighlight">\(\ell_2\)</span> norm) and lasso (<span class="math notranslate nohighlight">\(\ell_1\)</span> norm) regularization: <a class="reference external" href="https://www.kaggle.com/code/residentmario/l1-norms-versus-l2-norms/notebook">“L1 Norms versus L2 Norms”, Kaggle</a></p></li>
+<li><p><a class="reference external" href="https://neptune.ai/blog/fighting-overfitting-with-l1-or-l2-regularization">Figting overfitting with <span class="math notranslate nohighlight">\(\ell_1\)</span> or <span class="math notranslate nohighlight">\(\ell_2\)</span> regularization, neptune.ai</a></p></li>
+</ul>
+</div>
+<p>How can we inspect our machine learning algorithm to assess, even quantify the presence of under or overfitting? This is what we cover in the next section.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -867,7 +1036,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Cost Function for classification</p>
+            <p class="prev-next-title">Cost Function for Classification</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="class_algs_biasV.html" title="next page">

@@ -976,11 +976,11 @@ Like this:</p>
 The cost function derivatives will take the form:</p>
 <div class="math notranslate nohighlight" id="equation-costfderivlin">
 <span class="eqno">(14)<a class="headerlink" href="#equation-costfderivlin" title="Permalink to this equation">#</a></span>\[\frac{\partial}{\partial \theta_j} J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) x_j^{(i)}\]</div>
-<p>This takes the same form as the derivatives the linear regression (Equation <a class="reference internal" href="warmup_1D_linRegGDmulti.html#equation-partialdevlinreg">(10)</a> in Section <a class="reference internal" href="warmup_1D_linRegGDmulti.html#warmup-linregmulti-graddesc"><span class="std std-ref">Gradient Descent in Multilinear Regression</span></a>).</p>
+<p>This takes the same form as the derivatives for linear regression (Equation <a class="reference internal" href="warmup_1D_linRegGDmulti.html#equation-partialdevlinreg">(10)</a> in Section <a class="reference internal" href="warmup_1D_linRegGDmulti.html#warmup-linregmulti-graddesc"><span class="std std-ref">Gradient Descent in Multilinear Regression</span></a>).</p>
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
-<p>To convince yourself, derive Equation <a class="reference internal" href="#equation-costfderivlin">(14)</a> starting from the general definition in Equation <a class="reference internal" href="#equation-costfunctionlogreg">(13)</a>.</p>
-<p>Hints and help available on demand after class.</p>
+<p>To convince yourself, you can derive Equation <a class="reference internal" href="#equation-costfderivlin">(14)</a> starting from Equation <a class="reference internal" href="#equation-costfunctionlogreg">(13)</a>.<br />
+Hints and help available on demand after class.</p>
 </div>
 </section>
 <section id="alternative-techniques">
@@ -1018,8 +1018,8 @@ There are two main approaches of such methods for multiclassification.</p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-One approach</strong> consists of applying a binary classification for each pair of classes, ignoring the other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of models to train, <span class="math notranslate nohighlight">\(N^\text{model}\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b864fc35-3672-4541-9dc1-d8c8aeba1011">
-<span class="eqno">(15)<a class="headerlink" href="#equation-b864fc35-3672-4541-9dc1-d8c8aeba1011" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-46b79bdc-a710-47db-8ae2-a61e2c419061">
+<span class="eqno">(15)<a class="headerlink" href="#equation-46b79bdc-a710-47db-8ae2-a61e2c419061" title="Permalink to this equation">#</a></span>\[\begin{equation}
 N^\text{model} = \frac{N^\text{class}(N^\text{class}-1)}{2}
 \end{equation}\]</div>
 <p>Each model predicts one class label. The final decision is the class label receiving the most votes, i.e. being predicted most of the time.</p>
@@ -1033,8 +1033,8 @@ The pairing makes the number of models to train large and thus computer intensiv
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-All or One-to-Rest approach</strong> consists of training each class against the collection of all other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of pairs to train is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f26cb33d-ba75-4648-b9ea-054bf2a3b848">
-<span class="eqno">(16)<a class="headerlink" href="#equation-f26cb33d-ba75-4648-b9ea-054bf2a3b848" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2e1c2469-c6bf-4a1f-b9c9-24322921074c">
+<span class="eqno">(16)<a class="headerlink" href="#equation-2e1c2469-c6bf-4a1f-b9c9-24322921074c" title="Permalink to this equation">#</a></span>\[\begin{equation}
  N^\text{model} = N^\text{class}
 \end{equation}\]</div>
 <p>The final prediction is given by the highest value of the hypothesis function <span class="math notranslate nohighlight">\(h^{k}_theta(x)\)</span>, <span class="math notranslate nohighlight">\(k \in [1, N^\text{model}]\)</span> among the <span class="math notranslate nohighlight">\(N^\text{model}\)</span> binary classifiers.</p>
@@ -1075,7 +1075,6 @@ The number of data points from the class to look for will be very small if the â
 <li><p><a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/">Multiclass Classification Using SVM, analyticsvidhya.com</a></p></li>
 </ul>
 </div>
-<p>Before heading to the diagnosis of our</p>
 </section>
 </section>
 

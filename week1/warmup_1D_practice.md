@@ -55,7 +55,7 @@ To inspect the gradient descent algorithm, it is convenient to store the interme
 <sub>Credits: [Jonathan Hui Medium](https://jonathan-hui.medium.com/debug-a-deep-learning-network-part-5-1123c20f960d)</sub>
 ```
 
-```{admonition} In-class exercise
+```{admonition} Exercise
 :class: seealso
 For each learning rate situation above, illustrate with a plot (qualitative drawing) the corresponding evolution of $\theta$ parameters. 
 ```

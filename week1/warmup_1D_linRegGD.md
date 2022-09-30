@@ -143,7 +143,7 @@ Recall the mapping function for linear regression: $h_\theta(x) = \theta_0 + \th
 ```
 You will appreciate the simplification, as we will calculate the cost by hand for different values of $\theta_1$. More complicated things await you in the tutorial, promised.
 
-```{admonition} In-class exercise
+```{admonition} Exercise
 :class: seealso
 * Start with a value of $\theta_1$ = 1 and calculate the cost function $J(\theta_1)$.
 * Proceed the same for other values of $\theta_1$ of 0.5, 1.5, 2, 2.5, 3.
@@ -264,7 +264,7 @@ __Exit conditions__
 
 In linear regression, the partial derivatives can be simplified. 
 
-```{admonition} In-class exercise
+```{admonition} Exercise
 :class: seealso
 Knowing the form of the hypothesis function $h_\theta(x)$ for linear regression and the definition of the cost function, rewrite the Equation {eq}`eqGDlinCost` with the explicit partial derivatives.
 ```

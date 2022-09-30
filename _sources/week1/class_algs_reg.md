@@ -2,7 +2,15 @@
 
 A converging gradient descent is not the end of the story. The learning algorithm can fit the data too specifically to the training samples and would fail once given additional data, compromising the accuracy of predictions: this is overfitting. To prevent this, a regularizing term is added in the cost function to constrain the parameters. 
 
-## Overfitting
+## Underfitting, overfitting
+
+````{prf:definition}
+:label: underfittingdef
+__Underfitting__ is a situation that occurs when a fitting procedure or machine learning algorithm is not capturing the general trend of the dataset.  
+````
+Another way to put it: an underfit algorithm lacks complexity.
+
+The antonym of underfitting is overfitting.
 
 ````{prf:definition}
 :label: overfittingdef
@@ -19,15 +27,6 @@ The problem with overfitting is the future consequences once the machine learnin
 The __flexibility__ of a model determines its ability to generalize to different characteristic of the data.
 ````
 In some definitions (it seems there is no standard definition of flexibility), the literature quotes "to increase the degrees of freedom available to the model to fit to the training data." What are degrees of freedom in this context? Think of data points distributed along a parabola. A linear model will be underfitting the data as it is too simple to catch the parabolic trend with only two degrees of freedom (remember there are two parameters to optimize). A quadratic equation, however, will manage well with three degrees of freedom. A model with more degrees of freedom has margin to adapt well to different situations. This is the idea behind flexibility. 
-
-
-The antonym of overfitting is underfitting.
-
-````{prf:definition}
-:label: underfittingdef
-__Underfitting__ is a situation that occurs when a fitting procedure or machine learning algorithm is not capturing the general trend of the dataset.  
-````
-Another way to put it: an underfit algorithm lacks complexity.
 
 
 ```{figure} ../images/lec03_4_underoverfit.png

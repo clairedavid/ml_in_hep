@@ -42,7 +42,7 @@ First of all, the curve is not overshooting below or above our discrete outcomes
 ## Sigmoid function for logistic regression
 
 ````{prf:definition}
-:label:
+:label: mappingSigDef
 
 A __mapping function__ $h_\theta(x)$ used for logistic regression is of the form:
 

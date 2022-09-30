@@ -148,7 +148,7 @@ The partial derivatives of $J(\theta)$ for each parameter $\theta_j$ will be of 
 In the example of the previous section, the 3D plot of the cost function with respect to the $\theta$ parameters was not really bowl-shaped but stretched.
 This happens when the features are of different ranges. One parameter will have an increment size larger than the other.
 
-```{admonition} In-class exercise
+```{admonition} Exercise
 :class: seealso
 If let's say $x_1$ has values between $10 000$ and $100000$ and $x_2$ between 1 and 10.  
 1. Which parameter, $\theta_1$ or $\theta_2$ will be updated with a very large or very small step? (independently of the sign). Hint: ask yourself in which direction the contour is going to be stretched.

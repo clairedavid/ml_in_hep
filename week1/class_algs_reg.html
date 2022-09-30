@@ -833,8 +833,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overfitting">
-   Overfitting
+  <a class="reference internal nav-link" href="#underfitting-overfitting">
+   Underfitting, overfitting
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -874,8 +874,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overfitting">
-   Overfitting
+  <a class="reference internal nav-link" href="#underfitting-overfitting">
+   Underfitting, overfitting
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -908,10 +908,17 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="regularization">
 <h1>Regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">#</a></h1>
 <p>A converging gradient descent is not the end of the story. The learning algorithm can fit the data too specifically to the training samples and would fail once given additional data, compromising the accuracy of predictions: this is overfitting. To prevent this, a regularizing term is added in the cost function to constrain the parameters.</p>
-<section id="overfitting">
-<h2>Overfitting<a class="headerlink" href="#overfitting" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="overfittingdef">
+<section id="underfitting-overfitting">
+<h2>Underfitting, overfitting<a class="headerlink" href="#underfitting-overfitting" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="underfittingdef">
 <p class="admonition-title"><span class="caption-number">Definition 22 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Underfitting</strong> is a situation that occurs when a fitting procedure or machine learning algorithm is not capturing the general trend of the dataset.</p>
+</section>
+</div><p>Another way to put it: an underfit algorithm lacks complexity.</p>
+<p>The antonym of underfitting is overfitting.</p>
+<div class="proof definition admonition" id="overfittingdef">
+<p class="admonition-title"><span class="caption-number">Definition 23 </span></p>
 <section class="definition-content" id="proof-content">
 <p><strong>Overfitting</strong> is a situation that occurs when a fitting procedure or machine learning algorithm matches too precisely a particular collection of a dataset.</p>
 </section>
@@ -919,18 +926,11 @@ title="Print to PDF"
 In machine learning, we look for trends and compromises: a good algorithm may not be perfectly classifying a given data set; it needs to accommodate and ignore rare outliers so that future predictions, on average, will be accurate (we will see how to diagnose learners in the next section).</p>
 <p>The problem with overfitting is the future consequences once the machine learning algorithm receives additional data: it may lack flexibility.</p>
 <div class="proof definition admonition" id="flexibilitydef">
-<p class="admonition-title"><span class="caption-number">Definition 23 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 24 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>flexibility</strong> of a model determines its ability to generalize to different characteristic of the data.</p>
 </section>
 </div><p>In some definitions (it seems there is no standard definition of flexibility), the literature quotes “to increase the degrees of freedom available to the model to fit to the training data.” What are degrees of freedom in this context? Think of data points distributed along a parabola. A linear model will be underfitting the data as it is too simple to catch the parabolic trend with only two degrees of freedom (remember there are two parameters to optimize). A quadratic equation, however, will manage well with three degrees of freedom. A model with more degrees of freedom has margin to adapt well to different situations. This is the idea behind flexibility.</p>
-<p>The antonym of overfitting is underfitting.</p>
-<div class="proof definition admonition" id="underfittingdef">
-<p class="admonition-title"><span class="caption-number">Definition 24 </span></p>
-<section class="definition-content" id="proof-content">
-<p><strong>Underfitting</strong> is a situation that occurs when a fitting procedure or machine learning algorithm is not capturing the general trend of the dataset.</p>
-</section>
-</div><p>Another way to put it: an underfit algorithm lacks complexity.</p>
 <figure class="align-default" id="lec03-4-underoverfit-png">
 <a class="reference internal image-reference" href="../_images/lec03_4_underoverfit.png"><img alt="../_images/lec03_4_underoverfit.png" src="../_images/lec03_4_underoverfit.png" style="width: 1200px;" /></a>
 <figcaption>

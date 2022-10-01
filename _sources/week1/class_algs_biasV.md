@@ -10,15 +10,15 @@ In supervised machine learning, we have access to data containing labels, i.e. t
 ````{prf:definition}
 :label: trainvaltestsetsdef
 
-The __training set__ is a subset of the input data dedicated to the fitting procedure to find the model parameters minimizing the cost function (step 1)
+The __training set__ is a subset of the input data dedicated to the fitting procedure to find the model parameters minimizing the cost function (step 1).
 
-The __validation set__ is used to assess the performance of the model and tune the model's hyperparameters (step 2)
+The __validation set__ is used to assess the performance of the model and tune the model's hyperparameters (step 2).
 
 _Multiple models with various hyperparameters are iteratively trained again using __only__ the training set, then validated using __only__ the validation test until a given satisfying performance is achieved. The model of higher performance goes to the test step._
 
 The __test set__ is the final assessment done on the model; the resulting error rate on the test set is called __generalization error__, an estimate on the errors for future predictions with new data samples (step 3).
 ````
-The general split between the training / validation / test subsets are 80% / 20% / 20%. But depending on the number of samples, a smaller test set is sufficient. Reducing it allows for an increase of the training and validation set sizes, exposing the model to more data samples for training and validation.
+The general split between the training, validation and test subsets are 60%, 20% and 20%. But depending on the number of samples, a smaller test set is sufficient. Reducing it allows for an increase of the training and validation set sizes, exposing the model to more data samples for training and validation.
 
 ```{warning}
 The terms _validation_ and _test_ are sometimes interchangeably used both in industry and in academia, creating some terminological confusion. What is important to keep in mind is that once the iterative back and forth of steps 1 and 2 are giving a most performing model, the hyperparameters of the model are frozen and the last check, step 3, is done on not-yet-seen data with those hyperparameters.  
@@ -26,10 +26,11 @@ The terms _validation_ and _test_ are sometimes interchangeably used both in ind
 TL;DR: Never use the final test data for tuning.
 ```
 
-Data sets are split randomly, by shuffling the data rows and cutting and taking the table indices corresponding to the relative split between the three sub-collections. But precious information is lost by not training on the entire data samples available. Moreoever, one of the subset could pick more random outliers or noisy features that will deteriorate either the training or validation outcomes. To cope with this, a commonly used technique is to use the training set as validation set and vice versa, then pick the best performing outcome (set of hyperparameters). For instance if the entire data sample is split in terms of train/validate/test as A/B/C/D, with D the final test set, the cross validation would consist of 
-* train with (BC) and validate with A
-* train with (CA) and validate with B
-* train with (AB) and validate with C
+Data sets are split randomly, by shuffling the data rows and cutting and taking the table indices corresponding to the relative split between the three sub-collections. But precious information is lost by not training on the entire data samples available. Moreoever, one of the subset could pick more random outliers or noisy features that will deteriorate either the training or validation outcomes. To cope with this, a commonly used technique is to use the training set as validation set and vice versa, then pick the best performing outcome (set of hyperparameters). For instance if the entire data sample is split in terms of train/validate/test as A/B/C/D, with D the final test set, the cross validation would consist of:
+* training with sets (BC) and validate with set A
+* training with sets (CA) and validate with set B
+* training with sets (AB) and validate with set C
+
 In this example, we have a train/validate split of three sub-sets, we talk of a 3-fold cross-validation. The general name with $k$ sub-sets is $k$-fold cross validation.
 
 ````{prf:definition}
@@ -76,8 +77,8 @@ It is a $n^C \times n^C$ matrix, with $n^C$ the number of classes.
 ---
  . The confusion matrix for a binary classifier. <sub>Image from the author</sub>
  ```
-The number in each cell $C_{i,j}$ corresponds to the number of observations known to be in group $i$ and predicted to be in group $j$.
-The true cells are along the diagonal when $i=j$. Otherwise, if $i \neq j$, it is false. There are two ways to be right, two ways to be wrong. The counts are called:
+The quantity in each cell $C_{i,j}$ corresponds to the number of observations known to be in group $i$ and predicted to be in group $j$.
+The true cells are along the diagonal when $i=j$. Otherwise, if $i \neq j$, it is false. For $n^C =2$ there are two ways to be right, two ways to be wrong. The counts are called:
 * $C_{0,0}$: true negatives
 * $C_{1,1}$: true positives
 * $C_{0,1}$: false positives
@@ -92,7 +93,7 @@ __True negatives__
 We predict background and the event is background.
 
 __False positives__  
-We predict signal but the event is background: our signal will have background contamination.
+We predict signal but the event is background: our signal samples will have background contamination.
 
 __False negatives__  
 We predict background but the event is signal: we have signal contamination in the background but most importantly: we missed a rare signal event!
@@ -109,7 +110,7 @@ __Type II error - False Negative__
 Error of accepting the null hypothesis (signal not seen as signal) when the alternative hypothesis is actually true.
 ````
 
-The type I error leads to signal samples not pure, as contaminated with background. But a type II error's is a miss on a possible discovery! Or in medical diagnosis, stating "you are not ill" to a sick patient. 
+The type I error leads to signal samples not pure, as contaminated with background. But a type II error's is a miss on a possible discovery! Or in medical diagnosis, it can be equivalent to state "you are not ill" to a sick patient. Type II errors are in some cases and contexts much worse than type I errors.
 
 ## Performance measures
 
@@ -135,24 +136,27 @@ The total model error, i.e. the sum of all wrong predictions divided by the tota
 ````{prf:definition}
 :label: errormetricsclassdef
 
-__Accuracy__ is the rate at which the model is able to predict the correct value.
+__Accuracy__  
+Rate at which the model is able to predict the correct values of both classes.
 \begin{equation}
 \text{Accuracy} = \frac{\text{True predictions}}{\text{All predictions}} = \frac{\text{TP + TN}}{\text{TP + TN + FP + FN}}
 \end{equation}
 
-__Precision, or Positive Predictive Value (PPV)__ measures the fraction of true predictions among all __positive predictions__.
+__Precision, or Positive Predictive Value (PPV)__  
+Measure of the fraction of true predictions among all __positive predictions__.
 \begin{equation}
 \text{Precision} = \frac{\text{True predictions}}{\text{All Positive Predictions}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Positive}}
 \end{equation}
 
-__Recall, or True Positive Rate (TPR)__ measures the fraction of true predictions among all __true observations__.
+__Recall, or True Positive Rate (TPR)__  
+Measure of the fraction of true predictions among all __true observations__.
 \begin{equation}
-\text{Recall} = \frac{\text{True predictions}}{\text{All True}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
+\text{Recall} = \frac{\text{True predictions}}{\text{Actual Positive}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
 \end{equation}
 
-__F-Score__ describes the balance between Precision and Recall. It is the harmonic mean of the two:
+__F-Score, or F1__  describes the balance between Precision and Recall. It is the harmonic mean of the two:
 \begin{equation}
-\text{F-1} =2 \; \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+\text{F1} =2 \; \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
 \end{equation}
 ````
 
@@ -167,16 +171,111 @@ Find different examples of classification in which:
 
 ## Bias and Variance
 ### Definitions
-The generalization errors can be decomposed in three different errors:
+The generalization error can be expressed as a sum of three errors:
+```{math}
+:label:
+\text{Total error} = \text{Bias}^2 + \text{Variance} + \text{Irreducible}
+```
+The two first are _reducible_. In fact, we will see in the following how to reduce them as much as possible! The last one is due to the fact data is noisy itself. It can be minimized during data cleaning by removing outliers (or more upfront by improving the detector or device that collected the data). 
 
+```{figure} ../images/lec03_5_bias_var_ierrors.png
+---
+  name: lec03_5_bias_var_ierrors
+  width: 90%
+---
+ . Decomposition of the generalized error into the bias, variance and irreducible errors.  
+ <sub>Image: [towardsdatascience.com](https://towardsdatascience.com/the-bias-variance-tradeoff-8818f41e39e9)</sub>
+```
+Increasing the model complexity will reduce the bias but increase the variance. Reversely, simplifying a model to mitigate the variance comes at a risk of a higher bias. In the end, the lowest total error is a trade-off between bias and variance.
+
+````{prf:definition}
+:label: biasdef
+The __bias__ is an error coming from wrong assumptions on the model. 
+
+A highly biased model will most likely underfit the data.
+
+````
+The bias implies not grasping the full complexity of the situation (think of a biased person making an irrelevant or indecent remark in a conversation).
+
+
+````{prf:definition}
+:label: variancedef
+The __variance__ is an error stemming from the model's unreasonable sensitivity to fluctuations from the training data set.
+
+A model with high variance is likely to overfit the data.
+
+````
+As its name suggest, a model incorporating fluctuations in its design will change, aka _vary_, as soon as it is presented with new data (fluctuating differently).
+
+Below is a good visualization of the two tendencies for both regression and classification:
+
+```{figure} ../images/lec03_5_underoverfit_reg_class_table.jpg
+---
+  name: lec03_5_underoverfit_reg_class_table
+  width: 100%
+---
+ . Illustration of the bias and variance trade-off for regression and classification.  
+ <sub>Image: LinkedIn Machine Learning India</sub>
+```
+Before learning on ways to cope with either bias or variance, we need first to assess the situation. How to know if our model has high bias or high variance?
+
+### Identify the case
+By plotting the cost function $J(\theta)$ with respect to the model's complexity. Increasing complexity can be done by adding more features, higher degree polynomial terms, etc. This implies running the training and validation each time with a different model to collect enough points to make such a graph:
+
+```{figure} ../images/lec03_5_bias-variance-train-val-complexity.png
+---
+  name: lec03_5_bias-variance-train-val-complexity
+  width: 90%
+---
+ . Visualization of the error (cost function) with respect to the model's complexity for the training and validation sets. The ideal complexity is in the middle region where both the training and validation errors are low and close to one another.  
+ <sub>Image: [David Ziganto](https://dziganto.github.io/cross-validation/data%20science/machine%20learning/model%20tuning/python/Model-Tuning-with-Validation-and-Cross-Validation/)</sub>   
+ ```
+
+It can impractical to test several models with higher complexity. More achievable graphs would be to plot the error (cost function) with respect to the sample size $m$ or the number of epochs $N$:
+
+```{figure} ../images/lec03_5_low_high_bias.webp
+---
+  name: lec03_5_low_high_bias
+  width: 100%
+---
+```
+```{figure} ../images/lec03_5_low_high_var.webp
+---
+  name: lec03_5_low_high_var
+  width: 100%
+---
+.  Interpretation of the error plots as a function of the number of samples in the dataset for low and high bias/variance situations.
+<sub>Images: [dataquest.io](https://www.dataquest.io/blog/learning-curves-machine-learning/)</sub>
+```
+
+The presence of a small gap between the train and test errors could appear like a good thing. But it important to quantify the training error and relate it to the desired accuracy: if the error is much higher than the irreducible error, chances are the algorithm is suffering from a high bias. 
+
+The variance is usually spotted by the presence of a significant gap pertaining even if the dataset size $m$ increases, yet closing itself for large $m$ (hint for the following section on to cope with variance: getting more data). 
 
 
 ### How to deal with bias or variance
 
+The actions to perform to mitigate either bias or variance once we have diagnosed the situation can be done on the dataset, on the model itself and on the regularization. The table below summarizes the relevant treatments to further optimize your machine learning algorithm in the good direction.
 
+```{list-table}
+:header-rows: 1
 
-==============
+* - Action categories
+  - Reducing Bias
+  - Reducing Variance
+* - On the dataset
+  - 
+  - Adding more (cleaned) data
+* - On the model
+  - Adding new features and/or polynomial features
+  - Reducing the number of features
+* - Regularization
+  - Decreasing parameter $\lambda$
+  - Increasing parameter $\lambda$
+```
+  
 
+The tutorials will offer a good training for you (and validation ;) ) to diagnose and correctly optimize your machine learning algorithm. 
 
 ```{admonition} Learn more
 :class: seealso
@@ -184,5 +283,3 @@ The generalization errors can be decomposed in three different errors:
 * [Machine Learning Model Performance and Error Analysis, LinkedIn](https://www.linkedin.com/pulse/machine-learning-model-performance-error-analysis-payam-mokhtarian)
 
 ```
-
-=== good graphset here: https://datascience.foundation/sciencewhitepaper/underfitting-and-overfitting-in-machine-learning 

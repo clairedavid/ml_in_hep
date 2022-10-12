@@ -1,3 +1,4 @@
+(class:sigmoid)=
 # What is the Sigmoid Function?
 
 ## General definition

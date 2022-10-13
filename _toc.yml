@@ -33,7 +33,7 @@ parts:
     - file: week1/BDTs
       sections: 
       - file: week1/BDTs_def
-      - file: week1/BDTs_terms
+      - file: week1/BDTs_forest
       - file: week1/BDTs_boosting
       - file: week1/BDTs_XGBoost
 

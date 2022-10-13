@@ -143,6 +143,8 @@ __Exit conditions__
 
 One of the greatest strength of decision tree is the fact very few assumptions about the training data are made. It differs from linear or polynomial models where we need to know beforehand that the data can be fit with either linear or polynomial function.  
 
+Another advantage: feature scaling is not necessary. No need to standardize the dataset beforehand.
+
 Decision trees are also easy to interpret. It's possible to check calculations and apply the classification rules even manually. Such clarity in the algorithm, often called _white box_ models, contrasts with the _black boxes_ that are for instance neural networks. 
 
 Despite these advantages, decision trees have several limitations.
@@ -163,7 +165,7 @@ How to  tweak (increase of decrease) the hyperparameters in order to relevantly 
 
 ````{admonition} Check your answers
 :class: tip, dropdown
-Hyperparameters with a minimum should be increased and those with a maximum bound should be decrease in order to regularize the decision tree. 
+Hyperparameters with a minimum should be increased and those with a maximum bound should be decreased in order to regularize the decision tree. 
 ````
 
 ### Orthogonal cuts

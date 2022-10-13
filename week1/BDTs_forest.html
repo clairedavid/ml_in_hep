@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>What are Decision Trees? &#8212; Machine Learning in Particle Physics</title>
+    <title>Ensemble Learning and Random Forests &#8212; Machine Learning in Particle Physics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,12 +51,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Ensemble Learning and Random Forests" href="BDTs_forest.html" />
-    <link rel="prev" title="4. Decision Trees and Boosting" href="BDTs.html" />
+    <link rel="next" title="What is boosting?" href="BDTs_boosting.html" />
+    <link rel="prev" title="What are Decision Trees?" href="BDTs_def.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -245,13 +243,13 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="BDTs_def.html">
      What are Decision Trees?
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="BDTs_forest.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Ensemble Learning and Random Forests
     </a>
    </li>
@@ -745,7 +743,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fweek1/BDTs_def.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fweek1/BDTs_forest.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -773,7 +771,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/week1/BDTs_def.md"
+        <a href="../_sources/week1/BDTs_forest.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -833,38 +831,28 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   Definition
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example">
-   Example
+  <a class="reference internal nav-link" href="#definitions">
+   Definitions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#algorithm">
-   Algorithm
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#limitations">
-   Limitations
+  <a class="reference internal nav-link" href="#random-forest">
+   Random Forest
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cutting-down-on-overfitting">
-     Cutting down on overfitting
+    <a class="reference internal nav-link" href="#presentation">
+     Presentation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#orthogonal-cuts">
-     Orthogonal cuts
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#instability">
-     Instability
+    <a class="reference internal nav-link" href="#advantages">
+     Advantages
     </a>
    </li>
   </ul>
@@ -878,7 +866,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>What are Decision Trees?</h1>
+                <h1>Ensemble Learning and Random Forests</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -889,38 +877,28 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   Definition
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example">
-   Example
+  <a class="reference internal nav-link" href="#definitions">
+   Definitions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#algorithm">
-   Algorithm
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#limitations">
-   Limitations
+  <a class="reference internal nav-link" href="#random-forest">
+   Random Forest
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cutting-down-on-overfitting">
-     Cutting down on overfitting
+    <a class="reference internal nav-link" href="#presentation">
+     Presentation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#orthogonal-cuts">
-     Orthogonal cuts
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#instability">
-     Instability
+    <a class="reference internal nav-link" href="#advantages">
+     Advantages
     </a>
    </li>
   </ul>
@@ -935,185 +913,127 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="what-are-decision-trees">
-<h1>What are Decision Trees?<a class="headerlink" href="#what-are-decision-trees" title="Permalink to this headline">#</a></h1>
-<p>Without knowing, you may have already been implementing a ‘decision tree’ process while making a choice in your life. For instance, which cereal box to buy at the store. There are so many brands and options (understand classes) that it can be overwhelming. Here is a tree-like reasoning example:</p>
-<ul class="simple">
-<li><p>Does it have more than three types of flakes? No? Too boring. Yes? Let’s move on:</p></li>
-<li><p>Is a portion bigger or lower than 300 calories? Bigger? It’s not healthy, let’s go lower and see the next parameter:</p></li>
-<li><p>Is it crunchy? If yes, I take that one!</p></li>
-</ul>
-<p>Your decision protocol followed a tree process starting with a node (a decision to make), then evaluating a condition on a feature (number of flake type, calorie density, crunchiness factor) and, depending on the answer, another node evaluates another input feature. Such a decision-making process can be visualized like a tree whose branches are the different outcomes and leaves the final choices.</p>
-<p>Decision trees belong to the family of machine learning algorithms for both classification and regression (we will focus on classification here).</p>
-<section id="definition">
-<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="dtdef">
-<p class="admonition-title"><span class="caption-number">Definition 36 </span></p>
-<section class="definition-content" id="proof-content">
-<p>A <strong>decision tree</strong> is a flowchart mapping a decision making process. It is organized into nodes, branches and leaves.</p>
-</section>
-</div><div class="proof definition admonition" id="nodesdef">
-<p class="admonition-title"><span class="caption-number">Definition 37 </span></p>
-<section class="definition-content" id="proof-content">
-<p>A node is a condition box evaluating one or more input features.</p>
-<p>The outcomes of that evaluation (either boolean or numerical) is divised into <strong>branches</strong>, or edges.</p>
-<p>Each branch supports one outcome (usually True/False) on the condition from the previous node.</p>
-<p>A node at the end of a branch that is not divising further is called a <strong>leaf</strong>.</p>
-</section>
-</div><p>A decision tree is drawn upside down with its root node at the top.</p>
-</section>
-<section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h2>
-<p>Let’s illustrate the terminology with an example. Let’s have a dataset with two variables as input features, <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
-
-    <span class="n">tree_clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">tree_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The code has been shortened for clarity, see the <a class="reference internal" href="BDTs_demo.html"><span class="doc std std-doc">notebook</span></a> for completeness.</p>
-<p>To visualize the work of the decision tree classifier, the <code class="docutils literal notranslate"><span class="pre">graphviz</span></code> library creates an automated flowchart:</p>
-<figure class="align-default" id="lec04-bdts-viz-tree">
-<a class="reference internal image-reference" href="../_images/lec04_BDTs_viz_tree.png"><img alt="../_images/lec04_BDTs_viz_tree.png" src="../_images/lec04_BDTs_viz_tree.png" style="width: 50%;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">. Example of a Decision Tree drawn from sklearn pre-loaded dataset <em>iris</em>. The root node is at the top, at depth zero. The tree stops at depth = 2 (final leaves).</span><a class="headerlink" href="#lec04-bdts-viz-tree" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Such a flowchart above tells how future predictions are made. Predicting the class of a new data point (<span class="math notranslate nohighlight">\(x_1^\text{new}\)</span>, <span class="math notranslate nohighlight">\(x_2^\text{new}\)</span>), one simply follows the ‘route’ of the tree starting from the root node (on top) and ‘answering’ the conditions. Is <span class="math notranslate nohighlight">\(x_1\)</span> lower than 2.45? Yes, go to the left (and it corresponds to predicted class A). If not, go to the next node evaluating <span class="math notranslate nohighlight">\(x_2\)</span> feature, etc.</p>
-<p>The predictions can be visualized on a 2D scatter plot. The threshold values are the decision boundaries (see <a class="reference internal" href="class_algs_sigmoid.html#decBoundDef">Definition 18</a> in section <a class="reference internal" href="class_algs_sigmoid.html#class-sigmoid"><span class="std std-ref">What is the Sigmoid Function?</span></a>) and are materialized by either vertical or horizontal cuts. Instead of a straight line or polynomials fit, a decision tree rather makes an orthogonal segmentation of the phase space.</p>
-<figure class="align-default" id="dt-boundary-1" style="width: 100%">
-<div class="cell_output docutils container">
-<img alt="../_images/BDTs_demo_17_0.png" src="../_images/BDTs_demo_17_0.png" />
-</div>
-</figure>
-<p>The first node at depth 0 creates a first decision boundary, splitting the dataset into two parts (and luckily isolating class A in a pure subset). The second cut is at depth 1. As the tree was set to a max depth of 2, the splitting stops at depth 1 (as we start from zero). But it is possible to continue further with a max depth of 3 and the decision boundaries (several for each branch) would be the dotted vertical lines.</p>
-<p>We could see with an example and illustrative graphs how the decision tree splits the datasets. But how are these splits calculated? Why did the classifier chose the cut values <span class="math notranslate nohighlight">\(x_1\)</span> = 2.45 and <span class="math notranslate nohighlight">\(x_2\)</span> = 1.75? This is what we will cover in the following section.</p>
-</section>
-<section id="algorithm">
-<h2>Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this headline">#</a></h2>
-<p>There are metrics entering in the optimization algorithm of a decision tree. One is the Gini impurity:</p>
-<div class="proof definition admonition" id="ginidef">
-<p class="admonition-title"><span class="caption-number">Definition 38 </span></p>
-<section class="definition-content" id="proof-content">
-<p>The <strong>Gini’s diversity index</strong> is a measure of a node’s impurity.</p>
-<p>It is defined for each tree node <span class="math notranslate nohighlight">\(i\)</span> as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2c935d33-b0be-4378-815c-7ba0f5b4f6ee">
-<span class="eqno">(27)<a class="headerlink" href="#equation-2c935d33-b0be-4378-815c-7ba0f5b4f6ee" title="Permalink to this equation">#</a></span>\[\begin{equation}
-G_i = 1 - \sum_{k=1}^{N^\text{class}} \left( \frac{N^k}{ N^{\text{node } i}} \right)^2 
-\end{equation}\]</div>
-<p>with <span class="math notranslate nohighlight">\(N^k\)</span> the number of data samples of class <span class="math notranslate nohighlight">\(k\)</span> in node <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(N^{\text{node } i}\)</span> the total number of data samples in node <span class="math notranslate nohighlight">\(i\)</span>.</p>
-<p>The Gini’s impurity index ranges from 0 (100% pure node) to 1 (very impure node).</p>
-</section>
-</div><p>The algorithm used for classification trees is called CART. It stands for Classification and Regression Tree.</p>
-<div class="proof algorithm admonition" id="DTalgo">
-<p class="admonition-title"><span class="caption-number">Algorithm 3 </span> (Classification and Regression Tree)</p>
-<section class="algorithm-content" id="proof-content">
-<p><strong>Inputs</strong></p>
-<ul class="simple">
-<li><p>Training data set <span class="math notranslate nohighlight">\(X\)</span> of <span class="math notranslate nohighlight">\(m\)</span> samples with each <span class="math notranslate nohighlight">\(n\)</span> input features, associated with their targets <span class="math notranslate nohighlight">\(y\)</span></p></li>
-</ul>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-X = \begin{pmatrix}
-x_1^{(1)} &amp; x_2^{(1)} &amp; \cdots  &amp; x_j^{(1)} &amp; \cdots &amp; x_n^{(1)} \\[2ex]
-x_1^{(2)} &amp; x_2^{(2)} &amp; \cdots &amp; x_j^{(2)} &amp; \cdots &amp; x_n^{(2)} \\
-\vdots  &amp; \vdots &amp; \ddots  &amp; \vdots &amp;  &amp; \vdots \\
-x_1^{(i)} &amp; x_2^{(i)} &amp; \cdots &amp; x_j^{(i)} &amp; \cdots &amp; x_n^{(i)} \\
-\vdots &amp; \vdots &amp;  &amp; \vdots &amp; \ddots  &amp; \vdots \\
-x_1^{(m)} &amp; x_2^{(m)} &amp; \cdots &amp; x_j^{(m)} &amp; \cdots &amp; x_n^{(m)} \\
-\end{pmatrix}  \hspace{10ex}  y = \begin{pmatrix}
-y^{(1)} \\[2ex]
-y^{(2)} \\[2ex]
-\vdots  \\
-y^{(i)}\\
-\vdots \\[2ex]
-y^{(m)}\end{pmatrix}
-\end{equation*}\]</div>
-<p><strong>Hyperparameters</strong></p>
-<ul class="simple">
-<li><p>Max Depth</p></li>
-<li><p>Minimum sample split</p></li>
-<li><p>Minimum samples per leaf,</p></li>
-<li><p>Maximum leaf nodes</p></li>
-<li><p>…</p></li>
-</ul>
-<p><strong>Outputs</strong><br />
-A collection on decision boundaries segmenting the <span class="math notranslate nohighlight">\(k\)</span> feature phase space.</p>
-<p><strong>Initialization</strong> at the root node</p>
-<ol class="simple">
-<li><p><strong>Threshold computation</strong>:
-For each feature <span class="math notranslate nohighlight">\(k\)</span>, finds the threshold value <span class="math notranslate nohighlight">\(t_k\)</span> maximizing purity of the two resulting subsets either lower (left) or higher (right) than the threshold <span class="math notranslate nohighlight">\(t_k\)</span>.
-The cost function is defined as:</p></li>
-</ol>
-<div class="amsmath math notranslate nohighlight" id="equation-1d1725c7-7341-4979-9b25-acd50f1684c3">
-<span class="eqno">(28)<a class="headerlink" href="#equation-1d1725c7-7341-4979-9b25-acd50f1684c3" title="Permalink to this equation">#</a></span>\[\begin{equation}
-J(k, t_k) = \frac{n_\text{left}}{n_\text{node}} G_\text{left} + \frac{n_\text{right}}{n_\text{node}} G_\text{right}
-\end{equation}\]</div>
-<p>The purity is weighted by the subset sizes. The pair (<span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(t_k\)</span>) producing the purest subset is set for the node.</p>
-<ol class="simple">
-<li><p><strong>Branching</strong>:<br />
-The dataset is split according to the threshold <span class="math notranslate nohighlight">\(t_k\)</span> into two branches and subsequent new nodes.<br />
-Repeat Step 1 at the new nodes.</p></li>
-</ol>
-<p><strong>Exit conditions</strong></p>
-<ul class="simple">
-<li><p>After Max Depth is reach</p></li>
-<li><p>If one of the other hyperparameters - if set - is fullfilled</p></li>
-</ul>
-</section>
-</div><p>One of the greatest strength of decision tree is the fact very few assumptions about the training data are made. It differs from linear or polynomial models where we need to know beforehand that the data can be fit with either linear or polynomial function.</p>
-<p>Another advantage: feature scaling is not necessary. No need to standardize the dataset beforehand.</p>
-<p>Decision trees are also easy to interpret. It’s possible to check calculations and apply the classification rules even manually. Such clarity in the algorithm, often called <em>white box</em> models, contrasts with the <em>black boxes</em> that are for instance neural networks.</p>
-<p>Despite these advantages, decision trees have several limitations.</p>
-</section>
-<section id="limitations">
-<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">#</a></h2>
-<section id="cutting-down-on-overfitting">
-<h3>Cutting down on overfitting<a class="headerlink" href="#cutting-down-on-overfitting" title="Permalink to this headline">#</a></h3>
-<p>Decision trees are choosing the cut values solely on the available dataset. If let unconstrain, they will continue their way cutting through the data noise, ineluctably leading to overfitting. The way to regularize them is done through the hyperparameters, restricting their freedom:</p>
-<ul class="simple">
-<li><p><strong>maximum depth</strong> is stopping the algorithm after the node ‘depth - 1’ (as the starting node is zero)</p></li>
-<li><p><strong>minimum sample split</strong> is the minimum number of samples a node must have before it can be split</p></li>
-<li><p><strong>minimum sample leaf</strong> restricts the number of samples within a leaf, preventing an over-segmentation of the data into small square ‘islands’ with very few data samples in them</p></li>
-<li><p><strong>maximum leaf nodes</strong> is an upper bound on the amount of leaves (final nodes)</p></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="ensemble-learning-and-random-forests">
+<h1>Ensemble Learning and Random Forests<a class="headerlink" href="#ensemble-learning-and-random-forests" title="Permalink to this headline">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>Let’s start with a game.</p>
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
-<p>How to  tweak (increase of decrease) the hyperparameters in order to relevantly perform a regularization?</p>
+<p>In groups of 6 to 8 people, estimate first individually and then collect your answers on the following questions:<br />
+<strong>A regression question</strong></p>
+<ul class="simple">
+<li><p>What is the age of the instructor?</p></li>
+</ul>
+<p><strong>A Physics question</strong></p>
+<ul class="simple">
+<li><p>Which fundamental interaction is the strongest: Electromagnetism, Weak Force, Strong Force or Gravity?
+For the regression, compute the average of your answers.<br />
+For the classification, count your votes and pick the class collecting most votes.</p></li>
+</ul>
+<p><strong>A question of your choice</strong>  (but with an answer available on the web)</p>
 </div>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Check your answers</p>
-<p>Hyperparameters with a minimum should be increased and those with a maximum bound should be decreased in order to regularize the decision tree.</p>
-</div>
+<p>We attribute to Aristotle the old adage “the whole is greater than the sum of its parts.” The exercise above is an example of the so-called “wisdom of the crowd,” where the collective brings a better answer than the individual guesses. Such a technique of getting a prediction from aggregating a collection of predictors is called <em>Ensemble Learning</em>.</p>
 </section>
-<section id="orthogonal-cuts">
-<h3>Orthogonal cuts<a class="headerlink" href="#orthogonal-cuts" title="Permalink to this headline">#</a></h3>
-<p>As the decision trees work with threshold values, the boundaries are always perpendicular to an axis. This works well if the data is ‘by chance’ aligned with the axes. This ‘feature’ makes decision trees sensitive to rotation.  If we rotate the dataset used in the example above, we can see it changes decision boundaries:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">180</span> <span class="o">*</span> <span class="mi">20</span>
-<span class="n">rotation_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)],</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)]])</span>
-<span class="n">Xr</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">rotation_matrix</span><span class="p">)</span>
+<section id="definitions">
+<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="ensembledef">
+<p class="admonition-title"><span class="caption-number">Definition 39 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A <strong>Ensemble Learning</strong> is a technique consisting of aggregating the predictions of an Ensemble, i.e. a group of predictors.</p>
+<p>An Ensemble Learning algorithm is called an <strong>Ensemble method</strong>.</p>
+</section>
+</div><p>The more diverse the predictors within the ensemble, the better to obtain an accurate final prediction.
+The fascinating part: the global prediction not only outperforms each individual learners, but the predictors do not have to be that good for this to work. We refer to a not-so-good predictor as a <em>weak learner</em>. Once combined, the ensemble method can generate higher accuracy in the final prediction: it has become a <em>strong learner</em>.</p>
+<p>How are the individual results from the predictors combined?</p>
+<p>For regression, taking the average of the predicted values is the most natural way.</p>
+<p>For classification, the aggregation is done either through a counting of votes, i.e. which class receives the most predictions (each predictor produces one vote). Or via probability if the predictors provide this information along with the predicted class: the prediction associated with the highest probability wins.</p>
+<div class="proof definition admonition" id="softhardvoterdef">
+<p class="admonition-title"><span class="caption-number">Definition 40 </span></p>
+<section class="definition-content" id="proof-content">
+<p>When the combined result of an Ensemble method is done by…</p>
+<p>… counting the class that gets the most votes among the predictors, i.e. a majority-vote aggregation, we call this is a <strong>hard voting</strong> classifier.</p>
+<p>… choosing the class that comes with the highest associated probability (provided the information is available): this is a <strong>soft voting</strong> classifier.</p>
+</section>
+</div><p>The hard voting could appear advantageous, it is however impossible to know how confident each vote is, whereas the soft voting benefit from that information. Soft voting thus performs generally better.</p>
+<p>There is another concept important in ensemble learning: bagging.</p>
+<p>Remember that in ensemble learning, diversity is key. Yet it can be impractical to train very diverse learners, each having their own specificities and drawbacks to pay attention to. An alternative approach is to deal only with one algorithm but increase the diversity in the dataset. Like shuffling a deck of cards, bagging involves training predictors on randomized subsets of the dataset.</p>
+<div class="proof definition admonition" id="baggingdef">
+<p class="admonition-title"><span class="caption-number">Definition 41 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Bagging</strong>, short for <em>bootstrap aggregating</em>, is a method in ensemble learning consisting of resampling multiple times the dataset <em>with replacement</em>, i.e. the procedure can select a data point more than once in a resampled dataset.</p>
+<p><strong>Pasting</strong> refers to a similar protocol but <em>without replacement</em> (no repeated data points).</p>
+</section>
+</div><p>Recall the instability characteristic to decision trees. By varying the dataset multiple times, such instabilities are averaged out by all other predictions. In the end, even if each predictor is more biased (due to a given sampling), the aggregated results reduce both bias and variance.</p>
+<figure class="align-default" id="lec04-2-bagging">
+<a class="reference internal image-reference" href="../_images/lec04_2_bagging.png"><img alt="../_images/lec04_2_bagging.png" src="../_images/lec04_2_bagging.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">. Visual of bootstrap aggregating or bagging.<br />
+<sub>Source: Wikipedia</sub></span><a class="headerlink" href="#lec04-2-bagging" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>So far we have said nothing from the type of predictors. Let’s see a particular example of ensemble method whose predictors are decision trees. The name follows naturally: it’s a forest.</p>
+</section>
+<section id="random-forest">
+<h2>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">#</a></h2>
+<section id="presentation">
+<h3>Presentation<a class="headerlink" href="#presentation" title="Permalink to this headline">#</a></h3>
+<div class="proof definition admonition" id="randomforestdef">
+<p class="admonition-title"><span class="caption-number">Definition 42 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A <strong>random forest</strong> is an ensemble learning made of solely decision trees.</p>
+<p>Class prediction is done by selecting the class obtaining the most votes among all decision trees’ predictions.</p>
+</section>
+</div><p>Random forest classifiers are implemented in Scikit-Learn from the <code class="docutils literal notranslate"><span class="pre">ensemble</span></code> library. Here is a minimal code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 
-<span class="n">tree_clf_r</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">tree_clf_r</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xr</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">rnd_clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">max_leaf_nodes</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rnd_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
-<span class="n">plot_decision_boundary</span><span class="p">(</span><span class="n">tree_clf_r</span><span class="p">,</span> <span class="n">Xr</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">y_pred_rf</span> <span class="o">=</span> <span class="n">rnd_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 </pre></div>
 </div>
-<figure class="align-default" id="dt-boundary-r" style="width: 100%">
-<div class="cell_output docutils container">
-<img alt="../_images/BDTs_demo_18_0.png" src="../_images/BDTs_demo_18_0.png" />
-</div>
-</figure>
+<p>Only four lines. But there are obviously much more lines of code ‘backstage’ behind those calls. It’s important to understand what these methods do as well as their arguments.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n_estimators</span></code> refers to the number of trees in the forest</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code> is a hyperparameter regularizing each tree</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> tells how many CPU cores to use (-1 tells Scikit-Learn to use all cores available)</p></li>
+</ul>
+<p>The Random Forest inherits all hyperparameters of the decision trees. There are other hyperparameters proper to Random Forest classifiers, for instance activating the bagging <code class="docutils literal notranslate"><span class="pre">bootstrap=True</span></code> with <code class="docutils literal notranslate"><span class="pre">max_samples</span></code> controlling the sample size of each subset.<br />
+More on <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">Scikit-Learn RandomForest page</a>.</p>
 </section>
-<section id="instability">
-<h3>Instability<a class="headerlink" href="#instability" title="Permalink to this headline">#</a></h3>
-<p>Not only rotated data samples, decision trees can also drastically change with only minimal modification in the data. Removing one data point in the dataset above can lead to very different decision boundaries:</p>
-<figure class="align-default" id="dt-boundary-tweaked" style="width: 100%">
-<div class="cell_output docutils container">
-<img alt="../_images/BDTs_demo_20_0.png" src="../_images/BDTs_demo_20_0.png" />
+<section id="advantages">
+<h3>Advantages<a class="headerlink" href="#advantages" title="Permalink to this headline">#</a></h3>
+<p>Random forests are popular as they present numerous qualities:</p>
+<ul class="simple">
+<li><p>their results are among the most accurate compared with other machine learning algorithms</p></li>
+<li><p>they are less likely to overfit the data</p></li>
+<li><p>they run quickly even with a large dataset</p></li>
+<li><p>they require less data to train</p></li>
+<li><p>they are easy to interpret</p></li>
+<li><p>they can be scaled using parallel computing (cores)</p></li>
+<li><p>they can rank the features by their relative importance</p></li>
+</ul>
+<p>More about the last point: random forest classifiers not only classify the data, they can also measure the relative effect, or importance, each feature has with respect to the others. This is very handy while designing a machine learning algorithm to see which features matter. If for instance there are too many features, a random forest can help reduce this number while not removing key features. Scikit-Learn compute the feature importance automatically after training. It is expressed as a score, ranging from zero (useless feature) to 1 (most important). Here is a snippet showing how to access the feature importance scores:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dataset loading (not written): X and y dataframes</span>
+
+<span class="n">rnd_clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rnd_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">rnd_clf</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+</pre></div>
 </div>
-</figure>
-<p>Instability will change future predictions and is quite a bad feature (bug) from a machine learning algorithm. How to circomvent this intrinsic instability? This is what we will cover in the next section!</p>
+<p>This will output something in the like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">x1</span>  <span class="mf">0.11323</span>
+    <span class="n">x2</span>  <span class="mf">0.54530</span>
+    <span class="n">x3</span>  <span class="mf">0.05961</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>The sum of all feature importance is 1.</p>
+<p>We have seen the advantage of decision trees working together in a beautiful forest to produce low variance predictions. Let’s go one step further: the boosting.</p>
 </section>
 </section>
 </section>
@@ -1145,17 +1065,17 @@ Repeat Step 1 at the new nodes.</p></li>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="BDTs.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="BDTs_def.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">4. Decision Trees and Boosting</p>
+            <p class="prev-next-title">What are Decision Trees?</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="BDTs_forest.html" title="next page">
+    <a class='right-next' id="next-link" href="BDTs_boosting.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Ensemble Learning and Random Forests</p>
+        <p class="prev-next-title">What is boosting?</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

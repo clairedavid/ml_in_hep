@@ -35,7 +35,6 @@ parts:
       - file: week1/BDTs_def
       - file: week1/BDTs_forest
       - file: week1/BDTs_boosting
-      - file: week1/BDTs_XGBoost
 
     - file: week1/NN1
       sections: 

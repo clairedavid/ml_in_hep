@@ -7,17 +7,17 @@ Let's start with a game.
 ```{admonition} Exercise
 :class: seealso
 In groups of 6 to 8 people, estimate first individually and then collect your answers on the following questions:  
-__A regression question__  
-* What is the age of the instructor?
 
-__A Physics question__  
-* Which fundamental interaction is the strongest: Electromagnetism, Weak Force, Strong Force or Gravity?
+
+__A regression question__: What is the age of the instructor?
+
+__A Physics question__: Which fundamental interaction is the strongest: Electromagnetism, Weak Force, Strong Force or Gravity?  
+
+__A question of your choice__  (but with an answer available on the web)  
+
 For the regression, compute the average of your answers.  
-For the classification, count your votes and pick the class collecting most votes. 
-
-
-__A question of your choice__  (but with an answer available on the web)
-
+For the classification, count your votes and pick the class collecting most votes.  
+What do you notice?
 ```
 
 We attribute to Aristotle the old adage "the whole is greater than the sum of its parts." The exercise above is an example of the so-called "wisdom of the crowd," where the collective brings a better answer than the individual guesses. Such a technique of getting a prediction from aggregating a collection of predictors is called _Ensemble Learning_. 

@@ -51,10 +51,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="The maths behind XGBoost" href="BDTs_XGBoost.html" />
-    <link rel="prev" title="Terminology, Algorithms, Attributes" href="BDTs_terms.html" />
+    <link rel="next" title="5. Neural Networks Part I" href="NN1.html" />
+    <link rel="prev" title="Ensemble Learning and Random Forests" href="BDTs_forest.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -208,7 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="class_algs_logReg.html">
-     Logistic Regression
+     Logistic Regression: introduction
     </a>
    </li>
    <li class="toctree-l2">
@@ -218,7 +220,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="class_algs_costF.html">
-     Cost Function for classification
+     Cost Function for Classification
     </a>
    </li>
    <li class="toctree-l2">
@@ -249,18 +251,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="BDTs_terms.html">
-     Terminology, Algorithms, Attributes
+    <a class="reference internal" href="BDTs_forest.html">
+     Ensemble Learning and Random Forests
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      What is boosting?
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="BDTs_XGBoost.html">
-     The maths behind XGBoost
     </a>
    </li>
   </ul>
@@ -808,12 +805,58 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definitions">
+   Definitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adaboost">
+   AdaBoost
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algorithm">
+     Algorithm
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementation">
+     Implementation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradient-boosting">
+   Gradient Boosting
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -825,6 +868,41 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definitions">
+   Definitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adaboost">
+   AdaBoost
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algorithm">
+     Algorithm
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementation">
+     Implementation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradient-boosting">
+   Gradient Boosting
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -834,6 +912,120 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="what-is-boosting">
 <h1>What is boosting?<a class="headerlink" href="#what-is-boosting" title="Permalink to this headline">#</a></h1>
+<section id="definitions">
+<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h2>
+<p>The general idea behind boosting is a correction of previous learners by the next row of classifiers.</p>
+<div class="proof definition admonition" id="boostingdef">
+<p class="admonition-title"><span class="caption-number">Definition 43 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Boosting</strong> refers to ensemble methods that are tuning weak learners into a strong one, usually sequentially, with the next predictor correcting its predecessors.</p>
+</section>
+</div><p>Usually the predictors are really shallow trees, namely one root nodes and two final leaves. This has a name:</p>
+<div class="proof definition admonition" id="decisionstumpdef">
+<p class="admonition-title"><span class="caption-number">Definition 44 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A <strong>decision stump</strong> is a one-level decision tree. It has one root node evaluating only one input feature and the two resulting branches immediately connect to two terminal nodes, i.e. leaves.</p>
+</section>
+</div><p>Many boosting methods are available. We will see two popular ones: AdaBoost and Gradient Boosting.</p>
+</section>
+<section id="adaboost">
+<h2>AdaBoost<a class="headerlink" href="#adaboost" title="Permalink to this headline">#</a></h2>
+<section id="algorithm">
+<h3>Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this headline">#</a></h3>
+<p>AdaBoost is short for Adaptative Boosting. It works by assigning larger weights to data samples misclassified by the previous learner. Let’s see how this work.</p>
+<div class="proof algorithm admonition" id="AdaBoostalgo">
+<p class="admonition-title"><span class="caption-number">Algorithm 4 </span> (AdaBoost)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong><br />
+Training data set <span class="math notranslate nohighlight">\(X\)</span> of <span class="math notranslate nohighlight">\(m\)</span> samples</p>
+<p><strong>Outputs</strong><br />
+A collection on decision boundaries segmenting the <span class="math notranslate nohighlight">\(k\)</span> feature phase space.</p>
+<p><strong>Initialization</strong><br />
+Each training instance <span class="math notranslate nohighlight">\(x^{(i)}\)</span> is given the same weight</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+w^{(i)} = \frac{1}{m}
+\end{equation*}\]</div>
+<p><strong>Start</strong><br />
+<strong>For</strong> each predictor <span class="math notranslate nohighlight">\(j = 1 , \cdots , N^\text{pred}\)</span><br />
+a. Train on all samples and compute the weighted error rate <span class="math notranslate nohighlight">\(r_j\)</span></p>
+<div class="amsmath math notranslate nohighlight" id="equation-a2b9fb02-18dc-4400-ac54-c3af1956ebb5">
+<span class="eqno">(29)<a class="headerlink" href="#equation-a2b9fb02-18dc-4400-ac54-c3af1956ebb5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+   r_j = \frac{\sum_{i = 1}^m w^{(i)} [ \hat{y}_j^{(i)} \neq y^{(i)} ]   }{\sum_{i = 1}^m w^{(i)}}
+   \end{equation}\]</div>
+<p>b. Give the predictor <span class="math notranslate nohighlight">\(j\)</span> a weight <span class="math notranslate nohighlight">\(W_j\)</span> measuring accuracy</p>
+<div class="amsmath math notranslate nohighlight" id="equation-63448d65-28aa-4fd7-b7d8-46ade1caa4a6">
+<span class="eqno">(30)<a class="headerlink" href="#equation-63448d65-28aa-4fd7-b7d8-46ade1caa4a6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+   W_j = \alpha \log \frac{1 - r_j}{r_j} 
+   \end{equation}\]</div>
+<p><span class="math notranslate nohighlight">\(W_j\)</span> points to zero if the predictor is bad, or a high number if the predictor is good.<br />
+<span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate.</p>
+<p>c. Update the weights of all data samples:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1955cb17-d214-448a-97c6-891d80a2b7ce">
+<span class="eqno">(31)<a class="headerlink" href="#equation-1955cb17-d214-448a-97c6-891d80a2b7ce" title="Permalink to this equation">#</a></span>\[\begin{equation}
+   w^{(i)} = \left\{\begin{matrix}
+   w^{(i)} \;\;\;\;  &amp;\text{if} \;\;\;\; \hat{y}_j^{(i)} = y_j^{(i)} \\[2ex]
+   \;\;w^{(i)} \exp (W_j)  \;\;\;\;  &amp;\text{if} \;\;\;\; \hat{y}_j^{(i)} \neq y_j^{(i)} \\
+   \end{matrix}\right.
+   \end{equation}\]</div>
+<p>d. Normalize the weights</p>
+<div class="amsmath math notranslate nohighlight" id="equation-bda857a2-62aa-499c-819b-105a04d7b69e">
+<span class="eqno">(32)<a class="headerlink" href="#equation-bda857a2-62aa-499c-819b-105a04d7b69e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+    w^{(i)} \rightarrow \frac{w^{(i)}}{\sum_{i = 1}^m w^{(i)}}
+   \end{equation}\]</div>
+<p><strong>Exit conditions</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N^\text{pred}\)</span> is reached</p></li>
+<li><p>All data sample are correctly classified (perfect classifier)</p></li>
+</ul>
+</section>
+</div><p>The illustration below gives a visual of the algorithm.</p>
+<figure class="align-default" id="lec04-3-adaboost">
+<a class="reference internal image-reference" href="../_images/lec04_3_adaboost.png"><img alt="../_images/lec04_3_adaboost.png" src="../_images/lec04_3_adaboost.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">. Visual of AdaBoost.<br />
+Misclassified samples are given a higher weight for the next predictor.<br />
+Base classifiers are decision stumps (one-level tree).<br />
+<sub>Source: subscription.packtpub.com</sub></span><a class="headerlink" href="#lec04-3-adaboost" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As the next predictor needs input from the previous one, the boosting is not an algorithm that can be parallelized on several cores but demands to be run in series.</p>
+</div>
+<p>How is the algorithm making predictions? In other words, how are all the decision boundaries (cuts) combined into the final boosted learner?</p>
+<p>The combined prediction is the class obtaining a weighted majority-vote, where votes are weighted with the predictor weights <span class="math notranslate nohighlight">\(W_j\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-week1-bdts-boosting-0">
+<span class="eqno">(33)<a class="headerlink" href="#equation-week1-bdts-boosting-0" title="Permalink to this equation">#</a></span>\[\hat{y}(x^\text{new}) = \arg_k \max \; \; \sum_{j = 1}^{N^\text{pred}} W_j \;[\; \hat{y}_j(x^\text{new}) = k \;]\]</div>
+</section>
+<section id="implementation">
+<h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">#</a></h3>
+<p>In Scikit-Learn, the AdaBoost classifier can be implemented this way:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">AdaBoostClassifier</span>
+
+<span class="n">ada_clf</span> <span class="o">=</span> <span class="n">AdaBoostClassifier</span><span class="p">(</span> 
+    <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;SAMME.R&quot;</span><span class="p">,</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">ada_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The decision trees are very ‘shallow’ learners: only a root note and two final leaf nodes (that’s what a max depth of 1 translates to). But there are usually a couple of hundreds of them. The <code class="docutils literal notranslate"><span class="pre">SAMME</span></code> acronym stands for Stagewise Additive Modeling using a Multiclass Exponential Loss Function. It’s nothing else than an extension of the algorithm where there are more than two classes. The <code class="docutils literal notranslate"><span class="pre">.R</span></code> stands for Real and it allows for probabilities to be estimated (predictors need the option <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> activated, otherwise it will not work).</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn More</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html">AdaBoost on Scikit-Learn</a></p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="gradient-boosting">
+<h2>Gradient Boosting<a class="headerlink" href="#gradient-boosting" title="Permalink to this headline">#</a></h2>
+<p>The gradient is back!</p>
+<p>…</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -863,17 +1055,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="BDTs_terms.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="BDTs_forest.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Terminology, Algorithms, Attributes</p>
+            <p class="prev-next-title">Ensemble Learning and Random Forests</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="BDTs_XGBoost.html" title="next page">
+    <a class='right-next' id="next-link" href="NN1.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The maths behind XGBoost</p>
+        <p class="prev-next-title">5. Neural Networks Part I</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

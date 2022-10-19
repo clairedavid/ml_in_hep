@@ -101,8 +101,7 @@ The `argmax` operator finds the argument that gives the maximum value from a tar
 
 ### Implementation
 
-In Scikit-Learn, the AdaBoost classifier can be implemented this way:
-
+In Scikit-Learn, the AdaBoost classifier can be implemented this way (sample loading not shown):
 ```python
 from sklearn.ensemble import AdaBoostClassifier
 
@@ -135,7 +134,7 @@ Contrary to AdaBoost, which builds another decision stump based on the errors ma
 We will go through an example with a very small dataset to understand the steps and calculations.
 
 ### A minimal example
-Let's say we have a dataset of simulated training samples with features such as particles' properties in an interaction event. We want to use Gradient Boosting to search for new physics. This new physics process is simulated in signal samples (target $y=1$) and background processes, i.e. interactions from known physics processes but mimicking the signal outputs, are with $y=0$. 
+Let's say we have a dataset of simulated training samples of collisions and for each collision some features such as an invariant mass and missing transverse energy (these variables will be explained during tutorials). We want to use Gradient Boosting to search for new physics. This new physics process is simulated in signal samples (target $y=1$) and background processes, i.e. interactions from known physics processes but mimicking the signal outputs, are with $y=0$. 
 
 ```{list-table}
 :header-rows: 1
@@ -348,7 +347,7 @@ The probability is:
 The event is signal, so our prediction should be close to 1. We went from an initial guess probability of $\frac{1}{3}$ to 0.42. We indeed go in the right direction! Smoothly, but surely.
 
 ```{note}
-It has been shown empirically that a slow learning rate is preferrable to reach a good accuracy. It comes at the price of having to build numerous intermediary trees incrementing the predictions in small steps. Without a learning rate scaling the trees, there is a high risk to stay too close to the data, which would bring a low bias but very high variance. Thanks to a learning rate, taking lots of small steps in the right direction results in better predictions with a testing dataset.
+It has been shown empirically that a slow learning rate is preferrable to reach a good accuracy. It comes at the price of having to build numerous intermediary trees incrementing the predictions in small steps. Without a learning rate scaling the trees, there is a high risk to stay too close to the data, which would bring a low bias but very high variance. Thanks to a learning rate, taking lots of small steps in the right direction results in better predictions with a testing dataset. This technique is called _shrinkage_.
 ```
 
 We can add an extra column with the predicted probabilities (pred prob) in our dataset table:
@@ -424,32 +423,83 @@ We go back to step 2 to compute the new pseudo residuals from the last set of pr
 The process repeats until the number of predictors is reached or the residuals get super small. 
 
 ### Predictions on test samples
-How are predictions made on new data? By simply using the sum above. We run the new sample in the first tree, get the output value of the leaf in which the sample ends up, then we run it through the second tree, get the final leaf output value. The rest is computing the sum with the initial prediction and each tree prediction scaled by the learning rate.
-
+How are predictions made on new data? By simply using the sum above. We run the new sample in the first tree, get the output value of the leaf in which the sample ends up, then run it through the second tree, get the final leaf output value as well. The final prediction is done computing the sum with the initial prediction and each tree prediction scaled by the learning rate. If it is greater than 0.5, the class is signal: $y^\text{pred} = 1$. If lower, we predict the sample to be background.
 
 ### Implementation
+Scikit-Learn has two classes implementing Boosting: `GradientBoostingRegressor` (for regression, see below some links covering it if you are curious) and `GradientBoostingClassifier`. The latter supports multi-class classification. The main hyperparameters are the number of estimators `n_estimators` (how many intermediary trees are built) and the `learning_rate` $\alpha$. 
+
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import GradientBoostingClassifier
+
+# Getting the dataset [sample loading not shown]
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Creating the Gradient Boosting (GB) classifier:
+gb_clf = GradientBoostingClassifier(
+    n_estimators=100, 
+    learning_rate=1.0, # no shrinkage here, otherwise 0.1 is a common value
+    max_depth=1, # here decision stumps
+    random_state=0)
+
+gb_clf.fit(X_train, y_train)
+
+# Printing score (accuracy by default)
+gb_clf.score(X_test, y_test)
+```
+
+The size of each intermediate tree can be controlled by `max_depth` (it is rarely a stump, rather a tree of depth 2 to 5) or `max_leaf_nodes`. There are different log functions available, the `log-loss` being the default.
+
+```{note}
+The classes above have been superseeded by `HistGradientBoostingRegressor` and `HistGradientBoostingClassifier`. They are inspired by the framework [LightGBM](https://papers.nips.cc/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html) for Light Gradient Boosting Machine, developed by Microsoft. Histogram-based estimator will run orders of magnitude faster on dataset larger than 10,000 samples. More information on [Scikit-Learn Historgram-Based Gradient Boosting](https://scikit-learn.org/stable/modules/ensemble.html#histogram-based-gradient-boosting).
+```
+
+### XGBoost the warrior
+XGBoost, for eXtreme Gradient Boosting, is a software library offering a fully optimized implementation of gradient boosting machines, focused on computational speed and model performance. It was created in 2016 by Tianqi Chen, at the time Ph.D. student at the University of Washington. XGBoost gained significant popularity in the last few years as a result of helping individuals and teams win virtually every [Kaggle](https://www.kaggle.com/) structured data competition, and in particular the [Higgs Boson Machine Learning Challenge](https://www.kaggle.com/c/higgs-boson).
+
+In terms of model features, XGBoost has the standard Gradient Boosting, as well as a Stochastic Gradient Boosting (more on this Lecture 7) and a Regularized one (with both L1 and L2 regularization methods). 
+
+It has also system features. Parallelization (to efficiently construct trees using all available CPU cores), Distributed Computing (if working with a cluster of machines), Out-of-Core Computing (when very large datasets can't be loaded entirely in the memory), Cache Optimization (to minimize the need to access data in underlying slower storage layers).
+
+The algorithm features contains some technical jargon. Here is a selection of the main ones with some explanations:  
+__Sparsity Awareness__  Data is considered sparse when certain expected values in a dataset are missing, or with mostly the same value, which is a common phenomenon in general large scaled data analysis. This can alter the performance of machine learning algorithms. XGBoost handles sparsities in data with the Sparsity-aware Split Finding algorithm that choose an optimal direction in the split, where only non-missing observations are visited.  
+__Block Structure__ Data is sorted and stored in in-memory units called blocks, enabling the data layout to be reused by subsequent iterations instead of computing it again.  
+__Continued Training__  XGBoost makes it possible to further boost an already fitted model on new data, without having to reload everything.
 
 
+Here is a [minimal example of implementation in Python](https://xgboost.ai/about) as well as other languages.
 
-### XGBoost the warrior algorithm
+````{margin}
+arXiv is a free distribution service and an open-access platform for more than two million scholarly articles in the fields of physics, mathematics and computer science among others. Some articles are submitted to journals (peered-review) but others are not peered-reviewed. It is possible to subscribe and receive a selection of newly submitted articles in your mailbox: [To Subscribe to the E-Mail Alerting Service](https://arxiv.org/help/subscribe)
+````
+```{admonition} Exercise
+:class: seealso
+It is always good to 'go to the source,' i.e. the original papers. Yet this can be over-technical and daunting.  
 
+Here is the paper of XGBoost on the arXiv platform:
+[XGBoost: A Scalable Tree Boosting System, paper on arXiv](https://arxiv.org/abs/1603.02754) (2016)
 
+To make it more enriching and fun, dive into the paper with a classmate. After each section, take turns to explain to your peer what you understand with your own words. This will train you to read the literature in the future, be confronted to different mathematical notations and digest the content (papers are usually dense in information, so don't worry if it takes you time to go through it).
+```
+
+In the tutorial, we will classify collision data from the Large Hadron Collider using decision trees, then a random forest and finally boosted classifiers. We will compare their performance with the metrics introduced in Lecture 3.
 
 
 ```{admonition} Learn More
 :class: seealso
-__Gradient Boosting__  
-* [Gradient Tree Boosting on Scikit-Learn](https://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting)
-* StatQuest series on Gradient Boost (with Josh Starmer and his humour):
-  * Gradient Boost Part 1: Regression Main Ideas [video](https://www.youtube.com/watch?v=3CC4N4z3GJc)
-  * Gradient Boost Part 2: Regression Details [video](https://www.youtube.com/watch?v=2xudPOBz-vs)
-  * Gradient Boost Part 3: Classification [video](https://www.youtube.com/watch?v=jxuNLH5dXCs)
-  * Gradient Boost Part 4: Classification Details [video](https://www.youtube.com/watch?v=StWY5QWMXCw) 
+__Gradient Boosting in Scikit-Learn__  
+[Gradient Tree Boosting in Scikit-Learn](https://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting)  
 
-__XGBoost__
-* Documentation [Read The Docs](https://xgboost.readthedocs.io/en/stable/)  
-* XGBoost: A Scalable Tree Boosting System, [paper on ArXiv](https://arxiv.org/abs/1603.02754) (2016)  
-* Tianqi Chen provides a brief and interesting back story on the creation of XGBoost in the post [Story and Lessons Behind the Evolution of XGBoost](https://sites.google.com/site/nttrungmtwiki/home/it/data-science---python/xgboost/story-and-lessons-behind-the-evolution-of-xgboost).  
+__StatQuest series on Gradient Boost (with Josh Starmer and his humour)__  
+Gradient Boost Part 1: Regression Main Ideas [video](https://www.youtube.com/watch?v=3CC4N4z3GJc)  
+Gradient Boost Part 2: Regression Details [video](https://www.youtube.com/watch?v=2xudPOBz-vs)  
+Gradient Boost Part 3: Classification [video](https://www.youtube.com/watch?v=jxuNLH5dXCs)  
+Gradient Boost Part 4: Classification Details [video](https://www.youtube.com/watch?v=StWY5QWMXCw) 
+
+__XGBoost__  
+Documentation [Read The Docs](https://xgboost.readthedocs.io/en/stable/)  
+XGBoost: A Scalable Tree Boosting System, [paper on ArXiv](https://arxiv.org/abs/1603.02754) (2016)  
+Tianqi Chen provides a brief and interesting back story on the creation of XGBoost in the post [Story and Lessons Behind the Evolution of XGBoost](https://sites.google.com/site/nttrungmtwiki/home/it/data-science---python/xgboost/story-and-lessons-behind-the-evolution-of-xgboost).  
 
 
 

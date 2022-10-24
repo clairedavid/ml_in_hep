@@ -62,7 +62,7 @@ There are $n+1$ parameters to optimize as we need to add the offset parameter $\
 If we set $x_0^{(i)} = 1$, we can write the mapping function as a sum. For one training example $x^{(i)}$, i.e. a row in the data set:
 ```{math}
 :label: h_theta_lin_sum
-  h_\theta(x^{(i)}) = \sum_{j=1}^n \theta_j x^{(i)}_j = \theta^{\; T} x^{(i)}
+  h_\theta(x^{(i)}) = \sum_{j=0}^n \theta_j x^{(i)}_j = \theta^{\; T} x^{(i)}
 ```
 where $x^{(i)}$ an __row__ vector of $n+1$ elements, $x^{(i)} = (x_0, x_1, x_2, \cdots, x_n)$ and $\theta$ is a column vector of $n+1$ elements too:
 \begin{equation*}

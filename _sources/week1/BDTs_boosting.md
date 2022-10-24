@@ -487,8 +487,9 @@ In the tutorial, we will classify collision data from the Large Hadron Collider 
 
 ```{admonition} Learn More
 :class: seealso
-__Gradient Boosting in Scikit-Learn__  
+__Gradient Boosting__  
 [Gradient Tree Boosting in Scikit-Learn](https://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting)  
+[AdaBoost Tutorial on Kaggle](https://www.kaggle.com/code/prashant111/adaboost-classifier-tutorial/notebook)
 
 __StatQuest series on Gradient Boost (with Josh Starmer and his humour)__  
 Gradient Boost Part 1: Regression Main Ideas [video](https://www.youtube.com/watch?v=3CC4N4z3GJc)  

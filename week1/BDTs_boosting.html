@@ -1003,28 +1003,28 @@ w^{(i)} = \frac{1}{m}
 <p><strong>Start</strong><br />
 <strong>For</strong> each predictor <span class="math notranslate nohighlight">\(j = 1 , \cdots , N^\text{pred}\)</span><br />
 a. Train on all samples and compute the weighted error rate <span class="math notranslate nohighlight">\(r_j\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-a9dd33b8-c340-4616-9b71-5376ab005126">
-<span class="eqno">(29)<a class="headerlink" href="#equation-a9dd33b8-c340-4616-9b71-5376ab005126" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7b139920-d560-45e4-b75b-2d4622bb754b">
+<span class="eqno">(29)<a class="headerlink" href="#equation-7b139920-d560-45e4-b75b-2d4622bb754b" title="Permalink to this equation">#</a></span>\[\begin{equation}
    r_j = \frac{\sum_{i = 1}^m w^{(i)} [ \hat{y}_j^{(i)} \neq y^{(i)} ]   }{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p>b. Give the predictor <span class="math notranslate nohighlight">\(j\)</span> a weight <span class="math notranslate nohighlight">\(W_j\)</span> measuring accuracy</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7ab8535e-d172-46c5-ba02-70c123b5e17f">
-<span class="eqno">(30)<a class="headerlink" href="#equation-7ab8535e-d172-46c5-ba02-70c123b5e17f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b7f9dfec-061e-466a-9052-2a7a95cdf3f8">
+<span class="eqno">(30)<a class="headerlink" href="#equation-b7f9dfec-061e-466a-9052-2a7a95cdf3f8" title="Permalink to this equation">#</a></span>\[\begin{equation}
    W_j = \alpha \log \frac{1 - r_j}{r_j} 
    \end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(W_j\)</span> points to zero if the predictor is bad, or a high number if the predictor is good.<br />
 <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate.</p>
 <p>c. Update the weights of all data samples:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e14afdd5-30a1-4632-a267-08a9fc359a55">
-<span class="eqno">(31)<a class="headerlink" href="#equation-e14afdd5-30a1-4632-a267-08a9fc359a55" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2aca08d8-b076-49e4-b25c-63594d69e154">
+<span class="eqno">(31)<a class="headerlink" href="#equation-2aca08d8-b076-49e4-b25c-63594d69e154" title="Permalink to this equation">#</a></span>\[\begin{equation}
    w^{(i)} = \left\{\begin{matrix}
    w^{(i)} \;\;\;\;  &amp;\text{if} \;\;\;\; \hat{y}_j^{(i)} = y_j^{(i)} \\[2ex]
    \;\;w^{(i)} \exp (W_j)  \;\;\;\;  &amp;\text{if} \;\;\;\; \hat{y}_j^{(i)} \neq y_j^{(i)} \\
    \end{matrix}\right.
    \end{equation}\]</div>
 <p>d. Normalize the weights</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8e291710-d45e-4109-a7eb-1bea9229361a">
-<span class="eqno">(32)<a class="headerlink" href="#equation-8e291710-d45e-4109-a7eb-1bea9229361a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c9275465-43d4-4578-8c44-86bfe2b1986f">
+<span class="eqno">(32)<a class="headerlink" href="#equation-c9275465-43d4-4578-8c44-86bfe2b1986f" title="Permalink to this equation">#</a></span>\[\begin{equation}
     w^{(i)} \rightarrow \frac{w^{(i)}}{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p><strong>Exit conditions</strong></p>
@@ -1430,8 +1430,9 @@ We go back to step 2 to compute the new pseudo residuals from the last set of pr
 <p>In the tutorial, we will classify collision data from the Large Hadron Collider using decision trees, then a random forest and finally boosted classifiers. We will compare their performance with the metrics introduced in Lecture 3.</p>
 <div class="seealso admonition">
 <p class="admonition-title">Learn More</p>
-<p><strong>Gradient Boosting in Scikit-Learn</strong><br />
-<a class="reference external" href="https://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting">Gradient Tree Boosting in Scikit-Learn</a></p>
+<p><strong>Gradient Boosting</strong><br />
+<a class="reference external" href="https://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting">Gradient Tree Boosting in Scikit-Learn</a><br />
+<a class="reference external" href="https://www.kaggle.com/code/prashant111/adaboost-classifier-tutorial/notebook">AdaBoost Tutorial on Kaggle</a></p>
 <p><strong>StatQuest series on Gradient Boost (with Josh Starmer and his humour)</strong><br />
 Gradient Boost Part 1: Regression Main Ideas <a class="reference external" href="https://www.youtube.com/watch?v=3CC4N4z3GJc">video</a><br />
 Gradient Boost Part 2: Regression Details <a class="reference external" href="https://www.youtube.com/watch?v=2xudPOBz-vs">video</a><br />

@@ -192,7 +192,7 @@ $w_2 = 1$
 ## Connecting artificial neurons 
 
 ### Layers
-Now that we saw the artificial neuron, let's see how they can model complex data patterns while connecting them. Alike their organic counterparts where neurons are organized in consecutive layers, artificial neural networks contains different layers:
+Now that we saw the artificial neuron, let's see how they can model complex data patterns while connecting them. Alike their organic counterparts where neurons are organized in consecutive layers, artificial neural networks are arranged in layers, where neurons in each layer receive input from the previous layer and pass their output to the subsequent layer.
 
 ````{prf:definition}
 :label: nnlayerdef
@@ -203,6 +203,9 @@ An artificial neural network is composed:
 
 Every layer except the output layer include a bias neuron and is fully connected to the next layer. 
 ````
+
+Each neuron (or node) performs a linear transformation on the inputs (weighted sum) followed by a non-linearity (the activation function). 
+
 
 ### Deep or not deep: is that a question
 ````{prf:definition}
@@ -218,13 +221,15 @@ A 'minimal' multilayer neural network would have one input, one hidden and one o
   name: lec05_2_nn_layers
   width: 90%
 ---
- . Example of a fully connected, feedforward neural network with 2 hidden layers.  
+ . Example of a fully connected, feedforward neural network with 2 hidden layers and output size of 2.  
  Bias neurons are represented in yellow circles with +1.  
  <sub>Image from the author</sub>
 ```
 
+The example of network depicted above is one of the earliest types of neural network and is called a Multilayer Perceptron (MLP). It belongs to a class of neural networks known as feed-forward neural networks, where the information flows only from inputs to outputs (without any loops).
+
+We will see soon how the ouputs of nodes from a given layer is calculated knowing the nodes'output of the previous layer (feedforward propagation). But let's first have a look of the different activation functions available on the machine learning market in the next section.
 
 
 
-[Hebb rule (?) here or later?] 
 

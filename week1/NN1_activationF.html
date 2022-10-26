@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Feedforward propagation" href="NN1_feedforward.html" />
@@ -208,7 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="class_algs_logReg.html">
-     Logistic Regression
+     Logistic Regression: introduction
     </a>
    </li>
    <li class="toctree-l2">
@@ -218,7 +220,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="class_algs_costF.html">
-     Cost Function for classification
+     Cost Function for Classification
     </a>
    </li>
    <li class="toctree-l2">
@@ -249,18 +251,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="BDTs_terms.html">
-     Terminology, Algorithms, Attributes
+    <a class="reference internal" href="BDTs_forest.html">
+     Ensemble Learning and Random Forests
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="BDTs_boosting.html">
      What is boosting?
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="BDTs_XGBoost.html">
-     The maths behind XGBoost
     </a>
    </li>
   </ul>
@@ -808,12 +805,122 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mathematical-properties-and-consequences">
+   Mathematical properties and consequences
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#differentiability">
+     Differentiability
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#range">
+     Range
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#non-linearity">
+     Non-linearity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#main-activation-functions">
+   Main activation functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-sigmoid-function">
+     The sigmoid function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hyperbolic-tangent">
+     Hyperbolic Tangent
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rectified-linear-unit-relu">
+     Rectified Linear Unit (ReLU)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#leaky-relu">
+     Leaky ReLU
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parametric-relu-prelu">
+     Parametric ReLU (PReLU)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exponential-linear-units-elus">
+     Exponential Linear Units (ELUs)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scaled-exponential-linear-unit-selu">
+     Scaled Exponential Linear Unit (SELU)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gaussian-error-linear-unit-gelu">
+     Gaussian Error Linear Unit (GELU)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sigmoid-linear-unit-silu-and-swish">
+     Sigmoid Linear Unit (SiLU) and Swish
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-choose-the-right-activation-function">
+   How to choose the right activation function
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-risk-of-vanishing-or-exploding-gradients">
+     The risk of vanishing or exploding gradients
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generic-tips">
+     (Generic) tips
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -825,6 +932,105 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mathematical-properties-and-consequences">
+   Mathematical properties and consequences
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#differentiability">
+     Differentiability
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#range">
+     Range
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#non-linearity">
+     Non-linearity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#main-activation-functions">
+   Main activation functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-sigmoid-function">
+     The sigmoid function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hyperbolic-tangent">
+     Hyperbolic Tangent
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rectified-linear-unit-relu">
+     Rectified Linear Unit (ReLU)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#leaky-relu">
+     Leaky ReLU
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parametric-relu-prelu">
+     Parametric ReLU (PReLU)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exponential-linear-units-elus">
+     Exponential Linear Units (ELUs)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scaled-exponential-linear-unit-selu">
+     Scaled Exponential Linear Unit (SELU)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gaussian-error-linear-unit-gelu">
+     Gaussian Error Linear Unit (GELU)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sigmoid-linear-unit-silu-and-swish">
+     Sigmoid Linear Unit (SiLU) and Swish
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-choose-the-right-activation-function">
+   How to choose the right activation function
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-risk-of-vanishing-or-exploding-gradients">
+     The risk of vanishing or exploding gradients
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generic-tips">
+     (Generic) tips
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -834,6 +1040,284 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="activation-functions">
 <h1>Activation Functions<a class="headerlink" href="#activation-functions" title="Permalink to this headline">#</a></h1>
+<p>As we saw in the previous section, the nodes in hidden layers, aka the “activation units,” receive input values from data or activation units of the previous layer. Each time a weighted sum is computed. Then the activation function defines which value, by consequence importance, the node will output. Before going of the most common activation functions for neural networks, it is essential first to introduce their properties as they illustrate core concepts or neural network learning process.</p>
+<section id="mathematical-properties-and-consequences">
+<h2>Mathematical properties and consequences<a class="headerlink" href="#mathematical-properties-and-consequences" title="Permalink to this headline">#</a></h2>
+<section id="differentiability">
+<h3>Differentiability<a class="headerlink" href="#differentiability" title="Permalink to this headline">#</a></h3>
+<p>We will see in the next lecture that the backpropagation, the algorithm adjusting all network’s weights and biases, involves a gradient descent procedure. It is thus desirable for the activation function to be continously differentiable (but not strictly necessary, as we will see soon for particular functions). The Heaviside step function of the perceptron has a derivative undefined at <span class="math notranslate nohighlight">\(z=0\)</span> and the gradient is zero for all <span class="math notranslate nohighlight">\(z\)</span> otherwise: a gradient descent procedure will not work here as it will ‘stagnate’ and never start descending as it always returns zero.</p>
+</section>
+<section id="range">
+<h3>Range<a class="headerlink" href="#range" title="Permalink to this headline">#</a></h3>
+<p>The range concerns the interval of the activation function’s output values. In logistic regression, we introduced the sigmoid function mapping the entire input range <span class="math notranslate nohighlight">\(z \in \mathbb{R}\)</span> to the range [0,1], ideally for binary classification. Activation functions with a finite range tend to exhibit more stability in gradient descent procedures. However it can lead to issues know as Vanishing Gradients explained in the next subsection <a class="reference internal" href="#nn1-activationf-risksgradient"><span class="std std-ref">The risk of vanishing or exploding gradients</span></a>.</p>
+</section>
+<section id="non-linearity">
+<h3>Non-linearity<a class="headerlink" href="#non-linearity" title="Permalink to this headline">#</a></h3>
+<p>This is essential for the neural network to <strong>learn</strong>. Explanations. Let’s assume there is no activation function. Every neuron will only be performing a linear transformation on the inputs using the weights and biases. In other words, they will not do anything fancier than <span class="math notranslate nohighlight">\((\sum wx + b)\)</span>. As the composition of two linear functions is a linear function itself (a line plus a line is a line), no matter how many nodes or layers there are, the resulting network would be equivalent to a linear regression model. The same simple output achieved by a single perceptron. Impossible for such an network to learn complex data patterns.</p>
+<p>What if we use the trivial identify function <span class="math notranslate nohighlight">\(f(z) = z\)</span> on the weighted sum? Same issue: all layers of the neural network will collapse into one, the last layer will still be a linear function of the first layer. Or to put it differently: it is not possible to use gradient descent as the derivative of the identity function is a constant and has no relation to its input <span class="math notranslate nohighlight">\(z\)</span>.</p>
+<p>There is a powerful result stating that only a three-layer neural network (input, hidden and output) equiped with non-linear activation function can be a universal function approximator within a specific range:</p>
+<div class="proof theorem admonition" id="unitheodef">
+<p class="admonition-title"><span class="caption-number">Theorem 1 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>In the mathematical theory of artificial neural networks, the <em>Universal Approximation Theorem</em> states that a forward propagation network of a single hidden layer containing a finite number of neurons can approximate continuous functions on compact subsets of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>.</p>
+</section>
+</div><p>When is meant behind “compact subsets of <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is that the function should not have jumps nor large gaps. This is quite a remarkable result. The simple multilayer perceptron (MLP) can thus mimick any known function, from cosine, to exponential and even more complex curves!</p>
+</section>
+</section>
+<section id="main-activation-functions">
+<h2>Main activation functions<a class="headerlink" href="#main-activation-functions" title="Permalink to this headline">#</a></h2>
+<p>Let’s present some common non-linear activation functions, their characteristics, with the pros and cons.</p>
+<section id="the-sigmoid-function">
+<h3>The sigmoid function<a class="headerlink" href="#the-sigmoid-function" title="Permalink to this headline">#</a></h3>
+<p>We know that one! A reminder of its definition:</p>
+<div class="math notranslate nohighlight">
+\[\sigma(z) = \frac{1}{1 + e^{-z}}\]</div>
+<figure class="align-default" id="lec05-3-sigmoid">
+<a class="reference internal image-reference" href="../_images/lec05_3_sigmoid.png"><img alt="../_images/lec05_3_sigmoid.png" src="../_images/lec05_3_sigmoid.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">. The sigmoid activation function and its derivative.<br />
+<sub>Image: <a class="reference external" href="https://www.v7labs.com/blog/neural-networks-activation-functions">www.v7labs.com</a></sub></span><a class="headerlink" href="#lec05-3-sigmoid" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Pros</strong></p>
+<ul class="simple">
+<li><p>It is a very popular choice, mostly due to the output range from 0 to 1, convenient to generate probabilities as output.</p></li>
+<li><p>The function is differentiable and the gradient is smooth, i.e. no jumps in the ouput values.</p></li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul class="simple">
+<li><p>The sigmoid’s derivative vanishes at its extreme input values (<span class="math notranslate nohighlight">\(z \rightarrow - \infty\)</span> and <span class="math notranslate nohighlight">\(z \rightarrow + \infty\)</span>) and is thus proned to the issue called <em>Vanishing Gradient</em> problem (see <a class="reference internal" href="#nn1-activationf-risksgradient"><span class="std std-ref">The risk of vanishing or exploding gradients</span></a>).</p></li>
+</ul>
+</section>
+<section id="hyperbolic-tangent">
+<h3>Hyperbolic Tangent<a class="headerlink" href="#hyperbolic-tangent" title="Permalink to this headline">#</a></h3>
+<p>Alike the sigmoid, the hyperbolic tangent is S-shaped and continously differentiable. The output values range is different from the sigmoid, as it goes from -1 to 1.</p>
+<div class="math notranslate nohighlight" id="equation-tanh">
+<span class="eqno">(47)<a class="headerlink" href="#equation-tanh" title="Permalink to this equation">#</a></span>\[\tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}\]</div>
+<figure class="align-default" id="lec05-3-tanh">
+<a class="reference internal image-reference" href="../_images/lec05_3_tanh.png"><img alt="../_images/lec05_3_tanh.png" src="../_images/lec05_3_tanh.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">. The hyperbolic tangent function and its derivative.<br />
+<sub>Image: <a class="reference external" href="https://www.v7labs.com/blog/neural-networks-activation-functions">www.v7labs.com</a></sub></span><a class="headerlink" href="#lec05-3-tanh" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Pros</strong></p>
+<ul class="simple">
+<li><p>It is zero-centered. Unlike the sigmoid when we had to have a decision boundary of <span class="math notranslate nohighlight">\(0.5\)</span> (half the output range), here the mapping is more straightforward: negative input values gets negative output, and positive input values will be positive, with one point (<span class="math notranslate nohighlight">\(z=0\)</span>) returning a neutral output of zero.</p></li>
+<li><p>That fact the mean of the ouput values is close to zero (middle of the output range) makes the learning easier.</p></li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul class="simple">
+<li><p>The gradient is much steeper than for the sigmoid (risk of jumps while descending)</p></li>
+<li><p>There is also a <em>Vanishing Gradient</em> problem due to the derivative cancelling for <span class="math notranslate nohighlight">\(z \rightarrow - \infty\)</span> and <span class="math notranslate nohighlight">\(z \rightarrow + \infty\)</span>.</p></li>
+</ul>
+</section>
+<section id="rectified-linear-unit-relu">
+<h3>Rectified Linear Unit (ReLU)<a class="headerlink" href="#rectified-linear-unit-relu" title="Permalink to this headline">#</a></h3>
+<p>Welcome to the family of rectifiers, thee most popular activation function for deep neural networks. The ReLU is defined as:</p>
+<div class="math notranslate nohighlight" id="equation-relu">
+<span class="eqno">(48)<a class="headerlink" href="#equation-relu" title="Permalink to this equation">#</a></span>\[f(z) = \max(0,z)\]</div>
+<figure class="align-default" id="lec05-3-relu">
+<a class="reference internal image-reference" href="../_images/lec05_3_relu.png"><img alt="../_images/lec05_3_relu.png" src="../_images/lec05_3_relu.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">. The Rectified Linear Unit (ReLU) function and its derivative.<br />
+<sub>Image: <a class="reference external" href="https://www.v7labs.com/blog/neural-networks-activation-functions">www.v7labs.com</a></sub></span><a class="headerlink" href="#lec05-3-relu" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Pros</strong></p>
+<ul class="simple">
+<li><p>Huge gain in computational efficiency (much faster to compute than the sigmoid or tanh)</p></li>
+<li><p>Only 50% of hidden activation units are activated on average (it is called <em>sparse activation</em>), further improving the computational speed</p></li>
+<li><p>Better gradient descent as the function does not saturate in both directions like the sigmoid and tanh. In other words, the Vanishing Gradient problem is half reduced</p></li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul class="simple">
+<li><p>Unlike the hyperbolic tangent, it is not zero-centered</p></li>
+<li><p>The range is infinite for positive input value (not bounded)</p></li>
+<li><p>ReLU is not differentiable at zero (but this can be solved by choosing arbitrarily a value for the derivative of either 0 or 1 for <span class="math notranslate nohighlight">\(z=\)</span> )</p></li>
+<li><p>The “Dying ReLU problem”</p></li>
+</ul>
+<p>What is the Dying ReLU problem? When we look at the derivative, we see the gradient on the negative side is zero. During the backpropagation algorithm, the weights and biases are not updated and the neuron becomes stuck in an inactive state. We refer to it as ‘dead neuron.’ If a large number of nodes are stuck in dead states, the model capacity to fit the data is decreased.</p>
+<p>To solve this serious issue, rectifier variants of the ReLU have been proposed:</p>
+</section>
+<section id="leaky-relu">
+<h3>Leaky ReLU<a class="headerlink" href="#leaky-relu" title="Permalink to this headline">#</a></h3>
+<p>It is a ReLU with a small positive slope for negative input values:</p>
+<div class="math notranslate nohighlight" id="equation-leakyrelu">
+<span class="eqno">(49)<a class="headerlink" href="#equation-leakyrelu" title="Permalink to this equation">#</a></span>\[\begin{split}\text{Leaky ReLU}(z) =\begin{cases}\;\;  0.01 z &amp; \text{ if } z &lt; 0 \\\;\;  z &amp; \text{ if } z \geq 0\end{cases} \;\;\;\; \forall \: z \in  \mathbb{R}\end{split}\]</div>
+<figure class="align-default" id="lec05-3-leakyrelu">
+<a class="reference internal image-reference" href="../_images/lec05_3_leakyrelu.png"><img alt="../_images/lec05_3_leakyrelu.png" src="../_images/lec05_3_leakyrelu.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">. The Leaky Rectified Linear Unit (ReLU) function and its derivative. The gradient in the negative area is 0.01, not zero.<br />
+<sub>Image: <a class="reference external" href="https://www.v7labs.com/blog/neural-networks-activation-functions">www.v7labs.com</a></sub></span><a class="headerlink" href="#lec05-3-leakyrelu" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The Leaky ReLU offers improvements compared to the classical ReLU:</p>
+<p><strong>Pros</strong></p>
+<ul class="simple">
+<li><p>All advantages of the ReLU mentioned above (fast computation, no saturation for positive input values)</p></li>
+<li><p>The small positive gradient when units are not active makes it possible for backpropagation to work, even for negative input values</p></li>
+<li><p>The non-zero gradient mitigate the Dying ReLU problem</p></li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul class="simple">
+<li><p>The slope coefficient is determined before training, i.e. it is not learnt during training</p></li>
+<li><p>The small gradient for negative input value requires a lot of iterations during training: the learning is thus time-consuming</p></li>
+</ul>
+</section>
+<section id="parametric-relu-prelu">
+<h3>Parametric ReLU (PReLU)<a class="headerlink" href="#parametric-relu-prelu" title="Permalink to this headline">#</a></h3>
+<p>The caveat of the Leaky ReLU is addressed by the Parametric ReLU (PReLU), where the small slope of the negative part is tuned with a parameter that is learnt during the backpropagation algorithm. Think of it as an extra hyper-parameter of the network.</p>
+<div class="math notranslate nohighlight" id="equation-paramrelu">
+<span class="eqno">(50)<a class="headerlink" href="#equation-paramrelu" title="Permalink to this equation">#</a></span>\[\begin{split}\text{Parametric ReLU}(z) =\begin{cases}\;\;  a z &amp; \text{ if } z &lt; 0 \\\;\;  z &amp; \text{ if } z \geq 0\end{cases} \;\;\;\; \forall \: z, a \in  \mathbb{R}, a &gt; 0\end{split}\]</div>
+<figure class="align-default" id="lec05-3-paramrelu">
+<a class="reference internal image-reference" href="../_images/lec05_3_paramrelu.png"><img alt="../_images/lec05_3_paramrelu.png" src="../_images/lec05_3_paramrelu.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">. The Parametric Rectified Linear Unit (ReLU) function and its derivative.<br />
+<sub>Image: <a class="reference external" href="https://www.v7labs.com/blog/neural-networks-activation-functions">www.v7labs.com</a></sub></span><a class="headerlink" href="#lec05-3-paramrelu" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Pros</strong></p>
+<ul class="simple">
+<li><p>The parametric ReLU collects all advantages of the ReLU and takes over when the Leaky ReLU still fails too reduce the number of dead neurons</p></li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul class="simple">
+<li><p>There is an extra parameter to tweak in the network, the slope value <span class="math notranslate nohighlight">\(a\)</span>, which is not trivial to get as its optimized value is different depending on the data to fit</p></li>
+</ul>
+</section>
+<section id="exponential-linear-units-elus">
+<h3>Exponential Linear Units (ELUs)<a class="headerlink" href="#exponential-linear-units-elus" title="Permalink to this headline">#</a></h3>
+<p>It does not have Rectifier in the name but the Exponential Linear Unit is another variant of ReLU.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{ELU}(z) =\begin{cases}\;\;  a(e^z -1) &amp; \text{ if } z &lt; 0 \\\;\;  z &amp; \text{ if } z \geq 0\end{cases} \;\;\;\; \forall \: z , a \in  \mathbb{R}, a &gt; 0\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(a\)</span> a hyper-parameter to be tune.</p>
+<figure class="align-default" id="lec05-3-elu">
+<a class="reference internal image-reference" href="../_images/lec05_3_elu.png"><img alt="../_images/lec05_3_elu.png" src="../_images/lec05_3_elu.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">. The Exponential Linear Unit (ELU) function and its derivative.<br />
+<sub>Image: <a class="reference external" href="https://www.v7labs.com/blog/neural-networks-activation-functions">www.v7labs.com</a></sub></span><a class="headerlink" href="#lec05-3-elu" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Pros</strong></p>
+<ul class="simple">
+<li><p>From high to low input values, the ELU smoothly decreases until it outputs the negative value <span class="math notranslate nohighlight">\(-a\)</span>. There is no more a ‘kick’ like in ReLU</p></li>
+<li><p>ELU functions have shown to converge cost to zero faster and produce more accurate results</p></li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul class="simple">
+<li><p>The parameter <span class="math notranslate nohighlight">\(a\)</span> needs to be tuned; it is not learnt</p></li>
+<li><p>For positive inputs, there is a risk of experiencing the Exploding Gradient problem (explanations further below in <a class="reference internal" href="#nn1-activationf-risksgradient"><span class="std std-ref">The risk of vanishing or exploding gradients</span></a>)</p></li>
+</ul>
+</section>
+<section id="scaled-exponential-linear-unit-selu">
+<h3>Scaled Exponential Linear Unit (SELU)<a class="headerlink" href="#scaled-exponential-linear-unit-selu" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="lec05-3-selu">
+<a class="reference internal image-reference" href="../_images/lec05_3_selu.png"><img alt="../_images/lec05_3_selu.png" src="../_images/lec05_3_selu.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">. The Scaled Exponential Linear Unit (SELU) function.<br />
+<sub>Image: <a class="reference external" href="https://www.v7labs.com/blog/neural-networks-activation-functions">www.v7labs.com</a></sub></span><a class="headerlink" href="#lec05-3-selu" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The Scaled Exponential Linear Unit (SELU) is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{ELU}(z) = \lambda \begin{cases}\;\;  a(e^z -1) &amp; \text{ if } z &lt; 0 \\\;\;  z &amp; \text{ if } z \geq 0\end{cases} \;\;\;\; \forall \: z , a \in  \mathbb{R},\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda = 1.0507\)</span> and <span class="math notranslate nohighlight">\(a = 1.67326\)</span>. Why these specific values? The values come from a normalization procedure; the SELU activation introduces self-normalizing properties. It takes care of internal normalization which means each layer preserves the mean and variance from the previous layers. SELU enables this normalization by adjusting the mean and variance. It can be shown that, for self-normalizing neural networks (SNNs), neuron activations are pushed towards zero mean and unit variance when propagated through the network (there are more details and technicalities in this <a class="reference external" href="https://paperswithcode.com/method/selu">paper</a> for those interested).</p>
+<p><strong>Pros</strong></p>
+<ul class="simple">
+<li><p>All the rectifier’s advantages are at play</p></li>
+<li><p>Thanks to internal normalization, the network converges faster</p></li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul class="simple">
+<li><p>Not really a caveat per say, but the SELU is outperforming other activation functions only for very deep networks</p></li>
+</ul>
+</section>
+<section id="gaussian-error-linear-unit-gelu">
+<h3>Gaussian Error Linear Unit (GELU)<a class="headerlink" href="#gaussian-error-linear-unit-gelu" title="Permalink to this headline">#</a></h3>
+<p>Another modification of ReLU is the Gaussian Error Linear Unit. It can be thought of as a smoother ReLU.<br />
+The definition is:</p>
+<div class="math notranslate nohighlight">
+\[\text{GELU}\left(z\right) = z\; \Phi\left(z\right) = z \cdot \frac{1}{2}\left[1 + \text{erf}\left(\frac{z}{sqrt{2}} \right)\right]\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Phi(z)\)</span> is the cumulative distribution function of the standard normal distribution.</p>
+<figure class="align-default" id="lec05-3-gelu">
+<a class="reference internal image-reference" href="../_images/lec05_3_gelu.png"><img alt="../_images/lec05_3_gelu.png" src="../_images/lec05_3_gelu.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 48 </span><span class="caption-text">. The Gaussian Error Linear Unit (GELU) function overlaid with ReLU and ELU.<br />
+<sub>Image: <a class="reference external" href="https://www.v7labs.com/blog/neural-networks-activation-functions">www.v7labs.com</a></sub></span><a class="headerlink" href="#lec05-3-gelu" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>GELU is the state-of-the-art activation function used in particular in models called <a class="reference external" href="https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)">Transformers</a>. It’s not the movie franchise; the Transformer model was introduced by Google Brain in 2017 to help in the multidisciplinary field of
+Natural Language Processing (NLP) that deals, among others, with tasks such as text translation or text summarization.</p>
+<p><strong>Pros</strong></p>
+<ul class="simple">
+<li><p>Differentiable for all input values <span class="math notranslate nohighlight">\(z\)</span></p></li>
+<li><p>Avoids the Vanishing Gradient problem</p></li>
+<li><p>As seen above, the function is non-convex, non-monotonic and not linear in the positive domain: it has thus curvature at all points. This actually allowed GELUs to approximate better complicated functions that ReLUs or ELUs can as it weights inputs by their value and not their sign (like ReLu and ELU do)</p></li>
+<li><p>The GELU, by construction, has a probabilistic interpretation (it is the expectaction of a stochastic regularizer)</p></li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul class="simple">
+<li><p>GELU is time-consuming to compute</p></li>
+</ul>
+</section>
+<section id="sigmoid-linear-unit-silu-and-swish">
+<h3>Sigmoid Linear Unit (SiLU) and Swish<a class="headerlink" href="#sigmoid-linear-unit-silu-and-swish" title="Permalink to this headline">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The original definition is defined as <span class="math notranslate nohighlight">\(f(z) = x \dot \text{sigmoid}(\beta z)\)</span>, with <span class="math notranslate nohighlight">\(\beta\)</span> a learnable parameter. Yet as most implementations set <span class="math notranslate nohighlight">\(\beta =1\)</span>, the function is usually named “Swish-1”. But if <span class="math notranslate nohighlight">\(\beta \rightarrow \infty\)</span>, then the Swish becomes like the ReLU function.</p>
+</aside>
+<p>The SiLU and Swish are the same function, just introduced by different authors (the Swish authors are from Google Brain). It is a state-of-the-art function aiming at superceeding the hegemonic ReLU. The Swish is defined as a sigmoid multiplied with the identity:</p>
+<div class="math notranslate nohighlight">
+\[f(z) = \frac{z}{1 + e^{-z}}\]</div>
+<figure class="align-default" id="lec05-3-swish">
+<a class="reference internal image-reference" href="../_images/lec05_3_swish.png"><img alt="../_images/lec05_3_swish.png" src="../_images/lec05_3_swish.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">. The Swish activation function.<br />
+<sub>Image: <a class="reference external" href="https://www.v7labs.com/blog/neural-networks-activation-functions">www.v7labs.com</a></sub></span><a class="headerlink" href="#lec05-3-swish" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The Swish function exhibits increased classification accuracy and consistently matches or outperforms ReLU activation function on deep networks (especially on image classification).</p>
+<p><strong>Pros</strong></p>
+<ul class="simple">
+<li><p>It is differentiable on the whole range</p></li>
+<li><p>The function is smooth and non-monotonic (like GELU), which is an advantage to enhance input data during learning</p></li>
+<li><p>Unlike the ReLU function, small negative values are not zeroed, allowing for a better modeling of the data. And large negative values are zeroed out (in other words, the node will die only if it needs to die)</p></li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul class="simple">
+<li><p>More a warning than a con: the Swish function is relevant if it is used in neural networks having a depth greater than 40 layers</p></li>
+</ul>
+</section>
+</section>
+<section id="how-to-choose-the-right-activation-function">
+<h2>How to choose the right activation function<a class="headerlink" href="#how-to-choose-the-right-activation-function" title="Permalink to this headline">#</a></h2>
+<section id="the-risk-of-vanishing-or-exploding-gradients">
+<span id="nn1-activationf-risksgradient"></span><h3>The risk of vanishing or exploding gradients<a class="headerlink" href="#the-risk-of-vanishing-or-exploding-gradients" title="Permalink to this headline">#</a></h3>
+<p>Training a neural network with a gradient-based learning method (the gradient descent is one) can lead to issues. The culprit, or rather cause, lies in the choice of the activation function:</p>
+<p><strong>Vanishing Gradient problem</strong><br />
+As seen with the sigmoid and hyperbolic tangent, certain activation functions converge asymptotically towards the bounded range. Thus, at the extremities (large negative or large positive input values), a large change in the input will cause a very small modification of the output: there is a saturation. As a consequence the gradient will be also very small and the learning gain after one iteration very minimal, tending towards zero. This is to be avoid if we want the algorithm to learn a decent amount at each step.</p>
+<p><strong>Exploding Gradient problem</strong>
+If significant errors accumulate and the neural network update the weights with larger and larger values, the difference between the prediction and observe value will increase further and further, leading to exploding gradients. It’s no more a descent but a failure to converge. Pragmatically, it is possible to see it when weights are so large that they overflow and return a NaN value (meaning Not A Number).</p>
+</section>
+<section id="generic-tips">
+<h3>(Generic) tips<a class="headerlink" href="#generic-tips" title="Permalink to this headline">#</a></h3>
+<p>The first tip would be: it all depends on the task at hand. Of course this may leave you confused now. Here is the corrollary of the first tip: practice, practice, practice (and some reading). You will soon explore existing neural network, build your own and experiment different functions to see which one is more appropriate. Yes, there is a bit of tweaking involved with your organic brain to train an artificial one! More on this in the Lecture “Towards Deep Learning Modeels.”</p>
+<p>The second one tip would be: in doubt, opt for ReLU for the hidden layers. It is the most successful and widely-used activation function. Although the rectifier variants have tried to improve it, the ReLU remains the top contender among activation function for the hidden layers. And it is a very fast computation, another point to start optimizing your neural network with it.</p>
+<p>Usually, all hidden layers usually use the same activation function. For the final layer however, the sigmoid or tanh are usually preferred, in particular in classification. For multiclass, an adapted version of the sigmoid is the <a class="reference external" href="https://en.wikipedia.org/wiki/Softmax_function">Softmax function</a>. It is a combination of multiple sigmoids with outputs summing to one, outputing the relative probabilities or each class.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The platform <a class="reference external" href="https://paperswithcode.com/about">paperswithcode.com</a> aims at sharing Machine Learning papers along with code, dataset and evaluation tables; all open source and free. There are also dedicated portals for <a class="reference external" href="https://math.paperswithcode.com/">Mathematics</a>, <a class="reference external" href="https://stat.paperswithcode.com/">Statistics</a>, <a class="reference external" href="https://cs.paperswithcode.com/">Computer Science</a>, <a class="reference external" href="https://physics.paperswithcode.com/">Physics</a> and <a class="reference external" href="https://astro.paperswithcode.com/">Astronomy</a>.</p>
+</aside>
+<div class="seealso admonition">
+<p class="admonition-title">Learn More</p>
+<ul class="simple">
+<li><p>Summary table on <span class="xref myst">Wikipedia - Activation Function article</span></p></li>
+<li><p>List of Activation Functions on the website <a class="reference external" href="https://paperswithcode.com/methods/category/activation-functions">Paper With Code</a></p></li>
+</ul>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

@@ -1002,7 +1002,7 @@ If you are curious to read the original paper marking the birth of the artificia
 <div class="math notranslate nohighlight" id="equation-aneq">
 <span class="eqno">(44)<a class="headerlink" href="#equation-aneq" title="Permalink to this equation">#</a></span>\[y = f\left(\sum_{j=1}^n w_j x_j + b \right)\]</div>
 <p>This operation is done for one sample row <span class="math notranslate nohighlight">\(x^{(i)}\)</span>, hence reserving the <span class="math notranslate nohighlight">\(i\)</span> index for the sample instances. The sum is done over the input features <span class="math notranslate nohighlight">\(j\)</span> (columns of the <span class="math notranslate nohighlight">\(X\)</span> input matrix). Here the sum starts at <span class="math notranslate nohighlight">\(j=1\)</span> and not zero as the intercept term is written outside of the sum as <span class="math notranslate nohighlight">\(b\)</span>.</p>
-<p>We haven’t seen the activation function. Here is it’s definition:</p>
+<p>We haven’t seen the activation function. Here is its definition:</p>
 <div class="proof definition admonition" id="activfuncdef">
 <p class="admonition-title"><span class="caption-number">Definition 48 </span></p>
 <section class="definition-content" id="proof-content">
@@ -1073,7 +1073,7 @@ It makes predictions based on a hard threshold.</p>
 </figure>
 <p>Moreover, the perceptron doesn’t scale well with massive datasets. Other weaknesses of Perceptrons were highlighted in the monograph <a class="reference external" href="https://en.wikipedia.org/wiki/Perceptrons_(book)"><em>Perceptrons</em></a> by computer scientists Marvin Minsky and Seymour Papert in 1969. The book sparked a wave of pessimism and long-standing controversy in the Artificial Intelligence community (barely born), to the point that some researchers were so disappointed that they dropped neural networks altogether. This is known as the <a class="reference external" href="https://en.wikipedia.org/wiki/AI_winter">AI Winter</a>. Interest in neural networks was revived only in the mid 80s.</p>
 <div class="seealso admonition">
-<p class="admonition-title">Exercise</p>
+<p class="admonition-title">Exercises</p>
 <ol class="simple">
 <li><p>What would be the weights <span class="math notranslate nohighlight">\(w= (w_1, w_2)\)</span> and bias <span class="math notranslate nohighlight">\(b\)</span> to encode the <strong>AND</strong> function above? (using the Heaviside step function)</p></li>
 <li><p>Same question for the <strong>OR</strong> function.</p></li>
@@ -1099,7 +1099,7 @@ Possible answer:<br />
 <h2>Connecting artificial neurons<a class="headerlink" href="#connecting-artificial-neurons" title="Permalink to this headline">#</a></h2>
 <section id="layers">
 <h3>Layers<a class="headerlink" href="#layers" title="Permalink to this headline">#</a></h3>
-<p>Now that we saw the artificial neuron, let’s see how they can model complex data patterns while connecting them. Alike their organic counterparts where neurons are organized in consecutive layers, artificial neural networks contains different layers:</p>
+<p>Now that we saw the artificial neuron, let’s see how they can model complex data patterns while connecting them. Alike their organic counterparts where neurons are organized in consecutive layers, artificial neural networks are arranged in layers, where neurons in each layer receive input from the previous layer and pass their output to the subsequent layer.</p>
 <div class="proof definition admonition" id="nnlayerdef">
 <p class="admonition-title"><span class="caption-number">Definition 50 </span></p>
 <section class="definition-content" id="proof-content">
@@ -1111,7 +1111,8 @@ Possible answer:<br />
 </ul>
 <p>Every layer except the output layer include a bias neuron and is fully connected to the next layer.</p>
 </section>
-</div></section>
+</div><p>Each neuron (or node) performs a linear transformation on the inputs (weighted sum) followed by a non-linearity (the activation function).</p>
+</section>
 <section id="deep-or-not-deep-is-that-a-question">
 <h3>Deep or not deep: is that a question<a class="headerlink" href="#deep-or-not-deep-is-that-a-question" title="Permalink to this headline">#</a></h3>
 <div class="proof definition admonition" id="definition-4">
@@ -1123,12 +1124,13 @@ Possible answer:<br />
 <figure class="align-default" id="lec05-2-nn-layers">
 <a class="reference internal image-reference" href="../_images/lec05_2_nn_layers.png"><img alt="../_images/lec05_2_nn_layers.png" src="../_images/lec05_2_nn_layers.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 40 </span><span class="caption-text">. Example of a fully connected, feedforward neural network with 2 hidden layers.<br />
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">. Example of a fully connected, feedforward neural network with 2 hidden layers and output size of 2.<br />
 Bias neurons are represented in yellow circles with +1.<br />
 <sub>Image from the author</sub></span><a class="headerlink" href="#lec05-2-nn-layers" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>[Hebb rule (?) here or later?]</p>
+<p>The example of network depicted above is one of the earliest types of neural network and is called a Multilayer Perceptron (MLP). It belongs to a class of neural networks known as feed-forward neural networks, where the information flows only from inputs to outputs (without any loops).</p>
+<p>We will see soon how the ouputs of nodes from a given layer is calculated knowing the nodes’output of the previous layer (feedforward propagation). But let’s first have a look of the different activation functions available on the machine learning market in the next section.</p>
 </section>
 </section>
 </section>

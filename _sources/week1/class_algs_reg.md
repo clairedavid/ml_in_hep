@@ -61,7 +61,7 @@ The factor $\frac{1}{2}$ is used in some derivations of the regularization. This
 ```
 
 ```{warning}
-The offset parameter $\theta$ is not entering in the regularization sum. 
+The offset parameter $\theta_0$ is not entering in the regularization sum. 
 ```
 In the litterature, the parameters are denoted with $b$ for the offset (bias) and a vector of weight $\vec{w}$ for the other parameters $\theta_1, \theta_2, \cdots \theta_n$. Thus the regularization term is written:
 

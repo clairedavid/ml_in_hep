@@ -68,7 +68,7 @@ y = f\left(\sum_{j=1}^n w_j x_j + b \right)
 
 This operation is done for one sample row $x^{(i)}$, hence reserving the $i$ index for the sample instances. The sum is done over the input features $j$ (columns of the $X$ input matrix). Here the sum starts at $j=1$ and not zero as the intercept term is written outside of the sum as $b$.
 
-We haven't seen the activation function. Here is it's definition:
+We haven't seen the activation function. Here is its definition:
 
 
 ````{prf:definition}
@@ -167,7 +167,7 @@ It turned out that perceptrons disappointed researchers. The main limitation: pe
 
 Moreover, the perceptron doesn't scale well with massive datasets. Other weaknesses of Perceptrons were highlighted in the monograph [_Perceptrons_](https://en.wikipedia.org/wiki/Perceptrons_(book)) by computer scientists Marvin Minsky and Seymour Papert in 1969. The book sparked a wave of pessimism and long-standing controversy in the Artificial Intelligence community (barely born), to the point that some researchers were so disappointed that they dropped neural networks altogether. This is known as the [AI Winter](https://en.wikipedia.org/wiki/AI_winter). Interest in neural networks was revived only in the mid 80s.
 
-```{admonition} Exercise
+```{admonition} Exercises
 :class: seealso
 1. What would be the weights $w= (w_1, w_2)$ and bias $b$ to encode the __AND__ function above? (using the Heaviside step function)
 1. Same question for the __OR__ function.
@@ -192,7 +192,7 @@ $w_2 = 1$
 ## Connecting artificial neurons 
 
 ### Layers
-Now that we saw the artificial neuron, let's see how they can model complex data patterns while connecting them. Alike their organic counterparts where neurons are organized in consecutive layers, artificial neural networks contains different layers:
+Now that we saw the artificial neuron, let's see how they can model complex data patterns while connecting them. Alike their organic counterparts where neurons are organized in consecutive layers, artificial neural networks are arranged in layers, where neurons in each layer receive input from the previous layer and pass their output to the subsequent layer.
 
 ````{prf:definition}
 :label: nnlayerdef
@@ -203,6 +203,9 @@ An artificial neural network is composed:
 
 Every layer except the output layer include a bias neuron and is fully connected to the next layer. 
 ````
+
+Each neuron (or node) performs a linear transformation on the inputs (weighted sum) followed by a non-linearity (the activation function). 
+
 
 ### Deep or not deep: is that a question
 ````{prf:definition}
@@ -218,13 +221,15 @@ A 'minimal' multilayer neural network would have one input, one hidden and one o
   name: lec05_2_nn_layers
   width: 90%
 ---
- . Example of a fully connected, feedforward neural network with 2 hidden layers.  
+ . Example of a fully connected, feedforward neural network with 2 hidden layers and output size of 2.  
  Bias neurons are represented in yellow circles with +1.  
  <sub>Image from the author</sub>
 ```
 
+The example of network depicted above is one of the earliest types of neural network and is called a Multilayer Perceptron (MLP). It belongs to a class of neural networks known as feed-forward neural networks, where the information flows only from inputs to outputs (without any loops).
+
+We will see soon how the ouputs of nodes from a given layer is calculated knowing the nodes'output of the previous layer (feedforward propagation). But let's first have a look of the different activation functions available on the machine learning market in the next section.
 
 
 
-[Hebb rule (?) here or later?] 
 

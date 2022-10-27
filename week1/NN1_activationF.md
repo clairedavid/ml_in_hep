@@ -287,6 +287,7 @@ The platform [paperswithcode.com](https://paperswithcode.com/about) aims at shar
 ````
 ```{admonition} Learn More
 :class: seealso
+* Neural Network Activation Functions [Cheat-sheet from v7labs.com](https://assets-global.website-files.com/5d7b77b063a9066d83e1209c/62b18a8dc83132e1a479b65d_neural-network-activation-function-cheat-sheet.jpeg)
 * Summary table on [Wikipedia: article on Activation Functions](https://en.wikipedia.org/wiki/Activation_function#Table_of_activation_functions)
 * List of Activation Functions on the website [Paper With Code](https://paperswithcode.com/methods/category/activation-functions)
 

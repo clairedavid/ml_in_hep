@@ -914,7 +914,7 @@ title="Print to PDF"
 <h1>Multivariate linear regression<a class="headerlink" href="#multivariate-linear-regression" title="Permalink to this headline">#</a></h1>
 <p>In machine learning, data samples contain multiple features.</p>
 <p>We will generalize our previous definitions or linear regression to additional features. How to see this?
-Previously our data where one column vector <span class="math notranslate nohighlight">\(x\)</span> and its associated column vector of targets <span class="math notranslate nohighlight">\(y\)</span>.
+Previously our data where one column vector <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> and its associated column vector of targets <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span>.
 Additional input features can be visualized in the form of a table:</p>
 <figure class="align-default" id="tbl-df-example" style="width: 300px">
 <div class="cell_output docutils container">
@@ -1021,16 +1021,16 @@ x_1^{(m)} &amp; x_2^{(m)} &amp; \cdots &amp; x_j^{(m)} &amp; \cdots &amp; x_n^{(
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The <span class="math notranslate nohighlight">\(i^\text{th}\)</span> training sample <span class="math notranslate nohighlight">\(x^{(i)}\)</span> is not a scalar but a row vector of <span class="math notranslate nohighlight">\(n\)</span> elements.</p>
+<p>The <span class="math notranslate nohighlight">\(i^\text{th}\)</span> training sample <span class="math notranslate nohighlight">\(\boldsymbol{x^{(i)}}\)</span> is not a scalar but a row vector of <span class="math notranslate nohighlight">\(n\)</span> elements.</p>
 </div>
-<p>Our hypothesis function is generalized to the following for a given training example (the supercript <span class="math notranslate nohighlight">\(^{(i)}\)</span> is omitted for clarity):</p>
+<p>Our hypothesis function is generalized to the following for a given training example (row <span class="math notranslate nohighlight">\(i\)</span>):</p>
 <div class="proof definition admonition" id="hypothesisFunctionMulti">
 <p class="admonition-title"><span class="caption-number">Definition 9 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>hypothesis</strong> or <strong>mapping function</strong> for linear regression with <span class="math notranslate nohighlight">\(n\)</span> features is:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \cdots + \theta_j x_j + \cdots + \theta_n x_n
+h_\theta(\boldsymbol{x^{(i)}}) = \theta_0 + \theta_1 x^{(i)}_1 + \theta_2 x^{(i)}_2 + \cdots + \theta_j x^{(i)}_j + \cdots + \theta_n x^{(i)}_n
 \end{equation*}\]</div>
 </section>
 </div><div class="admonition warning">
@@ -1039,18 +1039,12 @@ h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \cdots + \theta_j x_j + \
 </div>
 <p>If we set <span class="math notranslate nohighlight">\(x_0^{(i)} = 1\)</span>, we can write the mapping function as a sum. For one training example <span class="math notranslate nohighlight">\(x^{(i)}\)</span>, i.e. a row in the data set:</p>
 <div class="math notranslate nohighlight" id="equation-h-theta-lin-sum">
-<span class="eqno">(7)<a class="headerlink" href="#equation-h-theta-lin-sum" title="Permalink to this equation">#</a></span>\[  h_\theta(x^{(i)}) = \sum_{j=0}^n \theta_j x^{(i)}_j = \theta^{\; T} x^{(i)}\]</div>
-<p>where <span class="math notranslate nohighlight">\(x^{(i)}\)</span> an <strong>row</strong> vector of <span class="math notranslate nohighlight">\(n+1\)</span> elements, <span class="math notranslate nohighlight">\(x^{(i)} = (x_0, x_1, x_2, \cdots, x_n)\)</span> and <span class="math notranslate nohighlight">\(\theta^{\; T}\)</span> is a column vector of <span class="math notranslate nohighlight">\(n+1\)</span> elements too:</p>
+<span class="eqno">(7)<a class="headerlink" href="#equation-h-theta-lin-sum" title="Permalink to this equation">#</a></span>\[  h_\theta(\boldsymbol{x^{(i)}}) = \sum_{j=0}^n \theta_j x^{(i)}_j =  x^{(i)} \theta^{\; T}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x^{(i)}\)</span> an <strong>row vector</strong> of <span class="math notranslate nohighlight">\(n+1\)</span> elements, <span class="math notranslate nohighlight">\(x^{(i)} = (x^{(i)}_0, x^{(i)}_1, x^{(i)}_2, \cdots, x^{(i)}_n)\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span> is a <strong>row vector</strong> too of <span class="math notranslate nohighlight">\(n+1\)</span> elements as well, <span class="math notranslate nohighlight">\(\theta = (\theta_0, \theta_1, \cdots, \theta_n)\)</span>. Thus taking the transposed is equivalent to a dot product:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-\theta  = \begin{pmatrix} 
-\theta_0 \\
-\theta_1 \\
- \\
-\vdots \\ 
- \\
-\theta_n \\
-\end{pmatrix}
+\boldsymbol{x^{(i)}} \boldsymbol{\theta^{\; T}} =  \begin{pmatrix} x^{(i)}_0, x^{(i)}_1, x^{(i)}_2, \cdots, x^{(i)}_n\\\end{pmatrix} 
+  \begin{pmatrix} \theta_0 \\\theta_1 \\ \\\vdots \\  \\\theta_n \\\end{pmatrix} = \; \boldsymbol{x^{(i)}} \cdot  \boldsymbol{\theta}
 \end{equation*}\]</div>
 <section id="gradient-descent-in-multilinear-regression">
 <span id="warmup-linregmulti-graddesc"></span><h2>Gradient Descent in Multilinear Regression<a class="headerlink" href="#gradient-descent-in-multilinear-regression" title="Permalink to this headline">#</a></h2>
@@ -1118,7 +1112,7 @@ Calculate the new parameters according to:</p></li>
 </section>
 </div><p>The partial derivatives of <span class="math notranslate nohighlight">\(J(\theta)\)</span> for each parameter <span class="math notranslate nohighlight">\(\theta_j\)</span> will be of the form:</p>
 <div class="math notranslate nohighlight" id="equation-partialdevlinreg">
-<span class="eqno">(10)<a class="headerlink" href="#equation-partialdevlinreg" title="Permalink to this equation">#</a></span>\[\frac{\partial}{\partial \theta_j} J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) x_j^{(i)}\]</div>
+<span class="eqno">(10)<a class="headerlink" href="#equation-partialdevlinreg" title="Permalink to this equation">#</a></span>\[\frac{\partial}{\partial \theta_j} J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) \; x_j^{(i)}\]</div>
 </section>
 <section id="feature-scaling-normalization">
 <h2>Feature Scaling &amp; Normalization<a class="headerlink" href="#feature-scaling-normalization" title="Permalink to this headline">#</a></h2>

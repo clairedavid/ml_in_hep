@@ -3,7 +3,7 @@
 In machine learning, data samples contain multiple features. 
 
 We will generalize our previous definitions or linear regression to additional features. How to see this? 
-Previously our data where one column vector $x$ and its associated column vector of targets $y$.
+Previously our data where one column vector $\boldsymbol{x}$ and its associated column vector of targets $\boldsymbol{y}$.
 Additional input features can be visualized in the form of a table:
 
 ```{glue:figure} df_example
@@ -45,15 +45,15 @@ x_1^{(m)} & x_2^{(m)} & \cdots & x_j^{(m)} & \cdots & x_n^{(m)} \\
 ```
 
 ```{warning}
-The $i^\text{th}$ training sample $x^{(i)}$ is not a scalar but a row vector of $n$ elements.  
+The $i^\text{th}$ training sample $\boldsymbol{x^{(i)}}$ is not a scalar but a row vector of $n$ elements.  
 ```
 
-Our hypothesis function is generalized to the following for a given training example (the supercript $^{(i)}$ is omitted for clarity):
+Our hypothesis function is generalized to the following for a given training example (row $i$):
 ````{prf:definition}
 :label: hypothesisFunctionMulti
 The __hypothesis__ or __mapping function__ for linear regression with $n$ features is:
 \begin{equation*}
-h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \cdots + \theta_j x_j + \cdots + \theta_n x_n
+h_\theta(\boldsymbol{x^{(i)}}) = \theta_0 + \theta_1 x^{(i)}_1 + \theta_2 x^{(i)}_2 + \cdots + \theta_j x^{(i)}_j + \cdots + \theta_n x^{(i)}_n
 \end{equation*}
 ````
 ```{warning}
@@ -62,18 +62,12 @@ There are $n+1$ parameters to optimize as we need to add the offset parameter $\
 If we set $x_0^{(i)} = 1$, we can write the mapping function as a sum. For one training example $x^{(i)}$, i.e. a row in the data set:
 ```{math}
 :label: h_theta_lin_sum
-  h_\theta(x^{(i)}) = \sum_{j=0}^n \theta_j x^{(i)}_j = \theta^{\; T} x^{(i)}
+  h_\theta(\boldsymbol{x^{(i)}}) = \sum_{j=0}^n \theta_j x^{(i)}_j =  x^{(i)} \theta^{\; T}
 ```
-where $x^{(i)}$ an __row__ vector of $n+1$ elements, $x^{(i)} = (x_0, x_1, x_2, \cdots, x_n)$ and $\theta^{\; T}$ is a column vector of $n+1$ elements too:
+where $x^{(i)}$ an __row vector__ of $n+1$ elements, $x^{(i)} = (x^{(i)}_0, x^{(i)}_1, x^{(i)}_2, \cdots, x^{(i)}_n)$ and $\theta$ is a __row vector__ too of $n+1$ elements as well, $\theta = (\theta_0, \theta_1, \cdots, \theta_n)$. Thus taking the transposed is equivalent to a dot product:
 \begin{equation*}
-\theta  = \begin{pmatrix} 
-\theta_0 \\
-\theta_1 \\
- \\
-\vdots \\ 
- \\
-\theta_n \\
-\end{pmatrix}
+\boldsymbol{x^{(i)}} \boldsymbol{\theta^{\; T}} =  \begin{pmatrix} x^{(i)}_0, x^{(i)}_1, x^{(i)}_2, \cdots, x^{(i)}_n\\\end{pmatrix} 
+  \begin{pmatrix} \theta_0 \\\theta_1 \\ \\\vdots \\  \\\theta_n \\\end{pmatrix} = \; \boldsymbol{x^{(i)}} \cdot  \boldsymbol{\theta}
 \end{equation*}
 
 (warmup:linregmulti:graddesc)=
@@ -141,7 +135,7 @@ __Exit conditions__
 The partial derivatives of $J(\theta)$ for each parameter $\theta_j$ will be of the form:
 ```{math}
 :label: partialDevLinReg
-\frac{\partial}{\partial \theta_j} J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) x_j^{(i)}
+\frac{\partial}{\partial \theta_j} J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) \; x_j^{(i)}
 ```
 
 ## Feature Scaling & Normalization

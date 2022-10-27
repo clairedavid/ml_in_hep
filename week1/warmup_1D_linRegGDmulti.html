@@ -289,7 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="NN1_feedforward.html">
-     Feedforward propagation
+     Feedforward Propagation
     </a>
    </li>
   </ul>
@@ -1040,7 +1040,7 @@ h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \cdots + \theta_j x_j + \
 <p>If we set <span class="math notranslate nohighlight">\(x_0^{(i)} = 1\)</span>, we can write the mapping function as a sum. For one training example <span class="math notranslate nohighlight">\(x^{(i)}\)</span>, i.e. a row in the data set:</p>
 <div class="math notranslate nohighlight" id="equation-h-theta-lin-sum">
 <span class="eqno">(7)<a class="headerlink" href="#equation-h-theta-lin-sum" title="Permalink to this equation">#</a></span>\[  h_\theta(x^{(i)}) = \sum_{j=0}^n \theta_j x^{(i)}_j = \theta^{\; T} x^{(i)}\]</div>
-<p>where <span class="math notranslate nohighlight">\(x^{(i)}\)</span> an <strong>row</strong> vector of <span class="math notranslate nohighlight">\(n+1\)</span> elements, <span class="math notranslate nohighlight">\(x^{(i)} = (x_0, x_1, x_2, \cdots, x_n)\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span> is a column vector of <span class="math notranslate nohighlight">\(n+1\)</span> elements too:</p>
+<p>where <span class="math notranslate nohighlight">\(x^{(i)}\)</span> an <strong>row</strong> vector of <span class="math notranslate nohighlight">\(n+1\)</span> elements, <span class="math notranslate nohighlight">\(x^{(i)} = (x_0, x_1, x_2, \cdots, x_n)\)</span> and <span class="math notranslate nohighlight">\(\theta^{\; T}\)</span> is a column vector of <span class="math notranslate nohighlight">\(n+1\)</span> elements too:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
 \theta  = \begin{pmatrix} 

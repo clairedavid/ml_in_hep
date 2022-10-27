@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Feedforward propagation &#8212; Machine Learning in Particle Physics</title>
+    <title>Feedforward Propagation &#8212; Machine Learning in Particle Physics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="6. Neural Networks Part II" href="../week2/NN2.html" />
@@ -287,7 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Feedforward propagation
+     Feedforward Propagation
     </a>
    </li>
   </ul>
@@ -803,23 +805,124 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-feedforward-propagation">
+   What is Feedforward Propagation?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notations">
+   Notations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-by-step-calculations">
+   Step by step calculations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computation-of-the-first-hidder-layer">
+     Computation of the first hidder layer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computation-of-the-second-hidder-layer">
+     Computation of the second hidder layer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computation-of-the-third-hidder-layer">
+     Computation of the third hidder layer
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general">
+   General…
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Feedforward propagation</h1>
+                <h1>Feedforward Propagation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-feedforward-propagation">
+   What is Feedforward Propagation?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notations">
+   Notations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-by-step-calculations">
+   Step by step calculations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computation-of-the-first-hidder-layer">
+     Computation of the first hidder layer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computation-of-the-second-hidder-layer">
+     Computation of the second hidder layer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computation-of-the-third-hidder-layer">
+     Computation of the third hidder layer
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general">
+   General…
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -828,8 +931,108 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="feedforward-propagation">
-<h1>Feedforward propagation<a class="headerlink" href="#feedforward-propagation" title="Permalink to this headline">#</a></h1>
-<p>Not an algo but a mechanism.</p>
+<h1>Feedforward Propagation<a class="headerlink" href="#feedforward-propagation" title="Permalink to this headline">#</a></h1>
+<section id="what-is-feedforward-propagation">
+<h2>What is Feedforward Propagation?<a class="headerlink" href="#what-is-feedforward-propagation" title="Permalink to this headline">#</a></h2>
+<p>It is a first step in the training of a neural network (after initialization of the weights, which will be covered in the next lecture). The forward direction means going from input to output nodes.</p>
+<div class="proof definition admonition" id="feedforwardpropdef">
+<p class="admonition-title"><span class="caption-number">Definition 52 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>Feedforward Propagation</strong>, also called <strong>Forward Pass</strong>, is the process consisting of computing and storing all network nodes’ output values, starting with the first hidden layer until the last output layer, using at start either a subset or the entire dataset samples.</p>
+</section>
+</div><p>Forward propagation thus leads to a list of the neural network prediction for each data instance used in the input. At each node, the computation is the key equation <a class="reference internal" href="NN1_modelRep.html#equation-aneq">(44)</a> we saw in the previous Section <a class="reference internal" href="NN1_modelRep.html#nn1-modelrep"><span class="std std-ref">Model Representation</span></a>, written again for convenience:</p>
+<div class="math notranslate nohighlight" id="equation-sumwixieq">
+<span class="eqno">(51)<a class="headerlink" href="#equation-sumwixieq" title="Permalink to this equation">#</a></span>\[y = f\left(\sum_{j=1}^n w_j x_j + b \right)\]</div>
+<p>But there will be some change in the notations. Let’s define everything in the next subsection.</p>
+</section>
+<section id="notations">
+<h2>Notations<a class="headerlink" href="#notations" title="Permalink to this headline">#</a></h2>
+<p>Let’s write the following network with <span class="math notranslate nohighlight">\(x_n\)</span> input features, one first hidden layer with <span class="math notranslate nohighlight">\(a_q\)</span> activation units and a second one with <span class="math notranslate nohighlight">\(a_r\)</span> activation units. For simplicity, we will choose an output layer with only one node:</p>
+<figure class="align-default" id="lec05-4-nn-notations">
+<a class="reference internal image-reference" href="../_images/lec05_4_nn_notations.png"><img alt="../_images/lec05_4_nn_notations.png" src="../_images/lec05_4_nn_notations.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">. A feedforward neural network with the notation we will use for the forward propagation equations (more in text).<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#lec05-4-nn-notations" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>There are lots of subscripts and upperscripts here. Let’s explain the conventions we will use.</p>
+<p><strong>Input data</strong><br />
+We saw in Lecture 2 that the dataset in supervised learning can be represented as a matrix <span class="math notranslate nohighlight">\(X\)</span> of <span class="math notranslate nohighlight">\(m\)</span> data instances (rows) of <span class="math notranslate nohighlight">\(n\)</span> input features (columns). For clarity in the notations, we will focus for now on only one data instance, the <span class="math notranslate nohighlight">\(i\)</span>th sample row <span class="math notranslate nohighlight">\(\boldsymbol{x^{(i)}} = ( x_1, x_2, \cdots, x_n)\)</span>.</p>
+<p><strong>Activation units</strong>
+In a given layer <span class="math notranslate nohighlight">\(\ell = 1, 2, \cdots, N^\text{layer}\)</span>, the activation units will give outputs that we will note as a row vector</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{a^{(\ell)}} = ( a_1^{(\ell)}, a_2^{(\ell)}, \cdots , a_q^{(\ell)}), \]</div>
+<p>where the upperscript is the layer number and the subscript is the row of the activation unit in the layer, starting from the top.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The layer numbering starts at the first hidden layer where <span class="math notranslate nohighlight">\(\ell=1\)</span>. The input layer is <span class="math notranslate nohighlight">\(\ell=0\)</span>.</p>
+</aside>
+<p><strong>Biases</strong><br />
+The biases are also row vectors, one for each layer it connects to.</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{b^{(\ell)}} = ( b_1^{(\ell)}, b_2^{(\ell)}, \cdots , b_q^{(\ell)})\]</div>
+<p>If the last layer is only made of one node like in our example above, then <span class="math notranslate nohighlight">\(b\)</span> is a scalar.</p>
+<p><strong>Weights</strong><br />
+Now the weights. You may see in the literature different ways to represent them. In here we use a convention we could write as:</p>
+<div class="math notranslate nohighlight">
+\[w^\ell_{(\ell -1) \; \to \; \ell}\]</div>
+<p>For instance <span class="math notranslate nohighlight">\(w^{(2)}_{3,1}\)</span> is the weight from the third node of layer (1) going to the first node of layer (2). In other words, the first index is the row of the node from the previous layer (departing node of the weight’s arrow) and the second index is the row of the node from the current layer (the one the weight’s arrow points to).</p>
+<p>We can actually represent each weight from layer <span class="math notranslate nohighlight">\(\ell -1\)</span> to layer <span class="math notranslate nohighlight">\(\ell\)</span> as a matrix <span class="math notranslate nohighlight">\(W^{(\ell)}\)</span>. If the previous layer <span class="math notranslate nohighlight">\(\ell -1\)</span> as <span class="math notranslate nohighlight">\(n\)</span> nodes and the layer <span class="math notranslate nohighlight">\(\ell\)</span> has <span class="math notranslate nohighlight">\(q\)</span> activation units, we will have:</p>
+<div class="math notranslate nohighlight" id="equation-wmatrixeq">
+<span class="eqno">(52)<a class="headerlink" href="#equation-wmatrixeq" title="Permalink to this equation">#</a></span>\[\begin{split}W^{(\ell)} = \begin{pmatrix}
+w_{1,1}^{(\ell)} &amp; w_{1,2}^{(\ell)} &amp; \cdots &amp; w_{1,q}^{(\ell)} \\[2ex]
+w_{2,1}^{(\ell)} &amp; w_{2,2}^{(\ell)} &amp; \cdots &amp; w_{2,q}^{(\ell)} \\[1ex]
+\vdots  &amp; \vdots &amp; \ddots   &amp; \vdots \\[1ex]
+w_{n,1}^{(\ell)} &amp; w_{n,2}^{(\ell)} &amp;  \cdots &amp; w_{n,q}^{(\ell)} \\
+\end{pmatrix}\end{split}\]</div>
+<p>Let’s now see how we calculate all the values of the activation units!</p>
+</section>
+<section id="step-by-step-calculations">
+<h2>Step by step calculations<a class="headerlink" href="#step-by-step-calculations" title="Permalink to this headline">#</a></h2>
+<section id="computation-of-the-first-hidder-layer">
+<h3>Computation of the first hidder layer<a class="headerlink" href="#computation-of-the-first-hidder-layer" title="Permalink to this headline">#</a></h3>
+<p>Let’s use Equation <a class="reference internal" href="#equation-sumwixieq">(51)</a> to compute the activation unit outputs of the first layer. The activation function is represented as <span class="math notranslate nohighlight">\(f\)</span> here:</p>
+<div class="math notranslate nohighlight" id="equation-firstlayereq">
+<span class="eqno">(53)<a class="headerlink" href="#equation-firstlayereq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+a^{(1)}_1 &amp;= f\left(\; w_{1,1}^{(1)} \; x_1 \;+\; w_{2,1}^{(1)} \; x_2 \;+\; \cdots + \; w_{n,1}^{(1)} \; x_n \;+\; b^{(1)}_1\right)\\[2ex]
+a^{(1)}_2 &amp;= f\left(\; w_{1,2}^{(1)} \; x_1 \;+\; w_{2,2}^{(1)} \; x_2 \;+\; \cdots + \; w_{n,2}^{(1)} \; x_n \;+\; b^{(1)}_2\right)\\
+&amp;\vdots \\[2ex]
+a^{(1)}_q &amp;= f\left(\; w_{1,q}^{(1)} \; x_1 \;+\; w_{2,q}^{(1)} \; x_2 \;+\; \cdots + \; w_{n,q}^{(1)} \; x_n \;+\; b^{(1)}_q\right)\\
+\end{align*}\end{split}\]</div>
+<p>We can actually write it in the matrix form. The expanded version being:</p>
+<div class="math notranslate nohighlight" id="equation-firstlayermatrixexpandedeq">
+<span class="eqno">(54)<a class="headerlink" href="#equation-firstlayermatrixexpandedeq" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{a^{(1)}} = f\left[ \; ( x_1, x_2, \cdots, x_n) 
+\begin{pmatrix}w_{1,1}^{(1)} &amp; w_{1,2}^{(1)} &amp; \cdots &amp; w_{1,q}^{(1)} \\[2ex]w_{2,1}^{(1)} &amp; w_{2,2}^{(1)} &amp; \cdots &amp; w_{2,q}^{(1)} \\[1ex]\vdots  &amp; \vdots &amp; \ddots   &amp; \vdots \\[1ex]w_{n,1}^{(1)} &amp; w_{n,2}^{(1)} &amp;  \cdots &amp; w_{n,q}^{(1)} \\\end{pmatrix}
+ \;+\; ( b_1^{(1)}, b_2^{(1)}, \cdots , b_q^{(1)}) \; \right]\end{split}\]</div>
+<p>And the compact one:</p>
+<div class="math notranslate nohighlight" id="equation-firstlayermatrixeq">
+<span class="eqno">(57)<a class="headerlink" href="#equation-firstlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(1)}} = f\left( \; \boldsymbol{x} \;W^{(1)} \;+\; \boldsymbol{b}^{(1)} \;\right)\]</div>
+<p>Much lighter.</p>
+</section>
+<section id="computation-of-the-second-hidder-layer">
+<h3>Computation of the second hidder layer<a class="headerlink" href="#computation-of-the-second-hidder-layer" title="Permalink to this headline">#</a></h3>
+<p>Let’s do the same calculation for the second layer of activation units. Instead of the dataset vector <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>, we will have <span class="math notranslate nohighlight">\(\boldsymbol{a^{(1)}}\)</span> as input:</p>
+<div class="math notranslate nohighlight" id="equation-secondlayermatrixexpandedeq">
+<span class="eqno">(56)<a class="headerlink" href="#equation-secondlayermatrixexpandedeq" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{a^{(2)}} = f\left[ \; ( a^{(1)}_1, a^{(1)}_2, \cdots, a^{(1)}_q) 
+\begin{pmatrix}w_{1,1}^{(2)} &amp; w_{1,2}^{(2)} &amp; \cdots &amp; w_{1,r}^{(2)} \\[2ex]
+w_{2,1}^{(2)} &amp; w_{2,2}^{(2)} &amp; \cdots &amp; w_{2,r}^{(2)} \\[1ex]
+\vdots  &amp; \vdots &amp; \ddots   &amp; \vdots \\[1ex]
+w_{q,1}^{(1)} &amp; w_{q,2}^{(1)} &amp;  \cdots &amp; w_{q,r}^{(1)} \\
+\end{pmatrix} \;+\; ( b_1^{(2)}, b_2^{(2)}, \cdots , b_r^{(2)}) \; \right]\end{split}\]</div>
+<p>And the elegant, light version:</p>
+<div class="math notranslate nohighlight" id="equation-firstlayermatrixeq">
+<span class="eqno">(57)<a class="headerlink" href="#equation-firstlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(2)}} = f\left( \; \boldsymbol{a^{(2)}} \;W^{(2)} \;+\; \boldsymbol{b}^{(2)} \;\right)\]</div>
+<p>We start seeing a pattern here thanks to the matricial form.</p>
+</section>
+<section id="computation-of-the-third-hidder-layer">
+<h3>Computation of the third hidder layer<a class="headerlink" href="#computation-of-the-third-hidder-layer" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+<section id="general">
+<h2>General…<a class="headerlink" href="#general" title="Permalink to this headline">#</a></h2>
+<p>=================</p>
+<p>Nice animation! https://yogayu.github.io/DeepLearningCourse/03/ForwardPropagation.html</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

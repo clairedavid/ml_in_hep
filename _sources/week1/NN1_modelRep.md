@@ -1,3 +1,4 @@
+(NN1:modelRep)=
 # Model Representation
 
 ## The basic units: neurons
@@ -207,7 +208,7 @@ Every layer except the output layer include a bias neuron and is fully connected
 Each neuron (or node) performs a linear transformation on the inputs (weighted sum) followed by a non-linearity (the activation function). 
 
 
-### Deep or not deep: is that a question
+### Deep or not deep: is that a question?
 ````{prf:definition}
 :label: 
 The number of hidden layers is an indicator of the __depth__ of a neural network. 

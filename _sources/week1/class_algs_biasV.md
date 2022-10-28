@@ -75,7 +75,8 @@ It is a $n^C \times n^C$ matrix, with $n^C$ the number of classes.
   name: lec03_5_confusionmatrix
   width: 100%
 ---
- . The confusion matrix for a binary classifier. <sub>Image from the author</sub>
+ . The confusion matrix for a binary classifier.  
+<sub>Image from the author</sub>
  ```
 The quantity in each cell $C_{i,j}$ corresponds to the number of observations known to be in group $i$ and predicted to be in group $j$.
 The true cells are along the diagonal when $i=j$. Otherwise, if $i \neq j$, it is false. For $n^C =2$ there are two ways to be right, two ways to be wrong. The counts are called:
@@ -104,13 +105,18 @@ The false positive and false negatives misclassifications are also referred to a
 ````{prf:definition}
 :label: 
 __Type I error - False Positive__  
-Error of rejecting the null hypothesis (background classified as signal) when the null hypothesis is true.
+Error of rejecting the null hypothesiswhen the null hypothesis is true.   
+
+$\Rightarrow$ Background is classified as signal (background contamination)
 
 __Type II error - False Negative__  
-Error of accepting the null hypothesis (signal not seen as signal) when the alternative hypothesis is actually true.
+Error of accepting the null hypothesis when the alternative one is actually true.  
+
+$\Rightarrow$ Signal is classified as background (missing out on what we look for)
+
 ````
 
-The type I error leads to signal samples not pure, as contaminated with background. But a type II error's is a miss on a possible discovery! Or in medical diagnosis, it can be equivalent to state "you are not ill" to a sick patient. Type II errors are in some cases and contexts much worse than type I errors.
+The type I error leads to signal samples not pure, as contaminated with background. But a type II error is a miss on a possible discovery! Or in medical diagnosis, it can be equivalent to state "you are not ill" to a sick patient. Type II errors are in some cases and contexts much worse than type I errors.
 
 ## Performance measures
 
@@ -136,25 +142,30 @@ The total model error, i.e. the sum of all wrong predictions divided by the tota
 ````{prf:definition}
 :label: errormetricsclassdef
 
+&nbsp;  
 __Accuracy__  
 Rate at which the model is able to predict the correct values of both classes.
 \begin{equation}
 \text{Accuracy} = \frac{\text{True predictions}}{\text{All predictions}} = \frac{\text{TP + TN}}{\text{TP + TN + FP + FN}}
 \end{equation}
 
+&nbsp;  
 __Precision, or Positive Predictive Value (PPV)__  
 Measure of the fraction of true predictions among all __positive predictions__.
 \begin{equation}
 \text{Precision} = \frac{\text{True predictions}}{\text{All Positive Predictions}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Positive}}
 \end{equation}
 
+&nbsp;  
 __Recall, or True Positive Rate (TPR)__  
 Measure of the fraction of true predictions among all __true observations__.
 \begin{equation}
 \text{Recall} = \frac{\text{True predictions}}{\text{Actual Positive}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
 \end{equation}
 
-__F-Score, or F1__  describes the balance between Precision and Recall. It is the harmonic mean of the two:
+&nbsp;  
+__F-Score, or F1__  
+Describes the balance between Precision and Recall. It is the harmonic mean of the two:
 \begin{equation}
 \text{F1} =2 \; \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
 \end{equation}
@@ -168,6 +179,116 @@ Find different examples of classification in which:
 * a low recall but high precision is preferrable
 * a low precision but high recall is preferrable 
 ```
+
+## The ROC curve and the area under it
+
+### Ingredients to ROC
+There is in machine learning a very convenient visual to not only see the performance of a binary classifier but also compare different classifiers between each others. It is the ROC curve (beloved by experimental particle physicists). Before explaining how to draw it, let's first introduce key ingredients. Those ingredient are concepts previously encountered, yet but baring other names: the _score_ and _decision threshold_.
+
+We saw the classification is done using the output of the sigmoid function and a decision boundary of $y=0.5$ (see {prf:ref}`decBoundDef` in section {ref}`class:sigmoid`). Sometimes the classifier's output is also called _score_, aka an estimation of probability, and the decision boundary can be also referred to _decision threshold_. It's a cut value above which a data sample is predicted as a signal event ($y=1$) and below which it is classified as background ($y=1$). We chose $y^\text{thres.}=0.5$ to cut our sigmoid half way through its output range, but for building a ROC curve, we will vary this decision threshold.
+
+Now let's recall (pun intended) the True Positive Rate that was defined above in {prf:ref}`errormetricsclassdef`, but let's write it again for convenience and add other metrics:
+
+````{prf:definition}
+:label: tprfprdef
+&nbsp;  
+__True Positive Rate (TPR)__, also called _sensitivity_  
+
+\begin{equation}
+\text{TPR} = \frac{\text{True predictions}}{\text{Actual Positive}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
+\end{equation}
+
+&nbsp;  
+__True Negative Rate (TNR)__, also called _specificity_  
+
+Ratio of negative instances correctly classified as negative. 
+\begin{equation}
+\text{TNR} = \frac{\text{False predictions}}{\text{Actual Negative}} = \frac{\text{True Negative}}{\text{True Negative} + \text{False Positive}}
+\end{equation}
+
+&nbsp;  
+__False Positive Rate (FPR)__  
+
+Ratio of negative instances that are incorrectly classified as positive.  
+\begin{equation}
+\text{FPR} = \frac{\text{Real False predicted Positive}}{\text{Actual Negative}} = \frac{\text{False Positive}}{\text{True Negative} + \text{False Positive}}
+\end{equation}
+
+&nbsp;  
+The False Positive Rate (FPR) is equal to:
+\begin{equation}
+\text{FPR} = 1 - \text{TNR} = 1 - \textit{specificity}
+\end{equation}
+````
+
+In particle physics, the True Positive Rate is called signal efficiency. It is indeed how efficient the classifier is to correctly classify as signal (numerator) all the real signal (denominator). Zero is bad, TPR = 1 is ideal. The True Negative Rate is called background efficiency. Particle physics builds ROC curves slightly different than the ones you can see in data science; instead of using FPR it uses the background rejection, defined as the inverse of background efficiency. 
+
+We have our ingredients. So, what is a ROC curve?
+
+### Building the ROC curve
+
+````{prf:definition}
+:label: rocdef
+The __Receiver Operating Characteristic (ROC) curve__ is a graphical display that plot the True Positive Rate (TPR) against the False Positive Rate (FPR) for each value of the decision threshold $T$ going over the classifier's output score range.
+````
+
+A picture is worth a thousand words as we say. Let's make sense of the definition above using the illustration below:
+
+```{figure} ../images/lec03_5_ROCdetailed.png
+---
+  name: lec03_5_ROCdetailed
+  width: 90%
+---
+ . How a ROC curve is constructed: the continuous variable x represents the classifier's score. For a given decision threshold (green), the probabilities of True Positive P(TP) and False Positive P(FP) (or their equivalent in rates) are computed and plotted in the graph below. The ROC curve is the ensemble of the points (TPR, FPR) for all values of the threshold.   
+<sub>Image: [Wikipedia](https://en.wikipedia.org/wiki/Receiver_operating_characteristic#/media/File:ROC_curves.svg)</sub>
+```
+
+In the picture above, there are two histograms obtained from the classifier's score distribution using background (blue, $y=0$) and signal (red, $y=1$) samples. 
+The True Positive Rate or signal efficiency is the integral of the signal (red) score distribution from the threshold $T$ to the right ($x \to +\infty$) divided by the entire integral of the signal (red) distribution. The False Positive Rate can be obtained in two ways:
+* We take the integral of the background (blue) distribution from the threshold $T$ to the __left__ ($x \to -\infty$) and divide by the full background distribution's integral. That's the background efficiency, or TNR. Then we get FPR using FPR = 1 - TNR.
+
+Or:
+* We take the integral of the background (blue) distribution from the threshold $T$ to the __right__ ($x \to +\infty$) and divide by the full background distribution's integral. 
+
+```{admonition} Exercise
+:class: seealso
+If we move the threshold $T$ to the right ($x \to +\infty$), in which direction would it corresponds to on the ROC curve? Right or left?
+```
+
+````{admonition} Check your answer
+:class: tip, dropdown
+If we move the threshold $T$ to the right, we will omit some signal samples ($y=1$) and thus decrease in signal efficiency, so the True Positive Rate will decrease (and if we exagerate to check this reasoning by pushing $T$ to the very very right, we have no more signal sample on the right of the threshold, we miss out all signal and TPR = 0). So moving to the right decreases the signal efficiency/TRP.  
+
+What about background ($y=0$)? It's the contrary, if we shift the threshold $T$ to the right, we will gain more background samples in the blue distribution and improve our background efficiency. Good for the background, but we want signal. That translates on the ROC curve in reducing the FPR (1 - background-efficiency). And we can check that if the threshold is all the way to the right, we have 100% background efficiency and a specificity of zero.
+
+Conclusion: increasing the decision threshold $T$ moves us on the ROC curve to the left (and down eventually to 0,0). 
+````
+
+### Comparing Classifiers
+The ROC has the great advantage to see how different classifiers compare through all the ranges of signal and background efficiencies. 
+
+```{figure} ../images/lec03_5_ROC.png
+---
+  name: lec03_5_ROC
+  width: 75%
+---
+ . Several ROC curves can be overlaid to then compare classifiers. A poor classifier will be near the random classifier line, which is the "random classifier" or in other words using pure luck (it will be right on average 50% of the time). The idea classifier correspond to the top left dot, where 100% of the signal sample are correctly classified so the False Positive Rate is zero.  
+<sub>Image: Modified work by the author, original by [Wikipedia](https://en.wikipedia.org/wiki/File:Roc_curve.svg)</sub>
+```
+
+We can see from the picture that the more the curve approaches the ideal classifier, the better it is. We can use the area under the ROC curve to have a single number to then quantitatively compare classifier on the whole.
+
+````{prf:definition}
+:label: aucdef
+The __Area Under Curve (AUC)__ is the integral of the ROC curve, from FPR = 0 till FPR = 1.
+
+A perfect classifier will have AUC = 1.
+````
+
+```{warning}
+While it is convenient to have a single number for comparing classifier, the AUC is not reflecting how classifiers perform for specific ranges of signal efficiencies. It is always important while optimizing or choosing a classifier to check its performance in the range relevant for the given problem.
+```
+
 
 ## Bias and Variance
 ### Definitions

@@ -251,18 +251,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="BDTs_terms.html">
-     Terminology, Algorithms, Attributes
+    <a class="reference internal" href="BDTs_forest.html">
+     Ensemble Learning and Random Forests
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="BDTs_boosting.html">
      What is boosting?
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="BDTs_XGBoost.html">
-     The maths behind XGBoost
     </a>
    </li>
   </ul>
@@ -294,7 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="NN1_feedforward.html">
-     Feedforward propagation
+     Feedforward Propagation
     </a>
    </li>
   </ul>
@@ -1018,8 +1013,8 @@ There are two main approaches of such methods for multiclassification.</p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-One approach</strong> consists of applying a binary classification for each pair of classes, ignoring the other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of models to train, <span class="math notranslate nohighlight">\(N^\text{model}\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-46b79bdc-a710-47db-8ae2-a61e2c419061">
-<span class="eqno">(15)<a class="headerlink" href="#equation-46b79bdc-a710-47db-8ae2-a61e2c419061" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c3b9a0d4-215a-4afd-bb15-51339fc78b3d">
+<span class="eqno">(15)<a class="headerlink" href="#equation-c3b9a0d4-215a-4afd-bb15-51339fc78b3d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 N^\text{model} = \frac{N^\text{class}(N^\text{class}-1)}{2}
 \end{equation}\]</div>
 <p>Each model predicts one class label. The final decision is the class label receiving the most votes, i.e. being predicted most of the time.</p>
@@ -1033,8 +1028,8 @@ The pairing makes the number of models to train large and thus computer intensiv
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-All or One-to-Rest approach</strong> consists of training each class against the collection of all other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of pairs to train is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2e1c2469-c6bf-4a1f-b9c9-24322921074c">
-<span class="eqno">(16)<a class="headerlink" href="#equation-2e1c2469-c6bf-4a1f-b9c9-24322921074c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ba058e6a-3bed-4fdf-a6da-4a500e0bf725">
+<span class="eqno">(16)<a class="headerlink" href="#equation-ba058e6a-3bed-4fdf-a6da-4a500e0bf725" title="Permalink to this equation">#</a></span>\[\begin{equation}
  N^\text{model} = N^\text{class}
 \end{equation}\]</div>
 <p>The final prediction is given by the highest value of the hypothesis function <span class="math notranslate nohighlight">\(h^{k}_theta(x)\)</span>, <span class="math notranslate nohighlight">\(k \in [1, N^\text{model}]\)</span> among the <span class="math notranslate nohighlight">\(N^\text{model}\)</span> binary classifiers.</p>

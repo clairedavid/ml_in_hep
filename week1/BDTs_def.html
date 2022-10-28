@@ -260,11 +260,6 @@ const thebe_selector_output = ".output, .cell_output"
      What is boosting?
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="BDTs_XGBoost.html">
-     The maths behind XGBoost
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -294,7 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="NN1_feedforward.html">
-     Feedforward propagation
+     Feedforward Propagation
     </a>
    </li>
   </ul>
@@ -948,12 +943,12 @@ title="Print to PDF"
 <section id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="dtdef">
-<p class="admonition-title"><span class="caption-number">Definition 36 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 39 </span></p>
 <section class="definition-content" id="proof-content">
 <p>A <strong>decision tree</strong> is a flowchart mapping a decision making process. It is organized into nodes, branches and leaves.</p>
 </section>
 </div><div class="proof definition admonition" id="nodesdef">
-<p class="admonition-title"><span class="caption-number">Definition 37 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 40 </span></p>
 <section class="definition-content" id="proof-content">
 <p>A node is a condition box evaluating one or more input features.</p>
 <p>The outcomes of that evaluation (either boolean or numerical) is divised into <strong>branches</strong>, or edges.</p>
@@ -976,7 +971,7 @@ title="Print to PDF"
 <figure class="align-default" id="lec04-bdts-viz-tree">
 <a class="reference internal image-reference" href="../_images/lec04_BDTs_viz_tree.png"><img alt="../_images/lec04_BDTs_viz_tree.png" src="../_images/lec04_BDTs_viz_tree.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">. Example of a Decision Tree drawn from sklearn pre-loaded dataset <em>iris</em>. The root node is at the top, at depth zero. The tree stops at depth = 2 (final leaves).</span><a class="headerlink" href="#lec04-bdts-viz-tree" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">. Example of a Decision Tree drawn from sklearn pre-loaded dataset <em>iris</em>. The root node is at the top, at depth zero. The tree stops at depth = 2 (final leaves).</span><a class="headerlink" href="#lec04-bdts-viz-tree" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Such a flowchart above tells how future predictions are made. Predicting the class of a new data point (<span class="math notranslate nohighlight">\(x_1^\text{new}\)</span>, <span class="math notranslate nohighlight">\(x_2^\text{new}\)</span>), one simply follows the ‘route’ of the tree starting from the root node (on top) and ‘answering’ the conditions. Is <span class="math notranslate nohighlight">\(x_1\)</span> lower than 2.45? Yes, go to the left (and it corresponds to predicted class A). If not, go to the next node evaluating <span class="math notranslate nohighlight">\(x_2\)</span> feature, etc.</p>
@@ -993,12 +988,12 @@ title="Print to PDF"
 <h2>Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this headline">#</a></h2>
 <p>There are metrics entering in the optimization algorithm of a decision tree. One is the Gini impurity:</p>
 <div class="proof definition admonition" id="ginidef">
-<p class="admonition-title"><span class="caption-number">Definition 38 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 41 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>Gini’s diversity index</strong> is a measure of a node’s impurity.</p>
 <p>It is defined for each tree node <span class="math notranslate nohighlight">\(i\)</span> as:</p>
 <div class="amsmath math notranslate nohighlight" id="equation-2c935d33-b0be-4378-815c-7ba0f5b4f6ee">
-<span class="eqno">(27)<a class="headerlink" href="#equation-2c935d33-b0be-4378-815c-7ba0f5b4f6ee" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<span class="eqno">(31)<a class="headerlink" href="#equation-2c935d33-b0be-4378-815c-7ba0f5b4f6ee" title="Permalink to this equation">#</a></span>\[\begin{equation}
 G_i = 1 - \sum_{k=1}^{N^\text{class}} \left( \frac{N^k}{ N^{\text{node } i}} \right)^2 
 \end{equation}\]</div>
 <p>with <span class="math notranslate nohighlight">\(N^k\)</span> the number of data samples of class <span class="math notranslate nohighlight">\(k\)</span> in node <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(N^{\text{node } i}\)</span> the total number of data samples in node <span class="math notranslate nohighlight">\(i\)</span>.</p>
@@ -1046,7 +1041,7 @@ For each feature <span class="math notranslate nohighlight">\(k\)</span>, finds 
 The cost function is defined as:</p></li>
 </ol>
 <div class="amsmath math notranslate nohighlight" id="equation-1d1725c7-7341-4979-9b25-acd50f1684c3">
-<span class="eqno">(28)<a class="headerlink" href="#equation-1d1725c7-7341-4979-9b25-acd50f1684c3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<span class="eqno">(32)<a class="headerlink" href="#equation-1d1725c7-7341-4979-9b25-acd50f1684c3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 J(k, t_k) = \frac{n_\text{left}}{n_\text{node}} G_\text{left} + \frac{n_\text{right}}{n_\text{node}} G_\text{right}
 \end{equation}\]</div>
 <p>The purity is weighted by the subset sizes. The pair (<span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(t_k\)</span>) producing the purest subset is set for the node.</p>

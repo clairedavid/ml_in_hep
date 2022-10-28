@@ -946,13 +946,13 @@ title="Print to PDF"
 <h2>What is Feedforward Propagation?<a class="headerlink" href="#what-is-feedforward-propagation" title="Permalink to this headline">#</a></h2>
 <p>It is a first step in the training of a neural network (after initialization of the weights, which will be covered in the next lecture). The forward direction means going from input to output nodes.</p>
 <div class="proof definition admonition" id="feedforwardpropdef">
-<p class="admonition-title"><span class="caption-number">Definition 52 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 55 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>Feedforward Propagation</strong>, also called <strong>Forward Pass</strong>, is the process consisting of computing and storing all network nodes’ output values, starting with the first hidden layer until the last output layer, using at start either a subset or the entire dataset samples.</p>
 </section>
-</div><p>Forward propagation thus leads to a list of the neural network predictions for each data instance row used as input. At each node, the computation is the key equation <a class="reference internal" href="NN1_modelRep.html#equation-aneq">(44)</a> we saw in the previous Section <a class="reference internal" href="NN1_modelRep.html#nn1-modelrep"><span class="std std-ref">Model Representation</span></a>, written again for convenience:</p>
+</div><p>Forward propagation thus leads to a list of the neural network predictions for each data instance row used as input. At each node, the computation is the key equation <a class="reference internal" href="NN1_modelRep.html#equation-aneq">(48)</a> we saw in the previous Section <a class="reference internal" href="NN1_modelRep.html#nn1-modelrep"><span class="std std-ref">Model Representation</span></a>, written again for convenience:</p>
 <div class="math notranslate nohighlight" id="equation-sumwixieq">
-<span class="eqno">(51)<a class="headerlink" href="#equation-sumwixieq" title="Permalink to this equation">#</a></span>\[y = f\left(\sum_{j=1}^n w_j x_j + b \right)\]</div>
+<span class="eqno">(55)<a class="headerlink" href="#equation-sumwixieq" title="Permalink to this equation">#</a></span>\[y = f\left(\sum_{j=1}^n w_j x_j + b \right)\]</div>
 <p>But there will be some change in the notations. Let’s define everything in the next subsection.</p>
 </section>
 <section id="notations">
@@ -961,7 +961,7 @@ title="Print to PDF"
 <figure class="align-default" id="lec05-4-nn-notations">
 <a class="reference internal image-reference" href="../_images/lec05_4_nn_notations.png"><img alt="../_images/lec05_4_nn_notations.png" src="../_images/lec05_4_nn_notations.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 50 </span><span class="caption-text">. A feedforward neural network with the notation we will use for the forward propagation equations (more in text).<br />
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text">. A feedforward neural network with the notation we will use for the forward propagation equations (more in text).<br />
 <sub>Image from the author</sub></span><a class="headerlink" href="#lec05-4-nn-notations" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -989,7 +989,7 @@ Now the weights. You may see in the literature different ways to represent them.
 <p>In other words, the first index is the row of the node from the previous layer (departing node of the weight’s arrow) and the second index is the row of the node from the current layer (the one the weight’s arrow points to). For instance <span class="math notranslate nohighlight">\(w^{(2)}_{3,1}\)</span> is the weight from the third node of layer (1) going to the first node of layer (2).</p>
 <p>We can actually represent each weight from layer <span class="math notranslate nohighlight">\(\ell -1\)</span> to layer <span class="math notranslate nohighlight">\(\ell\)</span> as a matrix <span class="math notranslate nohighlight">\(W^{(\ell)}\)</span>. If the previous layer <span class="math notranslate nohighlight">\(\ell -1\)</span> has <span class="math notranslate nohighlight">\(n\)</span> nodes and the layer <span class="math notranslate nohighlight">\(\ell\)</span> has <span class="math notranslate nohighlight">\(q\)</span> activation units, we will have:</p>
 <div class="math notranslate nohighlight" id="equation-wmatrixeq">
-<span class="eqno">(52)<a class="headerlink" href="#equation-wmatrixeq" title="Permalink to this equation">#</a></span>\[\begin{split}W^{(\ell)} = \begin{pmatrix}
+<span class="eqno">(56)<a class="headerlink" href="#equation-wmatrixeq" title="Permalink to this equation">#</a></span>\[\begin{split}W^{(\ell)} = \begin{pmatrix}
 w_{1,1}^{(\ell)} &amp; w_{1,2}^{(\ell)} &amp; \cdots &amp; w_{1,q}^{(\ell)} \\[2ex]
 w_{2,1}^{(\ell)} &amp; w_{2,2}^{(\ell)} &amp; \cdots &amp; w_{2,q}^{(\ell)} \\[1ex]
 \vdots  &amp; \vdots &amp; \ddots   &amp; \vdots \\[1ex]
@@ -1001,9 +1001,9 @@ w_{n,1}^{(\ell)} &amp; w_{n,2}^{(\ell)} &amp;  \cdots &amp; w_{n,q}^{(\ell)} \\
 <h2>Step by step calculations<a class="headerlink" href="#step-by-step-calculations" title="Permalink to this headline">#</a></h2>
 <section id="computation-of-the-first-hidder-layer">
 <h3>Computation of the first hidder layer<a class="headerlink" href="#computation-of-the-first-hidder-layer" title="Permalink to this headline">#</a></h3>
-<p>Let’s use Equation <a class="reference internal" href="#equation-sumwixieq">(51)</a> to compute the activation unit outputs of the first layer. The activation function is represented as <span class="math notranslate nohighlight">\(f\)</span> here:</p>
+<p>Let’s use Equation <a class="reference internal" href="#equation-sumwixieq">(55)</a> to compute the activation unit outputs of the first layer. The activation function is represented as <span class="math notranslate nohighlight">\(f\)</span> here:</p>
 <div class="math notranslate nohighlight" id="equation-firstlayereq">
-<span class="eqno">(53)<a class="headerlink" href="#equation-firstlayereq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(57)<a class="headerlink" href="#equation-firstlayereq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
 a^{(1)}_1 &amp;= f\left(\; w_{1,1}^{(1)} \; x_1 \;+\; w_{2,1}^{(1)} \; x_2 \;+\; \cdots + \; w_{n,1}^{(1)} \; x_n \;+\; b^{(1)}_1\right)\\[2ex]
 a^{(1)}_2 &amp;= f\left(\; w_{1,2}^{(1)} \; x_1 \;+\; w_{2,2}^{(1)} \; x_2 \;+\; \cdots + \; w_{n,2}^{(1)} \; x_n \;+\; b^{(1)}_2\right)\\
 &amp;\vdots \\[2ex]
@@ -1011,19 +1011,19 @@ a^{(1)}_q &amp;= f\left(\; w_{1,q}^{(1)} \; x_1 \;+\; w_{2,q}^{(1)} \; x_2 \;+\;
 \end{align*}\end{split}\]</div>
 <p>We can actually write it in the matrix form. Let’s first write it in an expanded version with the matrix elements:</p>
 <div class="math notranslate nohighlight" id="equation-firstlayermatrixexpandedeq">
-<span class="eqno">(54)<a class="headerlink" href="#equation-firstlayermatrixexpandedeq" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{a^{(1)}} = f\left[ \; ( x_1, x_2, \cdots, x_n) 
+<span class="eqno">(58)<a class="headerlink" href="#equation-firstlayermatrixexpandedeq" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{a^{(1)}} = f\left[ \; ( x_1, x_2, \cdots, x_n) 
 \begin{pmatrix}w_{1,1}^{(1)} &amp; w_{1,2}^{(1)} &amp; \cdots &amp; w_{1,q}^{(1)} \\[2ex]w_{2,1}^{(1)} &amp; w_{2,2}^{(1)} &amp; \cdots &amp; w_{2,q}^{(1)} \\[1ex]\vdots  &amp; \vdots &amp; \ddots   &amp; \vdots \\[1ex]w_{n,1}^{(1)} &amp; w_{n,2}^{(1)} &amp;  \cdots &amp; w_{n,q}^{(1)} \\\end{pmatrix}
  \;+\; ( b_1^{(1)}, b_2^{(1)}, \cdots , b_q^{(1)}) \; \right]\end{split}\]</div>
 <p>This can be written in a compact way:</p>
 <div class="math notranslate nohighlight" id="equation-firstlayermatrixeq">
-<span class="eqno">(55)<a class="headerlink" href="#equation-firstlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(1)}} = f\left( \; \boldsymbol{x} \;W^{(1)} \;+\; \boldsymbol{b}^{(1)} \;\right)\]</div>
+<span class="eqno">(59)<a class="headerlink" href="#equation-firstlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(1)}} = f\left( \; \boldsymbol{x} \;W^{(1)} \;+\; \boldsymbol{b}^{(1)} \;\right)\]</div>
 <p>Much lighter.</p>
 </section>
 <section id="computation-of-the-second-hidder-layer">
 <h3>Computation of the second hidder layer<a class="headerlink" href="#computation-of-the-second-hidder-layer" title="Permalink to this headline">#</a></h3>
 <p>Let’s do the same calculation for the second layer of activation units. Instead of the dataset vector <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>, we will have <span class="math notranslate nohighlight">\(\boldsymbol{a^{(1)}}\)</span> as input:</p>
 <div class="math notranslate nohighlight" id="equation-secondlayermatrixexpandedeq">
-<span class="eqno">(56)<a class="headerlink" href="#equation-secondlayermatrixexpandedeq" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{a^{(2)}} = f\left[ \; ( a^{(1)}_1, a^{(1)}_2, \cdots, a^{(1)}_q) 
+<span class="eqno">(60)<a class="headerlink" href="#equation-secondlayermatrixexpandedeq" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{a^{(2)}} = f\left[ \; ( a^{(1)}_1, a^{(1)}_2, \cdots, a^{(1)}_q) 
 \begin{pmatrix}w_{1,1}^{(2)} &amp; w_{1,2}^{(2)} &amp; \cdots &amp; w_{1,r}^{(2)} \\[2ex]
 w_{2,1}^{(2)} &amp; w_{2,2}^{(2)} &amp; \cdots &amp; w_{2,r}^{(2)} \\[1ex]
 \vdots  &amp; \vdots &amp; \ddots   &amp; \vdots \\[1ex]
@@ -1031,14 +1031,14 @@ w_{q,1}^{(1)} &amp; w_{q,2}^{(1)} &amp;  \cdots &amp; w_{q,r}^{(1)} \\
 \end{pmatrix} \;+\; ( b_1^{(2)}, b_2^{(2)}, \cdots , b_r^{(2)}) \; \right]\end{split}\]</div>
 <p>And the elegant, light version:</p>
 <div class="math notranslate nohighlight" id="equation-secondlayermatrixeq">
-<span class="eqno">(57)<a class="headerlink" href="#equation-secondlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(2)}} = f\left( \; \boldsymbol{a^{(1)}} \;W^{(2)} \;+\; \boldsymbol{b}^{(2)} \;\right)\]</div>
+<span class="eqno">(61)<a class="headerlink" href="#equation-secondlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(2)}} = f\left( \; \boldsymbol{a^{(1)}} \;W^{(2)} \;+\; \boldsymbol{b}^{(2)} \;\right)\]</div>
 <p>We start seeing a pattern here thanks to the matricial form. More on this soon in Section <a class="reference internal" href="#nn1-forwardprop-rule"><span class="std std-ref">General rule for Forward Propagation</span></a>. Let’s finish the process with the last layer:</p>
 </section>
 <section id="computation-of-the-third-hidder-layer">
 <h3>Computation of the third hidder layer<a class="headerlink" href="#computation-of-the-third-hidder-layer" title="Permalink to this headline">#</a></h3>
-<p>With one output node, it is actually simpler than for the hidden layers above. We can still write it in the same form as Equation <a class="reference internal" href="#equation-secondlayermatrixeq">(57)</a>:</p>
+<p>With one output node, it is actually simpler than for the hidden layers above. We can still write it in the same form as Equation <a class="reference internal" href="#equation-secondlayermatrixeq">(61)</a>:</p>
 <div class="math notranslate nohighlight" id="equation-thirdlayermatrixeq">
-<span class="eqno">(58)<a class="headerlink" href="#equation-thirdlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(3)}} = f\left( \; \boldsymbol{a^{(2)}} \;W^{(3)} \;+\; \boldsymbol{b}^{(3)} \;\right)\]</div>
+<span class="eqno">(62)<a class="headerlink" href="#equation-thirdlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(3)}} = f\left( \; \boldsymbol{a^{(2)}} \;W^{(3)} \;+\; \boldsymbol{b}^{(3)} \;\right)\]</div>
 <p>with <span class="math notranslate nohighlight">\(\boldsymbol{a^{(2)}} = (a^{(2)}_1, a^{(2)}_2, \cdots, a^{(2)}_r)\)</span> that we calculated above.</p>
 <p>In our case <span class="math notranslate nohighlight">\(\boldsymbol{a^{(3)}}\)</span> has only one element: <span class="math notranslate nohighlight">\(a^{(3)}_1 = y\)</span>.</p>
 <p>The matrix <span class="math notranslate nohighlight">\(W^{(3)}\)</span> has only one column.</p>
@@ -1051,10 +1051,10 @@ w_{q,1}^{(1)} &amp; w_{q,2}^{(1)} &amp;  \cdots &amp; w_{q,r}^{(1)} \\
 <span id="nn1-forwardprop-rule"></span><h2>General rule for Forward Propagation<a class="headerlink" href="#general-rule-for-forward-propagation" title="Permalink to this headline">#</a></h2>
 <p>If we rewrite the first layer of inputs as:</p>
 <div class="math notranslate nohighlight" id="equation-xisazeroeq">
-<span class="eqno">(59)<a class="headerlink" href="#equation-xisazeroeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{x^{(i)}} = ( x_1, x_2, \cdots, x_n) = ( a^{(0)}_1, a^{(0)}_2, \cdots, a^{(0)}_n) = \boldsymbol{a^{(0)}} \;,\]</div>
+<span class="eqno">(63)<a class="headerlink" href="#equation-xisazeroeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{x^{(i)}} = ( x_1, x_2, \cdots, x_n) = ( a^{(0)}_1, a^{(0)}_2, \cdots, a^{(0)}_n) = \boldsymbol{a^{(0)}} \;,\]</div>
 <p>then we can write a general rule for computing the outputs of a fully connected layer <span class="math notranslate nohighlight">\(\ell\)</span> knowing the outputs of the previous layer <span class="math notranslate nohighlight">\(\ell\)</span> (which become the layer <span class="math notranslate nohighlight">\(\ell\)</span>’s inputs):</p>
 <div class="math notranslate nohighlight" id="equation-genrulefeedforwardeq">
-<span class="eqno">(60)<a class="headerlink" href="#equation-genrulefeedforwardeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(\ell)}} = f\left( \; \boldsymbol{a^{(\ell -1)}} \;W^{(\ell)} \;+\; \boldsymbol{b}^{(\ell)} \;\right)\]</div>
+<span class="eqno">(64)<a class="headerlink" href="#equation-genrulefeedforwardeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(\ell)}} = f\left( \; \boldsymbol{a^{(\ell -1)}} \;W^{(\ell)} \;+\; \boldsymbol{b}^{(\ell)} \;\right)\]</div>
 <p>This is the general rule for computing all outputs of a fully, feedfowrard neural network.</p>
 </section>
 <section id="summary">
@@ -1069,8 +1069,6 @@ w_{q,1}^{(1)} &amp; w_{q,2}^{(1)} &amp;  \cdots &amp; w_{q,r}^{(1)} \\
 <p>Very nice animations <a class="reference external" href="https://yogayu.github.io/DeepLearningCourse/03/ForwardPropagation.html">here</a> illustrating the forward propagation process.<br />
 Source: <a class="reference external" href="https://yogayu.github.io/DeepLearningCourse/intro.html">Xinyu You’s course <em>An online deep learning course for humanists</em></a></p>
 </div>
-<p>=================</p>
-<p>Nice animation! https://yogayu.github.io/DeepLearningCourse/03/ForwardPropagation.html</p>
 </section>
 </section>
 

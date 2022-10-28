@@ -177,9 +177,3 @@ The next step of the training is to go 'backward', from the output error $\hat{y
 Very nice animations [here](https://yogayu.github.io/DeepLearningCourse/03/ForwardPropagation.html) illustrating the forward propagation process.  
 Source: [Xinyu You's course _An online deep learning course for humanists_](https://yogayu.github.io/DeepLearningCourse/intro.html)
 ```
-
-
-=================
-
-
-Nice animation! https://yogayu.github.io/DeepLearningCourse/03/ForwardPropagation.html

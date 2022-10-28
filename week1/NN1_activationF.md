@@ -237,7 +237,7 @@ __Cons__
 
 ### Sigmoid Linear Unit (SiLU) and Swish
 ````{margin}
-The original definition is defined as $f(z) = x \dot \text{sigmoid}(\beta z)$, with $\beta$ a learnable parameter. Yet as most implementations set $\beta =1$, the function is usually named "Swish-1". But if $\beta \rightarrow \infty$, then the Swish becomes like the ReLU function.
+The original definition is defined as $f(z) = x \cdot \text{sigmoid}(\beta z)$, with $\beta$ a learnable parameter. Yet as most implementations set $\beta =1$, the function is usually named "Swish-1". But if $\beta \rightarrow \infty$, then the Swish becomes like the ReLU function.
 ````
 The SiLU and Swish are the same function, just introduced by different authors (the Swish authors are from Google Brain). It is a state-of-the-art function aiming at superceeding the hegemonic ReLU. The Swish is defined as a sigmoid multiplied with the identity:
 

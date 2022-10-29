@@ -36,16 +36,17 @@ parts:
       - file: week1/BDTs_forest
       - file: week1/BDTs_boosting
 
-    - file: week1/NN1
-      sections: 
-      - file: week1/NN1_motivations
-      - file: week1/NN1_modelRep
-      - file: week1/NN1_activationF
-      - file: week1/NN1_feedforward
-
+    - file: week1/review_week1
 
   - caption: Week 2
     chapters:
+    - file: week2/NN1
+      sections: 
+      - file: week2/NN1_motivations
+      - file: week2/NN1_modelRep
+      - file: week2/NN1_activationF
+      - file: week2/NN1_feedforward 
+
     - file: week2/NN2
       sections: 
       - file: week2/NN2_costF
@@ -74,12 +75,7 @@ parts:
       - file: week2/GNN_messagePassing
       - file: week2/GNN_GConvoN
 
-    - file: week2/review
-      sections: 
-      - file: week2/review_summary
-      - file: week2/review_FAQ_projects
-      - file: week2/review_methodology
-
+    - file: week2/review_week2
 
   - caption: Week 3
     chapters:

@@ -1,4 +1,4 @@
-# 5. Neural Networks Part I
+# 6. Neural Networks Part I
 The present and following lectures introduce the famous Artificial Neural Networks, a computing system inspired by our connected neurons in the organic grey matter that makes animal brains.  
 
 Why are they so popular?  

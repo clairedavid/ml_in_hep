@@ -270,7 +270,7 @@ The ROC has the great advantage to see how different classifiers compare through
 ```{figure} ../images/lec03_5_ROC.png
 ---
   name: lec03_5_ROC
-  width: 75%
+  width: 70%
 ---
  . Several ROC curves can be overlaid to then compare classifiers. A poor classifier will be near the random classifier line, which is the "random classifier" or in other words using pure luck (it will be right on average 50% of the time). The idea classifier correspond to the top left dot, where 100% of the signal sample are correctly classified so the False Positive Rate is zero.  
 <sub>Image: Modified work by the author, original by [Wikipedia](https://en.wikipedia.org/wiki/File:Roc_curve.svg)</sub>

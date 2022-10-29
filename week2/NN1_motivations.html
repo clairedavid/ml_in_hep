@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Best Practices &#8212; Machine Learning in Particle Physics</title>
+    <title>Motivations &#8212; Machine Learning in Particle Physics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,10 +51,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="11. Unsupervised learning" href="../week3/unsupervised_learning.html" />
-    <link rel="prev" title="FAQ on Projects" href="review_FAQ_projects.html" />
+    <link rel="next" title="Model Representation" href="NN1_modelRep.html" />
+    <link rel="prev" title="6. Neural Networks Part I" href="NN1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -208,7 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../week1/class_algs_logReg.html">
-     Logistic Regression
+     Logistic Regression: introduction
     </a>
    </li>
    <li class="toctree-l2">
@@ -218,7 +220,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../week1/class_algs_costF.html">
-     Cost Function for classification
+     Cost Function for Classification
     </a>
    </li>
    <li class="toctree-l2">
@@ -249,8 +251,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week1/BDTs_terms.html">
-     Terminology, Algorithms, Attributes
+    <a class="reference internal" href="../week1/BDTs_forest.html">
+     Ensemble Learning and Random Forests
     </a>
    </li>
    <li class="toctree-l2">
@@ -258,44 +260,12 @@ const thebe_selector_output = ".output, .cell_output"
      What is boosting?
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week1/BDTs_XGBoost.html">
-     The maths behind XGBoost
-    </a>
-   </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week1/NN1.html">
-   5. Neural Networks Part I
+ <li class="toctree-l1">
+  <a class="reference internal" href="../week1/review_week1.html">
+   5. Review Week 1
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week1/NN1_motivations.html">
-     Motivations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week1/NN1_modelRep.html">
-     Model Representation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week1/NN1_activationF.html">
-     Activation Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week1/NN1_feedforward.html">
-     Feedforward propagation
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -304,9 +274,41 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="NN1.html">
+   6. Neural Networks Part I
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Motivations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NN1_modelRep.html">
+     Model Representation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NN1_activationF.html">
+     Activation Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NN1_feedforward.html">
+     Feedforward Propagation
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="NN2.html">
-   6. Neural Networks Part II
+   7. Neural Networks Part II
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
@@ -338,7 +340,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="DL.html">
-   7. Towards Deep Learning Models
+   8. Towards Deep Learning Models
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
@@ -432,32 +434,10 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="review.html">
-   10. Review
+ <li class="toctree-l1">
+  <a class="reference internal" href="review_week2.html">
+   10. Review Week 2
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="review_summary.html">
-     Summary &amp; key points
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="review_FAQ_projects.html">
-     FAQ on Projects
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Best Practices
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -470,8 +450,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../week3/unsupervised_learning.html">
    11. Unsupervised learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -502,8 +482,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../week3/PCA_AD.html">
    12. PCA and Anomaly Detection
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -529,8 +509,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../week3/ML_BigData.html">
    13. ML in Big Data &amp; Strategies
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -556,8 +536,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../week3/ethics_exam.html">
    14. Ethics in ML &amp; Exam
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -578,8 +558,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../week3/projects_outlook.html">
    15. Project presentations &amp; Outlook
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-  <label for="toctree-checkbox-15">
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -743,7 +723,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fweek2/review_methodology.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fweek2/NN1_motivations.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -771,7 +751,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/week2/review_methodology.md"
+        <a href="../_sources/week2/NN1_motivations.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -820,7 +800,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Best Practices</h1>
+                <h1>Motivations</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -832,8 +812,32 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="best-practices">
-<h1>Best Practices<a class="headerlink" href="#best-practices" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="motivations">
+<h1>Motivations<a class="headerlink" href="#motivations" title="Permalink to this headline">#</a></h1>
+<p>Let’s suppose we have a classification challenge looking like this:</p>
+<figure class="align-default" id="spiral-data" style="width: 80%">
+<div class="cell_output docutils container">
+<img alt="../_images/NN1_plots_1_0.png" src="../_images/NN1_plots_1_0.png" />
+</div>
+</figure>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Reminder: in linear and logistic regression, we took as hypothesis function a linear combination of the features with the <span class="math notranslate nohighlight">\(\theta\)</span> parameters: <span class="math notranslate nohighlight">\(h_\theta(x^{(i)}) = \sum_{j=0}^n \theta_j x^{(i)}_j = \theta^{\; T} x^{(i)}\)</span></p>
+</aside>
+<p>What can be a good hypothesis function? Linearity will not work here, at all. So we will have to include higher degree polynomial terms in our hypothesis function. This would look like:</p>
+<div class="math notranslate nohighlight">
+\[h_\theta(x) = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \theta_3 x_1 x_2 + \theta_4 x_1^2 x_2 + \theta_5 x_1^3 x_2 + \theta_6 x_1 x_2^2 + \cdots \]</div>
+<p>If we include lots of polynomials, the hypothesis functions would eventually fit complex data patterns. But there are issues here.</p>
+<p>First: to which degree of complexity one should go? Moreover, which polynomials would be more useful to efficiently discriminate between the different classes? We can’t know this in advance (and the dataset above has only two input features so we can see a 2D representation, in real life it is not possible to picture in one graph a dataset with more input features).</p>
+<p>Second: with <span class="math notranslate nohighlight">\(n\)</span> input features <span class="math notranslate nohighlight">\(x_1, x_2, \cdots, x_n\)</span>, adding quadratic terms will grow the amount of terms in <span class="math notranslate nohighlight">\(h_\theta(x)\)</span> as <span class="math notranslate nohighlight">\(\approx \frac{n^2}{2}\)</span>. So with 10 input features we will have 50 quadratic terms. With <span class="math notranslate nohighlight">\(n=100\)</span>, we reach <span class="math notranslate nohighlight">\(5000\)</span> of terms! And we would not model complex patterns like the one above. Cubic combinations (<span class="math notranslate nohighlight">\(x_1^3, x_1^2 x_2, x_1 x_2^2, \cdots \)</span>) would add <span class="math notranslate nohighlight">\(\mathcal{O}(n^3)\)</span> new terms… This would become impracticable, likely overfit the data, and will definitely be too computationally intensive.</p>
+<p>We will turn to Artificial Neural Networks (ANN or NN for short).</p>
+<div class="proof definition admonition" id="anndef">
+<p class="admonition-title"><span class="caption-number">Definition 49 </span></p>
+<section class="definition-content" id="proof-content">
+<p>An <strong>Artificial Neural Network</strong> is a Machine Learning Model inspired by the networks of biological neurons in animal brains.</p>
+</section>
+</div><p>While the computation in each artificial neuron is simple, the interconnections of the network allows for complex patterns to be modelled.</p>
+<p>We will define in the next section important terminology - a lot will be borrowed from what we saw in linear and logistic regression.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -863,17 +867,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="review_FAQ_projects.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="NN1.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">FAQ on Projects</p>
+            <p class="prev-next-title">6. Neural Networks Part I</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../week3/unsupervised_learning.html" title="next page">
+    <a class='right-next' id="next-link" href="NN1_modelRep.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">11. Unsupervised learning</p>
+        <p class="prev-next-title">Model Representation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

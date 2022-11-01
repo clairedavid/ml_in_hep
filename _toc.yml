@@ -50,8 +50,8 @@ parts:
     - file: week2/NN2
       sections: 
       - file: week2/NN2_costF
+      - file: week2/NN2_init
       - file: week2/NN2_backprop
-      - file: week2/NN2_gradCheck
       - file: week2/NN2_trainNN
 
     - file: week2/DL

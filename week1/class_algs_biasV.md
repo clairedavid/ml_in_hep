@@ -239,7 +239,7 @@ A picture is worth a thousand words as we say. Let's make sense of the definitio
   name: lec03_5_ROCdetailed
   width: 90%
 ---
- . How a ROC curve is constructed: the continuous variable x represents the classifier's score. For a given decision threshold (green), the probabilities of True Positive P(TP) and False Positive P(FP) (or their equivalent in rates) are computed and plotted in the graph below. The ROC curve is the ensemble of the points (TPR, FPR) for all values of the threshold.   
+ . How a ROC curve is constructed: the continuous variable $x$ represents the classifier's score. For a given decision threshold (green), the probabilities of True Positive P(TP) and False Positive P(FP) (or their equivalent in rates) are computed and plotted in the graph below. The ROC curve is the ensemble of the points (TPR, FPR) for the threshold spanning all the values of $x$.   
 <sub>Image: [Wikipedia](https://en.wikipedia.org/wiki/Receiver_operating_characteristic#/media/File:ROC_curves.svg)</sub>
 ```
 

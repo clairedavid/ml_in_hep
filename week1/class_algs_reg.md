@@ -1,3 +1,4 @@
+(class:algs:reg)=
 # Regularization
 
 A converging gradient descent is not the end of the story. The learning algorithm can fit the data too specifically to the training samples and would fail once given additional data, compromising the accuracy of predictions: this is overfitting. To prevent this, a regularizing term is added in the cost function to constrain the parameters. 
@@ -79,7 +80,7 @@ For logistic regression, the regularized cost function becomes:
 :label: ridgelogeq
  J(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; y^{(i)} \log( h_\theta(x^{(i)} )) \;+\; (1- y^{(i)}) \log( 1 - h_\theta(x^{(i)} )) \;\;\right] + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2}
 ```
-
+(class:algs:reg:lasso)=
 ### Lasso Regularization
 ````{margin}
 The $\ell_1$ norm is the sum of the magnitudes of the vectors. It is also called Manhattan or [Taxicab norm](https://en.wikipedia.org/wiki/Taxicab_geometry).

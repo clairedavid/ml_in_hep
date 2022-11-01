@@ -1,6 +1,6 @@
 # 5. Review Week 1
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;  
 
 This is the last lecture of the week. 
 

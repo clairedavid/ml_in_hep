@@ -47,7 +47,7 @@ Each input node $x_j$ is associated with a weight $w_j$. In terms of components 
   name: lec05_2_ann
   width: 90%
 ---
- . Schematics of an artificial neuron. The artificial neuron (center blue) receives $x_n$ input features and a bias term $b$. It computes a weighted sum $\sum$. The activation function $f$ decides if the neuron is activated, or 'fires' the information to the output value $y$.  
+ . Schematics of an artificial neuron. The artificial neuron (center blue) receives $x_n$ input features and a bias term $b$. It computes a weighted sum $\sum$. The activation function $f$ decides if the neuron is activated, i.e. 'fires' the information to the output value $y$.  
  <sub>Image from the author</sub>
 ```
 
@@ -91,7 +91,7 @@ Yes it can! And it has a name: it is called the perceptron.
 
 ````{prf:definition}
 :label: perceptrondef
-A __Perceptron__ is a neural network basine on a single specific artificial neuron called a Threshold Logic Unit (TLU) or Linear Threshold Unit (LTU), where the activation function is a step function.  
+A __Perceptron__ is a neural network based on a single specific artificial neuron called a Threshold Logic Unit (TLU) or Linear Threshold Unit (LTU), where the activation function is a step function.  
 
 It computes a weighted sum of real-valued inputs, has a bias term in the form of an extra node and yield the output:
 

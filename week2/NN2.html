@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Neural Network Cost Function" href="NN2_costF.html" />
+    <link rel="next" title="Neural Network Loss Function" href="NN2_costF.html" />
     <link rel="prev" title="Feedforward Propagation" href="NN1_feedforward.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -316,17 +316,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="NN2_costF.html">
-     Neural Network Cost Function
+     Neural Network Loss Function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NN2_init.html">
+     Initialization
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="NN2_backprop.html">
      Backpropagation Algorithm
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="NN2_gradCheck.html">
-     Initialization and checks
     </a>
    </li>
    <li class="toctree-l2">
@@ -812,6 +812,15 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="neural-networks-part-ii">
 <h1>7. Neural Networks Part II<a class="headerlink" href="#neural-networks-part-ii" title="Permalink to this headline">#</a></h1>
+<p> <br />
+We just saw what neural networks are made of, what are the math done in a node and how to compute all values of activation units, leading to intermediary predictions.</p>
+<p>Let’s now cover the backpropagation algorithm, which is the core of how neural networks are trained.</p>
+<ul class="simple">
+<li><p><strong>What are the cost functions for neural network?</strong></p></li>
+<li><p><strong>How does backpropagation work?</strong></p></li>
+<li><p><strong>How to initialized the weights?</strong></p></li>
+<li><p><strong>How to put everything together for training a neural network?</strong></p></li>
+</ul>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -853,7 +862,7 @@ title="Print to PDF"
     <a class='right-next' id="next-link" href="NN2_costF.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Neural Network Cost Function</p>
+        <p class="prev-next-title">Neural Network Loss Function</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Neural Network Cost Function &#8212; Machine Learning in Particle Physics</title>
+    <title>Neural Network Loss Function &#8212; Machine Learning in Particle Physics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,9 +51,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Backpropagation Algorithm" href="NN2_backprop.html" />
+    <link rel="next" title="Initialization" href="NN2_init.html" />
     <link rel="prev" title="7. Neural Networks Part II" href="NN2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -316,17 +318,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Neural Network Cost Function
+     Neural Network Loss Function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NN2_init.html">
+     Initialization
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="NN2_backprop.html">
      Backpropagation Algorithm
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="NN2_gradCheck.html">
-     Initialization and checks
     </a>
    </li>
    <li class="toctree-l2">
@@ -786,23 +788,148 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#terminology-general-definitions">
+   Terminology - General definitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loss-functions-for-regression">
+   Loss Functions for Regression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mean-squarred-error-mse">
+     Mean Squarred Error (MSE)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#absolute-loss">
+     Absolute Loss
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#huber-loss">
+     Huber Loss
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loss-functions-for-classification">
+   Loss Functions for Classification
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binary-cross-entropy">
+     Binary Cross-Entropy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#categorical-cross-entropy">
+     Categorical Cross-Entropy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regularization-term">
+   Regularization term
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Neural Network Cost Function</h1>
+                <h1>Neural Network Loss Function</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#terminology-general-definitions">
+   Terminology - General definitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loss-functions-for-regression">
+   Loss Functions for Regression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mean-squarred-error-mse">
+     Mean Squarred Error (MSE)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#absolute-loss">
+     Absolute Loss
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#huber-loss">
+     Huber Loss
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loss-functions-for-classification">
+   Loss Functions for Classification
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binary-cross-entropy">
+     Binary Cross-Entropy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#categorical-cross-entropy">
+     Categorical Cross-Entropy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regularization-term">
+   Regularization term
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -810,8 +937,116 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="neural-network-cost-function">
-<h1>Neural Network Cost Function<a class="headerlink" href="#neural-network-cost-function" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="neural-network-loss-function">
+<h1>Neural Network Loss Function<a class="headerlink" href="#neural-network-loss-function" title="Permalink to this headline">#</a></h1>
+<p> <br />
+Before getting to the heart of the backpropagation, let’s cover an important ingredient: the cost function of a neural network.</p>
+<p>This is already a familiar concept since Lecture 2. But there will be some tweaks in the writing to adapt it to the neural network business.</p>
+<section id="terminology-general-definitions">
+<h2>Terminology - General definitions<a class="headerlink" href="#terminology-general-definitions" title="Permalink to this headline">#</a></h2>
+<p>One should not confuse cost and loss.</p>
+<div class="proof definition admonition" id="costnndef">
+<p class="admonition-title"><span class="caption-number">Definition 56 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>loss function</strong> <span class="math notranslate nohighlight">\(\boldsymbol{L}\)</span> quantifies the difference between the actual and predicted value for one sample instance.</p>
+<p>The <strong>cost function</strong> <span class="math notranslate nohighlight">\(\boldsymbol{J}\)</span> aggregates the differences of all instances of the dataset. It can have a regularization term.</p>
+</section>
+</div><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The loss function is not to be confused with the hypothesis function <span class="math notranslate nohighlight">\(h_{W,b}(x^{(i)})\)</span> that serves to build a prediction <span class="math notranslate nohighlight">\(\hat{y}^{(i)}\)</span> for sample <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>This is not to be confused neither with the activation function, which only gets the neural network inputs (training data, weights and biases) and does not perform any comparison with the observed values <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span>).</p>
+</div>
+<p>We saw that forward propagation ‘fills’ in the network with values for all activation units using the weight matrices <span class="math notranslate nohighlight">\(W^1, W^2, \cdots, W^{L}\)</span> and biases <span class="math notranslate nohighlight">\(b^1, b^2, \cdots b^L\)</span>, up to the last layer <span class="math notranslate nohighlight">\(L\)</span> being the output layer:</p>
+<div class="math notranslate nohighlight" id="equation-alasteq">
+<span class="eqno">(65)<a class="headerlink" href="#equation-alasteq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(L)}} = f\left( \; \boldsymbol{a^{(L -1)}} \;W^{(L)} \;+\; \boldsymbol{b}^{(L)} \;\right)\]</div>
+<p>If the last layer contains <span class="math notranslate nohighlight">\(K\)</span> output nodes, we can write the elements of vector</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{a^{(L)}} = (a^{L}_1, a^{L}_2, \cdots, a^{L}_k, \cdots a^{L}_K)\]</div>
+<p>in the form of a hypothesis function. For each output node <span class="math notranslate nohighlight">\(a^{L}_k\)</span>, the predicted value is:</p>
+<div class="math notranslate nohighlight" id="equation-ypredhwbeq">
+<span class="eqno">(66)<a class="headerlink" href="#equation-ypredhwbeq" title="Permalink to this equation">#</a></span>\[ a^{L}_k = h_{W,b}(x^{(i)})_k  = \hat{y}^{(i)}_k \;,\]</div>
+<p>where the hat is the statistical convention for a predicted value (by opposition to an observed one).
+It is important to note that in the equation above, the <span class="math notranslate nohighlight">\(W,b\)</span> indices refer to <strong>all weights and biases of the network</strong> (from forward propagation).</p>
+</section>
+<section id="loss-functions-for-regression">
+<h2>Loss Functions for Regression<a class="headerlink" href="#loss-functions-for-regression" title="Permalink to this headline">#</a></h2>
+<section id="mean-squarred-error-mse">
+<h3>Mean Squarred Error (MSE)<a class="headerlink" href="#mean-squarred-error-mse" title="Permalink to this headline">#</a></h3>
+<p>The most commonly used loss function is the Mean Squarred Error (MSE) that we are now familiar with. If we have only one output node:</p>
+<div class="math notranslate nohighlight" id="equation-lossmseeq">
+<span class="eqno">(67)<a class="headerlink" href="#equation-lossmseeq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \left(  \hat{y}^{(i)} - y^{(i)}  \right)^2\]</div>
+<p>For several output nodes, we sum all losses:</p>
+<div class="math notranslate nohighlight" id="equation-lossmsekeq">
+<span class="eqno">(68)<a class="headerlink" href="#equation-lossmsekeq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \sum_{k = 1}^K  \left( \hat{y}^{(i)}_k - y^{(i)}_k \right)^2\]</div>
+<p>with the <span class="math notranslate nohighlight">\(k\)</span> indices being the prediction or observed value for the node <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>Then the cost function would be the average of the losses over all the training sample of <span class="math notranslate nohighlight">\(m\)</span> instances:</p>
+<div class="math notranslate nohighlight" id="equation-costmsekeq">
+<span class="eqno">(69)<a class="headerlink" href="#equation-costmsekeq" title="Permalink to this equation">#</a></span>\[J \left(\;\hat{y}_k, y_k\;\right)= \frac{1}{2m} \sum_{i=1}^m \sum_{k = 1}^K  \left( \hat{y}^{(i)}_k - y^{(i)}_k \right)^2\]</div>
+</section>
+<section id="absolute-loss">
+<h3>Absolute Loss<a class="headerlink" href="#absolute-loss" title="Permalink to this headline">#</a></h3>
+<p>If there are lots of outliers in the training set, aka samples associated with a large error between the prediction and the observed values, the Mean Squarred Errror will make the loss (and cost) very big. A preferrable choice would be to take the absolute loss:</p>
+<div class="math notranslate nohighlight" id="equation-lossabseq">
+<span class="eqno">(70)<a class="headerlink" href="#equation-lossabseq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \left| \;\hat{y}^{(i)} - y^{(i)} \; \right|\]</div>
+</section>
+<section id="huber-loss">
+<h3>Huber Loss<a class="headerlink" href="#huber-loss" title="Permalink to this headline">#</a></h3>
+<p>The Huber Loss is a compromise of the two functions above. It is quadratic when the error is smaller than a threshold <span class="math notranslate nohighlight">\(\delta\)</span> but linear when the error is larger. The linear part makes it less sensitive to outliers than with MSE. The quadratic part allows it to converge faster and be more precise than the absolute error.</p>
+<div class="math notranslate nohighlight" id="equation-losshubereq">
+<span class="eqno">(71)<a class="headerlink" href="#equation-losshubereq" title="Permalink to this equation">#</a></span>\[\begin{split}L_\delta \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= 
+\begin{cases}
+\;\; \frac{1}{2}\;\left(\;\hat{y}^{(i)}_k-y^{(i)}_k \;\right)^2 &amp; \text { for } \left|\; \hat{y}^{(i)}_k-y^{(i)}_k \right| \leq \delta \\[2ex]
+\;\; \delta \cdot\left(\;\left|\;\hat{y}^{(i)}_k-y^{(i)}_k\;\right|-\frac{1}{2} \; \delta \; \right), &amp; \text { otherwise }
+\end{cases}\end{split}\]</div>
+</section>
+</section>
+<section id="loss-functions-for-classification">
+<h2>Loss Functions for Classification<a class="headerlink" href="#loss-functions-for-classification" title="Permalink to this headline">#</a></h2>
+<section id="binary-cross-entropy">
+<h3>Binary Cross-Entropy<a class="headerlink" href="#binary-cross-entropy" title="Permalink to this headline">#</a></h3>
+<p>We are familiar with this one as it was introduced in Lecture 3. We will rewrite it as a reminder:</p>
+<div class="math notranslate nohighlight" id="equation-lossbinceeq">
+<span class="eqno">(72)<a class="headerlink" href="#equation-lossbinceeq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)=-\left[ \;y^{(i)}  \log \left(\hat{y}^{(i)}\right)+\left(1-y^{(i)}\right) \log \left(1-\hat{y}^{(i)}\right) \; \right]\]</div>
+<p>And the cost function will be</p>
+<div class="math notranslate nohighlight" id="equation-costbinceeq">
+<span class="eqno">(73)<a class="headerlink" href="#equation-costbinceeq" title="Permalink to this equation">#</a></span>\[J \left(\;\hat{y}_k, y_k\;\right) = - \frac{1}{m} \sum_{i=1}^m \left[ \;y^{(i)}  \log \left(\hat{y}^{(i)}\right)+\left(1-y^{(i)}\right) \log \left(1-\hat{y}^{(i)}\right) \; \right] \]</div>
+<p>There is nothing new here, except that the hypothesis function <span class="math notranslate nohighlight">\(h_{W,b}(x^{(i)})\)</span> is not a linear function but the output of neural network forward propagation.</p>
+</section>
+<section id="categorical-cross-entropy">
+<h3>Categorical Cross-Entropy<a class="headerlink" href="#categorical-cross-entropy" title="Permalink to this headline">#</a></h3>
+<p>A neural network with one output node will classify from two classes: <span class="math notranslate nohighlight">\(y=1\)</span> and <span class="math notranslate nohighlight">\(y=0\)</span>. The cross-entropy is the sum of the actual outcome multiplied by the logarithm of the outcome predicted by the model. If we have more than two classes, we can write the outcome of a given training data instance <span class="math notranslate nohighlight">\(i\)</span> as a vector:</p>
+<div class="math notranslate nohighlight" id="equation-catvecobseq">
+<span class="eqno">(74)<a class="headerlink" href="#equation-catvecobseq" title="Permalink to this equation">#</a></span>\[\boldsymbol{y^{(i)}} = ( 1, 0, 0, \cdots 0)\]</div>
+<p>of K elements, where K is the number of output nodes. A sample belonging to the class <span class="math notranslate nohighlight">\(k\)</span> corresponds to the row index <span class="math notranslate nohighlight">\(k\)</span>. For instance a sample of the second class (the order is to be defined by convention) would be <span class="math notranslate nohighlight">\(\boldsymbol{y^{(i)}} = (0, 1, 0, \cdots 0 )\)</span>.</p>
+<p>A multi-class neural network would produce vectorial predictions for one sample of the form:</p>
+<div class="math notranslate nohighlight" id="equation-ypredmulticlasseq">
+<span class="eqno">(75)<a class="headerlink" href="#equation-ypredmulticlasseq" title="Permalink to this equation">#</a></span>\[\boldsymbol{\hat{y}^{(i)}} = (0.15, 0.68, \cdots , 0.03)\]</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The categorical cross-entropy is appropriate in combination with an activation function such as the softmax that can produce several probabilities for the number of classes that sum up to 1.</p>
+</aside>
+<p>Mutually exclusive classes would mean that for each <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}^{(i)}} = (\hat{y}^{(i)}_1, \hat{y}^{(i)}_2, \cdots, \hat{y}^{(i)}_K)\)</span>, all output values should add up to 1:</p>
+<div class="math notranslate nohighlight" id="equation-ymulticlassoneeq">
+<span class="eqno">(76)<a class="headerlink" href="#equation-ymulticlassoneeq" title="Permalink to this equation">#</a></span>\[\sum_{k=1}^K \; \hat{y}^{(i)}_k = 1\]</div>
+<p>The loss function for categorial cross-entropy would be written as:</p>
+<div class="math notranslate nohighlight" id="equation-losscateq">
+<span class="eqno">(77)<a class="headerlink" href="#equation-losscateq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \sum_{k=1}^K \; y^{(i)}_k \log \left( \hat{y}^{(i)} \right) \]</div>
+<p>And the cost function</p>
+<div class="math notranslate nohighlight" id="equation-costcateq">
+<span class="eqno">(78)<a class="headerlink" href="#equation-costcateq" title="Permalink to this equation">#</a></span>\[J \left(\;\hat{y}_k, y_k\;\right) = - \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K \; y^{(i)}_k \log \left( \hat{y}^{(i)}_k \right) \]</div>
+</section>
+</section>
+<section id="regularization-term">
+<h2>Regularization term<a class="headerlink" href="#regularization-term" title="Permalink to this headline">#</a></h2>
+<p>In Lecture 3 section <a class="reference internal" href="../week1/class_algs_reg.html#class-algs-reg"><span class="std std-ref">Regularization</span></a> we saw two techniques adding an extra penalty in order to constrain the <span class="math notranslate nohighlight">\(\theta\)</span> parameters, helping at mitigating overtraining. Here the regularization term here will be expressed using the neural network <span class="math notranslate nohighlight">\(W\)</span> matrices.</p>
+<div class="math notranslate nohighlight" id="equation-week2-nn2-costf-0">
+<span class="eqno">(79)<a class="headerlink" href="#equation-week2-nn2-costf-0" title="Permalink to this equation">#</a></span>\[J \left(\;\hat{y}_k, y_k\;\right) = - \frac{1}{m} \sum_{i=1}^m  L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right) + \frac{\lambda}{2m} \sum_{\ell=1}^L \sum_{q=1}^{n^{L-1}} \sum_{r=1}^{n^{L}} \left( W^{(\ell)}_{q, r} \; \right)^2\]</div>
+<p>The triple sum is daunting but let’s decompose it: it’s the sum of all matrices <span class="math notranslate nohighlight">\(W^{(\ell)}\)</span> of the network. For each of them, the weights are multiplied with each others (those are the two last sums). The equation above corresponds to the Lasso’s regularization (introduced in Lecture 3 subsection <a class="reference internal" href="../week1/class_algs_reg.html#class-algs-reg-lasso"><span class="std std-ref">Lasso Regularization</span></a>). The Ridge regularization would sum only the weights without squaring them.</p>
+<p>Recall that the regularization does not include the intercept term, which was written as <span class="math notranslate nohighlight">\(\theta_0\)</span> in logistic regression. With the matrices <span class="math notranslate nohighlight">\(W^{(\ell)}\)</span> we are safe as they do not contain any bias terms. Biases are gathereed as separate vectors <span class="math notranslate nohighlight">\(\boldsymbol{b^{(\ell)}}\)</span>.</p>
+<p> </p>
+<p>We’ve seen forward propagation in the previous lecture and here the loss functions for neural network. One more thing before heading to the backpropagation:</p>
+<p><strong><center>How are the weights initialized?</center></strong></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -848,10 +1083,10 @@ title="Print to PDF"
             <p class="prev-next-title">7. Neural Networks Part II</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="NN2_backprop.html" title="next page">
+    <a class='right-next' id="next-link" href="NN2_init.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Backpropagation Algorithm</p>
+        <p class="prev-next-title">Initialization</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -178,7 +178,7 @@ __Cons__
 * The parameter $a$ needs to be tuned; it is not learnt 
 * For positive inputs, there is a risk of experiencing the Exploding Gradient problem (explanations further below in {ref}`NN1:activationF:risksGradient`)
 
-
+(NN1:activationF:SELU)=
 ### Scaled Exponential Linear Unit (SELU)
 
 ```{figure} ../images/lec05_3_selu.png

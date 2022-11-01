@@ -318,17 +318,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../week2/NN2_costF.html">
-     Neural Network Cost Function
+     Neural Network Loss Function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/NN2_init.html">
+     Initialization and checks
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../week2/NN2_backprop.html">
      Backpropagation Algorithm
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week2/NN2_gradCheck.html">
-     Initialization and checks
     </a>
    </li>
    <li class="toctree-l2">
@@ -884,7 +884,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="regularization">
-<h1>Regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">#</a></h1>
+<span id="class-algs-reg"></span><h1>Regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">#</a></h1>
 <p>A converging gradient descent is not the end of the story. The learning algorithm can fit the data too specifically to the training samples and would fail once given additional data, compromising the accuracy of predictions: this is overfitting. To prevent this, a regularizing term is added in the cost function to constrain the parameters.</p>
 <section id="underfitting-overfitting">
 <h2>Underfitting, overfitting<a class="headerlink" href="#underfitting-overfitting" title="Permalink to this headline">#</a></h2>
@@ -954,7 +954,7 @@ The linear one on the left (Degree 1) is underfitting the data. The model on the
 <span class="eqno">(19)<a class="headerlink" href="#equation-ridgelogeq" title="Permalink to this equation">#</a></span>\[ J(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; y^{(i)} \log( h_\theta(x^{(i)} )) \;+\; (1- y^{(i)}) \log( 1 - h_\theta(x^{(i)} )) \;\;\right] + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2}\]</div>
 </section>
 <section id="lasso-regularization">
-<h3>Lasso Regularization<a class="headerlink" href="#lasso-regularization" title="Permalink to this headline">#</a></h3>
+<span id="class-algs-reg-lasso"></span><h3>Lasso Regularization<a class="headerlink" href="#lasso-regularization" title="Permalink to this headline">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>The <span class="math notranslate nohighlight">\(\ell_1\)</span> norm is the sum of the magnitudes of the vectors. It is also called Manhattan or <a class="reference external" href="https://en.wikipedia.org/wiki/Taxicab_geometry">Taxicab norm</a>.</p>

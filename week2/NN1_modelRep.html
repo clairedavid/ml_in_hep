@@ -318,17 +318,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="NN2_costF.html">
-     Neural Network Cost Function
+     Neural Network Loss Function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NN2_init.html">
+     Initialization
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="NN2_backprop.html">
      Backpropagation Algorithm
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="NN2_gradCheck.html">
-     Initialization and checks
     </a>
    </li>
    <li class="toctree-l2">
@@ -968,7 +968,7 @@ If you are curious to read the original paper marking the birth of the artificia
 </div><figure class="align-default" id="lec05-2-ann">
 <a class="reference internal image-reference" href="../_images/lec05_2_ann.png"><img alt="../_images/lec05_2_ann.png" src="../_images/lec05_2_ann.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 39 </span><span class="caption-text">. Schematics of an artificial neuron. The artificial neuron (center blue) receives <span class="math notranslate nohighlight">\(x_n\)</span> input features and a bias term <span class="math notranslate nohighlight">\(b\)</span>. It computes a weighted sum <span class="math notranslate nohighlight">\(\sum\)</span>. The activation function <span class="math notranslate nohighlight">\(f\)</span> decides if the neuron is activated, or ‘fires’ the information to the output value <span class="math notranslate nohighlight">\(y\)</span>.<br />
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">. Schematics of an artificial neuron. The artificial neuron (center blue) receives <span class="math notranslate nohighlight">\(x_n\)</span> input features and a bias term <span class="math notranslate nohighlight">\(b\)</span>. It computes a weighted sum <span class="math notranslate nohighlight">\(\sum\)</span>. The activation function <span class="math notranslate nohighlight">\(f\)</span> decides if the neuron is activated, i.e. ‘fires’ the information to the output value <span class="math notranslate nohighlight">\(y\)</span>.<br />
 <sub>Image from the author</sub></span><a class="headerlink" href="#lec05-2-ann" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -1002,7 +1002,7 @@ If you are curious to read the original paper marking the birth of the artificia
 <div class="proof definition admonition" id="perceptrondef">
 <p class="admonition-title"><span class="caption-number">Definition 52 </span></p>
 <section class="definition-content" id="proof-content">
-<p>A <strong>Perceptron</strong> is a neural network basine on a single specific artificial neuron called a Threshold Logic Unit (TLU) or Linear Threshold Unit (LTU), where the activation function is a step function.</p>
+<p>A <strong>Perceptron</strong> is a neural network based on a single specific artificial neuron called a Threshold Logic Unit (TLU) or Linear Threshold Unit (LTU), where the activation function is a step function.</p>
 <p>It computes a weighted sum of real-valued inputs, has a bias term in the form of an extra node and yield the output:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}

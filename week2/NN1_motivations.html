@@ -318,17 +318,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="NN2_costF.html">
-     Neural Network Cost Function
+     Neural Network Loss Function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NN2_init.html">
+     Initialization
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="NN2_backprop.html">
      Backpropagation Algorithm
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="NN2_gradCheck.html">
-     Initialization and checks
     </a>
    </li>
    <li class="toctree-l2">
@@ -822,7 +822,7 @@ title="Print to PDF"
 </figure>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>Reminder: in linear and logistic regression, we took as hypothesis function a linear combination of the features with the <span class="math notranslate nohighlight">\(\theta\)</span> parameters: <span class="math notranslate nohighlight">\(h_\theta(x^{(i)}) = \sum_{j=0}^n \theta_j x^{(i)}_j = \theta^{\; T} x^{(i)}\)</span></p>
+<p>Reminder: in linear and logistic regression, we took as hypothesis function a linear combination of the features with the <span class="math notranslate nohighlight">\(\theta\)</span> parameters: <span class="math notranslate nohighlight">\(h_\theta(x^{(i)}) = \sum_{j=0}^n \theta_j x^{(i)}_j = \theta \cdot x^{(i)}\)</span></p>
 </aside>
 <p>What can be a good hypothesis function? Linearity will not work here, at all. So we will have to include higher degree polynomial terms in our hypothesis function. This would look like:</p>
 <div class="math notranslate nohighlight">
@@ -836,7 +836,7 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p>An <strong>Artificial Neural Network</strong> is a Machine Learning Model inspired by the networks of biological neurons in animal brains.</p>
 </section>
-</div><p>While the computation in each artificial neuron is simple, the interconnections of the network allows for complex patterns to be modelled.</p>
+</div><p>While the computation in each artificial neuron is simple, the interconnections of the network allow for complex patterns to be modelled.</p>
 <p>We will define in the next section important terminology - a lot will be borrowed from what we saw in linear and logistic regression.</p>
 </section>
 

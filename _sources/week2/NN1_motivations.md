@@ -7,7 +7,7 @@ Let's suppose we have a classification challenge looking like this:
 :figwidth: 80%
 ```
 ````{margin}
-Reminder: in linear and logistic regression, we took as hypothesis function a linear combination of the features with the $\theta$ parameters: $h_\theta(x^{(i)}) = \sum_{j=0}^n \theta_j x^{(i)}_j = \theta^{\; T} x^{(i)}$
+Reminder: in linear and logistic regression, we took as hypothesis function a linear combination of the features with the $\theta$ parameters: $h_\theta(x^{(i)}) = \sum_{j=0}^n \theta_j x^{(i)}_j = \theta \cdot x^{(i)}$
 ````
 What can be a good hypothesis function? Linearity will not work here, at all. So we will have to include higher degree polynomial terms in our hypothesis function. This would look like:
 
@@ -28,7 +28,7 @@ We will turn to Artificial Neural Networks (ANN or NN for short).
 An __Artificial Neural Network__ is a Machine Learning Model inspired by the networks of biological neurons in animal brains. 
 ````
 
-While the computation in each artificial neuron is simple, the interconnections of the network allows for complex patterns to be modelled.
+While the computation in each artificial neuron is simple, the interconnections of the network allow for complex patterns to be modelled.
 
 
 We will define in the next section important terminology - a lot will be borrowed from what we saw in linear and logistic regression.

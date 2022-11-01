@@ -320,17 +320,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="week2/NN2_costF.html">
-     Neural Network Cost Function
+     Neural Network Loss Function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week2/NN2_init.html">
+     Initialization
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="week2/NN2_backprop.html">
      Backpropagation Algorithm
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="week2/NN2_gradCheck.html">
-     Initialization and checks
     </a>
    </li>
    <li class="toctree-l2">
@@ -789,6 +789,7 @@ title="Open an issue"
    <a href="#cap-confusionMatrix def"><strong>confusionMatrix def</strong></a> | 
    <a href="#cap-costFLogRegDef"><strong>costFLogRegDef</strong></a> | 
    <a href="#cap-costFunction"><strong>costFunction</strong></a> | 
+   <a href="#cap-costnndef"><strong>costnndef</strong></a> | 
    <a href="#cap-decBoundDef"><strong>decBoundDef</strong></a> | 
    <a href="#cap-decisionstumpdef"><strong>decisionstumpdef</strong></a> | 
    <a href="#cap-defFeatureScaling"><strong>defFeatureScaling</strong></a> | 
@@ -800,12 +801,16 @@ title="Open an issue"
    <a href="#cap-ensembledef"><strong>ensembledef</strong></a> | 
    <a href="#cap-errorDef"><strong>errorDef</strong></a> | 
    <a href="#cap-errormetricsclassdef"><strong>errormetricsclassdef</strong></a> | 
+   <a href="#cap-fanindef"><strong>fanindef</strong></a> | 
    <a href="#cap-feedforwardpropdef"><strong>feedforwardpropdef</strong></a> | 
    <a href="#cap-flexibilitydef"><strong>flexibilitydef</strong></a> | 
    <a href="#cap-ginidef"><strong>ginidef</strong></a> | 
+   <a href="#cap-gradientsinitxavier"><strong>gradientsinitxavier</strong></a> | 
+   <a href="#cap-heinitdef"><strong>heinitdef</strong></a> | 
    <a href="#cap-hypothesisFunction"><strong>hypothesisFunction</strong></a> | 
    <a href="#cap-hypothesisFunctionMulti"><strong>hypothesisFunctionMulti</strong></a> | 
    <a href="#cap-kfoldxvalidation"><strong>kfoldxvalidation</strong></a> | 
+   <a href="#cap-lecuninitdef"><strong>lecuninitdef</strong></a> | 
    <a href="#cap-linRegDef"><strong>linRegDef</strong></a> | 
    <a href="#cap-logFuncDef"><strong>logFuncDef</strong></a> | 
    <a href="#cap-logRegDef"><strong>logRegDef</strong></a> | 
@@ -831,7 +836,10 @@ title="Open an issue"
    <a href="#cap-trainvaltestsetsdef"><strong>trainvaltestsetsdef</strong></a> | 
    <a href="#cap-underfittingdef"><strong>underfittingdef</strong></a> | 
    <a href="#cap-unitheodef"><strong>unitheodef</strong></a> | 
-   <a href="#cap-variancedef"><strong>variancedef</strong></a>
+   <a href="#cap-variancedef"><strong>variancedef</strong></a> | 
+   <a href="#cap-varianceinitxavier"><strong>varianceinitxavier</strong></a> | 
+   <a href="#cap-xaviernormaldef"><strong>xaviernormaldef</strong></a> | 
+   <a href="#cap-xavieruniformdef"><strong>xavieruniformdef</strong></a>
    </div>
 
    <table class="indextable modindextable">
@@ -972,6 +980,14 @@ title="Open an issue"
        <a href="week1/warmup_1D_linRegGD.html#costFunction"><code class="xref">costFunction</code></a> <em>(week1/warmup_1D_linRegGD)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-costnndef"><td></td><td>
+       <strong>costnndef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_costF.html#costnndef"><code class="xref">costnndef</code></a> <em>(week2/NN2_costF)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-decBoundDef"><td></td><td>
        <strong>decBoundDef</strong></td><td></td></tr>
      <tr>
@@ -1060,6 +1076,14 @@ title="Open an issue"
        <a href="week1/class_algs_biasV.html#errormetricsclassdef"><code class="xref">errormetricsclassdef</code></a> <em>(week1/class_algs_biasV)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-fanindef"><td></td><td>
+       <strong>fanindef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_init.html#fanindef"><code class="xref">fanindef</code></a> <em>(week2/NN2_init)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-feedforwardpropdef"><td></td><td>
        <strong>feedforwardpropdef</strong></td><td></td></tr>
      <tr>
@@ -1084,6 +1108,22 @@ title="Open an issue"
        <a href="week1/BDTs_def.html#ginidef"><code class="xref">ginidef</code></a> <em>(week1/BDTs_def)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-gradientsinitxavier"><td></td><td>
+       <strong>gradientsinitxavier</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_init.html#gradientsinitxavier"><code class="xref">gradientsinitxavier</code></a> <em>(week2/NN2_init)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-heinitdef"><td></td><td>
+       <strong>heinitdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_init.html#heinitdef"><code class="xref">heinitdef</code></a> <em>(week2/NN2_init)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-hypothesisFunction"><td></td><td>
        <strong>hypothesisFunction</strong></td><td></td></tr>
      <tr>
@@ -1106,6 +1146,14 @@ title="Open an issue"
        <td></td>
        <td>
        <a href="week1/class_algs_biasV.html#kfoldxvalidation"><code class="xref">kfoldxvalidation</code></a> <em>(week1/class_algs_biasV)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-lecuninitdef"><td></td><td>
+       <strong>lecuninitdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_init.html#lecuninitdef"><code class="xref">lecuninitdef</code></a> <em>(week2/NN2_init)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-linRegDef"><td></td><td>
@@ -1314,6 +1362,30 @@ title="Open an issue"
        <td></td>
        <td>
        <a href="week1/class_algs_biasV.html#variancedef"><code class="xref">variancedef</code></a> <em>(week1/class_algs_biasV)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-varianceinitxavier"><td></td><td>
+       <strong>varianceinitxavier</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_init.html#varianceinitxavier"><code class="xref">varianceinitxavier</code></a> <em>(week2/NN2_init)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-xaviernormaldef"><td></td><td>
+       <strong>xaviernormaldef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_init.html#xaviernormaldef"><code class="xref">xaviernormaldef</code></a> <em>(week2/NN2_init)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-xavieruniformdef"><td></td><td>
+       <strong>xavieruniformdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_init.html#xavieruniformdef"><code class="xref">xavieruniformdef</code></a> <em>(week2/NN2_init)</em></td><td>
        <em>definition</em></td></tr>
    </table>
 

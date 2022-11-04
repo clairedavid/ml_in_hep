@@ -49,7 +49,7 @@ The gradient descent for classification follows the same procedure as described 
 
 ### Derivatives in the linear case
 ````{margin}
-Recall that $h_\theta (x^{(i)}) =  f(\theta^{T} x^{(i)}) = \frac{1}{1 + e^{- \theta^{T} x^{(i)}}}$ 
+Recall that $h_\theta (x^{(i)}) =  f( x^{(i)}\theta^{T}) = \frac{1}{1 + e^{-  x^{(i)} \theta^{T}}}$ 
 ````
 Consider the linear assumption $\theta^{\; T} x^{(i)} = \theta_0 + \theta_1 x_1 +  \cdots  + \theta_n x_n$ as input to the sigmoid function $f$. 
 The cost function derivatives will take the form:
@@ -69,11 +69,12 @@ Hints and help available on demand after class.
 ### Alternative techniques
 Beside logistic regression, other algorithms are designed for binary classification. 
 
-The [Perceptron](https://en.wikipedia.org/wiki/Perceptron), which is a single layer neural network with, in its original form, a step function instead of a sigmoid function. We will cover neural networks in Lectures 5 and 6.
+The [Perceptron](https://en.wikipedia.org/wiki/Perceptron), which is a single layer neural network with, in its original form, a step function instead of a sigmoid function. We will cover neural networks in Lectures 6 and 7.
 
 [Support Vector Machines (SVMs)](https://en.wikipedia.org/wiki/Support-vector_machine) are robust and widely used in classification problems. We will not cover them here but below are some links for further reading.
 
 ```{admonition} Learn more
+:class: seealso
 * [R. Berwick, An Idiot’s guide to Support vector machines (SVMs)](https://web.mit.edu/6.034/wwwbob/svm.pdf)
 * [Support Vector Machines: A Simple Explanation, KDNuggets](https://www.kdnuggets.com/2016/07/support-vector-machines-simple-explanation.html)
  ```
@@ -125,7 +126,7 @@ With a dataset made of $N^\text{class}$ classes, the number of pairs to train is
  N^\text{model} = N^\text{class}
 \end{equation}
 
-The final prediction is given by the highest value of the hypothesis function $h^{k}_theta(x)$, $k \in [1, N^\text{model}]$ among the $N^\text{model}$ binary classifiers.
+The final prediction is given by the highest value of the hypothesis function $h^{k}_\theta(x)$, $k \in [1, N^\text{model}]$ among the $N^\text{model}$ binary classifiers.
 
 ````
 __Pro__  

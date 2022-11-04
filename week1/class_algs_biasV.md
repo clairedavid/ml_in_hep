@@ -280,7 +280,7 @@ We can see from the picture that the more the curve approaches the ideal classif
 
 ````{prf:definition}
 :label: aucdef
-The __Area Under Curve (AUC)__ is the integral of the ROC curve, from FPR = 0 till FPR = 1.
+The __Area Under Curve (AUC)__ is the integral of the ROC curve, from FPR = 0 to FPR = 1.
 
 A perfect classifier will have AUC = 1.
 ````
@@ -340,7 +340,7 @@ Below is a good visualization of the two tendencies for both regression and clas
 ```
 Before learning on ways to cope with either bias or variance, we need first to assess the situation. How to know if our model has high bias or high variance?
 
-### Identify the case
+### Identifying the case
 By plotting the cost function $J(\theta)$ with respect to the model's complexity. Increasing complexity can be done by adding more features, higher degree polynomial terms, etc. This implies running the training and validation each time with a different model to collect enough points to make such a graph:
 
 ```{figure} ../images/lec03_5_bias-variance-train-val-complexity.png

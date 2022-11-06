@@ -51,9 +51,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Let’s train our NN!" href="NN2_trainNN.html" />
+    <link rel="next" title="8. Towards Deep Learning Models" href="DL.html" />
     <link rel="prev" title="Initialization" href="NN2_init.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -329,11 +331,6 @@ const thebe_selector_output = ".output, .cell_output"
      Backpropagation Algorithm
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="NN2_trainNN.html">
-     Let’s train our NN!
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -352,18 +349,18 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="DL_adaptLR.html">
-     Adaptative Learning Rates
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="DL_paramHyper.html">
      Hyperparameters in DL
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="DL_scikitPyT.html">
-     Tools: scikit-learn &amp; PyTorch
+    <a class="reference internal" href="DL_adaptLR.html">
+     Adaptative Learning Rates
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="DL_trainNN.html">
+     Let’s train our NN!
     </a>
    </li>
   </ul>
@@ -786,12 +783,107 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Backpropagation Algorithm
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#before-diving-into-the-math">
+   Before Diving Into The Math
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ingredients">
+     Ingredients
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition">
+     Definition
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#chain-rule-refresher">
+       Chain Rule Refresher
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#main-steps">
+     Main Steps
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computations">
+     Computations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-is-the-goal">
+       What is the goal?
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#notations">
+       Notations
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-backward-walk">
+       The backward walk
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#recursive-error-equation">
+       Recursive error equation
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#weights-and-biases-update">
+       Weights and biases update
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#memoization-and-it-s-not-a-typo">
+       Memoization (and it’s not a typo)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary-on-backpropagation">
+     Summary on backpropagation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -803,6 +895,90 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Backpropagation Algorithm
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#before-diving-into-the-math">
+   Before Diving Into The Math
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ingredients">
+     Ingredients
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition">
+     Definition
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#chain-rule-refresher">
+       Chain Rule Refresher
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#main-steps">
+     Main Steps
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computations">
+     Computations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-is-the-goal">
+       What is the goal?
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#notations">
+       Notations
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-backward-walk">
+       The backward walk
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#recursive-error-equation">
+       Recursive error equation
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#weights-and-biases-update">
+       Weights and biases update
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#memoization-and-it-s-not-a-typo">
+       Memoization (and it’s not a typo)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary-on-backpropagation">
+     Summary on backpropagation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -812,8 +988,377 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="backpropagation-algorithm">
 <h1>Backpropagation Algorithm<a class="headerlink" href="#backpropagation-algorithm" title="Permalink to this headline">#</a></h1>
-<p>Exercice: what if all weights have the same values?
-The Symmetry Problem –&gt; as xercise! + further reading where best explained</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="before-diving-into-the-math">
+<h1>Before Diving Into The Math<a class="headerlink" href="#before-diving-into-the-math" title="Permalink to this headline">#</a></h1>
+<section id="ingredients">
+<h2>Ingredients<a class="headerlink" href="#ingredients" title="Permalink to this headline">#</a></h2>
+<p>The forward propagation, or forward pass, will fill the network with values for all bias nodes and activation units. That includes the last layer of activation units, so the forward pass provide predictions.</p>
+<p>We saw the loss function as the mathematical tool to compare the predictions with their associated observed values for a sample (and the cost function aggregates this for all data samples).</p>
+<p>Then we are familiar with the gradient descent procedure, which gives at each iteration the positive or negative amount to correct the weights to eventually get a model that fits to the data.</p>
+<p>For a neural network, there are lots of knobs to tweak! Luckily, an efficient technique called backpropagation is able to compute the gradient of the network’s error for every single model parameter.</p>
+</section>
+<section id="definition">
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="backpropdef">
+<p class="admonition-title"><span class="caption-number">Definition 62 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Backpropagation</strong>, short for <strong>backward propagation of errors</strong>, is an algorithm working from the output nodes to the input nodes of a neural network using the chain rule to compute how much each activation unit contributed to the overall error.</p>
+<p>It automatically computes error gradients to then repeatedly adjust all weights and biases to reduce the overall error.</p>
+</section>
+</div><section id="chain-rule-refresher">
+<h3>Chain Rule Refresher<a class="headerlink" href="#chain-rule-refresher" title="Permalink to this headline">#</a></h3>
+<p>A little interlude and refresher of the chain rule will not hurt.</p>
+<div class="proof definition admonition" id="chainruledef">
+<p class="admonition-title"><span class="caption-number">Definition 63 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> be functions. For all <span class="math notranslate nohighlight">\(𝑥\)</span> in the domain of <span class="math notranslate nohighlight">\(g\)</span> for which <span class="math notranslate nohighlight">\(g\)</span> is differentiable at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is differentiable at <span class="math notranslate nohighlight">\(g(x)\)</span>, the derivative of the composite function:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f1f9bba9-5d00-489b-afd1-8f8eecd45273">
+<span class="eqno">(80)<a class="headerlink" href="#equation-f1f9bba9-5d00-489b-afd1-8f8eecd45273" title="Permalink to this equation">#</a></span>\[\begin{equation}
+h(x) = f(g(x)) 
+\end{equation}\]</div>
+<p>is given by</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9ab3b45a-205b-4935-97c6-bc5b38a9cd6b">
+<span class="eqno">(81)<a class="headerlink" href="#equation-9ab3b45a-205b-4935-97c6-bc5b38a9cd6b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}} \;\cdot \;  \frac{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}}{\mathrm{d} \; x} = f'\left(g(x)\right) \;\cdot \; g'(x)
+\end{equation}\]</div>
+</section>
+</div><p>You can see above from the colouring that the inserted denominator and numerator of the composed function cancel out. All good. Now your turn with three functions (and that will be useful for the rest of the lecture).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The prime notation <span class="math notranslate nohighlight">\(f'(\square)\)</span> can be error-prone. It is the derivative with respect to <span class="math notranslate nohighlight">\(\square\)</span> as the variable, i.e. as a block on its own (even if it depends on other variables).</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\frac{\mathrm{d} f(\square)}{\mathrm{d} \square} = f'(\square ) 
+\end{equation*}\]</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>What would be the chain rule for three functions?</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3e8cd053-77ed-4215-abb0-3b922462bbcc">
+<span class="eqno">(82)<a class="headerlink" href="#equation-3e8cd053-77ed-4215-abb0-3b922462bbcc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+k(x) = h(f(g(x))) 
+\end{equation}\]</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Check your answer</p>
+<div class="math notranslate nohighlight" id="equation-chainrule3funceq">
+<span class="eqno">(83)<a class="headerlink" href="#equation-chainrule3funceq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+k'(x) &amp;= \; \frac{\mathrm{d} \; h(f(g(x)))}{\mathrm{{\color{BurntOrange}d}} \; {\color{BurntOrange}f(g(x))}} &amp;\;\cdot\;&amp; \frac{\mathrm{{\color{Peach}d}} \; {\color{Peach}f(g(x))} }{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}} &amp;\;\cdot \;&amp;  \frac{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}}{\mathrm{d} \; x} \\[1ex]
+&amp;= \; h'(f(g(x))) &amp;\;\cdot\;&amp; f'\left(g(x)\right) &amp;\;\cdot \;&amp; g'(x)\\
+\end{align*}\end{split}\]</div>
+<p>Three functions: three derivative terms.<br />
+We work from the outside first, taking one derivative at a time.</p>
+</div>
+</section>
+</section>
+<section id="main-steps">
+<span id="nn2-backprop-mainstep"></span><h2>Main Steps<a class="headerlink" href="#main-steps" title="Permalink to this headline">#</a></h2>
+<p>Before diving into a more mathematical writing, let’s just list the main steps of backpropagation. We will detail steps 2, 3 and 4 very soon:</p>
+<div class="proof algorithm admonition" id="backpropalgo">
+<p class="admonition-title"><span class="caption-number">Algorithm 5 </span> (Backpropagation)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong><br />
+Training data set <span class="math notranslate nohighlight">\(X\)</span> of <span class="math notranslate nohighlight">\(m\)</span> samples with each <span class="math notranslate nohighlight">\(n\)</span> input features, associated with their targets <span class="math notranslate nohighlight">\(y\)</span></p>
+<p><strong>Hyperparameters</strong></p>
+<ul class="simple">
+<li><p>Learning rate <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
+<li><p>Number of epochs <span class="math notranslate nohighlight">\(N\)</span></p></li>
+</ul>
+<p><strong>Start</strong></p>
+<p><strong>Step 0:</strong> Weight initialization</p>
+<p><strong>Step 1:</strong> Forward propagation on subset or all sample instances <span class="math notranslate nohighlight">\(\Rightarrow\)</span> get predictions <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}}\)</span></p>
+<p><strong>Step 2:</strong> Computation of loss function &amp; cost function <span class="math notranslate nohighlight">\(\Rightarrow\)</span> get network’s output error <span class="math notranslate nohighlight">\(\delta^{(L)}\)</span></p>
+<p><strong>Step 3:</strong> Computation of all activation unit errors  <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\(\delta^{(L-1)}_k, \delta^{(L-2)}_p, \cdots, \delta^{(1)}_r\)</span></p>
+<p><strong>Step 4:</strong> Gradient Descent steps to update weights &amp; biases:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+W^{(\ell)}_{q,r} &amp;\leftarrow W^{(\ell)}_{q,r} - \alpha \frac{\partial \text{ Cost}}{\partial W^{(\ell)}_{q,r}} \\[1ex]
+b^{(\ell)}_r &amp;\leftarrow b^{(\ell)}_r - \alpha \frac{\partial \text{ Cost}}{\partial b^{(\ell)}_r}
+\end{align*}
+\end{split}\]</div>
+<p>End of epoch, repeat step 1 - 4 until/unless:</p>
+<p><strong>Exit conditions:</strong></p>
+<ul class="simple">
+<li><p>Number of epochs <span class="math notranslate nohighlight">\(N^\text{epoch}\)</span> is reached</p></li>
+<li><p>If all derivatives are zero or below a small threshold</p></li>
+</ul>
+</section>
+</div></section>
+<section id="computations">
+<h2>Computations<a class="headerlink" href="#computations" title="Permalink to this headline">#</a></h2>
+<p>Now there will be math.</p>
+<section id="what-is-the-goal">
+<h3>What is the goal?<a class="headerlink" href="#what-is-the-goal" title="Permalink to this headline">#</a></h3>
+<p>Always a good question to start. We want to tweak the weights <span class="math notranslate nohighlight">\(\boldsymbol{W}\)</span> and biases <span class="math notranslate nohighlight">\(\boldsymbol{b}\)</span> so that the network predictions <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}}\)</span> match the observed values <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span>. In other words, we want to know how the cost will change if the weights and biases change. For the neural network to fit the data, we need to find the weights and biases that minimize the cost function:</p>
+<div class="math notranslate nohighlight" id="equation-costnnmineq">
+<span class="eqno">(84)<a class="headerlink" href="#equation-costnnmineq" title="Permalink to this equation">#</a></span>\[ \min_{\boldsymbol{W},\boldsymbol{b}} \text{ Cost}(\boldsymbol{W},\boldsymbol{b})\]</div>
+<p>For this, we will need the partial derivatives of the cost function with respect to the parameters we want to optimize.</p>
+<p>With derivatives, especially partial ones, it’s crucial to ask the question:</p>
+<p>What varies here and with respect to what?<br />
+How will the numerator entity change as the denominator change?<br />
+Here we want to know how to vary the weights and biases so that the cost gets lower:</p>
+<div class="math notranslate nohighlight" id="equation-partialdevcostwbeq">
+<span class="eqno">(85)<a class="headerlink" href="#equation-partialdevcostwbeq" title="Permalink to this equation">#</a></span>\[\begin{gathered}
+\frac{\partial \text{ Cost}( \boldsymbol{W},\boldsymbol{b} )}{\partial \boldsymbol{W}} \qquad \frac{\partial \text{ Cost}( \boldsymbol{W},\boldsymbol{b} )}{\partial \boldsymbol{b}}
+\end{gathered}\]</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Most mathematical textbooks have <span class="math notranslate nohighlight">\(x\)</span> as the varying entity while explaining the derivative business. It can be here misleading with our notation as we use <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> as well. But in our case, <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> are the input features. They are given. They will not change (unless you bring new data, but there will still be given numbers you’re not supposed to tweak). What we want is to vary the weights <span class="math notranslate nohighlight">\(\boldsymbol{W}\)</span> and biases <span class="math notranslate nohighlight">\(\boldsymbol{b}\)</span> to find optimized values for which the error is minimum, i.e. the model predicts a (given) <span class="math notranslate nohighlight">\(\hat{y}\)</span> very close to the real target <span class="math notranslate nohighlight">\(y\)</span>.</p>
+</div>
+<p>Equation <a class="reference internal" href="#equation-partialdevcostwbeq">(85)</a> can be overwhelming, especially given the numerous quantities of weights and biases in a neural network. No panic! Thanks to backpropagation, there will be a way to not only get those derivatives, but also be very efficient in their computation.</p>
+</section>
+<section id="notations">
+<h3>Notations<a class="headerlink" href="#notations" title="Permalink to this headline">#</a></h3>
+<p>Let’s first rewrite the activation unit equation as a function of a function:</p>
+<div class="math notranslate nohighlight" id="equation-activvalueeq">
+<span class="eqno">(86)<a class="headerlink" href="#equation-activvalueeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(\ell)}} = f\left( \; \boldsymbol{a^{(\ell -1)}} \;\boldsymbol{W^{(\ell)}} \;+\; \boldsymbol{b}^{(\ell)} \;\right) \;,\]</div>
+<p>with <span class="math notranslate nohighlight">\(f\)</span> the node’s activation function and <span class="math notranslate nohighlight">\(\ell\)</span> is the current layer of the activation unit where the sum is computed (taking thus as inputs the weights and biases pointing to that layer, see Figure <a class="reference internal" href="NN1_feedforward.html#lec05-4-nn-notations"><span class="std std-numref">Fig. 52</span></a>).</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>To further lighten the equations, parenthesis on the upperscripts for the layer number have been removed. It is fine here as the entities will not be squared but one should be careful to not mix the upperscript with an exponent.</p>
+</aside>
+<p>Let <span class="math notranslate nohighlight">\(z\)</span> be a function for the “weighted sum plus bias:”</p>
+<div class="math notranslate nohighlight" id="equation-zfunceq">
+<span class="eqno">(87)<a class="headerlink" href="#equation-zfunceq" title="Permalink to this equation">#</a></span>\[z^\ell(W, b) = a^{\ell-1} W^\ell + b^\ell\]</div>
+<p>Now we can rewrite the output from an activation unit <span class="math notranslate nohighlight">\(a^{\ell}\)</span> as:</p>
+<div class="math notranslate nohighlight" id="equation-afunczeq">
+<span class="eqno">(88)<a class="headerlink" href="#equation-afunczeq" title="Permalink to this equation">#</a></span>\[a^\ell(W, b) = f\left( z^\ell(W, b) \right)\]</div>
+<p>The upperscripts for the weights and biases are not written inside the parenthesis for lighter equations. And it is also implied that <span class="math notranslate nohighlight">\(W\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are collections of matrices and vectors respectively.</p>
+<p>We will denote the loss function through a general form as <span class="math notranslate nohighlight">\(L\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-lossfunceq">
+<span class="eqno">(89)<a class="headerlink" href="#equation-lossfunceq" title="Permalink to this equation">#</a></span>\[L(\hat{y}^{(i)}, y^{(i)}) \]</div>
+<p>It is computed for each sample instance <span class="math notranslate nohighlight">\(\left\{ \boldsymbol{x^{(i)}}, y^{(i)} \right\}\)</span>, with <span class="math notranslate nohighlight">\(\boldsymbol{x^{(i)}}\)</span> being one row of input features and <span class="math notranslate nohighlight">\(y\)</span> the associated target.</p>
+<p>The cost is the sum of the losses over all data instances <span class="math notranslate nohighlight">\(m\)</span>. To lighten the equations of the following section, the sum will be written without instance indices as upperscript (already used for the layer number); it is implied that it is the sum over all data instances.</p>
+<div class="math notranslate nohighlight" id="equation-costfunceq">
+<span class="eqno">(90)<a class="headerlink" href="#equation-costfunceq" title="Permalink to this equation">#</a></span>\[\text{Cost} = \sum_{i=1}^m L(\hat{y}^{(i)}, y^{(i)}) = \textstyle \sum L(\boldsymbol{\hat{y}}, \boldsymbol{y})\]</div>
+<p><strong>How can we express the final output <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}}\)</span>?</strong><br />
+Let’s take a similar network as the one in the previous lecture but layers are labeled from the last one (right) in decreasing order:</p>
+<figure class="align-default" id="lec07-3-nn-lastlayers">
+<a class="reference internal image-reference" href="../_images/lec07_3_nn_lastlayers.png"><img alt="../_images/lec07_3_nn_lastlayers.png" src="../_images/lec07_3_nn_lastlayers.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text">. Feedforward neural network with the notations for the<br />
+last, before last and before before last layers.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#lec07-3-nn-lastlayers" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The final prediction <span class="math notranslate nohighlight">\(\hat{y}\)</span> is the output of the activation unit in the last layer:</p>
+<div class="math notranslate nohighlight" id="equation-ypredwrappereq">
+<span class="eqno">(91)<a class="headerlink" href="#equation-ypredwrappereq" title="Permalink to this equation">#</a></span>\[\hat{y} = a^L = f(z^L(W,b))\]</div>
+<hr class="docutils" />
+<p>So the cost function is obtained using Equations <a class="reference internal" href="#equation-costfunceq">(90)</a> and <a class="reference internal" href="#equation-ypredwrappereq">(91)</a>:</p>
+<div class="math notranslate nohighlight" id="equation-costlossafzeq">
+<span class="eqno">(92)<a class="headerlink" href="#equation-costlossafzeq" title="Permalink to this equation">#</a></span>\[\text{Cost} = \textstyle \sum L(f(z^L(W,b)))\]</div>
+<hr class="docutils" />
+<p>Let’s joyfully take the derivatives of that sandwich of function! Now you get the chain rule refresher. The general expression for the partial derivative with respect to the weights <span class="math notranslate nohighlight">\(W\)</span> would be:</p>
+<div class="math notranslate nohighlight" id="equation-dcostchaineq">
+<span class="eqno">(93)<a class="headerlink" href="#equation-dcostchaineq" title="Permalink to this equation">#</a></span>\[\frac{\partial \text { Cost }}{\partial W}= \sum \; \frac{\partial L(f(z(W, b)))}{\partial f(z(W, b))} \cdot \; \frac{\partial f(z(W, b))}{\partial z(W, b)}  \cdot \; \frac{\partial z(W, b)}{\partial W}\]</div>
+<p>A similar one can be written with <span class="math notranslate nohighlight">\(b\)</span>.<br />
+Let’s now go backward and see how it simplifies itself layer after layer.</p>
+</section>
+<section id="the-backward-walk">
+<h3>The backward walk<a class="headerlink" href="#the-backward-walk" title="Permalink to this headline">#</a></h3>
+<p>As its name indicates, the backward propagation proceed from the last to the first input layer. Let’s write the general equation <a class="reference internal" href="#equation-dcostchaineq">(93)</a> for the last layer:</p>
+<div class="math notranslate nohighlight" id="equation-dcostlastchaineq">
+<span class="eqno">(94)<a class="headerlink" href="#equation-dcostlastchaineq" title="Permalink to this equation">#</a></span>\[\begin{align*}
+\frac{\partial \text { Cost }}{\partial W^L} &amp;=\sum \; \frac{\partial L(f(z^L(W, b)))}{\partial f(z^L(W, b))}&amp;\cdot&amp; \; \frac{\partial f(z^L(W, b))}{\partial z^L(W, b)} &amp;\cdot&amp; \; \frac{\partial z^L(W, b))}{\partial W^L} 
+\end{align*}\]</div>
+<p>We can simplify things. The first term is the derivative of the loss function with <span class="math notranslate nohighlight">\(f(z^L(W, b)) = a^L\)</span> as argument. It’s a value here, computed with all weights values. Same for the second term: it is the derivative of activation function taken for the value <span class="math notranslate nohighlight">\(z^L\)</span>. For the third, we use the definition in Equation <a class="reference internal" href="#equation-zfunceq">(87)</a> that yields: <span class="math notranslate nohighlight">\(\left(z^L(W, b)\right)^{\prime} = a^{L-1}\)</span>. We can write:</p>
+<div class="math notranslate nohighlight" id="equation-dcostlastsimpleeq">
+<span class="eqno">(95)<a class="headerlink" href="#equation-dcostlastsimpleeq" title="Permalink to this equation">#</a></span>\[\frac{\partial \text { Cost }}{\partial W^L}
+= \; \sum \;\; L^{\prime}(a^L) 
+\;\cdot \; f^{\prime}(z^L) 
+\;\cdot \; a^{L-1}\]</div>
+<p>Now let’s proceed to the before last layer. Using the chain rule as usual:</p>
+<div class="math notranslate nohighlight" id="equation-dcostbeforelastchaineq">
+<span class="eqno">(96)<a class="headerlink" href="#equation-dcostbeforelastchaineq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+&amp; \frac{\partial \text { Cost }}{\partial W^{L-1}} =  \\[1ex]
+&amp; \sum \; \frac{\partial L(f(z^L(W, b)))}{\partial f(z^L(W, b))} \cdot \frac{\partial f(z^L(W, b))}{\partial z^L(W, b)} \cdot \frac{\partial z^L(W, b))}{\partial a^{L-1}(W,b)} \cdot \frac{\partial a^{L-1}(W,b)}{\partial z^{L-1}(W,b)} \cdot \frac{\partial z^{L-1}(W,b)}{\partial W^{L-1}} 
+\end{align*}\end{split}\]</div>
+<p>The two first terms are identical as in Equation <a class="reference internal" href="#equation-dcostchaineq">(93)</a>. Using the definitions of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(z\)</span> we have:</p>
+<div class="math notranslate nohighlight" id="equation-beforelasttermssimplereq">
+<span class="eqno">(97)<a class="headerlink" href="#equation-beforelasttermssimplereq" title="Permalink to this equation">#</a></span>\[\begin{gathered}
+\frac{\partial z^L(W, b))}{\partial a^{L-1}(W,b)} \;=\; W^L  \qquad \frac{\partial a^{L-1}(W,b)}{\partial z^{L-1}(W,b)} \;=\; f'(z^{L-1}) \qquad  \frac{\partial z^{L-1}(W,b)}{\partial W^{L-1}} \;=\; a^{L-2}
+\end{gathered}\]</div>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight" id="equation-dcostbeforelastsimpleeq">
+<span class="eqno">(98)<a class="headerlink" href="#equation-dcostbeforelastsimpleeq" title="Permalink to this equation">#</a></span>\[\frac{\partial \text { Cost }}{\partial W^{L-1}}
+= \; \sum \;\; L^{\prime}(a^L) 
+\;\cdot \; f^{\prime}(z^L) 
+\;\cdot \; W^L 
+\;\cdot \; f'(z^{L-1})
+\;\cdot \; a^{L-2}\]</div>
+<p>You can check yourself that for the derivative with respect to <span class="math notranslate nohighlight">\(W^{L-2}\)</span> we will have:</p>
+<div class="math notranslate nohighlight" id="equation-dcostbeforebeforelastsimpleeq">
+<span class="eqno">(99)<a class="headerlink" href="#equation-dcostbeforebeforelastsimpleeq" title="Permalink to this equation">#</a></span>\[\frac{\partial \text { Cost }}{\partial W^{L-2}}
+= \; \sum \;\; L^{\prime}(a^L) 
+\;\cdot \; f^{\prime}(z^L) 
+\;\cdot \; W^L 
+\;\cdot \; f'(z^{L-1})
+\;\cdot \; W^{L-1} 
+\;\cdot \; f'(z^{L-1}) 
+\;\cdot \; a^{L-3} \]</div>
+<p>We can see a pattern here!</p>
+<p>We go all the way to the first hidden layer 1 (scroll to the right):</p>
+<div class="math notranslate nohighlight" id="equation-dcostw1dotsxeq">
+<span class="eqno">(100)<a class="headerlink" href="#equation-dcostw1dotsxeq" title="Permalink to this equation">#</a></span>\[\frac{\partial \text { Cost }}{\partial W^{1}}
+= \; \sum \;\; L^{\prime}(a^L) 
+\;\cdot \; f^{\prime}(z^L) 
+\;\cdot \; W^L 
+\;\cdot \; f'(z^{L-1})
+\;\cdot \; W^{L-1} 
+\;\cdot \; f'(z^{L-1}) 
+\;\cdots\; W^2
+\;\cdot \; f'(z^{1})
+\;\cdot \; x\]</div>
+<p>where <span class="math notranslate nohighlight">\(a^0 = x\)</span> as defined in the previous lecture in Equation <a class="reference internal" href="NN1_feedforward.html#equation-xisazeroeq">(63)</a>.</p>
+</section>
+<section id="recursive-error-equation">
+<h3>Recursive error equation<a class="headerlink" href="#recursive-error-equation" title="Permalink to this headline">#</a></h3>
+<p>We can write Equations <a class="reference internal" href="#equation-dcostlastsimpleeq">(95)</a>, <a class="reference internal" href="#equation-dcostbeforelastsimpleeq">(98)</a> and <a class="reference internal" href="#equation-dcostbeforebeforelastsimpleeq">(99)</a> by introducing an error term <span class="math notranslate nohighlight">\(\delta\)</span>. For the last layer it is defined as the product of the first two partial derivatives times the activation unit’s value at the previous layer. For the following (previous) layers it would be:</p>
+<div class="math notranslate nohighlight" id="equation-deltasandpartialcostseq">
+<span class="eqno">(101)<a class="headerlink" href="#equation-deltasandpartialcostseq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+\delta^L &amp;=\; L^{\prime}(a^L) \cdot f^{\prime}(z^L) 
+&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial W^L} &amp;=&amp; \quad \delta^L \;\cdot\; a^{L-1}\\[2ex]
+\delta^{L-1} &amp;= \; \delta^L     \cdot\;  W^L \cdot\; f'(z^{L-1}) 
+&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial W^{L-1}} &amp;=&amp; \quad \delta^{L-1} \;\cdot\; a^{L-2}\\[2ex]
+\delta^{L-2} &amp;= \; \delta^{L-1} \cdot\; W^{L-1} \;\cdot\; f'(z^{L-2}) 
+&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial W^{L-2}} &amp;=&amp; \quad \delta^{L-2} \;\cdot\; a^{L-3}\\
+\end{align*} \end{split}\]</div>
+<p>This is recursive because errors from the current layer are used to evaluate error signals in a previous layer. We can write the recursive formula for any partial derivative in layer <span class="math notranslate nohighlight">\(\ell\)</span> as:</p>
+<div class="math notranslate nohighlight" id="equation-partialdevrecueq">
+<span class="eqno">(102)<a class="headerlink" href="#equation-partialdevrecueq" title="Permalink to this equation">#</a></span>\[\frac{\partial \text {Cost}}{\partial W^{\ell}} = \;\; \delta^{\ell} \;\cdot\; a^{\ell-1}\]</div>
+<p><strong>What about the biases?</strong><br />
+This is left as exercise for training.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>Express the partial derivatives of the cost with respect to the biases <span class="math notranslate nohighlight">\(b^{\ell}\)</span>.</p>
+<p>Hint: start with the last layer <span class="math notranslate nohighlight">\(L\)</span> as done previously with the weights.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Check your answer</p>
+<p>The formula is essentially the same as for the weights, at the difference that the partial derivative of <span class="math notranslate nohighlight">\(z^\ell\)</span> with respect to <span class="math notranslate nohighlight">\(b^\ell\)</span> is 1:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\frac{\partial z^\ell}{\partial b^\ell} = 1
+\end{equation*}\]</div>
+<p>Thus:</p>
+<div class="math notranslate nohighlight" id="equation-biaseq">
+<span class="eqno">(103)<a class="headerlink" href="#equation-biaseq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+\delta^L &amp;=\; L^{\prime}(a^L) \cdot f^{\prime}(z^L) 
+&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^L} &amp;=&amp; \quad \delta^L  \\[1ex]
+\delta^{L-1} &amp;= \; \delta^L     \cdot\;  W^L \cdot\; f'(z^{L-1}) 
+&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^{L-1}} &amp;=&amp; \quad \delta^{L-1}  \\[1ex]
+\delta^{L-2} &amp;= \; \delta^{L-1} \cdot\; W^{L-1} \;\cdot\; f'(z^{L-2}) 
+&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^{L-2}} &amp;=&amp; \quad \delta^{L-2} \\[1ex]
+&amp; \quad\cdots &amp; &amp; \cdots &amp; \\[1ex]
+\delta^{1} &amp;= \; \delta^{2} \cdot\; W^{2} \;\cdot\; f'(z^{1}) 
+&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^{1}} &amp;=&amp; \quad \delta^{1} \\[1ex]
+\end{align*} \end{split}\]</div>
+</div>
+</section>
+<section id="weights-and-biases-update">
+<h3>Weights and biases update<a class="headerlink" href="#weights-and-biases-update" title="Permalink to this headline">#</a></h3>
+<p>After backpropagating, each weight an bias in the network are ajusted in proportion to how much they contribute to overall error.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The equations are different as in the section <a class="reference internal" href="#nn2-backprop-mainstep"><span class="std std-ref">Main Steps</span></a> as we keep here the ‘lite’ notations introduced above. The indices referring to the row and column of each weight/bias are implied for smoother reading. But remember that <span class="math notranslate nohighlight">\(W\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are matrices and vectors respectively.</p>
+</aside>
+<div class="math notranslate nohighlight" id="equation-weightbiasupdate">
+<span class="eqno">(104)<a class="headerlink" href="#equation-weightbiasupdate" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+W^\ell &amp;\leftarrow W^\ell - \alpha \frac{\partial \text{ Cost}}{\partial W^\ell} \\[1ex]
+b^\ell &amp;\leftarrow b^\ell - \alpha \frac{\partial \text{ Cost}}{\partial b^\ell}
+\end{align*}\end{split}\]</div>
+</section>
+<section id="memoization-and-it-s-not-a-typo">
+<h3>Memoization (and it’s not a typo)<a class="headerlink" href="#memoization-and-it-s-not-a-typo" title="Permalink to this headline">#</a></h3>
+<p>This is a computer science term. It refers to an optimization technique to make computations faster, in particular by reusing previous calculations. This translates into storing intermediary results so that they are called again if needed, not recomputed. Recursive functions by definition reuse the outcomes of the previous iteration at the current one, so memoization is at play.</p>
+<p>Let’s illustrate this point by writing the derivative equations for a network with one output layer and three hidden layers:</p>
+<div class="math notranslate nohighlight" id="equation-lastfoursimpleeq">
+<span class="eqno">(105)<a class="headerlink" href="#equation-lastfoursimpleeq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+\frac{\partial \text { Cost }}{\partial W^4} &amp;= \sum \; 
+{\color{OliveGreen}L^{\prime}(a^4) \cdot f^{\prime}(z^4)} \cdot a^{3} \\[2ex]
+\frac{\partial \text { Cost }}{\partial W^{3}} &amp;= \sum \; 
+{\color{OliveGreen}L^{\prime}(a^4) \cdot f^{\prime}(z^4)} \cdot {\color{Cyan}W^4 \cdot f'(z^{3})} \cdot a^{2}  \\[2ex]
+\frac{\partial \text { Cost }}{\partial W^{2}} &amp;= \sum \; 
+{\color{OliveGreen}L^{\prime}(a^4) \cdot f^{\prime}(z^4)} \cdot {\color{Cyan}W^4 \cdot f'(z^{3})} \cdot {\color{DarkOrange}W^{3} \cdot f'(z^{2})} \cdot a^{1} \\[2ex]
+\frac{\partial \text { Cost }}{\partial W^{1}} &amp;= \sum \; 
+{\color{OliveGreen}L^{\prime}(a^4) \cdot f^{\prime}(z^4)} \cdot {\color{Cyan}W^4 \cdot f'(z^{3})} \cdot {\color{DarkOrange}W^{3} \cdot f'(z^{2})}  \cdot W^2 \cdot f'(z^{1}) \cdot x\\[2ex]
+\end{align*}\end{split}\]</div>
+<p>The reoccuring computations are highlighted in the same colour. Now you can get a sense of the genius behind neural network: although there are many computations, a lot of calculations are reused as we move backwards through the network. With proper memoization, the whole process can be very fast.</p>
+</section>
+</section>
+<section id="summary-on-backpropagation">
+<h2>Summary on backpropagation<a class="headerlink" href="#summary-on-backpropagation" title="Permalink to this headline">#</a></h2>
+<p>The backpropagation of error is a recursive algorithm reusing the computations from last until first layer to compute how much each activation unit and bias node contribute to the overall error. The idea behind backpropagation is to share the repeated computations wherever possible.
+Let’s write again the step filling the key equations in:</p>
+<div class="proof algorithm admonition" id="backpropalgosummary">
+<p class="admonition-title"><span class="caption-number">Algorithm 6 </span> (Backpropagation)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong><br />
+Training data set <span class="math notranslate nohighlight">\(X\)</span> of <span class="math notranslate nohighlight">\(m\)</span> samples with each <span class="math notranslate nohighlight">\(n\)</span> input features, associated with their targets <span class="math notranslate nohighlight">\(y\)</span></p>
+<p><strong>Hyperparameters</strong></p>
+<ul class="simple">
+<li><p>Learning rate <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
+<li><p>Number of epochs <span class="math notranslate nohighlight">\(N\)</span></p></li>
+</ul>
+<p><strong>Start</strong></p>
+<p><strong>Step 0:</strong> Weight initialization</p>
+<p><strong>Step 1:</strong> Forward propagation on subset or all sample instances:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3087e8ae-93b1-43d0-994b-c1789c80a953">
+<span class="eqno">(106)<a class="headerlink" href="#equation-3087e8ae-93b1-43d0-994b-c1789c80a953" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\hat{y} = a^L(W, b) = f(z^L(W,b))
+\end{equation}\]</div>
+<p><strong>Step 2:</strong> Computation of loss function, cost function and overall error:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-92af16a9-fc31-4ff0-bd5c-9809f34c301c">
+<span class="eqno">(107)<a class="headerlink" href="#equation-92af16a9-fc31-4ff0-bd5c-9809f34c301c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\text{Cost} = \textstyle \sum L(f(z^L(W,b))) \qquad \delta^L =\; L^{\prime}(a^L(W,b)) \cdot f^{\prime}(z^L(W, b)) 
+\end{equation}\]</div>
+<p><strong>Step 3:</strong> Computation of all activation unit errors:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-17932447-d5c3-4804-81c3-9d128b529a64">
+<span class="eqno">(108)<a class="headerlink" href="#equation-17932447-d5c3-4804-81c3-9d128b529a64" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\delta^\ell = \delta^{\ell+1} \;\cdot\; W^{\ell+1} \;\cdot\; f'(z^\ell(W, b))
+\end{equation}\]</div>
+<p>… and derivatives:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7aa8b12d-ff8b-408d-b56a-efabf5943bf1">
+<span class="eqno">(109)<a class="headerlink" href="#equation-7aa8b12d-ff8b-408d-b56a-efabf5943bf1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\frac{\partial \text {Cost}}{\partial W^{\ell}} = \; \delta^{\ell} \;\cdot\; a^{\ell-1}  \qquad \qquad \frac{\partial \text {Cost}}{\partial b^{\ell}} = \; \delta^{\ell}
+\end{equation}\]</div>
+<p><strong>Step 4:</strong> Gradient Descent steps to update weights &amp; biases:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+W^\ell &amp;\leftarrow W^\ell - \alpha \frac{\partial \text{ Cost}}{\partial W^\ell} \\[1ex]
+b^\ell &amp;\leftarrow b^\ell - \alpha \frac{\partial \text{ Cost}}{\partial b^\ell}
+\end{align*}
+\end{split}\]</div>
+<p>End of epoch, repeat step 1 - 4 until/unless:</p>
+<p><strong>Exit conditions:</strong></p>
+<ul class="simple">
+<li><p>Number of epochs <span class="math notranslate nohighlight">\(N^\text{epoch}\)</span> is reached</p></li>
+<li><p>If all derivatives are zero or below a small threshold</p></li>
+</ul>
+</section>
+</div><p>This is the end of this math intensive section. Now you know the math behind a neural network and hopefully get a sense of why they are so powerful and popular.
+There will be training on this with a tutorial where you will code yourself a small neural network from scratch.</p>
+<p>In the next lecture, we will see a much more convenient way to build a neural network using a dedicated library. We will introduce further optimization techniques proper to deep learning.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>Now that you know the backpropagation algorithm, a question regarding the neural network initialization: what if all weights are first set to the same value? (not zero, as we saw, but any other constant)</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Check your answer</p>
+<p>If the weights and biases are initialized to the same constant values <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, all activation units in a given layer will get the same signal <span class="math notranslate nohighlight">\(a = \sum_{j} w x_j + b\)</span>. As such, all nodes for that layer will be identical. Thus the gradients will be updated the same way. Despite having many neurons per layer, the network will act as if it had only one neuron per layer. Therefore, it is likely to fail to reproduce complex patterns from the data; it won’t be that smart. For a feedforward neural network to work, there should be an asymmetric configuration for it to use each activation unit uniquely. This is why weights and biases should be initalized with random value to break the symmetry.</p>
+</div>
+<p>  </p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn more</p>
+<p>The paper that popularized backpropagation, back in 1989:<br />
+<a class="reference external" href="https://www.nature.com/articles/323533a0">D. Rumelhart, G. Hinton and R.Williams, <em>Learning representations by back-propagating errors</em></a></p>
+<p>Some good refresher:<br />
+<a class="reference external" href="https://math.libretexts.org/Bookshelves/Calculus/Book%3A_Calculus_(OpenStax)/03%3A_Derivatives/3.06%3A_The_Chain_Rule">Derivative of the chain rule on math.libretexts.org</a></p>
+<p>Backpropagation explanation with different notation and a source of inspiration (thanks) from <a class="reference external" href="https://ml-cheatsheet.readthedocs.io/en/latest/backpropagation.html">ml-cheatsheet</a></p>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -850,10 +1395,10 @@ The Symmetry Problem –&gt; as xercise! + further reading where best explained<
             <p class="prev-next-title">Initialization</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="NN2_trainNN.html" title="next page">
+    <a class='right-next' id="next-link" href="DL.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Let’s train our NN!</p>
+        <p class="prev-next-title">8. Towards Deep Learning Models</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

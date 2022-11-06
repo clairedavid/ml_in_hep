@@ -318,17 +318,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../week2/NN2_costF.html">
-     Neural Network Cost Function
+     Neural Network Loss Function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/NN2_init.html">
+     Initialization
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../week2/NN2_backprop.html">
      Backpropagation Algorithm
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week2/NN2_gradCheck.html">
-     Initialization and checks
     </a>
    </li>
    <li class="toctree-l2">
@@ -986,28 +986,28 @@ w^{(i)} = \frac{1}{m}
 <p><strong>Start</strong><br />
 <strong>For</strong> each predictor <span class="math notranslate nohighlight">\(j = 1 , \cdots , N^\text{pred}\)</span><br />
 a. Train on all samples and compute the weighted error rate <span class="math notranslate nohighlight">\(r_j\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-00e1793d-6cb6-4c3b-9a78-98181e5e2544">
-<span class="eqno">(33)<a class="headerlink" href="#equation-00e1793d-6cb6-4c3b-9a78-98181e5e2544" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e3420b29-6c4b-4969-8c49-58341563574c">
+<span class="eqno">(33)<a class="headerlink" href="#equation-e3420b29-6c4b-4969-8c49-58341563574c" title="Permalink to this equation">#</a></span>\[\begin{equation}
    r_j = \frac{\sum_{i = 1}^m w^{(i)} [ \hat{y}_j^{(i)} \neq y^{(i)} ]   }{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p>b. Give the predictor <span class="math notranslate nohighlight">\(j\)</span> a weight <span class="math notranslate nohighlight">\(W_j\)</span> measuring accuracy</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b34a0f62-0a18-4fe7-8db7-10d0425ab9f3">
-<span class="eqno">(34)<a class="headerlink" href="#equation-b34a0f62-0a18-4fe7-8db7-10d0425ab9f3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-13fce2aa-0eef-4cde-a8c0-a61083198470">
+<span class="eqno">(34)<a class="headerlink" href="#equation-13fce2aa-0eef-4cde-a8c0-a61083198470" title="Permalink to this equation">#</a></span>\[\begin{equation}
    W_j = \alpha \log \frac{1 - r_j}{r_j} 
    \end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(W_j\)</span> points to zero if the predictor is bad, or a high number if the predictor is good.<br />
 <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate.</p>
 <p>c. Update the weights of all data samples:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ae909ead-e958-4c4d-9b32-67988be1e953">
-<span class="eqno">(35)<a class="headerlink" href="#equation-ae909ead-e958-4c4d-9b32-67988be1e953" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ed378a13-6f60-4cbe-b3c2-c90e64efa6e8">
+<span class="eqno">(35)<a class="headerlink" href="#equation-ed378a13-6f60-4cbe-b3c2-c90e64efa6e8" title="Permalink to this equation">#</a></span>\[\begin{equation}
    w^{(i)} = \left\{\begin{matrix}
    w^{(i)} \;\;\;\;  &amp;\text{if} \;\;\;\; \hat{y}_j^{(i)} = y_j^{(i)} \\[2ex]
    \;\;w^{(i)} \exp (W_j)  \;\;\;\;  &amp;\text{if} \;\;\;\; \hat{y}_j^{(i)} \neq y_j^{(i)} \\
    \end{matrix}\right.
    \end{equation}\]</div>
 <p>d. Normalize the weights</p>
-<div class="amsmath math notranslate nohighlight" id="equation-998ea17d-2554-4b03-b59a-9a05032de1cc">
-<span class="eqno">(36)<a class="headerlink" href="#equation-998ea17d-2554-4b03-b59a-9a05032de1cc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-05cca52d-1944-4c88-864f-8bb4df1e0850">
+<span class="eqno">(36)<a class="headerlink" href="#equation-05cca52d-1944-4c88-864f-8bb4df1e0850" title="Permalink to this equation">#</a></span>\[\begin{equation}
     w^{(i)} \rightarrow \frac{w^{(i)}}{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p><strong>Exit conditions</strong></p>

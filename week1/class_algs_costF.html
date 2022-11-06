@@ -318,17 +318,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../week2/NN2_costF.html">
-     Neural Network Cost Function
+     Neural Network Loss Function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/NN2_init.html">
+     Initialization
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../week2/NN2_backprop.html">
      Backpropagation Algorithm
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week2/NN2_gradCheck.html">
-     Initialization and checks
     </a>
    </li>
    <li class="toctree-l2">
@@ -948,7 +948,7 @@ Like this:</p>
 <h3>Derivatives in the linear case<a class="headerlink" href="#derivatives-in-the-linear-case" title="Permalink to this headline">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>Recall that <span class="math notranslate nohighlight">\(h_\theta (x^{(i)}) =  f(\theta^{T} x^{(i)}) = \frac{1}{1 + e^{- \theta^{T} x^{(i)}}}\)</span></p>
+<p>Recall that <span class="math notranslate nohighlight">\(h_\theta (x^{(i)}) =  f( x^{(i)}\theta^{T}) = \frac{1}{1 + e^{-  x^{(i)} \theta^{T}}}\)</span></p>
 </aside>
 <p>Consider the linear assumption <span class="math notranslate nohighlight">\(\theta^{\; T} x^{(i)} = \theta_0 + \theta_1 x_1 +  \cdots  + \theta_n x_n\)</span> as input to the sigmoid function <span class="math notranslate nohighlight">\(f\)</span>.
 The cost function derivatives will take the form:</p>
@@ -964,9 +964,9 @@ Hints and help available on demand after class.</p>
 <section id="alternative-techniques">
 <h3>Alternative techniques<a class="headerlink" href="#alternative-techniques" title="Permalink to this headline">#</a></h3>
 <p>Beside logistic regression, other algorithms are designed for binary classification.</p>
-<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Perceptron">Perceptron</a>, which is a single layer neural network with, in its original form, a step function instead of a sigmoid function. We will cover neural networks in Lectures 5 and 6.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Perceptron">Perceptron</a>, which is a single layer neural network with, in its original form, a step function instead of a sigmoid function. We will cover neural networks in Lectures 6 and 7.</p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Support-vector_machine">Support Vector Machines (SVMs)</a> are robust and widely used in classification problems. We will not cover them here but below are some links for further reading.</p>
-<div class="admonition-learn-more admonition">
+<div class="seealso admonition">
 <p class="admonition-title">Learn more</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://web.mit.edu/6.034/wwwbob/svm.pdf">R. Berwick, An Idiot’s guide to Support vector machines (SVMs)</a></p></li>
@@ -996,8 +996,8 @@ There are two main approaches of such methods for multiclassification.</p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-One approach</strong> consists of applying a binary classification for each pair of classes, ignoring the other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of models to train, <span class="math notranslate nohighlight">\(N^\text{model}\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d67171ee-7b60-4304-8bca-5922bef9ea8b">
-<span class="eqno">(15)<a class="headerlink" href="#equation-d67171ee-7b60-4304-8bca-5922bef9ea8b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-cbdc99bc-f7ef-4cfc-bdb2-1c332af18ed6">
+<span class="eqno">(15)<a class="headerlink" href="#equation-cbdc99bc-f7ef-4cfc-bdb2-1c332af18ed6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 N^\text{model} = \frac{N^\text{class}(N^\text{class}-1)}{2}
 \end{equation}\]</div>
 <p>Each model predicts one class label. The final decision is the class label receiving the most votes, i.e. being predicted most of the time.</p>
@@ -1011,11 +1011,11 @@ The pairing makes the number of models to train large and thus computer intensiv
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-All or One-to-Rest approach</strong> consists of training each class against the collection of all other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of pairs to train is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f9de07fa-c492-48df-96bd-886cc3173661">
-<span class="eqno">(16)<a class="headerlink" href="#equation-f9de07fa-c492-48df-96bd-886cc3173661" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9b3b7360-947f-4c3a-82c6-2596789ce59f">
+<span class="eqno">(16)<a class="headerlink" href="#equation-9b3b7360-947f-4c3a-82c6-2596789ce59f" title="Permalink to this equation">#</a></span>\[\begin{equation}
  N^\text{model} = N^\text{class}
 \end{equation}\]</div>
-<p>The final prediction is given by the highest value of the hypothesis function <span class="math notranslate nohighlight">\(h^{k}_theta(x)\)</span>, <span class="math notranslate nohighlight">\(k \in [1, N^\text{model}]\)</span> among the <span class="math notranslate nohighlight">\(N^\text{model}\)</span> binary classifiers.</p>
+<p>The final prediction is given by the highest value of the hypothesis function <span class="math notranslate nohighlight">\(h^{k}_\theta(x)\)</span>, <span class="math notranslate nohighlight">\(k \in [1, N^\text{model}]\)</span> among the <span class="math notranslate nohighlight">\(N^\text{model}\)</span> binary classifiers.</p>
 </section>
 </div><p><strong>Pro</strong><br />
 Less binary classifiers to train.</p>

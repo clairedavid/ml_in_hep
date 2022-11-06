@@ -41,7 +41,7 @@ In some definitions (it seems there is no standard definition of flexibility), t
 ```
 How to avoid overfitting? 
 
-## Regularization
+## Regularization types
 ````{prf:definition}
 :label: regularizationdef
 __Regularization__ in machine learning is a processus consisting of adding constraints on a model's parameters.  

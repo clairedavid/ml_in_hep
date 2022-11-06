@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Initialization and checks &#8212; Machine Learning in Particle Physics</title>
+    <title>Let’s train our NN! &#8212; Machine Learning in Particle Physics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Let’s train our NN!" href="NN2_trainNN.html" />
-    <link rel="prev" title="Backpropagation Algorithm" href="NN2_backprop.html" />
+    <link rel="next" title="8. Convolutional Neural Networks" href="CNN.html" />
+    <link rel="prev" title="Adaptative Learning Rates" href="DL_adaptLR.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -304,19 +304,24 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="NN2.html">
    7. Neural Networks Part II
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="NN2_costF.html">
-     Neural Network Cost Function
+     Neural Network Loss Function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NN2_init.html">
+     Initialization
     </a>
    </li>
    <li class="toctree-l2">
@@ -324,36 +329,21 @@ const thebe_selector_output = ".output, .cell_output"
      Backpropagation Algorithm
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Initialization and checks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="NN2_trainNN.html">
-     Let’s train our NN!
-    </a>
-   </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="DL.html">
    8. Towards Deep Learning Models
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="DL_stochGD.html">
      Stochastic Gradient Descent
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="DL_adaptLR.html">
-     Adaptative Learning Rates
     </a>
    </li>
    <li class="toctree-l2">
@@ -362,8 +352,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="DL_scikitPyT.html">
-     Tools: scikit-learn &amp; PyTorch
+    <a class="reference internal" href="DL_adaptLR.html">
+     Adaptative Learning Rates
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Let’s train our NN!
     </a>
    </li>
   </ul>
@@ -721,7 +716,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fweek2/NN2_gradCheck.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fweek2/DL_trainNN.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -749,7 +744,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/week2/NN2_gradCheck.md"
+        <a href="../_sources/week2/DL_trainNN.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -798,7 +793,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Initialization and checks</h1>
+                <h1>Let’s train our NN!</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -810,8 +805,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="initialization-and-checks">
-<h1>Initialization and checks<a class="headerlink" href="#initialization-and-checks" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="let-s-train-our-nn">
+<h1>Let’s train our NN!<a class="headerlink" href="#let-s-train-our-nn" title="Permalink to this headline">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -841,17 +836,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="NN2_backprop.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="DL_adaptLR.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Backpropagation Algorithm</p>
+            <p class="prev-next-title">Adaptative Learning Rates</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="NN2_trainNN.html" title="next page">
+    <a class='right-next' id="next-link" href="CNN.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Let’s train our NN!</p>
+        <p class="prev-next-title">8. Convolutional Neural Networks</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

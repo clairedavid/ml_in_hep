@@ -318,17 +318,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="NN2_costF.html">
-     Neural Network Cost Function
+     Neural Network Loss Function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NN2_init.html">
+     Initialization
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="NN2_backprop.html">
      Backpropagation Algorithm
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="NN2_gradCheck.html">
-     Initialization and checks
     </a>
    </li>
    <li class="toctree-l2">
@@ -826,8 +826,8 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#computation-of-the-first-hidder-layer">
-     Computation of the first hidder layer
+    <a class="reference internal nav-link" href="#computation-of-the-first-hidden-layer">
+     Computation of the first hidden layer
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -887,8 +887,8 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#computation-of-the-first-hidder-layer">
-     Computation of the first hidder layer
+    <a class="reference internal nav-link" href="#computation-of-the-first-hidden-layer">
+     Computation of the first hidden layer
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -982,8 +982,8 @@ w_{n,1}^{(\ell)} &amp; w_{n,2}^{(\ell)} &amp;  \cdots &amp; w_{n,q}^{(\ell)} \\
 </section>
 <section id="step-by-step-calculations">
 <h2>Step by step calculations<a class="headerlink" href="#step-by-step-calculations" title="Permalink to this headline">#</a></h2>
-<section id="computation-of-the-first-hidder-layer">
-<h3>Computation of the first hidder layer<a class="headerlink" href="#computation-of-the-first-hidder-layer" title="Permalink to this headline">#</a></h3>
+<section id="computation-of-the-first-hidden-layer">
+<h3>Computation of the first hidden layer<a class="headerlink" href="#computation-of-the-first-hidden-layer" title="Permalink to this headline">#</a></h3>
 <p>Let’s use Equation <a class="reference internal" href="#equation-sumwixieq">(55)</a> to compute the activation unit outputs of the first layer. The activation function is represented as <span class="math notranslate nohighlight">\(f\)</span> here:</p>
 <div class="math notranslate nohighlight" id="equation-firstlayereq">
 <span class="eqno">(57)<a class="headerlink" href="#equation-firstlayereq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
@@ -1038,7 +1038,7 @@ w_{q,1}^{(1)} &amp; w_{q,2}^{(1)} &amp;  \cdots &amp; w_{q,r}^{(1)} \\
 <p>then we can write a general rule for computing the outputs of a fully connected layer <span class="math notranslate nohighlight">\(\ell\)</span> knowing the outputs of the previous layer <span class="math notranslate nohighlight">\(\ell\)</span> (which become the layer <span class="math notranslate nohighlight">\(\ell\)</span>’s inputs):</p>
 <div class="math notranslate nohighlight" id="equation-genrulefeedforwardeq">
 <span class="eqno">(64)<a class="headerlink" href="#equation-genrulefeedforwardeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(\ell)}} = f\left( \; \boldsymbol{a^{(\ell -1)}} \;W^{(\ell)} \;+\; \boldsymbol{b}^{(\ell)} \;\right)\]</div>
-<p>This is the general rule for computing all outputs of a fully, feedfowrard neural network.</p>
+<p>This is the general rule for computing all outputs of a fully, feedforward neural network.</p>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>

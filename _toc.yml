@@ -52,14 +52,13 @@ parts:
       - file: week2/NN2_costF
       - file: week2/NN2_init
       - file: week2/NN2_backprop
-      - file: week2/NN2_trainNN
 
     - file: week2/DL
       sections: 
       - file: week2/DL_stochGD
-      - file: week2/DL_adaptLR
       - file: week2/DL_paramHyper
-      - file: week2/DL_scikitPyT
+      - file: week2/DL_adaptLR
+      - file: week2/DL_trainNN
 
     - file: week2/CNN
       sections: 

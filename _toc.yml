@@ -56,9 +56,9 @@ parts:
     - file: week2/DL
       sections: 
       - file: week2/DL_stochGD
+      - file: week2/DL_trainNN
       - file: week2/DL_paramHyper
       - file: week2/DL_adaptLR
-      - file: week2/DL_trainNN
 
     - file: week2/CNN
       sections: 
@@ -66,13 +66,6 @@ parts:
       - file: week2/CNN_hyperparameters
       - file: week2/CNN_regMethods
       - file: week2/CNN_neutrinoReco
-    
-    - file: week2/GNN
-      sections: 
-      - file: week2/GNN_defGraph
-      - file: week2/GNN_applications
-      - file: week2/GNN_messagePassing
-      - file: week2/GNN_GConvoN
 
     - file: week2/review_week2
 
@@ -111,14 +104,9 @@ parts:
   - caption: Tutorials
     numbered: true
     chapters:
-    - file: tutorials/t01_python
-    - file: tutorials/t02_dataprep_linReg
-    - file: tutorials/t03_signalDisc_LHC
-    - file: tutorials/t04_BDT_workflow
-    - file: tutorials/t05_nn
-    - file: tutorials/t06_scikitPyTorch
-    - file: tutorials/t07_CNN_protoDUNE
-    - file: tutorials/t08_GNN_CMS
-    - file: tutorials/t09_k-Means
-    - file: tutorials/t10_anomaly_det
+    - file: tutorials/t01_linear_regression
+    - file: tutorials/t02_forestry
+    - file: tutorials/t03_nn_by_hand
+    - file: tutorials/t04_class_game
+    - file: tutorials/t05_anomaly_detection
 

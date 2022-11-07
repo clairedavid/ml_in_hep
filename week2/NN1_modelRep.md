@@ -96,7 +96,7 @@ A __Perceptron__ is a neural network based on a single specific artificial neuro
 It computes a weighted sum of real-valued inputs, has a bias term in the form of an extra node and yield the output:
 
 \begin{equation*}
-h_{\vec{w},b} = \text{step} \left( x^T w + b \right)
+h_{\vec{w},b} = \text{step} \left( x w^T + b \right)
 \end{equation*}
 
 A perceptron is thus a linear binary classifier.
@@ -222,8 +222,7 @@ A 'minimal' multilayer neural network would have one input, one hidden and one o
   name: lec05_2_nn_layers
   width: 90%
 ---
- . Example of a fully connected, feedforward neural network with 2 hidden layers and output size of 2.  
- Bias neurons are represented in yellow circles with +1.  
+ . Example of a fully connected, feedforward neural network with 2 hidden layers and output size of 2. Bias neurons are represented in yellow circles with +1.  
  <sub>Image from the author</sub>
 ```
 

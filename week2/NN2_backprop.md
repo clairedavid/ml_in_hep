@@ -1,7 +1,7 @@
 # Backpropagation Algorithm
 
-# Before Diving Into The Math 
-## Ingredients
+## Before Diving Into The Math 
+### Ingredients
 
 The forward propagation, or forward pass, will fill the network with values for all bias nodes and activation units. That includes the last layer of activation units, so the forward pass provide predictions. 
 
@@ -11,7 +11,7 @@ Then we are familiar with the gradient descent procedure, which gives at each it
 
 For a neural network, there are lots of knobs to tweak! Luckily, an efficient technique called backpropagation is able to compute the gradient of the network's error for every single model parameter.
 
-## Definition
+### Definition
 
 ````{prf:definition}
 :label: backpropdef
@@ -410,11 +410,11 @@ __Step 2:__ Computation of loss function, cost function and overall error:
 
 __Step 3:__ Computation of all activation unit errors: 
 \begin{equation}
-\delta^\ell = \delta^{\ell+1} \;\cdot\; W^{\ell+1} \;\cdot\; f'(z^\ell(W, b))
+\delta^\ell = \; \delta^{\ell+1} \;\cdot\; W^{\ell+1} \;\cdot\; f'(z^\ell(W, b))
 \end{equation}
 ... and derivatives:
 \begin{equation}
-\frac{\partial \text {Cost}}{\partial W^{\ell}} = \; \delta^{\ell} \;\cdot\; a^{\ell-1}  \qquad \qquad \frac{\partial \text {Cost}}{\partial b^{\ell}} = \; \delta^{\ell}
+\frac{\partial \text {Cost}}{\partial W^{\ell}} = \; \delta^{\ell} \;\cdot\; a^{\ell-1}  \qquad \qquad \qquad \frac{\partial \text {Cost}}{\partial b^{\ell}} = \; \delta^{\ell}
 \end{equation}
 
 __Step 4:__ Gradient Descent steps to update weights & biases:

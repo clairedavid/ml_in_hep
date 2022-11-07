@@ -209,7 +209,7 @@ __Cons__
 Another modification of ReLU is the Gaussian Error Linear Unit. It can be thought of as a smoother ReLU.  
 The definition is:
 ```{math}
-\text{GELU}\left(z\right) = z\; \Phi\left(z\right) = z \cdot \frac{1}{2}\left[1 + \text{erf}\left(\frac{z}{sqrt{2}} \right)\right]
+\text{GELU}\left(z\right) = z\; \Phi\left(z\right) = z \cdot \frac{1}{2}\left[1 + \text{erf}\left(\frac{z}{\sqrt{2}} \right)\right]
 ```
 where $\Phi(z)$ is the cumulative distribution function of the standard normal distribution.
 

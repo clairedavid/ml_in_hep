@@ -114,8 +114,6 @@ The accuracy of the mapping function is measured by using a cost function.
 :label: costFunction
 The __cost function__ in linear regression returns a global error between the predicted values from a mapping function $h_\theta$ (predictions) and all the target values (observations) of the training data set.
 
-It is also called __loss function__.
-
 The commonly used cost function for linear regression, also called _squared error function_, or _mean squared error (MSE)_ is defined as:
 ```{math}
 :label: costFunctionLinReg

@@ -329,11 +329,6 @@ const thebe_selector_output = ".output, .cell_output"
      Backpropagation Algorithm
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="NN2_trainNN.html">
-     Let’s train our NN!
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -352,8 +347,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="DL_adaptLR.html">
-     Adaptative Learning Rates
+    <a class="reference internal" href="DL_trainNN.html">
+     Let’s train our NN!
     </a>
    </li>
    <li class="toctree-l2">
@@ -362,15 +357,15 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="DL_scikitPyT.html">
-     Tools: scikit-learn &amp; PyTorch
+    <a class="reference internal" href="DL_adaptLR.html">
+     Adaptative Learning Rates
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="CNN.html">
-   8. Convolutional Neural Networks
+   9. Convolutional Neural Networks
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
   <label for="toctree-checkbox-8">
@@ -400,38 +395,6 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="GNN.html">
-   9. Graph Neural Networks
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="GNN_defGraph.html">
-     What is a Graph?
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="GNN_applications.html">
-     Applications of GNNs
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="GNN_messagePassing.html">
-     Message Passing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="GNN_GConvoN.html">
-     Graph Convolutional Networks
-    </a>
-   </li>
-  </ul>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="review_week2.html">
    10. Review Week 2
@@ -448,8 +411,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../week3/unsupervised_learning.html">
    11. Unsupervised learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -480,8 +443,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../week3/PCA_AD.html">
    12. PCA and Anomaly Detection
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -507,8 +470,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../week3/ML_BigData.html">
    13. ML in Big Data &amp; Strategies
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -534,8 +497,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../week3/ethics_exam.html">
    14. Ethics in ML &amp; Exam
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -556,8 +519,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../week3/projects_outlook.html">
    15. Project presentations &amp; Outlook
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -582,53 +545,28 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t01_python.html">
-   1. Python: io, variables &amp; plots
+  <a class="reference internal" href="../tutorials/t01_linear_regression.html">
+   1. Linear Regression in Python
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t02_dataprep_linReg.html">
-   2. Data Prep &amp; Linear Regression
+  <a class="reference internal" href="../tutorials/t02_forestry.html">
+   2. Event Classification with Trees
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t03_signalDisc_LHC.html">
-   3. Classification at the LHC
+  <a class="reference internal" href="../tutorials/t03_nn_by_hand.html">
+   3. Neural Network By Hand
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t04_BDT_workflow.html">
-   4. BDT Implementation &amp; Workflow
+  <a class="reference internal" href="../tutorials/t04_class_game.html">
+   4. Classification Contest
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t05_nn.html">
+  <a class="reference internal" href="../tutorials/t05_anomaly_detection.html">
    5. Neural Networks by hand
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t06_scikitPyTorch.html">
-   6. Intro to scikit-Learn &amp; PyTorch
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t07_CNN_protoDUNE.html">
-   7. CNN in protoDUNE
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t08_GNN_CMS.html">
-   8. GNN at the LHC
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t09_k-Means.html">
-   9. k-Means for Data Quality Monitoring
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t10_anomaly_det.html">
-   10. Anomaly Detection for Long-Lived Particle Searches
   </a>
  </li>
 </ul>
@@ -820,16 +758,16 @@ title="Print to PDF"
 <li><p><strong>powerful</strong>: they show amazing performance</p></li>
 <li><p><strong>scalable</strong>: they can work with very large datasets, some having more than a hundred billions parameters!</p></li>
 </ul>
-<p>Artificial Neural Networks are everywhere in modern day-to-day life. They serve to classify billions of images (Google Image), or to recommend products or videos, correct the grammar in your favourite messenger application, recognize speech and outperform the best Go or Chess players (AlphaGo and AlphaZero developed by artificial intelligence research company DeepMind).</p>
-<p>In sciences, Neural Networks are used across many disciplines for various situations. To quote only a few: medical diagnosis, climatic forecasting, natural disaster management. The list is really long. Neural Networks are also very good mathematicians when it comes to solve complex equations. They are a great tool mastering what physicists often fail: <a class="reference external" href="https://www.quantamagazine.org/latest-neural-nets-solve-worlds-hardest-equations-faster-than-ever-before-20210419">solving complex partial differential equations</a>. Those equations are notoriously difficult and require millions of CPU hours. Example: how to model a fluid flowing around an object. Neural Network would deliver within seconds when other traditional solvers would take dozens of hours of computation.</p>
-<p>In experimental particle physics, Neural Network can be met at different stages of a data analysis. They are mostly used for pattern recognition tasks, such as identifying the particles present in a collision. Elementary particles called quarks, constituents of protons and neutrons inside the atom’s nucleus, come in different types (up, down, charm, strange, top, bottom) and cannot be seen directly; they form a spray of other particles that are picked by the detector’s electronics as a ‘jet’ (due to its conical shape). The Deep Learning algorithm DL1 is capable, by studying the features of the jets, to identify if the originating quark producing them are of type bottom (it is referred to b-tagging). Behind the scene is a Neural Network fed by all jet properties as input features.</p>
-<p>Neural Networks start from the simplest unit, the perceptron, and span various architectures baring names such as Convolutional Neural Networks (CNN), Generative Adversarial Neural Network (GAN), Graph Neural Network (GNN)… It is a very large family in Machine Learning, growing constantlty with new members created by brilliant Machine Learning experts.</p>
+<p>Artificial Neural Networks (ANN) are everywhere in modern day-to-day life. They serve to classify billions of images (Google Image), or to recommend products or videos, correct the grammar in your favourite messenger application, recognize speech and outperform the best Go or Chess players (AlphaGo and AlphaZero developed by artificial intelligence research company DeepMind).</p>
+<p>In sciences, neural networks are used across many disciplines for various situations. To quote only a few: medical diagnosis, climatic forecasting, natural disaster management. The list is really long. Neural Networks are also very good mathematicians when it comes to solve complex equations. They are a great tool mastering what physicists often fail: <a class="reference external" href="https://www.quantamagazine.org/latest-neural-nets-solve-worlds-hardest-equations-faster-than-ever-before-20210419">solving complex partial differential equations</a>. Those equations are notoriously difficult and require millions of CPU hours. Example: how to model a fluid flowing around an object. Neural Network would deliver within seconds when other traditional solvers would take dozens of hours of computation.</p>
+<p>In experimental particle physics, neural networks can be met at different stages of a data analysis. They are mostly used for pattern recognition tasks, such as identifying the particles present in a collision. Elementary particles called quarks, constituents of protons and neutrons inside the atom’s nucleus, come in different types (up, down, charm, strange, top, bottom) and cannot be seen directly; they form a spray of other particles that are picked by the detector’s electronics as a ‘jet’ (due to its conical shape). The Deep Learning algorithm DL1 is capable, by studying the features of the jets, to identify if the originating quark producing them are of type bottom (it is referred to b-tagging). Behind the scene is a Neural Network fed by all jet properties as input features.</p>
+<p>Neural networks start from the simplest unit, the perceptron, and span various architectures baring names such as Convolutional Neural Networks (CNN), Generative Adversarial Neural Network (GAN), Graph Neural Network (GNN)… It is a very large family in Machine Learning, growing constantlty with new members created by brilliant Machine Learning experts.</p>
 <p>In this first lecture, we will cover the basics:</p>
 <ul class="simple">
-<li><p><strong>What motivates Neural Networks?</strong></p></li>
-<li><p><strong>How is are Neural Networks represented as a model?</strong></p></li>
+<li><p><strong>What motivates neural networks?</strong></p></li>
+<li><p><strong>How are neural networks represented as a model?</strong></p></li>
 <li><p><strong>What are the activation functions?</strong></p></li>
-<li><p><strong>How to feed a Neural Network to get output values? (aka Forward Propagation)</strong></p></li>
+<li><p><strong>How to feed a neural network to get output values? (aka Forward Propagation)</strong></p></li>
 </ul>
 <p>Let’s go!</p>
 <div class="toctree-wrapper compound">

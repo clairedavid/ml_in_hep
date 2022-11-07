@@ -8,5 +8,4 @@ Let's now cover the backpropagation algorithm, which is the core of how neural n
 * __What are the cost functions for neural network?__
 * __How should the weights be initialized?__
 * __How does backpropagation work?__
-* __How to put everything together for training a neural network?__
 

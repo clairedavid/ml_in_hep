@@ -313,7 +313,6 @@ How to picture this in the $\theta$ parameter space? For this, contour and 3D pl
 
 ```{glue:figure} plot_linReg_3D
 :name: "plot_linReg_3D"
-
 . Contour plot (left) and 3D rendering (right) of the cost function with respect to the values of the $\theta$ parameter. The red dots are the intermediary values of the parameters at a given iteration of the gradient descent. You can see that it converges toward the minimum of the cost function.
 ```
 

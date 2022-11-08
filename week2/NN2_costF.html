@@ -966,7 +966,11 @@ It is important to note that in the equation above, the <span class="math notran
 <p>Mutually exclusive classes would mean that for each <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}^{(i)}} = (\hat{y}^{(i)}_1, \hat{y}^{(i)}_2, \cdots, \hat{y}^{(i)}_K)\)</span>, all output values should add up to 1:</p>
 <div class="math notranslate nohighlight" id="equation-ymulticlassoneeq">
 <span class="eqno">(76)<a class="headerlink" href="#equation-ymulticlassoneeq" title="Permalink to this equation">#</a></span>\[\sum_{k=1}^K \; \hat{y}^{(i)}_k = 1\]</div>
-<p>The loss function for categorial cross-entropy would be written as:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>This is the general equation</p>
+</aside>
+<p>The categorial cross-entropy reduces to the binary equation <a class="reference internal" href="#equation-lossbinceeq">(72)</a> for <span class="math notranslate nohighlight">\(n =2\)</span>.</p>
 <div class="math notranslate nohighlight" id="equation-losscateq">
 <span class="eqno">(77)<a class="headerlink" href="#equation-losscateq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \sum_{k=1}^K \; y^{(i)}_k \log \left( \hat{y}^{(i)} \right) \]</div>
 <p>And the cost function</p>
@@ -980,7 +984,7 @@ It is important to note that in the equation above, the <span class="math notran
 <div class="math notranslate nohighlight" id="equation-week2-nn2-costf-0">
 <span class="eqno">(79)<a class="headerlink" href="#equation-week2-nn2-costf-0" title="Permalink to this equation">#</a></span>\[J \left(\;\hat{y}_k, y_k\;\right) = - \frac{1}{m} \sum_{i=1}^m  L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right) + \frac{\lambda}{2m} \sum_{\ell=1}^L \sum_{q=1}^{n^{L-1}} \sum_{r=1}^{n^{L}} \left( W^{(\ell)}_{q, r} \; \right)^2\]</div>
 <p>The triple sum is daunting but let’s decompose it: it’s the sum of all matrices <span class="math notranslate nohighlight">\(W^{(\ell)}\)</span> of the network. For each of them, the weights are multiplied with each others (those are the two last sums). The equation above corresponds to the Lasso’s regularization (introduced in Lecture 3 subsection <a class="reference internal" href="../week1/class_algs_reg.html#class-algs-reg-lasso"><span class="std std-ref">Lasso Regularization</span></a>). The Ridge regularization would sum only the weights without squaring them.</p>
-<p>Recall that the regularization does not include the intercept term, which was written as <span class="math notranslate nohighlight">\(\theta_0\)</span> in logistic regression. With the matrices <span class="math notranslate nohighlight">\(W^{(\ell)}\)</span> we are safe as they do not contain any bias terms. Biases are gathereed as separate vectors <span class="math notranslate nohighlight">\(\boldsymbol{b^{(\ell)}}\)</span>.</p>
+<p>Recall that the regularization does not include the intercept term, which was written as <span class="math notranslate nohighlight">\(\theta_0\)</span> in logistic regression. With the matrices <span class="math notranslate nohighlight">\(W^{(\ell)}\)</span> we are safe as they do not contain any bias terms. Biases are gathered as separate vectors <span class="math notranslate nohighlight">\(\boldsymbol{b^{(\ell)}}\)</span>.</p>
 <p> </p>
 <p>We’ve seen forward propagation in the previous lecture and here the loss functions for neural network. One more thing before heading to the backpropagation:</p>
 <p><strong><center>How are the weights initialized?</center></strong></p>

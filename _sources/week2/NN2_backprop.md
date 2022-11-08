@@ -114,7 +114,7 @@ __Exit conditions:__
 Now there will be math.
 
 ### What is the goal?
-Always a good question to start. We want to tweak the weights $\boldsymbol{W}$ and biases $\boldsymbol{b}$ so that the network predictions $\boldsymbol{\hat{y}}$ match the observed values $\boldsymbol{y}$. In other words, we want to know how the cost will change if the weights and biases change. For the neural network to fit the data, we need to find the weights and biases that minimize the cost function: 
+Always a good question to start. We want to tweak the weights $\boldsymbol{W}$ and biases $\boldsymbol{b}$ so that the network predictions $\boldsymbol{\hat{y}}$ get as close as they can be to the observed values $\boldsymbol{y}$. In other words, we want to know how the cost will change if the weights and biases change. For the neural network to fit the data, we need to find the weights and biases that minimize the cost function: 
 ```{math}
 :label: costnnmineq
  \min_{\boldsymbol{W},\boldsymbol{b}} \text{ Cost}(\boldsymbol{W},\boldsymbol{b})
@@ -150,7 +150,7 @@ Let's first rewrite the activation unit equation as a function of a function:
 ```
 with $f$ the node's activation function and $\ell$ is the current layer of the activation unit where the sum is computed (taking thus as inputs the weights and biases pointing to that layer, see Figure {numref}`lec05_4_nn_notations`).
 ````{margin}
-To further lighten the equations, parenthesis on the upperscripts for the layer number have been removed. It is fine here as the entities will not be squared but one should be careful to not mix the upperscript with an exponent.
+To further lighten the equations, parenthesis on the superscripts for the layer number have been removed. It is fine here as the entities will not be squared but one should be careful to not mix the superscript with an exponent.
 ````
 Let $z$ be a function for the "weighted sum plus bias:"
 ```{math}
@@ -164,7 +164,7 @@ Now we can rewrite the output from an activation unit $a^{\ell}$ as:
 a^\ell(W, b) = f\left( z^\ell(W, b) \right)
 ```
 
-The upperscripts for the weights and biases are not written inside the parenthesis for lighter equations. And it is also implied that $W$ and $b$ are collections of matrices and vectors respectively. 
+The superscripts for the weights and biases are not written inside the parenthesis for lighter equations. And it is also implied that $W$ and $b$ are collections of matrices and vectors respectively. 
 
 We will denote the loss function through a general form as $L$:
 ```{math}
@@ -173,7 +173,7 @@ L(\hat{y}^{(i)}, y^{(i)})
 ```
 It is computed for each sample instance $\left\{ \boldsymbol{x^{(i)}}, y^{(i)} \right\}$, with $\boldsymbol{x^{(i)}}$ being one row of input features and $y$ the associated target. 
 
-The cost is the sum of the losses over all data instances $m$. To lighten the equations of the following section, the sum will be written without instance indices as upperscript (already used for the layer number); it is implied that it is the sum over all data instances.
+The cost is the sum of the losses over all data instances $m$. To lighten the equations of the following section, the sum will be written without instance indices as superscript (already used for the layer number); it is implied that it is the sum over all data instances.
 
 ```{math}
 :label: costfunceq

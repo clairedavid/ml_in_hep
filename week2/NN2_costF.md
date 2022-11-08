@@ -119,8 +119,10 @@ Mutually exclusive classes would mean that for each $\boldsymbol{\hat{y}^{(i)}} 
 :label: ymulticlassoneeq
 \sum_{k=1}^K \; \hat{y}^{(i)}_k = 1
 ```
-The loss function for categorial cross-entropy would be written as:
-
+````{margin}
+This is the general equation
+````
+The categorial cross-entropy reduces to the binary equation {eq}`lossbinceeq` for $n =2$.
 ```{math}
 :label: losscateq
 L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \sum_{k=1}^K \; y^{(i)}_k \log \left( \hat{y}^{(i)} \right) 
@@ -143,7 +145,7 @@ J \left(\;\hat{y}_k, y_k\;\right) = - \frac{1}{m} \sum_{i=1}^m  L \left(\;\hat{y
 
 The triple sum is daunting but let's decompose it: it's the sum of all matrices $W^{(\ell)}$ of the network. For each of them, the weights are multiplied with each others (those are the two last sums). The equation above corresponds to the Lasso's regularization (introduced in Lecture 3 subsection {ref}`class:algs:reg:lasso`). The Ridge regularization would sum only the weights without squaring them.
 
-Recall that the regularization does not include the intercept term, which was written as $\theta_0$ in logistic regression. With the matrices $W^{(\ell)}$ we are safe as they do not contain any bias terms. Biases are gathereed as separate vectors $\boldsymbol{b^{(\ell)}}$. 
+Recall that the regularization does not include the intercept term, which was written as $\theta_0$ in logistic regression. With the matrices $W^{(\ell)}$ we are safe as they do not contain any bias terms. Biases are gathered as separate vectors $\boldsymbol{b^{(\ell)}}$. 
 
 &nbsp;
 

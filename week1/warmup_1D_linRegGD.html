@@ -349,8 +349,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/DL_trainNN.html">
-     Let’s train our NN!
+    <a class="reference internal" href="../week2/DL_adaptLR.html">
+     Varying the Learning Rate
     </a>
    </li>
    <li class="toctree-l2">
@@ -359,8 +359,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/DL_adaptLR.html">
-     Adaptative Learning Rates
+    <a class="reference internal" href="../week2/DL_trainNN.html">
+     Let’s train our NN!
     </a>
    </li>
   </ul>
@@ -990,7 +990,7 @@ In Equation <a class="reference internal" href="#equation-costfunctionlinreg">(3
 <p>How do we proceed to find the <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> parameters minimizing the cost function?</p>
 </section>
 <section id="gradient-descent">
-<h2>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">#</a></h2>
+<span id="warmup-linreggd-gradientdescent"></span><h2>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">#</a></h2>
 <p>This concept is key in machine learning. We will see the procedure with our example. But first of all, what is gradient descent?</p>
 <div class="proof definition admonition" id="GDesc">
 <p class="admonition-title"><span class="caption-number">Definition 8 </span></p>
@@ -1008,8 +1008,8 @@ Hyperparameters control the learning process.</p>
 Hyperparameter in an optimization algorithm that determines the step size at each iteration while moving toward a minimum of a loss function.<br />
 The learning rate is always a strictly positive number.</p>
 <p><strong>Epoch</strong><br />
-In machine learning, an epoch is the unit of iteration where calculations are peformed over a portion of training samples or the entire training data set.<br />
-The number of epochs is a hyperparameter controlling the number of iterations of the algorithm.</p>
+In machine learning, an epoch is the number of passes of the entire training dataset the machine learning algorithm has completed.<br />
+The number of epochs is a hyperparameter controlling the number of passes of the algorithm.</p>
 </div>
 <p>The steps of the gradient descent algorithm for a linear regression with two parameters (i.e. in 1D) are written below.</p>
 <aside class="margin sidebar">
@@ -1072,7 +1072,7 @@ Calculate the new parameters according to:</p></li>
 \end{align*}\end{split}\]</div>
 <p><strong>Exit conditions</strong></p>
 <ul class="simple">
-<li><p>After the maximum number of iterations (epochs) <span class="math notranslate nohighlight">\(N\)</span> is reached</p></li>
+<li><p>After the maximum number of epochs <span class="math notranslate nohighlight">\(N\)</span> is reached</p></li>
 <li><p>If both derivatives of the cost function <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \theta_0} J\left(\theta_0, \theta_1\right) = \frac{\partial}{\partial \theta_1} J\left(\theta_0, \theta_1\right)  = 0\)</span></p></li>
 </ul>
 </section>

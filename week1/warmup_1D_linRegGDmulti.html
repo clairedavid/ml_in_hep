@@ -349,8 +349,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/DL_trainNN.html">
-     Let’s train our NN!
+    <a class="reference internal" href="../week2/DL_adaptLR.html">
+     Varying the Learning Rate
     </a>
    </li>
    <li class="toctree-l2">
@@ -359,8 +359,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/DL_adaptLR.html">
-     Adaptative Learning Rates
+    <a class="reference internal" href="../week2/DL_trainNN.html">
+     Let’s train our NN!
     </a>
    </li>
   </ul>
@@ -1023,7 +1023,7 @@ Calculate the new parameters according to:</p></li>
 \end{equation*}\end{split}\]</div>
 <p><strong>Exit conditions</strong></p>
 <ul class="simple">
-<li><p>After the maximum number of iterations (epochs) <span class="math notranslate nohighlight">\(N\)</span> is reached</p></li>
+<li><p>After the maximum number of epochs <span class="math notranslate nohighlight">\(N\)</span> is reached</p></li>
 <li><p>If all derivatives are zero:</p></li>
 </ul>
 <div class="amsmath math notranslate nohighlight">
@@ -1036,7 +1036,7 @@ Calculate the new parameters according to:</p></li>
 <span class="eqno">(10)<a class="headerlink" href="#equation-partialdevlinreg" title="Permalink to this equation">#</a></span>\[\frac{\partial}{\partial \theta_j} J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) \; x_j^{(i)}\]</div>
 </section>
 <section id="feature-scaling-normalization">
-<h2>Feature Scaling &amp; Normalization<a class="headerlink" href="#feature-scaling-normalization" title="Permalink to this headline">#</a></h2>
+<span id="warmup-linregmulti-featurescalnorm"></span><h2>Feature Scaling &amp; Normalization<a class="headerlink" href="#feature-scaling-normalization" title="Permalink to this headline">#</a></h2>
 <p>In the example of the previous section, the 3D plot of the cost function with respect to the <span class="math notranslate nohighlight">\(\theta\)</span> parameters was not really bowl-shaped but stretched.
 This happens when the features are of different ranges. One parameter will have an increment size larger than the other.</p>
 <div class="seealso admonition">

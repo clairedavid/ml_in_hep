@@ -125,7 +125,7 @@ The optimized values of $\theta$ parameters, $\theta_0$, $\theta_1$, ... , $\the
 ```
 
 __Exit conditions__
-* After the maximum number of iterations (epochs) $N$ is reached
+* After the maximum number of epochs $N$ is reached
 * If all derivatives are zero:
 \begin{equation*}
 \frac{\partial}{\partial \theta_j} J\left(\theta\right) = 0 \;   \;   \;  \;   \;   \;    \forall j \in [0..n]
@@ -137,7 +137,7 @@ The partial derivatives of $J(\theta)$ for each parameter $\theta_j$ will be of 
 :label: partialDevLinReg
 \frac{\partial}{\partial \theta_j} J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) \; x_j^{(i)}
 ```
-
+(warmup:linregmulti:featurescalnorm)=
 ## Feature Scaling & Normalization
 In the example of the previous section, the 3D plot of the cost function with respect to the $\theta$ parameters was not really bowl-shaped but stretched.
 This happens when the features are of different ranges. One parameter will have an increment size larger than the other.

@@ -170,6 +170,7 @@ What does this represent? It shows the result of the cost function calculated fo
 
 How do we proceed to find the $\theta_0$ and $\theta_1$ parameters minimizing the cost function?
 
+(warmup:linRegGD:gradientDescent)=
 ## Gradient Descent
 This concept is key in machine learning. We will see the procedure with our example. But first of all, what is gradient descent?
 
@@ -192,8 +193,8 @@ Hyperparameter in an optimization algorithm that determines the step size at eac
 The learning rate is always a strictly positive number.
 
 __Epoch__  
-In machine learning, an epoch is the unit of iteration where calculations are peformed over a portion of training samples or the entire training data set.  
-The number of epochs is a hyperparameter controlling the number of iterations of the algorithm.
+In machine learning, an epoch is the number of passes of the entire training dataset the machine learning algorithm has completed.  
+The number of epochs is a hyperparameter controlling the number of passes of the algorithm.
 ```
 
 The steps of the gradient descent algorithm for a linear regression with two parameters (i.e. in 1D) are written below.
@@ -256,7 +257,7 @@ The optimized values of the parameters: $\theta_0$ and $\theta_1$, minimizing $J
 ```
 
 __Exit conditions__
-* After the maximum number of iterations (epochs) $N$ is reached
+* After the maximum number of epochs $N$ is reached
 * If both derivatives of the cost function $\frac{\partial}{\partial \theta_0} J\left(\theta_0, \theta_1\right) = \frac{\partial}{\partial \theta_1} J\left(\theta_0, \theta_1\right)  = 0$
 ````
 

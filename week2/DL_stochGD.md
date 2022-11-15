@@ -48,8 +48,18 @@ Actually, it is possible to apply stochastic modeling to a non-random phenomenon
 ## Stochastic Gradient Descent Definition
 ````{prf:definition}
 :label: SGDdef
-__Stochastic Gradient Descent__ is an optimization technique that perform Gradient Descent using one (or a few) randomly picked sample(s) from the dataset.
+__Stochastic Gradient Descent__ is an optimization technique that performs Gradient Descent using one randomly picked training sample from the dataset.
 ````
+
+```{warning}
+Stochastic Gradient Descent is very sensitive to feature scaling; it is important to properly scale the feature to avoid having a stretched cost function. That would make the learning rate too small in one direction and - more problematic - too big in another direction (see Lecture 2 Section {ref}`warmup:linregmulti:featurescalnorm`).
+```
+
+```{important}
+Stochastic Gradient Descent demands the training instances to be independent and identically distributed (IID). If a datafile has one feature in ascending or descending values, the algorithm may 'miss out' the global minimum. To ensure that training instances are picked randomly, it is important to 
+shuffle the training set.
+```
+
 
 __Pros__  
 * The obvious advantage of Stochastic Gradient Descent (SGD) is that it is considerably faster as there is very little data to manipulate at each epoch compared to summing over the entire dataset with Batch Gradient Descent.
@@ -62,12 +72,36 @@ This approach is not without drawbacks.
 
 As you see from the pros and cons above, there is a dilemma by voluntary adding randomness in the algorithm. On the one hand, it can escape local minima, i.e. getting parameter values not minimizing the cost function. But on the other hand, it never converges precisely to the optimal parameter values.
 
-There are solutions to help the algorithm settle at the global minimum. It involves changing the learning rate $\alpha$.
 
+## Improving  Stochastic Gradient Descent
+There are solutions to help the algorithm settle at the global minimum. 
+
+One of them is a compromise between Batch and Stochastic Gradient Descent called __Mini-Batch Gradient Descent__. Instead of picking only one training instance, a small subset of examples from the dataset are used to compute the cost derivatives. This offers a good middle ground: it is still much faster and less memory intensive than Batch Gradient Descent, will zigzag less and get closer to the read minimum than with the fully stochastic method. However the reduced noise (by summing over more samples) presents a higher risk to get stuck into a local minimum.
+
+
+The other solution involves __changing the learning rate $\boldsymbol{\alpha}$__, which will be covered in the next section.
+
+
+```{figure} ../images/lec08_1_SGD_vs_BGD.png
+---
+  name: lec08_1_SGD_vs_BGD
+  width: 90%
+---
+ . The difference in the trajectories of parameters between Batch, Mini-Batch and Stochastic Gradient Descents.  
+ <sub>Image: Medium</sub> 
+```
 
 ```{admonition} Exercise
 :class: seealso
 Write the Stochastic Gradient Descent in pseudocode.  
 
 For reference (and inspiration), you can go back to the [Gradient Descent algorithm from Lecture 2](warmup:linregmulti:graddesc).
+```
+
+As we saw earlier how many computations there are in the feedforward and backpropagation algorithms in neural networks, the Stochastic Gradient Descent is the most common and popular algorithm used for training neural networks.
+
+
+```{admonition} Learn More
+:class: seealso
+Stochastic Gradient Descent on [Scikit-Learn](https://scikit-learn.org/stable/modules/sgd.html)
 ```

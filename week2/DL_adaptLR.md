@@ -110,17 +110,80 @@ As the variation of the learning rate is done by the optimizer, adaptative learn
 
 Below are brief descriptions of the most popular adaptative optimizers.
 
-### Momentum Optimization
-In physics, the momentum $\boldsymbol{p}$ is a vector obtained by taking the product of the mass and velocity of an object. It quantifies motion. In computing science, momentum refers to the direction and speed at which the parameters move - via iterative updates - through the parameter space. 
 
+### AdaGrad
+This first adaptative algorithm was published in 2011. Compared to the classical Gradient Descent, AdaGrad points more directly toward the global optimum by decaying the learning rate more on the steepest dimension. 
+
+```{figure} ../images/lec08_2_adagrad.png
+---
+  name: lec08_2_adagrad
+  width: 60%
+---
+ . The Gradient Descent (blue) vs AdaGrad (orange).
+<sub>Image: Aurélien Géron, _Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, Second Edition_</sub> 
+```
+In the figure above, the AdaGrad takes a more direct thus shorter path than Gradient Descent, as AdaGrad has its learning rate reduced in the direction of steepest descent. This is done by squaring each gradient component into a vector $\boldsymbol{s}$. The steepest a gradient component, the larger the square of this component $s_j$. The weights are updated in almost the same way as with Gradient Descent, yet each component is divided by $\boldsymbol{s} + \epsilon$. The added term $\epsilon$ is to prevent a division by zero (typically 10$^{-10}$). As a result, the algorithm detects how to change the learning rate dynamically and specifically on the large gradient components to adapt to their steep slope.
+
+Mathematically: 
+````{margin}
+The $\otimes$ symbol is the element-wise multiplication, while the $\oslash$ is the element-wise division.
+````
+```{math}
+\begin{align*}
+\boldsymbol{s} \; &\leftarrow \; \boldsymbol{s}  \;+\;  \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \;\otimes \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \\[2ex]
+
+\boldsymbol{W} \; &\leftarrow \; \boldsymbol{W} - \alpha \; \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \oslash \sqrt{\boldsymbol{s} + \epsilon}
+\end{align*}
+```
+__The con__  
+AdaGrad performs well on simple problem, like linear regression. With neural networks, it tends to stop too soon, before reaching the global minimum. Luckily, other adaptative algorithms fix this.
+
+### RMSProp
+RMSProp stands for Root Mean Square Propagation. It works the same as AdaGrad except that it keeps track of an exponentially decaying average of past squared gradients: 
+```{math}
+:label: rmspropeq
+\begin{align*}
+\boldsymbol{s} \; &\leftarrow \; \beta\boldsymbol{s}  \;+\;  (1 - \beta) \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \;\otimes \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \\[2ex]
+
+\boldsymbol{W} \; &\leftarrow \; \boldsymbol{W} - \alpha \; \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \oslash \sqrt{\boldsymbol{s} + \epsilon}
+\end{align*}
+```
+with the decay rate $\beta$, between 0 and 1, yet typically set to 0.9. One might ask: what is the point to introduce an extra hyparameter? It turns out the default value works well in most cases and does not require tuning. What the update in the expressions {eq}`rmspropeq` shows is a recursive way of computing a so-called Exponential Moving Average (EMA). In other words, $\beta$ acts as a constant smoothing factor, representing the degree of weighting increase. A lower $\beta$ discounts older observations faster. A higher $\beta$ gives more weight to the previous gradient, a bit less weight to the previous previous gradient, etc.
+
+For more elaborated tasks than the simple linear case, RMSProp is robust. It was reigned until dethrowned by a newcomer called Adam. Before introducing Adam, let's first cover the notion of momentum optimization.
+
+### Momentum Optimization
+````{margin}
+```{warning}
+The algorithm name borrows the momentum concept from physics, yet it is a only metaphor. 
+```
+````
+In physics, the momentum $\boldsymbol{p}$ is a vector obtained by taking the product of the mass and velocity of an object. It quantifies motion. In computing science, momentum refers to the direction and speed at which the parameters move - via iterative updates - through the parameter space. With momentum optimization, inertia is added to the system by updating the weights using the momenta from past iterations. This keeps the update in the same direction, preventing the infamous oscillations around the minimum with classic Gradient Descent. The common analogy is a ball rolling down an inclined plane. It will start slowly but soon "gain momentum", thus can go through flat gradient surface much faster than with the classic Gradient Descent. Therefore adding momentum considerably speeds the Gradient Descent process. Beside, it also helps roll beside local minimum.
+
+The momentum optimization algorithm is as follow:
+```{math}
+\begin{align*}
+\boldsymbol{m} \; &\leftarrow \; \beta \boldsymbol{m} \; - \; \alpha \; \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \\[2ex]
+
+\boldsymbol{W} \; &\leftarrow \; \boldsymbol{W} + \boldsymbol{m} 
+\end{align*}
+```
+Here the $\beta$ parameter controls the momentum from becoming too large. 
 
 
 
 
 ```{admonition} Learn More
 :class: seealso
-Let's go to the source!  
-The paper introducing Adam in 2015: [Adam: A Method for Stochastic Optimization](https://arxiv.org/abs/1412.6980)
+
+[Adaptive Subgradient Methods for Online Learning and Stochastic Optimization](https://jmlr.org/papers/v12/duchi11a.html)
+
+There is no paper for RMSProp as the authors never published it! One of the authors Geoffrey Hinton presented it in Coursera. 
+As a consequence, it is amusingly referenced by researchers as [slide 29 in lecture 6](https://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf)
+
+Understanding more the Exponential Moving Average (EMA) in this article [Gradient Descent with Momentum](https://towardsdatascience.com/gradient-descent-with-momentum-59420f626c8f)
+
+Adam Paper (2015) [Adam: A Method for Stochastic Optimization](https://arxiv.org/abs/1412.6980)
 ```
 
 

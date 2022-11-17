@@ -1,14 +1,27 @@
 # Machine Learning in Particle Physics
 
-<br><br>
-This course introduces the key concepts of machine learning, from the underlying mathematical foundations up to advanced implementations.
+&nbsp;  
 
-Practical examples are taken in the context of experimental particle physics, highlighting the techniques currently used in that field.
+&nbsp;  
 
-The lectures are followed by hands-on tutorials to solidify the understanding and help students gain valuable programming skills.
+Learn the maths behind machine learning!
+
+Learn how to code a machine learning algorithm by hand in python!
+
+Learn how to diagnose and assess the performance of your algorithm!
+
+Learn how to use the most advanced library for best optimization results!
+
+&nbsp;  
+
+&nbsp; 
+
+The examples will be taken from particle physics, but no prerequisites are necessary.
+
+It is a math and programming course, with lots of joyful math and lots of practice in programming.
 
 
-```{warning} The course website is currently under construction.
+```{warning} The course website is currently under construction. Thanks for your patience.
 ```
 
 

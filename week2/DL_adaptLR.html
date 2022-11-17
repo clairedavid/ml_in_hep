@@ -871,7 +871,7 @@ title="Print to PDF"
 <h2>Motivations<a class="headerlink" href="#motivations" title="Permalink to this headline">#</a></h2>
 <p>We saw in previous lectures that the Gradient Descent algorithm updates the parameters, or weights, in the form:</p>
 <div class="math notranslate nohighlight" id="equation-paramupdate">
-<span class="eqno">(110)<a class="headerlink" href="#equation-paramupdate" title="Permalink to this equation">#</a></span>\[W_j \quad \leftarrow \quad W_j -\alpha \frac{\partial}{\partial W_j} J\left(W\right) \;   \;   \;  \;   \;   \; \forall j \in [0..n]\]</div>
+<span class="eqno">(110)<a class="headerlink" href="#equation-paramupdate" title="Permalink to this equation">#</a></span>\[W_j \quad \leftarrow \quad W_j -\alpha \frac{\partial}{\partial W_j} J\left(\boldsymbol{W}\right) \;   \;   \;  \;   \;   \; \forall j \in [0..n]\]</div>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Recall that the learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is the hyperparameter defining the step size on the parameters at each update.</p>
@@ -886,12 +886,12 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Definition 67 </span></p>
 <section class="definition-content" id="proof-content">
 <p>In a training procedure involving a learning rate, a <strong>learning rate scheduler</strong> is a method consisting of modifying the learning rate at the beginning of each iteration.</p>
-<p>It uses a <strong>schedule function</strong>, which takes the current learning rate as input, along with the iteration and epoch indices, to output a new learning rate.</p>
+<p>It uses a <strong>schedule function</strong>, which takes the current learning rate as input, along with a ‘time’ parameter linked with the increasing number of iterations, to output a new learning rate.</p>
 <p>The updated learning rate is used in the optimizer.</p>
 </section>
-</div><p>As the number of iterations and epochs</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
+</div><p>Schedule refers to a timing; here it is the index number of the epoch, or iteration, that is incremented over time, i.e. the duration of the training.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
 <p><strong>What is the difference between epoch, batches and iteration?</strong></p>
 <p>As we saw in Lecture 2 Section <a class="reference internal" href="../week1/warmup_1D_linRegGD.html#warmup-linreggd-gradientdescent"><span class="std std-ref">Gradient Descent</span></a>, an epoch is equivalent to the number of times the algorithm scans the entire data. It is a pass seeing the entire dataset. The batch size being the number of training samples, an iteration will be the number of batches needed to complete one epoch.
 Example: if we have 1000 training samples splits in batches of size 250 each, then it will take 4 iterations to complete one epoch.</p>
@@ -906,7 +906,7 @@ Example: if we have 1000 training samples splits in batches of size 250 each, th
 <p>The learning rate is modified according to:</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>The <span class="math notranslate nohighlight">\(t\)</span> argument is the iteration integer, akin to a time (indicating duration of the training).</p>
+<p>The <span class="math notranslate nohighlight">\(t\)</span> argument is the iteration integer, akin to a time yet the value are usually the iteration and/or epoch indices.</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-powerscheduleeq">
 <span class="eqno">(111)<a class="headerlink" href="#equation-powerscheduleeq" title="Permalink to this equation">#</a></span>\[\alpha(t) = \frac{\alpha_0}{\left(1 + \frac{t}{s}\right)^c} \; ,\]</div>
@@ -941,7 +941,7 @@ Example: if we have 1000 training samples splits in batches of size 250 each, th
 <p>The floor function <code class="docutils literal notranslate"><span class="pre">floor(x)</span></code> or <span class="math notranslate nohighlight">\(\lfloor x \rfloor\)</span> returns the greatest integer less than or equal to <span class="math notranslate nohighlight">\(x\)</span>.</p>
 </aside>
 <div class="math notranslate nohighlight">
-\[\alpha(t) = \alpha_0 \times e^{ \left \lfloor \frac{t}{s} \right \rfloor }\]</div>
+\[\alpha(t) = \alpha_0 \times e^{ \left \lfloor - \frac{t}{s} \right \rfloor }\]</div>
 <figure class="align-default" id="lec08-2-lr-step">
 <a class="reference internal image-reference" href="../_images/lec08_2_lr_step.png"><img alt="../_images/lec08_2_lr_step.png" src="../_images/lec08_2_lr_step.png" style="width: 90%;" /></a>
 <figcaption>
@@ -963,8 +963,7 @@ Example: if we have 1000 training samples splits in batches of size 250 each, th
 <div class="proof definition admonition" id="definition-1">
 <p class="admonition-title"><span class="caption-number">Definition 68 </span></p>
 <section class="definition-content" id="proof-content">
-<p><em>Adaptative Learning Rates</em>_ refer
-An <strong>Adaptative Learning Rate</strong> refers to varying the learning rate using feedback from the model itself.</p>
+<p>An <strong>Adaptative Learning Rate</strong> refers to varying the learning rate using feedback from the model itself.</p>
 </section>
 </div><p>As the variation of the learning rate is done by the optimizer, adaptative learning rates and adaptative optimizers are equivalent terms.</p>
 <p>Below are brief descriptions of the most popular adaptative optimizers.</p>

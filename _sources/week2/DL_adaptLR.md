@@ -4,7 +4,7 @@
 We saw in previous lectures that the Gradient Descent algorithm updates the parameters, or weights, in the form:
 ```{math}
 :label: paramupdate
-W_j \quad \leftarrow \quad W_j -\alpha \frac{\partial}{\partial W_j} J\left(W\right) \;   \;   \;  \;   \;   \; \forall j \in [0..n]
+W_j \quad \leftarrow \quad W_j -\alpha \frac{\partial}{\partial W_j} J\left(\boldsymbol{W}\right) \;   \;   \;  \;   \;   \; \forall j \in [0..n]
 ```
 ````{margin}
 Recall that the learning rate $\alpha$ is the hyperparameter defining the step size on the parameters at each update.
@@ -20,14 +20,13 @@ In the florishing epoch (pun intended) of deep learning, new optimization techni
 :label: learningratescheduledef
 In a training procedure involving a learning rate, a __learning rate scheduler__ is a method consisting of modifying the learning rate at the beginning of each iteration. 
 
-It uses a __schedule function__, which takes the current learning rate as input, along with the iteration and epoch indices, to output a new learning rate.
+It uses a __schedule function__, which takes the current learning rate as input, along with a 'time' parameter linked with the increasing number of iterations, to output a new learning rate.
 
 The updated learning rate is used in the optimizer.
 ````
+Schedule refers to a timing; here it is the index number of the epoch, or iteration, that is incremented over time, i.e. the duration of the training.
 
-As the number of iterations and epochs 
-
-```{warning}
+```{important}
 __What is the difference between epoch, batches and iteration?__
 
 As we saw in Lecture 2 Section {ref}`warmup:linRegGD:gradientDescent`, an epoch is equivalent to the number of times the algorithm scans the entire data. It is a pass seeing the entire dataset. The batch size being the number of training samples, an iteration will be the number of batches needed to complete one epoch.
@@ -44,7 +43,7 @@ Below are common learning schedules.
 ### Power Scheduling
 The learning rate is modified according to:
 ````{margin}
-The $t$ argument is the iteration integer, akin to a time (indicating duration of the training).
+The $t$ argument is the iteration integer, akin to a time yet the value are usually the iteration and/or epoch indices. 
 ````
 ```{math}
 :label: powerscheduleeq
@@ -82,7 +81,7 @@ Also called piecewise constant scheduling, this approach first uses of a constan
 The floor function `floor(x)` or $\lfloor x \rfloor$ returns the greatest integer less than or equal to $x$.
 ````
 ```{math}
-\alpha(t) = \alpha_0 \times e^{ \left \lfloor \frac{t}{s} \right \rfloor }
+\alpha(t) = \alpha_0 \times e^{ \left \lfloor - \frac{t}{s} \right \rfloor }
 ```
 
 ```{figure} ../images/lec08_2_lr_step.png
@@ -105,7 +104,6 @@ An algorithm combining Stochastic Gradient Descent with a learning rate schedule
 
 ````{prf:definition}
 :label: 
-_Adaptative Learning Rates__ refer
 An __Adaptative Learning Rate__ refers to varying the learning rate using feedback from the model itself.
 ````
 As the variation of the learning rate is done by the optimizer, adaptative learning rates and adaptative optimizers are equivalent terms.

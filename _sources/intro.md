@@ -21,5 +21,8 @@ The examples will be taken from particle physics, but no prerequisites are neces
 
 It is a math and programming course, with lots of joyful math and lots of practice in programming.
 
+&nbsp;
+
+&nbsp;
 
 

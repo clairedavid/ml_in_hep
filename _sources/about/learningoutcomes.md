@@ -19,4 +19,4 @@ After this course you should be able to:
  1. Identify and compare the common algorithms and architectures used in supervised and unsupervised learning
  1. Implement a machine learning program in python performing classification from a dataset
  1. Measure and improve the performance of a machine learning model using optimization tools
- 1. Build advanced architectures (CNN, GNN, autoencoder) relevant to solve a problem from a dataset 
+ 1. Build advanced architectures relevant to solve a problem from a dataset 

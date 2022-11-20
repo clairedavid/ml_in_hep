@@ -173,6 +173,13 @@ Describes the balance between Precision and Recall. It is the harmonic mean of t
 
 The F-Score is a single metric favouring classifiers with similar Precision and Recall. But in some contexts, it is preferrable to favour a model with either high precision and low recall, or vice versa. There is a known trade-off between precision and recall. 
 
+__In case of unbalanced dataset__  
+In an unbalanced dataset, some classes will appear much more frequently that others. A specific metric called balanced accuracy is used to assess the performance in that case. 
+````{prf:definition}
+:label: balancedaccdef
+__Balanced accuracy__ is calculated as the average of recall obtained on each class.
+````
+
 ```{admonition} Exercise
 :class: seealso
 Find different examples of classification in which:

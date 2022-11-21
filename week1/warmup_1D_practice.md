@@ -8,7 +8,7 @@ Long answer:
 
 ## Adjusting the learning rate
 It is always a good programming practice to add in your code printouts, i.e. `print()` statements to inspect the current values of your variables.
-In gradient descent, it is advised to print the values of the parameters and the cost function after some iterations. Here is an example of printouts of simple linear regression showing the values of updates parameters $\theta$ every 10 epochs until $N$ = 100, then every 100 epochs: 
+In gradient descent, it is advised to print the values of the parameters and the cost function after some iterations. Here is an example of printouts of simple linear regression showing the values of updated parameters $\theta$ every 10 epochs until $N$ = 100, then every 100 epochs: 
 
 ```sh
 Starting gradient descent

@@ -166,7 +166,7 @@ Let's see a visual representation of our cost function as a function of our $\th
 :name: "plot_linReg_bowl"
 . The cost function (vertical axis) as a function of the parameters $\theta_0$ and $\theta_1$.
 ```
-What does this represent? It shows the result of the cost function calculated for a range of $\theta_0$ and $\theta_1$ parameters. For each coordinate ($\theta_0$ , $\theta_1$), there has been a loop over all the training data set to get the global error. The vertical value shows thus how 'costly' it is to pick up a given ($\theta_0$ , $\theta_1$). The higher, the worse is the fit. The center of the bowl, where $J(\theta_0 , \theta_1)$ is minimum, corresponds to the best choice of the $\theta$ parameters. In other worse: the best fit to the data.
+What does this represent? It shows the result of the cost function calculated for a range of $\theta_0$ and $\theta_1$ parameters. For each coordinate ($\theta_0$ , $\theta_1$), there has been a loop over all the training data set to get the global error. The vertical value shows thus how 'costly' it is to pick up a given ($\theta_0$ , $\theta_1$). The higher, the worse is the fit. The center of the bowl, where $J(\theta_0 , \theta_1)$ is minimum, corresponds to the best choice of the $\theta$ parameters. In other words: the best fit to the data.
 
 How do we proceed to find the $\theta_0$ and $\theta_1$ parameters minimizing the cost function?
 

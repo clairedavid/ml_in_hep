@@ -90,15 +90,12 @@ parts:
       - file: week3/ML_BigData_preproc
       - file: week3/ML_BigData_chooseAlgo
 
-    - file: week3/ethics_exam
+    - file: week3/ethics_outlook
       sections: 
-      - file: week3/ethics_exam_1
-      - file: week3/ethics_exam_2
+      - file: week3/ethics_outlook_1
+      - file: week3/ethics_outlook_2
 
-    - file: week3/projects_outlook
-      sections: 
-      - file: week3/projects_outlook_pres
-      - file: week3/projects_outlook_today
+    - file: week3/projects_exam
 
 
   - caption: Tutorials

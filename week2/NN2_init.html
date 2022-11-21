@@ -349,8 +349,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="DL_trainNN.html">
-     Let’s train our NN!
+    <a class="reference internal" href="DL_adaptLR.html">
+     Varying the Learning Rate
     </a>
    </li>
    <li class="toctree-l2">
@@ -359,8 +359,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="DL_adaptLR.html">
-     Adaptative Learning Rates
+    <a class="reference internal" href="DL_trainNN.html">
+     Let’s train our NN!
     </a>
    </li>
   </ul>
@@ -496,7 +496,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/ethics_exam.html">
+  <a class="reference internal" href="../week3/ethics_outlook.html">
    14. Ethics in ML &amp; Exam
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
@@ -506,38 +506,21 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_exam_1.html">
+    <a class="reference internal" href="../week3/ethics_outlook_1.html">
      The Ethics in ML
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_exam_2.html">
-     Course Exam
+    <a class="reference internal" href="../week3/ethics_outlook_2.html">
+     Machine Learning Today
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/projects_outlook.html">
-   15. Project presentations &amp; Outlook
+ <li class="toctree-l1">
+  <a class="reference internal" href="../week3/projects_exam.html">
+   15. Project presentations &amp; Exam
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/projects_outlook_pres.html">
-     Project Presentations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/projects_outlook_today.html">
-     Open Questions in ML today
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -568,7 +551,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tutorials/t05_anomaly_detection.html">
-   5. Neural Networks by hand
+   5. Anomaly Detection
   </a>
  </li>
 </ul>
@@ -907,7 +890,7 @@ This corresponds to deactivating all neurons. The formula <span class="math notr
 <h2>Standard Initialization Strategies<a class="headerlink" href="#standard-initialization-strategies" title="Permalink to this headline">#</a></h2>
 <p>Let’s first define the notion of <em>fan-in</em> and <em>fan-out</em>.</p>
 <div class="proof definition admonition" id="fanindef">
-<p class="admonition-title"><span class="caption-number">Definition 57 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 58 </span></p>
 <section class="definition-content" id="proof-content">
 <p>In a neural network, <strong>fan-in</strong> refers to the number of incoming network connections<br />
 (inputs neuron and bias of the previous layer)</p>
@@ -928,14 +911,14 @@ This corresponds to deactivating all neurons. The formula <span class="math notr
 </section>
 </div><p>It is impossible to validate the two properties at the same time. But Glorot and Bengio offered a compromise that passed the experimental tests with success, mostly with the sigmoid activation function.</p>
 <div class="proof definition admonition" id="xavieruniformdef">
-<p class="admonition-title"><span class="caption-number">Definition 58 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 59 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>Uniform Xavier Initialization</strong> is obtained by drawing each weight from a random uniform distribution in in <span class="math notranslate nohighlight">\([-x,x]\)</span>, with</p>
 <div class="math notranslate nohighlight">
 \[ x= \sqrt{\frac{6}{fan_\text{ in} + fan_\text{ out}}}\]</div>
 </section>
 </div><div class="proof definition admonition" id="xaviernormaldef">
-<p class="admonition-title"><span class="caption-number">Definition 59 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 60 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>Normal Xavier Initialization</strong> is obtained by drawing each weight from a random normal distribution with mean of 0, and a standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> of:</p>
 <div class="math notranslate nohighlight">
@@ -948,7 +931,7 @@ This corresponds to deactivating all neurons. The formula <span class="math notr
 <h3>LeCun Weight Initialization<a class="headerlink" href="#lecun-weight-initialization" title="Permalink to this headline">#</a></h3>
 <p>A variant of Xavier initilization has been proposed by Yann LeCun, one of the godfathers of deep learning and among the top most influential AI researchers in the world. His trick is to only use the number of inputs, <em>fan-in</em>.</p>
 <div class="proof definition admonition" id="lecuninitdef">
-<p class="admonition-title"><span class="caption-number">Definition 60 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 61 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>LeCun Weight Initialization</strong> is obtained by drawing each weight from a random normal distribution with mean of 0, and a standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> of:</p>
 <div class="math notranslate nohighlight">
@@ -962,7 +945,7 @@ This corresponds to deactivating all neurons. The formula <span class="math notr
 <h3>He Weight Initialization<a class="headerlink" href="#he-weight-initialization" title="Permalink to this headline">#</a></h3>
 <p>Kaiming He and others published a paper providing a good initialization strategy for the ReLU activation function and its variants.</p>
 <div class="proof definition admonition" id="heinitdef">
-<p class="admonition-title"><span class="caption-number">Definition 61 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 62 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>He Weight Initialization</strong> is obtained by drawing each weight from a random normal distribution with mean of 0, and a standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> of:</p>
 <div class="math notranslate nohighlight">

@@ -349,8 +349,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/DL_trainNN.html">
-     Let’s train our NN!
+    <a class="reference internal" href="../week2/DL_adaptLR.html">
+     Varying the Learning Rate
     </a>
    </li>
    <li class="toctree-l2">
@@ -359,8 +359,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/DL_adaptLR.html">
-     Adaptative Learning Rates
+    <a class="reference internal" href="../week2/DL_trainNN.html">
+     Let’s train our NN!
     </a>
    </li>
   </ul>
@@ -496,7 +496,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/ethics_exam.html">
+  <a class="reference internal" href="../week3/ethics_outlook.html">
    14. Ethics in ML &amp; Exam
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
@@ -506,38 +506,21 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_exam_1.html">
+    <a class="reference internal" href="../week3/ethics_outlook_1.html">
      The Ethics in ML
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_exam_2.html">
-     Course Exam
+    <a class="reference internal" href="../week3/ethics_outlook_2.html">
+     Machine Learning Today
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/projects_outlook.html">
-   15. Project presentations &amp; Outlook
+ <li class="toctree-l1">
+  <a class="reference internal" href="../week3/projects_exam.html">
+   15. Project presentations &amp; Exam
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/projects_outlook_pres.html">
-     Project Presentations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/projects_outlook_today.html">
-     Open Questions in ML today
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -568,7 +551,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tutorials/t05_anomaly_detection.html">
-   5. Neural Networks by hand
+   5. Anomaly Detection
   </a>
  </li>
 </ul>
@@ -1023,7 +1006,7 @@ It describes how the known elementary particles interact through three of the fo
 What about gravity? The great Albert Einstein tried to include it until his death without success; merging the theories of Quantum Mechanics and General Relativity is still one of the hardest physics problem today.</p>
 <p>So you got the spoiler alert: the theory of particle physics, bearing the weird name of “Standard Model,” is not complete as it does not include all fundamental interactions.
 Despite this important caveat, the model is a triumphant achievement made by many great physicists since the 1950s (with a large fraction becoming Physics Nobel Prize laureates).
-Not only the theoretial framework accurately describes the known subatomic world, it has accumulated remarkable successes with numerous predictions verified in experiments at an incredible level of precision.</p>
+Not only does the theoretial framework accurately describe the known subatomic world, it has also accumulated remarkable successes with numerous predictions verified in experiments at an incredible level of precision.</p>
 <section id="theoretical-vs-experimental-particle-physics">
 <h3>Theoretical vs experimental particle physics<a class="headerlink" href="#theoretical-vs-experimental-particle-physics" title="Permalink to this headline">#</a></h3>
 <p>In all physical sciences, knowledge is forged via the process known as the scientific method.</p>
@@ -1153,7 +1136,7 @@ predicted number of events in simulations (from the known background processes a
 </section>
 <section id="the-conclusion">
 <h3>6. The conclusion<a class="headerlink" href="#the-conclusion" title="Permalink to this headline">#</a></h3>
-<p>When experimentalists compile their findings into a publication summarizing the signal under study, the experimental setup, thee observed data and the statistical output, theorists take over by incorporating the results into their models. Before a discovery is claim (and at times before candidate theories are abandonned), it takes numerous complementary analyses, across several experiments, to disprove the current model and replacing it with a new one. Nevertheless, the steps listed above gives a comprehensive overview of how scientific advance is made. This culminates in the updated version of physics textbooks as a testimony of the accretion of knowledge.</p>
+<p>When experimentalists compile their findings into a publication summarizing the signal under study, the experimental setup, the observed data and the statistical output, theorists take over by incorporating the results into their models. Before a discovery is claim (and at times before candidate theories are abandonned), it takes numerous complementary analyses, across several experiments, to disprove the current model and replacing it with a new one. Nevertheless, the steps listed above gives a comprehensive overview of how scientific advance is made. This culminates in the updated version of physics textbooks as a testimony of the accretion of knowledge.</p>
 </section>
 </section>
 <section id="the-maths-and-computing-in-particle-physics">
@@ -1189,7 +1172,7 @@ Combining correlated data is not trivial. The fitting procedures that are an int
 <p><span class="caption-number">Fig. 7 </span><span class="caption-text">. The Tier-0 data centre on CERN’s main site. This is the heart of the Worldwide LHC Computing Grid. Image credit: Roger Claus, CERN.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Experimental particle physics has been dealing with large amount of data. Nowadays the volumes are in the order of petabytes (1000 terabytes). To give you a sense of what a perabyte is: it corresponds to 3.4 years of 24/7 full high definition video recording (<a class="reference external" href="https://www.lifewire.com/terabytes-gigabytes-amp-petabytes-how-big-are-they-4125169">source and other comparisons here</a>). Particle physics has developed tools to store, manage and distribute significant volumes of data.</p>
+<p>Experimental particle physics has been dealing with large amount of data. Nowadays the volumes are in the order of petabytes (1000 terabytes). To give you a sense of what a petabyte is: it corresponds to 3.4 years of 24/7 full high definition video recording (<a class="reference external" href="https://www.lifewire.com/terabytes-gigabytes-amp-petabytes-how-big-are-they-4125169">source and other comparisons here</a>). Particle physics has developed tools to store, manage and distribute significant volumes of data.</p>
 <p>Future experiments will open the door to the exabyte era (1 exabyte = 1000 petabytes). This would require one million powerful home computers. More efficient, cost-effective software and infrastructure need to be developed. Luckily, we live nowadays in the age of information explosion; Big Data is now a buzzword in other fields of science as well as in industry. As such, many toolkits have emerged, which particle physicists can use and adapt in order to overcome the new computing challenges.</p>
 <p>Beside the data volumes, particle physics heavily relies on simulations, and their computing costs are staggering high.
 Due to the probabilitistic nature of quantum mechanics, such programs rely on stochastic modeling.

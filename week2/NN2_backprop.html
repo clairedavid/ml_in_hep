@@ -349,8 +349,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="DL_trainNN.html">
-     Let’s train our NN!
+    <a class="reference internal" href="DL_adaptLR.html">
+     Varying the Learning Rate
     </a>
    </li>
    <li class="toctree-l2">
@@ -359,8 +359,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="DL_adaptLR.html">
-     Adaptative Learning Rates
+    <a class="reference internal" href="DL_trainNN.html">
+     Let’s train our NN!
     </a>
    </li>
   </ul>
@@ -496,7 +496,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/ethics_exam.html">
+  <a class="reference internal" href="../week3/ethics_outlook.html">
    14. Ethics in ML &amp; Exam
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
@@ -506,38 +506,21 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_exam_1.html">
+    <a class="reference internal" href="../week3/ethics_outlook_1.html">
      The Ethics in ML
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_exam_2.html">
-     Course Exam
+    <a class="reference internal" href="../week3/ethics_outlook_2.html">
+     Machine Learning Today
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/projects_outlook.html">
-   15. Project presentations &amp; Outlook
+ <li class="toctree-l1">
+  <a class="reference internal" href="../week3/projects_exam.html">
+   15. Project presentations &amp; Exam
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/projects_outlook_pres.html">
-     Project Presentations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/projects_outlook_today.html">
-     Open Questions in ML today
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -568,7 +551,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tutorials/t05_anomaly_detection.html">
-   5. Neural Networks by hand
+   5. Anomaly Detection
   </a>
  </li>
 </ul>
@@ -929,7 +912,7 @@ title="Print to PDF"
 <section id="definition">
 <h3>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h3>
 <div class="proof definition admonition" id="backpropdef">
-<p class="admonition-title"><span class="caption-number">Definition 62 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 63 </span></p>
 <section class="definition-content" id="proof-content">
 <p><strong>Backpropagation</strong>, short for <strong>backward propagation of errors</strong>, is an algorithm working from the output nodes to the input nodes of a neural network using the chain rule to compute how much each activation unit contributed to the overall error.</p>
 <p>It automatically computes error gradients to then repeatedly adjust all weights and biases to reduce the overall error.</p>
@@ -939,16 +922,16 @@ title="Print to PDF"
 <h3>Chain Rule Refresher<a class="headerlink" href="#chain-rule-refresher" title="Permalink to this headline">#</a></h3>
 <p>A little interlude and refresher of the chain rule will not hurt.</p>
 <div class="proof definition admonition" id="chainruledef">
-<p class="admonition-title"><span class="caption-number">Definition 63 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 64 </span></p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> be functions. For all <span class="math notranslate nohighlight">\(𝑥\)</span> in the domain of <span class="math notranslate nohighlight">\(g\)</span> for which <span class="math notranslate nohighlight">\(g\)</span> is differentiable at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is differentiable at <span class="math notranslate nohighlight">\(g(x)\)</span>, the derivative of the composite function:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bfd7379d-96b4-474e-82ac-99415219fc42">
-<span class="eqno">(80)<a class="headerlink" href="#equation-bfd7379d-96b4-474e-82ac-99415219fc42" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8d624835-76c9-4af9-977a-18e2ffa17aa7">
+<span class="eqno">(80)<a class="headerlink" href="#equation-8d624835-76c9-4af9-977a-18e2ffa17aa7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h(x) = f(g(x)) 
 \end{equation}\]</div>
 <p>is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d34e9ae0-6c4d-4513-a692-dc012f65ed03">
-<span class="eqno">(81)<a class="headerlink" href="#equation-d34e9ae0-6c4d-4513-a692-dc012f65ed03" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1ceefe6c-37df-43ed-9a90-779b56c58fc8">
+<span class="eqno">(81)<a class="headerlink" href="#equation-1ceefe6c-37df-43ed-9a90-779b56c58fc8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}} \;\cdot \;  \frac{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}}{\mathrm{d} \; x} = f'\left(g(x)\right) \;\cdot \; g'(x)
 \end{equation}\]</div>
 </section>
@@ -964,8 +947,8 @@ h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maro
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
 <p>What would be the chain rule for three functions?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1849fb2c-2793-4316-bdee-7c2cfccc28b7">
-<span class="eqno">(82)<a class="headerlink" href="#equation-1849fb2c-2793-4316-bdee-7c2cfccc28b7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4090d9e2-6404-43ed-bd6e-0290c3c6fb25">
+<span class="eqno">(82)<a class="headerlink" href="#equation-4090d9e2-6404-43ed-bd6e-0290c3c6fb25" title="Permalink to this equation">#</a></span>\[\begin{equation}
 k(x) = h(f(g(x))) 
 \end{equation}\]</div>
 </div>
@@ -1234,23 +1217,23 @@ Training data set <span class="math notranslate nohighlight">\(X\)</span> of <sp
 <p><strong>Start</strong></p>
 <p><strong>Step 0:</strong> Weight initialization</p>
 <p><strong>Step 1:</strong> Forward propagation on subset or all sample instances:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b152fc8c-3d69-4419-a0d3-9cc4ca3024d5">
-<span class="eqno">(106)<a class="headerlink" href="#equation-b152fc8c-3d69-4419-a0d3-9cc4ca3024d5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-da040d22-6a28-4531-92ac-0ec79b2e6b3c">
+<span class="eqno">(106)<a class="headerlink" href="#equation-da040d22-6a28-4531-92ac-0ec79b2e6b3c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat{y} = a^L(W, b) = f(z^L(W,b))
 \end{equation}\]</div>
 <p><strong>Step 2:</strong> Computation of loss function, cost function and overall error:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1dfc8ff2-4920-41f0-bd67-0ce4ad582f9d">
-<span class="eqno">(107)<a class="headerlink" href="#equation-1dfc8ff2-4920-41f0-bd67-0ce4ad582f9d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4a36f3d8-71f3-4d2c-8b0b-bc14e614647a">
+<span class="eqno">(107)<a class="headerlink" href="#equation-4a36f3d8-71f3-4d2c-8b0b-bc14e614647a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Cost} = \textstyle \sum L(f(z^L(W,b))) \qquad \delta^L =\; L^{\prime}(a^L(W,b)) \cdot f^{\prime}(z^L(W, b)) 
 \end{equation}\]</div>
 <p><strong>Step 3:</strong> Computation of all activation unit errors:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-848473b2-b492-43f5-a168-afe0ee27bec8">
-<span class="eqno">(108)<a class="headerlink" href="#equation-848473b2-b492-43f5-a168-afe0ee27bec8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-15e97247-2196-4c6d-9d47-097c6dd02b56">
+<span class="eqno">(108)<a class="headerlink" href="#equation-15e97247-2196-4c6d-9d47-097c6dd02b56" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \delta^\ell = \; \delta^{\ell+1} \;\cdot\; W^{\ell+1} \;\cdot\; f'(z^\ell(W, b))
 \end{equation}\]</div>
 <p>… and derivatives:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8d18a9ce-3414-4659-9dc1-95f83b5f27d1">
-<span class="eqno">(109)<a class="headerlink" href="#equation-8d18a9ce-3414-4659-9dc1-95f83b5f27d1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-68778c9c-dfcc-4ea2-821d-edbdef06f9bc">
+<span class="eqno">(109)<a class="headerlink" href="#equation-68778c9c-dfcc-4ea2-821d-edbdef06f9bc" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial \text {Cost}}{\partial W^{\ell}} = \; \delta^{\ell} \;\cdot\; a^{\ell-1}  \qquad \qquad \qquad \frac{\partial \text {Cost}}{\partial b^{\ell}} = \; \delta^{\ell}
 \end{equation}\]</div>
 <p><strong>Step 4:</strong> Gradient Descent steps to update weights &amp; biases:</p>

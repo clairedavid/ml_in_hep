@@ -349,8 +349,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/DL_trainNN.html">
-     Let’s train our NN!
+    <a class="reference internal" href="../week2/DL_adaptLR.html">
+     Varying the Learning Rate
     </a>
    </li>
    <li class="toctree-l2">
@@ -359,8 +359,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/DL_adaptLR.html">
-     Adaptative Learning Rates
+    <a class="reference internal" href="../week2/DL_trainNN.html">
+     Let’s train our NN!
     </a>
    </li>
   </ul>
@@ -496,7 +496,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/ethics_exam.html">
+  <a class="reference internal" href="../week3/ethics_outlook.html">
    14. Ethics in ML &amp; Exam
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
@@ -506,38 +506,21 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_exam_1.html">
+    <a class="reference internal" href="../week3/ethics_outlook_1.html">
      The Ethics in ML
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_exam_2.html">
-     Course Exam
+    <a class="reference internal" href="../week3/ethics_outlook_2.html">
+     Machine Learning Today
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/projects_outlook.html">
-   15. Project presentations &amp; Outlook
+ <li class="toctree-l1">
+  <a class="reference internal" href="../week3/projects_exam.html">
+   15. Project presentations &amp; Exam
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/projects_outlook_pres.html">
-     Project Presentations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/projects_outlook_today.html">
-     Open Questions in ML today
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -568,7 +551,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tutorials/t05_anomaly_detection.html">
-   5. Neural Networks by hand
+   5. Anomaly Detection
   </a>
  </li>
 </ul>
@@ -864,12 +847,12 @@ title="Print to PDF"
 <section id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="dtdef">
-<p class="admonition-title"><span class="caption-number">Definition 39 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 40 </span></p>
 <section class="definition-content" id="proof-content">
 <p>A <strong>decision tree</strong> is a flowchart mapping a decision making process. It is organized into nodes, branches and leaves.</p>
 </section>
 </div><div class="proof definition admonition" id="nodesdef">
-<p class="admonition-title"><span class="caption-number">Definition 40 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 41 </span></p>
 <section class="definition-content" id="proof-content">
 <p>A node is a condition box evaluating one or more input features.</p>
 <p>The outcomes of that evaluation (either boolean or numerical) is divised into <strong>branches</strong>, or edges.</p>
@@ -909,12 +892,12 @@ title="Print to PDF"
 <h2>Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this headline">#</a></h2>
 <p>There are metrics entering in the optimization algorithm of a decision tree. One is the Gini impurity:</p>
 <div class="proof definition admonition" id="ginidef">
-<p class="admonition-title"><span class="caption-number">Definition 41 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 42 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>Gini’s diversity index</strong> is a measure of a node’s impurity.</p>
 <p>It is defined for each tree node <span class="math notranslate nohighlight">\(i\)</span> as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ab57a15a-c1a3-4655-9c36-4a82f57f3381">
-<span class="eqno">(31)<a class="headerlink" href="#equation-ab57a15a-c1a3-4655-9c36-4a82f57f3381" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-858805ed-0b69-4e9e-b21e-f11cf49e13e2">
+<span class="eqno">(31)<a class="headerlink" href="#equation-858805ed-0b69-4e9e-b21e-f11cf49e13e2" title="Permalink to this equation">#</a></span>\[\begin{equation}
 G_i = 1 - \sum_{k=1}^{N^\text{class}} \left( \frac{N^k}{ N^{\text{node } i}} \right)^2 
 \end{equation}\]</div>
 <p>with <span class="math notranslate nohighlight">\(N^k\)</span> the number of data samples of class <span class="math notranslate nohighlight">\(k\)</span> in node <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(N^{\text{node } i}\)</span> the total number of data samples in node <span class="math notranslate nohighlight">\(i\)</span>.</p>
@@ -961,8 +944,8 @@ A collection on decision boundaries segmenting the <span class="math notranslate
 For each feature <span class="math notranslate nohighlight">\(k\)</span>, finds the threshold value <span class="math notranslate nohighlight">\(t_k\)</span> maximizing purity of the two resulting subsets either lower (left) or higher (right) than the threshold <span class="math notranslate nohighlight">\(t_k\)</span>.
 The cost function is defined as:</p></li>
 </ol>
-<div class="amsmath math notranslate nohighlight" id="equation-1695824b-9eb8-4105-be40-70b895e6ac75">
-<span class="eqno">(32)<a class="headerlink" href="#equation-1695824b-9eb8-4105-be40-70b895e6ac75" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-48e48d79-6024-47f1-9fef-2802fb471ae9">
+<span class="eqno">(32)<a class="headerlink" href="#equation-48e48d79-6024-47f1-9fef-2802fb471ae9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 J(k, t_k) = \frac{n_\text{left}}{n_\text{node}} G_\text{left} + \frac{n_\text{right}}{n_\text{node}} G_\text{right}
 \end{equation}\]</div>
 <p>The purity is weighted by the subset sizes. The pair (<span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(t_k\)</span>) producing the purest subset is set for the node.</p>

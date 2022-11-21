@@ -175,7 +175,7 @@ Mathematically:
 :label: adameq
 \begin{align*}
 \boldsymbol{m} \; &\leftarrow \; \beta_1 \boldsymbol{m} \; - \; (1 - \beta_1) \; \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}}\\[1ex]
-\boldsymbol{s} \; &\leftarrow \; \; \beta_2\boldsymbol{s}  \;+\;  (1 - \beta_2) \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \;\otimes \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \\[1ex]
+\boldsymbol{s} \; &\leftarrow \; \; \beta_2\boldsymbol{s}  \;+\;  (1 - \beta_2) \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \otimes  \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \\[1ex]
 \boldsymbol{\widehat{m}} &\leftarrow \frac{\boldsymbol{m}}{1 - \beta_1^t} \\[1ex]
 \boldsymbol{\widehat{s}} &\leftarrow \frac{\boldsymbol{s}}{1 - \beta_2^t} \\[1ex]
 \boldsymbol{W} \; &\leftarrow \; \boldsymbol{W} + \alpha \; \boldsymbol{\widehat{m}} \oslash \sqrt{\boldsymbol{\widehat{s}} + \epsilon}
@@ -192,14 +192,16 @@ The algorithm seems complicated at first glance, especially steps including the 
 ```{admonition} Learn More
 :class: seealso
 
-Article _How to Configure the Learning Rate When Training Deep Learning Neural Networks_ on [machinelearningmastery.com](https://machinelearningmastery.com/learning-rate-for-deep-learning-neural-networks/)
+Article: "How to Configure the Learning Rate When Training Deep Learning Neural Networks" on [machinelearningmastery.com](https://machinelearningmastery.com/learning-rate-for-deep-learning-neural-networks/)
+
+Article: "Gradient Descent With Momentum from Scratch" on [machinelearningmastery.com](https://machinelearningmastery.com/gradient-descent-with-momentum-from-scratch/)
 
 [Adaptive Subgradient Methods for Online Learning and Stochastic Optimization](https://jmlr.org/papers/v12/duchi11a.html).
 
 There is no paper for RMSProp as it was never officially published! One of the authors Geoffrey Hinton presented it in a Coursera lecture. 
 As a consequence, it is amusingly referenced by researchers as [slide 29 in lecture 6](https://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf).
 
-Understanding more the Exponential Moving Average (EMA) in this article [Gradient Descent with Momentum](https://towardsdatascience.com/gradient-descent-with-momentum-59420f626c8f).
+Article: "Gradient Descent with Momentum" helps understand the Exponential Moving Average (EMA), from [towardsdatascience.com](https://towardsdatascience.com/gradient-descent-with-momentum-59420f626c8f).
 
-Adam Paper (2015) [Adam: A Method for Stochastic Optimization](https://arxiv.org/abs/1412.6980).
+Paper: Adam: A Method for Stochastic Optimization (2015) [arXiv:1412.6980](https://arxiv.org/abs/1412.6980).
 ```

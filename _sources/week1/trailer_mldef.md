@@ -22,7 +22,7 @@ __Machine Learning: field of study that gives computers the ability to learn wit
 
 This is somewhat redundant, as the definition uses the verb to 'learn' in it. What is learning? And how to quantify it? 
 
-Let's see what Tom Mitchell has to say. He was an American computer scientist and defined machine learning in the following statement in 1998:
+Let's see what Tom Mitchell has to say. He is an American computer scientist and defined machine learning in the following statement in 1998:
 
 ````{prf:definition}
 :label: mldef

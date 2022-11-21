@@ -349,8 +349,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="DL_trainNN.html">
-     Let’s train our NN!
+    <a class="reference internal" href="DL_adaptLR.html">
+     Varying the Learning Rate
     </a>
    </li>
    <li class="toctree-l2">
@@ -359,8 +359,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="DL_adaptLR.html">
-     Adaptative Learning Rates
+    <a class="reference internal" href="DL_trainNN.html">
+     Let’s train our NN!
     </a>
    </li>
   </ul>
@@ -496,7 +496,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/ethics_exam.html">
+  <a class="reference internal" href="../week3/ethics_outlook.html">
    14. Ethics in ML &amp; Exam
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
@@ -506,38 +506,21 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_exam_1.html">
+    <a class="reference internal" href="../week3/ethics_outlook_1.html">
      The Ethics in ML
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_exam_2.html">
-     Course Exam
+    <a class="reference internal" href="../week3/ethics_outlook_2.html">
+     Machine Learning Today
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/projects_outlook.html">
-   15. Project presentations &amp; Outlook
+ <li class="toctree-l1">
+  <a class="reference internal" href="../week3/projects_exam.html">
+   15. Project presentations &amp; Exam
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/projects_outlook_pres.html">
-     Project Presentations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/projects_outlook_today.html">
-     Open Questions in ML today
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -568,7 +551,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tutorials/t05_anomaly_detection.html">
-   5. Neural Networks by hand
+   5. Anomaly Detection
   </a>
  </li>
 </ul>
@@ -890,7 +873,7 @@ If you are curious to read the original paper marking the birth of the artificia
 “A logical calculus of the ideas immanent in nervous activity” - <a class="reference external" href="https://link.springer.com/article/10.1007/BF02478259">Link on Springer</a></p>
 </div>
 <div class="proof definition admonition" id="andef">
-<p class="admonition-title"><span class="caption-number">Definition 50 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 51 </span></p>
 <section class="definition-content" id="proof-content">
 <p>An <strong>artificial neuron</strong> is an elementary computational unit of artificial neural networks.</p>
 <p>It receives inputs from the dataset or other artificial neurons, combine the information and provide output value(s).</p>
@@ -925,7 +908,7 @@ If you are curious to read the original paper marking the birth of the artificia
 <p>This operation is done for one sample row <span class="math notranslate nohighlight">\(x^{(i)}\)</span>, hence reserving the <span class="math notranslate nohighlight">\(i\)</span> index for the sample instances. The sum is done over the input features <span class="math notranslate nohighlight">\(j\)</span> (columns of the <span class="math notranslate nohighlight">\(X\)</span> input matrix). Here the sum starts at <span class="math notranslate nohighlight">\(j=1\)</span> and not zero as the intercept term is written outside of the sum as <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <p>We haven’t seen the activation function. Here is its definition:</p>
 <div class="proof definition admonition" id="activfuncdef">
-<p class="admonition-title"><span class="caption-number">Definition 51 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 52 </span></p>
 <section class="definition-content" id="proof-content">
 <p>An <strong>Activation Function</strong>, also called Transfer Function, is a mathematical operation performed by an artificial neuron on the weighted summed of input nodes (plus the bias node).</p>
 <p>As the name indicates, it decides whether the neuron’s input to the network is important or not: returning a non-zero values means the <strong>neuron is “activated”</strong>, or “fired.”</p>
@@ -938,7 +921,7 @@ If you are curious to read the original paper marking the birth of the artificia
 <section id="the-perceptron">
 <h3>The Perceptron<a class="headerlink" href="#the-perceptron" title="Permalink to this headline">#</a></h3>
 <div class="proof definition admonition" id="perceptrondef">
-<p class="admonition-title"><span class="caption-number">Definition 52 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 53 </span></p>
 <section class="definition-content" id="proof-content">
 <p>A <strong>Perceptron</strong> is a neural network based on a single specific artificial neuron called a Threshold Logic Unit (TLU) or Linear Threshold Unit (LTU), where the activation function is a step function.</p>
 <p>It computes a weighted sum of real-valued inputs, has a bias term in the form of an extra node and yield the output:</p>
@@ -1022,7 +1005,7 @@ Possible answer:<br />
 <h3>Layers<a class="headerlink" href="#layers" title="Permalink to this headline">#</a></h3>
 <p>Now that we saw the artificial neuron, let’s see how they can model complex data patterns while connecting them. Alike their organic counterparts where neurons are organized in consecutive layers, artificial neural networks are arranged in layers, where neurons in each layer receive input from the previous layer and pass their output to the subsequent layer.</p>
 <div class="proof definition admonition" id="nnlayerdef">
-<p class="admonition-title"><span class="caption-number">Definition 53 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 54 </span></p>
 <section class="definition-content" id="proof-content">
 <p>An artificial neural network is composed:</p>
 <ul class="simple">
@@ -1037,7 +1020,7 @@ Possible answer:<br />
 <section id="deep-or-not-deep-is-that-a-question">
 <h3>Deep or not deep: is that a question?<a class="headerlink" href="#deep-or-not-deep-is-that-a-question" title="Permalink to this headline">#</a></h3>
 <div class="proof definition admonition" id="definition-4">
-<p class="admonition-title"><span class="caption-number">Definition 54 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 55 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The number of hidden layers is an indicator of the <strong>depth</strong> of a neural network.</p>
 </section>

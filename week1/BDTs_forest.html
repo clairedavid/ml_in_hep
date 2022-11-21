@@ -347,8 +347,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/DL_trainNN.html">
-     Let’s train our NN!
+    <a class="reference internal" href="../week2/DL_adaptLR.html">
+     Varying the Learning Rate
     </a>
    </li>
    <li class="toctree-l2">
@@ -357,8 +357,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/DL_adaptLR.html">
-     Adaptative Learning Rates
+    <a class="reference internal" href="../week2/DL_trainNN.html">
+     Let’s train our NN!
     </a>
    </li>
   </ul>
@@ -494,7 +494,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/ethics_exam.html">
+  <a class="reference internal" href="../week3/ethics_outlook.html">
    14. Ethics in ML &amp; Exam
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
@@ -504,38 +504,21 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_exam_1.html">
+    <a class="reference internal" href="../week3/ethics_outlook_1.html">
      The Ethics in ML
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_exam_2.html">
-     Course Exam
+    <a class="reference internal" href="../week3/ethics_outlook_2.html">
+     Machine Learning Today
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/projects_outlook.html">
-   15. Project presentations &amp; Outlook
+ <li class="toctree-l1">
+  <a class="reference internal" href="../week3/projects_exam.html">
+   15. Project presentations &amp; Exam
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/projects_outlook_pres.html">
-     Project Presentations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/projects_outlook_today.html">
-     Open Questions in ML today
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -566,7 +549,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tutorials/t05_anomaly_detection.html">
-   5. Neural Networks by hand
+   5. Anomaly Detection
   </a>
  </li>
 </ul>
@@ -849,7 +832,7 @@ What do you notice?</p>
 <section id="definitions">
 <h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="ensembledef">
-<p class="admonition-title"><span class="caption-number">Definition 42 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 43 </span></p>
 <section class="definition-content" id="proof-content">
 <p>A <strong>Ensemble Learning</strong> is a technique consisting of aggregating the predictions of an Ensemble, i.e. a group of predictors.</p>
 <p>An Ensemble Learning algorithm is called an <strong>Ensemble method</strong>.</p>
@@ -860,7 +843,7 @@ The fascinating part: the global prediction not only outperforms each individual
 <p>For regression, taking the average of the predicted values is the most natural way.</p>
 <p>For classification, the aggregation is done either through a counting of votes, i.e. which class receives the most predictions (each predictor produces one vote). Or via probability if the predictors provide this information along with the predicted class: the prediction associated with the highest probability wins.</p>
 <div class="proof definition admonition" id="softhardvoterdef">
-<p class="admonition-title"><span class="caption-number">Definition 43 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 44 </span></p>
 <section class="definition-content" id="proof-content">
 <p>When the combined result of an Ensemble method is done by…</p>
 <p>… counting the class that gets the most votes among the predictors, i.e. a majority-vote aggregation, we call this is a <strong>hard voting</strong> classifier.</p>
@@ -870,7 +853,7 @@ The fascinating part: the global prediction not only outperforms each individual
 <p>There is another concept important in ensemble learning: bagging.</p>
 <p>Remember that in ensemble learning, diversity is key. Yet it can be impractical to train very diverse learners, each having their own specificities and drawbacks to pay attention to. An alternative approach is to deal only with one algorithm but increase the diversity in the dataset. Like shuffling a deck of cards, bagging involves training predictors on randomized subsets of the dataset.</p>
 <div class="proof definition admonition" id="baggingdef">
-<p class="admonition-title"><span class="caption-number">Definition 44 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 45 </span></p>
 <section class="definition-content" id="proof-content">
 <p><strong>Bagging</strong>, short for <em>bootstrap aggregating</em>, is a method in ensemble learning consisting of resampling multiple times the dataset <em>with replacement</em>, i.e. the procedure can select a data point more than once in a resampled dataset.</p>
 <p><strong>Pasting</strong> refers to a similar protocol but <em>without replacement</em> (no repeated data points).</p>
@@ -890,7 +873,7 @@ The fascinating part: the global prediction not only outperforms each individual
 <section id="presentation">
 <h3>Presentation<a class="headerlink" href="#presentation" title="Permalink to this headline">#</a></h3>
 <div class="proof definition admonition" id="randomforestdef">
-<p class="admonition-title"><span class="caption-number">Definition 45 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 46 </span></p>
 <section class="definition-content" id="proof-content">
 <p>A <strong>random forest</strong> is an ensemble learning made of solely decision trees.</p>
 <p>Class prediction is done by selecting the class obtaining the most votes among all decision trees’ predictions.</p>

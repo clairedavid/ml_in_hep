@@ -349,8 +349,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/DL_trainNN.html">
-     Let’s train our NN!
+    <a class="reference internal" href="../week2/DL_adaptLR.html">
+     Varying the Learning Rate
     </a>
    </li>
    <li class="toctree-l2">
@@ -359,8 +359,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/DL_adaptLR.html">
-     Adaptative Learning Rates
+    <a class="reference internal" href="../week2/DL_trainNN.html">
+     Let’s train our NN!
     </a>
    </li>
   </ul>
@@ -496,7 +496,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/ethics_exam.html">
+  <a class="reference internal" href="../week3/ethics_outlook.html">
    14. Ethics in ML &amp; Exam
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
@@ -506,38 +506,21 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_exam_1.html">
+    <a class="reference internal" href="../week3/ethics_outlook_1.html">
      The Ethics in ML
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_exam_2.html">
-     Course Exam
+    <a class="reference internal" href="../week3/ethics_outlook_2.html">
+     Machine Learning Today
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/projects_outlook.html">
-   15. Project presentations &amp; Outlook
+ <li class="toctree-l1">
+  <a class="reference internal" href="../week3/projects_exam.html">
+   15. Project presentations &amp; Exam
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/projects_outlook_pres.html">
-     Project Presentations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/projects_outlook_today.html">
-     Open Questions in ML today
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -568,7 +551,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tutorials/t05_anomaly_detection.html">
-   5. Neural Networks by hand
+   5. Anomaly Detection
   </a>
  </li>
 </ul>
@@ -965,13 +948,13 @@ How to tune the algorithm to get a good fit?</p>
 <p>The terms <em>validation</em> and <em>test</em> are sometimes interchangeably used both in industry and in academia, creating some terminological confusion. What is important to keep in mind is that once the iterative back and forth of steps 1 and 2 are giving a most performing model, the hyperparameters of the model are frozen and the last check, step 3, is done on not-yet-seen data with those hyperparameters.</p>
 <p>TL;DR: Never use the final test data for tuning.</p>
 </div>
-<p>Data sets are split randomly, by shuffling the data rows and cutting and taking the table indices corresponding to the relative split between the three sub-collections. But precious information is lost by not training on the entire data samples available. Moreoever, one of the subset could pick more random outliers or noisy features that will deteriorate either the training or validation outcomes. To cope with this, a commonly used technique is to use the training set as validation set and vice versa, then pick the best performing outcome (set of hyperparameters). For instance if the entire data sample is split in terms of train/validate/test as A/B/C/D, with D the final test set, the cross validation would consist of:</p>
+<p>Data sets are split randomly, by shuffling the data rows and cutting and taking the table indices corresponding to the relative split between the three sub-collections. But precious information is lost by not training on the entire data samples available. Moreoever, one of the subset could pick more random outliers or noisy features that will deteriorate either the training or validation outcomes. To cope with this, a commonly used technique is to use the training set as validation set and vice versa, then pick the best performing outcome (set of hyperparameters). For instance if the entire data sample is split in terms of train/validate/test as A/B/C/D, with D the final test set, the cross-validation would consist of:</p>
 <ul class="simple">
 <li><p>training with sets (BC) and validate with set A</p></li>
 <li><p>training with sets (CA) and validate with set B</p></li>
 <li><p>training with sets (AB) and validate with set C</p></li>
 </ul>
-<p>In this example, we have a train/validate split of three sub-sets, we talk of a 3-fold cross-validation. The general name with <span class="math notranslate nohighlight">\(k\)</span> sub-sets is <span class="math notranslate nohighlight">\(k\)</span>-fold cross validation.</p>
+<p>In this example, we have a train/validate split of three sub-sets, we talk of a 3-fold cross-validation. The general name with <span class="math notranslate nohighlight">\(k\)</span> sub-sets is <span class="math notranslate nohighlight">\(k\)</span>-fold cross-validation.</p>
 <div class="proof definition admonition" id="kfoldxvalidation">
 <p class="admonition-title"><span class="caption-number">Definition 27 </span></p>
 <section class="definition-content" id="proof-content">
@@ -1056,8 +1039,8 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p class="admonition-title"><span class="caption-number">Definition 32 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>root mean squared error (RMSE)</strong> is the square root of the mean squared error:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-295beab5-21fc-45a0-9f23-dfc8d7e778ee">
-<span class="eqno">(21)<a class="headerlink" href="#equation-295beab5-21fc-45a0-9f23-dfc8d7e778ee" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-75faa54a-8675-49be-96e7-559253605a82">
+<span class="eqno">(21)<a class="headerlink" href="#equation-75faa54a-8675-49be-96e7-559253605a82" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{RMSE} = \sqrt{ \frac{\sum_{i=1}^N (y^\text{pred} - y^\text{obs} )^2 }{ N } }
 \end{equation}\]</div>
 </section>
@@ -1073,34 +1056,41 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p> <br />
 <strong>Accuracy</strong><br />
 Rate at which the model is able to predict the correct values of both classes.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-21f36a89-8921-4794-b9a6-f5d2825c8732">
-<span class="eqno">(22)<a class="headerlink" href="#equation-21f36a89-8921-4794-b9a6-f5d2825c8732" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-78d74bec-d345-4e3c-906a-d979b11a13eb">
+<span class="eqno">(22)<a class="headerlink" href="#equation-78d74bec-d345-4e3c-906a-d979b11a13eb" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Accuracy} = \frac{\text{True predictions}}{\text{All predictions}} = \frac{\text{TP + TN}}{\text{TP + TN + FP + FN}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Precision, or Positive Predictive Value (PPV)</strong><br />
 Measure of the fraction of true predictions among all <strong>positive predictions</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9499abf7-4cc3-4e93-9af2-94d33f17b64a">
-<span class="eqno">(23)<a class="headerlink" href="#equation-9499abf7-4cc3-4e93-9af2-94d33f17b64a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-601c5767-7af6-46bb-9ed8-616c57b71346">
+<span class="eqno">(23)<a class="headerlink" href="#equation-601c5767-7af6-46bb-9ed8-616c57b71346" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Precision} = \frac{\text{True predictions}}{\text{All Positive Predictions}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Positive}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Recall, or True Positive Rate (TPR)</strong><br />
 Measure of the fraction of true predictions among all <strong>true observations</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5b9e94d6-9da7-40c9-a6eb-5396e4a147c6">
-<span class="eqno">(24)<a class="headerlink" href="#equation-5b9e94d6-9da7-40c9-a6eb-5396e4a147c6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ddf06b4c-f20a-4182-a77a-5aba7322e61b">
+<span class="eqno">(24)<a class="headerlink" href="#equation-ddf06b4c-f20a-4182-a77a-5aba7322e61b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Recall} = \frac{\text{True predictions}}{\text{Actual Positive}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
 \end{equation}\]</div>
 <p> <br />
 <strong>F-Score, or F1</strong><br />
 Describes the balance between Precision and Recall. It is the harmonic mean of the two:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3886592f-0fd9-45ea-b95a-99c7c615c206">
-<span class="eqno">(25)<a class="headerlink" href="#equation-3886592f-0fd9-45ea-b95a-99c7c615c206" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-006aed7a-4b49-47d6-beb4-1aa838226660">
+<span class="eqno">(25)<a class="headerlink" href="#equation-006aed7a-4b49-47d6-beb4-1aa838226660" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{F1} =2 \; \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
 \end{equation}\]</div>
 </section>
 </div><p>The F-Score is a single metric favouring classifiers with similar Precision and Recall. But in some contexts, it is preferrable to favour a model with either high precision and low recall, or vice versa. There is a known trade-off between precision and recall.</p>
-<div class="seealso admonition">
+<p><strong>In case of unbalanced dataset</strong><br />
+In an unbalanced dataset, some classes will appear much more frequently that others. A specific metric called balanced accuracy is used to assess the performance in that case.</p>
+<div class="proof definition admonition" id="balancedaccdef">
+<p class="admonition-title"><span class="caption-number">Definition 34 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Balanced accuracy</strong> is calculated as the average of recall obtained on each class.</p>
+</section>
+</div><div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
 <p>Find different examples of classification in which:</p>
 <ul class="simple">
@@ -1118,32 +1108,32 @@ Describes the balance between Precision and Recall. It is the harmonic mean of t
 <p>We saw the classification is done using the output of the sigmoid function and a decision boundary of <span class="math notranslate nohighlight">\(y=0.5\)</span> (see <a class="reference internal" href="class_algs_sigmoid.html#decBoundDef">Definition 18</a> in section <a class="reference internal" href="class_algs_sigmoid.html#class-sigmoid"><span class="std std-ref">What is the Sigmoid Function?</span></a>). Sometimes the classifier’s output is also called <em>score</em>, aka an estimation of probability, and the decision boundary can be also referred to <em>decision threshold</em>. It’s a cut value above which a data sample is predicted as a signal event (<span class="math notranslate nohighlight">\(y=1\)</span>) and below which it is classified as background (<span class="math notranslate nohighlight">\(y=1\)</span>). We chose <span class="math notranslate nohighlight">\(y^\text{thres.}=0.5\)</span> to cut our sigmoid half way through its output range, but for building a ROC curve, we will vary this decision threshold.</p>
 <p>Now let’s recall (pun intended) the True Positive Rate that was defined above in <a class="reference internal" href="#errormetricsclassdef">Definition 33</a>, but let’s write it again for convenience and add other metrics:</p>
 <div class="proof definition admonition" id="tprfprdef">
-<p class="admonition-title"><span class="caption-number">Definition 34 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 35 </span></p>
 <section class="definition-content" id="proof-content">
 <p> <br />
 <strong>True Positive Rate (TPR)</strong>, also called <em>sensitivity</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-f6113e31-137c-4ecb-bd2a-3d232954dfe0">
-<span class="eqno">(26)<a class="headerlink" href="#equation-f6113e31-137c-4ecb-bd2a-3d232954dfe0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-10783419-9adc-4a0e-aefe-590d87e8ebe2">
+<span class="eqno">(26)<a class="headerlink" href="#equation-10783419-9adc-4a0e-aefe-590d87e8ebe2" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TPR} = \frac{\text{True predictions}}{\text{Actual Positive}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
 \end{equation}\]</div>
 <p> <br />
 <strong>True Negative Rate (TNR)</strong>, also called <em>specificity</em></p>
 <p>Ratio of negative instances correctly classified as negative.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-880a4d37-c569-49fa-b88a-615c6bd66d82">
-<span class="eqno">(27)<a class="headerlink" href="#equation-880a4d37-c569-49fa-b88a-615c6bd66d82" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d22e31e5-456c-452f-9c72-2b691227b76b">
+<span class="eqno">(27)<a class="headerlink" href="#equation-d22e31e5-456c-452f-9c72-2b691227b76b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TNR} = \frac{\text{False predictions}}{\text{Actual Negative}} = \frac{\text{True Negative}}{\text{True Negative} + \text{False Positive}}
 \end{equation}\]</div>
 <p> <br />
 <strong>False Positive Rate (FPR)</strong></p>
 <p>Ratio of negative instances that are incorrectly classified as positive.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9d9a8792-9729-4aec-9417-b8bc7c55796d">
-<span class="eqno">(28)<a class="headerlink" href="#equation-9d9a8792-9729-4aec-9417-b8bc7c55796d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-07913557-08e6-44a3-8968-719ae0fd6f2d">
+<span class="eqno">(28)<a class="headerlink" href="#equation-07913557-08e6-44a3-8968-719ae0fd6f2d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = \frac{\text{Real False predicted Positive}}{\text{Actual Negative}} = \frac{\text{False Positive}}{\text{True Negative} + \text{False Positive}}
 \end{equation}\]</div>
 <p> <br />
 The False Positive Rate (FPR) is equal to:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4beead8f-2aa0-48e5-8fcf-6acbc8549fdb">
-<span class="eqno">(29)<a class="headerlink" href="#equation-4beead8f-2aa0-48e5-8fcf-6acbc8549fdb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c86b05a5-733a-4fc6-bad1-03561ffda582">
+<span class="eqno">(29)<a class="headerlink" href="#equation-c86b05a5-733a-4fc6-bad1-03561ffda582" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = 1 - \text{TNR} = 1 - \textit{specificity}
 \end{equation}\]</div>
 </section>
@@ -1153,7 +1143,7 @@ The False Positive Rate (FPR) is equal to:</p>
 <section id="building-the-roc-curve">
 <h3>Building the ROC curve<a class="headerlink" href="#building-the-roc-curve" title="Permalink to this headline">#</a></h3>
 <div class="proof definition admonition" id="rocdef">
-<p class="admonition-title"><span class="caption-number">Definition 35 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 36 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>Receiver Operating Characteristic (ROC) curve</strong> is a graphical display that plot the True Positive Rate (TPR) against the False Positive Rate (FPR) for each value of the decision threshold <span class="math notranslate nohighlight">\(T\)</span> going over the classifier’s output score range.</p>
 </section>
@@ -1197,7 +1187,7 @@ The True Positive Rate or signal efficiency is the integral of the signal (red) 
 </figure>
 <p>We can see from the picture that the more the curve approaches the ideal classifier, the better it is. We can use the area under the ROC curve to have a single number to then quantitatively compare classifier on the whole.</p>
 <div class="proof definition admonition" id="aucdef">
-<p class="admonition-title"><span class="caption-number">Definition 36 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 37 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>Area Under Curve (AUC)</strong> is the integral of the ROC curve, from FPR = 0 to FPR = 1.</p>
 <p>A perfect classifier will have AUC = 1.</p>
@@ -1225,14 +1215,14 @@ The True Positive Rate or signal efficiency is the integral of the signal (red) 
 </figure>
 <p>Increasing the model complexity will reduce the bias but increase the variance. Reversely, simplifying a model to mitigate the variance comes at a risk of a higher bias. In the end, the lowest total error is a trade-off between bias and variance.</p>
 <div class="proof definition admonition" id="biasdef">
-<p class="admonition-title"><span class="caption-number">Definition 37 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 38 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>bias</strong> is an error coming from wrong assumptions on the model.</p>
 <p>A highly biased model will most likely underfit the data.</p>
 </section>
 </div><p>The bias implies not grasping the full complexity of the situation (think of a biased person making an irrelevant or indecent remark in a conversation).</p>
 <div class="proof definition admonition" id="variancedef">
-<p class="admonition-title"><span class="caption-number">Definition 38 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 39 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>variance</strong> is an error stemming from the model’s unreasonable sensitivity to fluctuations from the training data set.</p>
 <p>A model with high variance is likely to overfit the data.</p>

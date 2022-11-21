@@ -26,12 +26,12 @@ The terms _validation_ and _test_ are sometimes interchangeably used both in ind
 TL;DR: Never use the final test data for tuning.
 ```
 
-Data sets are split randomly, by shuffling the data rows and cutting and taking the table indices corresponding to the relative split between the three sub-collections. But precious information is lost by not training on the entire data samples available. Moreoever, one of the subset could pick more random outliers or noisy features that will deteriorate either the training or validation outcomes. To cope with this, a commonly used technique is to use the training set as validation set and vice versa, then pick the best performing outcome (set of hyperparameters). For instance if the entire data sample is split in terms of train/validate/test as A/B/C/D, with D the final test set, the cross validation would consist of:
+Data sets are split randomly, by shuffling the data rows and cutting and taking the table indices corresponding to the relative split between the three sub-collections. But precious information is lost by not training on the entire data samples available. Moreoever, one of the subset could pick more random outliers or noisy features that will deteriorate either the training or validation outcomes. To cope with this, a commonly used technique is to use the training set as validation set and vice versa, then pick the best performing outcome (set of hyperparameters). For instance if the entire data sample is split in terms of train/validate/test as A/B/C/D, with D the final test set, the cross-validation would consist of:
 * training with sets (BC) and validate with set A
 * training with sets (CA) and validate with set B
 * training with sets (AB) and validate with set C
 
-In this example, we have a train/validate split of three sub-sets, we talk of a 3-fold cross-validation. The general name with $k$ sub-sets is $k$-fold cross validation.
+In this example, we have a train/validate split of three sub-sets, we talk of a 3-fold cross-validation. The general name with $k$ sub-sets is $k$-fold cross-validation.
 
 ````{prf:definition}
 :label: kfoldxvalidation
@@ -172,6 +172,13 @@ Describes the balance between Precision and Recall. It is the harmonic mean of t
 ````
 
 The F-Score is a single metric favouring classifiers with similar Precision and Recall. But in some contexts, it is preferrable to favour a model with either high precision and low recall, or vice versa. There is a known trade-off between precision and recall. 
+
+__In case of unbalanced dataset__  
+In an unbalanced dataset, some classes will appear much more frequently that others. A specific metric called balanced accuracy is used to assess the performance in that case. 
+````{prf:definition}
+:label: balancedaccdef
+__Balanced accuracy__ is calculated as the average of recall obtained on each class.
+````
 
 ```{admonition} Exercise
 :class: seealso

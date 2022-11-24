@@ -3,7 +3,7 @@
 Time to gather all the notions covered in this lecture and learn how to build a deep learning model.
 
 ## Steps in Building your NN
-Designing a machine learning algorithm has a particular workflow, usually called life-cycle (but workflow would be more accurate here). 
+Designing a machine learning algorithm has a particular workflow. 
 
 The usual steps are:
 
@@ -22,7 +22,7 @@ But the most important step is missing. It's the very first one:
 
 ### 0. Frame the problem
 
-__The Big Picture__  
+__The big picture__  
 Before even starting to code anything, it is crucial to get a big picture on the challenge and ask oneself: what is the objective? What exactly do I want to predict?  
 
 __What is before and after__  
@@ -31,12 +31,23 @@ Framing implies to think of what comes before and after the optimization procedu
 __How would solution(s) look like__  
 The next investigation is on the solution(s). Perhaps previous attempts in the past have been done to solve the problem. Or solutions exist but they are not reaching the desired precision. In this case it is always a good idea to collect and read some papers to get the achieved ballparks regarding accuracy, sensitivity, specificity. If solutions are inexistant, it is still possible to think of the consequences of the possible solution(s). Will it bring novelty into the field?
 
-__How to evaluate the performance__  
-The next step is to think of the proper metrics to evaluate your future solution. This is a hard step, yet crucial to ... 
-
 __Which type of ML is it__  
-Anticipating Step 3, 
-Then the model (anticipating Step 3). What type of Machine Learning it is? Is it regression or classification? 
+Anticipating Step 3, the framing of the problem requires identifying the type of machine learning: is it a regression task, a classification task, or something else? 
+
+__How to evaluate the performance__  
+The next step is to think of the proper metrics to evaluate your future solution. A bad metric will inevitably lead to a bad performance assessment; or at least not optimal. Ask yourself among the errors types I and II what is more problematic: is it missing a (possibly rare) signal point? Is it picking a sample that should be actually not picked (signal contamination)? Should you worry about outliers in the data?
+
+__Checking assumptions__  
+Finally, it is a good practice to review assumptions. Are all input features correctly presented? If some are binary or categorical, wouldn't it be relevant to investigate their classification scheme, to possibly convert in continuous probability? As a researcher, you can raise some flags regarding the task at hand if you have logical arguments to do so. Perhaps the problem is unclear or ill-defined; better to catch these issues as early as possible.
+
+Once these questions have been 
+
+
+### 1. Get the Data
+Dataset formats are plentiful and at times field-related. In experimental particle physics for instance, the common format is `.root`. In this lecture, we will deal with `.csv` textfiles. 
+
+A DataFrame, from the Pandas python package, is a very well-suited data structure to do machine learning, as   
+
 
 ### 1. Visualize the Data
 Before even starting to prepare the data for machine learning purposes, it is recommended to see how the data look like.  
@@ -73,10 +84,11 @@ This will work on Jupyter-Notebook but in a regular python script, you may need 
 ```python
 df.iloc[ [0, 5000, 9000] , : ]
 ```
-This would show you three instanced at the start, middle and end of the dataset.
+This will show you three instances, one at the start, one roughly in the middle and the other one at the end of the dataset.
 
 It is also good to check how balanced your dataset is in terms of signal vs background samples. 
-```
+```python
+
 
 ```
 
@@ -112,3 +124,13 @@ The two more powerful and popular open-source machine learning frameworks are Ke
 
 
 Automatic differentiation -> AutoGrad
+
+
+
+
+```{admonition} Learn More
+:class: seealso
+
+Tensorflow, PyTorch or Keras for Deep Learning on [dominodatalab.com](https://www.dominodatalab.com/blog/tensorflow-pytorch-or-keras-for-deep-learning)
+
+```

@@ -2,6 +2,42 @@
 
 Time to gather all the notions covered in this lecture and learn how to build a deep learning model.
 
+## ML Frameworks
+
+One could code a deep neural network from scratch in python, declaring all the functions, classes etc... That would be very tedious and likely not computationally optimized for speed. Most importantly: it's been already done. There are indeed dedicated libraries for designing and developing neural networks and deep learning technology. 
+
+The most powerful and popular open-source machine learning frameworks are Keras, PyTorch and TensorFlow. They are used by both researchers and developers because they provide fast and flexible implementation. Here is a very short comparison; more links are listed at the bottom of this page for further reading.
+
+### Keras
+Keras is a high-level neural network Application Programming Interface (API) developed by Google engineer François Chollet. 
+Keras is easily readable and concise, renown for its user-friendliness and modularity. It is slower in comparison with PyTorch, thus more suited for small datasets. As it is a high-level API, it runs on top of a 'backend', which handles the low-level computations. In 2017 Keras was adopted and integrated into TensorFlow via the `tf.keras` module (it is still possible to use Keras standalone).
+
+### PyTorch
+Pytorch is developed and maintained by Facebook. It is built to use the power of GPUs for faster training and is deeply integrated into python, making it easy to get started. While being less readable than Keras because it exposes programmers to low-level operations, it offers more debugging capabilities than Keras, as well as an enhanced experimence for mathematically inclined users willing to dig deep in the framework of deep learning. Most importantly, PyTorch is developed for optimal performance thanks to its most fundamental concept: the PyTorch Tensor. 
+````{margin}
+```{warning}
+The term Tensor in PyTorch is not the algebraic tensor used in mathematics or physics.
+```
+````
+A PyTorch Tensor is a data structure, conceptually identical to a NumPy array. On top of many functions operating on these n-dimensional arrays, the PyTorch tensors are designed to take advantage of parallel computation capabilities of a GPU. 
+
+The other strong feature of PyTorch is its AutoGrad module performing automatic differentiation for building and training neural networks. When using autograd, the forward pass of your network will define a computational graph; nodes in the graph will be Tensors, and edges will be functions that produce output Tensors from input Tensors. Backpropagating through this graph then allows you to easily compute gradients. 
+
+While AutoGrad is powerful, it is a bit too low-level for building large and complex networks. The higher end `nn` package can define Modules, equivalent to neural network layers. It also has predefined loss functions 
+
+
+
+### TensorFlow
+Born in GoogleBrain as an internal project at first, TensorFlow is a very popular deep learning frameworks. The APIs offered by TensorFlow can be both low and high level. Computations are expressed as dataflow graphs, picturing how the tensor “flows” through the layers of a neural net.
+It supports various programming languages besides python (JavaSCript, C++, Java) and can run on CPUs, GPUs as well as Tensor Processing Units (TPUs), which are AI accelerator application-specific integrated circuits (ASIC) developed by Google. 
+
+TensorFlow offers excellent [visualization tools](https://www.tensorflow.org/resources/tools). In particular, the [PlayGround](https://playground.tensorflow.org) is a brilliant interface to gain intuition in deep learning by changing graphically the neural network architecture and properties. 
+
+```{note}
+In this course, tutorials will be done using the PyTorch framework.
+```
+
+
 ## Steps in Building your NN
 Designing a machine learning algorithm has a particular workflow. 
 
@@ -10,7 +46,7 @@ The usual steps are:
 1. Get the Data
 1. Visualize the Data
 1. Prepare the Data
-1. Choose the Model
+1. Define the Model
 1. Train the Model
 1. Tune the Model
 1. Evaluate the Model
@@ -20,19 +56,19 @@ These steps may be coinced in a different way in industry, with e.g. the last on
 
 But the most important step is missing. It's the very first one:
 
-### 0. Frame the problem
+### Step 0. Frame the problem
 
 __The big picture__  
 Before even starting to code anything, it is crucial to get a big picture on the challenge and ask oneself: what is the objective? What exactly do I want to predict?  
 
 __What is before and after__  
-Framing implies to think of what comes before and after the optimization procedure. The learning algorithm to build is likely to insert itself into an analysis or quantitative study. Documenting oneself on what is done before, likely the data taking procedure, is important to gather... more data on the data. Can the dataset be trusted, partially or entirely? Same regarding what comes after the predictions. Are these predictions final? Or rather, are the outputs become the inputs to another study? Thinking of the inputs and outputs can provide already a good guidance on how you may solve the problem. It could even drastically change the way you may proceed. In a data analysis involving a BDT (Boosted Decision Trees), it was found that an increase in performance of some percent would be absorbed at the next stage of the analysis during the test statistics, where different portions of the data had large uncertainties associated with them.  
+Framing implies to think of what comes before and after the optimization procedure. The learning algorithm to build is likely to insert itself into an analysis or quantitative study. Documenting oneself on what is done before, likely the data taking procedure, is important to gather... more data on the data. Can the dataset be trusted, partially or entirely? Same regarding what comes after the predictions. Are these predictions final? Or rather, are the outputs become the inputs to another study? Thinking of the inputs and outputs can provide already a good guidance on how you may solve the problem. It could even drastically change the way you may proceed. In a data analysis in experimental particle physics involving a BDT (Boosted Decision Trees), it was found that an increase in performance of some percent would be completely absorbed at the next stage of the analysis, the test statistics, due to very large uncertainties associated with them. Knowing this allows for redefining goals and focus efforts on where significant gain could be made.
 
 __How would solution(s) look like__  
-The next investigation is on the solution(s). Perhaps previous attempts in the past have been done to solve the problem. Or solutions exist but they are not reaching the desired precision. In this case it is always a good idea to collect and read some papers to get the achieved ballparks regarding accuracy, sensitivity, specificity. If solutions are inexistant, it is still possible to think of the consequences of the possible solution(s). Will it bring novelty into the field?
+The next investigation is on the solution(s). Perhaps previous attempts in the past have been done to solve the problem. Or solutions exist but they are not reaching the desired precision. In this case it is always a good idea to collect and read some papers to get the achieved ballparks regarding accuracy, sensitivity, specificity. If solutions are inexistant, it is still possible to think of the consequences of the possible solution(s). Will it bring novelty into the field? Will it help solve similar problems?
 
 __Which type of ML is it__  
-Anticipating Step 3, the framing of the problem requires identifying the type of machine learning: is it a regression task, a classification task, or something else? 
+Anticipating Step 3, the framing of the problem requires identifying the type of machine learning: is it a regression task, a classification task, or something else? In case of a multi-class classification task, are the categories well-defined and entirely partitioning the target space?
 
 __How to evaluate the performance__  
 The next step is to think of the proper metrics to evaluate your future solution. A bad metric will inevitably lead to a bad performance assessment; or at least not optimal. Ask yourself among the errors types I and II what is more problematic: is it missing a (possibly rare) signal point? Is it picking a sample that should be actually not picked (signal contamination)? Should you worry about outliers in the data?
@@ -40,86 +76,203 @@ The next step is to think of the proper metrics to evaluate your future solution
 __Checking assumptions__  
 Finally, it is a good practice to review assumptions. Are all input features correctly presented? If some are binary or categorical, wouldn't it be relevant to investigate their classification scheme, to possibly convert in continuous probability? As a researcher, you can raise some flags regarding the task at hand if you have logical arguments to do so. Perhaps the problem is unclear or ill-defined; better to catch these issues as early as possible.
 
-Once these questions have been 
+Once these questions have been thought of, it is time to start cooking with the data!
 
-
-### 1. Get the Data
+### Step 1. Get the Data
 Dataset formats are plentiful and at times field-related. In experimental particle physics for instance, the common format is `.root`. In this lecture, we will deal with `.csv` textfiles. 
 
-A DataFrame, from the Pandas python package, is a very well-suited data structure to do machine learning, as   
+The majority of machine learning programs are using DataFrames, a pythonic data structure from the Pandas python package.
+```python
+df = pd.read_csv('the_dataset_file.csv') 
+```
+The variable name can be `data` but it is often called `df` like DataFrame. 
 
+A DataFrame organizes data into a 2-dimensional table of rows and columns, like a spreadsheet. It is very visual and intuitive, hence its adoption by the majority of data scientists.
 
-### 1. Visualize the Data
+There are other data handlers, e.g. in PyTorch the `Dataset` and `DataLoader` classes, that are specific to the machine learning framework and used to efficiently train a model. We will cover some of it during the tutorials.
+
+### Step 2. Visualize the Data
 Before even starting to prepare the data for machine learning purposes, it is recommended to see how the data look like.  
 
-The data can be big, so it is cautious to first know the number of columns (features) and rows (data instances). 
+As the dataset can be big, so it is cautious to first know the number of columns (features) and rows (data instances). 
 
 ```python
 # Counting the number of rows
 nb_rows = len(df.index)
-# Or:
+
+# Another way:
 nb_rows = df.shape[0]
 
-# Columns
+# Counting the number of columns
 nb_cols = len(df.columns)
-# Or
+
+# Another way:
 nb_cols = df.shape[1]
 
 # To list the columns:
 print(df.columns)
-
 ```
 
 Or more directly:
 ```python
 df.info()
 ```
-which will show the types for each column and also the memory usage.
+which will show the memory usage, number of rows, a list the columns with the associated data type.
 
 Dataframes in Jupyter-Notebook neatly display as a human readable table with the columns highlighted and rows indexed. As the dataset can be big, you can print only the 5 first rows:
 ```python
 df.head(5)
 ```
-This will work on Jupyter-Notebook but in a regular python script, you may need to insert it into a print statement such as `print(df.head(5)`. If the data is sorted, you may not have a correct glimpse of values. For instance if the signal is first, the target column $y$ would display -1 (names $y$ and the value of 1 can also change, you will have to check that). Once you check the number of instances, you can display several rows picked randomly. If you have 10,000 instances, you can explore:
+This will work on Jupyter-Notebook but in a regular python script, you may need to insert it into a print statement such as `print(df.head(5))`. If the data is sorted, you may not have a correct glimpse of values. For instance if the signal samples are first, the target column $y$ would display the signal labels. Once you know the number of instances, you can display several rows picked randomly. If you have 10,000 instances, you can explore:
 ```python
 df.iloc[ [0, 5000, 9000] , : ]
 ```
-This will show you three instances, one at the start, one roughly in the middle and the other one at the end of the dataset.
+This will show you three instances, one at the start, one around the middle and one toward the end of the dataset.
 
-It is also good to check how balanced your dataset is in terms of signal vs background samples. 
+It is also good to check how balanced your dataset is in terms of signal vs background samples. If the DataFrame containing the training dataset is `train_data` and the labels are stored in the column `target` with values 1 for signal and 0 for background, then one can see their relative quantities:
 ```python
-
-
+sig = train_data[train_data[target] > 0.5]
+bkg = train_data[train_data[target] < 0.5]
+print(f'Number of signal samples = {len(sig.index)}')
+print(f'Number of background samples = {len(bkg.index)}')
 ```
 
-Balanced dataset ? 
-Matplotlib
-seaborn 
+Of course the best way to visualize the dataset is to make some plots. There are several ways to do this. 
+
+The DataFrame provides the `plot()` method with the `kind` argument to choose the type of plot. What is relevant for exploring a dataset would be the `kind='hist'` or `kind='scatter'` plots.  
+
+Making histograms is straightforward: 
+
+```python
+df[['feature_1', 'feature_2']].plot(kind='hist')
+
+```
+It's also good to tweak the number of bins, starting with 200 will ensure you get the shape of the distributions. The transparency `alpha` is useful if your plotted distributions overlay with each other. You can use the `y` argument to specify the columns:
+```python
+df.plot(y=['feature_1', 'feature_2'], kind='hist', bins=200, alpha=0.6)
+```
+
+The KDE is worth mentioning. It will convert the distributions as a probability density function.
+```python
+df.plot(kind='kde')
+```
+It can be slow so better to select first some input features with `y=['feature_1', 'feature_2']`. 
+
+To see the relationship between two variables, the scatter plot is the way to go. Caution, the color argument should be provided:
+```python
+df.plot(x='feature_1', y='feature_2', kind='scatter', color='blue', size=1, alpha=0.1)
+```
+
+```{figure} ../images/lec08_4_scatter_alpha.png
+---
+  name: lec08_4_scatter_alpha
+  width: 100%
+---
+ . A scatter plot with full opacity (left) and `alpha=0.1` (right). The transparency brings out the areas of high data density.  
+<sub>Images: Aurélien Géron, _Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, Second Edition_</sub>
+```
+
+The small size and low opacity (full transparency is for `alpha=0`) are good to see the zones of highest density of the data. However it does not tell you which points are signal and which are background samples. Yet the DataFrame `plot()` is a quick way to examine your data samples. 
+
+For more specific plots relevant to your optimization goals, you may have to write your own plotting macro. The reigning library for plotting in python is Matplotlib. We have started to use it during the tutorial and will continue for neural network building, training and evaluation. More will be cover during the tutorials.
+
+Another library that is extremely convenient to get a quick glimpse at the data is `seaborn`. In very few lines of code, the library display very esthetically pleasing plots. Let's see how it looks with Scikit-Learn's own penguin dataset:
+
+```python
+import seaborn as sns
+sns.set_theme() # apply the default theme
+
+penguins = sns.load_dataset("penguins")
+sns.jointplot(data=penguins, x="flipper_length_mm", y="bill_length_mm", hue="species")
+```
+The `hue` argument will produce as many series (seaborn will colour them automatically) specified. 
+
+```{figure} ../images/lec08_4_pen_jointplot.png
+---
+  name: lec08_4_pen_jointplot
+  width: 70%
+---
+ . The `jointplot()` method in Seaborn.  
+ <sub>Source: [seaborn.pydata.org](https://seaborn.pydata.org/tutorial/introduction#multivariate-views-on-complex-datasets)</sub>
+```
+
+Another method to explore some input featuresis the `pairplot()`, which will draw what is called a "scatter matrix":
+``` python
+sns.pairplot(data=penguins, hue="species")
+```
+It looks magnificent:
+
+```{figure} ../images/lec08_4_pen_pairplot.png
+---
+  name: lec08_4_pen_pairplot
+  width: 100%
+---
+ . The `pairplot()` method in Seaborn.  
+ <sub>Source: [seaborn.pydata.org](https://seaborn.pydata.org/tutorial/introduction#multivariate-views-on-complex-datasets)</sub>
+```
+
+If you have lots of input features, you will have to select some so as to not overload the figure. Don't forget the column storing the targets! 
+```python
+sns.pairplot(data=penguins.loc[:, ['flipper_length_mm','bill_length_mm', 'species']], hue="species")
+```
+
+### Step 3. Prepare the Data
+
+__Data Cleaning__  
+````{prf:definition}
+:label: datacleaning
+Data cleaning, also called data cleansing or data scrubbing, is the process of removing incorrect, duplicate, corrupted or incomplete data within a dataset.
+````
+
+The visualization step before would have helped you identify possible outliers (data points with values significantly away from the rest of the data). Should they be removed? Caution! It all depends on your situation. We will see in later lectures that outliers could actually be the signal (in anomaly detection for instance). The removal of outlier should be done after gathering sufficient strong arguments about their incorrectness.  
+The data cleaning includes a check for duplicates, wrong or incoherent formatting, e.g. if a label is present with different spelling for instance). And also missing data. If there is a `NaN` (not a number) in a particular row and column, a decision should be made as most of algorithms will generate an error. A possibility is to drop the entire row, but there will be information lost on the other input features. Another way would consist of replacing the `NaN` with a safe value after inspecting the associated input feature.  
+
+__Data Splitting__
+As seen in Lecture 3, the data is split in three sets: training, validation and test. It can be coded manually with a cut on row indices, but one should make sure the entire dataset is shuffled before to get relatively equal representation of each class in each set. Scikit-Learn has a convenient tool to split data between a training and a testing set: the `train_test_split` function. To make sure the same test set is generated once the program is run again, the `random_state` argument ensures reproducibility:
+```python
+import pands as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+
+# Not shown: X and y contains input features and targets respectively
+
+train_set, test_set = train_test_split(X, y, test_size=0.2, random_state=42)
+```
+
+__Feature Scaling__  
+As seen in Lecture 2, it is recommended to scale features to prevent the gradient descent from zig-zaging along slopes differing drastically depending on the direction. This can be done manually (always a good training). Scikit-Learn has methods such as `MinMaxScaler` and `StandardScaler`.
+
+```{admonition} Exercise
+:class: seealso
+On which dataset(s) the feature scaling should be applied?
+```
+
+### Step 4. Define the Model
 
 
-### 2. Prepare the Data
 
-### 3. Choose the Model
-
-### 4. Train the Model
-
-### 5. Tune the Model
-
-### 6. Evaluate the Model
+### Step 5. Train the Model
 
 
 
+### Step 6. Tune the Model
 
 
 
-## What is PyTorch?
-One can code a big neural network from scratch in python, declaring all the functions, classes etc... That would be very tedious and likely not computationally optimized for speed. Most importantly: it's been already done. There are indeed dedicated libraries for designing and developing neural networks and deep learning technology. 
+### Step 7. Evaluate the Model
 
-### ML frameworks
-The two more powerful and popular open-source machine learning frameworks are Keras and PyTorch. They are used by both researchers and developers because they provide fast and flexible implementation. While Keras is more readable and concise with its simple architecture, it is slower in comparison with PyTorch, thus more suited for small datasets. Pytorch is developed and maintained by Facebook. It is built to use the power of GPUs for faster training and is deeply integrated into python, making it easy to get started.
 
-### Tensors
 
+### Step 8. Make Predictions
+
+
+
+
+
+
+
+## Practice Practice Practice
+... 
 
 
 
@@ -131,6 +284,18 @@ Automatic differentiation -> AutoGrad
 ```{admonition} Learn More
 :class: seealso
 
+__Visualization__  
+[Introduction to Seaborn](https://seaborn.pydata.org/tutorial/introduction) 
+
+__ML Framework Comparison__  
 Tensorflow, PyTorch or Keras for Deep Learning on [dominodatalab.com](https://www.dominodatalab.com/blog/tensorflow-pytorch-or-keras-for-deep-learning)
+
+__PyTorch__  
+[Introduction to PyTorch Tensors](https://pytorch.org/tutorials/beginner/introyt/tensors_deeper_tutorial.html)
+
+__TensorFlow__  
+[Official Website](https://www.tensorflow.org/)
+
+[The Playground!](https://playground.tensorflow.org)
 
 ```

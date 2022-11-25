@@ -73,7 +73,7 @@ In a neural network, __fan-in__ refers to the number of incoming network connect
 The __fan-out__ is the number of outgoing connections, i.e. the number of neurons of the layer.
 
 ````
-
+(NN2_init:Xavier)=
 ### Xavier Weight Initialization
 In their 2010 paper, the authors Glorot and Bengio showed that the signal needs to flow properly while making predictions (forward propagation) as well as in the reverse direction while backpropaging the gradients. What is meant by 'flowing properly is to have a constraint on the variance:
 

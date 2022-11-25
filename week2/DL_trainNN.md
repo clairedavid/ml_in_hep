@@ -21,9 +21,9 @@ The term Tensor in PyTorch is not the algebraic tensor used in mathematics or ph
 ````
 A PyTorch Tensor is a data structure that is conceptually identical to a NumPy array. Yet, on top of many functions operating on these n-dimensional arrays, the PyTorch tensors are designed to take advantage of parallel computation capabilities of a GPU. 
 
-The other strong feature of PyTorch is its AutoGrad module performing automatic differentiation for building and training neural networks. When using AutoGrad, the forward pass of your network will define a computational graph; nodes in the graph will be Tensors, and edges will be functions that produce output Tensors from input Tensors. Backpropagating through this graph then allows you to easily compute gradients. In other words, the logic of a neural net architecture are defined by a graph whose components can be added dynamically.
+The other strong feature of PyTorch is its powerful paradigm of computational graphs encompassed in its AutoGrad module. AutoGrad performs automatic differentiation for building and training neural networks. When using AutoGrad, the forward pass of your network will define a computational graph; nodes in the graph will be Tensors, and edges will be functions that produce output Tensors from input Tensors. Backpropagating through this graph then allows you to easily compute gradients. In other words, the logic of a neural net architecture are defined by a graph whose components can be added dynamically.
 
-While AutoGrad is powerful, it is a bit too low-level for building large and complex networks. The higher end `nn` package can define Modules, equivalent to neural network layers, with also predefined ready-to-use loss functions. 
+While AutoGrad is powerful, it is a bit too low-level for building large and complex networks. The higher end `nn` package can define Modules, equivalent to neural network layers, with also predefined ready-to-use loss functions. We will see some of it in the Section {ref}`DL_trainNN:stepDefine`.
 
 ### TensorFlow
 Born in GoogleBrain as an internal project at first, TensorFlow is a very popular deep learning frameworks. The APIs offered by TensorFlow can be both low and high level. Computations are expressed as dataflow graphs, picturing how the tensor “flows” through the layers of a neural net.
@@ -87,7 +87,7 @@ The variable name can be `data` but it is often called `df` like DataFrame.
 
 A DataFrame organizes data into a 2-dimensional table of rows and columns, like a spreadsheet. It is very visual and intuitive, hence its adoption by the majority of data scientists.
 
-There are other data handlers, e.g. in PyTorch the `Dataset` and `DataLoader` classes, that are specific to the machine learning framework and used to efficiently train a model. We will cover some of it during the tutorials.
+There are other data handlers, e.g. in PyTorch the `Dataset` and `DataLoader` classes, that are specific to the machine learning framework and used to efficiently train a model. A tutorial link is available at the end of this page.
 
 ### Step 2. Visualize the Data
 Before even starting to prepare the data for machine learning purposes, it is recommended to see how the data look like.  
@@ -227,7 +227,7 @@ __Data cleaning__, also called data cleansing or data scrubbing, is the process 
 The visualization step before would have helped you identify possible outliers (data points with values significantly away from the rest of the data). Should they be removed? Caution! It all depends on your situation. We will see in later lectures that outliers could actually be the signal (in anomaly detection for instance). The removal of outlier should be done after gathering sufficient strong arguments about their incorrectness.  
 The data cleaning includes a check for duplicates, wrong or incoherent formatting, e.g. if a label is present with different spelling for instance). And also missing data. If there is a `NaN` (not a number) in a particular row and column, a decision should be made as most of algorithms will generate an error. A possibility is to drop the entire row, but there will be information lost on the other input features. Another way would consist of replacing the `NaN` with a safe value after inspecting the associated input feature.  
 
-__Data Splitting__
+__Splitting the Datasets__  
 As seen in Lecture 3, the data is split in three sets: training, validation and test. It can be coded manually with a cut on row indices, but one should make sure the entire dataset is shuffled before to get relatively equal representation of each class in each set. Scikit-Learn has a convenient tool to split data between a training and a testing set: the `train_test_split` function. To make sure the same test set is generated once the program is run again, the `random_state` argument ensures reproducibility:
 ```python
 import pands as pd
@@ -247,24 +247,158 @@ As seen in Lecture 2, it is recommended to scale features to prevent the gradien
 On which dataset(s) the feature scaling should be applied?
 ```
 
+(DL_trainNN:stepDefine)=
 ### Step 4. Define the Model
+Here is the fun part of building the neural network, layers by layers (like a layered dessert).
 
+In the model definition, there will be constraints in the input and output layers imposed by the given problem to solve:
+* the first layer should have as many nodes as input features
+* the output layer should have as many nodes as the number of expected predictions
+
+
+For a regression problem, the output layer is one node dotted with a linear activation unit.  
+For binary classification, the output layer also has one node, but the activation function is the sigmoid.
+For multi-class classification problems: the output configuration of the final layer has one node for each class, using the softmax activation function. 
+
+__Example in Keras__  
+This is real code! "DL1" is a Deep Learning algorithm developed in for the ATLAS Experiment at CERN Large Hadron Collider. Elementary particles called quarks are never seen directly in the detector, they produce a spray called a 'jet.'  The jet-tagging is an algorithm determining, from a jet input features, which quark type produced it: either the bottom ($b$), charm ($c$) or lighter quarks ($s$, $u$, $d$).
+
+The model is a deep network defined this way:
+
+```python
+from keras.layers import BatchNormalization
+from keras.layers import Dense, Activation, Input, add
+from keras.models import Model
+
+# Input layer
+inputs = Input(shape=(X_train.shape[1],))   # 
+
+# Hidden layers
+l_units = [72, 57, 60, 48, 36, 24, 12, 6]   # nunber of nodes in each hidden layer
+x = inputs
+# loop to initialise the hidden layers
+for unit in l_units:
+    x = Dense(units=unit, activation="linear", kernel_initializer='glorot_uniform')(x)
+    x = BatchNormalization()(x)
+    x = Activation('relu')(x)
+
+# Output layer
+# Using softmax which will return a probability for each jet to be either light, c- or b-jet
+predictions = Dense(units=3, 
+                    activation='softmax',
+                    kernel_initializer='glorot_uniform')(x)
+
+model = Model(inputs=inputs, outputs=predictions)
+model.summary()
+```
+<sub>Credit: Manuel Guth</sub>
+The input layer contains the feature (recall that `.shape[1]` returns the number of columns, i.e. features). The `l_units` list was obtained by trials and errors. 'Dense' for the hidden layers means the regular deeply connected neural network layer. Their non-linear activation function is ReLU. The output layer contains 3 nodes as there are 3 classes: $b$-jets, $c$-jets and light-jets. The weight initialization is done via the Glorot-Uniform, as we saw in the Section {ref}`NN2_init:Xavier`. 
+
+__Example in PyTorch__  
+PyTorch is less intuitive than Keras but working at a lower level (that is to say the user has to do more coding, e.g. wrapping the methods into a loop, etc). Yet it is beneficial in terms of learning experience, as well of flexibility once the model is more complex.
+
+Let's see how to define a fully-connected model in PyTorch. For this we create an instance of the PyTorch base class `torch.nn.Module`. The `__init__()` method defines the layers and other components of a model, and the `forward()` method where the computation gets done. 
+
+Note: only the first, fourth and last hidden layers of the code above are written for conciseness.
+
+```python
+import torch
+
+class my_model(torch.nn.Module):
+
+    def __init__(self, n_inputs, n_outputs):
+
+        super(my_model, self).__init__()
+        
+        # Hidden layers:
+        self.hidden1 = torch.nn.Linear(n_inputs, 72)
+        self.activ1  = torch.nn.ReLU()
+        self.hidden2 = torch.nn.Linear(72, 48)
+        self.activ2  = torch.nn.ReLU()
+        self.hidden3 = torch.nn.Linear(48, 6)
+        self.activ3  = torch.nn.ReLU()
+        self.hidden4 = torch.nn.Linear(6, n_outputs)
+        self.activ4  = torch.nn.Softmax()
+
+    # forward propagate input
+    def forward(self, x):
+        # input to first hidden layer
+        X = self.hidden1(X)
+        X = self.activ1(X)
+        # second hidden layer
+        X = self.hidden2(X)
+        X = self.activ2(X)
+        # third hidden layer
+        X = self.hidden3(X)
+        X = self.activ3(X)
+        # fourth hidden layer and output
+        X = self.hidden4(X)
+        X = self.activ4(X)
+        return X
+
+# [...]
+
+# Instanciation
+my_model = my_model(44, 3)
+```
+The Glorot initalization can be done with the method `torch.nn.init.xavier_uniform_(tensor, gain=1.0)`.
+The gain is provided by `nn.init.calculate_gain('relu')`, here for the ReLU function. It needs to be inputted as gains are specific of the activation functions. More on [PyTorch nn.init page](https://pytorch.org/docs/stable/nn.init.html).
 
 
 ### Step 5. Train the Model
+Once we have a model, we need two things to train it: a loss function and an optimization algorithm.
 
+__Loss function__  
+PyTorch `torch.nn` package has [predefined loss functions](https://pytorch.org/docs/stable/nn.html#loss-functions). The most common ones being
+* `MSELoss`: Mean squared loss for regression.
+* `BCELoss`: Binary cross-entropy loss for binary classification.
+* `CrossEntropyLoss`: Categorical cross-entropy loss for multi-class classification.
 
+__Optimization algorithm__  
+Again PyTorch has optimizers of the shelf thanks to its `torch.optim` package. 
+These names should sound familiar to you: `optim.SGD`, `optim.Adam`, etc. More on [PyTorch `optim` page](https://pytorch.org/docs/stable/optim.html). 
+
+Let's put things together. The `train` variable is a PyTorch tensor from a `Dataset` instance.
+
+```python
+import torch
+import torch.nn as nn
+
+# Prepare data loaders
+train_dl = DataLoader(train, batch_size=32, shuffle=True)
+
+# [...] definition of the model my_model (above)
+
+# Set the loss and optimization
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.SGD(my_model.parameters(), lr=0.01, momentum=0.9)
+
+N_epochs = 1000 
+
+# enumerate epochs
+for epoch in range(N_epochs):
+
+    # enumerate mini batches
+    for i, (inputs, targets) in enumerate(train_dl):
+
+        optimizer.zero_grad()    # clear the gradients
+        yhat = my_model(inputs)  # compute the model output
+        loss = criterion(yhat, targets) # calculate loss
+        loss.backward()          # compute gradients
+        optimizer.step()         # update model weights
+```
+
+It is usually more convenient to wrap this inside a user-defined function with the model and other relevant parameters as arguments. This function can then be called several times with different models.
 
 ### Step 6. Tune the Model
-
-
+We saw the `GridSearchCV` and `RandomSearchCV` tools from Scikit-Learn. For neural networks, a popular library is `RayTune` ([link to official website](https://docs.ray.io/en/latest/tune/index.html)), which integrates with numerous machine learning frameworks. A good illustrative example is provided in [Ray's official documentation](https://docs.ray.io/en/latest/tune/examples/tune-pytorch-cifar.html#tune-pytorch-cifar-ref).
 
 ### Step 7. Evaluate the Model
-
+TODO
 
 
 ### Step 8. Make Predictions
-
+TODO
 
 
 
@@ -272,13 +406,7 @@ On which dataset(s) the feature scaling should be applied?
 
 
 ## Practice Practice Practice
-... 
-
-
-
-Automatic differentiation -> AutoGrad
-
-
+TODO
 
 
 ```{admonition} Learn More
@@ -291,11 +419,15 @@ __ML Framework Comparison__
 Tensorflow, PyTorch or Keras for Deep Learning on [dominodatalab.com](https://www.dominodatalab.com/blog/tensorflow-pytorch-or-keras-for-deep-learning)
 
 __PyTorch__  
-[Introduction to PyTorch Tensors](https://pytorch.org/tutorials/beginner/introyt/tensors_deeper_tutorial.html)
+[Introduction to PyTorch Tensors - official documentation](https://pytorch.org/tutorials/beginner/introyt/tensors_deeper_tutorial.html)
+
+"PyTorch Tutorial: How to Develop Deep Learning Models with Python" on [machinelearningmastery.com](https://machinelearningmastery.com/pytorch-tutorial-develop-deep-learning-models/).
+
+[Datasets & DataLoader - official documentation](https://pytorch.org/tutorials/beginner/basics/data_tutorial.html)
 
 __TensorFlow__  
 [Official Website](https://www.tensorflow.org/)
 
-[The Playground!](https://playground.tensorflow.org)
+[TensorFlow Playground!](https://playground.tensorflow.org)
 
 ```

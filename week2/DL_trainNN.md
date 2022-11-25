@@ -19,13 +19,11 @@ Pytorch is developed and maintained by Facebook. It is built to use the power of
 The term Tensor in PyTorch is not the algebraic tensor used in mathematics or physics.
 ```
 ````
-A PyTorch Tensor is a data structure, conceptually identical to a NumPy array. On top of many functions operating on these n-dimensional arrays, the PyTorch tensors are designed to take advantage of parallel computation capabilities of a GPU. 
+A PyTorch Tensor is a data structure that is conceptually identical to a NumPy array. Yet, on top of many functions operating on these n-dimensional arrays, the PyTorch tensors are designed to take advantage of parallel computation capabilities of a GPU. 
 
-The other strong feature of PyTorch is its AutoGrad module performing automatic differentiation for building and training neural networks. When using autograd, the forward pass of your network will define a computational graph; nodes in the graph will be Tensors, and edges will be functions that produce output Tensors from input Tensors. Backpropagating through this graph then allows you to easily compute gradients. 
+The other strong feature of PyTorch is its AutoGrad module performing automatic differentiation for building and training neural networks. When using AutoGrad, the forward pass of your network will define a computational graph; nodes in the graph will be Tensors, and edges will be functions that produce output Tensors from input Tensors. Backpropagating through this graph then allows you to easily compute gradients. In other words, the logic of a neural net architecture are defined by a graph whose components can be added dynamically.
 
-While AutoGrad is powerful, it is a bit too low-level for building large and complex networks. The higher end `nn` package can define Modules, equivalent to neural network layers. It also has predefined loss functions 
-
-
+While AutoGrad is powerful, it is a bit too low-level for building large and complex networks. The higher end `nn` package can define Modules, equivalent to neural network layers, with also predefined ready-to-use loss functions. 
 
 ### TensorFlow
 Born in GoogleBrain as an internal project at first, TensorFlow is a very popular deep learning frameworks. The APIs offered by TensorFlow can be both low and high level. Computations are expressed as dataflow graphs, picturing how the tensor “flows” through the layers of a neural net.
@@ -158,11 +156,12 @@ df.plot(kind='kde')
 ```
 It can be slow so better to select first some input features with `y=['feature_1', 'feature_2']`. 
 
-To see the relationship between two variables, the scatter plot is the way to go. Caution, the color argument should be provided:
+To see the relationship between two variables, the scatter plot is the way to go. 
 ```python
 df.plot(x='feature_1', y='feature_2', kind='scatter', color='blue', size=1, alpha=0.1)
 ```
 
+The `color` argument is required. It is a good practice to set the size of the dots small to not have overlapping data points in regions of high density. Another trick is to set the transparency `alpha` argument close to 0 (transparent). See in the example below how it better highlights the zones of highest density of the data.
 ```{figure} ../images/lec08_4_scatter_alpha.png
 ---
   name: lec08_4_scatter_alpha
@@ -172,11 +171,11 @@ df.plot(x='feature_1', y='feature_2', kind='scatter', color='blue', size=1, alph
 <sub>Images: Aurélien Géron, _Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, Second Edition_</sub>
 ```
 
-The small size and low opacity (full transparency is for `alpha=0`) are good to see the zones of highest density of the data. However it does not tell you which points are signal and which are background samples. Yet the DataFrame `plot()` is a quick way to examine your data samples. 
+However it does not tell you which points are signal and which are background samples. Overall, the DataFrame `plot()` is a quick way to examine your data samples. 
 
-For more specific plots relevant to your optimization goals, you may have to write your own plotting macro. The reigning library for plotting in python is Matplotlib. We have started to use it during the tutorial and will continue for neural network building, training and evaluation. More will be cover during the tutorials.
+For more specific plots relevant to your optimization goals, you may have to write your own plotting macro. The reigning library for plotting in python is Matplotlib. We have started to use it in previous examples and will continue to use it in neural network training and evaluation. More will be covered during the tutorials.
 
-Another library that is extremely convenient to get a quick glimpse at the data is `seaborn`. In very few lines of code, the library display very esthetically pleasing plots. Let's see how it looks with Scikit-Learn's own penguin dataset:
+Another library that is extremely convenient to get a quick glimpse at the data is `seaborn`. In very few lines of code, this library generates very esthetically pleasing plots. Let's see how it looks with Scikit-Learn's own penguin dataset:
 
 ```python
 import seaborn as sns
@@ -213,7 +212,8 @@ It looks magnificent:
 
 If you have lots of input features, you will have to select some so as to not overload the figure. Don't forget the column storing the targets! 
 ```python
-sns.pairplot(data=penguins.loc[:, ['flipper_length_mm','bill_length_mm', 'species']], hue="species")
+columns_sel = ['flipper_length_mm','bill_length_mm', 'species']
+sns.pairplot(data=penguins.loc[:, columns_sel], hue="species")
 ```
 
 ### Step 3. Prepare the Data
@@ -221,7 +221,7 @@ sns.pairplot(data=penguins.loc[:, ['flipper_length_mm','bill_length_mm', 'specie
 __Data Cleaning__  
 ````{prf:definition}
 :label: datacleaning
-Data cleaning, also called data cleansing or data scrubbing, is the process of removing incorrect, duplicate, corrupted or incomplete data within a dataset.
+__Data cleaning__, also called data cleansing or data scrubbing, is the process of removing incorrect, duplicate, corrupted or incomplete data within a dataset.
 ````
 
 The visualization step before would have helped you identify possible outliers (data points with values significantly away from the rest of the data). Should they be removed? Caution! It all depends on your situation. We will see in later lectures that outliers could actually be the signal (in anomaly detection for instance). The removal of outlier should be done after gathering sufficient strong arguments about their incorrectness.  

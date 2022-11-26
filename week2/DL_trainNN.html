@@ -806,8 +806,8 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#practice-practice-practice">
-   Practice Practice Practice
+  <a class="reference internal nav-link" href="#summary-practice-practice-practice">
+   Summary: Practice Practice Practice
   </a>
  </li>
 </ul>
@@ -904,8 +904,8 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#practice-practice-practice">
-   Practice Practice Practice
+  <a class="reference internal nav-link" href="#summary-practice-practice-practice">
+   Summary: Practice Practice Practice
   </a>
  </li>
 </ul>
@@ -1115,7 +1115,7 @@ Finally, it is a good practice to review assumptions. Are all input features cor
 The data cleaning includes a check for duplicates, wrong or incoherent formatting, e.g. if a label is present with different spelling for instance). And also missing data. If there is a <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (not a number) in a particular row and column, a decision should be made as most of algorithms will generate an error. A possibility is to drop the entire row, but there will be information lost on the other input features. Another way would consist of replacing the <code class="docutils literal notranslate"><span class="pre">NaN</span></code> with a safe value after inspecting the associated input feature.</p>
 <p><strong>Splitting the Datasets</strong><br />
 As seen in Lecture 3, the data is split in three sets: training, validation and test. It can be coded manually with a cut on row indices, but one should make sure the entire dataset is shuffled before to get relatively equal representation of each class in each set. Scikit-Learn has a convenient tool to split data between a training and a testing set: the <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> function. To make sure the same test set is generated once the program is run again, the <code class="docutils literal notranslate"><span class="pre">random_state</span></code> argument ensures reproducibility:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pands</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
@@ -1128,7 +1128,8 @@ As seen in Lecture 3, the data is split in three sets: training, validation and 
 As seen in Lecture 2, it is recommended to scale features to prevent the gradient descent from zig-zaging along slopes differing drastically depending on the direction. This can be done manually (always a good training). Scikit-Learn has methods such as <code class="docutils literal notranslate"><span class="pre">MinMaxScaler</span></code> and <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>.</p>
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
-<p>On which dataset(s) the feature scaling should be applied?</p>
+<p>On which dataset(s) the feature scaling should be applied?<br />
+The training, the validation, and/or the test set(s)?</p>
 </div>
 </section>
 <section id="step-4-define-the-model">
@@ -1231,8 +1232,7 @@ PyTorch <code class="docutils literal notranslate"><span class="pre">torch.nn</s
 <li><p><code class="docutils literal notranslate"><span class="pre">CrossEntropyLoss</span></code>: Categorical cross-entropy loss for multi-class classification.</p></li>
 </ul>
 <p><strong>Optimization algorithm</strong><br />
-Again PyTorch has optimizers of the shelf thanks to its <code class="docutils literal notranslate"><span class="pre">torch.optim</span></code> package.
-These names should sound familiar to you: <code class="docutils literal notranslate"><span class="pre">optim.SGD</span></code>, <code class="docutils literal notranslate"><span class="pre">optim.Adam</span></code>, etc. More on <a class="reference external" href="https://pytorch.org/docs/stable/optim.html">PyTorch <code class="docutils literal notranslate"><span class="pre">optim</span></code> page</a>.</p>
+PyTorch has optimizers of the shelf thanks to its <code class="docutils literal notranslate"><span class="pre">torch.optim</span></code> package. Among the plethora of optimizers, some such as <code class="docutils literal notranslate"><span class="pre">optim.SGD</span></code> or <code class="docutils literal notranslate"><span class="pre">optim.Adam</span></code> should sound familiar to you. Find more on <a class="reference external" href="https://pytorch.org/docs/stable/optim.html">PyTorch <code class="docutils literal notranslate"><span class="pre">optim</span></code> page</a>.</p>
 <p>Let’s put things together. The <code class="docutils literal notranslate"><span class="pre">train</span></code> variable is a PyTorch tensor from a <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> instance.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
@@ -1269,29 +1269,79 @@ These names should sound familiar to you: <code class="docutils literal notransl
 </section>
 <section id="step-7-evaluate-the-model">
 <h3>Step 7. Evaluate the Model<a class="headerlink" href="#step-7-evaluate-the-model" title="Permalink to this headline">#</a></h3>
-<p>TODO</p>
+<p>As we saw in Step 0, the evaluation will be dictacted by the specifics of the optimization problem. It should be performed on the test set, untouched during the training. The little trick here is to ‘unconvert’ PyTorch tensors into NumPy arrays before calling the method that computes the performance metrics.
+A minimal implementation of a binary classifier using the accuracy would look like this:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">detach()</span></code> method in PyTorch is used to separate a tensor from the computational graph by returning a new tensor that doesn’t require a gradient.</p>
+</div>
+</aside>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">vstack</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="n">all_preds</span><span class="p">,</span> <span class="n">all_obss</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(),</span> <span class="nb">list</span><span class="p">()</span>
+
+<span class="c1"># Loop over batches</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_dl</span><span class="p">):</span>
+    
+    <span class="c1"># Evaluate batch on test set</span>
+    <span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span> 
+
+    <span class="c1"># Convert to numpy arrays</span>
+    <span class="n">preds</span> <span class="o">=</span> <span class="n">preds</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">obss</span>  <span class="o">=</span> <span class="n">targets</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">obss</span>  <span class="o">=</span> <span class="n">obss</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">obss</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="c1"># Store</span>
+    <span class="n">all_preds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">preds</span><span class="p">)</span>
+    <span class="n">all_obss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obss</span><span class="p">)</span>
+
+<span class="n">all_preds</span><span class="p">,</span> <span class="n">all_obss</span> <span class="o">=</span> <span class="n">vstack</span><span class="p">(</span><span class="n">all_preds</span><span class="p">),</span> <span class="n">vstack</span><span class="p">(</span><span class="n">all_preds</span><span class="p">)</span>
+<span class="c1"># calculate accuracy</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">all_yobss</span><span class="p">,</span> <span class="n">all_ypreds</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>From the list of all observations <code class="docutils literal notranslate"><span class="pre">all_obss</span></code> and their associated predictions <code class="docutils literal notranslate"><span class="pre">all_preds</span></code>, it is possible to plot ROC curves and compare different models.</p>
 </section>
 <section id="step-8-make-predictions">
 <h3>Step 8. Make Predictions<a class="headerlink" href="#step-8-make-predictions" title="Permalink to this headline">#</a></h3>
-<p>TODO</p>
+<p>Now it is time to use the model to make a prediction!</p>
+<p>The input will be a data row of input features (but no target). A first step for PyTorch is to convert this data row into a Tensor. If <code class="docutils literal notranslate"><span class="pre">row</span></code> is a list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert row to data</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span><span class="n">row</span><span class="p">])</span>
+
+<span class="c1"># Make prediction</span>
+<span class="n">ypred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+<span class="c1"># retrieve numpy array</span>
+<span class="n">ypred</span> <span class="o">=</span> <span class="n">ypred</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Predicted: </span><span class="si">%.3f</span><span class="s1"> (class: </span><span class="si">%d</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ypred</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">ypred</span><span class="p">)))</span>
+</pre></div>
+</div>
 </section>
 </section>
-<section id="practice-practice-practice">
-<h2>Practice Practice Practice<a class="headerlink" href="#practice-practice-practice" title="Permalink to this headline">#</a></h2>
-<p>TODO</p>
+<section id="summary-practice-practice-practice">
+<h2>Summary: Practice Practice Practice<a class="headerlink" href="#summary-practice-practice-practice" title="Permalink to this headline">#</a></h2>
+<p>You reached the end of this long page. Good. You now know the steps and building coding blocks to start your deep learning journey. But most important is practice. This will be done during tutorials and assignments. A great way to learn is to join ML competition websites such as Kaggle.com (<a class="reference external" href="https://www.kaggle.com/">website</a>). Another opportunity to become better: your own project! If you are curious about a given scientific field and can find a dataset, play around driven by your own questions!</p>
 <div class="seealso admonition">
 <p class="admonition-title">Learn More</p>
 <p><strong>Visualization</strong><br />
+<a class="reference external" href="https://www.kaggle.com/">Matplotlib</a><br />
 <a class="reference external" href="https://seaborn.pydata.org/tutorial/introduction">Introduction to Seaborn</a></p>
 <p><strong>ML Framework Comparison</strong><br />
 Tensorflow, PyTorch or Keras for Deep Learning on <a class="reference external" href="https://www.dominodatalab.com/blog/tensorflow-pytorch-or-keras-for-deep-learning">dominodatalab.com</a></p>
 <p><strong>PyTorch</strong><br />
-<a class="reference external" href="https://pytorch.org/tutorials/beginner/introyt/tensors_deeper_tutorial.html">Introduction to PyTorch Tensors - official documentation</a></p>
-<p>“PyTorch Tutorial: How to Develop Deep Learning Models with Python” on <a class="reference external" href="https://machinelearningmastery.com/pytorch-tutorial-develop-deep-learning-models/">machinelearningmastery.com</a>.</p>
-<p><a class="reference external" href="https://pytorch.org/tutorials/beginner/basics/data_tutorial.html">Datasets &amp; DataLoader - official documentation</a></p>
+<a class="reference external" href="https://pytorch.org/tutorials/beginner/introyt/tensors_deeper_tutorial.html">Introduction to PyTorch Tensors - official documentation</a><br />
+“PyTorch Tutorial: How to Develop Deep Learning Models with Python” on <a class="reference external" href="https://machinelearningmastery.com/pytorch-tutorial-develop-deep-learning-models/">machinelearningmastery.com</a>.<br />
+<a class="reference external" href="https://pytorch.org/tutorials/beginner/basics/data_tutorial.html">Datasets &amp; DataLoader - official documentation</a></p>
 <p><strong>TensorFlow</strong><br />
-<a class="reference external" href="https://www.tensorflow.org/">Official Website</a></p>
-<p><a class="reference external" href="https://playground.tensorflow.org">TensorFlow Playground!</a></p>
+<a class="reference external" href="https://www.tensorflow.org/">Official Website</a><br />
+<a class="reference external" href="https://playground.tensorflow.org">TensorFlow Playground!</a></p>
 </div>
 </section>
 </section>

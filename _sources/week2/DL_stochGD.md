@@ -3,7 +3,7 @@
 Introduced in the previous lectures, Gradient Descent is a powerful algorithm to find the minimum of a function. Yet it has limitations, which are circumvented by alternative approaches, the most popular one being Stochastic Gradient Descent.
 
 ## Limitations of Batch Gradient Descent
-The Gradient Descent algorithm computes the cost and its derivatives using all training instances. We refer to this as __Batch Gradient Descent__.
+The Gradient Descent algorithm computes the cost and its derivatives using all training instances within a batch. We refer to this as __Batch Gradient Descent__.
 
 ````{prf:definition}
 :label: batchsizedef

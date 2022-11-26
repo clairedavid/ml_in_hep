@@ -230,7 +230,7 @@ The data cleaning includes a check for duplicates, wrong or incoherent formattin
 __Splitting the Datasets__  
 As seen in Lecture 3, the data is split in three sets: training, validation and test. It can be coded manually with a cut on row indices, but one should make sure the entire dataset is shuffled before to get relatively equal representation of each class in each set. Scikit-Learn has a convenient tool to split data between a training and a testing set: the `train_test_split` function. To make sure the same test set is generated once the program is run again, the `random_state` argument ensures reproducibility:
 ```python
-import pands as pd
+import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 
@@ -244,7 +244,8 @@ As seen in Lecture 2, it is recommended to scale features to prevent the gradien
 
 ```{admonition} Exercise
 :class: seealso
-On which dataset(s) the feature scaling should be applied?
+On which dataset(s) the feature scaling should be applied?  
+The training, the validation, and/or the test set(s)?
 ```
 
 (DL_trainNN:stepDefine)=
@@ -355,8 +356,7 @@ PyTorch `torch.nn` package has [predefined loss functions](https://pytorch.org/d
 * `CrossEntropyLoss`: Categorical cross-entropy loss for multi-class classification.
 
 __Optimization algorithm__  
-Again PyTorch has optimizers of the shelf thanks to its `torch.optim` package. 
-These names should sound familiar to you: `optim.SGD`, `optim.Adam`, etc. More on [PyTorch `optim` page](https://pytorch.org/docs/stable/optim.html). 
+PyTorch has optimizers of the shelf thanks to its `torch.optim` package. Among the plethora of optimizers, some such as `optim.SGD` or `optim.Adam` should sound familiar to you. Find more on [PyTorch `optim` page](https://pytorch.org/docs/stable/optim.html). 
 
 Let's put things together. The `train` variable is a PyTorch tensor from a `Dataset` instance.
 
@@ -394,40 +394,80 @@ It is usually more convenient to wrap this inside a user-defined function with t
 We saw the `GridSearchCV` and `RandomSearchCV` tools from Scikit-Learn. For neural networks, a popular library is `RayTune` ([link to official website](https://docs.ray.io/en/latest/tune/index.html)), which integrates with numerous machine learning frameworks. A good illustrative example is provided in [Ray's official documentation](https://docs.ray.io/en/latest/tune/examples/tune-pytorch-cifar.html#tune-pytorch-cifar-ref).
 
 ### Step 7. Evaluate the Model
-TODO
+As we saw in Step 0, the evaluation will be dictacted by the specifics of the optimization problem. It should be performed on the test set, untouched during the training. The little trick here is to 'unconvert' PyTorch tensors into NumPy arrays before calling the method that computes the performance metrics. 
+A minimal implementation of a binary classifier using the accuracy would look like this:
+````{margin}
+```{note}
+The `detach()` method in PyTorch is used to separate a tensor from the computational graph by returning a new tensor that doesn't require a gradient.
+```
+````
+```python
+from torch.utils.data import Dataset
+from torch.utils.data import DataLoader
+from numpy import vstack
+from sklearn.metrics import accuracy_score
 
+all_preds, all_obss = list(), list()
+
+# Loop over batches
+for i, (inputs, targets) in enumerate(test_dl):
+    
+    # Evaluate batch on test set
+    preds = model(inputs) 
+
+    # Convert to numpy arrays
+    preds = preds.detach().numpy()
+    obss  = targets.numpy()
+    obss  = obss.reshape((len(obss), 1))
+
+    # Store
+    all_preds.append(preds)
+    all_obss.append(obss)
+
+all_preds, all_obss = vstack(all_preds), vstack(all_preds)
+# calculate accuracy
+acc = accuracy_score(all_yobss, all_ypreds)
+```
+From the list of all observations `all_obss` and their associated predictions `all_preds`, it is possible to plot ROC curves and compare different models.
 
 ### Step 8. Make Predictions
-TODO
+Now it is time to use the model to make a prediction! 
 
+The input will be a data row of input features (but no target). A first step for PyTorch is to convert this data row into a Tensor. If `row` is a list:
 
+```python
+# Convert row to data
+row = torch.Tensor([row])
 
+# Make prediction
+ypred = model(row)
 
+# retrieve numpy array
+ypred = ypred.detach().numpy()
 
+print('Predicted: %.3f (class: %d)' % (ypred, round(ypred)))
+```
 
-## Practice Practice Practice
-TODO
-
+## Summary: Practice Practice Practice
+You reached the end of this long page. Good. You now know the steps and building coding blocks to start your deep learning journey. But most important is practice. This will be done during tutorials and assignments. A great way to learn is to join ML competition websites such as Kaggle.com ([website](https://www.kaggle.com/)). Another opportunity to become better: your own project! If you are curious about a given scientific field and can find a dataset, play around driven by your own questions!
 
 ```{admonition} Learn More
 :class: seealso
 
 __Visualization__  
+[Matplotlib](https://www.kaggle.com/)  
 [Introduction to Seaborn](https://seaborn.pydata.org/tutorial/introduction) 
 
 __ML Framework Comparison__  
 Tensorflow, PyTorch or Keras for Deep Learning on [dominodatalab.com](https://www.dominodatalab.com/blog/tensorflow-pytorch-or-keras-for-deep-learning)
 
 __PyTorch__  
-[Introduction to PyTorch Tensors - official documentation](https://pytorch.org/tutorials/beginner/introyt/tensors_deeper_tutorial.html)
-
-"PyTorch Tutorial: How to Develop Deep Learning Models with Python" on [machinelearningmastery.com](https://machinelearningmastery.com/pytorch-tutorial-develop-deep-learning-models/).
-
+[Introduction to PyTorch Tensors - official documentation](https://pytorch.org/tutorials/beginner/introyt/tensors_deeper_tutorial.html)  
+"PyTorch Tutorial: How to Develop Deep Learning Models with Python" on [machinelearningmastery.com](https://machinelearningmastery.com/pytorch-tutorial-develop-deep-learning-models/).  
 [Datasets & DataLoader - official documentation](https://pytorch.org/tutorials/beginner/basics/data_tutorial.html)
 
 __TensorFlow__  
-[Official Website](https://www.tensorflow.org/)
-
+[Official Website](https://www.tensorflow.org/)  
 [TensorFlow Playground!](https://playground.tensorflow.org)
 
 ```

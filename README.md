@@ -23,4 +23,6 @@ Thanks to Matthew Feickert to point out the convenient Jupyter-Book tool.
 
 Thanks to Sam Meehan for insisting ;)
 
-Thanks to Harrison Prosper for sharing curated tutorials that save me numerous hours.
+Thanks to Michaël Ughetto for the added knowledge, content and frankness.
+
+Thanks to Harrison Prosper for being an amazing guide and mentor, as well as for sharing curated tutorials that saved me numerous hours.

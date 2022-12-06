@@ -21,7 +21,7 @@ The __test set__ is the final assessment done on the model; the resulting error 
 The general split between the training, validation and test subsets are 60%, 20% and 20%. But depending on the number of samples, a smaller test set is sufficient. Reducing it allows for an increase of the training and validation set sizes, exposing the model to more data samples for training and validation.
 
 ```{warning}
-The terms _validation_ and _test_ are sometimes interchangeably used both in industry and in academia, creating some terminological confusion. What is important to keep in mind is that once the iterative back and forth of steps 1 and 2 are giving a most performing model, the hyperparameters of the model are frozen and the last check, step 3, is done on not-yet-seen data with those hyperparameters.  
+The terms _validation_ and _test_ are sometimes interchangeably used both in industry and in academia, creating some terminological confusion. What is important to keep in mind is that once the iterative back-and-forth of steps 1 and 2 are giving a most performing model, the hyperparameters of the model are frozen and the last check, step 3, is done on not-yet-seen data with those hyperparameters.  
 
 TL;DR: Never use the final test data for tuning.
 ```
@@ -39,6 +39,15 @@ The $\mathbf{k}$__-fold cross-validation__ is a procedure consisting of using $k
 
 The $k$ validation results are combined to provide an estimate of the model's predictive performance.
 ````
+```{figure} ../images/lec03_5_grid_search_cross_validation.png
+---
+  name: lec03_5_grid_search_cross_validation
+  width: 90%
+---
+ .  Illustration of the $k$-fold cross-validation on the training dataset.  
+ <sub>Source: Scikit-Learn</sub>
+ ```
+
 With $k$-fold cross-validation, the estimate of the model's predictive performance comes with a precision (the standard deviation from the collection of $k$ estimates). However cross-validation necessitates more computing time yet it is more robust against noise or outliers picked by the random splitting. 
 
 We now know how to manipulate our data set to get an estimate of performance. But what is this quantifier exactly? How to visualize it?

@@ -217,9 +217,7 @@ Let's now go backward and see how it simplifies itself layer after layer.
 As its name indicates, the backward propagation proceed from the last to the first input layer. Let's write the general equation {eq}`dCostchaineq` for the last layer:
 ```{math}
 :label: dCostlastchaineq
-\begin{align*}
-\frac{\partial \text { Cost }}{\partial W^L} &=\sum \; \frac{\partial L(f(z^L(W, b)))}{\partial f(z^L(W, b))}&\cdot& \; \frac{\partial f(z^L(W, b))}{\partial z^L(W, b)} &\cdot& \; \frac{\partial z^L(W, b))}{\partial W^L} 
-\end{align*}
+\frac{\partial \text { Cost }}{\partial W^L} =\sum \; \frac{\partial L(f(z^L(W, b)))}{\partial f(z^L(W, b))} \; \cdot \; \frac{\partial f(z^L(W, b))}{\partial z^L(W, b)} \; \cdot \; \frac{\partial z^L(W, b))}{\partial W^L} 
 ```
 
 We can simplify things. The first term is the derivative of the loss function with $f(z^L(W, b)) = a^L$ as argument. It's a value here, computed with all weights values. Same for the second term: it is the derivative of activation function taken for the value $z^L$. For the third, we use the definition in Equation {eq}`zfunceq` that yields: $\left(z^L(W, b)\right)^{\prime} = a^{L-1}$. We can write:

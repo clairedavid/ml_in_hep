@@ -1,110 +1,39 @@
 Traceback (most recent call last):
-  File "/usr/local/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+  File "/home/claire/.local/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
     executenb(
-  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 1112, in execute
+  File "/home/claire/.local/lib/python3.8/site-packages/nbclient/client.py", line 1263, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "/usr/local/lib/python3.9/site-packages/nbclient/util.py", line 74, in wrapped
+  File "/home/claire/.local/lib/python3.8/site-packages/nbclient/util.py", line 85, in wrapped
     return just_run(coro(*args, **kwargs))
-  File "/usr/local/lib/python3.9/site-packages/nbclient/util.py", line 53, in just_run
+  File "/home/claire/.local/lib/python3.8/site-packages/nbclient/util.py", line 60, in just_run
     return loop.run_until_complete(coro)
-  File "/usr/local/Cellar/python@3.9/3.9.10/Frameworks/Python.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+  File "/usr/lib64/python3.8/asyncio/base_events.py", line 616, in run_until_complete
     return future.result()
-  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 553, in async_execute
+  File "/home/claire/.local/lib/python3.8/site-packages/nbclient/client.py", line 701, in async_execute
     await self.async_execute_cell(
-  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 857, in async_execute_cell
-    self._check_raise_for_error(cell, exec_reply)
-  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
+  File "/home/claire/.local/lib/python3.8/site-packages/nbclient/client.py", line 1019, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/claire/.local/lib/python3.8/site-packages/nbclient/client.py", line 913, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-plt.rcParams.update(plt.rcParamsDefault)
-
-#params = {
-#        'xtick.labelsize':'small',
-#        'ytick.labelsize':'small',
-#        'axes.labelsize': 'medium'}
-#plt.rcParams.update(params)
-
-xlist = np.linspace(-5.0, 5.0, 100)
-ylist = np.linspace(-5.0, 5.0, 100)
-X, Y = np.meshgrid(xlist, ylist)
-
-#creating elliptical plane
-Z = (X**2)/4 + (Y**2)/9
-
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-
-#drawing contour plot
-surf = ax.plot_surface(X,Y,Z, cmap='viridis_r', linewidth=0.3, alpha = 0.5, edgecolor = 'k')
-
-#ax.set_title('3D Contour Plot')
-ax.set_xlabel('$\\theta_0$')
-ax.set_ylabel('$\\theta_1$') 
-ax.set_zlabel('$J(\\theta_0, \\theta_1)$', rotation='90')
-#plt.title('Cost Function $J(\\theta_0, \\theta_1)$', loc='left', fontsize = 15)
-ax.azim = 225
-ax.xaxis.set_rotate_label(False); ax.xaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
-ax.yaxis.set_rotate_label(False); ax.yaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
-ax.zaxis.set_rotate_label(False); ax.zaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
-
-glue("plot_linReg_bowl", fig, display=False)
+from myst_nb import glue
+import numpy as np
+import pandas as pd
+import scipy.optimize
+import matplotlib.pyplot as plt
+from itertools import chain
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mValueError[0m                                Traceback (most recent call last)
-Input [0;32mIn [2][0m, in [0;36m<cell line: 25>[0;34m()[0m
-[1;32m     23[0m ax[38;5;241m.[39mset_xlabel([38;5;124m'[39m[38;5;124m$[39m[38;5;130;01m\\[39;00m[38;5;124mtheta_0$[39m[38;5;124m'[39m)
-[1;32m     24[0m ax[38;5;241m.[39mset_ylabel([38;5;124m'[39m[38;5;124m$[39m[38;5;130;01m\\[39;00m[38;5;124mtheta_1$[39m[38;5;124m'[39m) 
-[0;32m---> 25[0m [43max[49m[38;5;241;43m.[39;49m[43mset_zlabel[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43m$J([39;49m[38;5;130;43;01m\\[39;49;00m[38;5;124;43mtheta_0, [39;49m[38;5;130;43;01m\\[39;49;00m[38;5;124;43mtheta_1)$[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43mrotation[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43m90[39;49m[38;5;124;43m'[39;49m[43m)[49m
-[1;32m     26[0m [38;5;66;03m#plt.title('Cost Function $J(\\theta_0, \\theta_1)$', loc='left', fontsize = 15)[39;00m
-[1;32m     27[0m ax[38;5;241m.[39mazim [38;5;241m=[39m [38;5;241m225[39m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [0;32mIn [1], line 3[0m
+[1;32m      1[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmyst_nb[39;00m [38;5;28;01mimport[39;00m glue
+[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[0;32m----> 3[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
+[1;32m      4[0m [38;5;28;01mimport[39;00m [38;5;21;01mscipy[39;00m[38;5;21;01m.[39;00m[38;5;21;01moptimize[39;00m
+[1;32m      5[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
 
-File [0;32m~/Library/Python/3.9/lib/python/site-packages/mpl_toolkits/mplot3d/axes3d.py:1135[0m, in [0;36mAxes3D.set_zlabel[0;34m(self, zlabel, fontdict, labelpad, **kwargs)[0m
-[1;32m   1133[0m [38;5;28;01mif[39;00m labelpad [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
-[1;32m   1134[0m     [38;5;28mself[39m[38;5;241m.[39mzaxis[38;5;241m.[39mlabelpad [38;5;241m=[39m labelpad
-[0;32m-> 1135[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mzaxis[49m[38;5;241;43m.[39;49m[43mset_label_text[49m[43m([49m[43mzlabel[49m[43m,[49m[43m [49m[43mfontdict[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
-
-File [0;32m~/Library/Python/3.9/lib/python/site-packages/matplotlib/axis.py:1722[0m, in [0;36mAxis.set_label_text[0;34m(self, label, fontdict, **kwargs)[0m
-[1;32m   1720[0m [38;5;28;01mif[39;00m fontdict [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
-[1;32m   1721[0m     [38;5;28mself[39m[38;5;241m.[39mlabel[38;5;241m.[39mupdate(fontdict)
-[0;32m-> 1722[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mlabel[49m[38;5;241;43m.[39;49m[43mupdate[49m[43m([49m[43mkwargs[49m[43m)[49m
-[1;32m   1723[0m [38;5;28mself[39m[38;5;241m.[39mstale [38;5;241m=[39m [38;5;28;01mTrue[39;00m
-[1;32m   1724[0m [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39mlabel
-
-File [0;32m~/Library/Python/3.9/lib/python/site-packages/matplotlib/text.py:198[0m, in [0;36mText.update[0;34m(self, kwargs)[0m
-[1;32m    196[0m [38;5;66;03m# Update bbox last, as it depends on font properties.[39;00m
-[1;32m    197[0m bbox [38;5;241m=[39m kwargs[38;5;241m.[39mpop([38;5;124m"[39m[38;5;124mbbox[39m[38;5;124m"[39m, sentinel)
-[0;32m--> 198[0m [38;5;28;43msuper[39;49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[43mupdate[49m[43m([49m[43mkwargs[49m[43m)[49m
-[1;32m    199[0m [38;5;28;01mif[39;00m bbox [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m sentinel:
-[1;32m    200[0m     [38;5;28mself[39m[38;5;241m.[39mset_bbox(bbox)
-
-File [0;32m~/Library/Python/3.9/lib/python/site-packages/matplotlib/artist.py:1176[0m, in [0;36mArtist.update[0;34m(self, props)[0m
-[1;32m   1168[0m [38;5;28;01mdef[39;00m [38;5;21mupdate[39m([38;5;28mself[39m, props):
-[1;32m   1169[0m     [38;5;124;03m"""[39;00m
-[1;32m   1170[0m [38;5;124;03m    Update this artist's properties from the dict *props*.[39;00m
-[1;32m   1171[0m 
-[0;32m   (...)[0m
-[1;32m   1174[0m [38;5;124;03m    props : dict[39;00m
-[1;32m   1175[0m [38;5;124;03m    """[39;00m
-[0;32m-> 1176[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_update_props[49m[43m([49m
-[1;32m   1177[0m [43m        [49m[43mprops[49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;132;43;01m{cls.__name__!r}[39;49;00m[38;5;124;43m object has no property [39;49m[38;5;132;43;01m{prop_name!r}[39;49;00m[38;5;124;43m"[39;49m[43m)[49m
-
-File [0;32m~/Library/Python/3.9/lib/python/site-packages/matplotlib/artist.py:1162[0m, in [0;36mArtist._update_props[0;34m(self, props, errfmt)[0m
-[1;32m   1159[0m             [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m callable(func):
-[1;32m   1160[0m                 [38;5;28;01mraise[39;00m [38;5;167;01mAttributeError[39;00m(
-[1;32m   1161[0m                     errfmt[38;5;241m.[39mformat([38;5;28mcls[39m[38;5;241m=[39m[38;5;28mtype[39m([38;5;28mself[39m), prop_name[38;5;241m=[39mk))
-[0;32m-> 1162[0m             ret[38;5;241m.[39mappend([43mfunc[49m[43m([49m[43mv[49m[43m)[49m)
-[1;32m   1163[0m [38;5;28;01mif[39;00m ret:
-[1;32m   1164[0m     [38;5;28mself[39m[38;5;241m.[39mpchanged()
-
-File [0;32m~/Library/Python/3.9/lib/python/site-packages/matplotlib/text.py:1196[0m, in [0;36mText.set_rotation[0;34m(self, s)[0m
-[1;32m   1194[0m     [38;5;28mself[39m[38;5;241m.[39m_rotation [38;5;241m=[39m [38;5;241m90.[39m
-[1;32m   1195[0m [38;5;28;01melse[39;00m:
-[0;32m-> 1196[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m"[39m[38;5;124mrotation must be [39m[38;5;124m'[39m[38;5;124mvertical[39m[38;5;124m'[39m[38;5;124m, [39m[38;5;124m'[39m[38;5;124mhorizontal[39m[38;5;124m'[39m[38;5;124m or [39m[38;5;124m"[39m
-[1;32m   1197[0m                      [38;5;124mf[39m[38;5;124m"[39m[38;5;124ma number, not [39m[38;5;132;01m{[39;00ms[38;5;132;01m}[39;00m[38;5;124m"[39m)
-[1;32m   1198[0m [38;5;28mself[39m[38;5;241m.[39mstale [38;5;241m=[39m [38;5;28;01mTrue[39;00m
-
-[0;31mValueError[0m: rotation must be 'vertical', 'horizontal' or a number, not 90
-ValueError: rotation must be 'vertical', 'horizontal' or a number, not 90
+[0;31mModuleNotFoundError[0m: No module named 'pandas'
+ModuleNotFoundError: No module named 'pandas'
 

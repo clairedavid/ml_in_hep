@@ -497,7 +497,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../week3/ethics_outlook.html">
-   14. Ethics in ML &amp; Exam
+   14. Ethics in ML &amp; Outlook
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
   <label for="toctree-checkbox-12">
@@ -945,7 +945,7 @@ How to tune the algorithm to get a good fit?</p>
 </div><p>The general split between the training, validation and test subsets are 60%, 20% and 20%. But depending on the number of samples, a smaller test set is sufficient. Reducing it allows for an increase of the training and validation set sizes, exposing the model to more data samples for training and validation.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The terms <em>validation</em> and <em>test</em> are sometimes interchangeably used both in industry and in academia, creating some terminological confusion. What is important to keep in mind is that once the iterative back and forth of steps 1 and 2 are giving a most performing model, the hyperparameters of the model are frozen and the last check, step 3, is done on not-yet-seen data with those hyperparameters.</p>
+<p>The terms <em>validation</em> and <em>test</em> are sometimes interchangeably used both in industry and in academia, creating some terminological confusion. What is important to keep in mind is that once the iterative back-and-forth of steps 1 and 2 are giving a most performing model, the hyperparameters of the model are frozen and the last check, step 3, is done on not-yet-seen data with those hyperparameters.</p>
 <p>TL;DR: Never use the final test data for tuning.</p>
 </div>
 <p>Data sets are split randomly, by shuffling the data rows and cutting and taking the table indices corresponding to the relative split between the three sub-collections. But precious information is lost by not training on the entire data samples available. Moreoever, one of the subset could pick more random outliers or noisy features that will deteriorate either the training or validation outcomes. To cope with this, a commonly used technique is to use the training set as validation set and vice versa, then pick the best performing outcome (set of hyperparameters). For instance if the entire data sample is split in terms of train/validate/test as A/B/C/D, with D the final test set, the cross-validation would consist of:</p>
@@ -961,24 +961,33 @@ How to tune the algorithm to get a good fit?</p>
 <p>The <span class="math notranslate nohighlight">\(\mathbf{k}\)</span><strong>-fold cross-validation</strong> is a procedure consisting of using <span class="math notranslate nohighlight">\(k\)</span> subsets of the data used for the training and validation steps where each subset is rotationally used as the validation set, while the <span class="math notranslate nohighlight">\(k-1\)</span> other subsets are merged as one training set.</p>
 <p>The <span class="math notranslate nohighlight">\(k\)</span> validation results are combined to provide an estimate of the model’s predictive performance.</p>
 </section>
-</div><p>With <span class="math notranslate nohighlight">\(k\)</span>-fold cross-validation, the estimate of the model’s predictive performance comes with a precision (the standard deviation from the collection of <span class="math notranslate nohighlight">\(k\)</span> estimates). However cross-validation necessitates more computing time yet it is more robust against noise or outliers picked by the random splitting.</p>
+</div><figure class="align-default" id="lec03-5-grid-search-cross-validation">
+<a class="reference internal image-reference" href="../_images/lec03_5_grid_search_cross_validation.png"><img alt="../_images/lec03_5_grid_search_cross_validation.png" src="../_images/lec03_5_grid_search_cross_validation.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">.  Illustration of the <span class="math notranslate nohighlight">\(k\)</span>-fold cross-validation on the training dataset.<br />
+<sub>Source: Scikit-Learn</sub></span><a class="headerlink" href="#lec03-5-grid-search-cross-validation" title="Permalink to this image">#</a></p>
+<div class="legend">
+<p>With <span class="math notranslate nohighlight">\(k\)</span>-fold cross-validation, the estimate of the model’s predictive performance comes with a precision (the standard deviation from the collection of <span class="math notranslate nohighlight">\(k\)</span> estimates). However cross-validation necessitates more computing time yet it is more robust against noise or outliers picked by the random splitting.</p>
 <p>We now know how to manipulate our data set to get an estimate of performance. But what is this quantifier exactly? How to visualize it?</p>
+</div>
+</figcaption>
+</figure>
+<p>It is always a good practice to make a scatter plot of all the residuals with respect to the independent variable values; they should be randomly distributed on a band symmetrically centered at zero. If not, this means the chosen model is not appropriate to correctly fit the data.</p>
+<div class="proof definition admonition" id="errorDef">
+<p class="admonition-title"><span class="caption-number">Definition 28 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>generalized error</strong> is the error rate of the difference between the actual and predicted values computed with respect to test or new data (i.e. <em>out-of-sample</em> error).</p>
 </section>
+</div></section>
 <section id="types-of-errors">
 <h2>Types of errors<a class="headerlink" href="#types-of-errors" title="Permalink to this headline">#</a></h2>
 <p>Generally speaking, an error is the gap between the prediction and the true value. There are different terms depending on the algorithm and the set on which errors are computed.</p>
 <section id="for-regression-algorithms">
 <h3>For regression algorithms<a class="headerlink" href="#for-regression-algorithms" title="Permalink to this headline">#</a></h3>
 <div class="proof definition admonition" id="residualDef">
-<p class="admonition-title"><span class="caption-number">Definition 28 </span></p>
-<section class="definition-content" id="proof-content">
-<p>A <strong>residual</strong> is the difference between the actual and predicted value computed with respect to data samples used to train, validate and tune the model (i.e. <em>in-sample</em> error).</p>
-</section>
-</div><p>It is always a good practice to make a scatter plot of all the residuals with respect to the independent variable values; they should be randomly distributed on a band symmetrically centered at zero. If not, this means the chosen model is not appropriate to correctly fit the data.</p>
-<div class="proof definition admonition" id="errorDef">
 <p class="admonition-title"><span class="caption-number">Definition 29 </span></p>
 <section class="definition-content" id="proof-content">
-<p>The <strong>generalized error</strong> is the error rate of the difference between the actual and predicted values computed with respect to test or new data (i.e. <em>out-of-sample</em> error).</p>
+<p>A <strong>residual</strong> is the difference between the actual and predicted value computed with respect to data samples used to train, validate and tune the model (i.e. <em>in-sample</em> error).</p>
 </section>
 </div></section>
 <section id="for-classification-algorithms">
@@ -995,7 +1004,7 @@ It is a <span class="math notranslate nohighlight">\(n^C \times n^C\)</span> mat
 </div><figure class="align-default" id="lec03-5-confusionmatrix">
 <a class="reference internal image-reference" href="../_images/lec03_5_confusionmatrix.png"><img alt="../_images/lec03_5_confusionmatrix.png" src="../_images/lec03_5_confusionmatrix.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">. The confusion matrix for a binary classifier.<br />
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">. The confusion matrix for a binary classifier.<br />
 <sub>Image from the author</sub></span><a class="headerlink" href="#lec03-5-confusionmatrix" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -1039,8 +1048,8 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p class="admonition-title"><span class="caption-number">Definition 32 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>root mean squared error (RMSE)</strong> is the square root of the mean squared error:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-75faa54a-8675-49be-96e7-559253605a82">
-<span class="eqno">(21)<a class="headerlink" href="#equation-75faa54a-8675-49be-96e7-559253605a82" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2e387f41-0a7d-409e-95df-4df6e189c948">
+<span class="eqno">(21)<a class="headerlink" href="#equation-2e387f41-0a7d-409e-95df-4df6e189c948" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{RMSE} = \sqrt{ \frac{\sum_{i=1}^N (y^\text{pred} - y^\text{obs} )^2 }{ N } }
 \end{equation}\]</div>
 </section>
@@ -1056,29 +1065,29 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p> <br />
 <strong>Accuracy</strong><br />
 Rate at which the model is able to predict the correct values of both classes.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-78d74bec-d345-4e3c-906a-d979b11a13eb">
-<span class="eqno">(22)<a class="headerlink" href="#equation-78d74bec-d345-4e3c-906a-d979b11a13eb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-dc2644a4-1734-4cdb-8654-b30d053ddd29">
+<span class="eqno">(22)<a class="headerlink" href="#equation-dc2644a4-1734-4cdb-8654-b30d053ddd29" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Accuracy} = \frac{\text{True predictions}}{\text{All predictions}} = \frac{\text{TP + TN}}{\text{TP + TN + FP + FN}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Precision, or Positive Predictive Value (PPV)</strong><br />
 Measure of the fraction of true predictions among all <strong>positive predictions</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-601c5767-7af6-46bb-9ed8-616c57b71346">
-<span class="eqno">(23)<a class="headerlink" href="#equation-601c5767-7af6-46bb-9ed8-616c57b71346" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c2f94133-8e7c-42a6-ac93-06935379b200">
+<span class="eqno">(23)<a class="headerlink" href="#equation-c2f94133-8e7c-42a6-ac93-06935379b200" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Precision} = \frac{\text{True predictions}}{\text{All Positive Predictions}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Positive}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Recall, or True Positive Rate (TPR)</strong><br />
 Measure of the fraction of true predictions among all <strong>true observations</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ddf06b4c-f20a-4182-a77a-5aba7322e61b">
-<span class="eqno">(24)<a class="headerlink" href="#equation-ddf06b4c-f20a-4182-a77a-5aba7322e61b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f6ab0a4c-458f-4dc3-b20c-6e2b474fc700">
+<span class="eqno">(24)<a class="headerlink" href="#equation-f6ab0a4c-458f-4dc3-b20c-6e2b474fc700" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Recall} = \frac{\text{True predictions}}{\text{Actual Positive}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
 \end{equation}\]</div>
 <p> <br />
 <strong>F-Score, or F1</strong><br />
 Describes the balance between Precision and Recall. It is the harmonic mean of the two:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-006aed7a-4b49-47d6-beb4-1aa838226660">
-<span class="eqno">(25)<a class="headerlink" href="#equation-006aed7a-4b49-47d6-beb4-1aa838226660" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e06bacf0-f72b-42d8-9728-6274be2bda3f">
+<span class="eqno">(25)<a class="headerlink" href="#equation-e06bacf0-f72b-42d8-9728-6274be2bda3f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{F1} =2 \; \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
 \end{equation}\]</div>
 </section>
@@ -1112,28 +1121,28 @@ In an unbalanced dataset, some classes will appear much more frequently that oth
 <section class="definition-content" id="proof-content">
 <p> <br />
 <strong>True Positive Rate (TPR)</strong>, also called <em>sensitivity</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-10783419-9adc-4a0e-aefe-590d87e8ebe2">
-<span class="eqno">(26)<a class="headerlink" href="#equation-10783419-9adc-4a0e-aefe-590d87e8ebe2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-454997fd-aaba-4044-aa6d-d334ebc51ba0">
+<span class="eqno">(26)<a class="headerlink" href="#equation-454997fd-aaba-4044-aa6d-d334ebc51ba0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TPR} = \frac{\text{True predictions}}{\text{Actual Positive}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
 \end{equation}\]</div>
 <p> <br />
 <strong>True Negative Rate (TNR)</strong>, also called <em>specificity</em></p>
 <p>Ratio of negative instances correctly classified as negative.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d22e31e5-456c-452f-9c72-2b691227b76b">
-<span class="eqno">(27)<a class="headerlink" href="#equation-d22e31e5-456c-452f-9c72-2b691227b76b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5427cb62-25bb-4e5d-92df-b890522c0160">
+<span class="eqno">(27)<a class="headerlink" href="#equation-5427cb62-25bb-4e5d-92df-b890522c0160" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TNR} = \frac{\text{False predictions}}{\text{Actual Negative}} = \frac{\text{True Negative}}{\text{True Negative} + \text{False Positive}}
 \end{equation}\]</div>
 <p> <br />
 <strong>False Positive Rate (FPR)</strong></p>
 <p>Ratio of negative instances that are incorrectly classified as positive.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-07913557-08e6-44a3-8968-719ae0fd6f2d">
-<span class="eqno">(28)<a class="headerlink" href="#equation-07913557-08e6-44a3-8968-719ae0fd6f2d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-aa12dab9-b000-4e9e-aec0-4a6a70e61e9c">
+<span class="eqno">(28)<a class="headerlink" href="#equation-aa12dab9-b000-4e9e-aec0-4a6a70e61e9c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = \frac{\text{Real False predicted Positive}}{\text{Actual Negative}} = \frac{\text{False Positive}}{\text{True Negative} + \text{False Positive}}
 \end{equation}\]</div>
 <p> <br />
 The False Positive Rate (FPR) is equal to:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c86b05a5-733a-4fc6-bad1-03561ffda582">
-<span class="eqno">(29)<a class="headerlink" href="#equation-c86b05a5-733a-4fc6-bad1-03561ffda582" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3b412b43-2c13-4aae-aa88-6947e0586d63">
+<span class="eqno">(29)<a class="headerlink" href="#equation-3b412b43-2c13-4aae-aa88-6947e0586d63" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = 1 - \text{TNR} = 1 - \textit{specificity}
 \end{equation}\]</div>
 </section>
@@ -1151,7 +1160,7 @@ The False Positive Rate (FPR) is equal to:</p>
 <figure class="align-default" id="lec03-5-rocdetailed">
 <a class="reference internal image-reference" href="../_images/lec03_5_ROCdetailed.png"><img alt="../_images/lec03_5_ROCdetailed.png" src="../_images/lec03_5_ROCdetailed.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">. How a ROC curve is constructed: the continuous variable <span class="math notranslate nohighlight">\(x\)</span> represents the classifier’s score. For a given decision threshold (green), the probabilities of True Positive P(TP) and False Positive P(FP) (or their equivalent in rates) are computed and plotted in the graph below. The ROC curve is the ensemble of the points (TPR, FPR) for the threshold spanning all the values of <span class="math notranslate nohighlight">\(x\)</span>.<br />
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">. How a ROC curve is constructed: the continuous variable <span class="math notranslate nohighlight">\(x\)</span> represents the classifier’s score. For a given decision threshold (green), the probabilities of True Positive P(TP) and False Positive P(FP) (or their equivalent in rates) are computed and plotted in the graph below. The ROC curve is the ensemble of the points (TPR, FPR) for the threshold spanning all the values of <span class="math notranslate nohighlight">\(x\)</span>.<br />
 <sub>Image: <a class="reference external" href="https://en.wikipedia.org/wiki/Receiver_operating_characteristic#/media/File:ROC_curves.svg">Wikipedia</a></sub></span><a class="headerlink" href="#lec03-5-rocdetailed" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -1181,7 +1190,7 @@ The True Positive Rate or signal efficiency is the integral of the signal (red) 
 <figure class="align-default" id="lec03-5-roc">
 <a class="reference internal image-reference" href="../_images/lec03_5_ROC.png"><img alt="../_images/lec03_5_ROC.png" src="../_images/lec03_5_ROC.png" style="width: 70%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">. Several ROC curves can be overlaid to then compare classifiers. A poor classifier will be near the random classifier line, which is the “random classifier” or in other words using pure luck (it will be right on average 50% of the time). The idea classifier correspond to the top left dot, where 100% of the signal sample are correctly classified so the False Positive Rate is zero.<br />
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">. Several ROC curves can be overlaid to then compare classifiers. A poor classifier will be near the random classifier line, which is the “random classifier” or in other words using pure luck (it will be right on average 50% of the time). The idea classifier correspond to the top left dot, where 100% of the signal sample are correctly classified so the False Positive Rate is zero.<br />
 <sub>Image: Modified work by the author, original by <a class="reference external" href="https://en.wikipedia.org/wiki/File:Roc_curve.svg">Wikipedia</a></sub></span><a class="headerlink" href="#lec03-5-roc" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -1209,7 +1218,7 @@ The True Positive Rate or signal efficiency is the integral of the signal (red) 
 <figure class="align-default" id="lec03-5-bias-var-ierrors">
 <a class="reference internal image-reference" href="../_images/lec03_5_bias_var_ierrors.png"><img alt="../_images/lec03_5_bias_var_ierrors.png" src="../_images/lec03_5_bias_var_ierrors.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">. Decomposition of the generalized error into the bias, variance and irreducible errors.<br />
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">. Decomposition of the generalized error into the bias, variance and irreducible errors.<br />
 <sub>Image: <a class="reference external" href="https://towardsdatascience.com/the-bias-variance-tradeoff-8818f41e39e9">towardsdatascience.com</a></sub></span><a class="headerlink" href="#lec03-5-bias-var-ierrors" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -1232,7 +1241,7 @@ The True Positive Rate or signal efficiency is the integral of the signal (red) 
 <figure class="align-default" id="lec03-5-underoverfit-reg-class-table">
 <a class="reference internal image-reference" href="../_images/lec03_5_underoverfit_reg_class_table.jpg"><img alt="../_images/lec03_5_underoverfit_reg_class_table.jpg" src="../_images/lec03_5_underoverfit_reg_class_table.jpg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">. Illustration of the bias and variance trade-off for regression and classification.<br />
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">. Illustration of the bias and variance trade-off for regression and classification.<br />
 <sub>Image: LinkedIn Machine Learning India</sub></span><a class="headerlink" href="#lec03-5-underoverfit-reg-class-table" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -1244,7 +1253,7 @@ The True Positive Rate or signal efficiency is the integral of the signal (red) 
 <figure class="align-default" id="lec03-5-bias-variance-train-val-complexity">
 <a class="reference internal image-reference" href="../_images/lec03_5_bias-variance-train-val-complexity.png"><img alt="../_images/lec03_5_bias-variance-train-val-complexity.png" src="../_images/lec03_5_bias-variance-train-val-complexity.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">. Visualization of the error (cost function) with respect to the model’s complexity for the training and validation sets. The ideal complexity is in the middle region where both the training and validation errors are low and close to one another.<br />
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">. Visualization of the error (cost function) with respect to the model’s complexity for the training and validation sets. The ideal complexity is in the middle region where both the training and validation errors are low and close to one another.<br />
 <sub>Image: <a class="reference external" href="https://dziganto.github.io/cross-validation/data%20science/machine%20learning/model%20tuning/python/Model-Tuning-with-Validation-and-Cross-Validation/">David Ziganto</a></sub></span><a class="headerlink" href="#lec03-5-bias-variance-train-val-complexity" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -1255,7 +1264,7 @@ The True Positive Rate or signal efficiency is the integral of the signal (red) 
 <figure class="align-default" id="lec03-5-low-high-var">
 <a class="reference internal image-reference" href="../_images/lec03_5_low_high_var.webp"><img alt="../_images/lec03_5_low_high_var.webp" src="../_images/lec03_5_low_high_var.webp" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 30 </span><span class="caption-text">.  Interpretation of the error plots as a function of the number of samples in the dataset for low and high bias/variance situations.
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">.  Interpretation of the error plots as a function of the number of samples in the dataset for low and high bias/variance situations.
 <sub>Images: <a class="reference external" href="https://www.dataquest.io/blog/learning-curves-machine-learning/">dataquest.io</a></sub></span><a class="headerlink" href="#lec03-5-low-high-var" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>

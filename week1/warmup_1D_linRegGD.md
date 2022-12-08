@@ -13,13 +13,13 @@ So, what is linear regression to start with?
 
 ````{prf:definition}
 :label: linRegDef
-Linear regression is a model assuming a linear relationship between input variables and real-valued ouput variables.
+Linear regression is a model assuming a linear relationship between input variables and real-valued output variables.
 
 * Input variables are called _independent variables_, or _explanatory variables_.
 
 * The output variable is considered a _dependent_ variable.
 
-Linear regression is used to __predict a real-valued ouput variable__ (dependent variable) based on the values of the input variables (independent variables).
+Linear regression is used to __predict a real-valued output variable__ (dependent variable) based on the values of the input variables (independent variables).
 ````
 
 ````{prf:definition}
@@ -33,7 +33,7 @@ Let's now introduce terms more specific to the machine learning jargon and defin
 
 ```{admonition} Terminology and Notation 
 * The input variables are called __features__ and are denoted with $x$.
-* The ouput variable is the __target__ and is denoted with $y$.
+* The output variable is the __target__ and is denoted with $y$.
 
 * In supervised learning the dataset is called a __training set__.
 * The number of training examples is denoted with $m$.
@@ -48,7 +48,7 @@ Here we start counting from one. When you will write code, the convention is to 
 
 When we refer to the entire list of all features and targets, we will use, $x$ and $y$ respectively. Those are __vectors__. 
 
-We defined the input and ouput. In the middle is our model. We feed it first with all the input features and their associated known targets. 
+We defined the input and output. In the middle is our model. We feed it first with all the input features and their associated known targets. 
 This first step of supervised learning is called the __training__ and we will see the mathematics behind it now. What we need first is a function that best maps input to output.
 
 ````{prf:definition}
@@ -95,7 +95,7 @@ We want to find the values of $\theta_0$ and $\theta_1$ that fit the data well.
 We could pick one training example $(x^{(k)} , y^{(k)})$ and derive the coefficients from there. But will this be the 'best' straight line to draw?
 The mathematical phrasing for such a task is to think in terms of errors. How do we calculate the errors? That's a first question to ask. 
 From a given vector of $\theta$, how small are the errors?
-This picture below helps to visualize. From a given parameterization, that is to say a given tuple ($\theta_0$ , $\theta_1$ ), the mapping function will ouput continuous values of a predicted $y$ for a continuous range of $x$. That is the dashed line. The errors are the (vertical) intervals between the $y$ from the prediction and each data points. 
+This picture below helps to visualize. From a given parameterization, that is to say a given tuple ($\theta_0$ , $\theta_1$ ), the mapping function will output continuous values of a predicted $y$ for a continuous range of $x$. That is the dashed line. The errors are the (vertical) intervals between the $y$ from the prediction and each data points. 
 ```{figure} ../images/lec02_1_square_err_graph.png
 ---
 width: 75%

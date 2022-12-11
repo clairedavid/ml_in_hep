@@ -12,7 +12,7 @@ In other words, it is about making predictions about a discrete variable versus 
 
 ````{prf:definition}
 :label: catVar
-A __categorical variable__ is variable that can take a limited number of possible values: true or false, yes or no, 1 or 0. 
+A __categorical variable__ is a variable that can take a limited number of possible values: true or false, yes or no, 1 or 0. 
 ````
 
 ````{prf:definition}

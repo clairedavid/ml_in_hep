@@ -71,7 +71,7 @@ The subscript $\theta$ means that the function depends on the values taken by $\
 :label: modelParameters
 The mapping function's internal variables are called the model parameters. They are denoted by the __vector__ $\theta$:
 \begin{equation*}
-\theta  = \begin{pmatrix} 
+\boldsymbol{\theta}  = \begin{pmatrix} 
 \theta_0 \\
 \theta_1 \\
  \\
@@ -85,7 +85,7 @@ The mapping function's internal variables are called the model parameters. They 
 In our case with the linear regression with one input feature, we only need two parameters:
 ```{math}
 :label: theta_0_1
-\Theta = \begin{pmatrix} 
+\boldsymbol{\theta} = \begin{pmatrix} 
 \theta_0 \\
 \theta_1 \\
 \end{pmatrix}

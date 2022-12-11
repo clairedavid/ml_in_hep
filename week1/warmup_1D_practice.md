@@ -69,7 +69,7 @@ In mathematics, zero is exactly zero. In computing, variables can store very sma
   
 __Linear Regression__ is the procedure that estimate a real-valued dependent variable (target) from independent variables (input features) assuming a linear relationship between $n$ input features and $n+1$ coefficients (parameters, or weight). The extra one is the offset parameter.
 
-__The cost function__, or loss function, computes the sum of errors between the predicted line and the data. It usually uses the least squared method (errors squared).
+__The cost function__ computes the sum of errors between the predicted line and the data. It usually uses the least squared method (errors squared).
 
 __The Gradient Descent__ is an optimization algorithm consisting of an iterative procedure to update the parameters in the direction of 'descending gradient', i.e. dictated by the slope of the cost function's partial derivatives for each parameter, until convergence to values for the parameters minimizing the cost function.
 

@@ -155,7 +155,7 @@ The One-to-One method would create those hyperplanes (with two input features, D
   name: lec03_3_multiclass-2
   width: 60%
 ---
- . One-to-One approach splits paired dataset, ignoring the points of the other classes.  
+ . One-to-One approach splits paired datasets, ignoring the points of the other classes.  
  <sub>Image: [analyticsvidhya.com](https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/)</sub>
 ```
 

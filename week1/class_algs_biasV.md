@@ -114,7 +114,7 @@ The false positive and false negatives misclassifications are also referred to a
 ````{prf:definition}
 :label: 
 __Type I error - False Positive__  
-Error of rejecting the null hypothesiswhen the null hypothesis is true.   
+Error of rejecting the null hypothesis when the null hypothesis is true.   
 
 $\Rightarrow$ Background is classified as signal (background contamination)
 

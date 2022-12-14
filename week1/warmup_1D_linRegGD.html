@@ -536,7 +536,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tutorials/t02_forestry.html">
-   2. Event Classification with Trees
+   2. 2. LHC Event Classification with Trees {-}
   </a>
  </li>
  <li class="toctree-l1">
@@ -825,12 +825,12 @@ title="Print to PDF"
 <div class="proof definition admonition" id="linRegDef">
 <p class="admonition-title"><span class="caption-number">Definition 3 </span></p>
 <section class="definition-content" id="proof-content">
-<p>Linear regression is a model assuming a linear relationship between input variables and real-valued ouput variables.</p>
+<p>Linear regression is a model assuming a linear relationship between input variables and real-valued output variables.</p>
 <ul class="simple">
 <li><p>Input variables are called <em>independent variables</em>, or <em>explanatory variables</em>.</p></li>
 <li><p>The output variable is considered a <em>dependent</em> variable.</p></li>
 </ul>
-<p>Linear regression is used to <strong>predict a real-valued ouput variable</strong> (dependent variable) based on the values of the input variables (independent variables).</p>
+<p>Linear regression is used to <strong>predict a real-valued output variable</strong> (dependent variable) based on the values of the input variables (independent variables).</p>
 </section>
 </div><div class="proof definition admonition" id="simpleRegDef">
 <p class="admonition-title"><span class="caption-number">Definition 4 </span></p>
@@ -845,7 +845,7 @@ title="Print to PDF"
 <p class="admonition-title">Terminology and Notation </p>
 <ul class="simple">
 <li><p>The input variables are called <strong>features</strong> and are denoted with <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
-<li><p>The ouput variable is the <strong>target</strong> and is denoted with <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+<li><p>The output variable is the <strong>target</strong> and is denoted with <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
 <li><p>In supervised learning the dataset is called a <strong>training set</strong>.</p></li>
 <li><p>The number of training examples is denoted with <span class="math notranslate nohighlight">\(m\)</span>.</p></li>
 <li><p>The <span class="math notranslate nohighlight">\(i^{th}\)</span> example is <span class="math notranslate nohighlight">\((x^{(i)} , y^{(i)})\)</span>.</p></li>
@@ -857,7 +857,7 @@ title="Print to PDF"
 <p>Here we start counting from one. When you will write code, the convention is to start at index zero. So your last sample will be of index <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">-</span> <span class="pre">1</span></code>. Keep this in mind.</p>
 </div>
 <p>When we refer to the entire list of all features and targets, we will use, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> respectively. Those are <strong>vectors</strong>.</p>
-<p>We defined the input and ouput. In the middle is our model. We feed it first with all the input features and their associated known targets.
+<p>We defined the input and output. In the middle is our model. We feed it first with all the input features and their associated known targets.
 This first step of supervised learning is called the <strong>training</strong> and we will see the mathematics behind it now. What we need first is a function that best maps input to output.</p>
 <div class="proof definition admonition" id="hypothesisFunction">
 <p class="admonition-title"><span class="caption-number">Definition 5 </span></p>
@@ -878,7 +878,7 @@ y = h(x)
 <p>The mapping function’s internal variables are called the model parameters. They are denoted by the <strong>vector</strong> <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-\theta  = \begin{pmatrix} 
+\boldsymbol{\theta}  = \begin{pmatrix} 
 \theta_0 \\
 \theta_1 \\
  \\
@@ -890,7 +890,7 @@ y = h(x)
 </section>
 </div><p>In our case with the linear regression with one input feature, we only need two parameters:</p>
 <div class="math notranslate nohighlight" id="equation-theta-0-1">
-<span class="eqno">(2)<a class="headerlink" href="#equation-theta-0-1" title="Permalink to this equation">#</a></span>\[\begin{split}\Theta = \begin{pmatrix} 
+<span class="eqno">(2)<a class="headerlink" href="#equation-theta-0-1" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{\theta} = \begin{pmatrix} 
 \theta_0 \\
 \theta_1 \\
 \end{pmatrix}\end{split}\]</div>
@@ -898,7 +898,7 @@ y = h(x)
 We could pick one training example <span class="math notranslate nohighlight">\((x^{(k)} , y^{(k)})\)</span> and derive the coefficients from there. But will this be the ‘best’ straight line to draw?
 The mathematical phrasing for such a task is to think in terms of errors. How do we calculate the errors? That’s a first question to ask.
 From a given vector of <span class="math notranslate nohighlight">\(\theta\)</span>, how small are the errors?
-This picture below helps to visualize. From a given parameterization, that is to say a given tuple (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span> ), the mapping function will ouput continuous values of a predicted <span class="math notranslate nohighlight">\(y\)</span> for a continuous range of <span class="math notranslate nohighlight">\(x\)</span>. That is the dashed line. The errors are the (vertical) intervals between the <span class="math notranslate nohighlight">\(y\)</span> from the prediction and each data points.</p>
+This picture below helps to visualize. From a given parameterization, that is to say a given tuple (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span> ), the mapping function will output continuous values of a predicted <span class="math notranslate nohighlight">\(y\)</span> for a continuous range of <span class="math notranslate nohighlight">\(x\)</span>. That is the dashed line. The errors are the (vertical) intervals between the <span class="math notranslate nohighlight">\(y\)</span> from the prediction and each data points.</p>
 <figure class="align-default" id="squareerrvisual">
 <a class="reference internal image-reference" href="../_images/lec02_1_square_err_graph.png"><img alt="../_images/lec02_1_square_err_graph.png" src="../_images/lec02_1_square_err_graph.png" style="width: 75%;" /></a>
 <figcaption>
@@ -962,9 +962,6 @@ In Equation <a class="reference internal" href="#equation-costfunctionlinreg">(3
 <h2>Visualizing the cost<a class="headerlink" href="#visualizing-the-cost" title="Permalink to this headline">#</a></h2>
 <p>Let’s see a visual representation of our cost function as a function of our <span class="math notranslate nohighlight">\(\theta\)</span> parameters. We saw in the simple example above that the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span> with only one parameter is a U-shaped parabola. The same goes if we fix <span class="math notranslate nohighlight">\(\theta_1\)</span> and vary <span class="math notranslate nohighlight">\(\theta_0\)</span>. Combining the two, it will look like a bowl. The figure below is not made from the data above, just for illustration:</p>
 <figure class="align-default" id="plot-linreg-bowl">
-<div class="cell_output docutils container">
-<img alt="../_images/warmup_1D_linRegGD_plots_3_0.png" src="../_images/warmup_1D_linRegGD_plots_3_0.png" />
-</div>
 <figcaption>
 <p><span class="caption-number">Fig. 10 </span><span class="caption-text">. The cost function (vertical axis) as a function of the parameters <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span>.</span><a class="headerlink" href="#plot-linreg-bowl" title="Permalink to this image">#</a></p>
 </figcaption>

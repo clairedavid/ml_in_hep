@@ -83,7 +83,7 @@ A __decision boundary__ is a defined threshold (line, or plane, or more dimensio
 
 In the section {ref}`class:sigmoid:better` above, we can split the data sample using $y = 1/2$ horizontal mark:  
 * if the logistic function outputs a value $y < 0.5$, the event is classified as background 
-* if the logistic function outputs a value $y \geq 0.5$, the event is classified as background
+* if the logistic function outputs a value $y \geq 0.5$, the event is classified as signal
 
 This way and looking at the distribution on Figure {ref}`scattersigmoid`, the majority of data points will be correctly classified with the $1/2$ horizontal threshold.
 
@@ -93,7 +93,7 @@ Careful with how the logistic function is used. We are not computing it directly
 
 ```{admonition} Question
 :class: seealso
-How does this boundary translates for sigmoid's input $z = \theta^{\: T} x^\text{new}$?  
+How does this boundary translates for sigmoid's input $z = x^\text{new}\theta^{\: T} $?  
 
 Look at the first figure on top of this section. For which input values $z$ is the sigmoid lower than 0.5? For which values is the sigmoid above?  
 ```

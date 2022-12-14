@@ -536,7 +536,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tutorials/t02_forestry.html">
-   2. Event Classification with Trees
+   2. 2. LHC Event Classification with Trees {-}
   </a>
  </li>
  <li class="toctree-l1">
@@ -966,28 +966,26 @@ How to tune the algorithm to get a good fit?</p>
 <figcaption>
 <p><span class="caption-number">Fig. 24 </span><span class="caption-text">.  Illustration of the <span class="math notranslate nohighlight">\(k\)</span>-fold cross-validation on the training dataset.<br />
 <sub>Source: Scikit-Learn</sub></span><a class="headerlink" href="#lec03-5-grid-search-cross-validation" title="Permalink to this image">#</a></p>
-<div class="legend">
-<p>With <span class="math notranslate nohighlight">\(k\)</span>-fold cross-validation, the estimate of the model’s predictive performance comes with a precision (the standard deviation from the collection of <span class="math notranslate nohighlight">\(k\)</span> estimates). However cross-validation necessitates more computing time yet it is more robust against noise or outliers picked by the random splitting.</p>
-<p>We now know how to manipulate our data set to get an estimate of performance. But what is this quantifier exactly? How to visualize it?</p>
-</div>
 </figcaption>
 </figure>
-<p>It is always a good practice to make a scatter plot of all the residuals with respect to the independent variable values; they should be randomly distributed on a band symmetrically centered at zero. If not, this means the chosen model is not appropriate to correctly fit the data.</p>
-<div class="proof definition admonition" id="errorDef">
-<p class="admonition-title"><span class="caption-number">Definition 28 </span></p>
-<section class="definition-content" id="proof-content">
-<p>The <strong>generalized error</strong> is the error rate of the difference between the actual and predicted values computed with respect to test or new data (i.e. <em>out-of-sample</em> error).</p>
+<p>With <span class="math notranslate nohighlight">\(k\)</span>-fold cross-validation, the estimate of the model’s predictive performance comes with a precision (the standard deviation from the collection of <span class="math notranslate nohighlight">\(k\)</span> estimates). However cross-validation necessitates more computing time yet it is more robust against noise or outliers picked by the random splitting.</p>
+<p>We now know how to manipulate our data set to get an estimate of performance. But what is this quantifier exactly? How to visualize it?</p>
 </section>
-</div></section>
 <section id="types-of-errors">
 <h2>Types of errors<a class="headerlink" href="#types-of-errors" title="Permalink to this headline">#</a></h2>
 <p>Generally speaking, an error is the gap between the prediction and the true value. There are different terms depending on the algorithm and the set on which errors are computed.</p>
 <section id="for-regression-algorithms">
 <h3>For regression algorithms<a class="headerlink" href="#for-regression-algorithms" title="Permalink to this headline">#</a></h3>
 <div class="proof definition admonition" id="residualDef">
-<p class="admonition-title"><span class="caption-number">Definition 29 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 28 </span></p>
 <section class="definition-content" id="proof-content">
 <p>A <strong>residual</strong> is the difference between the actual and predicted value computed with respect to data samples used to train, validate and tune the model (i.e. <em>in-sample</em> error).</p>
+</section>
+</div><p>It is always a good practice to make a scatter plot of all the residuals with respect to the independent variable values; they should be randomly distributed on a band symmetrically centered at zero. If not, this means the chosen model is not appropriate to correctly fit the data.</p>
+<div class="proof definition admonition" id="errorDef">
+<p class="admonition-title"><span class="caption-number">Definition 29 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>generalized error</strong> is the error rate of the difference between the actual and predicted values computed with respect to test or new data (i.e. <em>out-of-sample</em> error).</p>
 </section>
 </div></section>
 <section id="for-classification-algorithms">
@@ -1030,7 +1028,7 @@ We predict background but the event is signal: we have signal contamination in t
 <p class="admonition-title"><span class="caption-number">Definition 31 </span></p>
 <section class="definition-content" id="proof-content">
 <p><strong>Type I error - False Positive</strong><br />
-Error of rejecting the null hypothesiswhen the null hypothesis is true.</p>
+Error of rejecting the null hypothesis when the null hypothesis is true.</p>
 <p><span class="math notranslate nohighlight">\(\Rightarrow\)</span> Background is classified as signal (background contamination)</p>
 <p><strong>Type II error - False Negative</strong><br />
 Error of accepting the null hypothesis when the alternative one is actually true.</p>
@@ -1048,8 +1046,8 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p class="admonition-title"><span class="caption-number">Definition 32 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>root mean squared error (RMSE)</strong> is the square root of the mean squared error:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2e387f41-0a7d-409e-95df-4df6e189c948">
-<span class="eqno">(21)<a class="headerlink" href="#equation-2e387f41-0a7d-409e-95df-4df6e189c948" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6ca15ff4-e592-462c-bcb9-5ad9a4bd8cd2">
+<span class="eqno">(21)<a class="headerlink" href="#equation-6ca15ff4-e592-462c-bcb9-5ad9a4bd8cd2" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{RMSE} = \sqrt{ \frac{\sum_{i=1}^N (y^\text{pred} - y^\text{obs} )^2 }{ N } }
 \end{equation}\]</div>
 </section>
@@ -1065,29 +1063,29 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p> <br />
 <strong>Accuracy</strong><br />
 Rate at which the model is able to predict the correct values of both classes.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dc2644a4-1734-4cdb-8654-b30d053ddd29">
-<span class="eqno">(22)<a class="headerlink" href="#equation-dc2644a4-1734-4cdb-8654-b30d053ddd29" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-28c57578-0b67-495d-b3f1-12074e031f4a">
+<span class="eqno">(22)<a class="headerlink" href="#equation-28c57578-0b67-495d-b3f1-12074e031f4a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Accuracy} = \frac{\text{True predictions}}{\text{All predictions}} = \frac{\text{TP + TN}}{\text{TP + TN + FP + FN}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Precision, or Positive Predictive Value (PPV)</strong><br />
 Measure of the fraction of true predictions among all <strong>positive predictions</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c2f94133-8e7c-42a6-ac93-06935379b200">
-<span class="eqno">(23)<a class="headerlink" href="#equation-c2f94133-8e7c-42a6-ac93-06935379b200" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e0117f38-b696-4e0d-b4f8-838cf6e476e1">
+<span class="eqno">(23)<a class="headerlink" href="#equation-e0117f38-b696-4e0d-b4f8-838cf6e476e1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Precision} = \frac{\text{True predictions}}{\text{All Positive Predictions}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Positive}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Recall, or True Positive Rate (TPR)</strong><br />
 Measure of the fraction of true predictions among all <strong>true observations</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f6ab0a4c-458f-4dc3-b20c-6e2b474fc700">
-<span class="eqno">(24)<a class="headerlink" href="#equation-f6ab0a4c-458f-4dc3-b20c-6e2b474fc700" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-15c59793-5317-45ae-8893-6cacc8b6e810">
+<span class="eqno">(24)<a class="headerlink" href="#equation-15c59793-5317-45ae-8893-6cacc8b6e810" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Recall} = \frac{\text{True predictions}}{\text{Actual Positive}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
 \end{equation}\]</div>
 <p> <br />
 <strong>F-Score, or F1</strong><br />
 Describes the balance between Precision and Recall. It is the harmonic mean of the two:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e06bacf0-f72b-42d8-9728-6274be2bda3f">
-<span class="eqno">(25)<a class="headerlink" href="#equation-e06bacf0-f72b-42d8-9728-6274be2bda3f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-68e58e50-bb8d-42a0-9d54-b1a628697d5b">
+<span class="eqno">(25)<a class="headerlink" href="#equation-68e58e50-bb8d-42a0-9d54-b1a628697d5b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{F1} =2 \; \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
 \end{equation}\]</div>
 </section>
@@ -1121,28 +1119,28 @@ In an unbalanced dataset, some classes will appear much more frequently that oth
 <section class="definition-content" id="proof-content">
 <p> <br />
 <strong>True Positive Rate (TPR)</strong>, also called <em>sensitivity</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-454997fd-aaba-4044-aa6d-d334ebc51ba0">
-<span class="eqno">(26)<a class="headerlink" href="#equation-454997fd-aaba-4044-aa6d-d334ebc51ba0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a88c8c1f-2f4b-4ae7-8880-42d48794a36f">
+<span class="eqno">(26)<a class="headerlink" href="#equation-a88c8c1f-2f4b-4ae7-8880-42d48794a36f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TPR} = \frac{\text{True predictions}}{\text{Actual Positive}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
 \end{equation}\]</div>
 <p> <br />
 <strong>True Negative Rate (TNR)</strong>, also called <em>specificity</em></p>
 <p>Ratio of negative instances correctly classified as negative.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5427cb62-25bb-4e5d-92df-b890522c0160">
-<span class="eqno">(27)<a class="headerlink" href="#equation-5427cb62-25bb-4e5d-92df-b890522c0160" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1791f0b0-f4ba-45c0-8341-21dd5ff3744b">
+<span class="eqno">(27)<a class="headerlink" href="#equation-1791f0b0-f4ba-45c0-8341-21dd5ff3744b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TNR} = \frac{\text{False predictions}}{\text{Actual Negative}} = \frac{\text{True Negative}}{\text{True Negative} + \text{False Positive}}
 \end{equation}\]</div>
 <p> <br />
 <strong>False Positive Rate (FPR)</strong></p>
 <p>Ratio of negative instances that are incorrectly classified as positive.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-aa12dab9-b000-4e9e-aec0-4a6a70e61e9c">
-<span class="eqno">(28)<a class="headerlink" href="#equation-aa12dab9-b000-4e9e-aec0-4a6a70e61e9c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-dc876b5c-ba5e-4c38-9162-da18de7f6f20">
+<span class="eqno">(28)<a class="headerlink" href="#equation-dc876b5c-ba5e-4c38-9162-da18de7f6f20" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = \frac{\text{Real False predicted Positive}}{\text{Actual Negative}} = \frac{\text{False Positive}}{\text{True Negative} + \text{False Positive}}
 \end{equation}\]</div>
 <p> <br />
 The False Positive Rate (FPR) is equal to:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3b412b43-2c13-4aae-aa88-6947e0586d63">
-<span class="eqno">(29)<a class="headerlink" href="#equation-3b412b43-2c13-4aae-aa88-6947e0586d63" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6960c285-3e71-41fe-a37a-8f4c97a448fe">
+<span class="eqno">(29)<a class="headerlink" href="#equation-6960c285-3e71-41fe-a37a-8f4c97a448fe" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = 1 - \text{TNR} = 1 - \textit{specificity}
 \end{equation}\]</div>
 </section>

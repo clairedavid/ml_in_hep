@@ -46,6 +46,7 @@ The $k$ validation results are combined to provide an estimate of the model's pr
 ---
  .  Illustration of the $k$-fold cross-validation on the training dataset.  
  <sub>Source: Scikit-Learn</sub>
+ ```
 
 With $k$-fold cross-validation, the estimate of the model's predictive performance comes with a precision (the standard deviation from the collection of $k$ estimates). However cross-validation necessitates more computing time yet it is more robust against noise or outliers picked by the random splitting. 
 
@@ -113,7 +114,7 @@ The false positive and false negatives misclassifications are also referred to a
 ````{prf:definition}
 :label: 
 __Type I error - False Positive__  
-Error of rejecting the null hypothesiswhen the null hypothesis is true.   
+Error of rejecting the null hypothesis when the null hypothesis is true.   
 
 $\Rightarrow$ Background is classified as signal (background contamination)
 

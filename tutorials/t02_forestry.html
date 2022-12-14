@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>2. Event Classification with Trees &#8212; Machine Learning in Particle Physics</title>
+    <title>2. LHC Event Classification with Trees &#8212; Machine Learning in Particle Physics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="3. Neural Network By Hand" href="t03_nn_by_hand.html" />
@@ -494,8 +496,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/ethics_exam.html">
-   14. Ethics in ML &amp; Exam
+  <a class="reference internal" href="../week3/ethics_outlook.html">
+   14. Ethics in ML &amp; Outlook
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
   <label for="toctree-checkbox-12">
@@ -504,38 +506,21 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_exam_1.html">
+    <a class="reference internal" href="../week3/ethics_outlook_1.html">
      The Ethics in ML
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_exam_2.html">
-     Course Exam
+    <a class="reference internal" href="../week3/ethics_outlook_2.html">
+     Machine Learning Today
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/projects_outlook.html">
-   15. Project presentations &amp; Outlook
+ <li class="toctree-l1">
+  <a class="reference internal" href="../week3/projects_exam.html">
+   15. Project presentations &amp; Exam
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/projects_outlook_pres.html">
-     Project Presentations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/projects_outlook_today.html">
-     Open Questions in ML today
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -551,7 +536,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   2. Event Classification with Trees
+   2. LHC Event Classification with Trees
   </a>
  </li>
  <li class="toctree-l1">
@@ -724,23 +709,104 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explore-the-data">
+   2.1. Explore the Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-the-data">
+     2.1.1. Get the Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualize-the-data">
+     2.1.2. Visualize the Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-tree">
+   2.2. Decision Tree
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performance-metrics">
+   2.3. Performance metrics
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Event Classification with Trees</h1>
+                <h1>LHC Event Classification with Trees</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explore-the-data">
+   2.1. Explore the Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-the-data">
+     2.1.1. Get the Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualize-the-data">
+     2.1.2. Visualize the Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-tree">
+   2.2. Decision Tree
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performance-metrics">
+   2.3. Performance metrics
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -748,8 +814,191 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="event-classification-with-trees">
-<h1><span class="section-number">2. </span>Event Classification with Trees<a class="headerlink" href="#event-classification-with-trees" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lhc-event-classification-with-trees">
+<h1><span class="section-number">2. </span>LHC Event Classification with Trees<a class="headerlink" href="#lhc-event-classification-with-trees" title="Permalink to this headline">#</a></h1>
+<div class="tip admonition">
+<p class="admonition-title">Learning Objectives</p>
+<p>In this tutorial, you will learn how to classify collisions from the Large Hadron Collider using decision trees and random forests.</p>
+<p>Main goals:</p>
+<ul class="simple">
+<li><p><strong>Implement a decision tree</strong></p></li>
+<li><p><strong>Compute by hand performance metrics</strong></p></li>
+<li><p><strong>Compare decision trees by changing hyperparameters</strong></p></li>
+<li><p><strong>Implement a random forest classifier</strong></p></li>
+<li><p><strong>Visualize the decision surface</strong></p></li>
+<li><p><strong>Plot a ROC curve and compare different classifiers’ performance</strong></p></li>
+</ul>
+<p>What will also be covered:</p>
+<ul class="simple">
+<li><p>How to load and explore a dataset</p></li>
+<li><p>How to plot with Matplotlib</p></li>
+<li><p>How to define custom functions</p></li>
+<li><p>How to debug a code</p></li>
+</ul>
+</div>
+<p>Let’s now open a fresh Jupyter Notebook and follow along!</p>
+<h2>Introduction</h2>
+<h3>Higgs boson production modes</h3>
+<p>In particle physics, the Higgs boson plays an essential role, in particular (pun intended) it gives massive particles their observed mass. The Higgs boson can be produced in different ways - we call this “Higgs boson production mechanism.” The main two production processes are:</p>
+<ul class="simple">
+<li><p>gluon-gluon Fusion (ggF): two gluons, one from each of the incoming LHC protons, interact or “fuse” to create a Higgs boson.</p></li>
+<li><p>Vector Boson Fusion (VBF): a quark from each of the incoming LHC protons radiates off a heavy vector boson (<span class="math notranslate nohighlight">\(W\)</span> or <span class="math notranslate nohighlight">\(Z\)</span>). These bosons interact or “fuse” to produce a Higgs boson.</p></li>
+</ul>
+<figure class="align-default" id="tuto-02-1-higgsfeyn">
+<a class="reference internal image-reference" href="../_images/tuto_02_1_higgsfeyn.png"><img alt="../_images/tuto_02_1_higgsfeyn.png" src="../_images/tuto_02_1_higgsfeyn.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">.  Feynman diagrams for the gluon-gluon Fusion (ggF) process on the left and Vector Boson Fusion (VBF) on the right.<br />
+<sub>Image: ATLAS, CERN</sub></span><a class="headerlink" href="#tuto-02-1-higgsfeyn" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The latter process, VBF, is very interesting to study as it probes the coupling between the Higgs boson and the two other vector bosons. This is seen on the Feynman diagram with the vertex between the two departing wavy branches of each vector boson V and the dashed line H representing the Higgs boson. Such configuration is said to be “sensitive to new physics”, because there can be processes that are not part of the current theory, the Standard Model, arising there. Hence the importance to measure the rates of VBF collisions (how frequent does it happen). But before, how to select the Higgs boson VBF production from the other one, gluon-gluon Fusion?</p>
+<center>__This is your mission!__  <sub>You will be guided, don't worry.</sub></center>  
+<h3>Inside the Data</h3>  
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Curious about CERN ATLAS Open Data initiative? Explore it more <a class="reference external" href="https://atlas.cern/Resources/Opendata">here</a>.</p>
+</aside>
+<p>This tutorial will use ATLAS Open Data, which provides open access to proton-proton collision data at the LHC for educational purposes.</p>
+<p>In the VBF process, the initial quarks that first radiated the vector bosons are deflected only slightly and travel roughly along their initial directions. They are then detected as particle “jets” in the different hemispheres of the detector. Jets are reconstructed as objects. Although they are more of a conical shape, they are stored in the data as a four-vector entity, with a norm, two angles and an energy.</p>
+<p>The collisions have been filtered to select those containing each a Higgs boson, four leptons and at least two jets.</p>
+<p>We will focus on two variable for now:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(|\Delta\eta_{jj}|\)</span>: it corresponds to the angle between the two jets (<span class="math notranslate nohighlight">\(\eta\)</span> is the pseudorapidity)</p></li>
+<li><p><span class="math notranslate nohighlight">\(m_{jj}\)</span>:   the invariant mass of the two jets</p></li>
+</ul>
+<p>These variable are already calculated in the data samples.</p>
+<section id="explore-the-data">
+<h2><span class="section-number">2.1. </span>Explore the Data<a class="headerlink" href="#explore-the-data" title="Permalink to this headline">#</a></h2>
+<section id="get-the-data">
+<h3><span class="section-number">2.1.1. </span>Get the Data<a class="headerlink" href="#get-the-data" title="Permalink to this headline">#</a></h3>
+<p>The datasets can be found <a class="reference external" href="https://drive.google.com/drive/folders/1b_GDA2bfsUhlvzX-A7RjHoHCL5Z8-bkb?usp=sharing">here</a>. Download the files and put them in your GDrive.</p>
+<p>To load the data on Google Colab, you will need to run a cell with these lines:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/gdrive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then using <code class="docutils literal notranslate"><span class="pre">!ls</span></code> you can locate the files or folder.</p>
+<p>Before playing with the data, let’s import libraries.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># set a seed to ensure reproducibility</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">rnd</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+<span class="c1"># Matplotlib plotting settings</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;matplotlib version: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mp</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
+
+<span class="n">FONTSIZE</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="n">FONTSIZE</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span> <span class="n">FONTSIZE</span><span class="p">,</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span><span class="n">FONTSIZE</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="n">FONTSIZE</span><span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Question 1.0: Get the data</strong><br />
+Use <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code> to store each dataset into a dataframe. Name them <code class="docutils literal notranslate"><span class="pre">train</span></code>, <code class="docutils literal notranslate"><span class="pre">valid</span></code> and <code class="docutils literal notranslate"><span class="pre">test</span></code> respectively.
+Explore the variables by printing the first five rows.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">sample</span></code> column stores the labels of the collisions: +1 corresponds to VFB and -1 to ggF.</p>
+<p><strong>Question 1.1: Warm-up: inspect the data. How many events (rows) does each file contain?</strong><br />
+<strong>Question 1.2: How many events of each process (VFB and ggF) does each file contain?</strong></p>
+<p>Ask for hint(s) to the instructor if you are stuck.</p>
+</section>
+<section id="visualize-the-data">
+<h3><span class="section-number">2.1.2. </span>Visualize the Data<a class="headerlink" href="#visualize-the-data" title="Permalink to this headline">#</a></h3>
+<p>Let’s draw a scatter plot to see how the data look like! But first, we will create reduced dataset with only the necessary variables. Copy the following in your notebook:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># GLOBAL VARIABLES</span>
+<span class="n">XNAME</span> <span class="o">=</span> <span class="s1">&#39;detajj&#39;</span><span class="p">;</span> <span class="n">XLABEL</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$|\Delta\eta_</span><span class="si">{jj}</span><span class="s1">|$&#39;</span>
+<span class="n">YNAME</span> <span class="o">=</span> <span class="s1">&#39;massjj&#39;</span><span class="p">;</span> <span class="n">YLABEL</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$m_</span><span class="si">{jj}</span><span class="s1">$ (GeV)&#39;</span>
+
+<span class="n">inputs</span><span class="o">=</span> <span class="p">[</span><span class="n">XNAME</span><span class="p">,</span> <span class="n">YNAME</span><span class="p">]</span> <span class="p">;</span>
+
+<span class="n">XBINS</span> <span class="o">=</span> <span class="mi">5</span> <span class="p">;</span> <span class="n">XMIN</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">XMAX</span> <span class="o">=</span> <span class="mi">5</span>    <span class="p">;</span> <span class="n">XSTEP</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">YBINS</span> <span class="o">=</span> <span class="mi">5</span> <span class="p">;</span> <span class="n">YMIN</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">YMAX</span> <span class="o">=</span> <span class="mi">1000</span> <span class="p">;</span> <span class="n">YSTEP</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="c1"># Creating reduced datasets with detajj &amp; massjj only</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="n">inputs</span><span class="p">]</span> <span class="p">;</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;sample&#39;</span><span class="p">]</span>
+<span class="n">X_valid</span> <span class="o">=</span> <span class="n">valid</span><span class="p">[</span><span class="n">inputs</span><span class="p">]</span> <span class="p">;</span> <span class="n">y_valid</span> <span class="o">=</span> <span class="n">valid</span><span class="p">[</span><span class="s1">&#39;sample&#39;</span><span class="p">]</span>
+<span class="n">X_test</span>  <span class="o">=</span>  <span class="n">test</span><span class="p">[</span><span class="n">inputs</span><span class="p">]</span> <span class="p">;</span> <span class="n">y_test</span>  <span class="o">=</span>  <span class="n">test</span><span class="p">[</span><span class="s1">&#39;sample&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The plotting macro is given, but you will have to modify it later:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_scatter</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">bkg</span><span class="p">,</span> 
+              <span class="n">xname</span><span class="o">=</span><span class="n">XNAME</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="n">XLABEL</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="n">XMIN</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="n">XMAX</span><span class="p">,</span> <span class="n">xstep</span><span class="o">=</span><span class="n">XSTEP</span><span class="p">,</span>
+              <span class="n">yname</span><span class="o">=</span><span class="n">YNAME</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">YLABEL</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="n">YMIN</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">YMAX</span><span class="p">,</span> <span class="n">ystep</span><span class="o">=</span><span class="n">YSTEP</span><span class="p">,</span>
+              <span class="n">fgsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">ftsize</span><span class="o">=</span><span class="n">FONTSIZE</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Scatter plot&quot;</span><span class="p">):</span>
+  
+  <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">fgsize</span><span class="p">)</span>
+
+  <span class="c1"># Annotate x-axis</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="o">+</span><span class="n">xstep</span><span class="p">,</span> <span class="n">xstep</span><span class="p">))</span>
+
+  <span class="c1"># Annotate y-axis</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="o">+</span><span class="n">ystep</span><span class="p">,</span> <span class="n">ystep</span><span class="p">))</span>
+
+  <span class="c1"># Scatter signal and background:</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sig</span><span class="p">[</span><span class="n">xname</span><span class="p">],</span> <span class="n">sig</span><span class="p">[</span><span class="n">yname</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;VBF&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">bkg</span><span class="p">[</span><span class="n">xname</span><span class="p">],</span> <span class="n">bkg</span><span class="p">[</span><span class="n">yname</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ggf&#39;</span><span class="p">)</span>
+
+  <span class="c1"># Legend and plot:</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="n">ftsize</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.04</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center left&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> 
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Question 1.3: Make a scatter plot of the training data</strong> , with <span class="math notranslate nohighlight">\(|\Delta\eta_{jj}|\)</span> on the <span class="math notranslate nohighlight">\(x\)</span>-axis and <span class="math notranslate nohighlight">\(m_{jj}\)</span> on the <span class="math notranslate nohighlight">\(y\)</span>-axis. You will have to split the data sample in signal (VBF) and background (ggF).</p>
+</section>
+</section>
+<section id="decision-tree">
+<h2><span class="section-number">2.2. </span>Decision Tree<a class="headerlink" href="#decision-tree" title="Permalink to this headline">#</a></h2>
+<p>Let’s use Scikit-Learn to make a first shallow decision tree.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">export_text</span>
+</pre></div>
+</div>
+<p><strong>Question 2.1: Make a decision tree with a maximum depth of 2.</strong><br />
+<strong>Question 2.2: Plot the tree using <code class="docutils literal notranslate"><span class="pre">tree.plot_tree</span></code> command, with the <code class="docutils literal notranslate"><span class="pre">filled</span></code> option activated.</strong></p>
+<p>You will see something like this:</p>
+<figure class="align-default" id="tuto-02-2-shallowtree">
+<a class="reference internal image-reference" href="../_images/tuto_02_2_shallowtree.png"><img alt="../_images/tuto_02_2_shallowtree.png" src="../_images/tuto_02_2_shallowtree.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">.  Representation of the Decision Tree.
+<sub>Image: from Scikit-Learn <code class="docutils literal notranslate"><span class="pre">tree</span></code> library</sub></span><a class="headerlink" href="#tuto-02-2-shallowtree" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Question 2.3: Comment the tree.</strong><br />
+Describe what is the representation. What are each variable? Which direction (left/right) is true/false? What are the nodes’ colouring meaning? Where goes the signal, where goes the background? Which leaves are the purest? For which category?</p>
+<p><strong>Question 2.4: Calculate the accuracy from the numbers displayed in the leaves.</strong><br />
+Detail your calculations.</p>
+</section>
+<section id="performance-metrics">
+<h2><span class="section-number">2.3. </span>Performance metrics<a class="headerlink" href="#performance-metrics" title="Permalink to this headline">#</a></h2>
+<p>We will compute functions to evaluate the tree and compare with Scikit-Learn predefined methods. First, let’s get a Confusion Matrix from Scikit-Learn. Let’s first import the library:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+</pre></div>
+</div>
+<p>The way the confusion matrix is called is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_obs</span><span class="p">,</span> <span class="n">y_preds</span><span class="p">)</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Questions 3.1: Confusion Matrix</strong><br />
+Using the <code class="docutils literal notranslate"><span class="pre">predict()</span></code> method on your classifier, write the code to show the confusion matrix.</p>
+<p><strong>Question 3.2: Comment it</strong><br />
+How is the confusion matrix encoded in Scikit-Learn? Is it the same as in the lecture? Find and explain in which cells are the True Positives (TP), True Negatives (TN), False Positive (FP) and False Negatives (FN).</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

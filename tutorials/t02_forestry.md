@@ -40,7 +40,10 @@ In particle physics, the Higgs boson plays an essential role, in particular (pun
 ```
 
 The latter process, VBF, is very interesting to study as it probes the coupling between the Higgs boson and the two other vector bosons. This is seen on the Feynman diagram with the vertex between the two departing wavy branches of each vector boson V and the dashed line H representing the Higgs boson. Such configuration is said to be "sensitive to new physics", because there can be processes that are not part of the current theory, the Standard Model, arising there. Hence the importance to measure the rates of VBF collisions (how frequent does it happen). But before, how to select the Higgs boson VBF production from the other one, gluon-gluon Fusion?  
-<center>__This is your mission!__  <sub>You will be guided, don't worry.</sub></center>  
+````{margin}
+You will be guided, don't worry.
+````  
+__<center>This is your mission!</center>__ 
 
 <h3>Inside the Data</h3>  
 
@@ -68,7 +71,7 @@ To load the data on Google Colab, you will need to run a cell with these lines:
 from google.colab import drive
 drive.mount('/content/gdrive')
 ```
-Then using `!ls` you can locate the files or folder.
+Then using `!ls` you can get the path where the data files are located.
 
 Before playing with the data, let's import libraries.
 
@@ -101,7 +104,7 @@ Explore the variables by printing the first five rows.
 
 The `sample` column stores the labels of the collisions: +1 corresponds to VFB and -1 to ggF.
 
-__Question 1.1: Warm-up: inspect the data. How many events (rows) does each file contain?__  
+__Question 1.1: Inspect the data. How many events (rows) does each file contain?__  
 __Question 1.2: How many events of each process (VFB and ggF) does each file contain?__  
 
 Ask for hint(s) to the instructor if you are stuck.
@@ -172,18 +175,18 @@ You will see something like this:
   name: tuto_02_2_shallowtree
   width: 80%
 ---
- .  Representation of the Decision Tree.
+ .  Representation of the Decision Tree.  
  <sub>Image: from Scikit-Learn `tree` library</sub>
 ```
 __Question 2.3: Comment the tree.__  
-Describe what is the representation. What are each variable? Which direction (left/right) is true/false? What are the nodes' colouring meaning? Where goes the signal, where goes the background? Which leaves are the purest? For which category?
+Describe what is the representation. How are the variables encoded in Scikit-Learn? Which direction (left/right) is true/false? What are the nodes' colouring meaning? Where goes the signal, where goes the background? Which leaves are the purest? For which category?
 
 __Question 2.4: Calculate the accuracy from the numbers displayed in the leaves.__  
 Detail your calculations.
 
 
 ## Performance metrics
-We will compute functions to evaluate the tree and compare with Scikit-Learn predefined methods. First, let's get a Confusion Matrix from Scikit-Learn. Let's first import the library:
+We will compute some metrics by hand and compare with Scikit-Learn predefined methods. As a start, the Confusion Matrix from Scikit-Learn will help us. Let's first import the library:
 ```python
 from sklearn import metrics
 ```
@@ -203,16 +206,17 @@ How is the confusion matrix encoded in Scikit-Learn? Is it the same as in the le
 
 __Question 3.3: Function to print metrics and compare with Scikit-Learn__  
 ````{margin}
-The confusion matrix `cm` is a 2 $\times$ 2 array. Thus the content of the first cell can be access via `cm[0,0]`. 
+```{tip}
+The confusion matrix `cm` is a 2 $\times$ 2 array. Thus the content of the first cell can be accessed via `cm[0,0]`. 
+```
 ````
-Your function `print_metrics` should get the TP, TN, FP, FN from the confusion matrix. It should print:
+You will write a function `print_metrics` that extract the TP, TN, FP, FN from the confusion matrix. It should then print:
 * The accuracy
 * The True Positive Rate (TPR)
 * The True Negative Rate (TNR)
 * The False Positive Rate (FPR)
 
-It should be of this form:
-
+A skeleton is provided below. Complete it according to the instructions above. Choose the proper labels for `LABEL1` and `LABEL2` at the end of the provided code.
 ```python
 def print_metrics(clf, X, y_obs, printCM=False, title="Classifier Performance"):
     
@@ -221,6 +225,7 @@ def print_metrics(clf, X, y_obs, printCM=False, title="Classifier Performance"):
     # Your code here
 
     #____________________
+
     print(f"\n{title}\n")
     print(f"Accuracy: {acc:.3f}")
     print(f"     TPR: {TPR:.3f}")
@@ -233,18 +238,142 @@ def print_metrics(clf, X, y_obs, printCM=False, title="Classifier Performance"):
     print(f"Check: Scikit-Learn accuracy: {acc_SL:.3f} \t Recall (TPR): {TPR_SL:.3f}")   
 
     if printCM:
-        disp = metrics.ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['Background', 'Signal'])
+        disp = metrics.ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['LABEL1', 'LABEL2'])
         disp.plot()
         plt.show()
 ```
 
-Call your function with the train and test datasets.
+Call your function with the train and test datasets (change the title accordingly).
 
-__Question 3.4: What is the main difference in the performance of the test dataset?__  
-Hint: which error type is the highest?
-
+__Question 3.4: Which error type is the highest?__  
 
 
+## ROC The Tree
+Let's use Scikit-Learn `metrics` to get the ingredients to plot a ROC curve. We need continuous probabilities.  How are probabilities calculated? Let's show the first 5 entries of `X_train`. Recall the decision tree (Figure {numref}`tuto_02_2_shallowtree`) we plotted above.
+```python
+X_train[:5]
+```
+
+The probability is defined as "the fraction of samples of the same class in a leaf". (source: [Scikit-Learn predict_proba function](https://github.com/scikit-learn/scikit-learn/blob/f3f51f9b6/sklearn/tree/_classes.py#L977)). 
+
+__Q 4.1: What are the signal probabilities for the first five entries?__  
+_Hint: first, find for each event in which leaf it falls according to the input values._
+
+__Q 4.2: Check your answers with `predict_proba` and explain the output array__  
+```python
+y_scores_train = clf.predict_proba(X_train)
+y_scores_train[:5]
+```
+
+<h3>ROC Curve</h3>  
+Below is a macro to plot the ROC curve. You will have to complete it on your notebook. Look in the documentation of Scikit-Learn to see which function to call and how to use it.  
+
+_Note: The `classindex` is the index of the positive class on the score array (first position is index 0, second is 1, etc)._
+
+```python
+def plot_ROC_curve(clf, label_leg, X, y_obs, class_index):
+  
+  fig, ax = plt.subplots(figsize=(6,6))
+
+  # Luck line
+  ax.plot([0, 1], [0, 1], color="navy", lw=2, linestyle="--")
+
+  # Get proba predictions:
+  y_scores = clf.predict_proba(X)
+
+  # Getting the ROC curve values
+  fpr = dict() ; tpr = dict()
+
+  #_____________________________
+
+  # Your code here (2 lines)
+
+  #_____________________________
+
+  ax.set_xlim([0, 1]) ; ax.set_ylim([0, 1])
+  ax.grid(color='grey', linestyle='--', linewidth=1)
+  ax.set_xlabel("False Positive Rate")
+  ax.set_ylabel("True Positive Rate")
+  ax.set_title("ROC Trees", pad=20)
+
+  # Legend and plot:
+  ax.legend(fontsize=FONTSIZE, bbox_to_anchor=(1.04, 0.5), loc="center left", frameon=False) 
+  plt.show()
+```
+Call the function with your classifier. For the legend you can write "Decision Tree Depth 2" (we will increase the depth soon).
+
+Let's now make a decision tree very deep, of depth 20. Create a new classifier:
+
+```python
+tree_clf_depth20 = tree.DecisionTreeClassifier(max_depth = 20 )
+tree_clf_depth20.fit(X_train, y_train)
+```
+
+Use your function `print_metrics` to see the performance and plot its ROC curve.
+
+__Q 4.3: How does the performance of this tree compare with the shallow tree of depth 2? What is likely to happen here?__  
 
 
+## Decision Surface
+We can create a decision surface for a given classifier with two inputs. It is a representation of all the cuts done on the variables. For this, once we have trained a model, we use it to make predictions for a grid of values across the input domain. Here is the function to compute the values:
 
+
+```python
+def get_decision_surface_xyz(clf, inputs, x_lims, y_lims, step):
+  
+  # Create all of the lines and rows of the grid
+  xx, yy = np.meshgrid(np.arange(x_lims[0], x_lims[1]+step, step),
+                         np.arange(y_lims[0], y_lims[1], step))
+  
+  # Creat dataframe with flattened (ravel) vectors:
+  X = pd.DataFrame({inputs[0]: xx.ravel(), inputs[1]: yy.ravel()})
+
+  # Get Z value vectors (ravel = flatten grid in vector)
+  Z = clf.predict(X)
+
+  # Reshape Z as grid for exporting 
+  zz = Z.reshape(xx.shape)
+
+  # Return grid + surface values:
+  return (xx, yy, zz)
+```
+__Q 5.1: Draw the Decision Surface__  
+First, add the code above in a new cell. Then, modify the `plot_scatter` function with these two additions:
+* add an optional argument `ds=None`
+* add before the legend the following:
+````{margin}
+```{warning}
+Make sure you keep the correct indentation!
+```
+````
+```python
+  # Decision surface
+  if ds:
+    (xx, yy, Z) = ds
+    cs = plt.contourf(xx, yy, Z, colors=['red','blue'], alpha=0.3)
+```
+````{margin}
+```{warning}
+My first classifier was called `tree_clf_depth2`. Make sure you adapt your code with the relevant variable you declared for your first classifier.
+```
+````
+Call your function with your first classifier.
+```python
+# Get values x,y,z of decision surface for classifier:
+DS_xyz = get_decision_surface_xyz(tree_clf_depth2, inputs, [XMIN, XMAX], [YMIN, YMAX], 0.05)
+# Plot scatter with decision surface:
+plot_scatter(sig, bkg, DS_xyz, title="Decision Surface for DT Depth 2")
+```
+
+Call it again with the tree of depth 20.  
+
+___Q 5.2: Comment on the decision surface with the deep tree: what is happening? How to cope?__  
+
+
+## The Forest
+Let's plant a forest now. We need the following imports:
+```python
+from sklearn.ensemble import RandomForestClassifier
+from pprint import pprint # 'pretty printing', for listing the parameters
+```
+__Q 6.1: Create a random forest with 100 estimators__  

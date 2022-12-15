@@ -423,7 +423,7 @@ clfs = [{'clf': tree_clf_depth2,  'name': 'Decision Tree Depth 2' ,             
         {'clf': tree_clf_depth20, 'name': 'Decision Tree Depth 20',                   'color':'coral'},
         {'clf': RF_100est,        'name': 'Random Forest 100 estimators',             'color':'greenyellow'},
         {'clf': RF_100e_d5,       'name': 'Random Forest 100 estimators, max depth 5','color':'yellowgreen'},
-        {'clf': ada_clf,          'name': 'AdaBoost 10 estimators, max depth 2',     'color':'green'}
+        {'clf': ada_clf,          'name': 'AdaBoost 10 estimators, max depth 2',      'color':'green'}
 ]
 ```
 

@@ -1,4 +1,4 @@
-# LHC Event Classification with Trees
+# 'Forestree' with LHC collisions
 
 ```{admonition} Learning Objectives
 :class: tip
@@ -18,6 +18,9 @@ What will also be covered:
 * How to plot with Matplotlib
 * How to define custom functions
 * How to debug a code
+
+If time allows:
+* How to use AdaBoost
 ```
 
 Let’s now open a fresh Jupyter Notebook and follow along!
@@ -57,7 +60,7 @@ In the VBF process, the initial quarks that first radiated the vector bosons are
 The collisions have been filtered to select those containing each a Higgs boson, four leptons and at least two jets. 
 
 We will focus on two variable for now: 
-* $|\Delta\eta_{jj}|$: it corresponds to the angle between the two jets ($\eta$ is the pseudorapidity)
+* $|\Delta\eta_{jj}|$: it corresponds to the angle between the two jets ($\eta$ is the [pseudorapidity](https://en.wikipedia.org/wiki/Pseudorapidity))
 *   $m_{jj}$:   the invariant mass of the two jets
  
 These variable are already calculated in the data samples.
@@ -179,7 +182,7 @@ You will see something like this:
  <sub>Image: from Scikit-Learn `tree` library</sub>
 ```
 __Question 2.3: Comment the tree.__  
-Describe what is the representation. How are the variables encoded in Scikit-Learn? Which direction (left/right) is true/false? What are the nodes' colouring meaning? Where goes the signal, where goes the background? Which leaves are the purest? For which category?
+Describe what is this representation about. How are the variables encoded in Scikit-Learn? Which direction (left/right) chosen if the condition is true/false? What does the colouring in some nodes correspond to? Where goes the signal, where goes the background? Which leaves are the purest? For which category?
 
 __Question 2.4: Calculate the accuracy from the numbers displayed in the leaves.__  
 Detail your calculations.
@@ -205,12 +208,12 @@ __Question 3.2: Comment it__
 How is the confusion matrix encoded in Scikit-Learn? Is it the same as in the lecture? Find and explain in which cells are the True Positives (TP), True Negatives (TN), False Positive (FP) and False Negatives (FN). 
 
 __Question 3.3: Function to print metrics and compare with Scikit-Learn__  
+You will write a function `print_metrics` that extract the TP, TN, FP, FN from the confusion matrix. It should then print:
 ````{margin}
 ```{tip}
 The confusion matrix `cm` is a 2 $\times$ 2 array. Thus the content of the first cell can be accessed via `cm[0,0]`. 
 ```
 ````
-You will write a function `print_metrics` that extract the TP, TN, FP, FN from the confusion matrix. It should then print:
 * The accuracy
 * The True Positive Rate (TPR)
 * The True Negative Rate (TNR)
@@ -245,7 +248,7 @@ def print_metrics(clf, X, y_obs, printCM=False, title="Classifier Performance"):
 
 Call your function with the train and test datasets (change the title accordingly).
 
-__Question 3.4: Which error type is the highest?__  
+__Question 3.4: How does the performance change when assessed on the test dataset? Which error type is the highest?__  
 
 
 ## ROC The Tree
@@ -364,16 +367,70 @@ DS_xyz = get_decision_surface_xyz(tree_clf_depth2, inputs, [XMIN, XMAX], [YMIN, 
 # Plot scatter with decision surface:
 plot_scatter(sig, bkg, DS_xyz, title="Decision Surface for DT Depth 2")
 ```
+ You should see something like that:
+
+```{figure} ../images/ tuto_02_3_decisionsurfaced2.png
+---
+  name:  tuto_02_3_decisionsurfaced2
+  width: 70%
+---
+ . Decision Surface of a decision tree of depth 2.  
+ <sub>Scikit-Learn</sub>
+```
 
 Call it again with the tree of depth 20.  
 
-___Q 5.2: Comment on the decision surface with the deep tree: what is happening? How to cope?__  
+__Q 5.2: Comment on the decision surface with the deep tree: what is happening? How to cope?__  
 
 
 ## The Forest
 Let's plant a forest now. We need the following imports:
+````{maring}
+```{tip}
+Use `pprint` for a better rendering of the list of parameters.
+````
 ```python
 from sklearn.ensemble import RandomForestClassifier
 from pprint import pprint # 'pretty printing', for listing the parameters
 ```
-__Q 6.1: Create a random forest with 100 estimators__  
+__Q 6.1: Create a random forest with the defaults Scikit-Learn settings and print the parameters__  
+__Q 6.2: How many estimators is the random forest made of?__  
+__Q 6.3: Plot the decision surface. How does it compare with one tree of depth 20?__  
+
+Optional: you can plot the ROC curve of your forest classifier and compare with the tree ones. More on ROC curves at the end.  
+__Q 6.4: Create and plot the decision surface of a forest with 100 estimators and a max depth of 5 for each.__  
+
+## Green Boost
+Let's now boost! Recall the demo in Lecture 4. We will take 10 estimators of maximum depth 2:
+```python
+from sklearn.ensemble import AdaBoostClassifier
+
+ada_clf = AdaBoostClassifier( 
+    DecisionTreeClassifier(max_depth=2),
+    n_estimators=10,
+    algorithm="SAMME.R",
+    learning_rate=0.5)
+
+ada_clf.fit(X_train, y_train)
+```
+__Q 7.1: How does it compare with the other classifiers?__  
+See it on the decision surface!
+
+## Bonus: overlay ROC curves
+We plotted a ROC curve for each tree and random forest. It is convenient to overlay the ROC curves on the same graph to easily compare classifiers. For this, you can modify your ROC curve macro to loop over a dictionary of classifiers. Such a dictionary can look this way (example, you can code it differently of course):
+```python
+clfs = [{'clf': tree_clf_depth2,  'name': 'Decision Tree Depth 2' ,                   'color':'brown'},
+        {'clf': tree_clf_depth20, 'name': 'Decision Tree Depth 20',                   'color':'coral'},
+        {'clf': RF_100est,        'name': 'Random Forest 100 estimators',             'color':'greenyellow'},
+        {'clf': RF_100e_d5,       'name': 'Random Forest 100 estimators, max depth 5','color':'yellowgreen'},
+        {'clf': ada_clf,          'name': 'AdaBoost 10 estimators, max depth 2',     'color':'green'}
+]
+```
+
+## Bonus of the Bonus
+If you manage to do everything above and are starting to get bored, come to me, I will give you a challenge.
+
+
+
+
+

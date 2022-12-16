@@ -536,7 +536,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tutorials/t02_forestry.html">
-   2. 2. LHC Event Classification with Trees {-}
+   2. ‘Forestree’ with LHC collisions
   </a>
  </li>
  <li class="toctree-l1">
@@ -896,8 +896,8 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p>The <strong>Gini’s diversity index</strong> is a measure of a node’s impurity.</p>
 <p>It is defined for each tree node <span class="math notranslate nohighlight">\(i\)</span> as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-85ff0dd7-0ea0-4c66-bd59-0a4255a1dd72">
-<span class="eqno">(31)<a class="headerlink" href="#equation-85ff0dd7-0ea0-4c66-bd59-0a4255a1dd72" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-70e1b9fb-485b-4e97-a878-198895b5ac7f">
+<span class="eqno">(31)<a class="headerlink" href="#equation-70e1b9fb-485b-4e97-a878-198895b5ac7f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 G_i = 1 - \sum_{k=1}^{N_\text{classes}} \left( \frac{N_{k, i}}{ N_i} \right)^2 
 \end{equation}\]</div>
 <p>with <span class="math notranslate nohighlight">\(N_{k, i}\)</span> the number of data samples of class <span class="math notranslate nohighlight">\(k\)</span> in node <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(N_{i}\)</span> the total number of data samples in node <span class="math notranslate nohighlight">\(i\)</span>.</p>
@@ -944,8 +944,8 @@ A collection on decision boundaries segmenting the <span class="math notranslate
 For each feature <span class="math notranslate nohighlight">\(k\)</span>, finds the threshold value <span class="math notranslate nohighlight">\(t_k\)</span> maximizing purity of the two resulting subsets either lower (left) or higher (right) than the threshold <span class="math notranslate nohighlight">\(t_k\)</span>.
 The cost function is defined as:</p></li>
 </ol>
-<div class="amsmath math notranslate nohighlight" id="equation-30950ce5-fe8a-4519-b245-d26b425d61fa">
-<span class="eqno">(32)<a class="headerlink" href="#equation-30950ce5-fe8a-4519-b245-d26b425d61fa" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d998f659-6425-47ab-be83-082b59f75dfe">
+<span class="eqno">(32)<a class="headerlink" href="#equation-d998f659-6425-47ab-be83-082b59f75dfe" title="Permalink to this equation">#</a></span>\[\begin{equation}
 J(k, t_k) = \frac{n_\text{left}}{n_\text{node}} G_\text{left} + \frac{n_\text{right}}{n_\text{node}} G_\text{right}
 \end{equation}\]</div>
 <p>The purity is weighted by the subset sizes. The pair (<span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(t_k\)</span>) producing the purest subset is set for the node.</p>

@@ -931,7 +931,7 @@ title="Print to PDF"
 <p>The collisions have been filtered to select those containing each a Higgs boson, four leptons and at least two jets.</p>
 <p>We will focus on two variable for now:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(|\Delta\eta_{jj}|\)</span>: it corresponds to the angle between the two jets (<span class="math notranslate nohighlight">\(\eta\)</span> is the pseudorapidity)</p></li>
+<li><p><span class="math notranslate nohighlight">\(|\Delta\eta_{jj}|\)</span>: it corresponds to the angle between the two jets (<span class="math notranslate nohighlight">\(\eta\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Pseudorapidity">pseudorapidity</a>)</p></li>
 <li><p><span class="math notranslate nohighlight">\(m_{jj}\)</span>:   the invariant mass of the two jets</p></li>
 </ul>
 <p>These variable are already calculated in the data samples.</p>
@@ -1259,7 +1259,7 @@ First, add the code above in a new cell. Then, modify the <code class="docutils 
 <span class="n">ada_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Q 6.3: How does it compare with the other classifiers?</strong><br />
+<p><strong>Q 7.1: How does it compare with the other classifiers?</strong><br />
 See it on the decision surface!</p>
 </section>
 <section id="bonus-overlay-roc-curves">
@@ -1269,7 +1269,7 @@ See it on the decision surface!</p>
         <span class="p">{</span><span class="s1">&#39;clf&#39;</span><span class="p">:</span> <span class="n">tree_clf_depth20</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Decision Tree Depth 20&#39;</span><span class="p">,</span>                   <span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;coral&#39;</span><span class="p">},</span>
         <span class="p">{</span><span class="s1">&#39;clf&#39;</span><span class="p">:</span> <span class="n">RF_100est</span><span class="p">,</span>        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Random Forest 100 estimators&#39;</span><span class="p">,</span>             <span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;greenyellow&#39;</span><span class="p">},</span>
         <span class="p">{</span><span class="s1">&#39;clf&#39;</span><span class="p">:</span> <span class="n">RF_100e_d5</span><span class="p">,</span>       <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Random Forest 100 estimators, max depth 5&#39;</span><span class="p">,</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;yellowgreen&#39;</span><span class="p">},</span>
-        <span class="p">{</span><span class="s1">&#39;clf&#39;</span><span class="p">:</span> <span class="n">ada_clf</span><span class="p">,</span>          <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;AdaBoost 100 estimators, max depth 5&#39;</span><span class="p">,</span>     <span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;green&#39;</span><span class="p">}</span>
+        <span class="p">{</span><span class="s1">&#39;clf&#39;</span><span class="p">:</span> <span class="n">ada_clf</span><span class="p">,</span>          <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;AdaBoost 10 estimators, max depth 2&#39;</span><span class="p">,</span>      <span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;green&#39;</span><span class="p">}</span>
 <span class="p">]</span>
 </pre></div>
 </div>

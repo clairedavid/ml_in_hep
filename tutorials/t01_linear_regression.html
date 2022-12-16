@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. 2. LHC Event Classification with Trees {-}" href="t02_forestry.html" />
+    <link rel="next" title="2. ‘Forestree’ with LHC collisions" href="t02_forestry.html" />
     <link rel="prev" title="15. Project presentations &amp; Exam" href="../week3/projects_exam.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -536,7 +536,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="t02_forestry.html">
-   2. 2. LHC Event Classification with Trees {-}
+   2. ‘Forestree’ with LHC collisions
   </a>
  </li>
  <li class="toctree-l1">
@@ -766,23 +766,28 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#connect">
+     1.1.1. Connect
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#localizing-the-file">
-     1.1.1. Localizing the file
+     1.1.2. Localizing the file
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exploring-the-file">
-     1.1.2. Exploring the file
+     1.1.3. Exploring the file
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#from-csv-to-dataframe">
-     1.1.3. From csv to dataframe
+     1.1.4. From csv to dataframe
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#from-dataframe-to-numpy-arrays">
-     1.1.4. From dataframe to NumPy arrays
+     1.1.5. From dataframe to NumPy arrays
     </a>
    </li>
   </ul>
@@ -854,23 +859,28 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#connect">
+     1.1.1. Connect
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#localizing-the-file">
-     1.1.1. Localizing the file
+     1.1.2. Localizing the file
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exploring-the-file">
-     1.1.2. Exploring the file
+     1.1.3. Exploring the file
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#from-csv-to-dataframe">
-     1.1.3. From csv to dataframe
+     1.1.4. From csv to dataframe
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#from-dataframe-to-numpy-arrays">
-     1.1.4. From dataframe to NumPy arrays
+     1.1.5. From dataframe to NumPy arrays
     </a>
    </li>
   </ul>
@@ -949,9 +959,18 @@ title="Print to PDF"
 <p>Let’s now open a fresh Jupyter Notebook and follow along!</p>
 <section id="get-the-data">
 <h2><span class="section-number">1.1. </span>Get the data<a class="headerlink" href="#get-the-data" title="Permalink to this headline">#</a></h2>
-<p>The first step is to get the dataset. It can be accessed <span class="xref myst">here</span>. We will see how to localize, explore and load it.</p>
+<p>The first step is to get the dataset. It can be accessed <a class="reference external" href="https://drive.google.com/drive/folders/1da4mGMShDA8KkbgifNYaIKD_sY3Pit2C?usp=sharing">here</a>. We will see how to localize, explore and load it.</p>
+<section id="connect">
+<h3><span class="section-number">1.1.1. </span>Connect<a class="headerlink" href="#connect" title="Permalink to this headline">#</a></h3>
+<p>First, get to the shared folder, right click on the <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file and select “Add shortcut to Drive.” This will allow you to access the folder from your drive!
+Then in a fresh Jupyter Notebook, write and execute the following lines:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/gdrive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 <section id="localizing-the-file">
-<h3><span class="section-number">1.1.1. </span>Localizing the file<a class="headerlink" href="#localizing-the-file" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.1.2. </span>Localizing the file<a class="headerlink" href="#localizing-the-file" title="Permalink to this headline">#</a></h3>
 <p>In Jupyter Notebook, it is possible to write bash commands (the language used in a console, or terminal) by appending a <code class="docutils literal notranslate"><span class="pre">!</span></code> at front of a code cell.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">pwd</span></code> command  stands for “print working directory” and will show you were you are currently running your code.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!pwd
@@ -961,9 +980,13 @@ title="Print to PDF"
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!ls -l
 </pre></div>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Once you locate where your data file is in your drive, it is a good practice to store its path, i.e. the string of character matching all the directory and subdirectories, in a variable (usually named <code class="docutils literal notranslate"><span class="pre">path</span></code>).</p>
+</div>
 </section>
 <section id="exploring-the-file">
-<h3><span class="section-number">1.1.2. </span>Exploring the file<a class="headerlink" href="#exploring-the-file" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.1.3. </span>Exploring the file<a class="headerlink" href="#exploring-the-file" title="Permalink to this headline">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition warning">
@@ -1005,7 +1028,7 @@ title="Print to PDF"
 And we also see the file has a header row. Let’s now load its content in a pythonic way.</p>
 </section>
 <section id="from-csv-to-dataframe">
-<h3><span class="section-number">1.1.3. </span>From csv to dataframe<a class="headerlink" href="#from-csv-to-dataframe" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.1.4. </span>From csv to dataframe<a class="headerlink" href="#from-csv-to-dataframe" title="Permalink to this headline">#</a></h3>
 <p>A dataframe is a data structure from the pandas software library designed for tabular data. It can be compared to an array with rows and columns that can be modified in an intuitive way for the programmer. Pandas allows importing data from various file formats. There is a special method for loading the content from a <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1073,7 +1096,7 @@ And we also see the file has a header row. Let’s now load its content in a pyt
 <p>Jupyter Notebook offers a nice display of tabular data structure, with indexed rows and column names. It’s very convenient to explore a file. However even the <code class="docutils literal notranslate"><span class="pre">head</span></code> method can not fit in the terminal if the file contains lots of columns (features). It’s possible to print the columns names using the <code class="docutils literal notranslate"><span class="pre">keys</span></code> command: <code class="docutils literal notranslate"><span class="pre">df.keys()</span></code>.</p>
 </section>
 <section id="from-dataframe-to-numpy-arrays">
-<h3><span class="section-number">1.1.4. </span>From dataframe to NumPy arrays<a class="headerlink" href="#from-dataframe-to-numpy-arrays" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.1.5. </span>From dataframe to NumPy arrays<a class="headerlink" href="#from-dataframe-to-numpy-arrays" title="Permalink to this headline">#</a></h3>
 <p>Let’s now store each column into a python list, as it will be handy for plotting and coding our regressor. Python has lists but we will use a more advanced object from the <a class="reference external" href="https://en.wikipedia.org/wiki/NumPy">NumPy</a> library, which is efficiently coded to perform mathematical operations on multi-dimensional arrays and matrices. This will store each column as a <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> array:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1155,7 +1178,7 @@ Adding a = 4 and b = 6 	 c = 10
 <p>There will be another handy function to code. Recall the derivative of the cost function. It contains the difference between the predicted value and the observed one, without them being squared. This difference has the technical name of “residual”. You will write another function <code class="docutils literal notranslate"><span class="pre">get_residuals()</span></code> computing the residuals, which is common in both partial derivatives <span class="math notranslate nohighlight">\(\frac{\partial J(\theta_0, \theta_1)}{\partial \theta_i}\)</span>.</p>
 <p>Questions are summarized at the end of the document for convenience. Hints will be given during the tutorial to guide you.</p>
 <p><strong>Test your code</strong><br />
-Once you have your function computing the cost, it is always a good practice to test it. Let’s take the values seen in class (Figure <code class="xref std std-numref docutils literal notranslate"><span class="pre">plot_linReg_1234</span></code>), perfectly aligned. Use your function to check that the cost is zero for <span class="math notranslate nohighlight">\(\theta_1\)</span> = 2. You will have to complete it with the proper variables to pass to the cost function (instead of the <code class="docutils literal notranslate"><span class="pre">...</span></code> placeholder):</p>
+Once you have your function computing the cost, it is always a good practice to test it. Let’s take the values seen in class from the plot of the <a class="reference internal" href="../week1/warmup_1D_linRegGD.html#plot-linreg-1234"><span class="std std-ref">Perfectly aligned 4 points</span></a>. Use your function to check that the cost is zero for <span class="math notranslate nohighlight">\(\theta_1\)</span> = 2. You will have to complete it with the proper variables to pass to the cost function (instead of the <code class="docutils literal notranslate"><span class="pre">...</span></code> placeholder):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x_test</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="n">y_test</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
 
@@ -1288,15 +1311,11 @@ Iteration 500
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Contour Plot&#39;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="n">fig_width</span><span class="p">,</span> <span class="n">fig_height</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">get_size_inches</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">fig_width</span><span class="p">,</span> <span class="n">fig_height</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.0 6.0
-</pre></div>
-</div>
-<img alt="../_images/t01_linear_regression_19_1.png" src="../_images/t01_linear_regression_19_1.png" />
+<img alt="../_images/t01_linear_regression_19_0.png" src="../_images/t01_linear_regression_19_0.png" />
 </div>
 </div>
 </section>
@@ -1378,7 +1397,7 @@ The <a class="reference external" href="https://en.wikipedia.org/wiki/SciPy">Sci
     <a class='right-next' id="next-link" href="t02_forestry.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>2. LHC Event Classification with Trees {-}</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>‘Forestree’ with LHC collisions</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

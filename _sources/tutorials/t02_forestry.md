@@ -60,7 +60,7 @@ In the VBF process, the initial quarks that first radiated the vector bosons are
 The collisions have been filtered to select those containing each a Higgs boson, four leptons and at least two jets. 
 
 We will focus on two variable for now: 
-* $|\Delta\eta_{jj}|$: it corresponds to the angle between the two jets ($\eta$ is the pseudorapidity)
+* $|\Delta\eta_{jj}|$: it corresponds to the angle between the two jets ($\eta$ is the [pseudorapidity](https://en.wikipedia.org/wiki/Pseudorapidity))
 *   $m_{jj}$:   the invariant mass of the two jets
  
 These variable are already calculated in the data samples.
@@ -413,7 +413,7 @@ ada_clf = AdaBoostClassifier(
 
 ada_clf.fit(X_train, y_train)
 ```
-__Q 6.3: How does it compare with the other classifiers?__  
+__Q 7.1: How does it compare with the other classifiers?__  
 See it on the decision surface!
 
 ## Bonus: overlay ROC curves
@@ -423,7 +423,7 @@ clfs = [{'clf': tree_clf_depth2,  'name': 'Decision Tree Depth 2' ,             
         {'clf': tree_clf_depth20, 'name': 'Decision Tree Depth 20',                   'color':'coral'},
         {'clf': RF_100est,        'name': 'Random Forest 100 estimators',             'color':'greenyellow'},
         {'clf': RF_100e_d5,       'name': 'Random Forest 100 estimators, max depth 5','color':'yellowgreen'},
-        {'clf': ada_clf,          'name': 'AdaBoost 100 estimators, max depth 5',     'color':'green'}
+        {'clf': ada_clf,          'name': 'AdaBoost 10 estimators, max depth 2',      'color':'green'}
 ]
 ```
 

@@ -132,8 +132,10 @@ The initial goal to "fit the data well" can now be formulated in a mathematical 
 Let's simplify for now the problem by assuming the following data set:
 
 ```{glue:figure} plot_linReg_1234
+:figwidth: 80%
 :name: "plot_linReg_1234"
 ```
+
 This is an ideal case for pedagogical purposes. What are the values of $\theta_0$ and $\theta_1$ here? 
 ```{admonition} Check your answers
 :class: tip, dropdown

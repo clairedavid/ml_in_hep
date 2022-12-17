@@ -22,7 +22,7 @@ where $k$ is a given feature and $t_k$ the threshold on that feature. We will us
 * the class values (in an array)
 * the numbers of threshold values swiping the interval of the feature
 
-__1.1: Get and load the data__  
+__1.1 Get and load the data__  
 Get the `train` dataset and load the relevant columns in a dataframe.
 
 __1.2 Compute the Gini index__    
@@ -35,14 +35,13 @@ Write a function computing the cost function in the CART algorithm.
 
 __1.4 Main function: code a Decision Stump__  
 Write the main function `decision_stumper` that will call the functions defined above. Call your function on each input feature and conclude on the final cut for your decision stump.
-
-You just coded a decision stump by hand!
-
 ````{margin}
 ```{tip}
-If you cannot complete the previous question, choose a feature and a threshold yourself to be able to draw the decision boundary.
+If you cannot complete the previous question, pick one of the two features and manually choose a threshold yourself to be able to draw a decision boundary.
 ```
 ````
+You just coded a decision stump by hand!
+
 __1.5 Plot the cut__  
 Use the `plot_scatter` function from the second tutorial and modify it to draw the line corresponding to the optimized threshold from the decision stump. You can use Matplotlib's `axhline` or `axvline` method for drawing a horizontal or vertical line respectively. Try to be as general as possible in the input arguments.  
 _Hints provided on demand during office hours._
@@ -50,4 +49,54 @@ _Hints provided on demand during office hours._
 ## 2. Plotting mission: the overtraining check
 The goal of this exercise is to understand and reproduce the following plot:
 
+```{figure} ../images/a_02_overtrainingTMVA2.png
+---
+  name: a_02_overtrainingTMVA2
+  width: 80%
+---
+The "overtraining check" plot from [TMVA](https://root.cern/manual/tmva/) (MVA stands for MultiVariate Analysis), a library used in High Energy Physics (HEP) within the [ROOT](https://root.cern/) framework.  
+ <sub>Image: root-forum, cern.ch</sub>
+```
 
+The $x$-axis is an equivalent to the output scores of a classifier (here it is a Support Vector Machine, which are not covered in this course). 
+
+We will use the same dataset as for the tutorial 2 'Forestree.' However as the validation set lacks statistics, you will use the training and __testing__ sets, the latter having more samples than the validation set.
+
+__2.1 Understanding of the plot__  
+Describe the plot and explain why this is called an "overtraining check" plot. Importance will be given to the clarity of your answer.  
+
+__2.2 Reproducing the plot__  
+Write a function `plot_overtraining_check` that takes as arguments the classifier object, the $X$ and $y$ lists of the training and testing sets, the value of the positive class (e.g. for VBF it is 1) and a title. Use a Decision Tree classifier of depth 2 to test your plotting macro. Your code should be clear and relevantly commented. 
+
+You will obtain a plot like this:
+
+```{figure} ../images/a_02_overtraining_plt_DTmaxD2.png
+---
+  name: a_02_overtraining_plt_DTmaxD2
+  width: 100%
+---
+Example of an overtraining check plot using Matplotlib.
+```
+
+
+```{warning}
+The histograms on the overtraining check plot are normalized to an area of unity. In Matplotlib, this is done using the argument `density = 1`. However you should be very careful to rescale properly the vertical error bars before plotting the testing set.
+```
+
+__2.3 Using the plot__  
+Create a random forest classifier with 100 estimators and leave other hyperparameters as default. Plot the overtraining check with this classifier. What are your observations? Is it classifying well on the training set? Is is under- or overtrain? Why? 
+
+Create a second random forest classifier with this time the option `max_leaf_nodes=32`. What is improved? What is still problematic? 
+
+```{important}
+&nbsp;  
+You are encouraged to work in groups, however submissions are individual.
+
+If you have received help from your peers and/or have worked within a group, summarize in the header of your notebook the involved students, how they helped you and the contributions of each group member. This is to ensure fairness in the evaluation.
+
+You can use the internet such as the official pages of relevant libraries, forum websites to debug, etc. However using an AI such as ChatGPT would be considered cheating (and not good for you anyway to develop your programming skills).
+
+The instructor and tutors are available throughout the week to answer your questions. Write an email with your well-articulated question(s). Put in CC your teammates if any. If you prefer to book an appointment, add your next availability (within half a day notice). Once an appointment is booked, you are expected a private conversation of 15 minutes with the instructor and all the students cc'ed in the email.
+
+Thank you and do not forget to have fun while coding!
+```

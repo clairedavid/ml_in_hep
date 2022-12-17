@@ -536,7 +536,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tutorials/t02_forestry.html">
-   2. ‘Forestree’ with LHC collisions
+   2. Event Classification with Trees
   </a>
  </li>
  <li class="toctree-l1">
@@ -925,13 +925,13 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Definition 64 </span></p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> be functions. For all <span class="math notranslate nohighlight">\(𝑥\)</span> in the domain of <span class="math notranslate nohighlight">\(g\)</span> for which <span class="math notranslate nohighlight">\(g\)</span> is differentiable at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is differentiable at <span class="math notranslate nohighlight">\(g(x)\)</span>, the derivative of the composite function:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3123b258-4530-4f4e-a821-7a62b3d394d6">
-<span class="eqno">(80)<a class="headerlink" href="#equation-3123b258-4530-4f4e-a821-7a62b3d394d6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f394693b-46bb-4d35-a936-ea20588b9460">
+<span class="eqno">(80)<a class="headerlink" href="#equation-f394693b-46bb-4d35-a936-ea20588b9460" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h(x) = f(g(x)) 
 \end{equation}\]</div>
 <p>is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dab40e2d-24dc-40ef-bd69-67202e675be5">
-<span class="eqno">(81)<a class="headerlink" href="#equation-dab40e2d-24dc-40ef-bd69-67202e675be5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-eb60c6b7-0778-42cc-81e3-4f4665816824">
+<span class="eqno">(81)<a class="headerlink" href="#equation-eb60c6b7-0778-42cc-81e3-4f4665816824" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}} \;\cdot \;  \frac{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}}{\mathrm{d} \; x} = f'\left(g(x)\right) \;\cdot \; g'(x)
 \end{equation}\]</div>
 </section>
@@ -947,8 +947,8 @@ h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maro
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
 <p>What would be the chain rule for three functions?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-78332a72-61e2-4847-935a-33ef567a4dba">
-<span class="eqno">(82)<a class="headerlink" href="#equation-78332a72-61e2-4847-935a-33ef567a4dba" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c22d555a-ced0-4fd3-90e8-5968c8130889">
+<span class="eqno">(82)<a class="headerlink" href="#equation-c22d555a-ced0-4fd3-90e8-5968c8130889" title="Permalink to this equation">#</a></span>\[\begin{equation}
 k(x) = h(f(g(x))) 
 \end{equation}\]</div>
 </div>
@@ -1215,23 +1215,23 @@ Training data set <span class="math notranslate nohighlight">\(X\)</span> of <sp
 <p><strong>Start</strong></p>
 <p><strong>Step 0:</strong> Weight initialization</p>
 <p><strong>Step 1:</strong> Forward propagation on subset or all sample instances:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-17af47a0-0458-4b8e-bdba-9cedaeb68e89">
-<span class="eqno">(106)<a class="headerlink" href="#equation-17af47a0-0458-4b8e-bdba-9cedaeb68e89" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1e6fc9f0-59b5-499a-b374-e5293a0205cd">
+<span class="eqno">(106)<a class="headerlink" href="#equation-1e6fc9f0-59b5-499a-b374-e5293a0205cd" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat{y} = a^L(W, b) = f(z^L(W,b))
 \end{equation}\]</div>
 <p><strong>Step 2:</strong> Computation of loss function, cost function and overall error:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a96ed2a6-11b0-40df-a83e-b46bdc729738">
-<span class="eqno">(107)<a class="headerlink" href="#equation-a96ed2a6-11b0-40df-a83e-b46bdc729738" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1ddbd2d2-a619-494b-bd49-c34f0d27f241">
+<span class="eqno">(107)<a class="headerlink" href="#equation-1ddbd2d2-a619-494b-bd49-c34f0d27f241" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Cost} = \textstyle \sum L(f(z^L(W,b))) \qquad \delta^L =\; L^{\prime}(a^L(W,b)) \cdot f^{\prime}(z^L(W, b)) 
 \end{equation}\]</div>
 <p><strong>Step 3:</strong> Computation of all activation unit errors:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-622fdebf-f77a-401c-8c19-406b053cdafb">
-<span class="eqno">(108)<a class="headerlink" href="#equation-622fdebf-f77a-401c-8c19-406b053cdafb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-104646e8-ecda-49a9-a7d5-cc0c5e3acab1">
+<span class="eqno">(108)<a class="headerlink" href="#equation-104646e8-ecda-49a9-a7d5-cc0c5e3acab1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \delta^\ell = \; \delta^{\ell+1} \;\cdot\; W^{\ell+1} \;\cdot\; f'(z^\ell(W, b))
 \end{equation}\]</div>
 <p>… and derivatives:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a5447450-8215-4678-9ce2-b6d013e2af1c">
-<span class="eqno">(109)<a class="headerlink" href="#equation-a5447450-8215-4678-9ce2-b6d013e2af1c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b4d47b3f-a8cd-4087-bc0a-898df66c4ab6">
+<span class="eqno">(109)<a class="headerlink" href="#equation-b4d47b3f-a8cd-4087-bc0a-898df66c4ab6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial \text {Cost}}{\partial W^{\ell}} = \; \delta^{\ell} \;\cdot\; a^{\ell-1}  \qquad \qquad \qquad \frac{\partial \text {Cost}}{\partial b^{\ell}} = \; \delta^{\ell}
 \end{equation}\]</div>
 <p><strong>Step 4:</strong> Gradient Descent steps to update weights &amp; biases:</p>

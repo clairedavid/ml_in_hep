@@ -492,8 +492,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/ethics_outlook.html">
-   14. Ethics in ML &amp; Outlook
+  <a class="reference internal" href="../week3/ethics_exam.html">
+   14. Ethics in ML &amp; Exam
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
   <label for="toctree-checkbox-12">
@@ -502,21 +502,38 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_outlook_1.html">
+    <a class="reference internal" href="../week3/ethics_exam_1.html">
      The Ethics in ML
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_outlook_2.html">
-     Machine Learning Today
+    <a class="reference internal" href="../week3/ethics_exam_2.html">
+     Course Exam
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week3/projects_exam.html">
-   15. Project presentations &amp; Exam
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week3/projects_outlook.html">
+   15. Project presentations &amp; Outlook
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/projects_outlook_pres.html">
+     Project Presentations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/projects_outlook_today.html">
+     Open Questions in ML today
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -532,7 +549,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tutorials/t02_forestry.html">
-   2. ‘Forestree’ with LHC collisions
+   2. Event Classification with Trees
   </a>
  </li>
  <li class="toctree-l1">
@@ -770,6 +787,19 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -787,13 +817,13 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          x1        x2           x3        x4
-0  48.510718  0.194109  1913.027472 -0.121242
-1  53.798959  2.007085  1924.438310 -0.103408
-2  56.051401  0.603090  2102.633865  0.116778
-3  46.016477  1.288027  2181.356775  0.015305
-4  55.377775 -0.492706  2098.921171  0.052015
-5  55.994064  2.533775  2073.340285  0.059023
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         x_1       x_2          x_3       x_4
+0  53.844621 -2.236084  2158.276717 -0.035128
+1  45.108137  1.204087  1935.968922  0.038599
+2  43.764648 -1.509527  2080.412520 -0.080645
+3  44.739359 -2.604297  2048.357208 -0.040369
+4  38.390222 -2.325613  1984.086668  0.243353
+5  49.152215 -0.600885  1972.311885 -0.034590
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -814,54 +844,54 @@ title="Print to PDF"
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>x1</th>
-      <th>x2</th>
-      <th>x3</th>
-      <th>x4</th>
+      <th>x_1</th>
+      <th>x_2</th>
+      <th>x_3</th>
+      <th>x_4</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>48.510718</td>
-      <td>0.194109</td>
-      <td>1913.027472</td>
-      <td>-0.121242</td>
+      <td>53.844621</td>
+      <td>-2.236084</td>
+      <td>2158.276717</td>
+      <td>-0.035128</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>53.798959</td>
-      <td>2.007085</td>
-      <td>1924.438310</td>
-      <td>-0.103408</td>
+      <td>45.108137</td>
+      <td>1.204087</td>
+      <td>1935.968922</td>
+      <td>0.038599</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>56.051401</td>
-      <td>0.603090</td>
-      <td>2102.633865</td>
-      <td>0.116778</td>
+      <td>43.764648</td>
+      <td>-1.509527</td>
+      <td>2080.412520</td>
+      <td>-0.080645</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>46.016477</td>
-      <td>1.288027</td>
-      <td>2181.356775</td>
-      <td>0.015305</td>
+      <td>44.739359</td>
+      <td>-2.604297</td>
+      <td>2048.357208</td>
+      <td>-0.040369</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>55.377775</td>
-      <td>-0.492706</td>
-      <td>2098.921171</td>
-      <td>0.052015</td>
+      <td>38.390222</td>
+      <td>-2.325613</td>
+      <td>1984.086668</td>
+      <td>0.243353</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>55.994064</td>
-      <td>2.533775</td>
-      <td>2073.340285</td>
-      <td>0.059023</td>
+      <td>49.152215</td>
+      <td>-0.600885</td>
+      <td>1972.311885</td>
+      <td>-0.034590</td>
     </tr>
   </tbody>
 </table>

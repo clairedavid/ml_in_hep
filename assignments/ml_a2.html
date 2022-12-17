@@ -808,7 +808,7 @@ J(k, t_k) = \frac{n_\text{left}}{n_\text{node}} G_\text{left} + \frac{n_\text{ri
 <li><p>the class values (in an array)</p></li>
 <li><p>the numbers of threshold values swiping the interval of the feature</p></li>
 </ul>
-<p><strong>1.1: Get and load the data</strong><br />
+<p><strong>1.1 Get and load the data</strong><br />
 Get the <code class="docutils literal notranslate"><span class="pre">train</span></code> dataset and load the relevant columns in a dataframe.</p>
 <p><strong>1.2 Compute the Gini index</strong><br />
 Write a function computing the Gini index value. Make your code as general as possible.<br />
@@ -818,14 +818,14 @@ Add in the next cell a series of tests.<br />
 Write a function computing the cost function in the CART algorithm.</p>
 <p><strong>1.4 Main function: code a Decision Stump</strong><br />
 Write the main function <code class="docutils literal notranslate"><span class="pre">decision_stumper</span></code> that will call the functions defined above. Call your function on each input feature and conclude on the final cut for your decision stump.</p>
-<p>You just coded a decision stump by hand!</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>If you cannot complete the previous question, choose a feature and a threshold yourself to be able to draw the decision boundary.</p>
+<p>If you cannot complete the previous question, pick one of the two features and manually choose a threshold yourself to be able to draw a decision boundary.</p>
 </div>
 </aside>
+<p>You just coded a decision stump by hand!</p>
 <p><strong>1.5 Plot the cut</strong><br />
 Use the <code class="docutils literal notranslate"><span class="pre">plot_scatter</span></code> function from the second tutorial and modify it to draw the line corresponding to the optimized threshold from the decision stump. You can use Matplotlib’s <code class="docutils literal notranslate"><span class="pre">axhline</span></code> or <code class="docutils literal notranslate"><span class="pre">axvline</span></code> method for drawing a horizontal or vertical line respectively. Try to be as general as possible in the input arguments.<br />
 <em>Hints provided on demand during office hours.</em></p>
@@ -833,6 +833,42 @@ Use the <code class="docutils literal notranslate"><span class="pre">plot_scatte
 <section id="plotting-mission-the-overtraining-check">
 <h2>2. Plotting mission: the overtraining check<a class="headerlink" href="#plotting-mission-the-overtraining-check" title="Permalink to this headline">#</a></h2>
 <p>The goal of this exercise is to understand and reproduce the following plot:</p>
+<figure class="align-default" id="a-02-overtrainingtmva2">
+<a class="reference internal image-reference" href="../_images/a_02_overtrainingTMVA2.png"><img alt="../_images/a_02_overtrainingTMVA2.png" src="../_images/a_02_overtrainingTMVA2.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-text">The “overtraining check” plot from <a class="reference external" href="https://root.cern/manual/tmva/">TMVA</a> (MVA stands for MultiVariate Analysis), a library used in High Energy Physics (HEP) within the <a class="reference external" href="https://root.cern/">ROOT</a> framework.<br />
+<sub>Image: root-forum, cern.ch</sub></span><a class="headerlink" href="#a-02-overtrainingtmva2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The <span class="math notranslate nohighlight">\(x\)</span>-axis is an equivalent to the output scores of a classifier (here it is a Support Vector Machine, which are not covered in this course).</p>
+<p>We will use the same dataset as for the tutorial 2 ‘Forestree.’ However as the validation set lacks statistics, you will use the training and <strong>testing</strong> sets, the latter having more samples than the validation set.</p>
+<p><strong>2.1 Understanding of the plot</strong><br />
+Describe the plot and explain why this is called an “overtraining check” plot. Importance will be given to the clarity of your answer.</p>
+<p><strong>2.2 Reproducing the plot</strong><br />
+Write a function <code class="docutils literal notranslate"><span class="pre">plot_overtraining_check</span></code> that takes as arguments the classifier object, the <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(y\)</span> lists of the training and testing sets, the value of the positive class (e.g. for VBF it is 1) and a title. Use a Decision Tree classifier of depth 2 to test your plotting macro. Your code should be clear and relevantly commented.</p>
+<p>You will obtain a plot like this:</p>
+<figure class="align-default" id="a-02-overtraining-plt-dtmaxd2">
+<a class="reference internal image-reference" href="../_images/a_02_overtraining_plt_DTmaxD2.png"><img alt="../_images/a_02_overtraining_plt_DTmaxD2.png" src="../_images/a_02_overtraining_plt_DTmaxD2.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text">Example of an overtraining check plot using Matplotlib.</span><a class="headerlink" href="#a-02-overtraining-plt-dtmaxd2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The histograms on the overtraining check plot are normalized to an area of unity. In Matplotlib, this is done using the argument <code class="docutils literal notranslate"><span class="pre">density</span> <span class="pre">=</span> <span class="pre">1</span></code>. However you should be very careful to rescale properly the vertical error bars before plotting the testing set.</p>
+</div>
+<p><strong>2.3 Using the plot</strong><br />
+Create a random forest classifier with 100 estimators and leave other hyperparameters as default. Plot the overtraining check with this classifier. What are your observations? Is it classifying well on the training set? Is is under- or overtrain? Why?</p>
+<p>Create a second random forest classifier with this time the option <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes=32</span></code>. What is improved? What is still problematic?</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p> <br />
+You are encouraged to work in groups, however submissions are individual.</p>
+<p>If you have received help from your peers and/or have worked within a group, summarize in the header of your notebook the involved students, how they helped you and the contributions of each group member. This is to ensure fairness in the evaluation.</p>
+<p>You can use the internet such as the official pages of relevant libraries, forum websites to debug, etc. However using an AI such as ChatGPT would be considered cheating (and not good for you anyway to develop your programming skills).</p>
+<p>The instructor and tutors are available throughout the week to answer your questions. Write an email with your well-articulated question(s). Put in CC your teammates if any. If you prefer to book an appointment, add your next availability (within half a day notice). Once an appointment is booked, you are expected a private conversation of 15 minutes with the instructor and all the students cc’ed in the email.</p>
+<p>Thank you and do not forget to have fun while coding!</p>
+</div>
 </section>
 </section>
 

@@ -536,7 +536,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tutorials/t02_forestry.html">
-   2. ‘Forestree’ with LHC collisions
+   2. LHC Event Classification with Trees
   </a>
  </li>
  <li class="toctree-l1">
@@ -917,8 +917,8 @@ There are two main approaches of such methods for multiclassification.</p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-One approach</strong> consists of applying a binary classification for each pair of classes, ignoring the other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of models to train, <span class="math notranslate nohighlight">\(N^\text{model}\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7823e07e-7e5e-48e7-95f5-aeb484cac5c2">
-<span class="eqno">(15)<a class="headerlink" href="#equation-7823e07e-7e5e-48e7-95f5-aeb484cac5c2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8f11756e-3618-41e6-bdab-3b1850a9dd80">
+<span class="eqno">(15)<a class="headerlink" href="#equation-8f11756e-3618-41e6-bdab-3b1850a9dd80" title="Permalink to this equation">#</a></span>\[\begin{equation}
 N^\text{model} = \frac{N^\text{class}(N^\text{class}-1)}{2}
 \end{equation}\]</div>
 <p>Each model predicts one class label. The final decision is the class label receiving the most votes, i.e. being predicted most of the time.</p>
@@ -932,8 +932,8 @@ The pairing makes the number of models to train large and thus computer intensiv
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-All or One-to-Rest approach</strong> consists of training each class against the collection of all other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of pairs to train is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a9cf048f-00d1-4415-8435-de8babf80da5">
-<span class="eqno">(16)<a class="headerlink" href="#equation-a9cf048f-00d1-4415-8435-de8babf80da5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f40e9db3-811e-4333-8837-08c71a09f849">
+<span class="eqno">(16)<a class="headerlink" href="#equation-f40e9db3-811e-4333-8837-08c71a09f849" title="Permalink to this equation">#</a></span>\[\begin{equation}
  N^\text{model} = N^\text{class}
 \end{equation}\]</div>
 <p>The final prediction is given by the highest value of the hypothesis function <span class="math notranslate nohighlight">\(h^{k}_\theta(x)\)</span>, <span class="math notranslate nohighlight">\(k \in [1, N^\text{model}]\)</span> among the <span class="math notranslate nohighlight">\(N^\text{model}\)</span> binary classifiers.</p>

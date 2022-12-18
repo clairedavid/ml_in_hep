@@ -48,7 +48,7 @@ First of all, the curve is not overshooting below or above our discrete outcomes
 A __mapping function__ $h_\theta(x)$ used for logistic regression is of the form:
 
 \begin{equation*}
-h_\theta (x^{(i)}) =  f(\theta^{T} x^{(i)}) = \frac{1}{1 + e^{- \theta^{T} x^{(i)}}}
+h_\theta (x^{(i)}) =  f(x^{(i)}\theta^{T} ) = \frac{1}{1 + e^{- x^{(i)}\theta^{T} }}
 \end{equation*}
 
 where vector $x^{(i)}$ are the input features and $\theta$ the parameters to optimize.  
@@ -59,7 +59,7 @@ The mapping function satisfies
 :label: hthetabounded
 0 < h_\theta (x^{(i)}) < 1
 ```
-Those limits are reached asymptotically reaching 0 and 1 when $\theta^{T} x^{(i)} \rightarrow -\infty$ and $\theta^{T} x^{(i)} \rightarrow +\infty$ respectively.
+Those limits are reached asymptotically reaching 0 and 1 when $x^{(i)}\theta^{T}  \rightarrow -\infty$ and $x^{(i)}\theta^{T}  \rightarrow +\infty$ respectively.
 
 Intuitively, we see in our example that events with very low electron energy are most likely to be background whereas events with high electron energy are more likely to be signal. In the middle, there is a 50/50 chance to mis-classify an event.
 
@@ -72,7 +72,7 @@ Imagine we have optimized our vector $\theta$ parameters. How do we make a predi
 Previously with linear regression, we could predict the target $y^\text{pred}$ from a new data variable $x^\text{new}$ (a row of all features) by directly using the hypothesis function:
 ```{math}
 :label: ypredthetaxnew
-y^\text{pred} = h_\theta(x^\text{new}) = \theta^{\: T} x^\text{new}
+y^\text{pred} = h_\theta(x^\text{new}) =  x^\text{new} \theta^{\: T}
 ```
 
 With discrete outcomes, we need a new concept to map the input to a discrete class: the decision boundary. 
@@ -88,7 +88,7 @@ In the section {ref}`class:sigmoid:better` above, we can split the data sample u
 This way and looking at the distribution on Figure {ref}`scattersigmoid`, the majority of data points will be correctly classified with the $1/2$ horizontal threshold.
 
 ```{warning}
-Careful with how the logistic function is used. We are not computing it directly with $x^{(i)}$ as argument but we calculate $f(\theta^{\: T}x^{(i)})$.
+Careful with how the logistic function is used. We are not computing it directly with $x^{(i)}$ as argument but we calculate $f(x^{(i)}\theta^{\: T})$.
 ```
 
 ```{admonition} Question

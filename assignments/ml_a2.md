@@ -97,7 +97,7 @@ You are encouraged to work in groups, however submissions are individual.
 
 If you have received help from your peers and/or have worked within a group, summarize in the header of your notebook the involved students, how they helped you and the contributions of each group member. This is to ensure fairness in the evaluation.
 
-You can use the internet such as the official pages of relevant libraries, forum websites to debug, etc. However using an AI such as ChatGPT would be considered cheating (and not good for you anyway to develop your programming skills).
+You can use the internet such as the official pages of relevant libraries, forum websites to debug, etc. However, using an AI such as ChatGPT would be considered cheating (and not good for you anyway to develop your programming skills).
 
 The instructor and tutors are available throughout the week to answer your questions. Write an email with your well-articulated question(s). Put in CC your teammates if any.
 

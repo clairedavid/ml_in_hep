@@ -494,8 +494,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/ethics_exam.html">
-   14. Ethics in ML &amp; Exam
+  <a class="reference internal" href="../week3/ethics_outlook.html">
+   14. Ethics in ML &amp; Outlook
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
   <label for="toctree-checkbox-12">
@@ -504,38 +504,21 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_exam_1.html">
+    <a class="reference internal" href="../week3/ethics_outlook_1.html">
      The Ethics in ML
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ethics_exam_2.html">
-     Course Exam
+    <a class="reference internal" href="../week3/ethics_outlook_2.html">
+     Machine Learning Today
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/projects_outlook.html">
-   15. Project presentations &amp; Outlook
+ <li class="toctree-l1">
+  <a class="reference internal" href="../week3/projects_exam.html">
+   15. Project presentations &amp; Exam
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/projects_outlook_pres.html">
-     Project Presentations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/projects_outlook_today.html">
-     Open Questions in ML today
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -551,7 +534,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tutorials/t02_forestry.html">
-   2. Event Classification with Trees
+   2. ‘Forestree’ with LHC collisions
   </a>
  </li>
  <li class="toctree-l1">
@@ -903,20 +886,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">scipy.optimize</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <section id="for-illustration-3d-bowl">
 <h2>For illustration: 3D ‘bowl’<a class="headerlink" href="#for-illustration-3d-bowl" title="Permalink to this headline">#</a></h2>
@@ -959,7 +928,64 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/warmup_1D_linRegGD_plots_3_0.png" src="../_images/warmup_1D_linRegGD_plots_3_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 25&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">theta_0$&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">theta_1$&#39;</span><span class="p">)</span> 
+<span class="ne">---&gt; </span><span class="mi">25</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;$J(</span><span class="se">\\</span><span class="s1">theta_0, </span><span class="se">\\</span><span class="s1">theta_1)$&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;90&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="c1">#plt.title(&#39;Cost Function $J(\\theta_0, \\theta_1)$&#39;, loc=&#39;left&#39;, fontsize = 15)</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="n">ax</span><span class="o">.</span><span class="n">azim</span> <span class="o">=</span> <span class="mi">225</span>
+
+<span class="nn">File ~/Library/Python/3.9/lib/python/site-packages/mpl_toolkits/mplot3d/axes3d.py:1135,</span> in <span class="ni">Axes3D.set_zlabel</span><span class="nt">(self, zlabel, fontdict, labelpad, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1133</span> <span class="k">if</span> <span class="n">labelpad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1134</span>     <span class="bp">self</span><span class="o">.</span><span class="n">zaxis</span><span class="o">.</span><span class="n">labelpad</span> <span class="o">=</span> <span class="n">labelpad</span>
+<span class="ne">-&gt; </span><span class="mi">1135</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">zaxis</span><span class="o">.</span><span class="n">set_label_text</span><span class="p">(</span><span class="n">zlabel</span><span class="p">,</span> <span class="n">fontdict</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/Library/Python/3.9/lib/python/site-packages/matplotlib/axis.py:1722,</span> in <span class="ni">Axis.set_label_text</span><span class="nt">(self, label, fontdict, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1720</span> <span class="k">if</span> <span class="n">fontdict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1721</span>     <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">fontdict</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1722</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1723</span> <span class="bp">self</span><span class="o">.</span><span class="n">stale</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="g g-Whitespace">   </span><span class="mi">1724</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span>
+
+<span class="nn">File ~/Library/Python/3.9/lib/python/site-packages/matplotlib/text.py:198,</span> in <span class="ni">Text.update</span><span class="nt">(self, kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span> <span class="c1"># Update bbox last, as it depends on font properties.</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span> <span class="n">bbox</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;bbox&quot;</span><span class="p">,</span> <span class="n">sentinel</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">198</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">199</span> <span class="k">if</span> <span class="n">bbox</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">sentinel</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span>     <span class="bp">self</span><span class="o">.</span><span class="n">set_bbox</span><span class="p">(</span><span class="n">bbox</span><span class="p">)</span>
+
+<span class="nn">File ~/Library/Python/3.9/lib/python/site-packages/matplotlib/artist.py:1176,</span> in <span class="ni">Artist.update</span><span class="nt">(self, props)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1168</span> <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">props</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1169</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1170</span><span class="sd">     Update this artist&#39;s properties from the dict *props*.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1171</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1174</span><span class="sd">     props : dict</span>
+<span class="g g-Whitespace">   </span><span class="mi">1175</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1176</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_props</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1177</span>         <span class="n">props</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{cls.__name__!r}</span><span class="s2"> object has no property </span><span class="si">{prop_name!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/Library/Python/3.9/lib/python/site-packages/matplotlib/artist.py:1162,</span> in <span class="ni">Artist._update_props</span><span class="nt">(self, props, errfmt)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1159</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1160</span>                 <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1161</span>                     <span class="n">errfmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">cls</span><span class="o">=</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">prop_name</span><span class="o">=</span><span class="n">k</span><span class="p">))</span>
+<span class="ne">-&gt; </span><span class="mi">1162</span>             <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1163</span> <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1164</span>     <span class="bp">self</span><span class="o">.</span><span class="n">pchanged</span><span class="p">()</span>
+
+<span class="nn">File ~/Library/Python/3.9/lib/python/site-packages/matplotlib/text.py:1196,</span> in <span class="ni">Text.set_rotation</span><span class="nt">(self, s)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1194</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_rotation</span> <span class="o">=</span> <span class="mf">90.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1195</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1196</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;rotation must be &#39;vertical&#39;, &#39;horizontal&#39; or &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1197</span>                      <span class="sa">f</span><span class="s2">&quot;a number, not </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1198</span> <span class="bp">self</span><span class="o">.</span><span class="n">stale</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="ne">ValueError</span>: rotation must be &#39;vertical&#39;, &#39;horizontal&#39; or a number, not 90
+</pre></div>
+</div>
+<img alt="../_images/warmup_1D_linRegGD_plots_3_1.png" src="../_images/warmup_1D_linRegGD_plots_3_1.png" />
 </div>
 </div>
 <div class="cell docutils container">

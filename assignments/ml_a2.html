@@ -844,9 +844,16 @@ Use the <code class="docutils literal notranslate"><span class="pre">plot_scatte
 <p>We will use the same dataset as for the tutorial 2 ‘Forestree.’ However as the validation set lacks statistics, you will use the training and <strong>testing</strong> sets, the latter having more samples than the validation set.</p>
 <p><strong>2.1 Understanding of the plot</strong><br />
 Describe the plot and explain why this is called an “overtraining check” plot. Importance will be given to the clarity of your answer.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Your code should be clear and relevantly commented.</p>
+</div>
+</aside>
 <p><strong>2.2 Reproducing the plot</strong><br />
-Write a function <code class="docutils literal notranslate"><span class="pre">plot_overtraining_check</span></code> that takes as arguments the classifier object, the <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(y\)</span> lists of the training and testing sets, the value of the positive class (e.g. for VBF it is 1) and a title. Use a Decision Tree classifier of depth 2 to test your plotting macro. Your code should be clear and relevantly commented.</p>
-<p>You will obtain a plot like this:</p>
+Write a function <code class="docutils literal notranslate"><span class="pre">plot_overtraining_check</span></code> that takes as arguments the classifier object, the <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(y\)</span> lists of the training and testing sets, the value of the positive class (e.g. for VBF it is 1) and a title. The function should split each dataset (train/test) into the real category (signal/background).</p>
+<p>To test your plotting macro, use a Decision Tree classifier of maximum depth 2. You will obtain a plot like this:</p>
 <figure class="align-default" id="a-02-overtraining-plt-dtmaxd2">
 <a class="reference internal image-reference" href="../_images/a_02_overtraining_plt_DTmaxD2.png"><img alt="../_images/a_02_overtraining_plt_DTmaxD2.png" src="../_images/a_02_overtraining_plt_DTmaxD2.png" style="width: 100%;" /></a>
 <figcaption>
@@ -859,14 +866,14 @@ Write a function <code class="docutils literal notranslate"><span class="pre">pl
 </div>
 <p><strong>2.3 Using the plot</strong><br />
 Create a random forest classifier with 100 estimators and leave other hyperparameters as default. Plot the overtraining check with this classifier. What are your observations? Is it classifying well on the training set? Is is under- or overtrain? Why?</p>
-<p>Create a second random forest classifier with this time the option <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes=32</span></code>. What is improved? What is still problematic?</p>
+<p>Create a second random forest classifier with this time the option <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes=32</span></code>.  What is improved? What is still problematic?</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p> <br />
 You are encouraged to work in groups, however submissions are individual.</p>
 <p>If you have received help from your peers and/or have worked within a group, summarize in the header of your notebook the involved students, how they helped you and the contributions of each group member. This is to ensure fairness in the evaluation.</p>
 <p>You can use the internet such as the official pages of relevant libraries, forum websites to debug, etc. However using an AI such as ChatGPT would be considered cheating (and not good for you anyway to develop your programming skills).</p>
-<p>The instructor and tutors are available throughout the week to answer your questions. Write an email with your well-articulated question(s). Put in CC your teammates if any. If you prefer to book an appointment, add your next availability (within half a day notice). Once an appointment is booked, you are expected a private conversation of 15 minutes with the instructor and all the students cc’ed in the email.</p>
+<p>The instructor and tutors are available throughout the week to answer your questions. Write an email with your well-articulated question(s). Put in CC your teammates if any.</p>
 <p>Thank you and do not forget to have fun while coding!</p>
 </div>
 </section>

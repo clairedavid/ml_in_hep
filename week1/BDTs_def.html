@@ -536,7 +536,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tutorials/t02_forestry.html">
-   2. Event Classification with Trees
+   2. ‘Forestree’ with LHC collisions
   </a>
  </li>
  <li class="toctree-l1">
@@ -896,8 +896,8 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p>The <strong>Gini’s diversity index</strong> is a measure of a node’s impurity.</p>
 <p>It is defined for each tree node <span class="math notranslate nohighlight">\(i\)</span> as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9a0c1576-9f34-4407-bc03-58195c75e6aa">
-<span class="eqno">(31)<a class="headerlink" href="#equation-9a0c1576-9f34-4407-bc03-58195c75e6aa" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-70e1b9fb-485b-4e97-a878-198895b5ac7f">
+<span class="eqno">(31)<a class="headerlink" href="#equation-70e1b9fb-485b-4e97-a878-198895b5ac7f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 G_i = 1 - \sum_{k=1}^{N_\text{classes}} \left( \frac{N_{k, i}}{ N_i} \right)^2 
 \end{equation}\]</div>
 <p>with <span class="math notranslate nohighlight">\(N_{k, i}\)</span> the number of data samples of class <span class="math notranslate nohighlight">\(k\)</span> in node <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(N_{i}\)</span> the total number of data samples in node <span class="math notranslate nohighlight">\(i\)</span>.</p>
@@ -944,8 +944,8 @@ A collection on decision boundaries segmenting the <span class="math notranslate
 For each feature <span class="math notranslate nohighlight">\(k\)</span>, finds the threshold value <span class="math notranslate nohighlight">\(t_k\)</span> maximizing purity of the two resulting subsets either lower (left) or higher (right) than the threshold <span class="math notranslate nohighlight">\(t_k\)</span>.
 The cost function is defined as:</p></li>
 </ol>
-<div class="amsmath math notranslate nohighlight" id="equation-472df932-3880-40a9-87ae-db3f1859e400">
-<span class="eqno">(32)<a class="headerlink" href="#equation-472df932-3880-40a9-87ae-db3f1859e400" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d998f659-6425-47ab-be83-082b59f75dfe">
+<span class="eqno">(32)<a class="headerlink" href="#equation-d998f659-6425-47ab-be83-082b59f75dfe" title="Permalink to this equation">#</a></span>\[\begin{equation}
 J(k, t_k) = \frac{n_\text{left}}{n_\text{node}} G_\text{left} + \frac{n_\text{right}}{n_\text{node}} G_\text{right}
 \end{equation}\]</div>
 <p>The purity is weighted by the subset sizes. The pair (<span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(t_k\)</span>) producing the purest subset is set for the node.</p>
@@ -1008,6 +1008,9 @@ Repeat Step 1 at the new nodes.</p></li>
 <h3>Instability<a class="headerlink" href="#instability" title="Permalink to this headline">#</a></h3>
 <p>Not only rotated data samples, decision trees can also drastically change with only minimal modification in the data. Removing one data point in the dataset above can lead to very different decision boundaries:</p>
 <figure class="align-default" id="dt-boundary-tweaked" style="width: 100%">
+<div class="cell_output docutils container">
+<img alt="../_images/BDTs_demo_20_0.png" src="../_images/BDTs_demo_20_0.png" />
+</div>
 </figure>
 <p>Instability will change future predictions and is quite a bad feature (bug) from a machine learning algorithm. How to circomvent this intrinsic instability? This is what we will cover in the next section!</p>
 </section>

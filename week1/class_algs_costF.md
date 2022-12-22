@@ -60,6 +60,12 @@ The cost function derivatives will take the form:
 ```
 This takes the same form as the derivatives for linear regression (Equation {eq}`partialDevLinReg` in Section {ref}`warmup:linregmulti:graddesc`).
 
+```{admonition} Exercise
+:class: seealso
+To convince yourself, you can derive Equation {eq}`costfderivlin` starting from Equation {eq}`costFunctionLogReg`.   
+Hints and help available on demand after class.
+```
+
 ### Alternative techniques
 Beside logistic regression, other algorithms are designed for binary classification. 
 

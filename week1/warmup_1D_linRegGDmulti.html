@@ -230,7 +230,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="class_algs_biasV.html">
-     Bias, Variance: how to cope
+     Performance Metrics
     </a>
    </li>
   </ul>
@@ -849,45 +849,45 @@ Additional input features can be visualized in the form of a table:</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>48.510718</td>
-      <td>0.194109</td>
-      <td>1913.027472</td>
-      <td>-0.121242</td>
+      <td>49.836522</td>
+      <td>2.678894</td>
+      <td>1807.902380</td>
+      <td>-0.083486</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>53.798959</td>
-      <td>2.007085</td>
-      <td>1924.438310</td>
-      <td>-0.103408</td>
+      <td>43.993069</td>
+      <td>2.895137</td>
+      <td>2202.953351</td>
+      <td>0.084092</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>56.051401</td>
-      <td>0.603090</td>
-      <td>2102.633865</td>
-      <td>0.116778</td>
+      <td>52.229353</td>
+      <td>-2.035220</td>
+      <td>1970.816048</td>
+      <td>0.056290</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>46.016477</td>
-      <td>1.288027</td>
-      <td>2181.356775</td>
-      <td>0.015305</td>
+      <td>47.897435</td>
+      <td>2.302339</td>
+      <td>1946.152202</td>
+      <td>-0.194834</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>55.377775</td>
-      <td>-0.492706</td>
-      <td>2098.921171</td>
-      <td>0.052015</td>
+      <td>49.030135</td>
+      <td>-2.373774</td>
+      <td>2064.475865</td>
+      <td>-0.168040</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>55.994064</td>
-      <td>2.533775</td>
-      <td>2073.340285</td>
-      <td>0.059023</td>
+      <td>52.116527</td>
+      <td>-0.598654</td>
+      <td>1901.289767</td>
+      <td>0.183645</td>
     </tr>
   </tbody>
 </table>
@@ -1060,12 +1060,12 @@ This happens when the features are of different ranges. One parameter will have 
 <p><strong>Mean normalization</strong> consists of calculating the mean <span class="math notranslate nohighlight">\(\mu_j\)</span> of all training examples <span class="math notranslate nohighlight">\(x_j^{(1)}, x_j^{(2)}, \cdots,  x_j^{(m)}\)</span> of a given feature <span class="math notranslate nohighlight">\(j\)</span> and substract it to each example <span class="math notranslate nohighlight">\(x_j^{(i)}\)</span> of that feature:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-\left(x^{(i)}_j\right)' = x^{(i)}_j - \mu_j  \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
+\left(x^{(i)}_j\right)^\text{ norm} = x^{(i)}_j - \mu_j  \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
 \end{equation*}\]</div>
 <p>It is usual to divide by the range of the features:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-\left(x^{(i)}_j\right)' = \frac{x^{(i)}_j - \mu_j}{x_j^\max - x_j^\min} \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
+\left(x^{(i)}_j\right)^\text{ norm} = \frac{x^{(i)}_j - \mu_j}{x_j^\max - x_j^\min} \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
 \end{equation*}\]</div>
 </section>
 </div><p>Consequence: the mean of the new normalized sample collection for that feature - think of it as an extra column in the matrix <span class="math notranslate nohighlight">\(X\)</span> - will be zero. The data distribute the same as before, the values are just representing the <em>distance to the mean</em>.</p>
@@ -1078,7 +1078,7 @@ This happens when the features are of different ranges. One parameter will have 
 <p>The mean normalization procedure using as denominator the standard deviation <span class="math notranslate nohighlight">\(\sigma_j\)</span> all the samples for this feature is called <strong>Standardization</strong></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-x^{(i)}_j = \frac{x^{(i)}_j - \mu_j}{\sigma_j} \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
+\widetilde{x}^{(i)}_j = \frac{x^{(i)}_j - \mu_j}{\sigma_j} \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
 \end{equation*}\]</div>
 </section>
 </div><p>Consequence: the mean and standard deviation of the new normalized collection of feature <span class="math notranslate nohighlight">\(j\)</span> will be zero and one respectively.</p>

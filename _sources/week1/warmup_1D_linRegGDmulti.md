@@ -182,11 +182,11 @@ Feature scaling can be implemented in different ways. We will see the two classi
 :label: defMeanNormalization
 __Mean normalization__ consists of calculating the mean $\mu_j$ of all training examples $x_j^{(1)}, x_j^{(2)}, \cdots,  x_j^{(m)}$ of a given feature $j$ and substract it to each example $x_j^{(i)}$ of that feature:
 \begin{equation*}
-\left(x^{(i)}_j\right)' = x^{(i)}_j - \mu_j  \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
+\left(x^{(i)}_j\right)^\text{ norm} = x^{(i)}_j - \mu_j  \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
 \end{equation*}
 It is usual to divide by the range of the features:
 \begin{equation*}
-\left(x^{(i)}_j\right)' = \frac{x^{(i)}_j - \mu_j}{x_j^\max - x_j^\min} \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
+\left(x^{(i)}_j\right)^\text{ norm} = \frac{x^{(i)}_j - \mu_j}{x_j^\max - x_j^\min} \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
 \end{equation*}
 ````
 
@@ -197,7 +197,7 @@ Consequence: the mean of the new normalized sample collection for that feature -
 :label: defStandardization
 The mean normalization procedure using as denominator the standard deviation $\sigma_j$ all the samples for this feature is called __Standardization__ 
 \begin{equation*}
-x^{(i)}_j = \frac{x^{(i)}_j - \mu_j}{\sigma_j} \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
+\widetilde{x}^{(i)}_j = \frac{x^{(i)}_j - \mu_j}{\sigma_j} \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
 \end{equation*}
 ````
 Consequence: the mean and standard deviation of the new normalized collection of feature $j$ will be zero and one respectively.

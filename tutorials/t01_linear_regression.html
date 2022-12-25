@@ -230,7 +230,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../week1/class_algs_biasV.html">
-     Bias, Variance: how to cope
+     Performance Metrics
     </a>
    </li>
   </ul>
@@ -1019,7 +1019,7 @@ Then in a fresh Jupyter Notebook, write and execute the following lines:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      51 ../data/tutorial_1.csv
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>51 ../data/tutorial_1.csv
 </pre></div>
 </div>
 </div>
@@ -1212,8 +1212,8 @@ Once you have your function computing the cost, it is always a good practice to 
 <span class="k">if</span> <span class="n">m</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The lists of x and y values are not the same length!&#39;</span><span class="p">)</span>
 
 <span class="c1"># Store theta (weights) values for Gradient Descent (GD) visualizations</span>
-<span class="n">weights_GD_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">theta_0</span><span class="p">])</span>
-<span class="n">weights_GD_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">theta_1</span><span class="p">])</span>
+<span class="n">GD_all_thetas_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">theta_0</span><span class="p">])</span>
+<span class="n">GD_all_thetas_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">theta_1</span><span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting gradient descent</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 

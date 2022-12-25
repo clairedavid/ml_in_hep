@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>3. Classification algorithms &#8212; Machine Learning in Particle Physics</title>
+    <title>Assignment 1: Classifier By Hand &#8212; Machine Learning in Particle Physics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,10 +51,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Logistic Regression: introduction" href="class_algs_logReg.html" />
-    <link rel="prev" title="Gradient Descent in practice" href="warmup_1D_practice.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -136,9 +136,9 @@ const thebe_selector_output = ".output, .cell_output"
   Week 1
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="trailer.html">
+  <a class="reference internal" href="../week1/trailer.html">
    1. Course Trailer
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -148,24 +148,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="trailer_hep.html">
+    <a class="reference internal" href="../week1/trailer_hep.html">
      From detectors to publications
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="trailer_mldef.html">
+    <a class="reference internal" href="../week1/trailer_mldef.html">
      What is Machine Learning?
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="trailer_pb.html">
+    <a class="reference internal" href="../week1/trailer_pb.html">
      Which problems does ML solve?
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="warmup_1D.html">
+  <a class="reference internal" href="../week1/warmup_1D.html">
    2. Warm up: Linear Regression
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -175,66 +175,66 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="warmup_1D_linRegGD.html">
+    <a class="reference internal" href="../week1/warmup_1D_linRegGD.html">
      Gradient Descent in 1D
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="warmup_1D_linRegGDmulti.html">
+    <a class="reference internal" href="../week1/warmup_1D_linRegGDmulti.html">
      Multivariate linear regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="warmup_1D_learningR.html">
+    <a class="reference internal" href="../week1/warmup_1D_learningR.html">
      Learning Rate
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="warmup_1D_practice.html">
+    <a class="reference internal" href="../week1/warmup_1D_practice.html">
      Gradient Descent in practice
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week1/class_algs.html">
    3. Classification algorithms
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="class_algs_logReg.html">
+    <a class="reference internal" href="../week1/class_algs_logReg.html">
      Logistic Regression: introduction
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="class_algs_sigmoid.html">
+    <a class="reference internal" href="../week1/class_algs_sigmoid.html">
      What is the Sigmoid Function?
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="class_algs_costF.html">
+    <a class="reference internal" href="../week1/class_algs_costF.html">
      Cost Function for Classification
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="class_algs_reg.html">
+    <a class="reference internal" href="../week1/class_algs_reg.html">
      Regularization
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="class_algs_biasV.html">
+    <a class="reference internal" href="../week1/class_algs_biasV.html">
      Performance Metrics
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="BDTs.html">
+  <a class="reference internal" href="../week1/BDTs.html">
    4. Decision Trees and Boosting
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -244,24 +244,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="BDTs_def.html">
+    <a class="reference internal" href="../week1/BDTs_def.html">
      What are Decision Trees?
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="BDTs_forest.html">
+    <a class="reference internal" href="../week1/BDTs_forest.html">
      Ensemble Learning and Random Forests
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="BDTs_boosting.html">
+    <a class="reference internal" href="../week1/BDTs_boosting.html">
      What is boosting?
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="review_week1.html">
+  <a class="reference internal" href="../week1/review_week1.html">
    5. Review Week 1
   </a>
  </li>
@@ -642,7 +642,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fweek1/class_algs.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fassignments/ml_a1.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -670,7 +670,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/week1/class_algs.md"
+        <a href="../_sources/assignments/ml_a1.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -707,23 +707,100 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-calorimeter-showers">
+   Introduction: calorimeter showers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-the-data">
+   1. Get the Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-scaling">
+   2. Feature Scaling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-prep">
+   3. Data Prep
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#useful-functions">
+   4. Useful Functions
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>3. Classification algorithms</h1>
+                <h1>Assignment 1: Classifier By Hand</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-calorimeter-showers">
+   Introduction: calorimeter showers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-the-data">
+   1. Get the Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-scaling">
+   2. Feature Scaling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-prep">
+   3. Data Prep
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#useful-functions">
+   4. Useful Functions
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -731,20 +808,81 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="classification-algorithms">
-<h1>3. Classification algorithms<a class="headerlink" href="#classification-algorithms" title="Permalink to this headline">#</a></h1>
-<p>Let’s enter the vast world of classification algorithms in machine learning.</p>
-<p>In classification, the outcomes - the targets - are no more real-valued but <strong>class labels</strong> that can be associated with discrete numericals. While it could appear as a sub-case of the linear regression, we will see that we need to redefine our mathematical tools.</p>
-<p>In this lecture we will cover a method for classifying data called <strong>logistic regression</strong>. You will discover key machine learning concepts:</p>
-<ul class="simple">
-<li><p>the <strong>sigmoid function</strong></p></li>
-<li><p>a revised <strong>cost function for logistic regression</strong></p></li>
-<li><p><strong>regularization</strong></p></li>
-<li><p>model properties called <strong>bias and variance</strong> to diagnose the model and help optimize it</p></li>
-</ul>
-<p>Particle physics florishes of classification implementations. We will put the logistic regression in  practice during the tutorials to classify collision data.</p>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="assignment-1-classifier-by-hand">
+<h1>Assignment 1: Classifier By Hand<a class="headerlink" href="#assignment-1-classifier-by-hand" title="Permalink to this headline">#</a></h1>
+<p>In this assignment, you learn step by step how to code a binary classifier by hand!</p>
+<p>Don’t worry, it will be guided through.</p>
+<section id="introduction-calorimeter-showers">
+<h2>Introduction: calorimeter showers<a class="headerlink" href="#introduction-calorimeter-showers" title="Permalink to this headline">#</a></h2>
+<p>A calorimeter in the context of experimental particle physics is a sub-detector aiming at measuring the energy of incoming particles. At CERN Large Hadron Collider, the giant multipurpose detectors <a class="reference external" href="https://atlas.cern/Discover/Detector/Calorimeter">ATLAS</a> and CMS are both equipped with electromagnetic and hadronic calorimeters. The electronic calorimeter, as its name indicates, is measuring the energy of incoming electrons. It is a destructive method: the energetic electron entering the calorimeter will interact with its dense material via the electromagnetic force. It eventually results in the generation of a shower of particles (electromagnetic shower), with a characteristic average depth and width. The depth is along the direction of the incoming particle and the width is the dimension perpendicular to it.</p>
+<p>Problem? There can be noissy signals in electromagnetic calorimeters that are generated by hadrons, not electrons.</p>
+<p>Your mission is to help physicists by coding a classifier to select electron-showers (signal) from hadron-showers (background).</p>
+<p>To this end, you are given a dataset of shower characterists from previous measurments where the incoming particle was known. The main features are the depth and the width.</p>
+<figure class="align-default" id="a01-showers">
+<a class="reference internal image-reference" href="../_images/a01_showers.png"><img alt="../_images/a01_showers.png" src="../_images/a01_showers.png" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-text">.  Visualization of an electron shower (left) and hadron shower (right).<br />
+<sub>From <a class="reference external" href="https://www.researchgate.net/figure/The-different-character-of-electromagneticgamma-and-hadronic-showers-19_fig2_270824497">ResearchGate</a></sub></span><a class="headerlink" href="#a01-showers" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="a01-showers-distribs">
+<a class="reference internal image-reference" href="../_images/a01_showers_distribs.png"><img alt="../_images/a01_showers_distribs.png" src="../_images/a01_showers_distribs.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text">.  Hadron showers are on average longer in the direction of the incoming hadron (depth) and large in the transverse direction (width).<br />
+<sub>Plot made using dataset.</sub></span><a class="headerlink" href="#a01-showers-distribs" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-dataset admonition">
+<p class="admonition-title">Dataset</p>
+<p>Find the repository on GDrive <a class="reference external" href="https://drive.google.com/drive/folders/1hVq0gnDeQvQ7dIvl0bPTyJn9DGMscqwc?usp=sharing">here</a>.</p>
 </div>
+</aside>
+</section>
+<section id="get-the-data">
+<h2>1. Get the Data<a class="headerlink" href="#get-the-data" title="Permalink to this headline">#</a></h2>
+<p>Download the dataset and put it on your GDrive. Open a new Jupyter-notebook. To mount your drive:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/gdrive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>1.1 Get and load the data</strong><br />
+Read the dataset into a dataframe <code class="docutils literal notranslate"><span class="pre">df</span></code>. What are the columns? Which column stores the labels (targets)?</p>
+<p><strong>1.2 How many samples are there?</strong></p>
+</section>
+<section id="feature-scaling">
+<h2>2. Feature Scaling<a class="headerlink" href="#feature-scaling" title="Permalink to this headline">#</a></h2>
+<p><strong>2.1 Explain with math</strong><br />
+Before coding, explain using the mathematical expressions seen in Lecture 3 on Logistic Regression why the gradient descent is likely to diverge if features are not rescaled.
+<em>Hints:</em>
+<em>* Recall that the <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> parameters are usually initialized with random numbers from 0 and 1 (hint again: positive).</em>
+<em>* Recall the shape of the sigmoid and what it would imply on the cost function, especially for background samples.</em></p>
+<p><strong>2.2 Standarization</strong><br />
+Create for each input feature an extra column in the dataframe to rescale it to a distribution of zero-mean and unit-variance. To see statistical information on a dataframe, a convenient method is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We will take <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> in the order of the dataframe’s columns. By searching in the documentation for methods retrieving the mean and standard deviation, complete the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">MEAN_X1</span>  <span class="o">=</span>
+<span class="n">SIGMA_X1</span> <span class="o">=</span>   
+<span class="n">MEAN_X2</span>  <span class="o">=</span>
+<span class="n">SIGMA_X2</span> <span class="o">=</span>  
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;shower_depth_scaled&#39;</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;shower_width_scaled&#39;</span><span class="p">]</span> <span class="o">=</span> 
+</pre></div>
+</div>
+<p><em>Hint: Recall Definition <a class="reference internal" href="../week1/warmup_1D_linRegGDmulti.html#defStandardization">Definition 12</a>.</em></p>
+<p>Check your results by calling <code class="docutils literal notranslate"><span class="pre">df.describe()</span></code> on the updated dataframe.</p>
+</section>
+<section id="data-prep">
+<h2>3. Data Prep<a class="headerlink" href="#data-prep" title="Permalink to this headline">#</a></h2>
+<p>Let’s get</p>
+</section>
+<section id="useful-functions">
+<h2>4. Useful Functions<a class="headerlink" href="#useful-functions" title="Permalink to this headline">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -760,7 +898,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./week1"
+            path: "./assignments"
         },
         predefinedOutput: true
     }
@@ -774,20 +912,6 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="warmup_1D_practice.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Gradient Descent in practice</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="class_algs_logReg.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Logistic Regression: introduction</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>

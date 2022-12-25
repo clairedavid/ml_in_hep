@@ -228,7 +228,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../week1/class_algs_biasV.html">
-     Bias, Variance: how to cope
+     Performance Metrics
     </a>
    </li>
   </ul>
@@ -833,11 +833,11 @@ Use the <code class="docutils literal notranslate"><span class="pre">plot_scatte
 <section id="plotting-mission-the-overtraining-check">
 <h2>2. Plotting mission: the overtraining check<a class="headerlink" href="#plotting-mission-the-overtraining-check" title="Permalink to this headline">#</a></h2>
 <p>The goal of this exercise is to understand and reproduce the following plot:</p>
-<figure class="align-default" id="a-02-overtrainingtmva2">
-<a class="reference internal image-reference" href="../_images/a_02_overtrainingTMVA2.png"><img alt="../_images/a_02_overtrainingTMVA2.png" src="../_images/a_02_overtrainingTMVA2.png" style="width: 80%;" /></a>
+<figure class="align-default" id="a02-overtrainingtmva2">
+<a class="reference internal image-reference" href="../_images/a02_overtrainingTMVA2.png"><img alt="../_images/a02_overtrainingTMVA2.png" src="../_images/a02_overtrainingTMVA2.png" style="width: 80%;" /></a>
 <figcaption>
 <p><span class="caption-text">The “overtraining check” plot from <a class="reference external" href="https://root.cern/manual/tmva/">TMVA</a> (MVA stands for MultiVariate Analysis), a library used in High Energy Physics (HEP) within the <a class="reference external" href="https://root.cern/">ROOT</a> framework.<br />
-<sub>Image: root-forum, cern.ch</sub></span><a class="headerlink" href="#a-02-overtrainingtmva2" title="Permalink to this image">#</a></p>
+<sub>Image: root-forum, cern.ch</sub></span><a class="headerlink" href="#a02-overtrainingtmva2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The <span class="math notranslate nohighlight">\(x\)</span>-axis is an equivalent to the output scores of a classifier (here it is a Support Vector Machine, which are not covered in this course).</p>
@@ -854,10 +854,10 @@ Describe the plot and explain why this is called an “overtraining check” plo
 <p><strong>2.2 Reproducing the plot</strong><br />
 Write a function <code class="docutils literal notranslate"><span class="pre">plot_overtraining_check</span></code> that takes as arguments the classifier object, the <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(y\)</span> lists of the training and testing sets, the value of the positive class (e.g. for VBF it is 1) and a title. The function should split each dataset (train/test) into the real category (signal/background).</p>
 <p>To test your plotting macro, use a Decision Tree classifier of maximum depth 2. You will obtain a plot like this:</p>
-<figure class="align-default" id="a-02-overtraining-plt-dtmaxd2">
-<a class="reference internal image-reference" href="../_images/a_02_overtraining_plt_DTmaxD2.png"><img alt="../_images/a_02_overtraining_plt_DTmaxD2.png" src="../_images/a_02_overtraining_plt_DTmaxD2.png" style="width: 100%;" /></a>
+<figure class="align-default" id="a02-overtraining-plt-dtmaxd2">
+<a class="reference internal image-reference" href="../_images/a02_overtraining_plt_DTmaxD2.png"><img alt="../_images/a02_overtraining_plt_DTmaxD2.png" src="../_images/a02_overtraining_plt_DTmaxD2.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-text">Example of an overtraining check plot using Matplotlib.</span><a class="headerlink" href="#a-02-overtraining-plt-dtmaxd2" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Example of an overtraining check plot using Matplotlib.</span><a class="headerlink" href="#a02-overtraining-plt-dtmaxd2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition warning">
@@ -872,7 +872,7 @@ Create a random forest classifier with 100 estimators and leave other hyperparam
 <p> <br />
 You are encouraged to work in groups, however submissions are individual.</p>
 <p>If you have received help from your peers and/or have worked within a group, summarize in the header of your notebook the involved students, how they helped you and the contributions of each group member. This is to ensure fairness in the evaluation.</p>
-<p>You can use the internet such as the official pages of relevant libraries, forum websites to debug, etc. However using an AI such as ChatGPT would be considered cheating (and not good for you anyway to develop your programming skills).</p>
+<p>You can use the internet such as the official pages of relevant libraries, forum websites to debug, etc. However, using an AI such as ChatGPT would be considered cheating (and not good for you anyway to develop your programming skills).</p>
 <p>The instructor and tutors are available throughout the week to answer your questions. Write an email with your well-articulated question(s). Put in CC your teammates if any.</p>
 <p>Thank you and do not forget to have fun while coding!</p>
 </div>

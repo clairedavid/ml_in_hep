@@ -228,7 +228,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="class_algs_biasV.html">
-     Bias, Variance: how to cope
+     Performance Metrics
     </a>
    </li>
   </ul>
@@ -907,7 +907,7 @@ title="Print to PDF"
 <span class="c1">#creating elliptical plane</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span> <span class="o">+</span> <span class="p">(</span><span class="n">Y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">9</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
 
 <span class="c1">#drawing contour plot</span>
@@ -916,7 +916,7 @@ title="Print to PDF"
 <span class="c1">#ax.set_title(&#39;3D Contour Plot&#39;)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">theta_0$&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">theta_1$&#39;</span><span class="p">)</span> 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;$J(</span><span class="se">\\</span><span class="s1">theta_0, </span><span class="se">\\</span><span class="s1">theta_1)$&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;90&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;$J(</span><span class="se">\\</span><span class="s1">theta_0, </span><span class="se">\\</span><span class="s1">theta_1)$&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">)</span>
 <span class="c1">#plt.title(&#39;Cost Function $J(\\theta_0, \\theta_1)$&#39;, loc=&#39;left&#39;, fontsize = 15)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">azim</span> <span class="o">=</span> <span class="mi">225</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_rotate_label</span><span class="p">(</span><span class="kc">False</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_pane_color</span><span class="p">((</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
@@ -928,64 +928,6 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 25&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">theta_0$&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">theta_1$&#39;</span><span class="p">)</span> 
-<span class="ne">---&gt; </span><span class="mi">25</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;$J(</span><span class="se">\\</span><span class="s1">theta_0, </span><span class="se">\\</span><span class="s1">theta_1)$&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;90&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="c1">#plt.title(&#39;Cost Function $J(\\theta_0, \\theta_1)$&#39;, loc=&#39;left&#39;, fontsize = 15)</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="n">ax</span><span class="o">.</span><span class="n">azim</span> <span class="o">=</span> <span class="mi">225</span>
-
-<span class="nn">File ~/Library/Python/3.9/lib/python/site-packages/mpl_toolkits/mplot3d/axes3d.py:1135,</span> in <span class="ni">Axes3D.set_zlabel</span><span class="nt">(self, zlabel, fontdict, labelpad, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1133</span> <span class="k">if</span> <span class="n">labelpad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1134</span>     <span class="bp">self</span><span class="o">.</span><span class="n">zaxis</span><span class="o">.</span><span class="n">labelpad</span> <span class="o">=</span> <span class="n">labelpad</span>
-<span class="ne">-&gt; </span><span class="mi">1135</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">zaxis</span><span class="o">.</span><span class="n">set_label_text</span><span class="p">(</span><span class="n">zlabel</span><span class="p">,</span> <span class="n">fontdict</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/Library/Python/3.9/lib/python/site-packages/matplotlib/axis.py:1722,</span> in <span class="ni">Axis.set_label_text</span><span class="nt">(self, label, fontdict, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1720</span> <span class="k">if</span> <span class="n">fontdict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1721</span>     <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">fontdict</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1722</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1723</span> <span class="bp">self</span><span class="o">.</span><span class="n">stale</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="g g-Whitespace">   </span><span class="mi">1724</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span>
-
-<span class="nn">File ~/Library/Python/3.9/lib/python/site-packages/matplotlib/text.py:198,</span> in <span class="ni">Text.update</span><span class="nt">(self, kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">196</span> <span class="c1"># Update bbox last, as it depends on font properties.</span>
-<span class="g g-Whitespace">    </span><span class="mi">197</span> <span class="n">bbox</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;bbox&quot;</span><span class="p">,</span> <span class="n">sentinel</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">198</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">199</span> <span class="k">if</span> <span class="n">bbox</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">sentinel</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">200</span>     <span class="bp">self</span><span class="o">.</span><span class="n">set_bbox</span><span class="p">(</span><span class="n">bbox</span><span class="p">)</span>
-
-<span class="nn">File ~/Library/Python/3.9/lib/python/site-packages/matplotlib/artist.py:1176,</span> in <span class="ni">Artist.update</span><span class="nt">(self, props)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1168</span> <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">props</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1169</span>     <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1170</span><span class="sd">     Update this artist&#39;s properties from the dict *props*.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1171</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1174</span><span class="sd">     props : dict</span>
-<span class="g g-Whitespace">   </span><span class="mi">1175</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1176</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_props</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1177</span>         <span class="n">props</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{cls.__name__!r}</span><span class="s2"> object has no property </span><span class="si">{prop_name!r}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="nn">File ~/Library/Python/3.9/lib/python/site-packages/matplotlib/artist.py:1162,</span> in <span class="ni">Artist._update_props</span><span class="nt">(self, props, errfmt)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1159</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1160</span>                 <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1161</span>                     <span class="n">errfmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">cls</span><span class="o">=</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">prop_name</span><span class="o">=</span><span class="n">k</span><span class="p">))</span>
-<span class="ne">-&gt; </span><span class="mi">1162</span>             <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">1163</span> <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1164</span>     <span class="bp">self</span><span class="o">.</span><span class="n">pchanged</span><span class="p">()</span>
-
-<span class="nn">File ~/Library/Python/3.9/lib/python/site-packages/matplotlib/text.py:1196,</span> in <span class="ni">Text.set_rotation</span><span class="nt">(self, s)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1194</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_rotation</span> <span class="o">=</span> <span class="mf">90.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1195</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1196</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;rotation must be &#39;vertical&#39;, &#39;horizontal&#39; or &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1197</span>                      <span class="sa">f</span><span class="s2">&quot;a number, not </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1198</span> <span class="bp">self</span><span class="o">.</span><span class="n">stale</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="ne">ValueError</span>: rotation must be &#39;vertical&#39;, &#39;horizontal&#39; or a number, not 90
-</pre></div>
-</div>
-<img alt="../_images/warmup_1D_linRegGD_plots_3_1.png" src="../_images/warmup_1D_linRegGD_plots_3_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1006,7 +948,6 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/warmup_1D_linRegGD_plots_4_0.png" src="../_images/warmup_1D_linRegGD_plots_4_0.png" />
 </div>
 </div>
 </section>
@@ -1086,14 +1027,14 @@ title="Print to PDF"
 [1, 2, 3, 4]
 The y values:
 [2, 4, 6, 8]
-With theta = 0.0	cost = 15.00
-With theta = 0.5	cost = 8.44
-With theta = 1.0	cost = 3.75
-With theta = 1.5	cost = 0.94
-With theta = 2.0	cost = 0.00
-With theta = 2.5	cost = 0.94
-With theta = 3.0	cost = 3.75
-With theta = 3.5	cost = 8.44
+With theta 1 = 0.0	cost = 15.00
+With theta 1 = 0.5	cost = 8.44
+With theta 1 = 1.0	cost = 3.75
+With theta 1 = 1.5	cost = 0.94
+With theta 1 = 2.0	cost = 0.00
+With theta 1 = 2.5	cost = 0.94
+With theta 1 = 3.0	cost = 3.75
+With theta 1 = 3.5	cost = 8.44
 [15.0, 8.4375, 3.75, 0.9375, 0.0, 0.9375, 3.75, 8.4375]
 </pre></div>
 </div>
@@ -1140,7 +1081,6 @@ With theta = 3.5	cost = 8.44
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/warmup_1D_linRegGD_plots_12_1.png" src="../_images/warmup_1D_linRegGD_plots_12_1.png" />
 </div>
 </div>
 </section>
@@ -1169,7 +1109,6 @@ With theta = 3.5	cost = 8.44
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>best-fit line: 3.906*x + 6.581
-SciPy optimizer (least squares) best-fit line: 3.906 X + 6.581
 </pre></div>
 </div>
 </div>
@@ -1399,11 +1338,6 @@ End of gradient descent after 1000 iterations
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;\n#==========================\n#     3D plot\n#==========================\nax = fig.add_subplot(1, 2, 2, projection=&#39;3d&#39;)\n\nax.plot(theta_0_pts, theta_1_pts, Costs_wGD, c=&#39;r&#39;)\nsurf = ax.plot_surface(Theta0, Theta1, Costs, cmap=&#39;viridis_r&#39;, linewidth=0.3, alpha = 0.5, edgecolor = &#39;k&#39;)\n\nax.set_xlabel(&#39;$\\theta_0$&#39;)\nax.set_ylabel(&#39;$\\theta_1$&#39;)\nax.set_zlabel(&#39;$J(\\theta_0, \\theta_1)$&#39;, rotation=90)\nax.azim = 190 # 200\nax.elev = 30 # 30\nax.xaxis.set_rotate_label(False); ax.xaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))\nax.yaxis.set_rotate_label(False); ax.yaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))\nax.zaxis.set_rotate_label(False); ax.zaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))\n#plt.title(&#39;Cost Function $J(\\theta_0, \\theta_1)$&#39;, loc=&#39;left&#39;, fontsize = 10)\n&quot;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1427,7 +1361,9 @@ End of gradient descent after 1000 iterations
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/warmup_1D_linRegGD_plots_24_1.png" src="../_images/warmup_1D_linRegGD_plots_24_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.0, 1.0, &#39;Cost Function $J(\\theta_0, \\theta_1)$&#39;)
+</pre></div>
+</div>
 </div>
 </div>
 </section>

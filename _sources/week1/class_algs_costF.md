@@ -51,14 +51,21 @@ The gradient descent for classification follows the same procedure as described 
 ````{margin}
 Recall that $h_\theta (x^{(i)}) =  f( x^{(i)}\theta^{T}) = \frac{1}{1 + e^{-  x^{(i)} \theta^{T}}}$ 
 ````
-Consider the linear assumption $\theta^{\; T} x^{(i)} = \theta_0 + \theta_1 x_1 +  \cdots  + \theta_n x_n$ as input to the sigmoid function $f$. 
+Consider the linear assumption $x^{(i)}\theta^{\; T}  = \theta_0 + \theta_1 x_1 +  \cdots  + \theta_n x_n$ as input to the sigmoid function $f$. 
 The cost function derivatives will take the form:
 
 ```{math}
 :label: costfderivlin
-\frac{\partial}{\partial \theta_j} J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) x_j^{(i)}
+\frac{\partial}{\partial \theta_j} J(\theta) = \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) x_j^{(i)}
 ```
 This takes the same form as the derivatives for linear regression (Equation {eq}`partialDevLinReg` in Section {ref}`warmup:linregmulti:graddesc`).
+
+```{admonition} Exercise
+:class: seealso
+To convince yourself, you can derive Equation {eq}`costfderivlin` starting from Equation {eq}`costFunctionLogReg`.   
+
+Hints and help available on demand after class.
+```
 
 ### Alternative techniques
 Beside logistic regression, other algorithms are designed for binary classification. 

@@ -1,4 +1,5 @@
-# Bias, Variance: how to cope
+(class:algs:perf)=
+# Performance Metrics
 
 How to evaluate the performance of a machine learning algorithm?  
 How to detect the presence of underfitting or overfitting?  

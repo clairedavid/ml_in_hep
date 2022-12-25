@@ -49,9 +49,9 @@ _Hints provided on demand during office hours._
 ## 2. Plotting mission: the overtraining check
 The goal of this exercise is to understand and reproduce the following plot:
 
-```{figure} ../images/a_02_overtrainingTMVA2.png
+```{figure} ../images/a02_overtrainingTMVA2.png
 ---
-  name: a_02_overtrainingTMVA2
+  name: a02_overtrainingTMVA2
   width: 80%
 ---
 The "overtraining check" plot from [TMVA](https://root.cern/manual/tmva/) (MVA stands for MultiVariate Analysis), a library used in High Energy Physics (HEP) within the [ROOT](https://root.cern/) framework.  
@@ -75,9 +75,9 @@ Write a function `plot_overtraining_check` that takes as arguments the classifie
 
 To test your plotting macro, use a Decision Tree classifier of maximum depth 2. You will obtain a plot like this:
 
-```{figure} ../images/a_02_overtraining_plt_DTmaxD2.png
+```{figure} ../images/a02_overtraining_plt_DTmaxD2.png
 ---
-  name: a_02_overtraining_plt_DTmaxD2
+  name: a02_overtraining_plt_DTmaxD2
   width: 100%
 ---
 Example of an overtraining check plot using Matplotlib.

@@ -1,3 +1,4 @@
+(class:algs:perf)=
 # Performance Metrics
 
 How to evaluate the performance of a machine learning algorithm?  

@@ -118,7 +118,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  About the course
+  About this course
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -128,8 +128,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../about/instructor.html">
+   About the instructor
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../about/jupyter.html">
    JupyterHub for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/evaluation.html">
+   Evaluation
   </a>
  </li>
 </ul>
@@ -1078,7 +1088,7 @@ This happens when the features are of different ranges. One parameter will have 
 <p>The mean normalization procedure using as denominator the standard deviation <span class="math notranslate nohighlight">\(\sigma_j\)</span> all the samples for this feature is called <strong>Standardization</strong></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-\widetilde{x}^{(i)}_j = \frac{x^{(i)}_j - \mu_j}{\sigma_j} \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
+\widehat{x}^{(i)}_j = \frac{x^{(i)}_j - \mu_j}{\sigma_j} \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
 \end{equation*}\]</div>
 </section>
 </div><p>Consequence: the mean and standard deviation of the new normalized collection of feature <span class="math notranslate nohighlight">\(j\)</span> will be zero and one respectively.</p>

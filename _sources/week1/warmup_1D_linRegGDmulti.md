@@ -197,7 +197,7 @@ Consequence: the mean of the new normalized sample collection for that feature -
 :label: defStandardization
 The mean normalization procedure using as denominator the standard deviation $\sigma_j$ all the samples for this feature is called __Standardization__ 
 \begin{equation*}
-\widetilde{x}^{(i)}_j = \frac{x^{(i)}_j - \mu_j}{\sigma_j} \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
+\widehat{x}^{(i)}_j = \frac{x^{(i)}_j - \mu_j}{\sigma_j} \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
 \end{equation*}
 ````
 Consequence: the mean and standard deviation of the new normalized collection of feature $j$ will be zero and one respectively.

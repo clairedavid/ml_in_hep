@@ -118,7 +118,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  About the course
+  About this course
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -128,8 +128,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../about/instructor.html">
+   About the instructor
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../about/jupyter.html">
    JupyterHub for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/evaluation.html">
+   Evaluation
   </a>
  </li>
 </ul>
@@ -230,7 +240,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="class_algs_biasV.html">
-     Bias, Variance: how to cope
+     Performance Metrics
     </a>
    </li>
   </ul>
@@ -1027,7 +1037,8 @@ community so much that Nobel laureate Isaac Rabi famously quipped: “Who ordere
 <figure class="align-default" id="atlas-detector">
 <a class="reference internal image-reference" href="../_images/lec01_ATLAS_legend_144-dpi.jpg"><img alt="../_images/lec01_ATLAS_legend_144-dpi.jpg" src="../_images/lec01_ATLAS_legend_144-dpi.jpg" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">. Schematic of the ATLAS detector with its subsystem. People (who are not allowed to climb by the way) are drawn for scale. ATLAS is the largest volume detector ever constructed for a particle collider. You can take a <a class="reference external" href="https://atlas.cern/Discover/Detector">virtual tour</a> here. Credits: ATLAS Experiment © 2021 CERN.</span><a class="headerlink" href="#atlas-detector" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">. Schematic of the ATLAS detector with its subsystem. People (who are not allowed to climb by the way) are drawn for scale. ATLAS is the largest volume detector ever constructed for a particle collider. You can take a <a class="reference external" href="https://atlas.cern/Discover/Detector">virtual tour</a> here.<br />
+<sub>Credits: ATLAS Experiment © 2021 CERN.</sub></span><a class="headerlink" href="#atlas-detector" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1068,14 +1079,14 @@ community so much that Nobel laureate Isaac Rabi famously quipped: “Who ordere
 <a class="reference internal image-reference" href="../_images/lec01_CMS_tracker.jpg"><img alt="../_images/lec01_CMS_tracker.jpg" src="../_images/lec01_CMS_tracker.jpg" style="width: 80%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 2 </span><span class="caption-text">. The tracker of the <a class="reference external" href="https://cms.cern/detector">CMS experiment</a>, one of the detectors of the LHC ring.<br />
-Credits: CMS Experiment © 2021 CERN.</span><a class="headerlink" href="#cms-tracker" title="Permalink to this image">#</a></p>
+<sub>Credits: CMS Experiment © 2021 CERN.</sub></span><a class="headerlink" href="#cms-tracker" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="atlas-sct">
 <a class="reference internal image-reference" href="../_images/lec01_ATLAS_SCT.jpg"><img alt="../_images/lec01_ATLAS_SCT.jpg" src="../_images/lec01_ATLAS_SCT.jpg" style="width: 80%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 3 </span><span class="caption-text">. Workers assembling the ATLAS SemiConductor Tracker (SCT) at CERN.<br />
-Credits: ATLAS Experiment © 2021 CERN.</span><a class="headerlink" href="#atlas-sct" title="Permalink to this image">#</a></p>
+<sub>Credits: ATLAS Experiment © 2021 CERN.</sub></span><a class="headerlink" href="#atlas-sct" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="the-trigger">
@@ -1120,7 +1131,8 @@ But these objects are usually the secondary products of the interaction of inter
 <figure class="align-default" id="higgs-boson-distribution">
 <a class="reference internal image-reference" href="../_images/lec01_H4lep.png"><img alt="../_images/lec01_H4lep.png" src="../_images/lec01_H4lep.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">. Overlaid distributions of the data (black dots) with the simulated data (colored filled histograms). The predicted signal process is the Higgs boson in blue, while background processes (red, purple and yellow). The variable <span class="math notranslate nohighlight">\(m_{4l}\)</span> is analogous to a mass. There are two resonances (we call them mass peaks) and you can see that the data points overlay well with the predicted Higgs peak. Credits: ATLAS Collaboration/CERN.</span><a class="headerlink" href="#higgs-boson-distribution" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">. Overlaid distributions of the data (black dots) with the simulated data (colored filled histograms). The predicted signal process is the Higgs boson in blue, while background processes (red, purple and yellow). The variable <span class="math notranslate nohighlight">\(m_{4l}\)</span> is analogous to a mass. There are two resonances (we call them mass peaks) and you can see that the data points overlay well with the predicted Higgs peak.<br />
+<sub>Credits: ATLAS Collaboration/CERN.</sub></span><a class="headerlink" href="#higgs-boson-distribution" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1183,14 +1195,15 @@ This technique is called a <a class="reference external" href="https://en.wikipe
 The name refers to the iconic gambling place that is the grand casino at Monte Carlo in Monaco, a principality between France and Italy, on the Meditarranea Sea.
 Monte Carlo Event Generators, as these simulation programs are called, draw random numbers to pick outcomes according to the assumed quantum mechanical probabilities.
 Particle physicists use several of these programs to model the processes they study, as well as those they look for (with parameters provided by theorists).
-Monte Carlo techniques are also use in other scientific domains; for instance in biology, it can help simulate an infection spread. In engineering, it can reproduce the phenomenon of particle diffusion within a material.
-:::{seealso}</p>
+Monte Carlo techniques are also use in other scientific domains; for instance in biology, it can help simulate an infection spread. In engineering, it can reproduce the phenomenon of particle diffusion within a material.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.symmetrymagazine.org/article/the-coevolution-of-particle-physics-and-computing?language=en">The coevolution of particle physics and computing</a></p></li>
 <li><p><a class="reference external" href="https://home.cern/science/computing">Computing | CERN</a></p></li>
-<li><p><a class="reference external" href="https://openlab.cern/">CERN OpenLab</a>
-:::</p></li>
+<li><p><a class="reference external" href="https://openlab.cern/">CERN OpenLab</a></p></li>
 </ul>
+</div>
 </section>
 </section>
 <section id="today-s-landscape-in-particle-physics">

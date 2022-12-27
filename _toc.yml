@@ -1,11 +1,13 @@
 format: jb-book
 root: intro
 parts:
-  - caption: About the course
+  - caption: About this course
     numbered: false
     chapters:
     - file: about/learningoutcomes
+    - file: about/instructor
     - file: about/jupyter
+    - file: about/evaluation
 
   - caption: Week 1
     chapters:

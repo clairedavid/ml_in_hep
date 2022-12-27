@@ -43,7 +43,8 @@ Often a conceptualized new particle would require several decades for the experi
 width: 800px
 name: ATLAS Detector
 ---
-. Schematic of the ATLAS detector with its subsystem. People (who are not allowed to climb by the way) are drawn for scale. ATLAS is the largest volume detector ever constructed for a particle collider. You can take a [virtual tour](https://atlas.cern/Discover/Detector) here. Credits: ATLAS Experiment © 2021 CERN.
+. Schematic of the ATLAS detector with its subsystem. People (who are not allowed to climb by the way) are drawn for scale. ATLAS is the largest volume detector ever constructed for a particle collider. You can take a [virtual tour](https://atlas.cern/Discover/Detector) here.  
+<sub>Credits: ATLAS Experiment © 2021 CERN.</sub>
 ```
 
 ### Many activities, many people 
@@ -88,7 +89,7 @@ name: CMS Tracker
 ---
   
 . The tracker of the [CMS experiment](https://cms.cern/detector), one of the detectors of the LHC ring.  
-Credits: CMS Experiment © 2021 CERN.
+<sub>Credits: CMS Experiment © 2021 CERN.</sub>
 ```
 ```{figure} ../images/lec01_ATLAS_SCT.jpg
 ---
@@ -96,7 +97,7 @@ width: 80%
 name: ATLAS SCT
 ---
 . Workers assembling the ATLAS SemiConductor Tracker (SCT) at CERN.  
-Credits: ATLAS Experiment © 2021 CERN.
+<sub>Credits: ATLAS Experiment © 2021 CERN.</sub>
 ```
 
 ### 1. The trigger
@@ -140,7 +141,8 @@ The technical details of this plot are way beyond the scope of this course. Yet 
   name: Higgs_boson_distribution
   width: 80%
 ---
- . Overlaid distributions of the data (black dots) with the simulated data (colored filled histograms). The predicted signal process is the Higgs boson in blue, while background processes (red, purple and yellow). The variable $m_{4l}$ is analogous to a mass. There are two resonances (we call them mass peaks) and you can see that the data points overlay well with the predicted Higgs peak. Credits: ATLAS Collaboration/CERN. 
+ . Overlaid distributions of the data (black dots) with the simulated data (colored filled histograms). The predicted signal process is the Higgs boson in blue, while background processes (red, purple and yellow). The variable $m_{4l}$ is analogous to a mass. There are two resonances (we call them mass peaks) and you can see that the data points overlay well with the predicted Higgs peak.  
+ <sub>Credits: ATLAS Collaboration/CERN.</sub>
 ```
 (trailer:hep:statstakeover)=
 ### 5.Statistics takes over
@@ -199,11 +201,12 @@ The name refers to the iconic gambling place that is the grand casino at Monte C
 Monte Carlo Event Generators, as these simulation programs are called, draw random numbers to pick outcomes according to the assumed quantum mechanical probabilities.
 Particle physicists use several of these programs to model the processes they study, as well as those they look for (with parameters provided by theorists).
 Monte Carlo techniques are also use in other scientific domains; for instance in biology, it can help simulate an infection spread. In engineering, it can reproduce the phenomenon of particle diffusion within a material.
-:::{seealso}
+
+```{seealso}
 * [The coevolution of particle physics and computing](https://www.symmetrymagazine.org/article/the-coevolution-of-particle-physics-and-computing?language=en)
 * [Computing | CERN](https://home.cern/science/computing)
 * [CERN OpenLab](https://openlab.cern/)
-:::
+```
 
 ## Today's landscape in particle physics
 

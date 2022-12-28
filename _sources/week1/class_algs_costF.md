@@ -76,8 +76,9 @@ The [Perceptron](https://en.wikipedia.org/wiki/Perceptron), which is a single la
 
 ```{admonition} Learn more
 :class: seealso
-* [R. Berwick, An Idiot’s guide to Support vector machines (SVMs)](https://web.mit.edu/6.034/wwwbob/svm.pdf)
-* [Support Vector Machines: A Simple Explanation, KDNuggets](https://www.kdnuggets.com/2016/07/support-vector-machines-simple-explanation.html)
+* R. Berwick, An Idiot’s guide to Support vector machines (SVMs) on [web.mit.edu](https://web.mit.edu/6.034/wwwbob/svm.pdf)
+* Support Vector Machines: A Simple Explanation, on [KDNuggets](https://www.kdnuggets.com/2016/07/support-vector-machines-simple-explanation.html)
+* Support Vector Machines: Main Ideas" by Josh Starmer, [Video, Part 1/3, StatQuest channel on YouTube](https://www.youtube.com/watch?v=efR1C6CvhmE)
  ```
 
 Numerous methods have been developed to find optimized $\theta$ parameters in faster ways than the gradient descent. These optimizers are beyond the scope of this course and usually available as libraries within python (or other languages). Below is a list of the most popular ones:

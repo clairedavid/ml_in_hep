@@ -118,7 +118,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  About the course
+  About this course
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -128,8 +128,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../about/instructor.html">
+   About the instructor
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../about/jupyter.html">
    JupyterHub for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/evaluation.html">
+   Evaluation
   </a>
  </li>
 </ul>
@@ -1046,8 +1056,8 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p class="admonition-title"><span class="caption-number">Definition 32 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>root mean squared error (RMSE)</strong> is the square root of the mean squared error:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2b9a4ec5-8159-4400-a195-e5f9f608f518">
-<span class="eqno">(21)<a class="headerlink" href="#equation-2b9a4ec5-8159-4400-a195-e5f9f608f518" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a7dc858b-9125-4682-9de2-9ee86fe1558e">
+<span class="eqno">(21)<a class="headerlink" href="#equation-a7dc858b-9125-4682-9de2-9ee86fe1558e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{RMSE} = \sqrt{ \frac{\sum_{i=1}^N (y^\text{pred} - y^\text{obs} )^2 }{ N } }
 \end{equation}\]</div>
 </section>
@@ -1063,29 +1073,29 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p> <br />
 <strong>Accuracy</strong><br />
 Rate at which the model is able to predict the correct values of both classes.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a6789b80-c226-4129-bc72-a63d7d8afe2e">
-<span class="eqno">(22)<a class="headerlink" href="#equation-a6789b80-c226-4129-bc72-a63d7d8afe2e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7536034d-51e3-4b08-bc7d-33e5cfa5c548">
+<span class="eqno">(22)<a class="headerlink" href="#equation-7536034d-51e3-4b08-bc7d-33e5cfa5c548" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Accuracy} = \frac{\text{True predictions}}{\text{All predictions}} = \frac{\text{TP + TN}}{\text{TP + TN + FP + FN}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Precision, or Positive Predictive Value (PPV)</strong><br />
 Measure of the fraction of true predictions among all <strong>positive predictions</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d132ecfc-c4c8-4c82-a006-e8e6522a5930">
-<span class="eqno">(23)<a class="headerlink" href="#equation-d132ecfc-c4c8-4c82-a006-e8e6522a5930" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-fbdb0336-2a11-4a1d-ba99-24d12160c839">
+<span class="eqno">(23)<a class="headerlink" href="#equation-fbdb0336-2a11-4a1d-ba99-24d12160c839" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Precision} = \frac{\text{True predictions}}{\text{All Positive Predictions}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Positive}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Recall, or True Positive Rate (TPR)</strong><br />
 Measure of the fraction of true predictions among all <strong>true observations</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-73c6c874-2814-4071-8d7e-2351d4e24cb6">
-<span class="eqno">(24)<a class="headerlink" href="#equation-73c6c874-2814-4071-8d7e-2351d4e24cb6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ed26a6ae-82b7-4973-9679-616a9bb92e7f">
+<span class="eqno">(24)<a class="headerlink" href="#equation-ed26a6ae-82b7-4973-9679-616a9bb92e7f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Recall} = \frac{\text{True predictions}}{\text{Actual Positive}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
 \end{equation}\]</div>
 <p> <br />
 <strong>F-Score, or F1</strong><br />
 Describes the balance between Precision and Recall. It is the harmonic mean of the two:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-618016dd-f205-47f0-bc17-5dc7734142f0">
-<span class="eqno">(25)<a class="headerlink" href="#equation-618016dd-f205-47f0-bc17-5dc7734142f0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b51262eb-47a0-4a31-ae19-a3fcb1dce15a">
+<span class="eqno">(25)<a class="headerlink" href="#equation-b51262eb-47a0-4a31-ae19-a3fcb1dce15a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{F1} =2 \; \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
 \end{equation}\]</div>
 </section>
@@ -1119,28 +1129,28 @@ In an unbalanced dataset, some classes will appear much more frequently that oth
 <section class="definition-content" id="proof-content">
 <p> <br />
 <strong>True Positive Rate (TPR)</strong>, also called <em>sensitivity</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-a779b8ab-34d5-418b-92d6-f01374f760f2">
-<span class="eqno">(26)<a class="headerlink" href="#equation-a779b8ab-34d5-418b-92d6-f01374f760f2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e544fa6b-99d5-4e79-a524-ff4585b3a967">
+<span class="eqno">(26)<a class="headerlink" href="#equation-e544fa6b-99d5-4e79-a524-ff4585b3a967" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TPR} = \frac{\text{True predictions}}{\text{Actual Positive}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
 \end{equation}\]</div>
 <p> <br />
 <strong>True Negative Rate (TNR)</strong>, also called <em>specificity</em></p>
 <p>Ratio of negative instances correctly classified as negative.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a0c1a256-351b-4dd8-a680-e6fc4c79daf9">
-<span class="eqno">(27)<a class="headerlink" href="#equation-a0c1a256-351b-4dd8-a680-e6fc4c79daf9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5580b319-1004-4f53-bae6-1020817b80e4">
+<span class="eqno">(27)<a class="headerlink" href="#equation-5580b319-1004-4f53-bae6-1020817b80e4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TNR} = \frac{\text{False predictions}}{\text{Actual Negative}} = \frac{\text{True Negative}}{\text{True Negative} + \text{False Positive}}
 \end{equation}\]</div>
 <p> <br />
 <strong>False Positive Rate (FPR)</strong></p>
 <p>Ratio of negative instances that are incorrectly classified as positive.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-344fc7f0-4c2c-42dc-991a-af7a42cce580">
-<span class="eqno">(28)<a class="headerlink" href="#equation-344fc7f0-4c2c-42dc-991a-af7a42cce580" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5405a890-e4b1-4b04-adf4-ea772b35c49b">
+<span class="eqno">(28)<a class="headerlink" href="#equation-5405a890-e4b1-4b04-adf4-ea772b35c49b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = \frac{\text{Real False predicted Positive}}{\text{Actual Negative}} = \frac{\text{False Positive}}{\text{True Negative} + \text{False Positive}}
 \end{equation}\]</div>
 <p> <br />
 The False Positive Rate (FPR) is equal to:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d6dd2aef-d1e3-403d-aabd-89defb54d319">
-<span class="eqno">(29)<a class="headerlink" href="#equation-d6dd2aef-d1e3-403d-aabd-89defb54d319" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-414a5939-7479-404d-a57f-51861edb1fe9">
+<span class="eqno">(29)<a class="headerlink" href="#equation-414a5939-7479-404d-a57f-51861edb1fe9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = 1 - \text{TNR} = 1 - \textit{specificity}
 \end{equation}\]</div>
 </section>

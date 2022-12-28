@@ -118,7 +118,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  About the course
+  About this course
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -128,8 +128,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../about/instructor.html">
+   About the instructor
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../about/jupyter.html">
    JupyterHub for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/evaluation.html">
+   Evaluation
   </a>
  </li>
 </ul>
@@ -376,23 +386,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_architecture.html">
-     Architecture of a CNN
+    <a class="reference internal" href="../week2/CNN_resources.html">
+     Resources
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_hyperparameters.html">
-     Hyperparameters
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_regMethods.html">
-     Regularization Methods
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_neutrinoReco.html">
-     Application in Neutrino Physics
+    <a class="reference internal" href="../week2/CNN_guest.html">
+     Guest Lecture
     </a>
    </li>
   </ul>
@@ -890,8 +890,9 @@ The cost function derivatives will take the form:</p>
 <div class="seealso admonition">
 <p class="admonition-title">Learn more</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://web.mit.edu/6.034/wwwbob/svm.pdf">R. Berwick, An Idiot’s guide to Support vector machines (SVMs)</a></p></li>
-<li><p><a class="reference external" href="https://www.kdnuggets.com/2016/07/support-vector-machines-simple-explanation.html">Support Vector Machines: A Simple Explanation, KDNuggets</a></p></li>
+<li><p>R. Berwick, An Idiot’s guide to Support vector machines (SVMs) on <a class="reference external" href="https://web.mit.edu/6.034/wwwbob/svm.pdf">web.mit.edu</a></p></li>
+<li><p>Support Vector Machines: A Simple Explanation, on <a class="reference external" href="https://www.kdnuggets.com/2016/07/support-vector-machines-simple-explanation.html">KDNuggets</a></p></li>
+<li><p>Support Vector Machines: Main Ideas” by Josh Starmer, <a class="reference external" href="https://www.youtube.com/watch?v=efR1C6CvhmE">Video, Part 1/3, StatQuest channel on YouTube</a></p></li>
 </ul>
 </div>
 <p>Numerous methods have been developed to find optimized <span class="math notranslate nohighlight">\(\theta\)</span> parameters in faster ways than the gradient descent. These optimizers are beyond the scope of this course and usually available as libraries within python (or other languages). Below is a list of the most popular ones:</p>
@@ -917,8 +918,8 @@ There are two main approaches of such methods for multiclassification.</p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-One approach</strong> consists of applying a binary classification for each pair of classes, ignoring the other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of models to train, <span class="math notranslate nohighlight">\(N^\text{model}\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-943b0fe5-dd03-4ed0-b58a-5e1e8633638b">
-<span class="eqno">(15)<a class="headerlink" href="#equation-943b0fe5-dd03-4ed0-b58a-5e1e8633638b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-93693a44-dedd-4364-b77d-af108b6976b8">
+<span class="eqno">(15)<a class="headerlink" href="#equation-93693a44-dedd-4364-b77d-af108b6976b8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 N^\text{model} = \frac{N^\text{class}(N^\text{class}-1)}{2}
 \end{equation}\]</div>
 <p>Each model predicts one class label. The final decision is the class label receiving the most votes, i.e. being predicted most of the time.</p>
@@ -932,8 +933,8 @@ The pairing makes the number of models to train large and thus computer intensiv
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-All or One-to-Rest approach</strong> consists of training each class against the collection of all other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of pairs to train is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0eede451-5019-40d0-b105-c94bd549570c">
-<span class="eqno">(16)<a class="headerlink" href="#equation-0eede451-5019-40d0-b105-c94bd549570c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4edb1047-a132-4f7a-a232-b46f29b05eda">
+<span class="eqno">(16)<a class="headerlink" href="#equation-4edb1047-a132-4f7a-a232-b46f29b05eda" title="Permalink to this equation">#</a></span>\[\begin{equation}
  N^\text{model} = N^\text{class}
 \end{equation}\]</div>
 <p>The final prediction is given by the highest value of the hypothesis function <span class="math notranslate nohighlight">\(h^{k}_\theta(x)\)</span>, <span class="math notranslate nohighlight">\(k \in [1, N^\text{model}]\)</span> among the <span class="math notranslate nohighlight">\(N^\text{model}\)</span> binary classifiers.</p>

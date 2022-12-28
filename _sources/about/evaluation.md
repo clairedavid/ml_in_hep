@@ -16,7 +16,7 @@ Any changes will be announced in class and updated here.
 * - Assignments (3)
   - 45 %   (15 % each)
 * - Mid-course test
-  - 10 %
+  - 15 %
 * - Essay on ethics
   -  5 %
 * - Oral exam

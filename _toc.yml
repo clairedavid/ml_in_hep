@@ -64,10 +64,8 @@ parts:
 
     - file: week2/CNN
       sections: 
-      - file: week2/CNN_architecture
-      - file: week2/CNN_hyperparameters
-      - file: week2/CNN_regMethods
-      - file: week2/CNN_neutrinoReco
+      - file: week2/CNN_resources
+      - file: week2/CNN_guest
 
     - file: week2/review_week2
 

@@ -14,7 +14,8 @@ I am an experimental particle physicist, and as such I study the Universe throug
 
 I was initially trained as an engineer at the [Institut National des Sciences Appliquées (INSA)](https://www.insa-toulouse.fr/en/index.html) in Toulouse, France.
 
-I switched to fundamental science with a PhD at the [University of Victoria](https://www.uvic.ca/science/physics/index.php) in Canada, mostly based at [TRIUMF](https://www.triumf.ca/) in Vancouver.
+I switched to fundamental science with a PhD in Particle Physics at the [University of Victoria](https://www.uvic.ca/science/physics/index.php) in Canada. I was based at [TRIUMF](https://www.triumf.ca/) in Vancouver and was stationned from 2012 until mid-2013 at CERN between Switzerland and France.
+
 
 After a postdoctoral fellowship at [DESY](https://www.desy.de/) in Hamburg, Germany, I started as Assistant Professor at [York University](https://www.yorku.ca/science/physics/), north of Toronto, Canada.
 

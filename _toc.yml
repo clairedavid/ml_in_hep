@@ -103,7 +103,6 @@ parts:
     chapters:
     - file: tutorials/t01_linear_regression
     - file: tutorials/t02_forestry
-    - file: tutorials/t03_nn_by_hand
-    - file: tutorials/t04_class_game
-    - file: tutorials/t05_anomaly_detection
+    - file: tutorials/t03_class_game
+    - file: tutorials/t04_anomaly_detection
 

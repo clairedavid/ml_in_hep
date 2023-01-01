@@ -11,10 +11,11 @@ If you want to pursue either in academic circles or in industry, find below some
   * [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning)  |  5 months at 8 hours/week
 
 ## Practice
+### Machine Learning Challenge Platforms
 * [Kaggle](https://www.kaggle.com) has 50,000 public [datasets](https://www.kaggle.com/datasets) and 400,000 public [notebooks](https://www.kaggle.com/kernels) and is famous for its machine learning [competition](https://www.kaggle.com/competitions). CERN compiled a special dataset for the [Higgs Boson Machine Learning Challenge](https://www.kaggle.com/competitions/higgs-boson) and invited the [winners](https://atlas.cern/updates/news/machine-learning-wins-higgs-challenge) to present their results. 
 * [DrivenData](https://www.drivendata.org/) works on projects at the intersection of data science and social impact, in areas like international development, health, education, research and conservation, and public services. 
 
-## We Love Data
+### We Love Data
 Some repository with data to play with:
 
 * Africa: [opendataforafrica.org](https://dataportal.opendataforafrica.org/)
@@ -23,7 +24,7 @@ Some repository with data to play with:
 * [UC Irvine Machine Learning Repository](https://archive-beta.ics.uci.edu/)
 * Finance and Economics: [data.nasdaq.com](https://data.nasdaq.com)
 
-## Organizations
+## Connect: organizations
 ### Africa and Machine Learning
 * The Africa-Canada AI & Data Innovation Consortium, [ACADIC](https://acadic.org/). The mission is to mobilize Artificial Intelligence and Big Data techniques in an ethical way to build equitable, resilient governance strategies and increase societal preparedness for future global pandemics and climate disasters.
 * [machinelearningafrica.com](https://machinelearningafrica.com/): provides insight into emerging machine learning technologies and their inevitable impact in transforming Africa. 

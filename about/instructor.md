@@ -34,7 +34,7 @@ For this course I got inspired by Coursera's Introduction to Machine Learning, b
 
 This course will be taught at AIMS Senegal from January 9 until January 27, 2023.
 
-It will be taught at AIMS South Africa from January 30 until February 17.
+It will be taught at AIMS South Africa from January 30 until February 17, 2023.
 
 
 ### Previous version

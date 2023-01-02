@@ -386,23 +386,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="CNN_architecture.html">
-     Architecture of a CNN
+    <a class="reference internal" href="CNN_resources.html">
+     Learn CNNs
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="CNN_hyperparameters.html">
-     Hyperparameters
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="CNN_regMethods.html">
-     Regularization Methods
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="CNN_neutrinoReco.html">
-     Application in Neutrino Physics
+    <a class="reference internal" href="CNN_guest.html">
+     Guest Lecture
     </a>
    </li>
   </ul>
@@ -517,12 +507,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../week3/ethics_outlook_1.html">
-     The Ethics in ML
+     Ethics in ML
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../week3/ethics_outlook_2.html">
-     Machine Learning Today
+     Outlook
     </a>
    </li>
   </ul>
@@ -550,18 +540,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t03_nn_by_hand.html">
-   3. Neural Network By Hand
+  <a class="reference internal" href="../tutorials/t03_class_game.html">
+   3. Classification Contest
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t04_class_game.html">
-   4. Classification Contest
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t05_anomaly_detection.html">
-   5. Anomaly Detection
+  <a class="reference internal" href="../tutorials/t04_anomaly_detection.html">
+   4. Anomaly Detection
   </a>
  </li>
 </ul>
@@ -1216,7 +1201,7 @@ If significant errors accumulate and the neural network update the weights with 
 </section>
 <section id="generic-tips">
 <h3>(Generic) tips<a class="headerlink" href="#generic-tips" title="Permalink to this headline">#</a></h3>
-<p>The first tip would be: it all depends on the task at hand. Of course this may leave you confused now. Here is the corrollary of the first tip: practice, practice, practice (and some reading). You will soon explore existing neural network, build your own and experiment different functions to see which one is more appropriate. Yes, there is a bit of tweaking involved with your organic brain to train an artificial one! More on this in the Lecture “Towards Deep Learning Modeels.”</p>
+<p>The first tip would be: it all depends on the task at hand. Of course this may leave you confused now. Here is the corrollary of the first tip: practice, practice, practice (and some reading). You will soon explore existing neural networks, build your own and experiment different functions to see which one is more appropriate. Yes, there is a bit of tweaking involved with your organic brain to train an artificial one! More on this in the Lecture “Towards Deep Learning Modeels.”</p>
 <p>The second one tip would be: in doubt, opt for ReLU for the hidden layers. It is the most successful and widely-used activation function. Although the rectifier variants have tried to improve it, the ReLU remains the top contender among activation function for the hidden layers. And it is a very fast computation, another point to start optimizing your neural network with it.</p>
 <p>Usually, all hidden layers usually use the same activation function. For the final layer however, the sigmoid or tanh are usually preferred, in particular in classification. For multiclass, an adapted version of the sigmoid is the <a class="reference external" href="https://en.wikipedia.org/wiki/Softmax_function">Softmax function</a>. It is a combination of multiple sigmoids with outputs summing to one, outputing the relative probabilities or each class.</p>
 <aside class="margin sidebar">

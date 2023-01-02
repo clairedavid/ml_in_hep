@@ -154,7 +154,7 @@ p(N) = 1 - \sum_{i=1}^{N-1} p_i
 to get the remaining probability in the last outcome possible (but bare in mind that perceptrons do not output probabilities). 
 
 ### Limitation and... abandon
-It turned out that perceptrons disappointed researchers. The main limitation: perceptrons can only solve linearly separable data. In other words, it can classify the data if only one can draw a line (or plane with 3 inputs) sparating the two classes. While perceptrons can successfully perform the basic logical computations (also called 'gates') __AND__, __OR__ and __NOT__, it is incapable of solving the trivial __XOR__ problem:
+It turned out that perceptrons disappointed researchers. The main limitation: perceptrons can only solve linearly separable data. In other words, it can classify the data if only one can draw a line (or plane with 3 inputs) separating the two classes. While perceptrons can successfully perform the basic logical computations (also called 'gates') __AND__, __OR__ and __NOT__, it is incapable of solving the trivial __XOR__ problem:
 
 
 ```{figure} ../images/lec05_2_andorxor.png

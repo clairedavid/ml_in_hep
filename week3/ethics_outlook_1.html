@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>The Ethics in ML &#8212; Machine Learning in Particle Physics</title>
+    <title>Ethics in ML &#8212; Machine Learning in Particle Physics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Machine Learning Today" href="ethics_outlook_2.html" />
+    <link rel="next" title="Outlook" href="ethics_outlook_2.html" />
     <link rel="prev" title="14. Ethics in ML &amp; Outlook" href="ethics_outlook.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -116,7 +116,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  About the course
+  About this course
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -126,8 +126,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../about/instructor.html">
+   About the instructor
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../about/jupyter.html">
    JupyterHub for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/evaluation.html">
+   Evaluation
   </a>
  </li>
 </ul>
@@ -228,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../week1/class_algs_biasV.html">
-     Bias, Variance: how to cope
+     Performance Metrics
     </a>
    </li>
   </ul>
@@ -374,23 +384,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_architecture.html">
-     Architecture of a CNN
+    <a class="reference internal" href="../week2/CNN_resources.html">
+     Learn CNNs
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_hyperparameters.html">
-     Hyperparameters
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_regMethods.html">
-     Regularization Methods
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_neutrinoReco.html">
-     Application in Neutrino Physics
+    <a class="reference internal" href="../week2/CNN_guest.html">
+     Guest Lecture
     </a>
    </li>
   </ul>
@@ -505,12 +505,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     The Ethics in ML
+     Ethics in ML
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ethics_outlook_2.html">
-     Machine Learning Today
+     Outlook
     </a>
    </li>
   </ul>
@@ -538,18 +538,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t03_nn_by_hand.html">
-   3. Neural Network By Hand
+  <a class="reference internal" href="../tutorials/t03_class_game.html">
+   3. Classification Contest
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t04_class_game.html">
-   4. Classification Contest
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t05_anomaly_detection.html">
-   5. Anomaly Detection
+  <a class="reference internal" href="../tutorials/t04_anomaly_detection.html">
+   4. Anomaly Detection
   </a>
  </li>
 </ul>
@@ -707,23 +702,172 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#about-this-lecture">
+   About this lecture
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#you-are-part-of-it">
+     You are part of it!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#schedule">
+     Schedule
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-material">
+   Reading Material
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#case-study-timnit-gebru-on-societal-implications-of-natural-language-processing-nlp-technology">
+     Case Study: Timnit Gebru on societal implications of natural language processing (NLP) technology
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#case-study-facebook">
+     Case Study: Facebook
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#case-study-ai-weaponry">
+     Case Study: AI Weaponry
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#guidance">
+   Guidance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-extra-not-needed-for-the-class">
+   More (extra, not needed for the class)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#organisations">
+     Organisations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#companies">
+     Companies
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>The Ethics in ML</h1>
+                <h1>Ethics in ML</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#about-this-lecture">
+   About this lecture
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#you-are-part-of-it">
+     You are part of it!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#schedule">
+     Schedule
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-material">
+   Reading Material
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#case-study-timnit-gebru-on-societal-implications-of-natural-language-processing-nlp-technology">
+     Case Study: Timnit Gebru on societal implications of natural language processing (NLP) technology
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#case-study-facebook">
+     Case Study: Facebook
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#case-study-ai-weaponry">
+     Case Study: AI Weaponry
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#guidance">
+   Guidance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-extra-not-needed-for-the-class">
+   More (extra, not needed for the class)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#organisations">
+     Organisations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#companies">
+     Companies
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -731,8 +875,117 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="the-ethics-in-ml">
-<h1>The Ethics in ML<a class="headerlink" href="#the-ethics-in-ml" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="ethics-in-ml">
+<h1>Ethics in ML<a class="headerlink" href="#ethics-in-ml" title="Permalink to this headline">#</a></h1>
+<section id="about-this-lecture">
+<h2>About this lecture<a class="headerlink" href="#about-this-lecture" title="Permalink to this headline">#</a></h2>
+<section id="you-are-part-of-it">
+<h3>You are part of it!<a class="headerlink" href="#you-are-part-of-it" title="Permalink to this headline">#</a></h3>
+<p>This lecture will be delivered as a flipped-classroom.</p>
+<div class="note admonition">
+<p class="admonition-title">What is a flipped-classroom?</p>
+<p>A flipped-classroom is a pedagogical strategy consisting of reversing the traditional teaching scheme: instead of learning in class and practising at home, students are given material to study themselves beforehand and the in-class time is dedicated for debates, discussions and problem solving.
+This approach gives more autonomy to the students, enhances self-learning skills and promotes active participation and expression.</p>
+<p>If you are curious and want to learn more, the <a class="reference external" href="https://en.wikipedia.org/wiki/Flipped_classroom">Wikipedia article</a> gives a good overview and describes some <a class="reference external" href="https://en.wikipedia.org/wiki/Flipped_classroom#Examples">examples of flipped-classroom</a> by field of study.</p>
+</div>
+<p>You will be asked to read some of the online articles listed in the Section <a class="reference internal" href="#ethics-readingmaterial"><span class="std std-ref">Reading Material</span></a> below. During the class we will focus on discussions and debates about each case study. Then we will extract the key terms and synthetize together to reach conclusive remarks about ethics in machine learning.</p>
+<p>The lecture will end with a graded short essay.</p>
+<p>More information is given in the following section.</p>
+</section>
+<section id="schedule">
+<h3>Schedule<a class="headerlink" href="#schedule" title="Permalink to this headline">#</a></h3>
+<p><strong>Part One: What is ethics? What is ethics in machine learning?</strong><br />
+At home, you will think of a definition of “ethics in machine learning” in <strong>your own words</strong>. We will start the lecture by sharing our findings and will agree on a definition together.</p>
+<p><strong>Part Two: Case Study</strong><br />
+In groups, you will discuss a given case study according to the points provided in the Section <a class="reference internal" href="#ethics-guidance"><span class="std std-ref">Guidance</span></a> below.</p>
+<p><strong>Part Three: Presentations</strong><br />
+Each group will present the outcomes of their discussion on the case study in an oral presentation.</p>
+<p><strong>Part Four: Synthesis</strong><br />
+As a class, we will extract together the key elements from the case studies and use them to draw conclusive remarks.</p>
+<p><strong>Part Five: Essay (graded)</strong><br />
+After a deserved break, you will be presented three questions dealing with ethics in machine learning. Choose the one you prefer and write a short essay of minimum 300 words. In your essay you should clearly articulate your answer, bring a nuanced argumentation considering the different perspectives and illustrate as much as possible your arguments with examples.</p>
+</section>
+</section>
+<section id="reading-material">
+<span id="ethics-readingmaterial"></span><h2>Reading Material<a class="headerlink" href="#reading-material" title="Permalink to this headline">#</a></h2>
+<p>There is no reading material for part one (definition exercise) yet some hints. Wikipedia is also a good place to start. The UN agency UNESCO has written on the topic.</p>
+<p>For the case studies: read at least the material for one. But if you have time, try to read another case study.</p>
+<div class="tip admonition">
+<p class="admonition-title">Bring Your Own Case Study</p>
+<p>If you are already captivated by a tool employing machine learning and are curious to explore its ethical aspects and implications, contact the instructor as soon as possible (before the third week). If there is enough interest to form a group, an additional case study could be added to the debate.</p>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is crucial for you to have absorbed the material before the course. Make sure you have done so in advance to arrive in class prepared for the discussions.</p>
+</div>
+</aside>
+<section id="case-study-timnit-gebru-on-societal-implications-of-natural-language-processing-nlp-technology">
+<h3>Case Study: Timnit Gebru on societal implications of natural language processing (NLP) technology<a class="headerlink" href="#case-study-timnit-gebru-on-societal-implications-of-natural-language-processing-nlp-technology" title="Permalink to this headline">#</a></h3>
+<p><strong>Timnit Gebru: The Computer Scientist Fighting for a Fairer World</strong><br />
+<a class="reference external" href="https://www.historyofdatascience.com/timnit-gebru-the-computer-scientist-fighting-for-a-fairer-world/">Article from historyofdatascience.com</a></p>
+<p><strong>On the Dangers of Stochastic Parrots: Can Language Models Be Too Big? 🦜</strong><br />
+<a class="reference external" href="https://dl.acm.org/doi/pdf/10.1145/3442188.3445922">Paper</a>.</p>
+<p><strong>Behind the Paper That Led to a Google Researcher’s Firing</strong><br />
+<a class="reference external" href="https://www.wired.com/story/behind-paper-led-google-researchers-firing/">Article from www.wired.com</a></p>
+<p><strong>(Optional) What Really Happened When Google Ousted Timnit Gebru</strong><br />
+<a class="reference external" href="https://www.wired.com/story/google-timnit-gebru-ai-what-really-happened/">(very long) article from www.wired.com</a></p>
+</section>
+<section id="case-study-facebook">
+<h3>Case Study: Facebook<a class="headerlink" href="#case-study-facebook" title="Permalink to this headline">#</a></h3>
+<p><strong>How Facebook got addicted to spreading misinformation</strong>
+<a class="reference external" href="https://www.technologyreview.com/2021/03/11/1020600/facebook-responsible-ai-misinformation/">Article on www.technologyreview.com</a></p>
+<p><strong>Shoshana Zuboff: Surveillance Capitalism and Democracy</strong><br />
+<a class="reference external" href="https://www.youtube.com/watch?v=5AvtUrHxg8A">YouTube Video</a>.</p>
+</section>
+<section id="case-study-ai-weaponry">
+<h3>Case Study: AI Weaponry<a class="headerlink" href="#case-study-ai-weaponry" title="Permalink to this headline">#</a></h3>
+<p><strong>UN fails to agree on ‘killer robot’ ban as nations pour billions into autonomous weapons research</strong><br />
+<a class="reference external" href="https://theconversation.com/un-fails-to-agree-on-killer-robot-ban-as-nations-pour-billions-into-autonomous-weapons-research-173616">Article from theconversation.com</a></p>
+<p><strong>What you need to know about autonomous weapons</strong><br />
+<a class="reference external" href="https://www.icrc.org/en/document/what-you-need-know-about-autonomous-weapons">Article from International Committee of the Red Cross (ICRC)</a></p>
+<p><strong>AI-Influenced Weapons Need Better Regulation</strong><br />
+<a class="reference external" href="https://www.scientificamerican.com/article/ai-influenced-weapons-need-better-regulation/">Article from Scientific American</a></p>
+</section>
+</section>
+<section id="guidance">
+<span id="ethics-guidance"></span><h2>Guidance<a class="headerlink" href="#guidance" title="Permalink to this headline">#</a></h2>
+<p>These questions will help you extract the important information from the material and anticipate the discussion.</p>
+<ul class="simple">
+<li><p>What are the different agents/actors? (think of professions and also societal entities)</p></li>
+<li><p>How impartial can instances such as companies or organizations be?</p></li>
+</ul>
+<p>A recommended framework to analyse each case study would be a table with:</p>
+<ul class="simple">
+<li><p>the type(s) of machine learning implementation(s) and/or algorithms</p></li>
+<li><p>the domain(s) (medical, language, internet, data science)</p></li>
+<li><p>the recipients/beneficiaries</p></li>
+<li><p>the good: how is it beneficial for the recipients/users</p></li>
+<li><p>the harms: what are the ethical issues?</p></li>
+<li><p>the solutions: how to tackle and address those issues?</p></li>
+</ul>
+</section>
+<section id="more-extra-not-needed-for-the-class">
+<h2>More (extra, not needed for the class)<a class="headerlink" href="#more-extra-not-needed-for-the-class" title="Permalink to this headline">#</a></h2>
+<p>If you are curious about ethics in AI, or even think of pursuing this topic professionally, find below some organizations and companies that specialize in ethics in AI:</p>
+<section id="organisations">
+<h3>Organisations<a class="headerlink" href="#organisations" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://aiforgood.itu.int/">AI for Good</a>: digital platform of the United Nations for learning, discussing, and connecting in order to identify practical AI solutions that can help advance the UN’s Sustainable Development Goals.</p></li>
+<li><p><a class="reference external" href="https://humancompatible.ai/">Center for Human-Compatible Artificial Intelligence (CHAI)</a>: multi-institution research group based at UC Berkeley, USA, focusing on advanced artificial intelligence safety methods.</p></li>
+<li><p><a class="reference external" href="https://montrealethics.ai/">Montreal AI Ethics Institute</a>: international non-profit organization democratizing AI ethics literacy.</p></li>
+</ul>
+</section>
+<section id="companies">
+<h3>Companies<a class="headerlink" href="#companies" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://algorithmwatch.org">AlgorithmWatch</a>: non-profit research and advocacy organization that is committed to watch, unpack and analyze automated decision-making (ADM) systems and their impact on society.</p></li>
+<li><p><a class="reference external" href="https://www.datakind.org">DataKind</a>. Global nonprofit that harnesses the power of data science and AI in the service of humanity.</p></li>
+<li><p><a class="reference external" href="https://www.ethicallyalignedai.com/">Ethically Aligned AI</a>: an example of a company providing training, consulting and public speaking about ethics in AI.</p></li>
+</ul>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -772,7 +1025,7 @@ title="Print to PDF"
     <a class='right-next' id="next-link" href="ethics_outlook_2.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Machine Learning Today</p>
+        <p class="prev-next-title">Outlook</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

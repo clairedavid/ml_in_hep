@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Machine Learning Today &#8212; Machine Learning in Particle Physics</title>
+    <title>Outlook &#8212; Machine Learning in Particle Physics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="15. Project presentations &amp; Exam" href="projects_exam.html" />
-    <link rel="prev" title="The Ethics in ML" href="ethics_outlook_1.html" />
+    <link rel="prev" title="Ethics in ML" href="ethics_outlook_1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -116,7 +116,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  About the course
+  About this course
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -126,8 +126,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../about/instructor.html">
+   About the instructor
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../about/jupyter.html">
    JupyterHub for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/evaluation.html">
+   Evaluation
   </a>
  </li>
 </ul>
@@ -228,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../week1/class_algs_biasV.html">
-     Bias, Variance: how to cope
+     Performance Metrics
     </a>
    </li>
   </ul>
@@ -374,23 +384,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_architecture.html">
-     Architecture of a CNN
+    <a class="reference internal" href="../week2/CNN_resources.html">
+     Learn CNNs
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_hyperparameters.html">
-     Hyperparameters
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_regMethods.html">
-     Regularization Methods
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_neutrinoReco.html">
-     Application in Neutrino Physics
+    <a class="reference internal" href="../week2/CNN_guest.html">
+     Guest Lecture
     </a>
    </li>
   </ul>
@@ -505,12 +505,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="ethics_outlook_1.html">
-     The Ethics in ML
+     Ethics in ML
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Machine Learning Today
+     Outlook
     </a>
    </li>
   </ul>
@@ -538,18 +538,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t03_nn_by_hand.html">
-   3. Neural Network By Hand
+  <a class="reference internal" href="../tutorials/t03_class_game.html">
+   3. Classification Contest
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t04_class_game.html">
-   4. Classification Contest
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t05_anomaly_detection.html">
-   5. Anomaly Detection
+  <a class="reference internal" href="../tutorials/t04_anomaly_detection.html">
+   4. Anomaly Detection
   </a>
  </li>
 </ul>
@@ -707,23 +702,128 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learn">
+   Learn
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice">
+   Practice
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-challenge-platforms">
+     Machine Learning Challenge Platforms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#we-love-data">
+     We Love Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connect-organizations">
+   Connect: organizations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#africa-and-machine-learning">
+     Africa and Machine Learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#worldwide">
+     Worldwide
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Machine Learning Today</h1>
+                <h1>Outlook</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learn">
+   Learn
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice">
+   Practice
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#machine-learning-challenge-platforms">
+     Machine Learning Challenge Platforms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#we-love-data">
+     We Love Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connect-organizations">
+   Connect: organizations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#africa-and-machine-learning">
+     Africa and Machine Learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#worldwide">
+     Worldwide
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -731,8 +831,63 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="machine-learning-today">
-<h1>Machine Learning Today<a class="headerlink" href="#machine-learning-today" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="outlook">
+<h1>Outlook<a class="headerlink" href="#outlook" title="Permalink to this headline">#</a></h1>
+<p>In the hope that those lectures convinced you that machine learning is more about math than magic, some of you may have fallen in love with an algorithm, or even the entire topic!</p>
+<p>If you want to pursue either in academic circles or in industry, find below some links to help you further learn and enhance your machine learning skills.</p>
+<section id="learn">
+<h2>Learn<a class="headerlink" href="#learn" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://data.nasdaq.com/">Coursera.org</a>: a global online learning platform that offers anyone, anywhere, access to online courses and degrees from leading universities and companies. Andrew Ng is the co-founder and instructor of the</p>
+<ul>
+<li><p><a class="reference external" href="https://www.coursera.org/specializations/machine-learning-introduction">Machine Learning Specialization</a>  |  3 months at 9 hours/week</p></li>
+<li><p><a class="reference external" href="https://www.coursera.org/specializations/deep-learning">Deep Learning Specialization</a>  |  5 months at 8 hours/week</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.kdnuggets.com/">KDnuggets</a>: a discussion and learning website for Business Analytics, Data Mining and Data Science. KD stands for Knowledge Discovery.</p></li>
+</ul>
+</section>
+<section id="practice">
+<h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">#</a></h2>
+<section id="machine-learning-challenge-platforms">
+<h3>Machine Learning Challenge Platforms<a class="headerlink" href="#machine-learning-challenge-platforms" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.kaggle.com">Kaggle</a> has 50,000 public <a class="reference external" href="https://www.kaggle.com/datasets">datasets</a> and 400,000 public <a class="reference external" href="https://www.kaggle.com/kernels">notebooks</a> and is famous for its machine learning <a class="reference external" href="https://www.kaggle.com/competitions">competition</a>. CERN compiled a special dataset for the <a class="reference external" href="https://www.kaggle.com/competitions/higgs-boson">Higgs Boson Machine Learning Challenge</a> and invited the <a class="reference external" href="https://atlas.cern/updates/news/machine-learning-wins-higgs-challenge">winners</a> to present their results.</p></li>
+<li><p><a class="reference external" href="https://www.drivendata.org/">DrivenData</a> works on projects at the intersection of data science and social impact, in areas like international development, health, education, research and conservation, and public services.</p></li>
+</ul>
+</section>
+<section id="we-love-data">
+<h3>We Love Data<a class="headerlink" href="#we-love-data" title="Permalink to this headline">#</a></h3>
+<p>Some repository with data to play with:</p>
+<ul class="simple">
+<li><p>Africa: <a class="reference external" href="https://dataportal.opendataforafrica.org/">opendataforafrica.org</a></p></li>
+<li><p>The world: <a class="reference external" href="http://dataportals.org/">dataportals.org</a></p></li>
+<li><p>Wikipedia: <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_datasets_for_machine-learning_research">List of datasets for machine-learning research</a></p></li>
+<li><p><a class="reference external" href="https://archive-beta.ics.uci.edu/">UC Irvine Machine Learning Repository</a></p></li>
+<li><p>Finance and Economics: <a class="reference external" href="https://data.nasdaq.com">data.nasdaq.com</a></p></li>
+</ul>
+</section>
+</section>
+<section id="connect-organizations">
+<h2>Connect: organizations<a class="headerlink" href="#connect-organizations" title="Permalink to this headline">#</a></h2>
+<section id="africa-and-machine-learning">
+<h3>Africa and Machine Learning<a class="headerlink" href="#africa-and-machine-learning" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>The Africa-Canada AI &amp; Data Innovation Consortium, <a class="reference external" href="https://acadic.org/">ACADIC</a>. The mission is to mobilize Artificial Intelligence and Big Data techniques in an ethical way to build equitable, resilient governance strategies and increase societal preparedness for future global pandemics and climate disasters.</p></li>
+<li><p><a class="reference external" href="https://machinelearningafrica.com/">machinelearningafrica.com</a>: provides insight into emerging machine learning technologies and their inevitable impact in transforming Africa.</p></li>
+<li><p><a class="reference external" href="https://miiafrica.org/about/">The Machine Intelligence Institute of Africa (MIIA)</a>: a non-profit organization that aims to transform and build an AI-powered Africa through a strong and collaborative community in the African Artificial Intelligence ecosystem.</p></li>
+</ul>
+</section>
+<section id="worldwide">
+<h3>Worldwide<a class="headerlink" href="#worldwide" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mila.quebec/en/">MILA</a>, the Montreal Institute for Learning Algorithms: research institute that focuses on machine learning and artificial intelligence. It is known for its strong research program and has produced many influential papers in the field. MILA is located in Montreal, Canada.</p></li>
+<li><p>The <a class="reference external" href="https://www.csail.mit.edu/">Massachusetts Institute of Technology Artificial Intelligence Laboratory (CSAIL)</a>: located in Cambridge, Massachusetts, the MIT Artificial Intelligence Laboratory is a world-renowned research institute that focuses on a wide range of artificial intelligence and machine learning topics.</p></li>
+<li><p>The <a class="reference external" href="https://ai.stanford.edu/">Stanford Artificial Intelligence Laboratory (SAIL)</a>: located in Stanford, California, SAIL is a research institute that focuses on artificial intelligence, machine learning, and related fields. It has a strong history of producing influential research and has produced many influential researchers in the field.</p></li>
+<li><p>The <a class="reference external" href="https://www.uoft.ai/">University of Toronto Artificial Intelligence Institute (UTAI)</a>: research institute that focuses on a wide range of artificial intelligence and machine learning topics. It is known for its strong research program and has produced many influential papers in the field.</p></li>
+</ul>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -766,7 +921,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">The Ethics in ML</p>
+            <p class="prev-next-title">Ethics in ML</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="projects_exam.html" title="next page">

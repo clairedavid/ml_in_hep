@@ -7,7 +7,7 @@ The Gradient Descent algorithm computes the cost and its derivatives using all t
 
 ````{prf:definition}
 :label: batchsizedef
-The __batch size__ refers to the number of training examples utilized for calculating the gradient each iteration (epoch).
+The __batch size__ refers to the number of training examples utilized for calculating the gradient at each iteration (epoch).
 
 In Batch Gradient Descent, the entire training dataset is used at each step.
 ````

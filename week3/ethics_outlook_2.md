@@ -6,7 +6,7 @@ If you want to pursue either in academic circles or in industry, find below some
 
 
 ## Learn
-* [Coursera.org](https://data.nasdaq.com/): a global online learning platform that offers anyone, anywhere, access to online courses and degrees from leading universities and companies. Andrew Ng is the co-founder and instructor of the 
+* [Coursera.org](https://data.nasdaq.com/): a global online learning platform that offers anyone, anywhere, access to online courses and degrees from leading universities and companies. Andrew Ng is the co-founder and main instructor of several machine learning courses and specializations.
   * [Machine Learning Specialization](https://www.coursera.org/specializations/machine-learning-introduction)  |  3 months at 9 hours/week 
   * [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning)  |  5 months at 8 hours/week
 * [KDnuggets](https://www.kdnuggets.com/): a discussion and learning website for Business Analytics, Data Mining and Data Science. KD stands for Knowledge Discovery.

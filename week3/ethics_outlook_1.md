@@ -110,6 +110,7 @@ If you are curious about ethics in AI, or even think of pursuing this topic prof
 
 ### Articles
 * [Microsoft’s Kate Crawford: ‘AI is neither artificial nor intelligent’](https://www.theguardian.com/technology/2021/jun/06/microsofts-kate-crawford-ai-is-neither-artificial-nor-intelligent)
+* [AI Data Laundering: How Academic and Nonprofit Researchers Shield Tech Companies from Accountability](https://waxy.org/2022/09/ai-data-laundering-how-academic-and-nonprofit-researchers-shield-tech-companies-from-accountability/)
 
 ### Organisations
 * [AI for Good](https://aiforgood.itu.int/): digital platform of the United Nations for learning, discussing, and connecting in order to identify practical AI solutions that can help advance the UN's Sustainable Development Goals.

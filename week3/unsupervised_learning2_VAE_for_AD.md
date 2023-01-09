@@ -1,4 +1,4 @@
-# k-Means Clustering
+# Variational Autoencoder for Anomaly Detection
 
 ```{admonition} Coming soon
 :class: warning

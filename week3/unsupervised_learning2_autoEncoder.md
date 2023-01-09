@@ -1,4 +1,4 @@
-# k-Means Clustering
+# Autoencoders
 
 ```{admonition} Coming soon
 :class: warning

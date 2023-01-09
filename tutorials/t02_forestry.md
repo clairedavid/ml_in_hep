@@ -385,7 +385,7 @@ __Q 5.2: Comment on the decision surface with the deep tree: what is happening? 
 
 ## The Forest
 Let's plant a forest now. We need the following imports:
-````{maring}
+````{margin}
 ```{tip}
 Use `pprint` for a better rendering of the list of parameters.
 ````

@@ -1,3 +1,4 @@
+(DL:trainNN)=
 # Let's train our NN!
 
 Time to gather all the notions covered in this lecture and learn how to build a deep learning model.
@@ -66,7 +67,7 @@ __How would solution(s) look like__
 The next investigation is on the solution(s). Perhaps previous attempts in the past have been done to solve the problem. Or solutions exist but they are not reaching the desired precision. In this case it is always a good idea to collect and read some papers to get the achieved ballparks regarding accuracy, sensitivity, specificity. If solutions are inexistant, it is still possible to think of the consequences of the possible solution(s). Will it bring novelty into the field? Will it help solve similar problems?
 
 __Which type of ML is it__  
-Anticipating Step 3, the framing of the problem requires identifying the type of machine learning: is it a regression task, a classification task, or something else? In case of a multi-class classification task, are the categories well-defined and entirely partitioning the target space?
+Anticipating Step 4 (defining the Model), the framing of the problem requires identifying the type of machine learning: is it a regression task, a classification task, or something else? In case of a multi-class classification task, are the categories well-defined and entirely partitioning the target space?
 
 __How to evaluate the performance__  
 The next step is to think of the proper metrics to evaluate your future solution. A bad metric will inevitably lead to a bad performance assessment; or at least not optimal. Ask yourself among the errors types I and II what is more problematic: is it missing a (possibly rare) signal point? Is it picking a sample that should be actually not picked (signal contamination)? Should you worry about outliers in the data?

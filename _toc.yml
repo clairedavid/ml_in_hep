@@ -73,22 +73,19 @@ parts:
     chapters:
     - file: week3/unsupervised_learning
       sections: 
-      - file: week3/unsupervised_learning_motiv
-      - file: week3/unsupervised_learning_relevance
+      - file: week3/unsupervised_learning_overview
       - file: week3/unsupervised_learning_k-Means
       - file: week3/unsupervised_learning_dimRed
 
-    - file: week3/PCA_AD
+    - file: week3/unsupervised_learning2
       sections: 
-      - file: week3/PCA_AD_PCA
-      - file: week3/PCA_AD_autoEncoder
-      - file: week3/PCA_AD_VAE_for_AD
+      - file: week3/unsupervised_learning2_autoEncoder
+      - file: week3/unsupervised_learning2_VAE_for_AD
 
     - file: week3/ML_BigData
       sections: 
       - file: week3/ML_BigData_7Vs
-      - file: week3/ML_BigData_preproc
-      - file: week3/ML_BigData_chooseAlgo
+      - file: week3/ML_BigData_strategies
 
     - file: week3/ethics_outlook
       sections: 

@@ -129,7 +129,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../about/instructor.html">
-   About the instructor
+   Instructor &amp; Schedule
   </a>
  </li>
  <li class="toctree-l1">
@@ -387,7 +387,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../week2/CNN_resources.html">
-     Resources
+     Learn CNNs
     </a>
    </li>
    <li class="toctree-l2">
@@ -420,13 +420,8 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/unsupervised_learning_motiv.html">
-     Motivations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/unsupervised_learning_relevance.html">
-     Relevance and examples
+    <a class="reference internal" href="../week3/unsupervised_learning_overview.html">
+     Overview
     </a>
    </li>
    <li class="toctree-l2">
@@ -442,8 +437,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/PCA_AD.html">
-   12. PCA and Anomaly Detection
+  <a class="reference internal" href="../week3/unsupervised_learning2.html">
+   12. Unsupervised Learning Part II
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -452,17 +447,12 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/PCA_AD_PCA.html">
-     Principal Component Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/PCA_AD_autoEncoder.html">
+    <a class="reference internal" href="../week3/unsupervised_learning2_autoEncoder.html">
      Autoencoders
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/PCA_AD_VAE_for_AD.html">
+    <a class="reference internal" href="../week3/unsupervised_learning2_VAE_for_AD.html">
      Variational Autoencoder for Anomaly Detection
     </a>
    </li>
@@ -470,7 +460,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../week3/ML_BigData.html">
-   13. ML in Big Data &amp; Strategies
+   13. Big Data &amp; ML Strategies
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
   <label for="toctree-checkbox-11">
@@ -480,17 +470,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../week3/ML_BigData_7Vs.html">
-     The 7V’s of Big Data
+     Big Data
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ML_BigData_preproc.html">
-     Data Preprocessing Pipelines
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ML_BigData_chooseAlgo.html">
-     How to Choose an Optimization Algorithm
+    <a class="reference internal" href="../week3/ML_BigData_strategies.html">
+     Strategies in Machine Learning
     </a>
    </li>
   </ul>
@@ -507,12 +492,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../week3/ethics_outlook_1.html">
-     The Ethics in ML
+     Ethics in ML
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../week3/ethics_outlook_2.html">
-     Machine Learning Today
+     Outlook
     </a>
    </li>
   </ul>
@@ -540,18 +525,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t03_nn_by_hand.html">
-   3. Neural Network By Hand
+  <a class="reference internal" href="../tutorials/t03_class_game.html">
+   3. Classification Contest
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t04_class_game.html">
-   4. Classification Contest
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t05_anomaly_detection.html">
-   5. Anomaly Detection
+  <a class="reference internal" href="../tutorials/t04_anomaly_detection.html">
+   4. Anomaly Detection
   </a>
  </li>
 </ul>
@@ -918,8 +898,8 @@ There are two main approaches of such methods for multiclassification.</p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-One approach</strong> consists of applying a binary classification for each pair of classes, ignoring the other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of models to train, <span class="math notranslate nohighlight">\(N^\text{model}\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-93693a44-dedd-4364-b77d-af108b6976b8">
-<span class="eqno">(15)<a class="headerlink" href="#equation-93693a44-dedd-4364-b77d-af108b6976b8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3bc2bd0f-8c56-4def-92ae-e120e136c096">
+<span class="eqno">(15)<a class="headerlink" href="#equation-3bc2bd0f-8c56-4def-92ae-e120e136c096" title="Permalink to this equation">#</a></span>\[\begin{equation}
 N^\text{model} = \frac{N^\text{class}(N^\text{class}-1)}{2}
 \end{equation}\]</div>
 <p>Each model predicts one class label. The final decision is the class label receiving the most votes, i.e. being predicted most of the time.</p>
@@ -933,8 +913,8 @@ The pairing makes the number of models to train large and thus computer intensiv
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-All or One-to-Rest approach</strong> consists of training each class against the collection of all other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of pairs to train is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4edb1047-a132-4f7a-a232-b46f29b05eda">
-<span class="eqno">(16)<a class="headerlink" href="#equation-4edb1047-a132-4f7a-a232-b46f29b05eda" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5a5b36da-21b5-4c1e-89be-685cb99c4091">
+<span class="eqno">(16)<a class="headerlink" href="#equation-5a5b36da-21b5-4c1e-89be-685cb99c4091" title="Permalink to this equation">#</a></span>\[\begin{equation}
  N^\text{model} = N^\text{class}
 \end{equation}\]</div>
 <p>The final prediction is given by the highest value of the hypothesis function <span class="math notranslate nohighlight">\(h^{k}_\theta(x)\)</span>, <span class="math notranslate nohighlight">\(k \in [1, N^\text{model}]\)</span> among the <span class="math notranslate nohighlight">\(N^\text{model}\)</span> binary classifiers.</p>

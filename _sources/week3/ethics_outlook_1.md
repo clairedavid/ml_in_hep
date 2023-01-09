@@ -70,7 +70,7 @@ __(Optional) What Really Happened When Google Ousted Timnit Gebru__
 
 ### Case Study: Facebook
 
-__How Facebook got addicted to spreading misinformation__ 
+__How Facebook got addicted to spreading misinformation__  
 [Article on www.technologyreview.com](https://www.technologyreview.com/2021/03/11/1020600/facebook-responsible-ai-misinformation/)
 
 __Shoshana Zuboff: Surveillance Capitalism and Democracy__  
@@ -106,7 +106,11 @@ A recommended framework to analyse each case study would be a table with:
 
 ## More (extra, not needed for the class)
 
-If you are curious about ethics in AI, or even think of pursuing this topic professionally, find below some organizations and companies that specialize in ethics in AI:
+If you are curious about ethics in AI, or even think of pursuing this topic professionally, find below some articles, organizations and companies that specialize in ethics in AI:
+
+### Articles
+* [Microsoft’s Kate Crawford: ‘AI is neither artificial nor intelligent’](https://www.theguardian.com/technology/2021/jun/06/microsofts-kate-crawford-ai-is-neither-artificial-nor-intelligent)
+* [AI Data Laundering: How Academic and Nonprofit Researchers Shield Tech Companies from Accountability](https://waxy.org/2022/09/ai-data-laundering-how-academic-and-nonprofit-researchers-shield-tech-companies-from-accountability/)
 
 ### Organisations
 * [AI for Good](https://aiforgood.itu.int/): digital platform of the United Nations for learning, discussing, and connecting in order to identify practical AI solutions that can help advance the UN's Sustainable Development Goals.

@@ -129,7 +129,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../about/instructor.html">
-   About the instructor
+   Instructor &amp; Schedule
   </a>
  </li>
  <li class="toctree-l1">
@@ -386,23 +386,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_architecture.html">
-     Architecture of a CNN
+    <a class="reference internal" href="../week2/CNN_resources.html">
+     Learn CNNs
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_hyperparameters.html">
-     Hyperparameters
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_regMethods.html">
-     Regularization Methods
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_neutrinoReco.html">
-     Application in Neutrino Physics
+    <a class="reference internal" href="../week2/CNN_guest.html">
+     Guest Lecture
     </a>
    </li>
   </ul>
@@ -430,13 +420,8 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/unsupervised_learning_motiv.html">
-     Motivations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/unsupervised_learning_relevance.html">
-     Relevance and examples
+    <a class="reference internal" href="../week3/unsupervised_learning_overview.html">
+     Overview
     </a>
    </li>
    <li class="toctree-l2">
@@ -452,8 +437,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/PCA_AD.html">
-   12. PCA and Anomaly Detection
+  <a class="reference internal" href="../week3/unsupervised_learning2.html">
+   12. Unsupervised Learning Part II
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -462,17 +447,12 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/PCA_AD_PCA.html">
-     Principal Component Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/PCA_AD_autoEncoder.html">
+    <a class="reference internal" href="../week3/unsupervised_learning2_autoEncoder.html">
      Autoencoders
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/PCA_AD_VAE_for_AD.html">
+    <a class="reference internal" href="../week3/unsupervised_learning2_VAE_for_AD.html">
      Variational Autoencoder for Anomaly Detection
     </a>
    </li>
@@ -480,7 +460,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../week3/ML_BigData.html">
-   13. ML in Big Data &amp; Strategies
+   13. Big Data &amp; ML Strategies
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
   <label for="toctree-checkbox-11">
@@ -490,17 +470,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../week3/ML_BigData_7Vs.html">
-     The 7V’s of Big Data
+     Big Data
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ML_BigData_preproc.html">
-     Data Preprocessing Pipelines
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ML_BigData_chooseAlgo.html">
-     How to Choose an Optimization Algorithm
+    <a class="reference internal" href="../week3/ML_BigData_strategies.html">
+     Strategies in Machine Learning
     </a>
    </li>
   </ul>
@@ -517,12 +492,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../week3/ethics_outlook_1.html">
-     The Ethics in ML
+     Ethics in ML
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../week3/ethics_outlook_2.html">
-     Machine Learning Today
+     Outlook
     </a>
    </li>
   </ul>
@@ -550,18 +525,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t03_nn_by_hand.html">
-   3. Neural Network By Hand
+  <a class="reference internal" href="../tutorials/t03_class_game.html">
+   3. Classification Contest
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t04_class_game.html">
-   4. Classification Contest
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t05_anomaly_detection.html">
-   5. Anomaly Detection
+  <a class="reference internal" href="../tutorials/t04_anomaly_detection.html">
+   4. Anomaly Detection
   </a>
  </li>
 </ul>
@@ -917,28 +887,28 @@ w^{(i)} = \frac{1}{m}
 <p><strong>Start</strong><br />
 <strong>For</strong> each predictor <span class="math notranslate nohighlight">\(j = 1 , \cdots , N^\text{pred}\)</span><br />
 a. Train on all samples and compute the weighted error rate <span class="math notranslate nohighlight">\(r_j\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-8c6ec665-befe-44b2-945d-b57831fda3ea">
-<span class="eqno">(33)<a class="headerlink" href="#equation-8c6ec665-befe-44b2-945d-b57831fda3ea" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5b806f2c-957d-4d71-8844-5b2fe50f689e">
+<span class="eqno">(33)<a class="headerlink" href="#equation-5b806f2c-957d-4d71-8844-5b2fe50f689e" title="Permalink to this equation">#</a></span>\[\begin{equation}
    r_j = \frac{\sum_{i = 1}^m w^{(i)} [ \hat{y}_j^{(i)} \neq y^{(i)} ]   }{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p>b. Give the predictor <span class="math notranslate nohighlight">\(j\)</span> a weight <span class="math notranslate nohighlight">\(W_j\)</span> measuring accuracy</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7e4425e7-fa9b-4799-8a37-af2ca571d21c">
-<span class="eqno">(34)<a class="headerlink" href="#equation-7e4425e7-fa9b-4799-8a37-af2ca571d21c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-21477948-98a7-4eab-ab15-3625d8da6901">
+<span class="eqno">(34)<a class="headerlink" href="#equation-21477948-98a7-4eab-ab15-3625d8da6901" title="Permalink to this equation">#</a></span>\[\begin{equation}
    W_j = \alpha \log \frac{1 - r_j}{r_j} 
    \end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(W_j\)</span> points to zero if the predictor is bad, or a high number if the predictor is good.<br />
 <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate.</p>
 <p>c. Update the weights of all data samples:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b03b22a8-3d49-419e-ac28-e62055606a6a">
-<span class="eqno">(35)<a class="headerlink" href="#equation-b03b22a8-3d49-419e-ac28-e62055606a6a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-84ee3519-1736-4738-93ca-e34af23be7d4">
+<span class="eqno">(35)<a class="headerlink" href="#equation-84ee3519-1736-4738-93ca-e34af23be7d4" title="Permalink to this equation">#</a></span>\[\begin{equation}
    w^{(i)} = \left\{\begin{matrix}
    w^{(i)} \;\;\;\;  &amp;\text{if} \;\;\;\; \hat{y}_j^{(i)} = y_j^{(i)} \\[2ex]
    \;\;w^{(i)} \exp (W_j)  \;\;\;\;  &amp;\text{if} \;\;\;\; \hat{y}_j^{(i)} \neq y_j^{(i)} \\
    \end{matrix}\right.
    \end{equation}\]</div>
 <p>d. Normalize the weights</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d9a26e39-43a4-4aea-8d7f-2e52bdc74acf">
-<span class="eqno">(36)<a class="headerlink" href="#equation-d9a26e39-43a4-4aea-8d7f-2e52bdc74acf" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-52303752-512a-4075-b4a5-307a4980a531">
+<span class="eqno">(36)<a class="headerlink" href="#equation-52303752-512a-4075-b4a5-307a4980a531" title="Permalink to this equation">#</a></span>\[\begin{equation}
     w^{(i)} \rightarrow \frac{w^{(i)}}{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p><strong>Exit conditions</strong></p>

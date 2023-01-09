@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. Neural Network By Hand" href="t03_nn_by_hand.html" />
+    <link rel="next" title="3. Classification Contest" href="t03_class_game.html" />
     <link rel="prev" title="1. Linear Regression in Python" href="t01_linear_regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -118,7 +118,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  About the course
+  About this course
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -128,8 +128,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../about/instructor.html">
+   Instructor &amp; Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../about/jupyter.html">
    JupyterHub for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/evaluation.html">
+   Evaluation
   </a>
  </li>
 </ul>
@@ -230,7 +240,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../week1/class_algs_biasV.html">
-     Bias, Variance: how to cope
+     Performance Metrics
     </a>
    </li>
   </ul>
@@ -376,23 +386,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_architecture.html">
-     Architecture of a CNN
+    <a class="reference internal" href="../week2/CNN_resources.html">
+     Learn CNNs
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_hyperparameters.html">
-     Hyperparameters
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_regMethods.html">
-     Regularization Methods
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_neutrinoReco.html">
-     Application in Neutrino Physics
+    <a class="reference internal" href="../week2/CNN_guest.html">
+     Guest Lecture
     </a>
    </li>
   </ul>
@@ -420,13 +420,8 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/unsupervised_learning_motiv.html">
-     Motivations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/unsupervised_learning_relevance.html">
-     Relevance and examples
+    <a class="reference internal" href="../week3/unsupervised_learning_overview.html">
+     Overview
     </a>
    </li>
    <li class="toctree-l2">
@@ -442,8 +437,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/PCA_AD.html">
-   12. PCA and Anomaly Detection
+  <a class="reference internal" href="../week3/unsupervised_learning2.html">
+   12. Unsupervised Learning Part II
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -452,17 +447,12 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/PCA_AD_PCA.html">
-     Principal Component Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/PCA_AD_autoEncoder.html">
+    <a class="reference internal" href="../week3/unsupervised_learning2_autoEncoder.html">
      Autoencoders
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/PCA_AD_VAE_for_AD.html">
+    <a class="reference internal" href="../week3/unsupervised_learning2_VAE_for_AD.html">
      Variational Autoencoder for Anomaly Detection
     </a>
    </li>
@@ -470,7 +460,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../week3/ML_BigData.html">
-   13. ML in Big Data &amp; Strategies
+   13. Big Data &amp; ML Strategies
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
   <label for="toctree-checkbox-11">
@@ -480,17 +470,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../week3/ML_BigData_7Vs.html">
-     The 7V’s of Big Data
+     Big Data
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ML_BigData_preproc.html">
-     Data Preprocessing Pipelines
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ML_BigData_chooseAlgo.html">
-     How to Choose an Optimization Algorithm
+    <a class="reference internal" href="../week3/ML_BigData_strategies.html">
+     Strategies in Machine Learning
     </a>
    </li>
   </ul>
@@ -507,12 +492,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../week3/ethics_outlook_1.html">
-     The Ethics in ML
+     Ethics in ML
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../week3/ethics_outlook_2.html">
-     Machine Learning Today
+     Outlook
     </a>
    </li>
   </ul>
@@ -540,18 +525,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="t03_nn_by_hand.html">
-   3. Neural Network By Hand
+  <a class="reference internal" href="t03_class_game.html">
+   3. Classification Contest
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="t04_class_game.html">
-   4. Classification Contest
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="t05_anomaly_detection.html">
-   5. Anomaly Detection
+  <a class="reference internal" href="t04_anomaly_detection.html">
+   4. Anomaly Detection
   </a>
  </li>
 </ul>
@@ -1235,6 +1215,13 @@ First, add the code above in a new cell. Then, modify the <code class="docutils 
 <section id="the-forest">
 <h2><span class="section-number">2.6. </span>The Forest<a class="headerlink" href="#the-forest" title="Permalink to this headline">#</a></h2>
 <p>Let’s plant a forest now. We need the following imports:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">pprint</span></code> for a better rendering of the list of parameters.</p>
+</div>
+</aside>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 <span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span> <span class="c1"># &#39;pretty printing&#39;, for listing the parameters</span>
 </pre></div>
@@ -1314,10 +1301,10 @@ See it on the decision surface!</p>
             <p class="prev-next-title"><span class="section-number">1. </span>Linear Regression in Python</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="t03_nn_by_hand.html" title="next page">
+    <a class='right-next' id="next-link" href="t03_class_game.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Neural Network By Hand</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Classification Contest</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

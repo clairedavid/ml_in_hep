@@ -1,2 +1,0 @@
-# Neural Network By Hand
-

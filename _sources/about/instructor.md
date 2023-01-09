@@ -1,4 +1,4 @@
-# About the instructor
+# Instructor & Schedule
 
 ## Claire David, PhD
 
@@ -21,13 +21,6 @@ After a postdoctoral fellowship at [DESY](https://www.desy.de/) in Hamburg, Germ
 
 More information on my [webpage](https://www.yorku.ca/science/clairedavid/).
 
-## Acknowledgments
-
-I have received the precious help of colleagues and friends. A big thank you to Harrison Prosper for being a great mentor and sharing valuable resources.
-I would also like to thank Alex Held, Benjamin Nachman, Clara Nellist, Matthew Feickert and Sascha Caron.
-
-For this course I got inspired by Coursera's Introduction to Machine Learning, by Andrew Ng. I found wonderful tutorials in Machine Learning Mastery, by Dr. Jason Brownlee. Aurélien Géron's book Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow ([Second Edition](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)) is fabulous. I am grateful to all anonymous 'StackOverflowers' helping me debug some parts of code to shape the tutorials and assignments into, I hope, an awesome learning experience for the students.
-
 ## Schedule
 
 ### Upcoming 
@@ -40,3 +33,11 @@ It will be taught at AIMS South Africa from January 30 until February 17, 2023.
 ### Previous version
 
 I taught a mini-version of this course at the [African School of Physics (ASP2022)](https://www.africanschoolofphysics.org/asp2022/) in Gqebera, South Africa on [December 9](https://indico.cern.ch/event/1210872/timetable/#20221209).
+
+
+## Acknowledgments
+
+I have received the precious help of colleagues and friends. A big thank you to Harrison Prosper for being a great mentor and sharing valuable resources.
+I would also like to thank Alex Held, Benjamin Nachman, Clara Nellist, Matthew Feickert and Sascha Caron.
+
+For this course I got inspired by Coursera's Introduction to Machine Learning, by Andrew Ng. I found wonderful tutorials in Machine Learning Mastery, by Dr. Jason Brownlee. Aurélien Géron's book Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow ([Second Edition](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)) is fabulous. I am grateful to all anonymous 'StackOverflowers' helping me debug some parts of code to shape the tutorials and assignments into, I hope, an awesome learning experience for the students.

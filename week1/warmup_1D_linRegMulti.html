@@ -114,7 +114,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  About the course
+  About this course
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -124,8 +124,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../about/instructor.html">
+   Instructor &amp; Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../about/jupyter.html">
    JupyterHub for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/evaluation.html">
+   Evaluation
   </a>
  </li>
 </ul>
@@ -226,7 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="class_algs_biasV.html">
-     Bias, Variance: how to cope
+     Performance Metrics
     </a>
    </li>
   </ul>
@@ -372,23 +382,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_architecture.html">
-     Architecture of a CNN
+    <a class="reference internal" href="../week2/CNN_resources.html">
+     Learn CNNs
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_hyperparameters.html">
-     Hyperparameters
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_regMethods.html">
-     Regularization Methods
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week2/CNN_neutrinoReco.html">
-     Application in Neutrino Physics
+    <a class="reference internal" href="../week2/CNN_guest.html">
+     Guest Lecture
     </a>
    </li>
   </ul>
@@ -416,13 +416,8 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/unsupervised_learning_motiv.html">
-     Motivations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/unsupervised_learning_relevance.html">
-     Relevance and examples
+    <a class="reference internal" href="../week3/unsupervised_learning_overview.html">
+     Overview
     </a>
    </li>
    <li class="toctree-l2">
@@ -438,8 +433,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../week3/PCA_AD.html">
-   12. PCA and Anomaly Detection
+  <a class="reference internal" href="../week3/unsupervised_learning2.html">
+   12. Unsupervised Learning Part II
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -448,17 +443,12 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/PCA_AD_PCA.html">
-     Principal Component Analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/PCA_AD_autoEncoder.html">
+    <a class="reference internal" href="../week3/unsupervised_learning2_autoEncoder.html">
      Autoencoders
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/PCA_AD_VAE_for_AD.html">
+    <a class="reference internal" href="../week3/unsupervised_learning2_VAE_for_AD.html">
      Variational Autoencoder for Anomaly Detection
     </a>
    </li>
@@ -466,7 +456,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../week3/ML_BigData.html">
-   13. ML in Big Data &amp; Strategies
+   13. Big Data &amp; ML Strategies
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
   <label for="toctree-checkbox-11">
@@ -476,17 +466,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../week3/ML_BigData_7Vs.html">
-     The 7V’s of Big Data
+     Big Data
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ML_BigData_preproc.html">
-     Data Preprocessing Pipelines
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../week3/ML_BigData_chooseAlgo.html">
-     How to Choose an Optimization Algorithm
+    <a class="reference internal" href="../week3/ML_BigData_strategies.html">
+     Strategies in Machine Learning
     </a>
    </li>
   </ul>
@@ -503,12 +488,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../week3/ethics_outlook_1.html">
-     The Ethics in ML
+     Ethics in ML
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../week3/ethics_outlook_2.html">
-     Machine Learning Today
+     Outlook
     </a>
    </li>
   </ul>
@@ -536,18 +521,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t03_nn_by_hand.html">
-   3. Neural Network By Hand
+  <a class="reference internal" href="../tutorials/t03_class_game.html">
+   3. Classification Contest
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t04_class_game.html">
-   4. Classification Contest
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../tutorials/t05_anomaly_detection.html">
-   5. Anomaly Detection
+  <a class="reference internal" href="../tutorials/t04_anomaly_detection.html">
+   4. Anomaly Detection
   </a>
  </li>
 </ul>
@@ -788,12 +768,12 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          x1        x2           x3        x4
-0  54.325231  0.045341  2023.918831  0.043513
-1  57.055181  0.102299  2222.064559  0.160322
-2  55.099987 -0.727378  2190.987265 -0.021188
-3  39.123327  2.863392  1841.018674  0.140115
-4  43.574439 -2.148673  2075.452571  0.010553
-5  54.751803  1.313040  2206.686192 -0.113591
+0  57.775568 -1.642739  2102.923622  0.089846
+1  48.368380 -2.296836  1889.856343  0.013803
+2  39.040592 -2.883985  2026.714505  0.002282
+3  45.460770 -1.054780  2009.879972  0.060866
+4  49.476859 -2.775117  1815.447609  0.130840
+5  43.600957 -2.138433  1993.352225  0.114665
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -823,45 +803,45 @@ title="Print to PDF"
   <tbody>
     <tr>
       <th>0</th>
-      <td>54.325231</td>
-      <td>0.045341</td>
-      <td>2023.918831</td>
-      <td>0.043513</td>
+      <td>57.775568</td>
+      <td>-1.642739</td>
+      <td>2102.923622</td>
+      <td>0.089846</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>57.055181</td>
-      <td>0.102299</td>
-      <td>2222.064559</td>
-      <td>0.160322</td>
+      <td>48.368380</td>
+      <td>-2.296836</td>
+      <td>1889.856343</td>
+      <td>0.013803</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>55.099987</td>
-      <td>-0.727378</td>
-      <td>2190.987265</td>
-      <td>-0.021188</td>
+      <td>39.040592</td>
+      <td>-2.883985</td>
+      <td>2026.714505</td>
+      <td>0.002282</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>39.123327</td>
-      <td>2.863392</td>
-      <td>1841.018674</td>
-      <td>0.140115</td>
+      <td>45.460770</td>
+      <td>-1.054780</td>
+      <td>2009.879972</td>
+      <td>0.060866</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>43.574439</td>
-      <td>-2.148673</td>
-      <td>2075.452571</td>
-      <td>0.010553</td>
+      <td>49.476859</td>
+      <td>-2.775117</td>
+      <td>1815.447609</td>
+      <td>0.130840</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>54.751803</td>
-      <td>1.313040</td>
-      <td>2206.686192</td>
-      <td>-0.113591</td>
+      <td>43.600957</td>
+      <td>-2.138433</td>
+      <td>1993.352225</td>
+      <td>0.114665</td>
     </tr>
   </tbody>
 </table>

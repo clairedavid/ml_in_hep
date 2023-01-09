@@ -1,7 +1,5 @@
 # Machine Learning in Particle Physics
-
 &nbsp;  
-
 Learn the math behind machine learning!
 
 Learn how to code a machine learning algorithm by hand in python.
@@ -13,7 +11,7 @@ Learn how to use the most advanced library for best optimization results!
 ```{important}
 The examples will be taken from particle physics, but no prerequisites are necessary.
 
-It is a math and programming course, with lots of joyful math and lots of joyful practice in programming.
+It is a math course with some fun programming practice to enhance your coding skills.
 ```
 
 ```{note}

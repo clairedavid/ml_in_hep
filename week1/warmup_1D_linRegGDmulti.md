@@ -2,8 +2,8 @@
 
 In machine learning, data samples contain multiple features. 
 
-We will generalize our previous definitions or linear regression to additional features. How to see this? 
-Previously our data where one column vector $\boldsymbol{x}$ and its associated column vector of targets $\boldsymbol{y}$.
+We will generalize our previous definitions of linear regression to additional features. How to see this? 
+Previously our data consisted of one column vector $\boldsymbol{x}$ and its associated column vector of targets $\boldsymbol{y}$.
 Additional input features can be visualized in the form of a table:
 
 ```{glue:figure} df_example
@@ -203,5 +203,5 @@ The mean normalization procedure using as denominator the standard deviation $\s
 Consequence: the mean and standard deviation of the new normalized collection of feature $j$ will be zero and one respectively.
 
 __When is feature scaling relevant? When is it not?__  
-It all depends how the data look like. This is why it is important before starting the machinery of (fancy) learning techniques to inspect the data, plot several distributions if possible and dedicate time for the preparedness steps: data cleaning, scaling etc. This is essential for the success of the fitting algorithm.
+It all depends on how the data look like. This is why it is important before starting the machinery of (fancy) learning techniques to inspect the data, plot several distributions if possible and dedicate time for the preparedness steps: data cleaning, scaling etc. This is essential for the success of the fitting algorithm.
 

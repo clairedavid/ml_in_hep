@@ -25,7 +25,7 @@ More information on my [webpage](https://www.yorku.ca/science/clairedavid/).
 
 ### Upcoming 
 
-This course will be taught at AIMS Senegal from January 9 until January 27, 2023.
+This course is being taught at AIMS Senegal from January 9 until January 27, 2023.
 
 It will be taught at AIMS South Africa from January 30 until February 17, 2023.
 
@@ -40,4 +40,4 @@ I taught a mini-version of this course at the [African School of Physics (ASP202
 I have received the precious help of colleagues and friends. A big thank you to Harrison Prosper for being a great mentor and sharing valuable resources.
 I would also like to thank Alex Held, Benjamin Nachman, Clara Nellist, Matthew Feickert, Sascha Caron and Will Leight.
 
-For this course I got inspired by Coursera's Introduction to Machine Learning, by Andrew Ng. I found wonderful tutorials in Machine Learning Mastery, by Dr. Jason Brownlee. Aurélien Géron's book Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow ([Second Edition](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)) is fabulous. I am grateful to all anonymous 'StackOverflowers' helping me debug some parts of code to shape the tutorials and assignments into, I hope, an awesome learning experience for the students.
+For this course I got inspired by Coursera's Introduction to Machine Learning, by Andrew Ng. I found wonderful tutorials in Machine Learning Mastery, by Dr. Jason Brownlee. Aurélien Géron's book Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow ([Second Edition](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)) is fabulous. I am grateful to all 'StackOverflowers' helping me debug some parts of code to shape the tutorials and assignments into, I hope, an awesome learning experience for the students.

@@ -35,7 +35,7 @@ Find the repository on GDrive [here](https://drive.google.com/drive/folders/1hVq
 ```
 ````
 ## 1. Get the Data
-Download the dataset and put it on your GDrive. Open a new Jupyter-notebook. To mount your drive:
+Download the dataset and put it on your GDrive. Open a new Jupyter-notebook from [Google-Colab](https://colab.research.google.com/). To mount your drive:
 ```python
 from google.colab import drive
 drive.mount('/content/gdrive')

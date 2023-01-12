@@ -108,7 +108,7 @@ Additional reading are provided below to deepen your understanding in the differ
 ```{admonition} Learn more
 :class: seealso
 * A comparison of the pros and cons of Ridge ($\ell_2$ norm) and lasso ($\ell_1$ norm) regularization: ["L1 Norms versus L2 Norms", Kaggle](https://www.kaggle.com/code/residentmario/l1-norms-versus-l2-norms/notebook)
-* [Figting overfitting with $\ell_1$ or $\ell_2$ regularization, neptune.ai](https://neptune.ai/blog/fighting-overfitting-with-l1-or-l2-regularization)
+* [Fighting overfitting with $\ell_1$ or $\ell_2$ regularization, neptune.ai](https://neptune.ai/blog/fighting-overfitting-with-l1-or-l2-regularization)
 ```
 
 How can we inspect our machine learning algorithm to assess, even quantify the presence of under or overfitting? This is what we cover in the next section.

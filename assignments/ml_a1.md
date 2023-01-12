@@ -34,6 +34,7 @@ Hadron showers are on average longer in the direction of the incoming hadron (de
 Find the repository on GDrive [here](https://drive.google.com/drive/folders/1hVq0gnDeQvQ7dIvl0bPTyJn9DGMscqwc?usp=sharing).
 ```
 ````
+
 ## 1. Get the Data
 Download the dataset and put it on your GDrive. Open a new Jupyter-notebook from [Google-Colab](https://colab.research.google.com/). To mount your drive:
 ```python
@@ -41,17 +42,18 @@ from google.colab import drive
 drive.mount('/content/gdrive')
 ```
 
-__1.1 Get and load the data__  
-Read the dataset into a dataframe `df`. What are the columns? Which column stores the labels (targets)?
-
-__1.2 How many samples are there?__  
-
 For the following, import the NumPy and pandas libraries:
 ```python
 import sys, os
 import numpy as np
 import pandas as pd
 ```
+
+__1.1 Get and load the data__  
+Read the dataset into a dataframe `df`. What are the columns? Which column stores the labels (targets)?
+
+__1.2 How many samples are there?__  
+
 
 ## 2. Feature Scaling
 

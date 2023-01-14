@@ -78,7 +78,7 @@ The illustration below gives a visual of the algorithm.
  . Visual of AdaBoost.  
  Misclassified samples are given a higher weight for the next predictor.  
  Base classifiers are decision stumps (one-level tree).  
- <sub>Source: subscription.packtpub.com</sub>
+ <sub>Source: modified work by the author, originally from subscription.packtpub.com</sub>
  ```
 
 ```{note}

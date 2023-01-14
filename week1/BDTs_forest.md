@@ -119,7 +119,7 @@ Random forests are popular as they present numerous qualities:
 * they can be scaled using parallel computing (cores)
 * they can rank the features by their relative importance
 
-More about the last point: random forest classifiers not only classify the data, they can also measure the relative effect, or importance, each feature has with respect to the others. This is very handy while designing a machine learning algorithm to see which features matter. If for instance there are too many features, a random forest can help reduce this number while not removing key features. Scikit-Learn compute the feature importance automatically after training. It is expressed as a score, ranging from zero (useless feature) to 1 (most important). Here is a snippet showing how to access the feature importance scores:
+More about the last point: random forest classifiers not only classify the data, they can also measure the relative effect, or importance, each feature has with respect to the others. This is very handy while designing a machine learning algorithm to see which features matter. If for instance there are too many features, a random forest can help reduce this number while not removing key features. Scikit-Learn computes the feature importance automatically after training. It is expressed as a score, ranging from zero (useless feature) to 1 (most important). Here is a snippet showing how to access the feature importance scores:
 
 ```python
 # Dataset loading (not written): X and y dataframes

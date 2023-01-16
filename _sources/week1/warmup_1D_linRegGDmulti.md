@@ -2,8 +2,8 @@
 
 In machine learning, data samples contain multiple features. 
 
-We will generalize our previous definitions or linear regression to additional features. How to see this? 
-Previously our data where one column vector $\boldsymbol{x}$ and its associated column vector of targets $\boldsymbol{y}$.
+We will generalize our previous definitions of linear regression to additional features. How to see this? 
+Previously our data consisted of one column vector $\boldsymbol{x}$ and its associated column vector of targets $\boldsymbol{y}$.
 Additional input features can be visualized in the form of a table:
 
 ```{glue:figure} df_example
@@ -151,7 +151,7 @@ If let's say $x_1$ has values between $10 000$ and $100000$ and $x_2$ between 1 
 
 ````{admonition} Check your answers
 :class: tip, dropdown
-__Answer 1.__ If $x_1$ has very large values, the coefficients $\theta_0$ will have to be very small and tuned in a fine way to not let the cost function explode in very high values. The $\theta_2$ parameters will not have to be tuned that finely to prevent the cost function from getting big. Thus the contour plot will be stretched along the parameter associated with the features spanning a small range. 
+__Answer 1.__ If $x_1$ contains very large values, the coefficients $\theta_1$ will have to be very small and tuned in a fine way to not let the cost function explode. The $\theta_2$ parameters will not have to be tuned that finely to prevent the cost function from getting big. Thus the contour plot will be stretched along the parameter associated with the features spanning a small range. 
 
 The $\theta$ parameters will descend (or converge) slowly on large ranges and quickly on small ranges, as the figure below shows:
 
@@ -203,5 +203,5 @@ The mean normalization procedure using as denominator the standard deviation $\s
 Consequence: the mean and standard deviation of the new normalized collection of feature $j$ will be zero and one respectively.
 
 __When is feature scaling relevant? When is it not?__  
-It all depends how the data look like. This is why it is important before starting the machinery of (fancy) learning techniques to inspect the data, plot several distributions if possible and dedicate time for the preparedness steps: data cleaning, scaling etc. This is essential for the success of the fitting algorithm.
+It all depends on how the data look like. This is why it is important before starting the machinery of (fancy) learning techniques to inspect the data, plot several distributions if possible and dedicate time for the preparedness steps: data cleaning, scaling etc. This is essential for the success of the fitting algorithm.
 

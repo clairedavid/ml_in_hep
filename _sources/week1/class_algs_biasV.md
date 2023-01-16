@@ -312,7 +312,7 @@ While it is convenient to have a single number for comparing classifier, the AUC
 The generalization error can be expressed as a sum of three errors:
 ```{math}
 :label:
-\text{Total error} = \text{Bias}^2 + \text{Variance} + \text{Irreducible}
+(\text{Total error})^2 = \text{Bias} + \text{Variance} + \text{Irreducible}
 ```
 The two first are _reducible_. In fact, we will see in the following how to reduce them as much as possible! The last one is due to the fact data is noisy itself. It can be minimized during data cleaning by removing outliers (or more upfront by improving the detector or device that collected the data). 
 
@@ -338,12 +338,15 @@ The bias implies not grasping the full complexity of the situation (think of a b
 
 ````{prf:definition}
 :label: variancedef
-The __variance__ is an error stemming from the model's unreasonable sensitivity to fluctuations from the training data set.
+The __variance__ is a measure of the model's sensitivity to statistical fluctuations of the training data set. 
 
 A model with high variance is likely to overfit the data.
 
+
 ````
-As its name suggest, a model incorporating fluctuations in its design will change, aka _vary_, as soon as it is presented with new data (fluctuating differently).
+As its name suggest, a model incorporating fluctuations in its design will change, aka _vary_, as soon as it is presented with new data (fluctuating differently). 
+
+Using a larger training dataset will reduce the variance.
 
 Below is a good visualization of the two tendencies for both regression and classification:
 

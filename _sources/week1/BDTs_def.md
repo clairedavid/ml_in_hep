@@ -20,7 +20,7 @@ A __decision tree__ is a flowchart mapping a decision making process. It is orga
 
 ````{prf:definition}
 :label: nodesdef
-A node is a condition box evaluating one or more input features.  
+A __node__ is a condition box evaluating one or more input features.  
 
 The outcomes of that evaluation (either boolean or numerical) is divised into __branches__, or edges.
 
@@ -121,7 +121,7 @@ A collection on decision boundaries segmenting the $k$ feature phase space.
 
 __Initialization__ at the root node
 
-1. __Threshold computation__:
+__1 Threshold computation__:
 For each feature $k$, finds the threshold value $t_k$ maximizing purity of the two resulting subsets either lower (left) or higher (right) than the threshold $t_k$.
 The cost function is defined as:
 
@@ -129,9 +129,9 @@ The cost function is defined as:
 J(k, t_k) = \frac{n_\text{left}}{n_\text{node}} G_\text{left} + \frac{n_\text{right}}{n_\text{node}} G_\text{right}
 \end{equation}
 
-The purity is weighted by the subset sizes. The pair ($k$, $t_k$) producing the purest subset is set for the node.   
+The purity is weighted by the subset sizes. The pair ($k$, $t_k$) producing the purest subsets is set for the node.   
 
-1. __Branching__:  
+__2 Branching__:  
 The dataset is split according to the threshold $t_k$ into two branches and subsequent new nodes.  
 Repeat Step 1 at the new nodes.
 
@@ -195,5 +195,5 @@ Not only rotated data samples, decision trees can also drastically change with o
 :figwidth: 100%
 ```
 
-Instability will change future predictions and is quite a bad feature (bug) from a machine learning algorithm. How to circomvent this intrinsic instability? This is what we will cover in the next section!
+Instability will change future predictions and is quite a bad feature (bug) from a machine learning algorithm. How to circumvent this intrinsic instability? This is what we will cover in the next section!
 

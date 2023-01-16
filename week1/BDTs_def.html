@@ -411,7 +411,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../week3/unsupervised_learning.html">
-   11. Unsupervised learning
+   11. Unsupervised Learning Part I
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
   <label for="toctree-checkbox-9">
@@ -834,7 +834,7 @@ title="Print to PDF"
 </div><div class="proof definition admonition" id="nodesdef">
 <p class="admonition-title"><span class="caption-number">Definition 41 </span></p>
 <section class="definition-content" id="proof-content">
-<p>A node is a condition box evaluating one or more input features.</p>
+<p>A <strong>node</strong> is a condition box evaluating one or more input features.</p>
 <p>The outcomes of that evaluation (either boolean or numerical) is divised into <strong>branches</strong>, or edges.</p>
 <p>Each branch supports one outcome (usually True/False) on the condition from the previous node.</p>
 <p>A node at the end of a branch that is not divising further is called a <strong>leaf</strong>.</p>
@@ -876,8 +876,8 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p>The <strong>Gini’s diversity index</strong> is a measure of a node’s impurity.</p>
 <p>It is defined for each tree node <span class="math notranslate nohighlight">\(i\)</span> as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-17287cc2-6fc5-4fd6-846d-8825b2f6c409">
-<span class="eqno">(31)<a class="headerlink" href="#equation-17287cc2-6fc5-4fd6-846d-8825b2f6c409" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e991ce22-3ea8-4133-bad1-230c383a372e">
+<span class="eqno">(31)<a class="headerlink" href="#equation-e991ce22-3ea8-4133-bad1-230c383a372e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 G_i = 1 - \sum_{k=1}^{N_\text{classes}} \left( \frac{N_{k, i}}{ N_i} \right)^2 
 \end{equation}\]</div>
 <p>with <span class="math notranslate nohighlight">\(N_{k, i}\)</span> the number of data samples of class <span class="math notranslate nohighlight">\(k\)</span> in node <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(N_{i}\)</span> the total number of data samples in node <span class="math notranslate nohighlight">\(i\)</span>.</p>
@@ -919,21 +919,17 @@ y^{(m)}\end{pmatrix}
 <p><strong>Outputs</strong><br />
 A collection on decision boundaries segmenting the <span class="math notranslate nohighlight">\(k\)</span> feature phase space.</p>
 <p><strong>Initialization</strong> at the root node</p>
-<ol class="simple">
-<li><p><strong>Threshold computation</strong>:
+<p><strong>1 Threshold computation</strong>:
 For each feature <span class="math notranslate nohighlight">\(k\)</span>, finds the threshold value <span class="math notranslate nohighlight">\(t_k\)</span> maximizing purity of the two resulting subsets either lower (left) or higher (right) than the threshold <span class="math notranslate nohighlight">\(t_k\)</span>.
-The cost function is defined as:</p></li>
-</ol>
-<div class="amsmath math notranslate nohighlight" id="equation-b23eece8-c740-4036-a574-1e19ea9a34fe">
-<span class="eqno">(32)<a class="headerlink" href="#equation-b23eece8-c740-4036-a574-1e19ea9a34fe" title="Permalink to this equation">#</a></span>\[\begin{equation}
+The cost function is defined as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2450f672-bf5c-4947-a6f5-b7ca9fb7c389">
+<span class="eqno">(32)<a class="headerlink" href="#equation-2450f672-bf5c-4947-a6f5-b7ca9fb7c389" title="Permalink to this equation">#</a></span>\[\begin{equation}
 J(k, t_k) = \frac{n_\text{left}}{n_\text{node}} G_\text{left} + \frac{n_\text{right}}{n_\text{node}} G_\text{right}
 \end{equation}\]</div>
-<p>The purity is weighted by the subset sizes. The pair (<span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(t_k\)</span>) producing the purest subset is set for the node.</p>
-<ol class="simple">
-<li><p><strong>Branching</strong>:<br />
+<p>The purity is weighted by the subset sizes. The pair (<span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(t_k\)</span>) producing the purest subsets is set for the node.</p>
+<p><strong>2 Branching</strong>:<br />
 The dataset is split according to the threshold <span class="math notranslate nohighlight">\(t_k\)</span> into two branches and subsequent new nodes.<br />
-Repeat Step 1 at the new nodes.</p></li>
-</ol>
+Repeat Step 1 at the new nodes.</p>
 <p><strong>Exit conditions</strong></p>
 <ul class="simple">
 <li><p>After Max Depth is reach</p></li>
@@ -992,7 +988,7 @@ Repeat Step 1 at the new nodes.</p></li>
 <img alt="../_images/BDTs_demo_21_0.png" src="../_images/BDTs_demo_21_0.png" />
 </div>
 </figure>
-<p>Instability will change future predictions and is quite a bad feature (bug) from a machine learning algorithm. How to circomvent this intrinsic instability? This is what we will cover in the next section!</p>
+<p>Instability will change future predictions and is quite a bad feature (bug) from a machine learning algorithm. How to circumvent this intrinsic instability? This is what we will cover in the next section!</p>
 </section>
 </section>
 </section>

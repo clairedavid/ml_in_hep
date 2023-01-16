@@ -411,7 +411,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../week3/unsupervised_learning.html">
-   11. Unsupervised learning
+   11. Unsupervised Learning Part I
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
   <label for="toctree-checkbox-9">
@@ -1026,8 +1026,8 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p class="admonition-title"><span class="caption-number">Definition 32 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>root mean squared error (RMSE)</strong> is the square root of the mean squared error:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-af9d9645-309e-48e3-8ef0-9e00d799c402">
-<span class="eqno">(21)<a class="headerlink" href="#equation-af9d9645-309e-48e3-8ef0-9e00d799c402" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3401f6c2-d741-4030-922f-1640dc4fc20f">
+<span class="eqno">(21)<a class="headerlink" href="#equation-3401f6c2-d741-4030-922f-1640dc4fc20f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{RMSE} = \sqrt{ \frac{\sum_{i=1}^N (y^\text{pred} - y^\text{obs} )^2 }{ N } }
 \end{equation}\]</div>
 </section>
@@ -1043,29 +1043,29 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p> <br />
 <strong>Accuracy</strong><br />
 Rate at which the model is able to predict the correct values of both classes.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fa6b6df2-6d57-4a04-b8e3-fa1985a5a74f">
-<span class="eqno">(22)<a class="headerlink" href="#equation-fa6b6df2-6d57-4a04-b8e3-fa1985a5a74f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a0a49f41-22a0-4308-9e40-7967202ba041">
+<span class="eqno">(22)<a class="headerlink" href="#equation-a0a49f41-22a0-4308-9e40-7967202ba041" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Accuracy} = \frac{\text{True predictions}}{\text{All predictions}} = \frac{\text{TP + TN}}{\text{TP + TN + FP + FN}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Precision, or Positive Predictive Value (PPV)</strong><br />
 Measure of the fraction of true predictions among all <strong>positive predictions</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1baec7d9-6b03-49be-af80-256324d0ba0c">
-<span class="eqno">(23)<a class="headerlink" href="#equation-1baec7d9-6b03-49be-af80-256324d0ba0c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c65cab05-a3cb-4ce6-b600-bd8d07bb0ee9">
+<span class="eqno">(23)<a class="headerlink" href="#equation-c65cab05-a3cb-4ce6-b600-bd8d07bb0ee9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Precision} = \frac{\text{True predictions}}{\text{All Positive Predictions}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Positive}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Recall, or True Positive Rate (TPR)</strong><br />
 Measure of the fraction of true predictions among all <strong>true observations</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7e3803a3-8840-4c85-be0b-75fbf9ed62de">
-<span class="eqno">(24)<a class="headerlink" href="#equation-7e3803a3-8840-4c85-be0b-75fbf9ed62de" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c7c8e871-48fe-40a6-b209-7a22a6655979">
+<span class="eqno">(24)<a class="headerlink" href="#equation-c7c8e871-48fe-40a6-b209-7a22a6655979" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Recall} = \frac{\text{True predictions}}{\text{Actual Positive}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
 \end{equation}\]</div>
 <p> <br />
 <strong>F-Score, or F1</strong><br />
 Describes the balance between Precision and Recall. It is the harmonic mean of the two:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f3cc69a5-bd86-4cec-b09e-755f25d4c029">
-<span class="eqno">(25)<a class="headerlink" href="#equation-f3cc69a5-bd86-4cec-b09e-755f25d4c029" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d2022c7e-d869-4a13-81f2-09f2d9d1cc58">
+<span class="eqno">(25)<a class="headerlink" href="#equation-d2022c7e-d869-4a13-81f2-09f2d9d1cc58" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{F1} =2 \; \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
 \end{equation}\]</div>
 </section>
@@ -1099,28 +1099,28 @@ In an unbalanced dataset, some classes will appear much more frequently that oth
 <section class="definition-content" id="proof-content">
 <p> <br />
 <strong>True Positive Rate (TPR)</strong>, also called <em>sensitivity</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-6ae0bb71-5f1a-4a95-ab66-63323fccec97">
-<span class="eqno">(26)<a class="headerlink" href="#equation-6ae0bb71-5f1a-4a95-ab66-63323fccec97" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4e7207b4-03e8-413b-b5d0-9cacb1fcf35f">
+<span class="eqno">(26)<a class="headerlink" href="#equation-4e7207b4-03e8-413b-b5d0-9cacb1fcf35f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TPR} = \frac{\text{True predictions}}{\text{Actual Positive}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
 \end{equation}\]</div>
 <p> <br />
 <strong>True Negative Rate (TNR)</strong>, also called <em>specificity</em></p>
 <p>Ratio of negative instances correctly classified as negative.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-55262f3e-2955-44d3-9ac7-0ccab2b9883b">
-<span class="eqno">(27)<a class="headerlink" href="#equation-55262f3e-2955-44d3-9ac7-0ccab2b9883b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4fe0fdc5-d55a-4c51-886f-efb3df6615d4">
+<span class="eqno">(27)<a class="headerlink" href="#equation-4fe0fdc5-d55a-4c51-886f-efb3df6615d4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TNR} = \frac{\text{False predictions}}{\text{Actual Negative}} = \frac{\text{True Negative}}{\text{True Negative} + \text{False Positive}}
 \end{equation}\]</div>
 <p> <br />
 <strong>False Positive Rate (FPR)</strong></p>
 <p>Ratio of negative instances that are incorrectly classified as positive.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1d04561c-bab6-4a06-aefc-7524d9c623ff">
-<span class="eqno">(28)<a class="headerlink" href="#equation-1d04561c-bab6-4a06-aefc-7524d9c623ff" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2e33626a-cd5e-4dab-bfe4-be548cceec95">
+<span class="eqno">(28)<a class="headerlink" href="#equation-2e33626a-cd5e-4dab-bfe4-be548cceec95" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = \frac{\text{Real False predicted Positive}}{\text{Actual Negative}} = \frac{\text{False Positive}}{\text{True Negative} + \text{False Positive}}
 \end{equation}\]</div>
 <p> <br />
 The False Positive Rate (FPR) is equal to:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f90d8a53-de6e-4b4d-a6f8-d77d05b20e30">
-<span class="eqno">(29)<a class="headerlink" href="#equation-f90d8a53-de6e-4b4d-a6f8-d77d05b20e30" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1b3ee69f-5383-4187-912b-e44907173a0f">
+<span class="eqno">(29)<a class="headerlink" href="#equation-1b3ee69f-5383-4187-912b-e44907173a0f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = 1 - \text{TNR} = 1 - \textit{specificity}
 \end{equation}\]</div>
 </section>
@@ -1191,7 +1191,7 @@ The True Positive Rate or signal efficiency is the integral of the signal (red) 
 <h3>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h3>
 <p>The generalization error can be expressed as a sum of three errors:</p>
 <div class="math notranslate nohighlight" id="equation-week1-class-algs-biasv-0">
-<span class="eqno">(30)<a class="headerlink" href="#equation-week1-class-algs-biasv-0" title="Permalink to this equation">#</a></span>\[\text{Total error} = \text{Bias}^2 + \text{Variance} + \text{Irreducible}\]</div>
+<span class="eqno">(30)<a class="headerlink" href="#equation-week1-class-algs-biasv-0" title="Permalink to this equation">#</a></span>\[(\text{Total error})^2 = \text{Bias} + \text{Variance} + \text{Irreducible}\]</div>
 <p>The two first are <em>reducible</em>. In fact, we will see in the following how to reduce them as much as possible! The last one is due to the fact data is noisy itself. It can be minimized during data cleaning by removing outliers (or more upfront by improving the detector or device that collected the data).</p>
 <figure class="align-default" id="lec03-5-bias-var-ierrors">
 <a class="reference internal image-reference" href="../_images/lec03_5_bias_var_ierrors.png"><img alt="../_images/lec03_5_bias_var_ierrors.png" src="../_images/lec03_5_bias_var_ierrors.png" style="width: 90%;" /></a>
@@ -1211,10 +1211,11 @@ The True Positive Rate or signal efficiency is the integral of the signal (red) 
 <div class="proof definition admonition" id="variancedef">
 <p class="admonition-title"><span class="caption-number">Definition 39 </span></p>
 <section class="definition-content" id="proof-content">
-<p>The <strong>variance</strong> is an error stemming from the model’s unreasonable sensitivity to fluctuations from the training data set.</p>
+<p>The <strong>variance</strong> is a measure of the model’s sensitivity to statistical fluctuations of the training data set.</p>
 <p>A model with high variance is likely to overfit the data.</p>
 </section>
 </div><p>As its name suggest, a model incorporating fluctuations in its design will change, aka <em>vary</em>, as soon as it is presented with new data (fluctuating differently).</p>
+<p>Using a larger training dataset will reduce the variance.</p>
 <p>Below is a good visualization of the two tendencies for both regression and classification:</p>
 <figure class="align-default" id="lec03-5-underoverfit-reg-class-table">
 <a class="reference internal image-reference" href="../_images/lec03_5_underoverfit_reg_class_table.jpg"><img alt="../_images/lec03_5_underoverfit_reg_class_table.jpg" src="../_images/lec03_5_underoverfit_reg_class_table.jpg" style="width: 100%;" /></a>

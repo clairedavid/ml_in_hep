@@ -409,7 +409,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../week3/unsupervised_learning.html">
-   11. Unsupervised learning
+   11. Unsupervised Learning Part I
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
   <label for="toctree-checkbox-9">
@@ -869,20 +869,20 @@ title="Print to PDF"
 </section>
 <section id="get-the-data">
 <h2>1. Get the Data<a class="headerlink" href="#get-the-data" title="Permalink to this headline">#</a></h2>
-<p>Download the dataset and put it on your GDrive. Open a new Jupyter-notebook. To mount your drive:</p>
+<p>Download the dataset and put it on your GDrive. Open a new Jupyter-notebook from <a class="reference external" href="https://colab.research.google.com/">Google-Colab</a>. To mount your drive:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
 <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/gdrive&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>1.1 Get and load the data</strong><br />
-Read the dataset into a dataframe <code class="docutils literal notranslate"><span class="pre">df</span></code>. What are the columns? Which column stores the labels (targets)?</p>
-<p><strong>1.2 How many samples are there?</strong></p>
 <p>For the following, import the NumPy and pandas libraries:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
+<p><strong>1.1 Get and load the data</strong><br />
+Read the dataset into a dataframe <code class="docutils literal notranslate"><span class="pre">df</span></code>. What are the columns? Which column stores the labels (targets)?</p>
+<p><strong>1.2 How many samples are there?</strong></p>
 </section>
 <section id="feature-scaling">
 <h2>2. Feature Scaling<a class="headerlink" href="#feature-scaling" title="Permalink to this headline">#</a></h2>

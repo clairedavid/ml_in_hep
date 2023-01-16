@@ -77,7 +77,7 @@ We haven't seen the activation function. Here is its definition:
  
  An __Activation Function__, also called Transfer Function, is a mathematical operation performed by an artificial neuron on the weighted summed of input nodes (plus the bias node).  
 
-As the name indicates, it decides whether the neuron's input to the network is important or not: returning a non-zero values means the __neuron is "activated"__, or "fired."  
+As the name indicates, it decides whether the neuron's input to the network is important or not: returning a non-zero value means the __neuron is "activated"__, or "fired."  
 
 The purpose of the activation function is to introduce __non-linearity__ into the output of a neural network.
 ````

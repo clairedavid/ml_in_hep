@@ -120,7 +120,7 @@ Mutually exclusive classes would mean that for each $\boldsymbol{\hat{y}^{(i)}} 
 \sum_{k=1}^K \; \hat{y}^{(i)}_k = 1
 ```
 ````{margin}
-This is the general equation
+This is the general equation for $K$ classes.
 ````
 The categorial cross-entropy reduces to the binary equation {eq}`lossbinceeq` for $n =2$.
 ```{math}

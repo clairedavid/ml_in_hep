@@ -86,10 +86,8 @@ As the next predictor needs input from the previous one, the boosting is not an 
 ```
 
 
-How is the algorithm making predictions? In other words, how are all the decision boundaries (cuts) combined into the final boosted learner?  
-````{margin}
-The final prediction in Figure {numref}`lec04_3_adaboost` uses the `sign` of the weighted sum of the trees. This goes for classifiers that have as outputs either {+1 ; -1} instead of our convention {1 ; 0} (with 1 if the sample is in the class and zero if it isn't). Using the {+1 ; -1} convention, the final prediction is done with $H(\vec{x}) = \text{sign}  \left( W_j \times H_j(\vec{x}) \right)$.
-````
+How does the algorithm make predictions? In other words, how are all the decision boundaries (cuts) combined into the final boosted learner?  
+
 The combined prediction is the class obtaining a weighted majority-vote, where votes are weighted with the predictor weights $W_j$.
 
 ```{math}

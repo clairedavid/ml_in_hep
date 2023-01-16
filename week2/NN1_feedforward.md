@@ -19,7 +19,7 @@ y = f\left(\sum_{j=1}^n w_j x_j + b \right)
 But there will be some change in the notations. Let's define everything in the next subsection.
 
 ## Notations
-Let's say we have the following network with $x_n$ input features, one first hidden layer with $a_q$ activation units and a second one with $a_r$ activation units. For simplicity, we will choose an output layer with only one node:
+Let's say we have the following network with $x_n$ input features, one first hidden layer with $q$ activation units and a second one with $r$ activation units. For simplicity, we will choose an output layer with only one node:
 
 
 ```{figure} ../images/lec05_4_nn_notations.png

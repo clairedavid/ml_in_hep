@@ -19,7 +19,7 @@ The __cost function__ $\boldsymbol{J}$ aggregates the differences of all instanc
 The loss function is not to be confused with the hypothesis function $h_{W,b}(x^{(i)})$ that serves to build a prediction $\hat{y}^{(i)}$ for sample $i$.
 
 
-This is not to be confused neither with the activation function, which only gets the neural network inputs (training data, weights and biases) and does not perform any comparison with the observed values $\boldsymbol{y}$).
+This is not to be confused with the activation function either, which only gets the neural network inputs (training data, weights and biases) and does not perform any comparison with the observed values $\boldsymbol{y}$).
 ```
 
 We saw that forward propagation 'fills' in the network with values for all activation units using the weight matrices $W^1, W^2, \cdots, W^{L}$ and biases $b^1, b^2, \cdots b^L$, up to the last layer $L$ being the output layer:
@@ -143,7 +143,7 @@ In Lecture 3 section {ref}`class:algs:reg` we saw two techniques adding an extra
 J \left(\;\hat{y}_k, y_k\;\right) = - \frac{1}{m} \sum_{i=1}^m  L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right) + \frac{\lambda}{2m} \sum_{\ell=1}^L \sum_{q=1}^{n^{L-1}} \sum_{r=1}^{n^{L}} \left( W^{(\ell)}_{q, r} \; \right)^2
 ```
 
-The triple sum is daunting but let's decompose it: it's the sum of all matrices $W^{(\ell)}$ of the network. For each of them, the weights are multiplied with each others (those are the two last sums). The equation above corresponds to the Lasso's regularization (introduced in Lecture 3 subsection {ref}`class:algs:reg:lasso`). The Ridge regularization would sum only the weights without squaring them.
+The triple sum is daunting but let's decompose it: it's the sum of all matrices $W^{(\ell)}$ of the network. For each of them, the weights are squared and added together (those are the two last sums). The equation above corresponds to the Lasso's regularization (introduced in Lecture 3 subsection {ref}`class:algs:reg:lasso`). The Ridge regularization would sum only the weights without squaring them.
 
 Recall that the regularization does not include the intercept term, which was written as $\theta_0$ in logistic regression. With the matrices $W^{(\ell)}$ we are safe as they do not contain any bias terms. Biases are gathered as separate vectors $\boldsymbol{b^{(\ell)}}$. 
 

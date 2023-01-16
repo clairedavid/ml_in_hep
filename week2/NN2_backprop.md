@@ -3,7 +3,7 @@
 ## Before Diving Into The Math 
 ### Ingredients
 
-The forward propagation, or forward pass, will fill the network with values for all bias nodes and activation units. That includes the last layer of activation units, so the forward pass provide predictions. 
+The forward propagation, or forward pass, will fill the network with values for all bias nodes and activation units. That includes the last layer of activation units, so the forward pass provides predictions. 
 
 We saw the loss function as the mathematical tool to compare the predictions with their associated observed values for a sample (and the cost function aggregates this for all data samples).
 
@@ -164,7 +164,7 @@ Now we can rewrite the output from an activation unit $a^{\ell}$ as:
 a^\ell(W, b) = f\left( z^\ell(W, b) \right)
 ```
 
-The superscripts for the weights and biases are not written inside the parenthesis for lighter equations. And it is also implied that $W$ and $b$ are collections of matrices and vectors respectively. 
+The superscripts for the weights and biases are not written inside the parentheses for simpler equations. And it is also implied that $W$ and $b$ are collections of matrices and vectors respectively. 
 
 We will denote the loss function through a general form as $L$:
 ```{math}
@@ -173,7 +173,7 @@ L(\hat{y}^{(i)}, y^{(i)})
 ```
 It is computed for each sample instance $\left\{ \boldsymbol{x^{(i)}}, y^{(i)} \right\}$, with $\boldsymbol{x^{(i)}}$ being one row of input features and $y$ the associated target. 
 
-The cost is the sum of the losses over all data instances $m$. To lighten the equations of the following section, the sum will be written without instance indices as superscript (already used for the layer number); it is implied that it is the sum over all data instances.
+The cost is the sum of the losses over all data instances $m$. To make the equations of the following section more readable, the sum will be written without instance indices as superscript (already used for the layer number); it is implied that it is the sum over all data instances.
 
 ```{math}
 :label: costfunceq
@@ -343,7 +343,7 @@ Thus:
 ````
 
 ### Weights and biases update
-After backpropagating, each weight an bias in the network are ajusted in proportion to how much they contribute to overall error.
+After backpropagating, each weight and bias in the network is adjusted in proportion to how much it contributes to overall error.
 
 ````{margin}
 The equations are different as in the section {ref}`NN2:backprop:mainstep` as we keep here the 'lite' notations introduced above. The indices referring to the row and column of each weight/bias are implied for smoother reading. But remember that $W$ and $b$ are matrices and vectors respectively.

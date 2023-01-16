@@ -54,7 +54,7 @@ If we use a different number than zero, then we will validate the "don't die" pa
 ````{margin}
 [Xavier Glorot, Yoshua Bengio, _Understanding the difficulty of training deep feedforward neural networks_ (2010)](https://proceedings.mlr.press/v9/glorot10a/glorot10a.pdf)
 ````
-The non-zero values should not lead to saturation nor explosion of the gradients. This must remind you of something. Yes: those were issues posed by some activation functions when their input values become large (Section {ref}`NN1:activationF:risksGradient`). But it has been found that the initialization could also make a neural network unstable. The whole instability problem of neural network was not clear until a paper (link on the right) in 2010 from Xavier Glorot and Yoshua Bengio revealed the culprits, or either the saturating cocktail.
+The non-zero values should not lead to saturation nor explosion of the gradients. This must remind you of something. Yes: those were issues posed by some activation functions when their input values become large (Section {ref}`NN1:activationF:risksGradient`). But it has been found that the initialization could also make a neural network unstable. The whole instability problem of neural network was not clear until a paper (link on the right) in 2010 from Xavier Glorot and Yoshua Bengio revealed the culprits.
 
 At that time, there were heuristics found before 2010 (you will see why soon) consisting of initializing all weights to random values between -1 to 1, or -0.3 to 0.3 or either asymmetrically from 0 to 1. The weight values would follow either a Gaussian or uniform distribution. These heuristics work well in general. But the paper authors showed that the combination of a sigmoid as activation function with such initialization methods produces outputs with a larger variance than the inputs at the previous layer. The phenomenon amplifies itself layers after layers, eventually leading to saturation at the last layer. And as the sigmoid is not centered on zero but 0.5, this actually makes it even worse.
 
@@ -91,7 +91,7 @@ It is impossible to validate the two properties at the same time. But Glorot and
 :label: xavieruniformdef
 The __Uniform Xavier Initialization__ is obtained by drawing each weight from a random uniform distribution in in $[-x,x]$, with 
 ```{math}
- x= \sqrt{\frac{6}{fan_\text{ in} + fan_\text{ out}}}
+ x= \sqrt{\frac{6}{\textit{fan}_\text{ in} + \textit{fan}_\text{ out}}}
 ```
 ````
 
@@ -99,7 +99,7 @@ The __Uniform Xavier Initialization__ is obtained by drawing each weight from a 
 :label: xaviernormaldef
 The __Normal Xavier Initialization__ is obtained by drawing each weight from a random normal distribution with mean of 0, and a standard deviation $\sigma$ of:
 ```{math}
- \sigma = \sqrt{\frac{2}{fan_\text{ in} + fan_\text{ out}}}
+ \sigma = \sqrt{\frac{2}{\textit{fan}_\text{ in} + \textit{fan}_\text{ out}}}
 ```
 ````
 The Xavier initialization works well for sigmoid, tanh and softmax activation functions.
@@ -115,7 +115,7 @@ A variant of Xavier initilization has been proposed by Yann LeCun, one of the go
 :label: lecuninitdef
 The __LeCun Weight Initialization__ is obtained by drawing each weight from a random normal distribution with mean of 0, and a standard deviation $\sigma$ of:
 ```{math}
- \sigma = \sqrt{\frac{1}{fan_\text{ in} }}
+ \sigma = \sqrt{\frac{1}{\textit{fan}_\text{ in} }}
 ```
 ````
 This initialization works with the SELU activation function (see Section {ref}`NN1:activationF:SELU`).
@@ -132,7 +132,7 @@ Kaiming He and others published a paper providing a good initialization strategy
 :label: heinitdef
 The __He Weight Initialization__ is obtained by drawing each weight from a random normal distribution with mean of 0, and a standard deviation $\sigma$ of:
 ```{math}
- \sigma = \sqrt{\frac{2}{fan_\text{ in} }}
+ \sigma = \sqrt{\frac{2}{\textit{fan}_\text{ in} }}
 ```
 ````
 

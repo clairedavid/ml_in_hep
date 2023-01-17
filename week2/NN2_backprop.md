@@ -294,18 +294,18 @@ We can write Equations {eq}`dCostlastsimpleeq`, {eq}`dCostbeforelastsimpleeq` an
 :label: deltasandpartialcostseq
 \begin{align*}
 \delta^L &=\; L^{\prime}(a^L) \cdot f^{\prime}(z^L) 
-& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial W^L} &=& \quad \delta^L \;\cdot\; a^{L-1}\\[2ex]
+& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial W^L} &=&  \quad \sum \quad\delta^L \;\cdot\; a^{L-1}\\[2ex]
 \delta^{L-1} &= \; \delta^L     \cdot\;  W^L \cdot\; f'(z^{L-1}) 
-& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial W^{L-1}} &=& \quad \delta^{L-1} \;\cdot\; a^{L-2}\\[2ex]
+& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial W^{L-1}} &=& \quad \sum \quad\delta^{L-1} \;\cdot\; a^{L-2}\\[2ex]
 \delta^{L-2} &= \; \delta^{L-1} \cdot\; W^{L-1} \;\cdot\; f'(z^{L-2}) 
-& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial W^{L-2}} &=& \quad \delta^{L-2} \;\cdot\; a^{L-3}\\
+& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial W^{L-2}} &=& \quad \sum \quad\delta^{L-2} \;\cdot\; a^{L-3}\\
 \end{align*} 
 ```
 This is recursive because errors from the current layer are used to evaluate error signals in a previous layer. We can write the recursive formula for any partial derivative in layer $\ell$ as:
 
 ```{math}
 :label: partialdevrecueq
-\frac{\partial \text {Cost}}{\partial W^{\ell}} = \;\; \delta^{\ell} \;\cdot\; a^{\ell-1}
+\frac{\partial \text {Cost}}{\partial W^{\ell}} = \;\; \sum \quad\delta^{\ell} \;\cdot\; a^{\ell-1}
 ```
 
 __What about the biases?__  
@@ -330,14 +330,14 @@ Thus:
 :label: biaseq
 \begin{align*}
 \delta^L &=\; L^{\prime}(a^L) \cdot f^{\prime}(z^L) 
-& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial b^L} &=& \quad \delta^L  \\[1ex]
+& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial b^L} &=& \quad \sum \quad\delta^L  \\[1ex]
 \delta^{L-1} &= \; \delta^L     \cdot\;  W^L \cdot\; f'(z^{L-1}) 
-& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial b^{L-1}} &=& \quad \delta^{L-1}  \\[1ex]
+& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial b^{L-1}} &=& \quad \sum \quad\delta^{L-1}  \\[1ex]
 \delta^{L-2} &= \; \delta^{L-1} \cdot\; W^{L-1} \;\cdot\; f'(z^{L-2}) 
-& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial b^{L-2}} &=& \quad \delta^{L-2} \\[1ex]
+& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial b^{L-2}} &=& \quad \sum \quad\delta^{L-2} \\[1ex]
 & \quad\cdots & & \cdots & \\[1ex]
 \delta^{1} &= \; \delta^{2} \cdot\; W^{2} \;\cdot\; f'(z^{1}) 
-& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial b^{1}} &=& \quad \delta^{1} \\[1ex]
+& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial b^{1}} &=& \quad \sum \quad\delta^{1} \\[1ex]
 \end{align*} 
 ```
 ````
@@ -412,7 +412,7 @@ __Step 3:__ Computation of all activation unit errors:
 \end{equation}
 ... and derivatives:
 \begin{equation}
-\frac{\partial \text {Cost}}{\partial W^{\ell}} = \; \delta^{\ell} \;\cdot\; a^{\ell-1}  \qquad \qquad \qquad \frac{\partial \text {Cost}}{\partial b^{\ell}} = \; \delta^{\ell}
+\frac{\partial \text {Cost}}{\partial W^{\ell}} = \; \sum \; \delta^{\ell} \;\cdot\; a^{\ell-1}  \qquad \qquad \qquad \frac{\partial \text {Cost}}{\partial b^{\ell}} = \; \sum \; \delta^{\ell}
 \end{equation}
 
 __Step 4:__ Gradient Descent steps to update weights & biases:

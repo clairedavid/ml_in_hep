@@ -97,7 +97,7 @@ __Pros__
 __Cons__  
 * Unlike the hyperbolic tangent, it is not zero-centered
 * The range is infinite for positive input value (not bounded)
-* ReLU is not differentiable at zero (but this can be solved by choosing arbitrarily a value for the derivative of either 0 or 1 for $z=$ )
+* ReLU is not differentiable at zero (but this can be solved by choosing arbitrarily a value for the derivative of either 0 or 1 for $z=0$ )
 * The "Dying ReLU problem"
 
 What is the Dying ReLU problem? When we look at the derivative, we see the gradient on the negative side is zero. During the backpropagation algorithm, the weights and biases are not updated and the neuron becomes stuck in an inactive state. We refer to it as 'dead neuron.' If a large number of nodes are stuck in dead states, the model capacity to fit the data is decreased.  
@@ -159,7 +159,7 @@ It does not have Rectifier in the name but the Exponential Linear Unit is anothe
 ```{math}
 \text{ELU}(z) =\begin{cases}\;\;  a(e^z -1) & \text{ if } z < 0 \\\;\;  z & \text{ if } z \geq 0\end{cases} \;\;\;\; \forall \: z , a \in  \mathbb{R}, a > 0
 ```
-with $a$ a hyper-parameter to be tune. 
+with $a$ a hyper-parameter to be tuned. 
 
 ```{figure} ../images/lec05_3_elu.png
 ---
@@ -202,7 +202,7 @@ __Pros__
 * Thanks to internal normalization, the network converges faster
 
 __Cons__  
-* Not really a caveat per say, but the SELU is outperforming other activation functions only for very deep networks 
+* Not really a caveat in itself, but the SELU is outperforming other activation functions only for very deep networks 
 
 
 ### Gaussian Error Linear Unit (GELU)
@@ -260,7 +260,7 @@ __Pros__
 * Unlike the ReLU function, small negative values are not zeroed, allowing for a better modeling of the data. And large negative values are zeroed out (in other words, the node will die only if it needs to die) 
 
 __Cons__ 
-* More a warning than a con: the Swish function is relevant if it is used in neural networks having a depth greater than 40 layers
+* More a warning than a con: the Swish function is only relevant if it is used in neural networks having a depth greater than 40 layers
 
 ## How to choose the right activation function
 
@@ -272,7 +272,7 @@ __Vanishing Gradient problem__
 As seen with the sigmoid and hyperbolic tangent, certain activation functions converge asymptotically towards the bounded range. Thus, at the extremities (large negative or large positive input values), a large change in the input will cause a very small modification of the output: there is a saturation. As a consequence the gradient will be also very small and the learning gain after one iteration very minimal, tending towards zero. This is to be avoid if we want the algorithm to learn a decent amount at each step.
 
 __Exploding Gradient problem__ 
-If significant errors accumulate and the neural network update the weights with larger and larger values, the difference between the prediction and observe value will increase further and further, leading to exploding gradients. It's no more a descent but a failure to converge. Pragmatically, it is possible to see it when weights are so large that they overflow and return a NaN value (meaning Not A Number).
+If significant errors accumulate and the neural network updates the weights with larger and larger values, the difference between the prediction and observed values will increase further and further, leading to exploding gradients. It's no more a descent but a failure to converge. Pragmatically, it is possible to see it when weights are so large that they overflow and return a NaN value (meaning Not A Number).
 
 ### (Generic) tips
 The first tip would be: it all depends on the task at hand. Of course this may leave you confused now. Here is the corrollary of the first tip: practice, practice, practice (and some reading). You will soon explore existing neural networks, build your own and experiment different functions to see which one is more appropriate. Yes, there is a bit of tweaking involved with your organic brain to train an artificial one! More on this in the Lecture "Towards Deep Learning Modeels."

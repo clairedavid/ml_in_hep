@@ -19,7 +19,7 @@ y = f\left(\sum_{j=1}^n w_j x_j + b \right)
 But there will be some change in the notations. Let's define everything in the next subsection.
 
 ## Notations
-Let's say we have the following network with $x_n$ input features, one first hidden layer with $a_q$ activation units and a second one with $a_r$ activation units. For simplicity, we will choose an output layer with only one node:
+Let's say we have the following network with $x_n$ input features, one first hidden layer with $q$ activation units and a second one with $r$ activation units. For simplicity, we will choose an output layer with only one node:
 
 
 ```{figure} ../images/lec05_4_nn_notations.png
@@ -104,7 +104,7 @@ This can be written in a compact way:
 ```
 Much lighter. 
 
-### Computation of the second hidder layer 
+### Computation of the second hidden layer 
 Let's do the same calculation for the second layer of activation units. Instead of the dataset vector $\boldsymbol{x}$, we will have $\boldsymbol{a^{(1)}}$ as input:
 ```{math}
 :label: secondlayermatrixexpandedeq
@@ -112,7 +112,7 @@ Let's do the same calculation for the second layer of activation units. Instead 
 \begin{pmatrix}w_{1,1}^{(2)} & w_{1,2}^{(2)} & \cdots & w_{1,r}^{(2)} \\[2ex]
 w_{2,1}^{(2)} & w_{2,2}^{(2)} & \cdots & w_{2,r}^{(2)} \\[1ex]
 \vdots  & \vdots & \ddots   & \vdots \\[1ex]
-w_{q,1}^{(1)} & w_{q,2}^{(1)} &  \cdots & w_{q,r}^{(1)} \\
+w_{q,1}^{(2)} & w_{q,2}^{(2)} &  \cdots & w_{q,r}^{(2)} \\
 \end{pmatrix} \;+\; ( b_1^{(2)}, b_2^{(2)}, \cdots , b_r^{(2)}) \; \right]
 ```
 

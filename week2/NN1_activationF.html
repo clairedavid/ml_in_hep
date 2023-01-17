@@ -1018,7 +1018,7 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>Unlike the hyperbolic tangent, it is not zero-centered</p></li>
 <li><p>The range is infinite for positive input value (not bounded)</p></li>
-<li><p>ReLU is not differentiable at zero (but this can be solved by choosing arbitrarily a value for the derivative of either 0 or 1 for <span class="math notranslate nohighlight">\(z=\)</span> )</p></li>
+<li><p>ReLU is not differentiable at zero (but this can be solved by choosing arbitrarily a value for the derivative of either 0 or 1 for <span class="math notranslate nohighlight">\(z=0\)</span> )</p></li>
 <li><p>The “Dying ReLU problem”</p></li>
 </ul>
 <p>What is the Dying ReLU problem? When we look at the derivative, we see the gradient on the negative side is zero. During the backpropagation algorithm, the weights and biases are not updated and the neuron becomes stuck in an inactive state. We refer to it as ‘dead neuron.’ If a large number of nodes are stuck in dead states, the model capacity to fit the data is decreased.</p>
@@ -1075,7 +1075,7 @@ title="Print to PDF"
 <p>It does not have Rectifier in the name but the Exponential Linear Unit is another variant of ReLU.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\text{ELU}(z) =\begin{cases}\;\;  a(e^z -1) &amp; \text{ if } z &lt; 0 \\\;\;  z &amp; \text{ if } z \geq 0\end{cases} \;\;\;\; \forall \: z , a \in  \mathbb{R}, a &gt; 0\end{split}\]</div>
-<p>with <span class="math notranslate nohighlight">\(a\)</span> a hyper-parameter to be tune.</p>
+<p>with <span class="math notranslate nohighlight">\(a\)</span> a hyper-parameter to be tuned.</p>
 <figure class="align-default" id="lec05-3-elu">
 <a class="reference internal image-reference" href="../_images/lec05_3_elu.png"><img alt="../_images/lec05_3_elu.png" src="../_images/lec05_3_elu.png" style="width: 100%;" /></a>
 <figcaption>
@@ -1114,7 +1114,7 @@ title="Print to PDF"
 </ul>
 <p><strong>Cons</strong></p>
 <ul class="simple">
-<li><p>Not really a caveat per say, but the SELU is outperforming other activation functions only for very deep networks</p></li>
+<li><p>Not really a caveat in itself, but the SELU is outperforming other activation functions only for very deep networks</p></li>
 </ul>
 </section>
 <section id="gaussian-error-linear-unit-gelu">
@@ -1170,7 +1170,7 @@ Natural Language Processing (NLP) that deals, among others, with tasks such as t
 </ul>
 <p><strong>Cons</strong></p>
 <ul class="simple">
-<li><p>More a warning than a con: the Swish function is relevant if it is used in neural networks having a depth greater than 40 layers</p></li>
+<li><p>More a warning than a con: the Swish function is only relevant if it is used in neural networks having a depth greater than 40 layers</p></li>
 </ul>
 </section>
 </section>
@@ -1182,7 +1182,7 @@ Natural Language Processing (NLP) that deals, among others, with tasks such as t
 <p><strong>Vanishing Gradient problem</strong><br />
 As seen with the sigmoid and hyperbolic tangent, certain activation functions converge asymptotically towards the bounded range. Thus, at the extremities (large negative or large positive input values), a large change in the input will cause a very small modification of the output: there is a saturation. As a consequence the gradient will be also very small and the learning gain after one iteration very minimal, tending towards zero. This is to be avoid if we want the algorithm to learn a decent amount at each step.</p>
 <p><strong>Exploding Gradient problem</strong>
-If significant errors accumulate and the neural network update the weights with larger and larger values, the difference between the prediction and observe value will increase further and further, leading to exploding gradients. It’s no more a descent but a failure to converge. Pragmatically, it is possible to see it when weights are so large that they overflow and return a NaN value (meaning Not A Number).</p>
+If significant errors accumulate and the neural network updates the weights with larger and larger values, the difference between the prediction and observed values will increase further and further, leading to exploding gradients. It’s no more a descent but a failure to converge. Pragmatically, it is possible to see it when weights are so large that they overflow and return a NaN value (meaning Not A Number).</p>
 </section>
 <section id="generic-tips">
 <h3>(Generic) tips<a class="headerlink" href="#generic-tips" title="Permalink to this headline">#</a></h3>

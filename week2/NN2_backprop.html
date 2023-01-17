@@ -884,7 +884,7 @@ title="Print to PDF"
 <h2>Before Diving Into The Math<a class="headerlink" href="#before-diving-into-the-math" title="Permalink to this headline">#</a></h2>
 <section id="ingredients">
 <h3>Ingredients<a class="headerlink" href="#ingredients" title="Permalink to this headline">#</a></h3>
-<p>The forward propagation, or forward pass, will fill the network with values for all bias nodes and activation units. That includes the last layer of activation units, so the forward pass provide predictions.</p>
+<p>The forward propagation, or forward pass, will fill the network with values for all bias nodes and activation units. That includes the last layer of activation units, so the forward pass provides predictions.</p>
 <p>We saw the loss function as the mathematical tool to compare the predictions with their associated observed values for a sample (and the cost function aggregates this for all data samples).</p>
 <p>Then we are familiar with the gradient descent procedure, which gives at each iteration the positive or negative amount to correct the weights to eventually get a model that fits to the data.</p>
 <p>For a neural network, there are lots of knobs to tweak! Luckily, an efficient technique called backpropagation is able to compute the gradient of the network’s error for every single model parameter.</p>
@@ -905,13 +905,13 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Definition 64 </span></p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> be functions. For all <span class="math notranslate nohighlight">\(𝑥\)</span> in the domain of <span class="math notranslate nohighlight">\(g\)</span> for which <span class="math notranslate nohighlight">\(g\)</span> is differentiable at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is differentiable at <span class="math notranslate nohighlight">\(g(x)\)</span>, the derivative of the composite function:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-67bb21fb-999e-4798-b7b1-1be50159a7be">
-<span class="eqno">(80)<a class="headerlink" href="#equation-67bb21fb-999e-4798-b7b1-1be50159a7be" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2a38dd07-09be-4f0d-a823-60892f944e5b">
+<span class="eqno">(80)<a class="headerlink" href="#equation-2a38dd07-09be-4f0d-a823-60892f944e5b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h(x) = f(g(x)) 
 \end{equation}\]</div>
 <p>is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9aa49ac4-3985-499f-a8ef-7923ac33250d">
-<span class="eqno">(81)<a class="headerlink" href="#equation-9aa49ac4-3985-499f-a8ef-7923ac33250d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-75882001-780b-4145-88e0-933cf8569cae">
+<span class="eqno">(81)<a class="headerlink" href="#equation-75882001-780b-4145-88e0-933cf8569cae" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}} \;\cdot \;  \frac{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}}{\mathrm{d} \; x} = f'\left(g(x)\right) \;\cdot \; g'(x)
 \end{equation}\]</div>
 </section>
@@ -927,8 +927,8 @@ h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maro
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
 <p>What would be the chain rule for three functions?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fc296b40-c9b1-4a68-932b-d9e60468d3bb">
-<span class="eqno">(82)<a class="headerlink" href="#equation-fc296b40-c9b1-4a68-932b-d9e60468d3bb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-af037e4d-1af1-4cc3-8835-00c1ece61cc6">
+<span class="eqno">(82)<a class="headerlink" href="#equation-af037e4d-1af1-4cc3-8835-00c1ece61cc6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 k(x) = h(f(g(x))) 
 \end{equation}\]</div>
 </div>
@@ -1016,12 +1016,12 @@ Here we want to know how to vary the weights and biases so that the cost gets lo
 <p>Now we can rewrite the output from an activation unit <span class="math notranslate nohighlight">\(a^{\ell}\)</span> as:</p>
 <div class="math notranslate nohighlight" id="equation-afunczeq">
 <span class="eqno">(88)<a class="headerlink" href="#equation-afunczeq" title="Permalink to this equation">#</a></span>\[a^\ell(W, b) = f\left( z^\ell(W, b) \right)\]</div>
-<p>The superscripts for the weights and biases are not written inside the parenthesis for lighter equations. And it is also implied that <span class="math notranslate nohighlight">\(W\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are collections of matrices and vectors respectively.</p>
+<p>The superscripts for the weights and biases are not written inside the parentheses for simpler equations. And it is also implied that <span class="math notranslate nohighlight">\(W\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are collections of matrices and vectors respectively.</p>
 <p>We will denote the loss function through a general form as <span class="math notranslate nohighlight">\(L\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-lossfunceq">
 <span class="eqno">(89)<a class="headerlink" href="#equation-lossfunceq" title="Permalink to this equation">#</a></span>\[L(\hat{y}^{(i)}, y^{(i)}) \]</div>
 <p>It is computed for each sample instance <span class="math notranslate nohighlight">\(\left\{ \boldsymbol{x^{(i)}}, y^{(i)} \right\}\)</span>, with <span class="math notranslate nohighlight">\(\boldsymbol{x^{(i)}}\)</span> being one row of input features and <span class="math notranslate nohighlight">\(y\)</span> the associated target.</p>
-<p>The cost is the sum of the losses over all data instances <span class="math notranslate nohighlight">\(m\)</span>. To lighten the equations of the following section, the sum will be written without instance indices as superscript (already used for the layer number); it is implied that it is the sum over all data instances.</p>
+<p>The cost is the sum of the losses over all data instances <span class="math notranslate nohighlight">\(m\)</span>. To make the equations of the following section more readable, the sum will be written without instance indices as superscript (already used for the layer number); it is implied that it is the sum over all data instances.</p>
 <div class="math notranslate nohighlight" id="equation-costfunceq">
 <span class="eqno">(90)<a class="headerlink" href="#equation-costfunceq" title="Permalink to this equation">#</a></span>\[\text{Cost} = \sum_{i=1}^m L(\hat{y}^{(i)}, y^{(i)}) = \textstyle \sum L(\boldsymbol{\hat{y}}, \boldsymbol{y})\]</div>
 <p><strong>How can we express the final output <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}}\)</span>?</strong><br />
@@ -1149,7 +1149,7 @@ This is left as exercise for training.</p>
 </section>
 <section id="weights-and-biases-update">
 <h3>Weights and biases update<a class="headerlink" href="#weights-and-biases-update" title="Permalink to this headline">#</a></h3>
-<p>After backpropagating, each weight an bias in the network are ajusted in proportion to how much they contribute to overall error.</p>
+<p>After backpropagating, each weight and bias in the network is adjusted in proportion to how much it contributes to overall error.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>The equations are different as in the section <a class="reference internal" href="#nn2-backprop-mainstep"><span class="std std-ref">Main Steps</span></a> as we keep here the ‘lite’ notations introduced above. The indices referring to the row and column of each weight/bias are implied for smoother reading. But remember that <span class="math notranslate nohighlight">\(W\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are matrices and vectors respectively.</p>
@@ -1195,23 +1195,23 @@ Training data set <span class="math notranslate nohighlight">\(X\)</span> of <sp
 <p><strong>Start</strong></p>
 <p><strong>Step 0:</strong> Weight initialization</p>
 <p><strong>Step 1:</strong> Forward propagation on subset or all sample instances:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3672fe52-d5f4-40df-a72f-0469e692fd71">
-<span class="eqno">(106)<a class="headerlink" href="#equation-3672fe52-d5f4-40df-a72f-0469e692fd71" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ad7af36b-4707-495c-a3ca-8bb8c7db59f3">
+<span class="eqno">(106)<a class="headerlink" href="#equation-ad7af36b-4707-495c-a3ca-8bb8c7db59f3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat{y} = a^L(W, b) = f(z^L(W,b))
 \end{equation}\]</div>
 <p><strong>Step 2:</strong> Computation of loss function, cost function and overall error:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-30d22e68-b746-4e69-a467-d4dda780b9ec">
-<span class="eqno">(107)<a class="headerlink" href="#equation-30d22e68-b746-4e69-a467-d4dda780b9ec" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9209ba65-71f4-4e35-945b-4aacf36bb291">
+<span class="eqno">(107)<a class="headerlink" href="#equation-9209ba65-71f4-4e35-945b-4aacf36bb291" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Cost} = \textstyle \sum L(f(z^L(W,b))) \qquad \delta^L =\; L^{\prime}(a^L(W,b)) \cdot f^{\prime}(z^L(W, b)) 
 \end{equation}\]</div>
 <p><strong>Step 3:</strong> Computation of all activation unit errors:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b0c605eb-5543-4c32-b4eb-54c9829790ed">
-<span class="eqno">(108)<a class="headerlink" href="#equation-b0c605eb-5543-4c32-b4eb-54c9829790ed" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-67274cd3-9588-4718-97cc-57906335f21e">
+<span class="eqno">(108)<a class="headerlink" href="#equation-67274cd3-9588-4718-97cc-57906335f21e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \delta^\ell = \; \delta^{\ell+1} \;\cdot\; W^{\ell+1} \;\cdot\; f'(z^\ell(W, b))
 \end{equation}\]</div>
 <p>… and derivatives:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eabd51a3-5721-4dc2-85d5-c4c6ad2b7a03">
-<span class="eqno">(109)<a class="headerlink" href="#equation-eabd51a3-5721-4dc2-85d5-c4c6ad2b7a03" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-fb07bfcd-fb93-45f9-b1c3-f90af1f8f28a">
+<span class="eqno">(109)<a class="headerlink" href="#equation-fb07bfcd-fb93-45f9-b1c3-f90af1f8f28a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial \text {Cost}}{\partial W^{\ell}} = \; \delta^{\ell} \;\cdot\; a^{\ell-1}  \qquad \qquad \qquad \frac{\partial \text {Cost}}{\partial b^{\ell}} = \; \delta^{\ell}
 \end{equation}\]</div>
 <p><strong>Step 4:</strong> Gradient Descent steps to update weights &amp; biases:</p>

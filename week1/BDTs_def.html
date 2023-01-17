@@ -876,8 +876,8 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p>The <strong>Gini’s diversity index</strong> is a measure of a node’s impurity.</p>
 <p>It is defined for each tree node <span class="math notranslate nohighlight">\(i\)</span> as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e991ce22-3ea8-4133-bad1-230c383a372e">
-<span class="eqno">(31)<a class="headerlink" href="#equation-e991ce22-3ea8-4133-bad1-230c383a372e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-dc753452-b695-45c7-95e7-ac23d49151e3">
+<span class="eqno">(31)<a class="headerlink" href="#equation-dc753452-b695-45c7-95e7-ac23d49151e3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 G_i = 1 - \sum_{k=1}^{N_\text{classes}} \left( \frac{N_{k, i}}{ N_i} \right)^2 
 \end{equation}\]</div>
 <p>with <span class="math notranslate nohighlight">\(N_{k, i}\)</span> the number of data samples of class <span class="math notranslate nohighlight">\(k\)</span> in node <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(N_{i}\)</span> the total number of data samples in node <span class="math notranslate nohighlight">\(i\)</span>.</p>
@@ -922,8 +922,8 @@ A collection on decision boundaries segmenting the <span class="math notranslate
 <p><strong>1 Threshold computation</strong>:
 For each feature <span class="math notranslate nohighlight">\(k\)</span>, finds the threshold value <span class="math notranslate nohighlight">\(t_k\)</span> maximizing purity of the two resulting subsets either lower (left) or higher (right) than the threshold <span class="math notranslate nohighlight">\(t_k\)</span>.
 The cost function is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2450f672-bf5c-4947-a6f5-b7ca9fb7c389">
-<span class="eqno">(32)<a class="headerlink" href="#equation-2450f672-bf5c-4947-a6f5-b7ca9fb7c389" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-12d8cd22-c38c-4059-ab33-3c08fe3bbccb">
+<span class="eqno">(32)<a class="headerlink" href="#equation-12d8cd22-c38c-4059-ab33-3c08fe3bbccb" title="Permalink to this equation">#</a></span>\[\begin{equation}
 J(k, t_k) = \frac{n_\text{left}}{n_\text{node}} G_\text{left} + \frac{n_\text{right}}{n_\text{node}} G_\text{right}
 \end{equation}\]</div>
 <p>The purity is weighted by the subset sizes. The pair (<span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(t_k\)</span>) producing the purest subsets is set for the node.</p>

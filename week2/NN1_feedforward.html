@@ -732,8 +732,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#computation-of-the-second-hidder-layer">
-     Computation of the second hidder layer
+    <a class="reference internal nav-link" href="#computation-of-the-second-hidden-layer">
+     Computation of the second hidden layer
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -793,8 +793,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#computation-of-the-second-hidder-layer">
-     Computation of the second hidder layer
+    <a class="reference internal nav-link" href="#computation-of-the-second-hidden-layer">
+     Computation of the second hidden layer
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -841,7 +841,7 @@ title="Print to PDF"
 </section>
 <section id="notations">
 <h2>Notations<a class="headerlink" href="#notations" title="Permalink to this headline">#</a></h2>
-<p>Let’s say we have the following network with <span class="math notranslate nohighlight">\(x_n\)</span> input features, one first hidden layer with <span class="math notranslate nohighlight">\(a_q\)</span> activation units and a second one with <span class="math notranslate nohighlight">\(a_r\)</span> activation units. For simplicity, we will choose an output layer with only one node:</p>
+<p>Let’s say we have the following network with <span class="math notranslate nohighlight">\(x_n\)</span> input features, one first hidden layer with <span class="math notranslate nohighlight">\(q\)</span> activation units and a second one with <span class="math notranslate nohighlight">\(r\)</span> activation units. For simplicity, we will choose an output layer with only one node:</p>
 <figure class="align-default" id="lec05-4-nn-notations">
 <a class="reference internal image-reference" href="../_images/lec05_4_nn_notations.png"><img alt="../_images/lec05_4_nn_notations.png" src="../_images/lec05_4_nn_notations.png" style="width: 100%;" /></a>
 <figcaption>
@@ -903,15 +903,15 @@ a^{(1)}_q &amp;= f\left(\; w_{1,q}^{(1)} \; x_1 \;+\; w_{2,q}^{(1)} \; x_2 \;+\;
 <span class="eqno">(59)<a class="headerlink" href="#equation-firstlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(1)}} = f\left( \; \boldsymbol{x} \;W^{(1)} \;+\; \boldsymbol{b}^{(1)} \;\right)\]</div>
 <p>Much lighter.</p>
 </section>
-<section id="computation-of-the-second-hidder-layer">
-<h3>Computation of the second hidder layer<a class="headerlink" href="#computation-of-the-second-hidder-layer" title="Permalink to this headline">#</a></h3>
+<section id="computation-of-the-second-hidden-layer">
+<h3>Computation of the second hidden layer<a class="headerlink" href="#computation-of-the-second-hidden-layer" title="Permalink to this headline">#</a></h3>
 <p>Let’s do the same calculation for the second layer of activation units. Instead of the dataset vector <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>, we will have <span class="math notranslate nohighlight">\(\boldsymbol{a^{(1)}}\)</span> as input:</p>
 <div class="math notranslate nohighlight" id="equation-secondlayermatrixexpandedeq">
 <span class="eqno">(60)<a class="headerlink" href="#equation-secondlayermatrixexpandedeq" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{a^{(2)}} = f\left[ \; ( a^{(1)}_1, a^{(1)}_2, \cdots, a^{(1)}_q) 
 \begin{pmatrix}w_{1,1}^{(2)} &amp; w_{1,2}^{(2)} &amp; \cdots &amp; w_{1,r}^{(2)} \\[2ex]
 w_{2,1}^{(2)} &amp; w_{2,2}^{(2)} &amp; \cdots &amp; w_{2,r}^{(2)} \\[1ex]
 \vdots  &amp; \vdots &amp; \ddots   &amp; \vdots \\[1ex]
-w_{q,1}^{(1)} &amp; w_{q,2}^{(1)} &amp;  \cdots &amp; w_{q,r}^{(1)} \\
+w_{q,1}^{(2)} &amp; w_{q,2}^{(2)} &amp;  \cdots &amp; w_{q,r}^{(2)} \\
 \end{pmatrix} \;+\; ( b_1^{(2)}, b_2^{(2)}, \cdots , b_r^{(2)}) \; \right]\end{split}\]</div>
 <p>And the elegant, light version:</p>
 <div class="math notranslate nohighlight" id="equation-secondlayermatrixeq">

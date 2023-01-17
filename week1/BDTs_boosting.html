@@ -887,28 +887,28 @@ w^{(i)} = \frac{1}{m}
 <p><strong>Start</strong><br />
 <strong>For</strong> each predictor <span class="math notranslate nohighlight">\(j = 1 , \cdots , N^\text{pred}\)</span><br />
 a. Train on all samples and compute the weighted error rate <span class="math notranslate nohighlight">\(r_j\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-7a54653d-b6f5-4986-9e06-eede7e0a8a84">
-<span class="eqno">(33)<a class="headerlink" href="#equation-7a54653d-b6f5-4986-9e06-eede7e0a8a84" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-333800d7-929f-405e-9f9e-8f408e772ac9">
+<span class="eqno">(33)<a class="headerlink" href="#equation-333800d7-929f-405e-9f9e-8f408e772ac9" title="Permalink to this equation">#</a></span>\[\begin{equation}
    r_j = \frac{\sum_{i = 1}^m w^{(i)} [ \hat{y}_j^{(i)} \neq y^{(i)} ]   }{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p>b. Give the predictor <span class="math notranslate nohighlight">\(j\)</span> a weight <span class="math notranslate nohighlight">\(W_j\)</span> measuring accuracy</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bd5e691b-214c-490a-b912-b19aba14dc02">
-<span class="eqno">(34)<a class="headerlink" href="#equation-bd5e691b-214c-490a-b912-b19aba14dc02" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-826c81b2-1fe2-4be2-9afe-10381d66627d">
+<span class="eqno">(34)<a class="headerlink" href="#equation-826c81b2-1fe2-4be2-9afe-10381d66627d" title="Permalink to this equation">#</a></span>\[\begin{equation}
    W_j = \alpha \log \frac{1 - r_j}{r_j} 
    \end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(W_j\)</span> points to zero if the predictor is bad, or a high number if the predictor is good.<br />
 <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate.</p>
 <p>c. Update the weights of all data samples:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e4d61488-688d-42de-b1a0-cb7624d778ff">
-<span class="eqno">(35)<a class="headerlink" href="#equation-e4d61488-688d-42de-b1a0-cb7624d778ff" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5154443c-99ec-4952-bd08-86e2c9601036">
+<span class="eqno">(35)<a class="headerlink" href="#equation-5154443c-99ec-4952-bd08-86e2c9601036" title="Permalink to this equation">#</a></span>\[\begin{equation}
    w^{(i)} = \left\{\begin{matrix}
    w^{(i)} \;\;\;\;  &amp;\text{if} \;\;\;\; \hat{y}_j^{(i)} = y_j^{(i)} \\[2ex]
-   \;\;w^{(i)} \exp (W_j)  \;\;\;\;  &amp;\text{if} \;\;\;\; \hat{y}_j^{(i)} \neq y_j^{(i)} \\
+   \;\;w^{(i)} \exp (-W_j)  \;\;\;\;  &amp;\text{if} \;\;\;\; \hat{y}_j^{(i)} \neq y_j^{(i)} \\
    \end{matrix}\right.
    \end{equation}\]</div>
 <p>d. Normalize the weights</p>
-<div class="amsmath math notranslate nohighlight" id="equation-297937d6-0f66-4c69-b88f-da01936a1248">
-<span class="eqno">(36)<a class="headerlink" href="#equation-297937d6-0f66-4c69-b88f-da01936a1248" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e3561dde-371f-4d1d-9fa8-eab736082514">
+<span class="eqno">(36)<a class="headerlink" href="#equation-e3561dde-371f-4d1d-9fa8-eab736082514" title="Permalink to this equation">#</a></span>\[\begin{equation}
     w^{(i)} \rightarrow \frac{w^{(i)}}{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p><strong>Exit conditions</strong></p>
@@ -931,7 +931,7 @@ Base classifiers are decision stumps (one-level tree).<br />
 <p class="admonition-title">Note</p>
 <p>As the next predictor needs input from the previous one, the boosting is not an algorithm that can be parallelized on several cores but demands to be run in series.</p>
 </div>
-<p>How is the algorithm making predictions? In other words, how are all the decision boundaries (cuts) combined into the final boosted learner?</p>
+<p>How does the algorithm make predictions? In other words, how are all the decision boundaries (cuts) combined into the final boosted learner?</p>
 <p>The combined prediction is the class obtaining a weighted majority-vote, where votes are weighted with the predictor weights <span class="math notranslate nohighlight">\(W_j\)</span>.</p>
 <div class="math notranslate nohighlight" id="equation-week1-bdts-boosting-0">
 <span class="eqno">(37)<a class="headerlink" href="#equation-week1-bdts-boosting-0" title="Permalink to this equation">#</a></span>\[\hat{y}(x^\text{new}) = \arg\max_k \; \; \sum_{j = 1}^{N^\text{pred}} W_j \;[\; \hat{y}_j(x^\text{new}) = k \;]\]</div>

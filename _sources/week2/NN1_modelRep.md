@@ -77,7 +77,7 @@ We haven't seen the activation function. Here is its definition:
  
  An __Activation Function__, also called Transfer Function, is a mathematical operation performed by an artificial neuron on the weighted summed of input nodes (plus the bias node).  
 
-As the name indicates, it decides whether the neuron's input to the network is important or not: returning a non-zero values means the __neuron is "activated"__, or "fired."  
+As the name indicates, it decides whether the neuron's input to the network is important or not: returning a non-zero value means the __neuron is "activated"__, or "fired."  
 
 The purpose of the activation function is to introduce __non-linearity__ into the output of a neural network.
 ````
@@ -193,11 +193,11 @@ $w_2 = 1$
 ## Connecting artificial neurons 
 
 ### Layers
-Now that we saw the artificial neuron, let's see how they can model complex data patterns while connecting them. Alike their organic counterparts where neurons are organized in consecutive layers, artificial neural networks are arranged in layers, where neurons in each layer receive input from the previous layer and pass their output to the subsequent layer.
+Now that we saw the artificial neuron, let's see how they can model complex data patterns while connecting them. Like their organic counterparts where neurons are organized in consecutive layers, artificial neural networks are arranged in layers, where neurons in each layer receive input from the previous layer and pass their output to the subsequent layer.
 
 ````{prf:definition}
 :label: nnlayerdef
-An artificial neural network is composed:
+An artificial neural network is composed of:
 * __input layer__: one entry layer of input nodes, i.e. input features from the dataset
 * __output layer__: one final layer of output nodes
 * __hidden layer(s)__: one of more layers of nodes called "activation units" 

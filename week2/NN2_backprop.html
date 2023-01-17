@@ -905,13 +905,13 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Definition 64 </span></p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> be functions. For all <span class="math notranslate nohighlight">\(𝑥\)</span> in the domain of <span class="math notranslate nohighlight">\(g\)</span> for which <span class="math notranslate nohighlight">\(g\)</span> is differentiable at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is differentiable at <span class="math notranslate nohighlight">\(g(x)\)</span>, the derivative of the composite function:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2a38dd07-09be-4f0d-a823-60892f944e5b">
-<span class="eqno">(80)<a class="headerlink" href="#equation-2a38dd07-09be-4f0d-a823-60892f944e5b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bf7efb50-5442-49b5-87f2-cd55963185ee">
+<span class="eqno">(80)<a class="headerlink" href="#equation-bf7efb50-5442-49b5-87f2-cd55963185ee" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h(x) = f(g(x)) 
 \end{equation}\]</div>
 <p>is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-75882001-780b-4145-88e0-933cf8569cae">
-<span class="eqno">(81)<a class="headerlink" href="#equation-75882001-780b-4145-88e0-933cf8569cae" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bbd35a5c-a03b-4092-a730-253ced3dd8a0">
+<span class="eqno">(81)<a class="headerlink" href="#equation-bbd35a5c-a03b-4092-a730-253ced3dd8a0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}} \;\cdot \;  \frac{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}}{\mathrm{d} \; x} = f'\left(g(x)\right) \;\cdot \; g'(x)
 \end{equation}\]</div>
 </section>
@@ -927,8 +927,8 @@ h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maro
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
 <p>What would be the chain rule for three functions?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-af037e4d-1af1-4cc3-8835-00c1ece61cc6">
-<span class="eqno">(82)<a class="headerlink" href="#equation-af037e4d-1af1-4cc3-8835-00c1ece61cc6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-07b85b3e-7384-423d-b3b5-9a5c9d70027e">
+<span class="eqno">(82)<a class="headerlink" href="#equation-07b85b3e-7384-423d-b3b5-9a5c9d70027e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 k(x) = h(f(g(x))) 
 \end{equation}\]</div>
 </div>
@@ -1109,15 +1109,15 @@ Let’s now go backward and see how it simplifies itself layer after layer.</p>
 <div class="math notranslate nohighlight" id="equation-deltasandpartialcostseq">
 <span class="eqno">(101)<a class="headerlink" href="#equation-deltasandpartialcostseq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
 \delta^L &amp;=\; L^{\prime}(a^L) \cdot f^{\prime}(z^L) 
-&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial W^L} &amp;=&amp; \quad \delta^L \;\cdot\; a^{L-1}\\[2ex]
+&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial W^L} &amp;=&amp;  \quad \sum \quad\delta^L \;\cdot\; a^{L-1}\\[2ex]
 \delta^{L-1} &amp;= \; \delta^L     \cdot\;  W^L \cdot\; f'(z^{L-1}) 
-&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial W^{L-1}} &amp;=&amp; \quad \delta^{L-1} \;\cdot\; a^{L-2}\\[2ex]
+&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial W^{L-1}} &amp;=&amp; \quad \sum \quad\delta^{L-1} \;\cdot\; a^{L-2}\\[2ex]
 \delta^{L-2} &amp;= \; \delta^{L-1} \cdot\; W^{L-1} \;\cdot\; f'(z^{L-2}) 
-&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial W^{L-2}} &amp;=&amp; \quad \delta^{L-2} \;\cdot\; a^{L-3}\\
+&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial W^{L-2}} &amp;=&amp; \quad \sum \quad\delta^{L-2} \;\cdot\; a^{L-3}\\
 \end{align*} \end{split}\]</div>
 <p>This is recursive because errors from the current layer are used to evaluate error signals in a previous layer. We can write the recursive formula for any partial derivative in layer <span class="math notranslate nohighlight">\(\ell\)</span> as:</p>
 <div class="math notranslate nohighlight" id="equation-partialdevrecueq">
-<span class="eqno">(102)<a class="headerlink" href="#equation-partialdevrecueq" title="Permalink to this equation">#</a></span>\[\frac{\partial \text {Cost}}{\partial W^{\ell}} = \;\; \delta^{\ell} \;\cdot\; a^{\ell-1}\]</div>
+<span class="eqno">(102)<a class="headerlink" href="#equation-partialdevrecueq" title="Permalink to this equation">#</a></span>\[\frac{\partial \text {Cost}}{\partial W^{\ell}} = \;\; \sum \quad\delta^{\ell} \;\cdot\; a^{\ell-1}\]</div>
 <p><strong>What about the biases?</strong><br />
 This is left as exercise for training.</p>
 <div class="seealso admonition">
@@ -1136,14 +1136,14 @@ This is left as exercise for training.</p>
 <div class="math notranslate nohighlight" id="equation-biaseq">
 <span class="eqno">(103)<a class="headerlink" href="#equation-biaseq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
 \delta^L &amp;=\; L^{\prime}(a^L) \cdot f^{\prime}(z^L) 
-&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^L} &amp;=&amp; \quad \delta^L  \\[1ex]
+&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^L} &amp;=&amp; \quad \sum \quad\delta^L  \\[1ex]
 \delta^{L-1} &amp;= \; \delta^L     \cdot\;  W^L \cdot\; f'(z^{L-1}) 
-&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^{L-1}} &amp;=&amp; \quad \delta^{L-1}  \\[1ex]
+&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^{L-1}} &amp;=&amp; \quad \sum \quad\delta^{L-1}  \\[1ex]
 \delta^{L-2} &amp;= \; \delta^{L-1} \cdot\; W^{L-1} \;\cdot\; f'(z^{L-2}) 
-&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^{L-2}} &amp;=&amp; \quad \delta^{L-2} \\[1ex]
+&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^{L-2}} &amp;=&amp; \quad \sum \quad\delta^{L-2} \\[1ex]
 &amp; \quad\cdots &amp; &amp; \cdots &amp; \\[1ex]
 \delta^{1} &amp;= \; \delta^{2} \cdot\; W^{2} \;\cdot\; f'(z^{1}) 
-&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^{1}} &amp;=&amp; \quad \delta^{1} \\[1ex]
+&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^{1}} &amp;=&amp; \quad \sum \quad\delta^{1} \\[1ex]
 \end{align*} \end{split}\]</div>
 </div>
 </section>
@@ -1195,24 +1195,24 @@ Training data set <span class="math notranslate nohighlight">\(X\)</span> of <sp
 <p><strong>Start</strong></p>
 <p><strong>Step 0:</strong> Weight initialization</p>
 <p><strong>Step 1:</strong> Forward propagation on subset or all sample instances:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ad7af36b-4707-495c-a3ca-8bb8c7db59f3">
-<span class="eqno">(106)<a class="headerlink" href="#equation-ad7af36b-4707-495c-a3ca-8bb8c7db59f3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9b20465a-ba6b-4273-9970-8f2a7d489dcc">
+<span class="eqno">(106)<a class="headerlink" href="#equation-9b20465a-ba6b-4273-9970-8f2a7d489dcc" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat{y} = a^L(W, b) = f(z^L(W,b))
 \end{equation}\]</div>
 <p><strong>Step 2:</strong> Computation of loss function, cost function and overall error:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9209ba65-71f4-4e35-945b-4aacf36bb291">
-<span class="eqno">(107)<a class="headerlink" href="#equation-9209ba65-71f4-4e35-945b-4aacf36bb291" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-925d688c-71bd-40f3-85eb-826398ab4513">
+<span class="eqno">(107)<a class="headerlink" href="#equation-925d688c-71bd-40f3-85eb-826398ab4513" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Cost} = \textstyle \sum L(f(z^L(W,b))) \qquad \delta^L =\; L^{\prime}(a^L(W,b)) \cdot f^{\prime}(z^L(W, b)) 
 \end{equation}\]</div>
 <p><strong>Step 3:</strong> Computation of all activation unit errors:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-67274cd3-9588-4718-97cc-57906335f21e">
-<span class="eqno">(108)<a class="headerlink" href="#equation-67274cd3-9588-4718-97cc-57906335f21e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-be4f68a9-9694-496e-a3c9-d452213bbccd">
+<span class="eqno">(108)<a class="headerlink" href="#equation-be4f68a9-9694-496e-a3c9-d452213bbccd" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \delta^\ell = \; \delta^{\ell+1} \;\cdot\; W^{\ell+1} \;\cdot\; f'(z^\ell(W, b))
 \end{equation}\]</div>
 <p>… and derivatives:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fb07bfcd-fb93-45f9-b1c3-f90af1f8f28a">
-<span class="eqno">(109)<a class="headerlink" href="#equation-fb07bfcd-fb93-45f9-b1c3-f90af1f8f28a" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\frac{\partial \text {Cost}}{\partial W^{\ell}} = \; \delta^{\ell} \;\cdot\; a^{\ell-1}  \qquad \qquad \qquad \frac{\partial \text {Cost}}{\partial b^{\ell}} = \; \delta^{\ell}
+<div class="amsmath math notranslate nohighlight" id="equation-ccc7b519-68a0-455c-af4c-23425d9378c3">
+<span class="eqno">(109)<a class="headerlink" href="#equation-ccc7b519-68a0-455c-af4c-23425d9378c3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\frac{\partial \text {Cost}}{\partial W^{\ell}} = \; \sum \; \delta^{\ell} \;\cdot\; a^{\ell-1}  \qquad \qquad \qquad \frac{\partial \text {Cost}}{\partial b^{\ell}} = \; \sum \; \delta^{\ell}
 \end{equation}\]</div>
 <p><strong>Step 4:</strong> Gradient Descent steps to update weights &amp; biases:</p>
 <div class="math notranslate nohighlight">

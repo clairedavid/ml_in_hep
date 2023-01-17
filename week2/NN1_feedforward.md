@@ -104,7 +104,7 @@ This can be written in a compact way:
 ```
 Much lighter. 
 
-### Computation of the second hidder layer 
+### Computation of the second hidden layer 
 Let's do the same calculation for the second layer of activation units. Instead of the dataset vector $\boldsymbol{x}$, we will have $\boldsymbol{a^{(1)}}$ as input:
 ```{math}
 :label: secondlayermatrixexpandedeq
@@ -112,7 +112,7 @@ Let's do the same calculation for the second layer of activation units. Instead 
 \begin{pmatrix}w_{1,1}^{(2)} & w_{1,2}^{(2)} & \cdots & w_{1,r}^{(2)} \\[2ex]
 w_{2,1}^{(2)} & w_{2,2}^{(2)} & \cdots & w_{2,r}^{(2)} \\[1ex]
 \vdots  & \vdots & \ddots   & \vdots \\[1ex]
-w_{q,1}^{(1)} & w_{q,2}^{(1)} &  \cdots & w_{q,r}^{(1)} \\
+w_{q,1}^{(2)} & w_{q,2}^{(2)} &  \cdots & w_{q,r}^{(2)} \\
 \end{pmatrix} \;+\; ( b_1^{(2)}, b_2^{(2)}, \cdots , b_r^{(2)}) \; \right]
 ```
 

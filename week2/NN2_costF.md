@@ -125,7 +125,7 @@ This is the general equation for $K$ classes.
 The categorial cross-entropy reduces to the binary equation {eq}`lossbinceeq` for $n =2$.
 ```{math}
 :label: losscateq
-L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \sum_{k=1}^K \; y^{(i)}_k \log \left( \hat{y}^{(i)} \right) 
+L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)=  - \sum_{k=1}^K \; y^{(i)}_k \log \left( \hat{y}^{(i)} \right) 
 ```
 
 And the cost function
@@ -140,7 +140,7 @@ In Lecture 3 section {ref}`class:algs:reg` we saw two techniques adding an extra
 
 ```{math}
 :label: 
-J \left(\;\hat{y}_k, y_k\;\right) = - \frac{1}{m} \sum_{i=1}^m  L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right) + \frac{\lambda}{2m} \sum_{\ell=1}^L \sum_{q=1}^{n^{L-1}} \sum_{r=1}^{n^{L}} \left( W^{(\ell)}_{q, r} \; \right)^2
+J \left(\;\hat{y}_k, y_k\;\right) = \frac{1}{m} \sum_{i=1}^m  L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right) + \frac{\lambda}{2m} \sum_{\ell=1}^L \sum_{q=1}^{n^{L-1}} \sum_{r=1}^{n^{L}} \left( W^{(\ell)}_{q, r} \; \right)^2
 ```
 
 The triple sum is daunting but let's decompose it: it's the sum of all matrices $W^{(\ell)}$ of the network. For each of them, the weights are squared and added together (those are the two last sums). The equation above corresponds to the Lasso's regularization (introduced in Lecture 3 subsection {ref}`class:algs:reg:lasso`). The Ridge regularization would sum only the weights without squaring them.

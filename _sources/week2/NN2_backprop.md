@@ -432,17 +432,17 @@ __Exit conditions:__
 ````
 
 ## Complete equations and dimensions
-Through this lecture, the indices have been omitted for more clarity. In the following, we will be more rigourous and add the indices, as well as the correct operation symbols. There are indeed some matrix and element-wise multiplications in the formulae. To picture things even better, the vectors and matrices will be represented with schematics (the author of this course has a long-time trouble with index notations and prefers a very visual, Tetris-like representation).
+Through this lecture, the indices have been omitted for more clarity. In the following, we will be more rigourous and add the indices, as well as the correct operation symbols. There are indeed some matrix and element-wise multiplications in the formulae.
 
 The activation nodes $\boldsymbol{a}$ are row vectors and there is a different value for each sample $x^{(i)}$, with $i$ ranging from 1 to $m$ (size of the training dataset). See it like a list of $m$ row vectors. We will stick to the convention in the first lectures of writing the data sample index $i$ as superscript. We will put the information of the layer also in the superscript. In the subscript, we will indicate the shape of the element (vector or matrix) in the form of $n_\text{row} \times n_\text{column}$. Thus, for the layer $\ell$ with $n$ activation units, our notation becomes:
 \begin{equation}
 \boldsymbol{a}^\ell \longrightarrow  \boldsymbol{a}^{(i,\ell)}_{1 \times n_\ell} 
 \end{equation}
-You can directly 'see' the form of $\boldsymbol{a}^{(i,\ell)}_{1 \times n_L}$: a row vector of $n_\ell$ elements.
+You can directly 'see' the form of $\boldsymbol{a}^{(i,\ell)}_{1 \times n_\ell}$: a row vector of $n_\ell$ elements.
 
 The $\boldsymbol{z}$ row vectors (the weighted sum of a node before applying the activation function $f$) are of the same shape:
 \begin{equation}
-\boldsymbol{z}^\ell \longrightarrow \boldsymbol{z}^{(i,L)}_{1 \times n_\ell} 
+\boldsymbol{z}^\ell \longrightarrow \boldsymbol{z}^{(i,\ell)}_{1 \times n_\ell} 
 \end{equation}
 
 Now the weight matrices and biases. Unlike the node vectors above, weight matrices and the bias vectors are unique to the neural network. The same weights and bias values are applied to all the samples. The weight matrix at layer $\ell$ connecting the $n_{\ell-1}$ nodes of the previous layer to the $n_{\ell}$ nodes of the current layer $\ell$ will be of shape:
@@ -475,7 +475,7 @@ We can rewrite the equations {eq}`deltasandpartialcostseq` using all the informa
 Dimension-wise, the partial derivatives of the cost should be of the same size of the associated weight matrix (as it will be substracted from the weight matrix at the step where weights are updated). So it makes sense in the end to have a matrix created: the product of a column vector (recall the derivative turns row into column vectors) times a row vector. 
 
 
-To make things more visual, see below the Tetris-like representation:
+To make things more visual, see below schematics illustrating the shape of each term (the author of this course has a long-time trouble with index notations and prefers a very visual, Tetris-like representation). The errors, unactivated ($z$) activated nodes are in yellow. They receive a different value per data samples. The weight matrices are in green: 
 ```{figure} ../images/lec07_3_tetrisbackprop.png
 ---
   name: lec07_3_tetrisbackprop

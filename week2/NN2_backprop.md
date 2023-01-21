@@ -475,7 +475,7 @@ We can rewrite the equations {eq}`deltasandpartialcostseq` using all the informa
 Dimension-wise, the partial derivatives of the cost should be of the same size of the associated weight matrix (as it will be substracted from the weight matrix at the step where weights are updated). So it makes sense in the end to have a matrix created: the product of a column vector (recall the derivative turns row into column vectors) times a row vector. 
 
 
-To make things more visual, see below schematics illustrating the shape of each term (the author of this course has a long-time trouble with index notations and prefers a very visual, Tetris-like representation):
+To make things more visual, see below schematics illustrating the shape of each term (the author of this course has a long-time trouble with index notations and prefers a very visual, Tetris-like representation). The errors, unactivated ($z$) activated nodes are in yellow. They receive a different value per data samples. The weight matrices are in green: 
 ```{figure} ../images/lec07_3_tetrisbackprop.png
 ---
   name: lec07_3_tetrisbackprop

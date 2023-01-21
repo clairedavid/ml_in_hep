@@ -204,7 +204,7 @@ So the cost function is obtained using Equations {eq}`costfunceq` and {eq}`ypred
 \text{Cost} = \textstyle \sum L(f(z^L(W,b)))
 ```
 ***  
-Let's joyfully take the derivatives of that sandwich of function! Now you get the chain rule refresher. The general expression for the partial derivative with respect to the weights $W$ would be:
+Let's joyfully take the derivatives of that sandwich of functions! Now you get the chain rule refresher. The general expression for the partial derivative with respect to the weights $W$ would be:
 ```{math}
 :label: dCostchaineq
 \frac{\partial \text { Cost }}{\partial W}= \sum \; \frac{\partial L(f(z(W, b)))}{\partial f(z(W, b))} \cdot \; \frac{\partial f(z(W, b))}{\partial z(W, b)}  \cdot \; \frac{\partial z(W, b)}{\partial W}
@@ -330,14 +330,14 @@ Thus:
 :label: biaseq
 \begin{align*}
 \delta^L &=\; L^{\prime}(a^L) \cdot f^{\prime}(z^L) 
-& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial b^L} &=& \quad \sum \quad\delta^L  \\[1ex]
+& \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial b^L} &=& \quad \sum \quad\delta^L  \\[1ex]
 \delta^{L-1} &= \; \delta^L     \cdot\;  W^L \cdot\; f'(z^{L-1}) 
-& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial b^{L-1}} &=& \quad \sum \quad\delta^{L-1}  \\[1ex]
+& \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial b^{L-1}} &=& \quad \sum \quad\delta^{L-1}  \\[1ex]
 \delta^{L-2} &= \; \delta^{L-1} \cdot\; W^{L-1} \;\cdot\; f'(z^{L-2}) 
-& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial b^{L-2}} &=& \quad \sum \quad\delta^{L-2} \\[1ex]
+& \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial b^{L-2}} &=& \quad \sum \quad\delta^{L-2} \\[1ex]
 & \quad\cdots & & \cdots & \\[1ex]
 \delta^{1} &= \; \delta^{2} \cdot\; W^{2} \;\cdot\; f'(z^{1}) 
-& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial b^{1}} &=& \quad \sum \quad\delta^{1} \\[1ex]
+& \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial b^{1}} &=& \quad \sum \quad\delta^{1} \\[1ex]
 \end{align*} 
 ```
 ````
@@ -431,10 +431,64 @@ __Exit conditions:__
 * If all derivatives are zero or below a small threshold 
 ````
 
-This is the end of this math intensive section. Now you know the math behind a neural network and hopefully get a sense of why they are so powerful and popular.
-There will be training on this with a tutorial where you will code yourself a small neural network from scratch.
+## Complete equations and dimensions
+Through this lecture, the indices have been omitted for more clarity. In the following, we will be more rigourous and add the indices, as well as the correct operation symbols. There are indeed some matrix and element-wise multiplications in the formulae.
 
-In the next lecture, we will see a much more convenient way to build a neural network using a dedicated library. We will introduce further optimization techniques proper to deep learning.
+The activation nodes $\boldsymbol{a}$ are row vectors and there is a different value for each sample $x^{(i)}$, with $i$ ranging from 1 to $m$ (size of the training dataset). See it like a list of $m$ row vectors. We will stick to the convention in the first lectures of writing the data sample index $i$ as superscript. We will put the information of the layer also in the superscript. In the subscript, we will indicate the shape of the element (vector or matrix) in the form of $n_\text{row} \times n_\text{column}$. Thus, for the layer $\ell$ with $n$ activation units, our notation becomes:
+\begin{equation}
+\boldsymbol{a}^\ell \longrightarrow  \boldsymbol{a}^{(i,\ell)}_{1 \times n_\ell} 
+\end{equation}
+You can directly 'see' the form of $\boldsymbol{a}^{(i,\ell)}_{1 \times n_\ell}$: a row vector of $n_\ell$ elements.
+
+The $\boldsymbol{z}$ row vectors (the weighted sum of a node before applying the activation function $f$) are of the same shape:
+\begin{equation}
+\boldsymbol{z}^\ell \longrightarrow \boldsymbol{z}^{(i,\ell)}_{1 \times n_\ell} 
+\end{equation}
+
+Now the weight matrices and biases. Unlike the node vectors above, weight matrices and the bias vectors are unique to the neural network. The same weights and bias values are applied to all the samples. The weight matrix at layer $\ell$ connecting the $n_{\ell-1}$ nodes of the previous layer to the $n_{\ell}$ nodes of the current layer $\ell$ will be of shape:
+\begin{equation}
+W^\ell  \longrightarrow  W^{(\ell)}_{n_{\ell-1} \times n_{\ell}}
+\end{equation}
+For the bias vector, it will be:
+\begin{equation}
+ b^\ell  \longrightarrow \boldsymbol{b}^{(\ell)}_{1 \times n_\ell} 
+\end{equation}
+
+You can see that both $W$ and $\boldsymbol{b}$ do not have any index $i$ in the superscript, because there is one set of weights and biases for the entire network. 
+
+We can rewrite the equations {eq}`deltasandpartialcostseq` using all the information. The matrix multiplication will be written with the '$\cdot$' symbol and element-wise multiplication (applied on vectors) as $\odot$:
+
+
+
+```{math}
+:label: deltasandpartialcostseqallinfo
+\begin{align*}
+\boldsymbol{\delta}^{(i,L)}_{1 \times n_L} &=\; L^{\prime}\left(\boldsymbol{a}^{(i,L)}_{1 \times n_L}\right) \odot f^{\prime}\left(\boldsymbol{z}^{(i,L)}_{1 \times n_L}\right) \\[2ex]
+& \quad\quad \longrightarrow  \;\; \frac{\partial \text {Cost}}{\partial W^L} = \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-1)}_{1 \times n_{L-1}}\right)^T \cdot \boldsymbol{\delta}^{(i,L)}_{1 \times n_L}  \\[5ex]
+\boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}} &= \; \left[ \; \boldsymbol{\delta}^{(i,L)}_{1 \times n_L}     \cdot\;  \left(W^L \right)^T \right] \odot\; f'\left(\boldsymbol{z}^{(i,L-1)}_{1 \times n_{L-1}}\right)  \\[2ex]
+& \quad\quad \longrightarrow \quad \frac{\partial \text {Cost}}{\partial W^{(L-1)}} = \sum \; \left(\boldsymbol{a}^{(i,L-2)}_{1 \times n_{L-2}}\right)^T \cdot \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}} \\[5ex]
+\boldsymbol{\delta}^{(i,L-2)}_{1 \times n_{L-2}} &= \; \left[ \; \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}}     \cdot\;  \left(W^{(L-1)} \right)^T \right] \odot\; f'\left(\boldsymbol{z}^{(i,L-2)}_{1 \times n_{L-2}}\right) \\[2ex]
+& \quad\quad \longrightarrow  \quad \frac{\partial \text {Cost}}{\partial W^{(L-2)}} = \sum \; \left(\boldsymbol{a}^{(i,L-3)}_{1 \times n_{L-3}}\right)^T \cdot \boldsymbol{\delta}^{(i,L-2)}_{1 \times n_{L-2}} \\[2ex]
+\end{align*} 
+```
+
+Dimension-wise, the partial derivatives of the cost should be of the same size of the associated weight matrix (as it will be substracted from the weight matrix at the step where weights are updated). So it makes sense in the end to have a matrix created: the product of a column vector (recall the derivative turns row into column vectors) times a row vector. 
+
+
+To make things more visual, see below schematics illustrating the shape of each term (the author of this course has a long-time trouble with index notations and prefers a very visual, Tetris-like representation):
+```{figure} ../images/lec07_3_tetrisbackprop.png
+---
+  name: lec07_3_tetrisbackprop
+  width: 100%
+---
+ . Representation of the delta errors, activation unit vectors and weight matrices computed during the backpropagation.    
+<sub>Image from the author</sub>
+```
+
+
+
+Now you know how neural networks are trained and the math behind it! Hopefully get a sense of why neural networks are so powerful and popular.
+In the assignment, you will code yourself a small neural network from scratch. Don't worry: it will be guided. In the next lecture, we will see a much more convenient way to build a neural network using dedicated libraries. We will introduce further optimization techniques proper to deep learning.
 
 
 ```{admonition} Exercise

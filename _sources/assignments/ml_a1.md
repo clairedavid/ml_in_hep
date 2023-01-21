@@ -94,7 +94,7 @@ __3.2 Matrix X__
 Create a new dataframe `X` that contain the `x0` column and the columns of the two __scaled__ input features.
 
 __3.3 Labels to binary__  
-The target column contains alphabetical labels. Create a dataframe `y` containing 1 if the sample is an electron shower and 0 if it is a hadron one.  
+The target column contains alphabetical labels. Create an extra column in your dataframe called `y` containing 1 if the sample is an electron shower and 0 if it is a hadron one.  
 
 _Hint: you can first create an extra column full of 0, then apply a filter using the `.loc` property from DataFrame. It can be in the form:_
 ```python

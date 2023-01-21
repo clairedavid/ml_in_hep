@@ -917,7 +917,7 @@ Add a column <code class="docutils literal notranslate"><span class="pre">x0</sp
 <p><strong>3.2 Matrix X</strong><br />
 Create a new dataframe <code class="docutils literal notranslate"><span class="pre">X</span></code> that contain the <code class="docutils literal notranslate"><span class="pre">x0</span></code> column and the columns of the two <strong>scaled</strong> input features.</p>
 <p><strong>3.3 Labels to binary</strong><br />
-The target column contains alphabetical labels. Create a dataframe <code class="docutils literal notranslate"><span class="pre">y</span></code> containing 1 if the sample is an electron shower and 0 if it is a hadron one.</p>
+The target column contains alphabetical labels. Create an extra column in your dataframe called <code class="docutils literal notranslate"><span class="pre">y</span></code> containing 1 if the sample is an electron shower and 0 if it is a hadron one.</p>
 <p><em>Hint: you can first create an extra column full of 0, then apply a filter using the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> property from DataFrame. It can be in the form:</em></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="n">CONDITION</span><span class="p">,</span> <span class="n">COLUMN_TO_UPDATE</span><span class="p">]</span> <span class="o">=</span> <span class="n">VALUE</span>
 </pre></div>

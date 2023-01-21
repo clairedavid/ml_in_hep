@@ -43,7 +43,7 @@ __<center><a href="https://www.youtube.com/watch?v=KuXjwB4LzSA" target="_blank">
 ## Essentials
 
 ### Working through a small example with StatQuest (preferred)
-In this video, Josh Starmer from StatQuest walks through a simple example of CNN classifying between a O or X image symbol. The main ideas behind filters and pooling are highlighted. You will see that Josh likes to sing and say "bam" a lot.  
+In this video, Josh Starmer from StatQuest walks through a simple example of CNN classifying between a O or X image symbol. The main ideas behind filters and pooling are highlighted. You will see that Josh likes to sing and says "bam" a lot.  
 
 <center>  
 

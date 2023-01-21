@@ -780,6 +780,11 @@ title="Print to PDF"
    Summary on backpropagation
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#complete-equations-and-dimensions">
+   Complete equations and dimensions
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -868,6 +873,11 @@ title="Print to PDF"
    Summary on backpropagation
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#complete-equations-and-dimensions">
+   Complete equations and dimensions
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -905,13 +915,13 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Definition 64 </span></p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> be functions. For all <span class="math notranslate nohighlight">\(𝑥\)</span> in the domain of <span class="math notranslate nohighlight">\(g\)</span> for which <span class="math notranslate nohighlight">\(g\)</span> is differentiable at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is differentiable at <span class="math notranslate nohighlight">\(g(x)\)</span>, the derivative of the composite function:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bf7efb50-5442-49b5-87f2-cd55963185ee">
-<span class="eqno">(80)<a class="headerlink" href="#equation-bf7efb50-5442-49b5-87f2-cd55963185ee" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d2cb89c1-ba00-41dd-97c2-587de3e76cca">
+<span class="eqno">(80)<a class="headerlink" href="#equation-d2cb89c1-ba00-41dd-97c2-587de3e76cca" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h(x) = f(g(x)) 
 \end{equation}\]</div>
 <p>is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bbd35a5c-a03b-4092-a730-253ced3dd8a0">
-<span class="eqno">(81)<a class="headerlink" href="#equation-bbd35a5c-a03b-4092-a730-253ced3dd8a0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-fcce54bc-3b4e-42ab-9468-f5a14867db91">
+<span class="eqno">(81)<a class="headerlink" href="#equation-fcce54bc-3b4e-42ab-9468-f5a14867db91" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}} \;\cdot \;  \frac{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}}{\mathrm{d} \; x} = f'\left(g(x)\right) \;\cdot \; g'(x)
 \end{equation}\]</div>
 </section>
@@ -927,8 +937,8 @@ h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maro
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
 <p>What would be the chain rule for three functions?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-07b85b3e-7384-423d-b3b5-9a5c9d70027e">
-<span class="eqno">(82)<a class="headerlink" href="#equation-07b85b3e-7384-423d-b3b5-9a5c9d70027e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c0159365-c015-478c-99a4-218c2d8e29a3">
+<span class="eqno">(82)<a class="headerlink" href="#equation-c0159365-c015-478c-99a4-218c2d8e29a3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 k(x) = h(f(g(x))) 
 \end{equation}\]</div>
 </div>
@@ -1042,7 +1052,7 @@ last, before last and before before last layers.<br />
 <div class="math notranslate nohighlight" id="equation-costlossafzeq">
 <span class="eqno">(92)<a class="headerlink" href="#equation-costlossafzeq" title="Permalink to this equation">#</a></span>\[\text{Cost} = \textstyle \sum L(f(z^L(W,b)))\]</div>
 <hr class="docutils" />
-<p>Let’s joyfully take the derivatives of that sandwich of function! Now you get the chain rule refresher. The general expression for the partial derivative with respect to the weights <span class="math notranslate nohighlight">\(W\)</span> would be:</p>
+<p>Let’s joyfully take the derivatives of that sandwich of functions! Now you get the chain rule refresher. The general expression for the partial derivative with respect to the weights <span class="math notranslate nohighlight">\(W\)</span> would be:</p>
 <div class="math notranslate nohighlight" id="equation-dcostchaineq">
 <span class="eqno">(93)<a class="headerlink" href="#equation-dcostchaineq" title="Permalink to this equation">#</a></span>\[\frac{\partial \text { Cost }}{\partial W}= \sum \; \frac{\partial L(f(z(W, b)))}{\partial f(z(W, b))} \cdot \; \frac{\partial f(z(W, b))}{\partial z(W, b)}  \cdot \; \frac{\partial z(W, b)}{\partial W}\]</div>
 <p>A similar one can be written with <span class="math notranslate nohighlight">\(b\)</span>.<br />
@@ -1136,14 +1146,14 @@ This is left as exercise for training.</p>
 <div class="math notranslate nohighlight" id="equation-biaseq">
 <span class="eqno">(103)<a class="headerlink" href="#equation-biaseq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
 \delta^L &amp;=\; L^{\prime}(a^L) \cdot f^{\prime}(z^L) 
-&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^L} &amp;=&amp; \quad \sum \quad\delta^L  \\[1ex]
+&amp; \longrightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^L} &amp;=&amp; \quad \sum \quad\delta^L  \\[1ex]
 \delta^{L-1} &amp;= \; \delta^L     \cdot\;  W^L \cdot\; f'(z^{L-1}) 
-&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^{L-1}} &amp;=&amp; \quad \sum \quad\delta^{L-1}  \\[1ex]
+&amp; \longrightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^{L-1}} &amp;=&amp; \quad \sum \quad\delta^{L-1}  \\[1ex]
 \delta^{L-2} &amp;= \; \delta^{L-1} \cdot\; W^{L-1} \;\cdot\; f'(z^{L-2}) 
-&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^{L-2}} &amp;=&amp; \quad \sum \quad\delta^{L-2} \\[1ex]
+&amp; \longrightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^{L-2}} &amp;=&amp; \quad \sum \quad\delta^{L-2} \\[1ex]
 &amp; \quad\cdots &amp; &amp; \cdots &amp; \\[1ex]
 \delta^{1} &amp;= \; \delta^{2} \cdot\; W^{2} \;\cdot\; f'(z^{1}) 
-&amp; \Rightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^{1}} &amp;=&amp; \quad \sum \quad\delta^{1} \\[1ex]
+&amp; \longrightarrow &amp; \quad \frac{\partial \text {Cost}}{\partial b^{1}} &amp;=&amp; \quad \sum \quad\delta^{1} \\[1ex]
 \end{align*} \end{split}\]</div>
 </div>
 </section>
@@ -1195,23 +1205,23 @@ Training data set <span class="math notranslate nohighlight">\(X\)</span> of <sp
 <p><strong>Start</strong></p>
 <p><strong>Step 0:</strong> Weight initialization</p>
 <p><strong>Step 1:</strong> Forward propagation on subset or all sample instances:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9b20465a-ba6b-4273-9970-8f2a7d489dcc">
-<span class="eqno">(106)<a class="headerlink" href="#equation-9b20465a-ba6b-4273-9970-8f2a7d489dcc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b1c45407-3308-446d-9fa6-3270f30c1975">
+<span class="eqno">(106)<a class="headerlink" href="#equation-b1c45407-3308-446d-9fa6-3270f30c1975" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat{y} = a^L(W, b) = f(z^L(W,b))
 \end{equation}\]</div>
 <p><strong>Step 2:</strong> Computation of loss function, cost function and overall error:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-925d688c-71bd-40f3-85eb-826398ab4513">
-<span class="eqno">(107)<a class="headerlink" href="#equation-925d688c-71bd-40f3-85eb-826398ab4513" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bb715631-bb9f-4b26-92f5-f232a93351da">
+<span class="eqno">(107)<a class="headerlink" href="#equation-bb715631-bb9f-4b26-92f5-f232a93351da" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Cost} = \textstyle \sum L(f(z^L(W,b))) \qquad \delta^L =\; L^{\prime}(a^L(W,b)) \cdot f^{\prime}(z^L(W, b)) 
 \end{equation}\]</div>
 <p><strong>Step 3:</strong> Computation of all activation unit errors:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-be4f68a9-9694-496e-a3c9-d452213bbccd">
-<span class="eqno">(108)<a class="headerlink" href="#equation-be4f68a9-9694-496e-a3c9-d452213bbccd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2643e50d-7f7e-4f40-8c64-60b9b9fc0892">
+<span class="eqno">(108)<a class="headerlink" href="#equation-2643e50d-7f7e-4f40-8c64-60b9b9fc0892" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \delta^\ell = \; \delta^{\ell+1} \;\cdot\; W^{\ell+1} \;\cdot\; f'(z^\ell(W, b))
 \end{equation}\]</div>
 <p>… and derivatives:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ccc7b519-68a0-455c-af4c-23425d9378c3">
-<span class="eqno">(109)<a class="headerlink" href="#equation-ccc7b519-68a0-455c-af4c-23425d9378c3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b09cee16-2da5-4669-9cf3-134d728e36b5">
+<span class="eqno">(109)<a class="headerlink" href="#equation-b09cee16-2da5-4669-9cf3-134d728e36b5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial \text {Cost}}{\partial W^{\ell}} = \; \sum \; \delta^{\ell} \;\cdot\; a^{\ell-1}  \qquad \qquad \qquad \frac{\partial \text {Cost}}{\partial b^{\ell}} = \; \sum \; \delta^{\ell}
 \end{equation}\]</div>
 <p><strong>Step 4:</strong> Gradient Descent steps to update weights &amp; biases:</p>
@@ -1228,9 +1238,53 @@ b^\ell &amp;\leftarrow b^\ell - \alpha \frac{\partial \text{ Cost}}{\partial b^\
 <li><p>If all derivatives are zero or below a small threshold</p></li>
 </ul>
 </section>
-</div><p>This is the end of this math intensive section. Now you know the math behind a neural network and hopefully get a sense of why they are so powerful and popular.
-There will be training on this with a tutorial where you will code yourself a small neural network from scratch.</p>
-<p>In the next lecture, we will see a much more convenient way to build a neural network using a dedicated library. We will introduce further optimization techniques proper to deep learning.</p>
+</div></section>
+<section id="complete-equations-and-dimensions">
+<h2>Complete equations and dimensions<a class="headerlink" href="#complete-equations-and-dimensions" title="Permalink to this headline">#</a></h2>
+<p>Through this lecture, the indices have been omitted for more clarity. In the following, we will be more rigourous and add the indices, as well as the correct operation symbols. There are indeed some matrix and element-wise multiplications in the formulae. To picture things even better, the vectors and matrices will be represented with schematics (the author of this course has a long-time trouble with index notations and prefers a very visual, Tetris-like representation).</p>
+<p>The activation nodes <span class="math notranslate nohighlight">\(\boldsymbol{a}\)</span> are row vectors and there is a different value for each sample <span class="math notranslate nohighlight">\(x^{(i)}\)</span>, with <span class="math notranslate nohighlight">\(i\)</span> ranging from 1 to <span class="math notranslate nohighlight">\(m\)</span> (size of the training dataset). See it like a list of <span class="math notranslate nohighlight">\(m\)</span> row vectors. We will stick to the convention in the first lectures of writing the data sample index <span class="math notranslate nohighlight">\(i\)</span> as superscript. We will put the information of the layer also in the superscript. In the subscript, we will indicate the shape of the element (vector or matrix) in the form of <span class="math notranslate nohighlight">\(n_\text{row} \times n_\text{column}\)</span>. Thus, for the layer <span class="math notranslate nohighlight">\(\ell\)</span> with <span class="math notranslate nohighlight">\(n\)</span> activation units, our notation becomes:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f6a49238-f3a4-4237-a064-7864679877c8">
+<span class="eqno">(110)<a class="headerlink" href="#equation-f6a49238-f3a4-4237-a064-7864679877c8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\boldsymbol{a}^\ell \longrightarrow  \boldsymbol{a}^{(i,\ell)}_{1 \times n_\ell} 
+\end{equation}\]</div>
+<p>You can directly ‘see’ the form of <span class="math notranslate nohighlight">\(\boldsymbol{a}^{(i,\ell)}_{1 \times n_L}\)</span>: a row vector of <span class="math notranslate nohighlight">\(n_\ell\)</span> elements.</p>
+<p>The <span class="math notranslate nohighlight">\(\boldsymbol{z}\)</span> row vectors (the weighted sum of a node before applying the activation function <span class="math notranslate nohighlight">\(f\)</span>) are of the same shape:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-545c4053-24c1-4b13-b254-b32c21fc5f36">
+<span class="eqno">(111)<a class="headerlink" href="#equation-545c4053-24c1-4b13-b254-b32c21fc5f36" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\boldsymbol{z}^\ell \longrightarrow \boldsymbol{z}^{(i,L)}_{1 \times n_\ell} 
+\end{equation}\]</div>
+<p>Now the weight matrices and biases. Unlike the node vectors above, weight matrices and the bias vectors are unique to the neural network. The same weights and bias values are applied to all the samples. The weight matrix at layer <span class="math notranslate nohighlight">\(\ell\)</span> connecting the <span class="math notranslate nohighlight">\(n_{\ell-1}\)</span> nodes of the previous layer to the <span class="math notranslate nohighlight">\(n_{\ell}\)</span> nodes of the current layer <span class="math notranslate nohighlight">\(\ell\)</span> will be of shape:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-088ae22e-1d33-4343-aecc-df10cae38cc8">
+<span class="eqno">(112)<a class="headerlink" href="#equation-088ae22e-1d33-4343-aecc-df10cae38cc8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+W^\ell  \longrightarrow  W^{(\ell)}_{n_{\ell-1} \times n_{\ell}}
+\end{equation}\]</div>
+<p>For the bias vector, it will be:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-53b51b52-8cbc-4b3b-9369-8097f696a157">
+<span class="eqno">(113)<a class="headerlink" href="#equation-53b51b52-8cbc-4b3b-9369-8097f696a157" title="Permalink to this equation">#</a></span>\[\begin{equation}
+ b^\ell  \longrightarrow \boldsymbol{b}^{(\ell)}_{1 \times n_\ell} 
+\end{equation}\]</div>
+<p>You can see that both <span class="math notranslate nohighlight">\(W\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{b}\)</span> do not have any index <span class="math notranslate nohighlight">\(i\)</span> in the superscript, because there is one set of weights and biases for the entire network.</p>
+<p>We can rewrite the equations <a class="reference internal" href="#equation-deltasandpartialcostseq">(101)</a> using all the information. The matrix multiplication will be written with the ‘<span class="math notranslate nohighlight">\(\cdot\)</span>’ symbol and element-wise multiplication (applied on vectors) as <span class="math notranslate nohighlight">\(\odot\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-deltasandpartialcostseqallinfo">
+<span class="eqno">(114)<a class="headerlink" href="#equation-deltasandpartialcostseqallinfo" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+\boldsymbol{\delta}^{(i,L)}_{1 \times n_L} &amp;=\; L^{\prime}\left(\boldsymbol{a}^{(i,L)}_{1 \times n_L}\right) \odot f^{\prime}\left(\boldsymbol{z}^{(i,L)}_{1 \times n_L}\right) \\[2ex]
+&amp; \quad\quad \longrightarrow  \;\; \frac{\partial \text {Cost}}{\partial W^L} = \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-1)}_{1 \times n_{L-1}}\right)^T \cdot \boldsymbol{\delta}^{(i,L)}_{1 \times n_L}  \\[5ex]
+\boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}} &amp;= \; \left[ \; \boldsymbol{\delta}^{(i,L)}_{1 \times n_L}     \cdot\;  \left(W^L \right)^T \right] \odot\; f'\left(\boldsymbol{z}^{(i,L-1)}_{1 \times n_{L-1}}\right)  \\[2ex]
+&amp; \quad\quad \longrightarrow \quad \frac{\partial \text {Cost}}{\partial W^{(L-1)}} = \sum \; \left(\boldsymbol{a}^{(i,L-2)}_{1 \times n_{L-2}}\right)^T \cdot \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}} \\[5ex]
+\boldsymbol{\delta}^{(i,L-2)}_{1 \times n_{L-2}} &amp;= \; \left[ \; \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}}     \cdot\;  \left(W^{(L-1)} \right)^T \right] \odot\; f'\left(\boldsymbol{z}^{(i,L-2)}_{1 \times n_{L-2}}\right) \\[2ex]
+&amp; \quad\quad \longrightarrow  \quad \frac{\partial \text {Cost}}{\partial W^{(L-2)}} = \sum \; \left(\boldsymbol{a}^{(i,L-3)}_{1 \times n_{L-3}}\right)^T \cdot \boldsymbol{\delta}^{(i,L-2)}_{1 \times n_{L-2}} \\[2ex]
+\end{align*} \end{split}\]</div>
+<p>Dimension-wise, the partial derivatives of the cost should be of the same size of the associated weight matrix (as it will be substracted from the weight matrix at the step where weights are updated). So it makes sense in the end to have a matrix created: the product of a column vector (recall the derivative turns row into column vectors) times a row vector.</p>
+<p>To make things more visual, see below the Tetris-like representation:</p>
+<figure class="align-default" id="lec07-3-tetrisbackprop">
+<a class="reference internal image-reference" href="../_images/lec07_3_tetrisbackprop.png"><img alt="../_images/lec07_3_tetrisbackprop.png" src="../_images/lec07_3_tetrisbackprop.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text">. Representation of the delta errors, activation unit vectors and weight matrices computed during the backpropagation.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#lec07-3-tetrisbackprop" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Now you know how neural networks are trained and the math behind it! Hopefully get a sense of why neural networks are so powerful and popular.
+In the assignment, you will code yourself a small neural network from scratch. Don’t worry: it will be guided. In the next lecture, we will see a much more convenient way to build a neural network using dedicated libraries. We will introduce further optimization techniques proper to deep learning.</p>
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
 <p>Now that you know the backpropagation algorithm, a question regarding the neural network initialization: what if all weights are first set to the same value? (not zero, as we saw, but any other constant)</p>

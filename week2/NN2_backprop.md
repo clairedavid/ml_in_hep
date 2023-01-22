@@ -1,3 +1,4 @@
+(NN2:backprop)=
 # Backpropagation Algorithm
 
 ## Before Diving Into The Math 
@@ -466,23 +467,23 @@ We can rewrite the equations {eq}`deltasandpartialcostseq` using all the informa
 \boldsymbol{\delta}^{(i,L)}_{1 \times n_L} &=\; L^{\prime}\left(\boldsymbol{a}^{(i,L)}_{1 \times n_L}\right) \odot f^{\prime}\left(\boldsymbol{z}^{(i,L)}_{1 \times n_L}\right) \\[2ex]
 & \quad\quad \longrightarrow  \;\; \frac{\partial \text {Cost}}{\partial W^L} = \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-1)}_{1 \times n_{L-1}}\right)^T \cdot \boldsymbol{\delta}^{(i,L)}_{1 \times n_L}  \\[5ex]
 \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}} &= \; \left[ \; \boldsymbol{\delta}^{(i,L)}_{1 \times n_L}     \cdot\;  \left(W^L \right)^T \right] \odot\; f'\left(\boldsymbol{z}^{(i,L-1)}_{1 \times n_{L-1}}\right)  \\[2ex]
-& \quad\quad \longrightarrow \quad \frac{\partial \text {Cost}}{\partial W^{(L-1)}} = \sum \; \left(\boldsymbol{a}^{(i,L-2)}_{1 \times n_{L-2}}\right)^T \cdot \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}} \\[5ex]
+& \quad\quad \longrightarrow \quad \frac{\partial \text {Cost}}{\partial W^{(L-1)}} = \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-2)}_{1 \times n_{L-2}}\right)^T \cdot \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}} \\[5ex]
 \boldsymbol{\delta}^{(i,L-2)}_{1 \times n_{L-2}} &= \; \left[ \; \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}}     \cdot\;  \left(W^{(L-1)} \right)^T \right] \odot\; f'\left(\boldsymbol{z}^{(i,L-2)}_{1 \times n_{L-2}}\right) \\[2ex]
-& \quad\quad \longrightarrow  \quad \frac{\partial \text {Cost}}{\partial W^{(L-2)}} = \sum \; \left(\boldsymbol{a}^{(i,L-3)}_{1 \times n_{L-3}}\right)^T \cdot \boldsymbol{\delta}^{(i,L-2)}_{1 \times n_{L-2}} \\[2ex]
+& \quad\quad \longrightarrow  \quad \frac{\partial \text {Cost}}{\partial W^{(L-2)}} = \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-3)}_{1 \times n_{L-3}}\right)^T \cdot \boldsymbol{\delta}^{(i,L-2)}_{1 \times n_{L-2}} \\[2ex]
 \end{align*} 
 ```
 
 Dimension-wise, the partial derivatives of the cost should be of the same size of the associated weight matrix (as it will be substracted from the weight matrix at the step where weights are updated). So it makes sense in the end to have a matrix created: the product of a column vector (recall the derivative turns row into column vectors) times a row vector. 
 
 
-To make things more visual, see below schematics illustrating the shape of each term (the author of this course has a long-time trouble with index notations and prefers a very visual, Tetris-like representation). The errors, unactivated ($z$) activated nodes are in yellow. They receive a different value per data samples. The weight matrices are in green: 
+To make things more visual, the schematics below illustrate the shape of each term (the author of this course has a long-time trouble with index notations and prefers a very visual, Tetris-like representation). The $\delta$ error vectors, unactivated ($z$) and activated node vectors are in yellow. They receive a different value per data samples. The weight matrices and the partial derivatives of the cost are in green: 
 ```{figure} ../images/lec07_3_tetrisbackprop.png
 ---
   name: lec07_3_tetrisbackprop
   width: 100%
 ---
  . Representation of the delta errors, activation unit vectors and weight matrices computed during the backpropagation.    
-<sub>Image from the author</sub>
+<sub>Image from the index-allergic author</sub>
 ```
 
 

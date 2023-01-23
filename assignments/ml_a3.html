@@ -951,15 +951,15 @@ Write the cross-entropy cost function.<br />
 </div>
 <p><strong>2.4: Derivative of the Loss</strong><br />
 As seen in class, the loss function for classification is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-47f520ee-d7e9-4fbc-88fc-bfce6730ce1c">
-<span class="eqno">()<a class="headerlink" href="#equation-47f520ee-d7e9-4fbc-88fc-bfce6730ce1c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
 L\left( \hat{y}^{(i)}, y^{(i)}\right) = - \left[ \;\; y^{(i)} \log\left( \hat{y}^{(i)} \right) \;\;+\;\; \left(1- y^{(i)}\right) \log\left( 1 - \hat{y}^{(i)} \right) \;\;\right]
-\end{equation}\]</div>
+\end{equation*}\]</div>
 <p>Find the expression of:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2e45cac7-da9a-4a00-adb3-b2bc15fb9016">
-<span class="eqno">()<a class="headerlink" href="#equation-2e45cac7-da9a-4a00-adb3-b2bc15fb9016" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
 \frac{\mathrm{d} }{\mathrm{d} \hat{y}^{(i)}} L\left( \hat{y}^{(i)}, y^{(i)}\right) = \cdots
-\end{equation}\]</div>
+\end{equation*}\]</div>
 <p>Use a text cell and LaTeX. If you are new to LaTeX, this <a class="reference external" href="https://editor.codecogs.com/">application</a> will help.</p>
 <p>Once you have an expression for the derivative of the loss, code it in python:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">L_prime</span><span class="p">(</span><span class="n">y_preds</span><span class="p">,</span> <span class="n">y_obs</span><span class="p">):</span>
@@ -1022,7 +1022,7 @@ Send an email to the instruction with the exact title “[Machine Learning Cours
 <ul class="simple">
 <li><p>What is the <code class="docutils literal notranslate"><span class="pre">output_node</span></code> in the context of our 2-hidden-layered neural network?</p></li>
 <li><p>What type of values does the function <code class="docutils literal notranslate"><span class="pre">predict</span></code> return?</p></li>
-<li><p>After successfully executed the <code class="docutils literal notranslate"><span class="pre">feedforward</span></code> function, how would you call the function <code class="docutils literal notranslate"><span class="pre">predict</span></code>?</p></li>
+<li><p>After successfully executing the <code class="docutils literal notranslate"><span class="pre">feedforward</span></code> function, how would you call the function <code class="docutils literal notranslate"><span class="pre">predict</span></code>?</p></li>
 </ul>
 </section>
 <section id="neural-network-training">
@@ -1150,7 +1150,7 @@ At the end of the lecture on <a class="reference internal" href="../week2/NN2_ba
 <p><strong>5.1: Cost evolution</strong><br />
 Call the provided function to plot the cost evolution of both the training and testing sets.</p>
 <p><strong>5.2: Scatter Plot</strong><br />
-Use the <code class="docutils literal notranslate"><span class="pre">get_decision_surface</span></code> and <code class="docutils literal notranslate"><span class="pre">plot_scatter</span></code> functions to visualize the decision boundaries of your trained neural network. Did your NN successfully learned the XOR function?</p>
+Use the <code class="docutils literal notranslate"><span class="pre">get_decision_surface</span></code> and <code class="docutils literal notranslate"><span class="pre">plot_scatter</span></code> functions to visualize the decision boundaries of your trained neural network. Did your neural network successfully learn the XOR function?</p>
 <p>If all goes well, you should obtain something like this:</p>
 <figure class="align-default" id="a03-data-nn">
 <a class="reference internal image-reference" href="../_images/a03_data_NN.png"><img alt="../_images/a03_data_NN.png" src="../_images/a03_data_NN.png" style="width: 90%;" /></a>

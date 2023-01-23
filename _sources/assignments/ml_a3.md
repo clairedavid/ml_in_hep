@@ -157,14 +157,14 @@ def cross_entropy_cost(y_preds, y_vals):
 
 __2.4: Derivative of the Loss__  
 As seen in class, the loss function for classification is defined as:
-\begin{equation}
+\begin{equation*}
 L\left( \hat{y}^{(i)}, y^{(i)}\right) = - \left[ \;\; y^{(i)} \log\left( \hat{y}^{(i)} \right) \;\;+\;\; \left(1- y^{(i)}\right) \log\left( 1 - \hat{y}^{(i)} \right) \;\;\right]
-\end{equation}
+\end{equation*}
 
 Find the expression of:
-\begin{equation}
+\begin{equation*}
 \frac{\mathrm{d} }{\mathrm{d} \hat{y}^{(i)}} L\left( \hat{y}^{(i)}, y^{(i)}\right) = \cdots
-\end{equation} 
+\end{equation*} 
 Use a text cell and LaTeX. If you are new to LaTeX, this [application](https://editor.codecogs.com/) will help.
 
 Once you have an expression for the derivative of the loss, code it in python:
@@ -228,7 +228,7 @@ To insert a code block within a text cell in Jupyter notebook, write:
 This function is given (at the Setup step), yet there is a question for you: 
 * What is the `output_node` in the context of our 2-hidden-layered neural network? 
 * What type of values does the function `predict` return? 
-* After successfully executed the `feedforward` function, how would you call the function `predict`? 
+* After successfully executing the `feedforward` function, how would you call the function `predict`? 
 
 
 ## 4. Neural Network Training
@@ -355,7 +355,7 @@ __5.1: Cost evolution__
 Call the provided function to plot the cost evolution of both the training and testing sets.
 
 __5.2: Scatter Plot__  
-Use the `get_decision_surface` and `plot_scatter` functions to visualize the decision boundaries of your trained neural network. Did your NN successfully learned the XOR function?
+Use the `get_decision_surface` and `plot_scatter` functions to visualize the decision boundaries of your trained neural network. Did your neural network successfully learn the XOR function?
 
 If all goes well, you should obtain something like this:
 

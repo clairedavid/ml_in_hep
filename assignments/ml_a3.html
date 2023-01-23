@@ -838,6 +838,11 @@ title="Print to PDF"
 <span class="n">YNAME</span> <span class="o">=</span> <span class="s1">&#39;x2&#39;</span><span class="p">;</span> <span class="n">YLABEL</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$x_2$&#39;</span>
 <span class="n">RANGE</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span> <span class="n">STEP</span> <span class="o">=</span> <span class="mf">0.1</span>
 
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">output_node</span><span class="p">,</span> <span class="n">boundary_value</span><span class="p">):</span>
+  <span class="n">output_node</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># a list (m, 1, 1)</span>
+  <span class="n">predictions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">output_node</span> <span class="o">&gt;</span> <span class="n">boundary_value</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">predictions</span>
+
 <span class="k">def</span> <span class="nf">plot_cost_vs_iter</span><span class="p">(</span><span class="n">train_costs</span><span class="p">,</span> <span class="n">test_costs</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Cost evolution&quot;</span><span class="p">):</span>
 
   <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -862,7 +867,7 @@ title="Print to PDF"
 
   <span class="c1"># Feedforward on all grid points and get binary predictions:</span>
   <span class="n">output</span> <span class="o">=</span> <span class="n">feedforward</span><span class="p">(</span><span class="n">X_grid</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">biases</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># getting only output node</span>
-  <span class="n">Ypred_grid</span> <span class="o">=</span> <span class="n">predict_binary</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">boundary</span><span class="p">)</span>
+  <span class="n">Ypred_grid</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">boundary</span><span class="p">)</span>
 
   <span class="k">return</span> <span class="p">(</span><span class="n">x1v</span><span class="p">,</span> <span class="n">x2v</span><span class="p">,</span> <span class="n">Ypred_grid</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x1v</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 
@@ -946,13 +951,13 @@ Write the cross-entropy cost function.<br />
 </div>
 <p><strong>2.4: Derivative of the Loss</strong><br />
 As seen in class, the loss function for classification is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-09fee3dc-d581-48bc-9b10-ede0e11045f0">
-<span class="eqno">()<a class="headerlink" href="#equation-09fee3dc-d581-48bc-9b10-ede0e11045f0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-47f520ee-d7e9-4fbc-88fc-bfce6730ce1c">
+<span class="eqno">()<a class="headerlink" href="#equation-47f520ee-d7e9-4fbc-88fc-bfce6730ce1c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 L\left( \hat{y}^{(i)}, y^{(i)}\right) = - \left[ \;\; y^{(i)} \log\left( \hat{y}^{(i)} \right) \;\;+\;\; \left(1- y^{(i)}\right) \log\left( 1 - \hat{y}^{(i)} \right) \;\;\right]
 \end{equation}\]</div>
 <p>Find the expression of:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e057c6e9-b779-4f5a-a734-a8bf7386bc5a">
-<span class="eqno">()<a class="headerlink" href="#equation-e057c6e9-b779-4f5a-a734-a8bf7386bc5a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2e45cac7-da9a-4a00-adb3-b2bc15fb9016">
+<span class="eqno">()<a class="headerlink" href="#equation-2e45cac7-da9a-4a00-adb3-b2bc15fb9016" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\mathrm{d} }{\mathrm{d} \hat{y}^{(i)}} L\left( \hat{y}^{(i)}, y^{(i)}\right) = \cdots
 \end{equation}\]</div>
 <p>Use a text cell and LaTeX. If you are new to LaTeX, this <a class="reference external" href="https://editor.codecogs.com/">application</a> will help.</p>

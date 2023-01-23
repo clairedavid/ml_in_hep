@@ -138,8 +138,6 @@ __<a href="https://www.youtube.com/watch?v=WvoLTXIjBYU" target="_blank">Video: C
 </center>  
 &nbsp;  
 
-```{tip}
-Gather your questions in the common document shared per email. They will be addressed in class before the guest lecture.
-
+```{note}
 A live Q&A session with Dr. Nachman will be organized following his lecture, likely in the evening, due to the time difference. You will be notified. 
 ```

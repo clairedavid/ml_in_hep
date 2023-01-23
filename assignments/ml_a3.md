@@ -44,6 +44,11 @@ XNAME = 'x1'; XLABEL = r'$x_1$'
 YNAME = 'x2'; YLABEL = r'$x_2$'
 RANGE = (-6, 6); STEP = 0.1
 
+def predict(output_node, boundary_value):
+  output_node.reshape(-1, 1, 1) # a list (m, 1, 1)
+  predictions = np.array(output_node > boundary_value, dtype=int)
+  return predictions
+
 def plot_cost_vs_iter(train_costs, test_costs, title="Cost evolution"):
 
   fig, ax = plt.subplots(figsize=(8, 6))
@@ -68,7 +73,7 @@ def get_decision_surface(weights, biases, boundary=0.5, range=RANGE, step=STEP):
 
   # Feedforward on all grid points and get binary predictions:
   output = feedforward(X_grid, weights, biases)[-1] # getting only output node
-  Ypred_grid = predict_binary(output, boundary)
+  Ypred_grid = predict(output, boundary)
 
   return (x1v, x2v, Ypred_grid.reshape(x1v.shape))
 
@@ -223,7 +228,7 @@ To insert a code block within a text cell in Jupyter notebook, write:
 This function is given (at the Setup step), yet there is a question for you: 
 * What is the `output_node` in the context of our 2-hidden-layered neural network? 
 * What type of values does the function `predict` return? 
-* After successfully executed the `feedforward` function, how would you call the function `predict`? 
+* After successfully executing the `feedforward` function, how would you call the function `predict`? 
 
 
 ## 4. Neural Network Training

@@ -211,8 +211,8 @@ def feedforward(input_X, weights, biases):
 
 ```{admonition} Check Point
 :class: note
-At that point in the assignment, it is possible to ask for a checkup with the instructor before moving forward to ...the backward pass (pun intended).
-Send an email to the instruction with the exact title "[Machine Learning Course] Assignment 3 Check 1" where you paste the code of the function above (do not send any notebook).
+At that point in the assignment, it is possible to ask for a checkup with the instructor before moving _forward_ to ...the _backward_ pass (pun intended).
+Send an email to the instructor with the exact title "[Machine Learning Course] Assignment 3 Check 1" where you paste the code of the function above (do not send any notebook).
 ```
 
 __3.2: Predict__  

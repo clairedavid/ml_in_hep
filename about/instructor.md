@@ -23,16 +23,26 @@ More information on my [webpage](https://www.yorku.ca/science/clairedavid/).
 
 ## Schedule
 
-### Upcoming 
+### By weeks
+The table below shows a tentative weekly schedule for this course. There may be adjustements and as you can see there is time dedicated for reviews. The tutorials will run mostly during evening sessions so that you can learn at your own pace.
 
-This course is being taught at AIMS Senegal from January 9 until January 27, 2023.
+```{image} ../images/about_instructor_menu.png
+:alt: Course Menu
+:width: 100%
+:align: center
+```
+&nbsp;  
+&nbsp; 
 
-It will be taught at AIMS South Africa from January 30 until February 17, 2023.
+### Ongoing 
+This course is been taught at AIMS South Africa from January 30 until February 17, 2023.
 
 
 ### Previous version
 
-I taught a mini-version of this course at the [African School of Physics (ASP2022)](https://www.africanschoolofphysics.org/asp2022/) in Gqebera, South Africa on [December 9](https://indico.cern.ch/event/1210872/timetable/#20221209).
+AIMS Senegal, January 2023
+
+I taught a mini-version of this course at the [African School of Physics (ASP2022)](https://www.africanschoolofphysics.org/asp2022/) in Gqebera, South Africa on [December 9, 2022](https://indico.cern.ch/event/1210872/timetable/#20221209).
 
 
 ## Acknowledgments

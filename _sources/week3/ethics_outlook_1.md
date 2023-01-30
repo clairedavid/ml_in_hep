@@ -108,6 +108,9 @@ A recommended framework to analyse each case study would be a table with:
 
 If you are curious about ethics in AI, or even think of pursuing this topic professionally, find below some articles, organizations and companies that specialize in ethics in AI:
 
+### Courses
+* [Intro to AI Ethics on Kaggle](https://www.kaggle.com/learn/intro-to-ai-ethics)
+
 ### Articles
 * [Microsoft’s Kate Crawford: ‘AI is neither artificial nor intelligent’](https://www.theguardian.com/technology/2021/jun/06/microsofts-kate-crawford-ai-is-neither-artificial-nor-intelligent)
 * [AI Data Laundering: How Academic and Nonprofit Researchers Shield Tech Companies from Accountability](https://waxy.org/2022/09/ai-data-laundering-how-academic-and-nonprofit-researchers-shield-tech-companies-from-accountability/)

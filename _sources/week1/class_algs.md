@@ -9,9 +9,9 @@ In classification, the outcomes - the targets - are no more real-valued but __cl
 
 In this lecture we will cover a method for classifying data called __logistic regression__. You will discover key machine learning concepts:
 
-* the __sigmoid function__
-* a revised __cost function for logistic regression__
-* __regularization__
-* model properties called __bias and variance__ to diagnose the model and help optimize it
+* The __sigmoid function__
+* A revised __cost function for logistic regression__
+* __Regularization__
+* __Performance metrics__ to diagnose how well the model fits the data and what to do to get a better fit
 
-Particle physics florishes of classification implementations. We will put the logistic regression in  practice during the tutorials to classify collision data.
+Particle physics florishes of classification implementations. We will put the logistic regression in practice during the assignment to classify collision data.

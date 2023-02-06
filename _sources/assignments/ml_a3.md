@@ -364,7 +364,7 @@ If all goes well, you should obtain something like this:
   name: a03_data_NN
   width: 90%
 ---
-Scatter plot of data representing the XOR configuration: it is not linearly separable.
+Scatter plot of data representing the XOR configuration and the neural network performance.
 ```
 
 

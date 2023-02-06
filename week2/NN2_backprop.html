@@ -915,13 +915,13 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Definition 64 </span></p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> be functions. For all <span class="math notranslate nohighlight">\(𝑥\)</span> in the domain of <span class="math notranslate nohighlight">\(g\)</span> for which <span class="math notranslate nohighlight">\(g\)</span> is differentiable at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is differentiable at <span class="math notranslate nohighlight">\(g(x)\)</span>, the derivative of the composite function:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-54048440-b06c-4484-aee8-0350477eb737">
-<span class="eqno">(80)<a class="headerlink" href="#equation-54048440-b06c-4484-aee8-0350477eb737" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1969d9f8-0b91-441c-b481-b65efd095103">
+<span class="eqno">(80)<a class="headerlink" href="#equation-1969d9f8-0b91-441c-b481-b65efd095103" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h(x) = f(g(x)) 
 \end{equation}\]</div>
 <p>is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ee29b365-3490-4d8d-9a6d-30e51592251d">
-<span class="eqno">(81)<a class="headerlink" href="#equation-ee29b365-3490-4d8d-9a6d-30e51592251d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6b796afd-e825-4895-8c12-2652f912bf7f">
+<span class="eqno">(81)<a class="headerlink" href="#equation-6b796afd-e825-4895-8c12-2652f912bf7f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}} \;\cdot \;  \frac{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}}{\mathrm{d} \; x} = f'\left(g(x)\right) \;\cdot \; g'(x)
 \end{equation}\]</div>
 </section>
@@ -937,8 +937,8 @@ h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maro
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
 <p>What would be the chain rule for three functions?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6639322f-f954-4730-9d5f-9816e8ccac30">
-<span class="eqno">(82)<a class="headerlink" href="#equation-6639322f-f954-4730-9d5f-9816e8ccac30" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-52127b9b-c30f-4b38-b732-3ac876cfe7f1">
+<span class="eqno">(82)<a class="headerlink" href="#equation-52127b9b-c30f-4b38-b732-3ac876cfe7f1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 k(x) = h(f(g(x))) 
 \end{equation}\]</div>
 </div>
@@ -1096,7 +1096,7 @@ Let’s now go backward and see how it simplifies itself layer after layer.</p>
 \;\cdot \; W^L 
 \;\cdot \; f'(z^{L-1})
 \;\cdot \; W^{L-1} 
-\;\cdot \; f'(z^{L-1}) 
+\;\cdot \; f'(z^{L-2}) 
 \;\cdot \; a^{L-3} \]</div>
 <p>We can see a pattern here!</p>
 <p>We go all the way to the first hidden layer 1 (scroll to the right):</p>
@@ -1107,7 +1107,7 @@ Let’s now go backward and see how it simplifies itself layer after layer.</p>
 \;\cdot \; W^L 
 \;\cdot \; f'(z^{L-1})
 \;\cdot \; W^{L-1} 
-\;\cdot \; f'(z^{L-1}) 
+\;\cdot \; f'(z^{L-2}) 
 \;\cdots\; W^2
 \;\cdot \; f'(z^{1})
 \;\cdot \; x\]</div>
@@ -1205,23 +1205,23 @@ Training data set <span class="math notranslate nohighlight">\(X\)</span> of <sp
 <p><strong>Start</strong></p>
 <p><strong>Step 0:</strong> Weight initialization</p>
 <p><strong>Step 1:</strong> Forward propagation on subset or all sample instances:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d0e5fb62-8a04-42b3-a10e-83190085cab7">
-<span class="eqno">(106)<a class="headerlink" href="#equation-d0e5fb62-8a04-42b3-a10e-83190085cab7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-38a95eed-6fde-4fc8-b51b-68a6f6c36a8b">
+<span class="eqno">(106)<a class="headerlink" href="#equation-38a95eed-6fde-4fc8-b51b-68a6f6c36a8b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat{y} = a^L(W, b) = f(z^L(W,b))
 \end{equation}\]</div>
 <p><strong>Step 2:</strong> Computation of loss function, cost function and overall error:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cff76e1a-dd91-4cfa-956f-26ec5905eb38">
-<span class="eqno">(107)<a class="headerlink" href="#equation-cff76e1a-dd91-4cfa-956f-26ec5905eb38" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-951a539a-6057-4a40-9a98-7485f70da7c4">
+<span class="eqno">(107)<a class="headerlink" href="#equation-951a539a-6057-4a40-9a98-7485f70da7c4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Cost} = \textstyle \sum L(f(z^L(W,b))) \qquad \delta^L =\; L^{\prime}(a^L(W,b)) \cdot f^{\prime}(z^L(W, b)) 
 \end{equation}\]</div>
 <p><strong>Step 3:</strong> Computation of all activation unit errors:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4b380e99-b15d-41d6-a65c-8da19810a5ef">
-<span class="eqno">(108)<a class="headerlink" href="#equation-4b380e99-b15d-41d6-a65c-8da19810a5ef" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e7577635-b82e-472f-9eb3-0e0b86434c26">
+<span class="eqno">(108)<a class="headerlink" href="#equation-e7577635-b82e-472f-9eb3-0e0b86434c26" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \delta^\ell = \; \delta^{\ell+1} \;\cdot\; W^{\ell+1} \;\cdot\; f'(z^\ell(W, b))
 \end{equation}\]</div>
 <p>… and derivatives:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-441c290d-6d16-408f-ac87-49e623bb5167">
-<span class="eqno">(109)<a class="headerlink" href="#equation-441c290d-6d16-408f-ac87-49e623bb5167" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8718b308-da7f-4c38-92cc-f5ccdfe2ad65">
+<span class="eqno">(109)<a class="headerlink" href="#equation-8718b308-da7f-4c38-92cc-f5ccdfe2ad65" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial \text {Cost}}{\partial W^{\ell}} = \; \sum \; \delta^{\ell} \;\cdot\; a^{\ell-1}  \qquad \qquad \qquad \frac{\partial \text {Cost}}{\partial b^{\ell}} = \; \sum \; \delta^{\ell}
 \end{equation}\]</div>
 <p><strong>Step 4:</strong> Gradient Descent steps to update weights &amp; biases:</p>
@@ -1243,24 +1243,24 @@ b^\ell &amp;\leftarrow b^\ell - \alpha \frac{\partial \text{ Cost}}{\partial b^\
 <h2>Complete equations and dimensions<a class="headerlink" href="#complete-equations-and-dimensions" title="Permalink to this headline">#</a></h2>
 <p>Through this lecture, the indices have been omitted for more clarity. In the following, we will be more rigourous and add the indices, as well as the correct operation symbols. There are indeed some matrix and element-wise multiplications in the formulae.</p>
 <p>The activation nodes <span class="math notranslate nohighlight">\(\boldsymbol{a}\)</span> are row vectors and there is a different value for each sample <span class="math notranslate nohighlight">\(x^{(i)}\)</span>, with <span class="math notranslate nohighlight">\(i\)</span> ranging from 1 to <span class="math notranslate nohighlight">\(m\)</span> (size of the training dataset). See it like a list of <span class="math notranslate nohighlight">\(m\)</span> row vectors. We will stick to the convention in the first lectures of writing the data sample index <span class="math notranslate nohighlight">\(i\)</span> as superscript. We will put the information of the layer also in the superscript. In the subscript, we will indicate the shape of the element (vector or matrix) in the form of <span class="math notranslate nohighlight">\(n_\text{row} \times n_\text{column}\)</span>. Thus, for the layer <span class="math notranslate nohighlight">\(\ell\)</span> with <span class="math notranslate nohighlight">\(n\)</span> activation units, our notation becomes:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4b6153be-b61e-4f05-a1d0-0a6dbfe7b223">
-<span class="eqno">(110)<a class="headerlink" href="#equation-4b6153be-b61e-4f05-a1d0-0a6dbfe7b223" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c79cccd3-af1b-4daa-b13a-d66de01335fc">
+<span class="eqno">(110)<a class="headerlink" href="#equation-c79cccd3-af1b-4daa-b13a-d66de01335fc" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \boldsymbol{a}^\ell \longrightarrow  \boldsymbol{a}^{(i,\ell)}_{1 \times n_\ell} 
 \end{equation}\]</div>
 <p>You can directly ‘see’ the form of <span class="math notranslate nohighlight">\(\boldsymbol{a}^{(i,\ell)}_{1 \times n_\ell}\)</span>: a row vector of <span class="math notranslate nohighlight">\(n_\ell\)</span> elements.</p>
 <p>The <span class="math notranslate nohighlight">\(\boldsymbol{z}\)</span> row vectors (the weighted sum of a node before applying the activation function <span class="math notranslate nohighlight">\(f\)</span>) are of the same shape:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6dc25d33-e2ed-44af-9974-f58709ff6fa5">
-<span class="eqno">(111)<a class="headerlink" href="#equation-6dc25d33-e2ed-44af-9974-f58709ff6fa5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0e7271e3-ce4b-4424-a4a1-38340912f65e">
+<span class="eqno">(111)<a class="headerlink" href="#equation-0e7271e3-ce4b-4424-a4a1-38340912f65e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \boldsymbol{z}^\ell \longrightarrow \boldsymbol{z}^{(i,\ell)}_{1 \times n_\ell} 
 \end{equation}\]</div>
 <p>Now the weight matrices and biases. Unlike the node vectors above, weight matrices and the bias vectors are unique to the neural network. The same weights and bias values are applied to all the samples. The weight matrix at layer <span class="math notranslate nohighlight">\(\ell\)</span> connecting the <span class="math notranslate nohighlight">\(n_{\ell-1}\)</span> nodes of the previous layer to the <span class="math notranslate nohighlight">\(n_{\ell}\)</span> nodes of the current layer <span class="math notranslate nohighlight">\(\ell\)</span> will be of shape:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-168c5d83-973d-4104-92af-09b5afd6fcb7">
-<span class="eqno">(112)<a class="headerlink" href="#equation-168c5d83-973d-4104-92af-09b5afd6fcb7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-21699a1f-3745-4356-909b-ccb7b5574056">
+<span class="eqno">(112)<a class="headerlink" href="#equation-21699a1f-3745-4356-909b-ccb7b5574056" title="Permalink to this equation">#</a></span>\[\begin{equation}
 W^\ell  \longrightarrow  W^{(\ell)}_{n_{\ell-1} \times n_{\ell}}
 \end{equation}\]</div>
 <p>For the bias vector, it will be:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-45483a1e-a75f-4c52-9357-74f7cc29f73a">
-<span class="eqno">(113)<a class="headerlink" href="#equation-45483a1e-a75f-4c52-9357-74f7cc29f73a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ab0c0eaf-9ff1-4c7a-ac44-2639803269c0">
+<span class="eqno">(113)<a class="headerlink" href="#equation-ab0c0eaf-9ff1-4c7a-ac44-2639803269c0" title="Permalink to this equation">#</a></span>\[\begin{equation}
  b^\ell  \longrightarrow \boldsymbol{b}^{(\ell)}_{1 \times n_\ell} 
 \end{equation}\]</div>
 <p>You can see that both <span class="math notranslate nohighlight">\(W\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{b}\)</span> do not have any index <span class="math notranslate nohighlight">\(i\)</span> in the superscript, because there is one set of weights and biases for the entire network.</p>

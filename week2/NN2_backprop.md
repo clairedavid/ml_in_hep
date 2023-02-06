@@ -268,7 +268,7 @@ You can check yourself that for the derivative with respect to $W^{L-2}$ we will
 \;\cdot \; W^L 
 \;\cdot \; f'(z^{L-1})
 \;\cdot \; W^{L-1} 
-\;\cdot \; f'(z^{L-1}) 
+\;\cdot \; f'(z^{L-2}) 
 \;\cdot \; a^{L-3} 
 ```
 We can see a pattern here! 
@@ -282,7 +282,7 @@ We go all the way to the first hidden layer 1 (scroll to the right):
 \;\cdot \; W^L 
 \;\cdot \; f'(z^{L-1})
 \;\cdot \; W^{L-1} 
-\;\cdot \; f'(z^{L-1}) 
+\;\cdot \; f'(z^{L-2}) 
 \;\cdots\; W^2
 \;\cdot \; f'(z^{1})
 \;\cdot \; x

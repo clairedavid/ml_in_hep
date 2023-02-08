@@ -147,7 +147,7 @@ It makes predictions based on a hard threshold.
 
 The perceptron with one logic threshold neuron can, using the step function, split the data into 2 classes depending on its output value exceeding the threshold (predicted class $y=1$) or not ($y=0$). Think of the perceptron as more a 'yes' or 'no' system, and logistic regression as "I think it is 67% probable to be the class $y=1$."
 
-With one output node, a perceptron can classify from two classes. A perceptron with $k$ output nodes can classify from $k+1$ classes. The extra class being encoded as "all outputs not activated," i.e. $y_1 = y_2 = y_k = y_n = 0$, would me the event belongs to class $(k+1)^\text{th}$. It is similar in probabilities when we take:
+With one output node, a perceptron can classify from two classes. A perceptron with $k$ output nodes can classify from $k+1$ classes. The extra class being encoded as "all outputs not activated," i.e. $y_1 = y_2 = y_k = y_n = 0$, would mean the event belongs to class $(k+1)^\text{th}$. It is similar in probabilities when we take:
 ```{math}
 p(N) = 1 - \sum_{i=1}^{N-1} p_i
 ```

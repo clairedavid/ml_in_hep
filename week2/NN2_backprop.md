@@ -217,7 +217,7 @@ We will use it, starting with the last layer and see how things simplify (yes, i
 
 
 ### The backward walk
-As its name indicates, the backward propagation proceed from the last to the first input layer. 
+As its name indicates, the backward propagation proceeds from the last to the first input layer. 
 Let's write the derivative of the cost function with respect to the weight matrix of the last layer:
 ```{math}
 :label: dCostlastchaineq
@@ -478,9 +478,9 @@ Thus for the last layer, the error is:
 :label: deltaLastFullEq
 \qquad \; \boldsymbol{\delta}^{(i,L)}_{1 \times n_L} =\; L^{\prime}\left(\boldsymbol{a}^{(i,L)}_{1 \times n_L}\right) \odot f^{\prime}\left(\boldsymbol{z}^{(i,L)}_{1 \times n_L}\right) 
 ```
-It is an element-wise multiplication of two row vectors. The schematics on top of the equation shows the dimension of the terms. As they are lists with a value for each data sample, and we already use the left/right and up/down directions for matrix and vector operations, the $i$ index is here the 'depth'. In the schematics, it is represented as piled up Tetris-like tetrominos (here only three data samples are represented for illustrative purposes).
+It is an element-wise multiplication of two row vectors. The schematics on top of the equation shows the dimension of the terms. As they are lists with a value for each data sample, and we already use the left/right and up/down directions for matrix and vector operations, the $i$ index is here the 'depth'. In the schematics, it is represented as piled up Tetris-like tetrominos; here only a few data samples (sheets) are represented for illustrative purposes.
 
-The derivatives of the cost is:
+The derivative of the cost is:
 ```{image} ../images/lec07_tetris_dCostdWlastLayer.png
 :alt: tetrominodCostLast
 :width: 50%

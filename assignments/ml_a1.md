@@ -12,7 +12,7 @@ Problem? There can be noisy signals in electromagnetic calorimeters that are gen
 
 Your mission is to help physicists by coding a classifier to select electron-showers (signal) from hadron-showers (background). 
 
-To this end, you are given a dataset of shower characterists from previous measurments where the incoming particle was known. The main features are the depth and the width. 
+To this end, you are given a dataset of shower characterists from previous measurements where the incoming particle was known. The main features are the depth and the width. 
 
 ```{figure} ../images/a01_showers.png
 ---

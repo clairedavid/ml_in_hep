@@ -115,7 +115,7 @@ __Exit conditions:__
 Now there will be math.
 
 ### What is the goal?
-Always a good question to start. We want to tweak the weights $\boldsymbol{W}$ and biases $\boldsymbol{b}$ so that the network predictions $\boldsymbol{\hat{y}}$ get as close as they can be to the observed values $\boldsymbol{y}$. In other words, we want to know how the cost will change if the weights and biases change. For the neural network to fit the data, we need to find the weights and biases that minimize the cost function: 
+Always a good question to start. We want to tweak the weights $\boldsymbol{W}$ and biases $\boldsymbol{b}$ so that the network predictions $\boldsymbol{\hat{y}}$ get as close as they can be to the observed values $\boldsymbol{y}$. In other words, we want to know how to change the weights and biases so that we minimize the cost: 
 ```{math}
 :label: costnnmineq
  \min_{\boldsymbol{W},\boldsymbol{b}} \text{ Cost}(\boldsymbol{W},\boldsymbol{b})
@@ -136,7 +136,7 @@ Here we want to know how to vary the weights and biases so that the cost gets lo
 ```
 
 ```{warning}
-Most mathematical textbooks have $x$ as the varying entity while explaining the derivative business. It can be here misleading with our notation as we use $\boldsymbol{x}$ as well. But in our case, $\boldsymbol{x}$ are the input features. They are given. They will not change (unless you bring new data, but there will still be given numbers you're not supposed to tweak). What we want is to vary the weights $\boldsymbol{W}$ and biases $\boldsymbol{b}$ to find optimized values for which the error is minimum, i.e. the model predicts a (given) $\hat{y}$ very close to the real target $y$.
+Most mathematical textbooks have $x$ as the varying entity while explaining the derivative business. It can be here misleading with our notation as we use $\boldsymbol{x}$ as well. But in our case, $\boldsymbol{x}$ are the input features. They are given. They will not change (unless you bring new data, but there will still be given numbers you're not supposed to tweak). What we want is to vary the weights $\boldsymbol{W}$ and biases $\boldsymbol{b}$ to find optimized values for which the error is minimum, i.e. the model predicts a $\hat{y}$ as close as possible as the real target $y$.
 
 ```
 
@@ -144,42 +144,37 @@ Equation {eq}`partialdevcostWbeq` can be overwhelming, especially given the nume
 
 
 ### Notations
-Let's first rewrite the activation unit equation as a function of a function:
+Let's first rewrite the activation unit equation as a function of a function. We saw in the previous lecture:
 ```{math}
 :label: activvalueeq
-\boldsymbol{a^{(\ell)}} = f\left( \; \boldsymbol{a^{(\ell -1)}} \;\boldsymbol{W^{(\ell)}} \;+\; \boldsymbol{b}^{(\ell)} \;\right) \;,
+\boldsymbol{a}^{(\ell)} = f\left( \; \boldsymbol{a}^{(\ell -1)} \;W^{(\ell)} \;+\; \boldsymbol{b}^{(\ell)} \;\right) \;,
 ```
-with $f$ the node's activation function and $\ell$ is the current layer of the activation unit where the sum is computed (taking thus as inputs the weights and biases pointing to that layer, see Figure {numref}`lec05_4_nn_notations`).
-````{margin}
-To further lighten the equations, parenthesis on the superscripts for the layer number have been removed. It is fine here as the entities will not be squared but one should be careful to not mix the superscript with an exponent.
-````
-Let $z$ be a function for the "weighted sum plus bias:"
+with $f$ the node's activation function and $\ell$ is the current layer of the activation unit. Let's split the notation by defining a function, noted $z$, for the sum only:
 ```{math}
 :label: zfunceq
-z^\ell(W, b) = a^{\ell-1} W^\ell + b^\ell
+\boldsymbol{z}^{(\ell)} = \boldsymbol{a}^{(\ell-1)} W^{(\ell)} + \boldsymbol{b}^{(\ell)}
 ```
 
-Now we can rewrite the output from an activation unit $a^{\ell}$ as:
+This would be called the "weighted sum plus bias." So then each activation unit can be computed as:
 ```{math}
-:label: afunczeq
-a^\ell(W, b) = f\left( z^\ell(W, b) \right)
+:label: afzeq
+\boldsymbol{a}^{(\ell)} = f(\boldsymbol{z}^{(\ell)})
 ```
-
-The superscripts for the weights and biases are not written inside the parentheses for simpler equations. And it is also implied that $W$ and $b$ are collections of matrices and vectors respectively. 
 
 We will denote the loss function through a general form as $L$:
 ```{math}
 :label: lossfunceq
-L(\hat{y}^{(i)}, y^{(i)}) 
+L\left(\hat{y}^{(i)}, y^{(i)}\right) 
 ```
-It is computed for each sample instance $\left\{ \boldsymbol{x^{(i)}}, y^{(i)} \right\}$, with $\boldsymbol{x^{(i)}}$ being one row of input features and $y$ the associated target. 
+It is computed for each sample instance $\left\{ \boldsymbol{x^{(i)}}, y^{(i)} \right\}$, with $\boldsymbol{x^{(i)}} = (x_1^{(i)}, x_2^{(i)}, \cdots, x_n^{(i)})$ being one row of input features and $y^{(i)}$ the associated target. 
 
-The cost is the sum of the losses over all data instances $m$. To make the equations of the following section more readable, the sum will be written without instance indices as superscript (already used for the layer number); it is implied that it is the sum over all data instances.
+The cost is the sum of the losses over all data instances $m$. To make the equations of the following section more readable, the sum will be written without instance indices as superscript (already used for the layer number); it is implied that it is the sum over all data instances. 
 
 ```{math}
 :label: costfunceq
-\text{Cost} = \sum_{i=1}^m L(\hat{y}^{(i)}, y^{(i)}) = \textstyle \sum L(\boldsymbol{\hat{y}}, \boldsymbol{y})
+\text{Cost} = \frac{1}{m} \sum_{i=1}^m L\left(\hat{y}^{(i)}, y^{(i)}\right) = \frac{1}{m} \sum L\left(\boldsymbol{\hat{y}}, \boldsymbol{y}\right)
 ```
+Here $\boldsymbol{\hat{y}}$ and $\boldsymbol{y}$ are in bold to show there are __lists__ (of $m$ elements).
 
 __How can we express the final output $\boldsymbol{\hat{y}}$?__  
 Let's take a similar network as the one in the previous lecture but layers are labeled from the last one (right) in decreasing order:
@@ -193,127 +188,139 @@ Let's take a similar network as the one in the previous lecture but layers are l
 <sub>Image from the author</sub>
 ```
 
-The final prediction $\hat{y}$ is the output of the activation unit in the last layer:
+The final prediction $\hat{y}^{(i)}$ is the output of the activation unit in the last layer:
 ```{math}
-:label: ypredwrappereq
-\hat{y} = a^L = f(z^L(W,b))
+:label: ypredaL
+\hat{y}_1^{(i)} = a_1^{(L,i)} 
 ```
+In the network above, there is only one activation unit, so we can omit the subscript. But there is a prediction for each data sample. The collection of $m$ predictions will be a column vector $\boldsymbol{\hat{y}}$. So let's write the predictions and activation units in bold:
+```{math}
+:label: ypredbold
+\boldsymbol{\hat{y}} = \boldsymbol{a}^{(L)}
+```
+
+So far, so good. Now the cost.
+
+
+
 ***  
-So the cost function is obtained using Equations {eq}`costfunceq` and {eq}`ypredwrappereq`:
+The cost function is obtained using Equations {eq}`afzeq`, {eq}`costfunceq` and {eq}`ypredbold`:
 ```{math}
 :label: costlossafzeq
-\text{Cost} = \textstyle \sum L(f(z^L(W,b)))
+\text{Cost} = \frac{1}{m} \sum L\left(\boldsymbol{\hat{y}}, \boldsymbol{y}\right) = \frac{1}{m} \sum L\left(\boldsymbol{a}^{(L)}, \boldsymbol{y}\right) = \frac{1}{m} \sum L(f(\boldsymbol{z}^{(L)}), \boldsymbol{y}) 
 ```
-***  
-Let's joyfully take the derivatives of that sandwich of functions! Now you get the chain rule refresher. The general expression for the partial derivative with respect to the weights $W$ would be:
-```{math}
-:label: dCostchaineq
-\frac{\partial \text { Cost }}{\partial W}= \sum \; \frac{\partial L(f(z(W, b)))}{\partial f(z(W, b))} \cdot \; \frac{\partial f(z(W, b))}{\partial z(W, b)}  \cdot \; \frac{\partial z(W, b)}{\partial W}
-```
-A similar one can be written with $b$.  
-Let's now go backward and see how it simplifies itself layer after layer.
+*** 
+
+Let's joyfully take the derivatives of that sandwich of functions! Now do you get the chain rule refresher? 
+
+We will use it, starting with the last layer and see how things simplify (yes, it will). Then we will backpropagate layer after layer.
 
 
 ### The backward walk
-As its name indicates, the backward propagation proceed from the last to the first input layer. Let's write the general equation {eq}`dCostchaineq` for the last layer:
+As its name indicates, the backward propagation proceed from the last to the first input layer. 
+Let's write the derivative of the cost function with respect to the weight matrix of the last layer:
 ```{math}
 :label: dCostlastchaineq
-\frac{\partial \text { Cost }}{\partial W^L} =\sum \; \frac{\partial L(f(z^L(W, b)))}{\partial f(z^L(W, b))} \; \cdot \; \frac{\partial f(z^L(W, b))}{\partial z^L(W, b)} \; \cdot \; \frac{\partial z^L(W, b))}{\partial W^L} 
+\frac{\partial \text { Cost }}{\partial \; W^{(L)}} = \; \frac{1}{m} \sum \; \frac{\partial L(f(\boldsymbol{z}^{(L)}), \boldsymbol{y})}{\partial \; W^{(L)}} = \; \frac{1}{m} \sum \; \frac{\partial L(f(\boldsymbol{z}^{(L)}), \boldsymbol{y})}{\partial f(\boldsymbol{z}^{(L)})} \; \cdot \; \frac{\partial f(\boldsymbol{z}^{(L)})}{\partial \boldsymbol{z}^{(L)}} \; \cdot \; \frac{\partial \boldsymbol{z}^{(L)}}{\partial W^{(L)}} 
 ```
 
-We can simplify things. The first term is the derivative of the loss function with $f(z^L(W, b)) = a^L$ as argument. It's a value here, computed with all weights values. Same for the second term: it is the derivative of activation function taken for the value $z^L$. For the third, we use the definition in Equation {eq}`zfunceq` that yields: $\left(z^L(W, b)\right)^{\prime} = a^{L-1}$. We can write:
+We can simplify things. The first term is the derivative of the loss function with $f(\boldsymbol{z}^{(L)}) = \boldsymbol{a}^{(L)}$ as argument. It's a value here, computed with all weights values. Same for the second term: it is the derivative of the activation function taken for the value $\boldsymbol{z}^{(L)}$. For the third, we use the definition in Equation {eq}`zfunceq` that yields: $\left( \boldsymbol{z}^{(L)} \right)^{\prime} = \boldsymbol{a}^{(L-1)}$. We can write:
 
 ```{math}
 :label: dCostlastsimpleeq
-\frac{\partial \text { Cost }}{\partial W^L}
-= \; \sum \;\; L^{\prime}(a^L) 
-\;\cdot \; f^{\prime}(z^L) 
-\;\cdot \; a^{L-1}
+\frac{\partial \text { Cost }}{\partial W^{(L)}}
+= \; \frac{1}{m}\; \sum \;\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y}) 
+\;\cdot \; f^{\prime}(\boldsymbol{z}^{(L)}) 
+\;\cdot \; \boldsymbol{a}^{(L-1)}
 ```
+
+This is known! We can compute a value for this derivative!
 
 Now let's proceed to the before last layer. Using the chain rule as usual:
 ```{math}
 :label: dCostbeforelastchaineq
 \begin{align*}
-& \frac{\partial \text { Cost }}{\partial W^{L-1}} =  \\[1ex]
-& \sum \; \frac{\partial L(f(z^L(W, b)))}{\partial f(z^L(W, b))} \cdot \frac{\partial f(z^L(W, b))}{\partial z^L(W, b)} \cdot \frac{\partial z^L(W, b))}{\partial a^{L-1}(W,b)} \cdot \frac{\partial a^{L-1}(W,b)}{\partial z^{L-1}(W,b)} \cdot \frac{\partial z^{L-1}(W,b)}{\partial W^{L-1}} 
+& \frac{\partial \text { Cost }}{\partial W^{(L-1)}} =  \; \frac{1}{m}  \\[1ex]
+& \sum \; \frac{\partial L(f(\boldsymbol{z}^{(L)}), \boldsymbol{y})}{\partial f(\boldsymbol{z}^{(L)})} \; \cdot \; \frac{\partial f(\boldsymbol{z}^{(L)})}{\partial \boldsymbol{z}^{(L)}} \; \cdot \; \frac{\partial \boldsymbol{z}^{(L)}}{\partial \boldsymbol{a}^{(L-1)}}  \; \cdot \; \frac{\partial \; \boldsymbol{a}^{(L-1)} }{\partial\;\boldsymbol{z}^{(L-1)} } \; \cdot \; \frac{\partial \; \boldsymbol{z}^{(L-1)} }{\partial\;W^{(L-1)} }
 \end{align*}
 ```
 
-The two first terms are identical as in Equation {eq}`dCostchaineq`. Using the definitions of $a$ and $z$ we have: 
+The two first terms are identical as in Equation {eq}`dCostlastchaineq`. Using the definitions of $\boldsymbol{a}$ and $\boldsymbol{z}$ we have: 
 ```{math}
 :label: beforeLasttermssimplereq
 \begin{gathered}
-\frac{\partial z^L(W, b))}{\partial a^{L-1}(W,b)} \;=\; W^L  \qquad \frac{\partial a^{L-1}(W,b)}{\partial z^{L-1}(W,b)} \;=\; f'(z^{L-1}) \qquad  \frac{\partial z^{L-1}(W,b)}{\partial W^{L-1}} \;=\; a^{L-2}
+\frac{\partial \boldsymbol{z}^{(L)}}{\partial \boldsymbol{a}^{(L-1)}}  \;=\; W^{(L)}  \qquad,\qquad \frac{\partial \; \boldsymbol{a}^{(L-1)} }{\partial\;\boldsymbol{z}^{(L-1)} } \;=\; f'(\boldsymbol{z}^{(L-1)}) \qquad,\qquad \frac{\partial \; \boldsymbol{z}^{(L-1)} }{\partial\;W^{(L-1)} } \;=\; \boldsymbol{a}^{(L-2)}
 \end{gathered}
 ```
 
 Therefore:
 ```{math}
 :label: dCostbeforelastsimpleeq
-\frac{\partial \text { Cost }}{\partial W^{L-1}}
-= \; \sum \;\; L^{\prime}(a^L) 
-\;\cdot \; f^{\prime}(z^L) 
-\;\cdot \; W^L 
-\;\cdot \; f'(z^{L-1})
-\;\cdot \; a^{L-2}
+\frac{\partial \text { Cost }}{\partial W^{(L-1)}}
+= \; \frac{1}{m} \; \sum \;\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y}) 
+\;\cdot \; f^{\prime}(\boldsymbol{z}^{(L)}) 
+\;\cdot \; W^{(L)}
+\;\cdot \; f'(\boldsymbol{z}^{(L-1)})
+\;\cdot \; \boldsymbol{a}^{(L-2)}
 ```
 
-You can check yourself that for the derivative with respect to $W^{L-2}$ we will have: 
+You can check yourself that for the derivative with respect to $W^{(L-2)}$ we will have: 
 ```{math}
 :label: dCostbeforebeforelastsimpleeq
-\frac{\partial \text { Cost }}{\partial W^{L-2}}
-= \; \sum \;\; L^{\prime}(a^L) 
-\;\cdot \; f^{\prime}(z^L) 
-\;\cdot \; W^L 
-\;\cdot \; f'(z^{L-1})
-\;\cdot \; W^{L-1} 
-\;\cdot \; f'(z^{L-2}) 
-\;\cdot \; a^{L-3} 
+\begin{align*}
+& \frac{\partial \text { Cost }}{\partial W^{(L-2)}} = \; \frac{1}{m}  \\[1ex]
+& \sum \;\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y}) 
+\;\cdot \; f^{\prime}(\boldsymbol{z}^{(L)}) 
+\;\cdot \; W^{(L)}
+\;\cdot \; f'(\boldsymbol{z}^{(L-1)})
+\;\cdot \; W^{(L-1)} 
+\;\cdot \; f'(\boldsymbol{z}^{(L-2)}) 
+\;\cdot \; \boldsymbol{a}^{(L-3)} 
 ```
 We can see a pattern here! 
 
 We go all the way to the first hidden layer 1 (scroll to the right):
 ```{math}
 :label: dCostW1dotsxeq
-\frac{\partial \text { Cost }}{\partial W^{1}}
-= \; \sum \;\; L^{\prime}(a^L) 
-\;\cdot \; f^{\prime}(z^L) 
-\;\cdot \; W^L 
-\;\cdot \; f'(z^{L-1})
-\;\cdot \; W^{L-1} 
-\;\cdot \; f'(z^{L-2}) 
-\;\cdots\; W^2
-\;\cdot \; f'(z^{1})
-\;\cdot \; x
+\frac{\partial \text { Cost }}{\partial W^{(1)}}
+= \; \frac{1}{m} \; \sum \;\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y}) 
+\;\cdot \; f^{\prime}(\boldsymbol{z}^{(L)}) 
+\;\cdot \; W^{(L)}
+\;\cdot \; f'(\boldsymbol{z}^{(L-1)})
+\;\cdot \; W^{(L-1)} 
+\;\cdot \; f'(\boldsymbol{z}^{(L-2)}) 
+\;\cdot \; W^{(L-2)}
+\;\cdots\; W^{(2)}
+\;\cdot \; f'(\boldsymbol{z}^{(1)}) 
+\;\cdot \; \boldsymbol{x}
 ```
-where $a^0 = x$ as defined in the previous lecture in Equation {eq}`xisazeroeq`.
+where $\boldsymbol{x} = \boldsymbol{a}^{(0)}$ as defined in the previous lecture in Equation {eq}`xisazeroeq`.
 
 ### Recursive error equation
-We can write Equations {eq}`dCostlastsimpleeq`, {eq}`dCostbeforelastsimpleeq` and {eq}`dCostbeforebeforelastsimpleeq` by introducing an error term $\delta$. For the last layer it is defined as the product of the first two partial derivatives times the activation unit's value at the previous layer. For the following (previous) layers it would be:
+We can write Equations {eq}`dCostlastsimpleeq`, {eq}`dCostbeforelastsimpleeq` and {eq}`dCostbeforebeforelastsimpleeq` by introducing an error term $\boldsymbol{\delta}$. For the last layer it is defined as the product of the first two partial derivatives times the activation unit's value at the previous layer. For the following (previous) layers it would be:
 ```{math}
 :label: deltasandpartialcostseq
 \begin{align*}
-\delta^L &=\; L^{\prime}(a^L) \cdot f^{\prime}(z^L) 
-& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial W^L} &=&  \quad \sum \quad\delta^L \;\cdot\; a^{L-1}\\[2ex]
-\delta^{L-1} &= \; \delta^L     \cdot\;  W^L \cdot\; f'(z^{L-1}) 
-& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial W^{L-1}} &=& \quad \sum \quad\delta^{L-1} \;\cdot\; a^{L-2}\\[2ex]
-\delta^{L-2} &= \; \delta^{L-1} \cdot\; W^{L-1} \;\cdot\; f'(z^{L-2}) 
-& \Rightarrow & \quad \frac{\partial \text {Cost}}{\partial W^{L-2}} &=& \quad \sum \quad\delta^{L-2} \;\cdot\; a^{L-3}\\
+\boldsymbol{\delta}^{(L)} &=\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y})  \cdot f^{\prime}(\boldsymbol{z}^{(L)}) 
+& \rightarrow   \frac{\partial \text {Cost}}{\partial W^{(L)}} &=  \; \frac{1}{m} \; \sum \;\boldsymbol{\delta}^{(L)} \;\cdot\; \boldsymbol{a}^{(L-1)}\\[2ex]
+\boldsymbol{\delta}^{(L-1)} &= \; \boldsymbol{\delta}^{(L)}     \cdot\;  W^{(L)} \cdot\; f'(\boldsymbol{z}^{(L-1)}) 
+& \rightarrow   \frac{\partial \text {Cost}}{\partial W^{(L-1)}} &= \; \frac{1}{m} \; \sum \;\boldsymbol{\delta}^{(L-1)} \;\cdot\; \boldsymbol{a}^{(L-2)}\\[2ex]
+\boldsymbol{\delta}^{(L-2)} &= \; \boldsymbol{\delta}^{(L-1)} \cdot\; W^{(L-1)} \;\cdot\; f'(\boldsymbol{z}^{(L-2)}) 
+& \rightarrow   \frac{\partial \text {Cost}}{\partial W^{(L-2)}} &= \; \frac{1}{m} \; \sum \;\boldsymbol{\delta}^{(L-2)} \;\cdot\; \boldsymbol{a}^{(L-3)}\\
 \end{align*} 
 ```
 This is recursive because errors from the current layer are used to evaluate error signals in a previous layer. We can write the recursive formula for any partial derivative in layer $\ell$ as:
 
 ```{math}
 :label: partialdevrecueq
-\frac{\partial \text {Cost}}{\partial W^{\ell}} = \;\; \sum \quad\delta^{\ell} \;\cdot\; a^{\ell-1}
+\frac{\partial \text {Cost}}{\partial W^{(\ell)}} = \;\;\; \frac{1}{m} \; \sum \quad\boldsymbol{\delta}^{(\ell)} \;\cdot\; \boldsymbol{a}^{(\ell-1)}
 ```
 
 __What about the biases?__  
 This is left as exercise for training. 
 ```{admonition} Exercise
 :class: seealso
-Express the partial derivatives of the cost with respect to the biases $b^{\ell}$.
+Express the partial derivatives of the cost with respect to the biases $\boldsymbol{b}^{(\ell)}$.
 
 Hint: start with the last layer $L$ as done previously with the weights.
 ```
@@ -321,24 +328,24 @@ Hint: start with the last layer $L$ as done previously with the weights.
 ````{admonition} Check your answer
 :class: tip, dropdown
 
-The formula is essentially the same as for the weights, at the difference that the partial derivative of $z^\ell$ with respect to $b^\ell$ is 1:
+The formula is essentially the same as for the weights, at the difference that the partial derivative of $\boldsymbol{z}^{(\ell)}$ with respect to $\boldsymbol{b}^{(\ell)}$ is 1:
 \begin{equation*}
-\frac{\partial z^\ell}{\partial b^\ell} = 1
+\frac{\partial \boldsymbol{z}^{(\ell)}}{\partial \boldsymbol{b}^{(\ell)}} = 1
 \end{equation*}
 
 Thus:
 ```{math}
 :label: biaseq
 \begin{align*}
-\delta^L &=\; L^{\prime}(a^L) \cdot f^{\prime}(z^L) 
-& \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial b^L} &=& \quad \sum \quad\delta^L  \\[1ex]
-\delta^{L-1} &= \; \delta^L     \cdot\;  W^L \cdot\; f'(z^{L-1}) 
-& \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial b^{L-1}} &=& \quad \sum \quad\delta^{L-1}  \\[1ex]
-\delta^{L-2} &= \; \delta^{L-1} \cdot\; W^{L-1} \;\cdot\; f'(z^{L-2}) 
-& \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial b^{L-2}} &=& \quad \sum \quad\delta^{L-2} \\[1ex]
+\boldsymbol{\delta}^{(L)} &=\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y})  \cdot f^{\prime}(\boldsymbol{z}^{(L)})  
+& \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(L)}} &=& \; \frac{1}{m} \quad \sum \quad\boldsymbol{\delta}^L  \\[1ex]
+\boldsymbol{\delta}^{(L-1)} &= \; \boldsymbol{\delta}^{(L)}     \cdot\;  W^{(L)} \cdot\; f'(\boldsymbol{z}^{(L-1)}) 
+& \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(L-1)}} &=& \; \frac{1}{m} \quad \sum \quad\boldsymbol{\delta}^{(L-1)}  \\[1ex]
+\boldsymbol{\delta}^{(L-2)} &= \; \boldsymbol{\delta}^{(L-1)} \cdot\; W^{(L-1)} \;\cdot\; f'(\boldsymbol{z}^{(L-2)}) 
+& \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(L-2)}} &=& \; \frac{1}{m} \quad \sum \quad\boldsymbol{\delta}^{(L-2)} \\[1ex]
 & \quad\cdots & & \cdots & \\[1ex]
-\delta^{1} &= \; \delta^{2} \cdot\; W^{2} \;\cdot\; f'(z^{1}) 
-& \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial b^{1}} &=& \quad \sum \quad\delta^{1} \\[1ex]
+\boldsymbol{\delta}^{(1)} &= \; \boldsymbol{\delta}^{(2)} \cdot\; W^{(2)} \;\cdot\; f'(\boldsymbol{z}^{(1)}) 
+& \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(1)}} &=& \; \frac{1}{m} \quad \sum \quad\boldsymbol{\delta}^{(1)} \\[1ex]
 \end{align*} 
 ```
 ````
@@ -352,8 +359,8 @@ The equations are different as in the section {ref}`NN2:backprop:mainstep` as we
 ```{math}
 :label: weightbiasupdate
 \begin{align*}
-W^\ell &\leftarrow W^\ell - \alpha \frac{\partial \text{ Cost}}{\partial W^\ell} \\[1ex]
-b^\ell &\leftarrow b^\ell - \alpha \frac{\partial \text{ Cost}}{\partial b^\ell}
+W^{(\ell)} &\leftarrow W^{(\ell)} - \alpha \frac{\partial \text{ Cost}}{\partial W^{(\ell)}} \\[1ex]
+\boldsymbol{b}^{(\ell)} &\leftarrow \boldsymbol{b}^{(\ell)} - \alpha \frac{\partial \text{ Cost}}{\partial \boldsymbol{b}^{(\ell)}}
 \end{align*}
 ```
 
@@ -365,14 +372,14 @@ Let's illustrate this point by writing the derivative equations for a network wi
 ```{math}
 :label: lastfoursimpleeq
 \begin{align*}
-\frac{\partial \text { Cost }}{\partial W^4} &= \sum \; 
-{\color{OliveGreen}L^{\prime}(a^4) \cdot f^{\prime}(z^4)} \cdot a^{3} \\[2ex]
-\frac{\partial \text { Cost }}{\partial W^{3}} &= \sum \; 
-{\color{OliveGreen}L^{\prime}(a^4) \cdot f^{\prime}(z^4)} \cdot {\color{Cyan}W^4 \cdot f'(z^{3})} \cdot a^{2}  \\[2ex]
-\frac{\partial \text { Cost }}{\partial W^{2}} &= \sum \; 
-{\color{OliveGreen}L^{\prime}(a^4) \cdot f^{\prime}(z^4)} \cdot {\color{Cyan}W^4 \cdot f'(z^{3})} \cdot {\color{DarkOrange}W^{3} \cdot f'(z^{2})} \cdot a^{1} \\[2ex]
-\frac{\partial \text { Cost }}{\partial W^{1}} &= \sum \; 
-{\color{OliveGreen}L^{\prime}(a^4) \cdot f^{\prime}(z^4)} \cdot {\color{Cyan}W^4 \cdot f'(z^{3})} \cdot {\color{DarkOrange}W^{3} \cdot f'(z^{2})}  \cdot W^2 \cdot f'(z^{1}) \cdot x\\[2ex]
+\frac{\partial \text { Cost }}{\partial W^{(4)}} &= \; \frac{1}{m} \; \sum \; 
+{\color{OliveGreen}L^{\prime}(\boldsymbol{a}^{(4)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(4)})} \cdot \boldsymbol{a}^{(3)} \\[2ex]
+\frac{\partial \text { Cost }}{\partial W^{(3)}} &= \; \frac{1}{m} \; \sum \; 
+{\color{OliveGreen}L^{\prime}(\boldsymbol{a}^{(4)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(4)})} \cdot {\color{Cyan}W^{(4)} \cdot f'(\boldsymbol{z}^{(3)})} \cdot \boldsymbol{a}^{(2)}  \\[2ex]
+\frac{\partial \text { Cost }}{\partial W^{(2)}} &= \; \frac{1}{m} \; \sum \; 
+{\color{OliveGreen}L^{\prime}(\boldsymbol{a}^{(4)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(4)})} \cdot {\color{Cyan}W^{(4)} \cdot f'(\boldsymbol{z}^{(3)})} \cdot {\color{DarkOrange}W^{(3)} \cdot f'(\boldsymbol{z}^{(2)})} \cdot \boldsymbol{a}^{(1)} \\[2ex]
+\frac{\partial \text { Cost }}{\partial W^{(1)}} &= \; \frac{1}{m} \; \sum \; 
+{\color{OliveGreen}L^{\prime}(\boldsymbol{a}^{(4)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(4)})} \cdot {\color{Cyan}W^{(4)} \cdot f'(\boldsymbol{z}^{(3)})} \cdot {\color{DarkOrange}W^{(3)} \cdot f'(\boldsymbol{z}^{(2)})}  \cdot W^{(2)} \cdot f'(\boldsymbol{z}^{(1)}) \cdot \boldsymbol{x}\\[2ex]
 \end{align*}
 ```
 The reoccuring computations are highlighted in the same colour. Now you can get a sense of the genius behind neural network: although there are many computations, a lot of calculations are reused as we move backwards through the network. With proper memoization, the whole process can be very fast. 
@@ -404,7 +411,7 @@ __Step 1:__ Forward propagation on subset or all sample instances:
 
 __Step 2:__ Computation of loss function, cost function and overall error:
 \begin{equation}
-\text{Cost} = \textstyle \sum L(f(z^L(W,b))) \qquad \delta^L =\; L^{\prime}(a^L(W,b)) \cdot f^{\prime}(z^L(W, b)) 
+\text{Cost} = \textstyle \; \frac{1}{m} \; \sum L(f(z^L(W,b))) \qquad \delta^L =\; L^{\prime}(a^L(W,b)) \cdot f^{\prime}(z^L(W, b)) 
 \end{equation}
 
 __Step 3:__ Computation of all activation unit errors: 
@@ -413,7 +420,7 @@ __Step 3:__ Computation of all activation unit errors:
 \end{equation}
 ... and derivatives:
 \begin{equation}
-\frac{\partial \text {Cost}}{\partial W^{\ell}} = \; \sum \; \delta^{\ell} \;\cdot\; a^{\ell-1}  \qquad \qquad \qquad \frac{\partial \text {Cost}}{\partial b^{\ell}} = \; \sum \; \delta^{\ell}
+\frac{\partial \text {Cost}}{\partial W^{\ell}} = \; \frac{1}{m} \; \sum \; \delta^{\ell} \;\cdot\; a^{\ell-1}  \qquad \qquad \qquad \frac{\partial \text {Cost}}{\partial b^{\ell}} = \; \frac{1}{m} \; \sum \; \delta^{\ell}
 \end{equation}
 
 __Step 4:__ Gradient Descent steps to update weights & biases:
@@ -465,11 +472,11 @@ We can rewrite the equations {eq}`deltasandpartialcostseq` using all the informa
 :label: deltasandpartialcostseqallinfo
 \begin{align*}
 \boldsymbol{\delta}^{(i,L)}_{1 \times n_L} &=\; L^{\prime}\left(\boldsymbol{a}^{(i,L)}_{1 \times n_L}\right) \odot f^{\prime}\left(\boldsymbol{z}^{(i,L)}_{1 \times n_L}\right) \\[2ex]
-& \quad\quad \longrightarrow  \;\; \frac{\partial \text {Cost}}{\partial W^L} = \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-1)}_{1 \times n_{L-1}}\right)^T \cdot \boldsymbol{\delta}^{(i,L)}_{1 \times n_L}  \\[5ex]
+& \quad\quad \longrightarrow  \;\; \frac{\partial \text {Cost}}{\partial W^L} = \; \frac{1}{m} \; \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-1)}_{1 \times n_{L-1}}\right)^T \cdot \boldsymbol{\delta}^{(i,L)}_{1 \times n_L}  \\[5ex]
 \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}} &= \; \left[ \; \boldsymbol{\delta}^{(i,L)}_{1 \times n_L}     \cdot\;  \left(W^L \right)^T \right] \odot\; f'\left(\boldsymbol{z}^{(i,L-1)}_{1 \times n_{L-1}}\right)  \\[2ex]
-& \quad\quad \longrightarrow \quad \frac{\partial \text {Cost}}{\partial W^{(L-1)}} = \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-2)}_{1 \times n_{L-2}}\right)^T \cdot \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}} \\[5ex]
+& \quad\quad \longrightarrow \quad \frac{\partial \text {Cost}}{\partial W^{(L-1)}} = \; \frac{1}{m} \; \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-2)}_{1 \times n_{L-2}}\right)^T \cdot \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}} \\[5ex]
 \boldsymbol{\delta}^{(i,L-2)}_{1 \times n_{L-2}} &= \; \left[ \; \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}}     \cdot\;  \left(W^{(L-1)} \right)^T \right] \odot\; f'\left(\boldsymbol{z}^{(i,L-2)}_{1 \times n_{L-2}}\right) \\[2ex]
-& \quad\quad \longrightarrow  \quad \frac{\partial \text {Cost}}{\partial W^{(L-2)}} = \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-3)}_{1 \times n_{L-3}}\right)^T \cdot \boldsymbol{\delta}^{(i,L-2)}_{1 \times n_{L-2}} \\[2ex]
+& \quad\quad \longrightarrow  \quad \frac{\partial \text {Cost}}{\partial W^{(L-2)}} = \; \frac{1}{m} \; \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-3)}_{1 \times n_{L-3}}\right)^T \cdot \boldsymbol{\delta}^{(i,L-2)}_{1 \times n_{L-2}} \\[2ex]
 \end{align*} 
 ```
 

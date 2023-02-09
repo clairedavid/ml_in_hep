@@ -276,6 +276,7 @@ You can check yourself that for the derivative with respect to $W^{(L-2)}$ we wi
 \;\cdot \; W^{(L-1)} 
 \;\cdot \; f'(\boldsymbol{z}^{(L-2)}) 
 \;\cdot \; \boldsymbol{a}^{(L-3)} 
+\end{align*}
 ```
 We can see a pattern here! 
 
@@ -338,7 +339,7 @@ Thus:
 :label: biaseq
 \begin{align*}
 \boldsymbol{\delta}^{(L)} &=\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y})  \cdot f^{\prime}(\boldsymbol{z}^{(L)})  
-& \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(L)}} &=& \; \frac{1}{m} \quad \sum \quad\boldsymbol{\delta}^L  \\[1ex]
+& \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(L)}} &=& \; \frac{1}{m} \quad \sum \quad\boldsymbol{\delta}^{(L)}  \\[1ex]
 \boldsymbol{\delta}^{(L-1)} &= \; \boldsymbol{\delta}^{(L)}     \cdot\;  W^{(L)} \cdot\; f'(\boldsymbol{z}^{(L-1)}) 
 & \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(L-1)}} &=& \; \frac{1}{m} \quad \sum \quad\boldsymbol{\delta}^{(L-1)}  \\[1ex]
 \boldsymbol{\delta}^{(L-2)} &= \; \boldsymbol{\delta}^{(L-1)} \cdot\; W^{(L-1)} \;\cdot\; f'(\boldsymbol{z}^{(L-2)}) 
@@ -387,13 +388,13 @@ The reoccuring computations are highlighted in the same colour. Now you can get 
 
 ## Summary on backpropagation
 The backpropagation of error is a recursive algorithm reusing the computations from last until first layer to compute how much each activation unit and bias node contribute to the overall error. The idea behind backpropagation is to share the repeated computations wherever possible. 
-Let's write again the step filling the key equations in:
+Let's write again the steps with the key equations:
 
 ````{prf:algorithm} Backpropagation
 :label: backpropalgosummary
 
 __Inputs__  
-Training data set $X$ of $m$ samples with each $n$ input features, associated with their targets $y$
+Training data set $X$ of $m$ samples with each $n$ input features, associated with their targets $\boldsymbol{y}$
 
 __Hyperparameters__
 * Learning rate $\alpha$
@@ -404,30 +405,30 @@ __Start__
 
 __Step 0:__ Weight initialization
 
-__Step 1:__ Forward propagation on subset or all sample instances:
+__Step 1:__ Forward propagation:
 \begin{equation}
-\hat{y} = a^L(W, b) = f(z^L(W,b))
+\boldsymbol{\hat{y}} = \boldsymbol{a}^{(L)} = f(\boldsymbol{z}^{(L)})
 \end{equation}
 
 __Step 2:__ Computation of loss function, cost function and overall error:
 \begin{equation}
-\text{Cost} = \textstyle \; \frac{1}{m} \; \sum L(f(z^L(W,b))) \qquad \delta^L =\; L^{\prime}(a^L(W,b)) \cdot f^{\prime}(z^L(W, b)) 
+\text{Cost} = \textstyle \; \frac{1}{m} \; \sum L(f(\boldsymbol{z}^{(L)}), \boldsymbol{y}) \qquad \boldsymbol{\delta}^{(L)} =\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(L)}) 
 \end{equation}
 
-__Step 3:__ Computation of all activation unit errors: 
+__Step 3:__ Computation of all activation unit errors for $\ell = L-1, L-2, \cdots, 1$: 
 \begin{equation}
-\delta^\ell = \; \delta^{\ell+1} \;\cdot\; W^{\ell+1} \;\cdot\; f'(z^\ell(W, b))
+\boldsymbol{\delta}^{(\ell)} = \; \boldsymbol{\delta}^{(\ell+1)} \;\cdot\; W^{(\ell+1)} \;\cdot\; f'(\boldsymbol{z}^{(\ell)})
 \end{equation}
 ... and derivatives:
 \begin{equation}
-\frac{\partial \text {Cost}}{\partial W^{\ell}} = \; \frac{1}{m} \; \sum \; \delta^{\ell} \;\cdot\; a^{\ell-1}  \qquad \qquad \qquad \frac{\partial \text {Cost}}{\partial b^{\ell}} = \; \frac{1}{m} \; \sum \; \delta^{\ell}
+\frac{\partial \text {Cost}}{\partial W^{(\ell)}} = \; \frac{1}{m} \; \sum \; \boldsymbol{\delta}^{(\ell)} \;\cdot\; \boldsymbol{a}^{(\ell-1)}  \qquad \qquad \qquad \frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(\ell)}} = \; \frac{1}{m} \; \sum \; \boldsymbol{\delta}^{(\ell)}
 \end{equation}
 
 __Step 4:__ Gradient Descent steps to update weights & biases:
 ```{math}
 \begin{align*}
-W^\ell &\leftarrow W^\ell - \alpha \frac{\partial \text{ Cost}}{\partial W^\ell} \\[1ex]
-b^\ell &\leftarrow b^\ell - \alpha \frac{\partial \text{ Cost}}{\partial b^\ell}
+W^{(\ell)} &\leftarrow W^{(\ell)} - \alpha \frac{\partial \text{ Cost}}{\partial W^{(\ell)}} \\[1ex]
+\boldsymbol{b}^{(\ell)} &\leftarrow \boldsymbol{b}^{(\ell)} - \alpha \frac{\partial \text{ Cost}}{\partial \boldsymbol{b}^{(\ell)}}
 \end{align*}
 
 ```
@@ -440,62 +441,96 @@ __Exit conditions:__
 ````
 
 ## Complete equations and dimensions
-Through this lecture, the indices have been omitted for more clarity. In the following, we will be more rigourous and add the indices, as well as the correct operation symbols. There are indeed some matrix and element-wise multiplications in the formulae.
+Through this lecture, some indices have been omitted for more clarity. In the following, we will be more rigourous and add the indices, as well as the correct operation symbols. There are indeed some matrix and element-wise multiplications in the formulae.
 
-The activation nodes $\boldsymbol{a}$ are row vectors and there is a different value for each sample $x^{(i)}$, with $i$ ranging from 1 to $m$ (size of the training dataset). See it like a list of $m$ row vectors. We will stick to the convention in the first lectures of writing the data sample index $i$ as superscript. We will put the information of the layer also in the superscript. In the subscript, we will indicate the shape of the element (vector or matrix) in the form of $n_\text{row} \times n_\text{column}$. Thus, for the layer $\ell$ with $n$ activation units, our notation becomes:
+The activation nodes $\boldsymbol{a}$ are row vectors and there is a different value for each sample $x^{(i)}$, with $i$ ranging from 1 to $m$ (size of the training dataset). This is a list of $m$ row vectors. We will stick to the convention in the first lectures of writing the data sample index $i$ as superscript. We will put the information of the layer also in the superscript. In the subscript, we will indicate the shape of the element (vector or matrix) in the form of $n_\text{row} \times n_\text{column}$. Thus, for the layer $\ell$ with $n$ activation units, our notation becomes:
 \begin{equation}
-\boldsymbol{a}^\ell \longrightarrow  \boldsymbol{a}^{(i,\ell)}_{1 \times n_\ell} 
+\boldsymbol{a}^{(\ell)} \longrightarrow  \boldsymbol{a}^{(i,\ell)}_{1 \times n_\ell} 
 \end{equation}
 You can directly 'see' the form of $\boldsymbol{a}^{(i,\ell)}_{1 \times n_\ell}$: a row vector of $n_\ell$ elements.
 
 The $\boldsymbol{z}$ row vectors (the weighted sum of a node before applying the activation function $f$) are of the same shape:
 \begin{equation}
-\boldsymbol{z}^\ell \longrightarrow \boldsymbol{z}^{(i,\ell)}_{1 \times n_\ell} 
+\boldsymbol{z}^{(\ell)} \longrightarrow \boldsymbol{z}^{(i,\ell)}_{1 \times n_\ell} 
 \end{equation}
 
-Now the weight matrices and biases. Unlike the node vectors above, weight matrices and the bias vectors are unique to the neural network. The same weights and bias values are applied to all the samples. The weight matrix at layer $\ell$ connecting the $n_{\ell-1}$ nodes of the previous layer to the $n_{\ell}$ nodes of the current layer $\ell$ will be of shape:
+Now the weight matrices and biases. Unlike the node vectors above, weight matrices and the bias vectors are __unique__ to the neural network. The same weights and bias values are applied to all the samples. The weight matrix at layer $\ell$ connecting the $n_{\ell-1}$ nodes of the previous layer to the $n_{\ell}$ nodes of the current layer $\ell$ will be of shape:
 \begin{equation}
-W^\ell  \longrightarrow  W^{(\ell)}_{n_{\ell-1} \times n_{\ell}}
+W^{(\ell)}  \longrightarrow  W^{(\ell)}_{n_{\ell-1} \times n_{\ell}}
 \end{equation}
 For the bias vector, it will be:
 \begin{equation}
- b^\ell  \longrightarrow \boldsymbol{b}^{(\ell)}_{1 \times n_\ell} 
+\boldsymbol{b}^{(\ell)}  \longrightarrow \boldsymbol{b}^{(\ell)}_{1 \times n_\ell} 
 \end{equation}
 
 You can see that both $W$ and $\boldsymbol{b}$ do not have any index $i$ in the superscript, because there is one set of weights and biases for the entire network. 
 
-We can rewrite the equations {eq}`deltasandpartialcostseq` using all the information. The matrix multiplication will be written with the '$\cdot$' symbol and element-wise multiplication (applied on vectors) as $\odot$:
+We can rewrite the equations {eq}`deltasandpartialcostseq` using all the information. The matrix multiplication will be written with the '$\cdot$' symbol and element-wise multiplication (applied on vectors) as $\odot$.
 
+Thus for the last layer, the error is:
 
-
+```{image} ../images/lec07_tetris_deltaLayerL.png
+:alt: tetrominoDeltaL
+:width: 50%
+:align: center
+```
 ```{math}
-:label: deltasandpartialcostseqallinfo
-\begin{align*}
-\boldsymbol{\delta}^{(i,L)}_{1 \times n_L} &=\; L^{\prime}\left(\boldsymbol{a}^{(i,L)}_{1 \times n_L}\right) \odot f^{\prime}\left(\boldsymbol{z}^{(i,L)}_{1 \times n_L}\right) \\[2ex]
-& \quad\quad \longrightarrow  \;\; \frac{\partial \text {Cost}}{\partial W^L} = \; \frac{1}{m} \; \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-1)}_{1 \times n_{L-1}}\right)^T \cdot \boldsymbol{\delta}^{(i,L)}_{1 \times n_L}  \\[5ex]
-\boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}} &= \; \left[ \; \boldsymbol{\delta}^{(i,L)}_{1 \times n_L}     \cdot\;  \left(W^L \right)^T \right] \odot\; f'\left(\boldsymbol{z}^{(i,L-1)}_{1 \times n_{L-1}}\right)  \\[2ex]
-& \quad\quad \longrightarrow \quad \frac{\partial \text {Cost}}{\partial W^{(L-1)}} = \; \frac{1}{m} \; \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-2)}_{1 \times n_{L-2}}\right)^T \cdot \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}} \\[5ex]
-\boldsymbol{\delta}^{(i,L-2)}_{1 \times n_{L-2}} &= \; \left[ \; \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}}     \cdot\;  \left(W^{(L-1)} \right)^T \right] \odot\; f'\left(\boldsymbol{z}^{(i,L-2)}_{1 \times n_{L-2}}\right) \\[2ex]
-& \quad\quad \longrightarrow  \quad \frac{\partial \text {Cost}}{\partial W^{(L-2)}} = \; \frac{1}{m} \; \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-3)}_{1 \times n_{L-3}}\right)^T \cdot \boldsymbol{\delta}^{(i,L-2)}_{1 \times n_{L-2}} \\[2ex]
-\end{align*} 
+:label: deltaLastFullEq
+\qquad \; \boldsymbol{\delta}^{(i,L)}_{1 \times n_L} =\; L^{\prime}\left(\boldsymbol{a}^{(i,L)}_{1 \times n_L}\right) \odot f^{\prime}\left(\boldsymbol{z}^{(i,L)}_{1 \times n_L}\right) 
+```
+It is an element-wise multiplication of two row vectors. The schematics on top of the equation shows the dimension of the terms. As they are lists with a value for each data sample, and we already use the left/right and up/down directions for matrix and vector operations, the $i$ index is here the 'depth'. In the schematics, it is represented as piled up Tetris-like tetrominos (here only three data samples are represented for illustrative purposes).
+
+The derivatives of the cost is:
+```{image} ../images/lec07_tetris_dCostdWlastLayer.png
+:alt: tetrominodCostLast
+:width: 50%
+:align: center
+```
+&nbsp;  
+```{math}
+:label: dCostdWLastFullEq
+\qquad  \qquad \; \frac{\partial \text {Cost}}{\partial W^{(L)}_{n_{L-1} \times n_{L}}} = \; \frac{1}{m} \; \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-1)}_{1 \times n_{L-1}}\right)^T \cdot \boldsymbol{\delta}^{(i,L)}_{1 \times n_L} 
+```
+Dimension-wise, the partial derivatives of the cost should be of the same size of the associated weight matrix, as it will be substracted from that weight matrix. So it makes sense in the end to have a matrix created. It is done via the product of a column vector (recall the derivative turns row into column vectors) times a row vector.  
+&nbsp; 
+
+For the before-last layer, the error is:
+```{image} ../images/lec07_tetris_deltaLayerLminus1.png
+:alt: tetrominoDeltaLminusOne
+:width: 50%
+:align: center
+```
+&nbsp;  
+```{math}
+:label: deltaBeforeLastFullEq
+\qquad  \qquad \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}} = \; \left[ \; \boldsymbol{\delta}^{(i,L)}_{1 \times n_L}     \cdot\;  \left(W^{(L)}_{n_{L-1} \times n_{L}} \right)^T \right] \odot\; f'\left(\boldsymbol{z}^{(i,L-1)}_{1 \times n_{L-1}}\right) 
+```
+&nbsp;  
+
+The derivatives of the cost is thus:
+```{image} ../images/lec07_tetris_dCostdWlastlastLayer.png
+:alt: tetrominodCostBeforeLast
+:width: 50%
+:align: center
+```
+&nbsp;  
+```{math}
+:label: dCostdWBeforeLastFullEq
+\qquad  \qquad \frac{\partial \text {Cost}}{\partial W^{(L-1)}_{n_{L-2} \times n_{L-1}}} = \; \frac{1}{m} \; \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-2)}_{1 \times n_{L-2}}\right)^T \cdot \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}} 
 ```
 
-Dimension-wise, the partial derivatives of the cost should be of the same size of the associated weight matrix (as it will be substracted from the weight matrix at the step where weights are updated). So it makes sense in the end to have a matrix created: the product of a column vector (recall the derivative turns row into column vectors) times a row vector. 
-
-
-To make things more visual, the schematics below illustrate the shape of each term (the author of this course has a long-time trouble with index notations and prefers a very visual, Tetris-like representation). The $\delta$ error vectors, unactivated ($z$) and activated node vectors are in yellow. They receive a different value per data samples. The weight matrices and the partial derivatives of the cost are in green: 
-```{figure} ../images/lec07_3_tetrisbackprop.png
----
-  name: lec07_3_tetrisbackprop
-  width: 100%
----
- . Representation of the delta errors, activation unit vectors and weight matrices computed during the backpropagation.    
-<sub>Image from the index-allergic author</sub>
-```
 
 
 
-Now you know how neural networks are trained and the math behind it! Hopefully get a sense of why neural networks are so powerful and popular.
+&nbsp;  
+
+That's it for the math.
+
+&nbsp;  
+
+Now you know how neural networks are trained! 
+
+
 In the assignment, you will code yourself a small neural network from scratch. Don't worry: it will be guided. In the next lecture, we will see a much more convenient way to build a neural network using dedicated libraries. We will introduce further optimization techniques proper to deep learning.
 
 
@@ -506,7 +541,7 @@ Now that you know the backpropagation algorithm, a question regarding the neural
 
 ````{admonition} Check your answer
 :class: tip, dropdown
-If the weights and biases are initialized to the same constant values $w$ and $b$, all activation units in a given layer will get the same signal $a = \sum_{j} w x_j + b$. As such, all nodes for that layer will be identical. Thus the gradients will be updated the same way. Despite having many neurons per layer, the network will act as if it had only one neuron per layer. Therefore, it is likely to fail to reproduce complex patterns from the data; it won't be that smart. For a feedforward neural network to work, there should be an asymmetric configuration for it to use each activation unit uniquely. This is why weights and biases should be initalized with random value to break the symmetry.
+If the weights and biases are initialized to the same constant values $w$ and $b$, all activation units in a given layer will get the same signal $a = \sum_{j} w_j \; x_j + b$. As such, all nodes for that layer will be identical. Thus the gradients will be updated the same way. Despite having many neurons per layer, the network will act as if it had only one neuron per layer. Therefore, it is likely to fail to reproduce complex patterns from the data; it won't be that smart. For a feedforward neural network to work, there should be an asymmetric configuration for it to use each activation unit uniquely. This is why weights and biases should be initalized with random value to break the symmetry.
 ````
 
 &nbsp;&nbsp;

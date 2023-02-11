@@ -71,7 +71,7 @@ We work from the outside first, taking one derivative at a time.
 
 (NN2:backprop:mainstep)=
 ## Main Steps
-Before diving into a more mathematical writing, let's just list the main steps of backpropagation. We will detail steps 2, 3 and 4 very soon:
+Before diving into a more mathematical writing, let's just list the main steps of backpropagation. We will detail steps 2 and 3 very soon:
 
 ````{prf:algorithm} Backpropagation
 :label: backpropalgo
@@ -88,22 +88,25 @@ __Start__
 
 __Step 0:__ Weight initialization
 
-__Step 1:__ Forward propagation on subset or all sample instances $\Rightarrow$ get predictions $\boldsymbol{\hat{y}}$
+__Step 1:__ Forward propagation:  
+$\qquad \qquad \qquad \qquad \Rightarrow$ get list of $m$ predictions $\boldsymbol{\hat{y}}$
 
-__Step 2:__ Computation of loss function & cost function $\Rightarrow$ get network's output error $\delta^{(L)}$
-
-__Step 3:__ Computation of all activation unit errors  $\Rightarrow$ $\delta^{(L-1)}_k, \delta^{(L-2)}_p, \cdots, \delta^{(1)}_r$ 
-
-__Step 4:__ Gradient Descent steps to update weights & biases:
+__Step 2:__ Backpropagation:  
+ $\qquad \qquad \qquad \qquad \Rightarrow$ get all errors $\boldsymbol{\delta}^{(\ell)}_{n^{\ell}}\\[2ex]$  
+$\qquad \qquad \qquad \qquad \Rightarrow$ sum errors and get all cost derivatives: 
+```{math}
+\frac{\partial \text{ Cost}}{\partial W^{(\ell)}} \qquad ; \qquad \frac{\partial \text{ Cost}}{\partial \boldsymbol{b}^{(\ell)}}
+```
+__Step 3:__ Gradient Descent steps to update weights & biases:
 ```{math}
 \begin{align*}
-W^{(\ell)}_{q,r} &\leftarrow W^{(\ell)}_{q,r} - \alpha \frac{\partial \text{ Cost}}{\partial W^{(\ell)}_{q,r}} \\[1ex]
-b^{(\ell)}_r &\leftarrow b^{(\ell)}_r - \alpha \frac{\partial \text{ Cost}}{\partial b^{(\ell)}_r}
+W^{(\ell)} &\leftarrow W^{(\ell)} - \alpha \frac{\partial \text{ Cost}}{\partial W^{(\ell)}} \\[1ex]
+\boldsymbol{b}^{(\ell)} &\leftarrow \boldsymbol{b}^{(\ell)} - \alpha \frac{\partial \text{ Cost}}{\partial \boldsymbol{b}^{(\ell)}}
 \end{align*}
 
 ```
 
-End of epoch, repeat step 1 - 4 until/unless:
+End of epoch, repeat step 1 - 3 until/unless:
 
 __Exit conditions:__
 * Number of epochs $N^\text{epoch}$ is reached
@@ -302,19 +305,16 @@ We can write Equations {eq}`dCostlastsimpleeq`, {eq}`dCostbeforelastsimpleeq` an
 ```{math}
 :label: deltasandpartialcostseq
 \begin{align*}
-\boldsymbol{\delta}^{(L)} &=\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y})  \cdot f^{\prime}(\boldsymbol{z}^{(L)}) 
-& \rightarrow   \frac{\partial \text {Cost}}{\partial W^{(L)}} &=  \; \frac{1}{m} \; \sum \;\boldsymbol{\delta}^{(L)} \;\cdot\; \boldsymbol{a}^{(L-1)}\\[2ex]
-\boldsymbol{\delta}^{(L-1)} &= \; \boldsymbol{\delta}^{(L)}     \cdot\;  W^{(L)} \cdot\; f'(\boldsymbol{z}^{(L-1)}) 
-& \rightarrow   \frac{\partial \text {Cost}}{\partial W^{(L-1)}} &= \; \frac{1}{m} \; \sum \;\boldsymbol{\delta}^{(L-1)} \;\cdot\; \boldsymbol{a}^{(L-2)}\\[2ex]
-\boldsymbol{\delta}^{(L-2)} &= \; \boldsymbol{\delta}^{(L-1)} \cdot\; W^{(L-1)} \;\cdot\; f'(\boldsymbol{z}^{(L-2)}) 
-& \rightarrow   \frac{\partial \text {Cost}}{\partial W^{(L-2)}} &= \; \frac{1}{m} \; \sum \;\boldsymbol{\delta}^{(L-2)} \;\cdot\; \boldsymbol{a}^{(L-3)}\\
+\boldsymbol{\delta}^{(L)} &=\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y})  \cdot f^{\prime}(\boldsymbol{z}^{(L)})   & \rightarrow   \frac{\partial \text{ Cost}}{\partial W^{(L)}}   &= \; \frac{1}{m} \; \sum \;\boldsymbol{\delta}^{(L)} \;\cdot\; \boldsymbol{a}^{(L-1)}\\[2ex]
+\boldsymbol{\delta}^{(L-1)} &=\; \boldsymbol{\delta}^{(L)}     \cdot\;  W^{(L)} \cdot\; f'(\boldsymbol{z}^{(L-1)})        & \rightarrow   \frac{\partial \text{ Cost}}{\partial W^{(L-1)}} &= \; \frac{1}{m} \; \sum \;\boldsymbol{\delta}^{(L-1)} \;\cdot\; \boldsymbol{a}^{(L-2)}\\[2ex]
+\boldsymbol{\delta}^{(L-2)} &=\; \boldsymbol{\delta}^{(L-1)} \cdot\; W^{(L-1)} \;\cdot\; f'(\boldsymbol{z}^{(L-2)})       & \rightarrow  \frac{\partial \text{ Cost}}{\partial W^{(L-2)}} &= \; \frac{1}{m} \; \sum \;\boldsymbol{\delta}^{(L-2)} \;\cdot\; \boldsymbol{a}^{(L-3)}\\
 \end{align*} 
 ```
 This is recursive because errors from the current layer are used to evaluate error signals in a previous layer. We can write the recursive formula for any partial derivative in layer $\ell$ as:
 
 ```{math}
 :label: partialdevrecueq
-\frac{\partial \text {Cost}}{\partial W^{(\ell)}} = \;\;\; \frac{1}{m} \; \sum \quad\boldsymbol{\delta}^{(\ell)} \;\cdot\; \boldsymbol{a}^{(\ell-1)}
+\frac{\partial \text{ Cost}}{\partial W^{(\ell)}} = \;\;\; \frac{1}{m} \; \sum \quad\boldsymbol{\delta}^{(\ell)} \;\cdot\; \boldsymbol{a}^{(\ell-1)}
 ```
 
 __What about the biases?__  
@@ -403,34 +403,42 @@ __Hyperparameters__
 __Start__
 
 
-__Step 0:__ Weight initialization
+__Step 0: Weight initialization__
 
-__Step 1:__ Forward propagation:
+__Step 1: Forward propagation__  
+$\qquad \quad \Rightarrow$ get list of $m$ predictions $\boldsymbol{\hat{y}}$
 \begin{equation}
-\boldsymbol{\hat{y}} = \boldsymbol{a}^{(L)} = f(\boldsymbol{z}^{(L)})
+ f(\boldsymbol{z}^{(L)}) = \boldsymbol{a}^{(L)} = \boldsymbol{\hat{y}}
 \end{equation}
 
-__Step 2:__ Computation of loss function, cost function and overall error:
+__Step 2: Backpropagation__  
+$\qquad \quad \Rightarrow$ get the cost:
 \begin{equation}
-\text{Cost} = \textstyle \; \frac{1}{m} \; \sum L(f(\boldsymbol{z}^{(L)}), \boldsymbol{y}) \qquad \boldsymbol{\delta}^{(L)} =\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(L)}) 
+\text{Cost} =  \; \frac{1}{m} \; \sum L(f(\boldsymbol{z}^{(L)}), \boldsymbol{y}) 
+\end{equation}
+$\qquad \quad \Rightarrow$ get all errors:
+\begin{equation}
+\boldsymbol{\delta}^{(L)} =\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(L)}) 
+\end{equation}
+\begin{equation}
+\qquad \;\; \boldsymbol{\delta}^{(\ell)} = \; \boldsymbol{\delta}^{(\ell+1)} \;\cdot\; W^{(\ell+1)} \;\cdot\; f'(\boldsymbol{z}^{(\ell)})
 \end{equation}
 
-__Step 3:__ Computation of all activation unit errors for $\ell = L-1, L-2, \cdots, 1$: 
-\begin{equation}
-\boldsymbol{\delta}^{(\ell)} = \; \boldsymbol{\delta}^{(\ell+1)} \;\cdot\; W^{(\ell+1)} \;\cdot\; f'(\boldsymbol{z}^{(\ell)})
-\end{equation}
-... and derivatives:
-\begin{equation}
-\frac{\partial \text {Cost}}{\partial W^{(\ell)}} = \; \frac{1}{m} \; \sum \; \boldsymbol{\delta}^{(\ell)} \;\cdot\; \boldsymbol{a}^{(\ell-1)}  \qquad \qquad \qquad \frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(\ell)}} = \; \frac{1}{m} \; \sum \; \boldsymbol{\delta}^{(\ell)}
-\end{equation}
+$\qquad \quad \Rightarrow$ sum errors and get all cost derivatives:  
+```{math}
+\begin{align*}
+\frac{\partial \text{ Cost}}{\partial W^{(\ell)}} &= \;\frac{1}{m} \; \sum \; \boldsymbol{\delta}^{(\ell)} \;\cdot\; \boldsymbol{a}^{(\ell-1)}\\[2ex]
+\frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(\ell)}} &= \; \frac{1}{m} \; \sum \quad\boldsymbol{\delta}^{(\ell)}
+\end{align*}
+```
 
-__Step 4:__ Gradient Descent steps to update weights & biases:
+__Step 3: Gradient Descent__  
+$\qquad \quad \Rightarrow$ update weights & biases:
 ```{math}
 \begin{align*}
 W^{(\ell)} &\leftarrow W^{(\ell)} - \alpha \frac{\partial \text{ Cost}}{\partial W^{(\ell)}} \\[1ex]
 \boldsymbol{b}^{(\ell)} &\leftarrow \boldsymbol{b}^{(\ell)} - \alpha \frac{\partial \text{ Cost}}{\partial \boldsymbol{b}^{(\ell)}}
 \end{align*}
-
 ```
 
 End of epoch, repeat step 1 - 4 until/unless:

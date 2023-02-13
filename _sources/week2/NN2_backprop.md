@@ -427,8 +427,8 @@ $\qquad \quad \Rightarrow$ get all errors:
 $\qquad \quad \Rightarrow$ sum errors and get all cost derivatives:  
 ```{math}
 \begin{align*}
-\frac{\partial \text{ Cost}}{\partial W^{(\ell)}} &= \;\frac{1}{m} \; \sum \quad\boldsymbol{\delta}^{(\ell)} \;\cdot\; \boldsymbol{a}^{(\ell-1)}\\[2ex]
-\frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(\ell)}} &= \; \frac{1}{m} \quad \sum \quad\boldsymbol{\delta}^{(\ell)}
+\frac{\partial \text{ Cost}}{\partial W^{(\ell)}} &= \;\frac{1}{m} \; \sum \; \boldsymbol{\delta}^{(\ell)} \;\cdot\; \boldsymbol{a}^{(\ell-1)}\\[2ex]
+\frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(\ell)}} &= \; \frac{1}{m} \; \sum \quad\boldsymbol{\delta}^{(\ell)}
 \end{align*}
 ```
 

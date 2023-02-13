@@ -915,13 +915,13 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Definition 64 </span></p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> be functions. For all <span class="math notranslate nohighlight">\(𝑥\)</span> in the domain of <span class="math notranslate nohighlight">\(g\)</span> for which <span class="math notranslate nohighlight">\(g\)</span> is differentiable at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is differentiable at <span class="math notranslate nohighlight">\(g(x)\)</span>, the derivative of the composite function:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-59fe7bc5-8fcf-4c11-9450-e7d1d0a37508">
-<span class="eqno">(80)<a class="headerlink" href="#equation-59fe7bc5-8fcf-4c11-9450-e7d1d0a37508" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-20b808d2-a92f-458a-9c3e-c1a8bfa6210a">
+<span class="eqno">(80)<a class="headerlink" href="#equation-20b808d2-a92f-458a-9c3e-c1a8bfa6210a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h(x) = f(g(x)) 
 \end{equation}\]</div>
 <p>is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8e978c37-7b50-4846-8ec9-2d79f6f184a9">
-<span class="eqno">(81)<a class="headerlink" href="#equation-8e978c37-7b50-4846-8ec9-2d79f6f184a9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e35b104e-54d1-4135-a1f4-ca817d769a48">
+<span class="eqno">(81)<a class="headerlink" href="#equation-e35b104e-54d1-4135-a1f4-ca817d769a48" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}} \;\cdot \;  \frac{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}}{\mathrm{d} \; x} = f'\left(g(x)\right) \;\cdot \; g'(x)
 \end{equation}\]</div>
 </section>
@@ -937,8 +937,8 @@ h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maro
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
 <p>What would be the chain rule for three functions?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a7d8e81c-8308-4132-825c-22e89ede3d32">
-<span class="eqno">(82)<a class="headerlink" href="#equation-a7d8e81c-8308-4132-825c-22e89ede3d32" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d0c66f30-f80e-477b-88db-fd9088dce25c">
+<span class="eqno">(82)<a class="headerlink" href="#equation-d0c66f30-f80e-477b-88db-fd9088dce25c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 k(x) = h(f(g(x))) 
 \end{equation}\]</div>
 </div>
@@ -1208,30 +1208,30 @@ Training data set <span class="math notranslate nohighlight">\(X\)</span> of <sp
 <p><strong>Step 0: Weight initialization</strong></p>
 <p><strong>Step 1: Forward propagation</strong><br />
 <span class="math notranslate nohighlight">\(\qquad \quad \Rightarrow\)</span> get list of <span class="math notranslate nohighlight">\(m\)</span> predictions <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}}\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-3bacdbd1-01f9-46f1-baf7-49f970940bd2">
-<span class="eqno">(106)<a class="headerlink" href="#equation-3bacdbd1-01f9-46f1-baf7-49f970940bd2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a12ba558-425c-4a54-b1fd-6a378164b069">
+<span class="eqno">(106)<a class="headerlink" href="#equation-a12ba558-425c-4a54-b1fd-6a378164b069" title="Permalink to this equation">#</a></span>\[\begin{equation}
  f(\boldsymbol{z}^{(L)}) = \boldsymbol{a}^{(L)} = \boldsymbol{\hat{y}}
 \end{equation}\]</div>
 <p><strong>Step 2: Backpropagation</strong><br />
 <span class="math notranslate nohighlight">\(\qquad \quad \Rightarrow\)</span> get the cost:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-77aac634-7a7d-451e-89a1-04eb669c1d05">
-<span class="eqno">(107)<a class="headerlink" href="#equation-77aac634-7a7d-451e-89a1-04eb669c1d05" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-41cca5c0-699e-4dab-bc54-78754ae001dd">
+<span class="eqno">(107)<a class="headerlink" href="#equation-41cca5c0-699e-4dab-bc54-78754ae001dd" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Cost} =  \; \frac{1}{m} \; \sum L(f(\boldsymbol{z}^{(L)}), \boldsymbol{y}) 
 \end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(\qquad \quad \Rightarrow\)</span> get all errors:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-11cdac9d-8949-4b96-99e5-66282df7cb77">
-<span class="eqno">(108)<a class="headerlink" href="#equation-11cdac9d-8949-4b96-99e5-66282df7cb77" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a1304cfc-9157-49d6-9f8b-dbdedb035253">
+<span class="eqno">(108)<a class="headerlink" href="#equation-a1304cfc-9157-49d6-9f8b-dbdedb035253" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \boldsymbol{\delta}^{(L)} =\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(L)}) 
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-72a4885a-0858-4440-a342-2c6e7b313a53">
-<span class="eqno">(109)<a class="headerlink" href="#equation-72a4885a-0858-4440-a342-2c6e7b313a53" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6d884784-f4b3-4e7e-a3e3-9fe4e309fbcb">
+<span class="eqno">(109)<a class="headerlink" href="#equation-6d884784-f4b3-4e7e-a3e3-9fe4e309fbcb" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \qquad \;\; \boldsymbol{\delta}^{(\ell)} = \; \boldsymbol{\delta}^{(\ell+1)} \;\cdot\; W^{(\ell+1)} \;\cdot\; f'(\boldsymbol{z}^{(\ell)})
 \end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(\qquad \quad \Rightarrow\)</span> sum errors and get all cost derivatives:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
-\frac{\partial \text{ Cost}}{\partial W^{(\ell)}} &amp;= \;\frac{1}{m} \; \sum \quad\boldsymbol{\delta}^{(\ell)} \;\cdot\; \boldsymbol{a}^{(\ell-1)}\\[2ex]
-\frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(\ell)}} &amp;= \; \frac{1}{m} \quad \sum \quad\boldsymbol{\delta}^{(\ell)}
+\frac{\partial \text{ Cost}}{\partial W^{(\ell)}} &amp;= \;\frac{1}{m} \; \sum \; \boldsymbol{\delta}^{(\ell)} \;\cdot\; \boldsymbol{a}^{(\ell-1)}\\[2ex]
+\frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(\ell)}} &amp;= \; \frac{1}{m} \; \sum \quad\boldsymbol{\delta}^{(\ell)}
 \end{align*}\end{split}\]</div>
 <p><strong>Step 3: Gradient Descent</strong><br />
 <span class="math notranslate nohighlight">\(\qquad \quad \Rightarrow\)</span> update weights &amp; biases:</p>
@@ -1252,24 +1252,24 @@ W^{(\ell)} &amp;\leftarrow W^{(\ell)} - \alpha \frac{\partial \text{ Cost}}{\par
 <h2>Complete equations and dimensions<a class="headerlink" href="#complete-equations-and-dimensions" title="Permalink to this headline">#</a></h2>
 <p>Through this lecture, some indices have been omitted for more clarity. In the following, we will be more rigourous and add the indices, as well as the correct operation symbols. There are indeed some matrix and element-wise multiplications in the formulae.</p>
 <p>The activation nodes <span class="math notranslate nohighlight">\(\boldsymbol{a}\)</span> are row vectors and there is a different value for each sample <span class="math notranslate nohighlight">\(x^{(i)}\)</span>, with <span class="math notranslate nohighlight">\(i\)</span> ranging from 1 to <span class="math notranslate nohighlight">\(m\)</span> (size of the training dataset). This is a list of <span class="math notranslate nohighlight">\(m\)</span> row vectors. We will stick to the convention in the first lectures of writing the data sample index <span class="math notranslate nohighlight">\(i\)</span> as superscript. We will put the information of the layer also in the superscript. In the subscript, we will indicate the shape of the element (vector or matrix) in the form of <span class="math notranslate nohighlight">\(n_\text{row} \times n_\text{column}\)</span>. Thus, for the layer <span class="math notranslate nohighlight">\(\ell\)</span> with <span class="math notranslate nohighlight">\(n\)</span> activation units, our notation becomes:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2a2bada2-dee1-4c23-a9ee-8dc8416d2245">
-<span class="eqno">(110)<a class="headerlink" href="#equation-2a2bada2-dee1-4c23-a9ee-8dc8416d2245" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0cb3c4b8-2a80-4324-aa66-f827465fa49f">
+<span class="eqno">(110)<a class="headerlink" href="#equation-0cb3c4b8-2a80-4324-aa66-f827465fa49f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \boldsymbol{a}^{(\ell)} \longrightarrow  \boldsymbol{a}^{(i,\ell)}_{1 \times n_\ell} 
 \end{equation}\]</div>
 <p>You can directly ‘see’ the form of <span class="math notranslate nohighlight">\(\boldsymbol{a}^{(i,\ell)}_{1 \times n_\ell}\)</span>: a row vector of <span class="math notranslate nohighlight">\(n_\ell\)</span> elements.</p>
 <p>The <span class="math notranslate nohighlight">\(\boldsymbol{z}\)</span> row vectors (the weighted sum of a node before applying the activation function <span class="math notranslate nohighlight">\(f\)</span>) are of the same shape:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-885a37ce-7d45-4808-8634-a0aa5b470970">
-<span class="eqno">(111)<a class="headerlink" href="#equation-885a37ce-7d45-4808-8634-a0aa5b470970" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ad4ce709-2d1e-4c9f-8391-07fb400563ff">
+<span class="eqno">(111)<a class="headerlink" href="#equation-ad4ce709-2d1e-4c9f-8391-07fb400563ff" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \boldsymbol{z}^{(\ell)} \longrightarrow \boldsymbol{z}^{(i,\ell)}_{1 \times n_\ell} 
 \end{equation}\]</div>
 <p>Now the weight matrices and biases. Unlike the node vectors above, weight matrices and the bias vectors are <strong>unique</strong> to the neural network. The same weights and bias values are applied to all the samples. The weight matrix at layer <span class="math notranslate nohighlight">\(\ell\)</span> connecting the <span class="math notranslate nohighlight">\(n_{\ell-1}\)</span> nodes of the previous layer to the <span class="math notranslate nohighlight">\(n_{\ell}\)</span> nodes of the current layer <span class="math notranslate nohighlight">\(\ell\)</span> will be of shape:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7a915181-b8a7-4554-bb1b-53b862a38455">
-<span class="eqno">(112)<a class="headerlink" href="#equation-7a915181-b8a7-4554-bb1b-53b862a38455" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0f7c6a99-18ef-4d2c-9f84-98f8a0fdbe89">
+<span class="eqno">(112)<a class="headerlink" href="#equation-0f7c6a99-18ef-4d2c-9f84-98f8a0fdbe89" title="Permalink to this equation">#</a></span>\[\begin{equation}
 W^{(\ell)}  \longrightarrow  W^{(\ell)}_{n_{\ell-1} \times n_{\ell}}
 \end{equation}\]</div>
 <p>For the bias vector, it will be:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3bacd283-9ed7-4d10-8b7c-e182af186a6d">
-<span class="eqno">(113)<a class="headerlink" href="#equation-3bacd283-9ed7-4d10-8b7c-e182af186a6d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2b5130c9-1b5d-473f-bbbd-1241c74f3f1e">
+<span class="eqno">(113)<a class="headerlink" href="#equation-2b5130c9-1b5d-473f-bbbd-1241c74f3f1e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \boldsymbol{b}^{(\ell)}  \longrightarrow \boldsymbol{b}^{(\ell)}_{1 \times n_\ell} 
 \end{equation}\]</div>
 <p>You can see that both <span class="math notranslate nohighlight">\(W\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{b}\)</span> do not have any index <span class="math notranslate nohighlight">\(i\)</span> in the superscript, because there is one set of weights and biases for the entire network.</p>

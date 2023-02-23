@@ -183,7 +183,7 @@ Gradient descent is an iterative optimization algorithm to find the minimum of a
 
 {ref}`The 3D plot above <plot_linReg_bowl>` is misleading, as we will see that once we add input features we cannot have any visual of how the data landscape looks like (we are stuck with 3D vision, rarely 4D and that's it). In a way, we are blind. Think of yourself walking from a point of the bowl-shaped surface but in the dark. How to reach the 'valley' where the cost function is minimum?
 
-The idea behind gradient descent is to walk step by step following the __slope__ of the cost function locally. In mathematical words: the partial derivative of the cost function will give us the best direction to go towards the minimum.
+The idea behind gradient descent is to walk step by step following the __slope__ of the cost function locally. In mathematical words: the partial derivatives of the cost function will give us the best direction to go towards the minimum.
 
 ```{admonition} Terminology
 __Hyperparameter__  
@@ -291,7 +291,8 @@ This illustration helps see why the minus sign in Equation {eq}`eqGDlinCost` is 
   name: costSignDirection
   width: 90%
 ---
- . The sign of the cost function's derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized. <sub>Image from the author</sub>
+ . The sign of the cost function's derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized.  
+ <sub>Image from the author</sub>
  ```
 
 If our parameter is randomly picked on the left side of the U-shaped parabola, the partial derivatives will be negative. As the learning rate is always positive, the incremental update $-\alpha \frac{d}{d \theta} J(\theta)$ will thus be positive. We will add an increment to our parameter. At the next iteration, we will have a new parameter $\theta$ closer to the one we look for. The reverse goes with the other side of the curve: with a positive derivative, we will decrease our parameter and slide to the left. All the time we go 'downhill' towards the minimum.
@@ -304,7 +305,8 @@ When computing the gradient descent for linear regression, we get new parameters
   name: linReg_animated
   width: 80%
 ---
-. Animation of the gradient descent. At each generation a new set of parameters are computed. In this picture $m$ corresponds to $\theta_1$ and the constant $c$ to $\theta_0$. Sometimes they are also referred to the _slope_ and _intercept_ respectively. <sub>Source GIF: [Medium](https://towardsdatascience.com/linear-regression-using-python-b136c91bf0a2)</sub>
+. Animation of the gradient descent. At each generation a new set of parameters are computed. In this picture $m$ corresponds to $\theta_1$ and the constant $c$ to $\theta_0$. Sometimes they are also referred to the _slope_ and _intercept_ respectively.  
+<sub>Source GIF: [Medium](https://towardsdatascience.com/linear-regression-using-python-b136c91bf0a2)</sub>
 ```
 
 In our example, the best linear fit will be:

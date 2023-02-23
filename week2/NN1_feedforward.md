@@ -158,7 +158,7 @@ then we can write a general rule for computing the outputs of a fully connected 
 \boldsymbol{a^{(\ell)}} = f\left( \; \boldsymbol{a^{(\ell -1)}} \;W^{(\ell)} \;+\; \boldsymbol{b}^{(\ell)} \;\right)
 ```
 
-This is the general rule for computing all outputs of a fully, feedforward neural network.
+This is the general rule for computing all outputs of a fully connected feedforward neural network.
 
 ## Summary
 Feedforward propagation is the computation of the values of all activation units of a fully connected feedforward neural network.  

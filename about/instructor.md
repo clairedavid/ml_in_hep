@@ -35,16 +35,12 @@ The table below shows a tentative weekly schedule for this course. There may be 
 &nbsp; 
 
 ### Incoming
-
 A mini-version of this course is likely to be held in March/April 2023. If you want to know more, [contact me](mailto:claired@aims.ac.za).
 
-### Previous version
-
-AIMS South Africa, February 2023
-
-AIMS Senegal, January 2023
-
-I taught a mini-version of this course at the [African School of Physics (ASP2022)](https://www.africanschoolofphysics.org/asp2022/) in Gqebera, South Africa on [December 9, 2022](https://indico.cern.ch/event/1210872/timetable/#20221209).
+### Previous versions
+$\checkmark$ AIMS South Africa, February 2023  
+$\checkmark$ AIMS Senegal, January 2023  
+$\checkmark$ Partial course (Lectures 1 - 3) at the [African School of Physics (ASP2022)](https://www.africanschoolofphysics.org/asp2022/) in Gqebera, South Africa on [December 9, 2022](https://indico.cern.ch/event/1210872/timetable/#20221209).
 
 
 ## Acknowledgments

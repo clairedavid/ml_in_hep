@@ -34,11 +34,13 @@ The table below shows a tentative weekly schedule for this course. There may be 
 &nbsp;  
 &nbsp; 
 
-### Ongoing 
-This course is been taught at AIMS South Africa from January 30 until February 17, 2023.
+### Incoming
 
+A mini-version of this course is likely to be held in March/April 2023. If you want to know more, [contact me](mailto:claired@aims.ac.za).
 
 ### Previous version
+
+AIMS South Africa, February 2023
 
 AIMS Senegal, January 2023
 

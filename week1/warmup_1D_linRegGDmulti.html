@@ -996,7 +996,7 @@ Calculate the new parameters according to:</p></li>
 </section>
 </div><p>The partial derivatives of <span class="math notranslate nohighlight">\(J(\theta)\)</span> for each parameter <span class="math notranslate nohighlight">\(\theta_j\)</span> will be of the form:</p>
 <div class="math notranslate nohighlight" id="equation-partialdevlinreg">
-<span class="eqno">(10)<a class="headerlink" href="#equation-partialdevlinreg" title="Permalink to this equation">#</a></span>\[\frac{\partial}{\partial \theta_j} J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) \; x_j^{(i)}\]</div>
+<span class="eqno">(10)<a class="headerlink" href="#equation-partialdevlinreg" title="Permalink to this equation">#</a></span>\[\frac{\partial}{\partial \theta_j} J(\theta) = \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) \; x_j^{(i)}\]</div>
 </section>
 <section id="feature-scaling-normalization">
 <span id="warmup-linregmulti-featurescalnorm"></span><h2>Feature Scaling &amp; Normalization<a class="headerlink" href="#feature-scaling-normalization" title="Permalink to this headline">#</a></h2>

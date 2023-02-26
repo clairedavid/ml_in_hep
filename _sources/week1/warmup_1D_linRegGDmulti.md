@@ -135,7 +135,7 @@ __Exit conditions__
 The partial derivatives of $J(\theta)$ for each parameter $\theta_j$ will be of the form:
 ```{math}
 :label: partialDevLinReg
-\frac{\partial}{\partial \theta_j} J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) \; x_j^{(i)}
+\frac{\partial}{\partial \theta_j} J(\theta) = \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) \; x_j^{(i)}
 ```
 (warmup:linregmulti:featurescalnorm)=
 ## Feature Scaling & Normalization

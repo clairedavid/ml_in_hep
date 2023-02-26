@@ -961,7 +961,7 @@ In Equation <a class="reference internal" href="#equation-costfunctionlinreg">(3
 <p>Gradient descent is an iterative optimization algorithm to find the minimum of a function.</p>
 </section>
 </div><p><a class="reference internal" href="#plot-linreg-bowl"><span class="std std-ref">The 3D plot above</span></a> is misleading, as we will see that once we add input features we cannot have any visual of how the data landscape looks like (we are stuck with 3D vision, rarely 4D and that’s it). In a way, we are blind. Think of yourself walking from a point of the bowl-shaped surface but in the dark. How to reach the ‘valley’ where the cost function is minimum?</p>
-<p>The idea behind gradient descent is to walk step by step following the <strong>slope</strong> of the cost function locally. In mathematical words: the partial derivative of the cost function will give us the best direction to go towards the minimum.</p>
+<p>The idea behind gradient descent is to walk step by step following the <strong>slope</strong> of the cost function locally. In mathematical words: the partial derivatives of the cost function will give us the best direction to go towards the minimum.</p>
 <div class="admonition-terminology admonition">
 <p class="admonition-title">Terminology</p>
 <p><strong>Hyperparameter</strong><br />
@@ -1061,7 +1061,8 @@ This illustration helps see why the minus sign in Equation <a class="reference i
 <figure class="align-default" id="costsigndirection">
 <a class="reference internal image-reference" href="../_images/lec02_1_costSignDirection.png"><img alt="../_images/lec02_1_costSignDirection.png" src="../_images/lec02_1_costSignDirection.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">. The sign of the cost function’s derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized. <sub>Image from the author</sub></span><a class="headerlink" href="#costsigndirection" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">. The sign of the cost function’s derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#costsigndirection" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>If our parameter is randomly picked on the left side of the U-shaped parabola, the partial derivatives will be negative. As the learning rate is always positive, the incremental update <span class="math notranslate nohighlight">\(-\alpha \frac{d}{d \theta} J(\theta)\)</span> will thus be positive. We will add an increment to our parameter. At the next iteration, we will have a new parameter <span class="math notranslate nohighlight">\(\theta\)</span> closer to the one we look for. The reverse goes with the other side of the curve: with a positive derivative, we will decrease our parameter and slide to the left. All the time we go ‘downhill’ towards the minimum.</p>
@@ -1072,7 +1073,8 @@ This illustration helps see why the minus sign in Equation <a class="reference i
 <figure class="align-default" id="linreg-animated">
 <a class="reference internal image-reference" href="../_images/lec02_1_linReg_animated.gif"><img alt="../_images/lec02_1_linReg_animated.gif" src="../_images/lec02_1_linReg_animated.gif" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">. Animation of the gradient descent. At each generation a new set of parameters are computed. In this picture <span class="math notranslate nohighlight">\(m\)</span> corresponds to <span class="math notranslate nohighlight">\(\theta_1\)</span> and the constant <span class="math notranslate nohighlight">\(c\)</span> to <span class="math notranslate nohighlight">\(\theta_0\)</span>. Sometimes they are also referred to the <em>slope</em> and <em>intercept</em> respectively. <sub>Source GIF: <a class="reference external" href="https://towardsdatascience.com/linear-regression-using-python-b136c91bf0a2">Medium</a></sub></span><a class="headerlink" href="#linreg-animated" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">. Animation of the gradient descent. At each generation a new set of parameters are computed. In this picture <span class="math notranslate nohighlight">\(m\)</span> corresponds to <span class="math notranslate nohighlight">\(\theta_1\)</span> and the constant <span class="math notranslate nohighlight">\(c\)</span> to <span class="math notranslate nohighlight">\(\theta_0\)</span>. Sometimes they are also referred to the <em>slope</em> and <em>intercept</em> respectively.<br />
+<sub>Source GIF: <a class="reference external" href="https://towardsdatascience.com/linear-regression-using-python-b136c91bf0a2">Medium</a></sub></span><a class="headerlink" href="#linreg-animated" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In our example, the best linear fit will be:</p>

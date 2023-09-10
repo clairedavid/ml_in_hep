@@ -1,5 +1,7 @@
 # Machine Learning in Particle Physics
 
+:warning: **This is the old repository (2022-2023)**: please go to Introduction to Machine Learning
+
 ## What is this?
 
 This repository holds the online pages of the course on Machine Learning in Particle Physics.

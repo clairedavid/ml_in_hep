@@ -1,5 +1,13 @@
 # Machine Learning in Particle Physics
 &nbsp;  
+<br>
+
+<center><big>⚠️&nbsp; This is the old website! &nbsp;⚠️  
+
+This course has been moved here: [Introduction to Machine Learning](https://clairedavid.github.io/intro_to_ml)</big></center>
+
+<br>
+
 Learn the math behind machine learning!
 
 Learn how to code a machine learning algorithm by hand in python.

@@ -29,8 +29,8 @@ The latter definition can be confusing. Here is an example: self driving cars. T
   name: TypesML
   width: 100%
 ---
- .  The main approaches and types of machine learning.  
- Credits: Peng J, Jury EC, Dönnes P and Ciurtin C (2021)
+ .  A categorization of major machine learning techniques with relevant examples.  
+ <sub>Credits: from [this publication](https://www.researchgate.net/publication/360078910_A_Survey_and_Perspective_on_Artificial_Intelligence_for_Security-Aware_Electronic_Design_Automation) by Koblah, David & Acharya, Rabin & Dizon-Paradis, Olivia & Tajik, Shahin & Ganji, Fatemeh & Woodard, Damon & Forte, Domenic. (2022). A Survey and Perspective on Artificial Intelligence for Security-Aware Electronic Design Automation. [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)</sub>
 ```
 
 ## Examples

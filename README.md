@@ -1,6 +1,9 @@
 # Machine Learning in Particle Physics
 
-:warning: **This is the old repository (2022-2023)**: please go to Introduction to Machine Learning
+:warning: **This is the old repository of 2022-2023.
+
+Please go to the new  one: [Introduction to Machine Learning](https://github.com/clairedavid/intro_to_ml)**
+
 
 ## What is this?
 
@@ -14,7 +17,10 @@ Programming tutorials and assignments will be done in Python using [Jupyter Note
 
 ## Calendar
 
-This course will be delivered at AIMS Senegal in January 2023 and AIMS South Africa in February 2023.
+This course was delivered:
+- January 2023: AIMS Senegal
+- February 2023: AIMS South Africa
+- April/May 2023: AIMS Ghana
 
 
 ## Gratitude

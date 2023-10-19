@@ -2,9 +2,9 @@
 &nbsp;  
 <br>
 
-<center><big>⚠️&nbsp; This is the old website! &nbsp;⚠️  
+<center><span style="font-size:xx-large">⚠️&nbsp; This is the old website! &nbsp;⚠️  
 
-This course has been moved here: [Introduction to Machine Learning](https://clairedavid.github.io/intro_to_ml)</big></center>
+This course has been moved here: <br>[Introduction to Machine Learning](https://clairedavid.github.io/intro_to_ml)</span></center>
 
 <br>
 
